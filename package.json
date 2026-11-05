@@ -10,7 +10,8 @@
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "oxlint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "icons": "node scripts/app-icons.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -39,6 +40,7 @@
     "oxlint": "^1.91.0",
     "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.4",
     "typescript": "^5.9.3"
   }

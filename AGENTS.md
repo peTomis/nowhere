@@ -22,6 +22,7 @@ yarn typecheck         # next typegen + tsc --noEmit
 yarn lint              # oxlint
 yarn format:check      # prettier
 yarn build             # next build
+yarn icons             # re-render home-screen icons from app/icon.svg
 ```
 
 The package manager is **yarn** (classic, `yarn.lock`): never use npm or add a `package-lock.json`.
@@ -48,6 +49,9 @@ There is no test suite yet.
 - Tailwind 4 runs through the `@tailwindcss/turbopack` loader configured in `next.config.ts`
   (no PostCSS config).
 - Metadata via `export const metadata` / `generateMetadata`; titles use the `%s — Nowhere` template.
+- Icons: `app/icon.svg` is the favicon and the source of the home-screen icons
+  (`app/apple-icon.png`, `public/icons/icon-*.png`, listed in `app/manifest.ts`). Those PNGs are
+  generated: after changing `app/icon.svg`, run `yarn icons`.
 
 ## Code style
 
