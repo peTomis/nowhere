@@ -2,7 +2,8 @@
 
 import { ArrowLeftIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { Logo } from '@/components/Logo'
 import type { Place, TocEntry } from '@/lib/guide'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
@@ -46,6 +47,22 @@ function useActiveSection(ids: string[], recheck: unknown) {
   return active
 }
 
+/** Whether the element placed right above a sticky bar has scrolled out the top (bar stuck). */
+function useStuck() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [stuck, setStuck] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) =>
+      setStuck(!e.isIntersecting && e.boundingClientRect.top < 0),
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  return [ref, stuck] as const
+}
+
 function Shell({
   country,
   toc,
@@ -60,6 +77,7 @@ function Shell({
   const ids = useMemo(() => toc.map((e) => e.id), [toc])
   const active = useActiveSection(ids, trip)
   const current = (toc.find((e) => e.id === active) ?? toc[0])?.label
+  const [sentinel, stuck] = useStuck()
 
   useEffect(() => {
     if (!menu) return
@@ -78,7 +96,16 @@ function Shell({
 
   return (
     <div className="relative">
+      <div ref={sentinel} aria-hidden />
       <div className="sticky top-0 z-20 flex h-[56px] items-center gap-3 bg-bg px-[clamp(16px,5vw,32px)] shadow-sm min-[960px]:hidden">
+        {/* Once the bar is stuck the cover (and its logo) is gone: the symbol leads back home. */}
+        <Link
+          href="/"
+          aria-label={t.common.homeLabel}
+          className={`flex h-[44px] flex-none items-center overflow-hidden motion-safe:transition-[width,margin,opacity,visibility] motion-safe:duration-200 ${stuck ? 'visible w-[32px] opacity-100' : 'invisible -mr-3 w-0 opacity-0'}`}
+        >
+          <Logo variant="symbol" className="size-[32px] flex-none" />
+        </Link>
         <a
           href="#top"
           className="text-xs font-semibold tracking-[.16em] text-accent-700 uppercase no-underline"
