@@ -2,7 +2,7 @@ import { Logo } from './Logo'
 import { t } from '@/i18n'
 
 /**
- * Site footer, from "Nowhere - Home.dc.html": wordmark + tagline, credit on the right.
+ * Site footer, from "Nowhere - Home.dc.html": wordmark + tagline (from 640px), credit on the right.
  * The same footer closes the home and every guide.
  */
 export function SiteFooter({ className = '' }: { className?: string }) {
@@ -14,7 +14,7 @@ export function SiteFooter({ className = '' }: { className?: string }) {
         <div className="aspect-[166/33] w-[76px]">
           <Logo variant="wordmark" className="size-full" />
         </div>
-        <span className="text-neutral-700 italic">{t.common.tagline}</span>
+        <span className="hidden text-neutral-700 italic sm:inline">{t.common.tagline}</span>
       </div>
       <p className="m-0 flex min-h-[44px] items-center">
         {t.common.madeBy}&nbsp;
