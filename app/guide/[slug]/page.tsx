@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { GuideCover } from '@/components/guide/GuideCover'
-import { GuideFooter } from '@/components/guide/GuideFooter'
+import { GuideOutro } from '@/components/guide/GuideOutro'
 import { GuideShell } from '@/components/guide/GuideShell'
+import { SiteFooter } from '@/components/SiteFooter'
 import { guideContent } from '@/content/guides'
 import { getGuide, guides } from '@/data/guides'
 
@@ -46,7 +47,8 @@ async function Guide({ params }: Pick<PageProps<'/guide/[slug]'>, 'params'>) {
       <GuideShell slug={slug} country={guide.name} places={content.places} toc={content.toc}>
         {content.body}
       </GuideShell>
-      <GuideFooter name={guide.name} emblems={content.emblems} toc={content.toc} />
+      <GuideOutro name={guide.name} emblems={content.emblems} toc={content.toc} />
+      <SiteFooter />
     </>
   )
 }

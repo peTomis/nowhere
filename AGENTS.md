@@ -16,16 +16,18 @@ Guidance for coding agents working on **nowhere**, a personal travel-guide site
 ## Commands
 
 ```bash
-npm install
-npm run dev           # dev server on :3000 (Turbopack)
-npm run typecheck     # next typegen + tsc --noEmit
-npm run lint          # oxlint
-npm run format:check  # prettier
-npm run build         # next build
+yarn
+yarn dev               # dev server on :3000 (Turbopack)
+yarn typecheck         # next typegen + tsc --noEmit
+yarn lint              # oxlint
+yarn format:check      # prettier
+yarn build             # next build
 ```
 
+The package manager is **yarn** (classic, `yarn.lock`): never use npm or add a `package-lock.json`.
+
 Before considering a change done, run
-`npm run typecheck && npm run lint && npm run format:check && npm run build`.
+`yarn typecheck && yarn lint && yarn format:check && yarn build`.
 There is no test suite yet.
 
 ## Next.js specifics
@@ -51,11 +53,21 @@ There is no test suite yet.
 
 - Prettier: no semicolons, single quotes, trailing commas, 100-column width, Tailwind classes
   sorted by `prettier-plugin-tailwindcss`. 2-space indent, LF.
+- UI strings live in `i18n/it.json`, never inline: `import { t, format } from '@/i18n'`, then
+  `t.map.searchPlaceholder` or `format(t.guide.trip.citiesOf, { name })` for `{placeholders}`.
+  Keys are typed from the JSON. Guide prose is content, not UI: it stays in `content/guides/`.
+  Use `locale` from `@/i18n` for `lang`, `localeCompare`, `Intl` and similar. Image alt texts
+  are UI strings too. Per guide, `guides.<slug>` holds `toc` (index labels and dates, reused as
+  the matching section titles), `regions` (place names, used by `places`, index and `Region`) and
+  `alt`; captions and prose stay in content.
+- Asset file names are English and kebab-case (`coat-of-arms.png`, `flag.svg`, `map.png`).
 - Pages/layouts use `export default`; shared components use named exports with props typed via a
   local `type`.
 - Use `next/link` for internal links.
 - Everything in the repo is in English: docs, code comments, identifiers, commit messages.
-  The only exception is user-facing UI copy, which is currently Italian.
+  Exceptions: user-facing UI copy (Italian), and place names in guides — region and city enum
+  members/values keep their Italian names (`Romania.Valacchia = 'valacchia'`). Refer to UI
+  features by an English name in code and comments (e.g. "trip filter", shown as "Il tuo viaggio").
 
 ## Design system (Broadsheet)
 
@@ -101,18 +113,23 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Guides: port of `Guida Romania - Sito.dc.html`. Content is TSX in `content/guides/<slug>.tsx`
   built from `components/guide/content.tsx` (server) and `<Only>`/`<Unless>` from
   `components/guide/trip.tsx` (client). Keep content files free of styling: if something new is
-  needed, add a primitive to the kit. The trip filter state is localStorage
+  needed, add a primitive to the kit. Place ids are a per-guide string `enum` (see
+  `romania.tsx`): type the content as `GuideContent<Enum>` and alias `Only`/`Unless` as
+  `Gate<Enum>`; never write place ids as bare strings. Enum values are persisted in localStorage,
+  so don't rename them after publishing. The trip filter state is localStorage
   `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
   always renders the full text. Images go through `publicAsset()` (`lib/assets.ts`): missing
   files render a placeholder instead of a broken image.
 - Cover ink: `coverInk` in a guide's content sets the color of the country name _and_ the nowhere
   logo on the cover (`<GuideCover ink>` → `<LogoBadge ink>` → `<Logo ink>`). They must always be
   the same color: don't color one without the other.
-- Design deviations on guide pages: "Tutte le guide" links are "Torna alla mappa", the footer
-  tagline is "La mia guida di viaggio" and the credit is "Fatto da petomis". The design's
-  `showRefs` (region tags on content) and the "Dai miei appunti" map variant are not ported.
-- The home footer (`components/SiteFooter.tsx`) follows the design but replaces its guide links and
-  "Identità visiva" link with the credit "Fatto da petomis" → https://www.petomis.com.
+- Design deviations on guide pages: the upper part of the design's guide footer (recap, chapters,
+  "Torna su") is a closing section (`GuideOutro`), then comes the site footer; the
+  mobile menu's "Tutte le guide" is "Torna alla mappa", and the design's `showRefs` (region tags
+  on content) and "Dai miei appunti" map variant are not ported.
+- One footer for the whole site (`components/SiteFooter.tsx`), on the home and on every guide. It
+  follows the home design but replaces its guide links and "Identità visiva" link with the credit
+  "Fatto da petomis" → https://www.petomis.com.
 - The home map (`components/WorldMap.tsx`) is a port of `Nowhere - Home.dc.html`: d3 owns the SVG
   (projection, zoom, country paths), React owns the overlays. d3 handlers read React state through
   refs. Only guides with `status: 'ready'` are passed to the map.

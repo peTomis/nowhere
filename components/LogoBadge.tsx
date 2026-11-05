@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Logo } from './Logo'
+import { t } from '@/i18n'
 
 /**
  * The logo badge, from "Nowhere - Home.dc.html". Used at the same spot (top-left, var(--edge))
@@ -23,7 +24,7 @@ export function LogoBadge({
     </div>
   )
   return href ? (
-    <Link href={href} aria-label="Nowhere, torna alla mappa" className={className}>
+    <Link href={href} aria-label={t.common.homeLabel} className={className}>
       {logo}
     </Link>
   ) : (

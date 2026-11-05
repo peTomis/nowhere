@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { PlateText } from '@/components/PlateText'
 import { SiteHeader } from '@/components/SiteHeader'
+import { t } from '@/i18n'
 
 export default function NotFound() {
   return (
@@ -10,9 +11,9 @@ export default function NotFound() {
         <PlateText kind="num" className="text-[120px] font-semibold">
           404
         </PlateText>
-        <p className="text-lg italic">Questo posto è davvero da nessuna parte.</p>
+        <p className="text-lg italic">{t.notFound.message}</p>
         <Link href="/" className="btn btn-primary w-fit">
-          Torna alla mappa
+          {t.common.backToMap}
         </Link>
       </main>
     </>

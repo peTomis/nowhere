@@ -2,11 +2,12 @@ import { ImageIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import type { CSSProperties, ReactNode } from 'react'
 import { publicAsset } from '@/lib/assets'
+import { format, t } from '@/i18n'
 
 /*
  * Building blocks for guide content, from "Guida Romania - Sito.dc.html".
  * Inline: <D> date, <N> name/place/work. Blocks: Chapter, Part, Timeline/Event, Detail,
- * DateList/DateRow, Callout, Glossary, Source, Region, City, Figure, MapFigure, Legend.
+ * DateList/DateRow, Callout, Glossary, Source, Region, City, Figure, MapFigure.
  * Content tied to a region or city goes inside <Only on="…"> (see ./trip).
  */
 
@@ -38,7 +39,9 @@ export function Chapter(props: {
       className={`flex scroll-mt-[80px] flex-col ${props.gap === 'wide' ? 'gap-[60px]' : 'gap-8'}`}
     >
       <div className="flex flex-col gap-2">
-        <div className={`${kicker} text-accent-700`}>Capitolo {props.number}</div>
+        <div className={`${kicker} text-accent-700`}>
+          {format(t.guide.content.chapter, { number: props.number })}
+        </div>
         <h2 className="m-0 max-w-[13ch] text-[clamp(38px,7vw,56px)] leading-[1.04] tracking-[-.02em]">
           {props.title}
         </h2>
@@ -128,7 +131,7 @@ export function DateRow({ date, children }: { date: ReactNode; children: ReactNo
 export function Source({ children }: { children: ReactNode }) {
   return (
     <div className="flex max-w-[52ch] flex-wrap gap-x-3 gap-y-1 text-sm leading-[1.45] text-neutral-800">
-      <span className={`${label} pt-[2px] text-neutral-700`}>Fonte</span>
+      <span className={`${label} pt-[2px] text-neutral-700`}>{t.guide.content.source}</span>
       <span className="flex-[1_1_220px]">{children}</span>
     </div>
   )
@@ -143,7 +146,7 @@ export function Callout(props: {
   if (props.kind === 'onsite') {
     return (
       <div className="mt-2 flex max-w-[46ch] flex-col gap-2 rounded-md bg-surface p-4">
-        <div className={`${label} text-accent-2-700`}>Da approfondire sul posto</div>
+        <div className={`${label} text-accent-2-700`}>{t.guide.content.onsite}</div>
         <div className="text-[15px]">{props.children}</div>
       </div>
     )
@@ -151,7 +154,7 @@ export function Callout(props: {
   return (
     <div className="flex flex-col gap-4 rounded-md bg-surface p-[clamp(20px,4vw,32px)]">
       <div className="flex flex-col gap-2">
-        <div className={`${label} leading-[1.2] text-accent-2-700`}>Punto controverso</div>
+        <div className={`${label} leading-[1.2] text-accent-2-700`}>{t.guide.content.debate}</div>
         {props.title && (
           <h4 className="m-0 text-[clamp(18px,3.6vw,20px)] leading-[1.25]">{props.title}</h4>
         )}
@@ -194,7 +197,7 @@ export function Glossary({
 }) {
   return (
     <div className="mt-1 flex max-w-[46ch] flex-col gap-2 rounded-md bg-surface p-4">
-      <div className={`${label} text-accent-700`}>Glossario</div>
+      <div className={`${label} text-accent-700`}>{t.guide.content.glossary}</div>
       <div className="text-[15px]">
         <span className="font-semibold italic">{term}</span>
         {origin && <span className="text-neutral-700"> ({origin})</span>} — {children}
@@ -298,29 +301,6 @@ export function MapFigure(props: {
   )
 }
 
-/** "Come leggere": the key to the inline marks. */
-export function Legend() {
-  return (
-    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-neutral-800">
-      <span className={`${label} text-neutral-700`}>Come leggere</span>
-      <span className="flex items-center gap-[8px]">
-        <span className="date-mark px-[3px] font-semibold text-text">1310</span>date
-      </span>
-      <span className="flex items-center gap-[8px]">
-        <span className="text-accent-2-700">Basarab I</span>nomi, luoghi, opere
-      </span>
-      <span className="flex items-center gap-[8px]">
-        <span className="size-[10px] rounded-full bg-accent" />
-        evento
-      </span>
-      <span className="flex items-center gap-[8px]">
-        <span className="size-[6px] rotate-45 bg-accent" />
-        dettaglio
-      </span>
-    </div>
-  )
-}
-
 /** An image with a pointer line to its label, e.g. a historical flag. */
 export function Annotated(props: { src?: string; alt: string; ratio: string; label: ReactNode }) {
   const src = publicAsset(props.src)
@@ -368,8 +348,10 @@ export function City(props: {
   photo?: { src?: string; caption: string }
   children: ReactNode
 }) {
+  // flex-[1_1_260px] only in the side-by-side layout with a photo: in a column the basis
+  // would become a 260px minimum height.
   const body = (
-    <div className="flex min-w-0 flex-[1_1_260px] flex-col gap-[6px]">
+    <div className={`flex min-w-0 flex-col gap-[6px] ${props.photo ? 'flex-[1_1_260px]' : ''}`}>
       <h4 className="m-0 text-[clamp(18px,3.6vw,20px)] leading-[1.3]">
         {props.name} {props.local && <Aside italic>{props.local}</Aside>}
       </h4>

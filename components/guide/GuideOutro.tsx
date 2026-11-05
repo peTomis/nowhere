@@ -1,22 +1,28 @@
-import { ArrowUpIcon, GlobeHemisphereEastIcon } from '@phosphor-icons/react/ssr'
+import { ArrowUpIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
-import Link from 'next/link'
-import { Logo } from '@/components/Logo'
 import { publicAsset } from '@/lib/assets'
 import type { GuideContent } from '@/lib/guide'
+import { format, t } from '@/i18n'
 
 const heading = 'mb-1 text-[11px] tracking-[.16em] text-neutral-700 uppercase'
 const link =
   'flex min-h-[44px] items-center gap-[8px] text-base text-text no-underline hover:text-accent-700'
 
-export function GuideFooter({
+/**
+ * Closing section of a guide (the upper part of the design's guide footer): recap with emblems
+ * and name, the chapters, "Torna su". The site footer follows it.
+ */
+export function GuideOutro({
   name,
   emblems = [],
   toc,
 }: { name: string } & Pick<GuideContent, 'emblems' | 'toc'>) {
   const shown = emblems.filter((e) => publicAsset(e.src))
   return (
-    <footer className="mt-[120px] px-[clamp(20px,5vw,48px)] pt-8 pb-[60px]">
+    <section
+      aria-label={format(t.guide.outro.label, { name })}
+      className="mt-[120px] px-[clamp(20px,5vw,48px)] pt-8 pb-[60px]"
+    >
       <div className="mx-auto grid max-w-[1100px] grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))] items-start gap-x-6 gap-y-8">
         <div className="flex flex-col gap-3">
           {shown.length > 0 && (
@@ -38,10 +44,10 @@ export function GuideFooter({
             </div>
           )}
           <span className="text-[40px] leading-none font-semibold tracking-[-.025em]">{name}</span>
-          <span className="text-[15px] text-neutral-700 italic">La mia guida di viaggio</span>
+          <span className="text-[15px] text-neutral-700 italic">{t.guide.tagline}</span>
         </div>
-        <nav aria-label="Capitoli" className="flex flex-col">
-          <span className={heading}>Capitoli</span>
+        <nav aria-label={t.guide.outro.chapters} className="flex flex-col">
+          <span className={heading}>{t.guide.outro.chapters}</span>
           {toc
             .filter((e) => e.level === 1)
             .map((e) => (
@@ -50,38 +56,14 @@ export function GuideFooter({
               </a>
             ))}
         </nav>
-        <nav aria-label="Altro" className="flex flex-col">
-          <span className={heading}>Altro</span>
-          <Link href="/" className={link}>
-            <GlobeHemisphereEastIcon weight="duotone" size={18} className="text-accent-700" />
-            Torna alla mappa
-          </Link>
+        <nav aria-label={t.guide.outro.more} className="flex flex-col">
+          <span className={heading}>{t.guide.outro.more}</span>
           <a href="#top" className={link}>
             <ArrowUpIcon weight="duotone" size={18} className="text-accent-700" />
-            Torna su
+            {t.guide.outro.backToTop}
           </a>
         </nav>
       </div>
-      <div className="mx-auto mt-[60px] flex max-w-[1100px] flex-wrap items-center justify-between gap-x-6 gap-y-3">
-        <Link
-          href="/"
-          aria-label="Nowhere, torna alla mappa"
-          className="flex min-h-[44px] items-center"
-        >
-          <div className="aspect-[226/48] w-[113px]">
-            <Logo variant="horizontal" tone="ink" className="size-full" />
-          </div>
-        </Link>
-        <span className="text-[13px] text-neutral-700">
-          Fatto da{' '}
-          <a
-            href="https://www.petomis.com"
-            className="text-accent-700 no-underline hover:text-accent-800 hover:underline"
-          >
-            petomis
-          </a>
-        </span>
-      </div>
-    </footer>
+    </section>
   )
 }

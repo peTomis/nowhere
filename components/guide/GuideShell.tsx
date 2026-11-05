@@ -7,6 +7,7 @@ import type { Place, TocEntry } from '@/lib/guide'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
+import { t } from '@/i18n'
 
 /**
  * Reading layout of a guide, from "Guida Romania - Sito.dc.html": sticky sidebar with the trip
@@ -87,14 +88,16 @@ function Shell({
         <span className="min-w-0 flex-1 truncate text-[15px] text-neutral-800 italic">
           {current}
         </span>
-        {trip.filtered && <span className="tag tag-accent flex-none">Selezione</span>}
+        {trip.filtered && (
+          <span className="tag tag-accent flex-none">{t.guide.shell.filtered}</span>
+        )}
         <button
           type="button"
           className="btn btn-ghost min-h-[44px]"
           aria-haspopup="dialog"
           onClick={() => setMenu(true)}
         >
-          Indice
+          {t.guide.shell.index}
         </button>
       </div>
 
@@ -102,8 +105,10 @@ function Shell({
         <aside className="hidden flex-[0_0_232px] min-[960px]:block">
           <div className="sticky top-[40px] flex max-h-[calc(100vh-80px)] flex-col gap-[50px] overflow-y-auto">
             <TripFilter country={country} size="sidebar" />
-            <nav aria-label="Indice" className="flex flex-col gap-4">
-              <div className="text-[11px] tracking-[.16em] text-neutral-700 uppercase">Indice</div>
+            <nav aria-label={t.guide.shell.index} className="flex flex-col gap-4">
+              <div className="text-[11px] tracking-[.16em] text-neutral-700 uppercase">
+                {t.guide.shell.index}
+              </div>
               <Toc entries={toc} active={active} size="sidebar" />
             </nav>
           </div>
@@ -117,7 +122,7 @@ function Shell({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Indice"
+          aria-label={t.guide.shell.index}
           className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-bg px-[clamp(16px,5vw,32px)] pb-8"
         >
           <div className="flex h-[56px] flex-none items-center justify-between">
@@ -130,14 +135,16 @@ function Shell({
               autoFocus
               onClick={() => setMenu(false)}
             >
-              Chiudi
+              {t.guide.shell.close}
             </button>
           </div>
           <div className="mt-4">
             <TripFilter country={country} size="menu" />
           </div>
-          <div className="mt-8 text-[11px] tracking-[.16em] text-neutral-700 uppercase">Indice</div>
-          <nav aria-label="Indice" className="mt-2">
+          <div className="mt-8 text-[11px] tracking-[.16em] text-neutral-700 uppercase">
+            {t.guide.shell.index}
+          </div>
+          <nav aria-label={t.guide.shell.index} className="mt-2">
             <Toc entries={toc} active={active} size="menu" onNavigate={() => setMenu(false)} />
           </nav>
           <Link
@@ -145,7 +152,7 @@ function Shell({
             className="mt-8 flex min-h-[44px] items-center gap-[8px] text-[17px] text-accent-700 no-underline"
           >
             <ArrowLeftIcon weight="duotone" size={18} />
-            Torna alla mappa
+            {t.common.backToMap}
           </Link>
         </div>
       )}

@@ -18,6 +18,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
 import { LogoBadge } from './LogoBadge'
+import { locale, t } from '@/i18n'
 
 /**
  * Home: full-screen world map with country search.
@@ -173,7 +174,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
         .attr('height', h)
         .attr('viewBox', `0 0 ${w} ${h}`)
         .attr('role', 'img')
-        .attr('aria-label', 'Mappa del mondo: i paesi dove sono stato sono in azzurro')
+        .attr('aria-label', t.map.ariaLabel)
         .style('display', 'block')
         .style('cursor', 'grab')
         .style('touch-action', 'none')
@@ -277,7 +278,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
               key: norm(f.properties.n),
               guide: guideOf(f.id),
             }))
-            .sort((a, b) => a.name.localeCompare(b.name, 'it')),
+            .sort((a, b) => a.name.localeCompare(b.name, locale)),
         )
         ro = new ResizeObserver(draw)
         ro.observe(el)
@@ -365,7 +366,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
 
       {status !== 'ready' && (
         <div className="absolute inset-0 grid place-items-center text-[15px] text-neutral-700 italic">
-          {status === 'loading' ? 'Carico la mappa…' : 'Mappa non disponibile.'}
+          {status === 'loading' ? t.map.loading : t.map.unavailable}
         </div>
       )}
 
@@ -375,9 +376,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
           style={{ left: hx, top: hy }}
         >
           <span className="text-base leading-tight font-semibold">{hover.name}</span>
-          {!hover.guide && (
-            <span className="text-sm text-neutral-700 italic">Guida non ancora scritta</span>
-          )}
+          {!hover.guide && <span className="text-sm text-neutral-700 italic">{t.map.noGuide}</span>}
         </div>
       )}
 
@@ -393,10 +392,10 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
               onClick={clearSelection}
               className="btn btn-primary flex min-h-[44px] gap-[8px] text-bg no-underline"
             >
-              Apri la guida <ArrowRightIcon weight="duotone" size={18} />
+              {t.map.openGuide} <ArrowRightIcon weight="duotone" size={18} />
             </Link>
           ) : (
-            <span className="text-[15px] text-neutral-700 italic">Guida non ancora scritta</span>
+            <span className="text-[15px] text-neutral-700 italic">{t.map.noGuide}</span>
           )}
         </div>
       )}
@@ -413,8 +412,8 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
             <input
               className="input min-h-[48px] bg-bg pl-[44px] text-[17px] shadow-sm"
               type="search"
-              placeholder="Cerca un paese"
-              aria-label="Cerca un paese"
+              placeholder={t.map.searchPlaceholder}
+              aria-label={t.map.searchPlaceholder}
               role="combobox"
               aria-expanded={listOn}
               aria-controls={listId}
@@ -458,7 +457,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
             >
               {!q.trim() && (
                 <span className="px-3 pt-2 pb-1 text-[11px] tracking-[.14em] text-neutral-700 uppercase">
-                  Paesi dove sono stato
+                  {t.map.visited}
                 </span>
               )}
               {results.map((x, i) => (
@@ -472,13 +471,11 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
                   className={`flex min-h-[44px] w-full cursor-pointer items-center justify-between gap-3 border-0 px-3 text-left font-body text-base text-text ${i === active ? 'bg-accent-100' : 'bg-transparent'}`}
                 >
                   <span>{x.name}</span>
-                  {x.guide && <span className="tag tag-accent">Guida</span>}
+                  {x.guide && <span className="tag tag-accent">{t.map.guideTag}</span>}
                 </button>
               ))}
               {!!q.trim() && results.length === 0 && (
-                <span className="p-3 text-[15px] text-neutral-700 italic">
-                  Nessun paese trovato
-                </span>
+                <span className="p-3 text-[15px] text-neutral-700 italic">{t.map.noResults}</span>
               )}
             </div>
           )}
@@ -487,13 +484,13 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
 
       {status === 'ready' && (
         <div className="absolute bottom-(--edge) left-(--edge) z-2 flex flex-col gap-1">
-          <ZoomButton label="Ingrandisci" onClick={() => zoomBy(1.8)}>
+          <ZoomButton label={t.map.zoomIn} onClick={() => zoomBy(1.8)}>
             <PlusIcon size={20} />
           </ZoomButton>
-          <ZoomButton label="Riduci" onClick={() => zoomBy(1 / 1.8)}>
+          <ZoomButton label={t.map.zoomOut} onClick={() => zoomBy(1 / 1.8)}>
             <MinusIcon size={20} />
           </ZoomButton>
-          <ZoomButton label="Mostra tutto il mondo" onClick={() => zoomWorld()}>
+          <ZoomButton label={t.map.zoomWorld} onClick={() => zoomWorld()}>
             <GlobeHemisphereWestIcon weight="duotone" size={20} />
           </ZoomButton>
         </div>

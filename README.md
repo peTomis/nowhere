@@ -7,14 +7,14 @@ A personal site with travel guides to places I've been and places I'm about to g
 ## Development
 
 ```bash
-npm install
-npm run dev           # http://localhost:3000
-npm run build         # production build (prerenders every guide)
-npm run start         # serve the production build
-npm run typecheck     # next typegen + tsc
-npm run lint          # oxlint
-npm run format        # prettier (with Tailwind class sorting)
-npm run format:check
+yarn
+yarn dev               # http://localhost:3000
+yarn build             # production build (prerenders every guide)
+yarn start             # serve the production build
+yarn typecheck         # next typegen + tsc
+yarn lint              # oxlint
+yarn format            # prettier (with Tailwind class sorting)
+yarn format:check
 ```
 
 ## Structure
@@ -33,12 +33,14 @@ components/
   PlateText.tsx        text printed as misregistered C/M/Y plates
   PrintPlates.tsx      client component that mounts lib/printPlates once
   SiteHeader.tsx       logo header (404)
-  SiteFooter.tsx       home footer: wordmark, tagline, credit to petomis
+  SiteFooter.tsx       site footer (home and guides): wordmark, tagline, credit to petomis
   WorldMap.tsx         home map: d3 projection/zoom + search, tooltip, pin card, legend
   guide/               guide kit: GuideCover, GuideShell (sidebar, index, mobile menu),
-                       TripFilter + trip.tsx ("Il tuo viaggio"), content.tsx (D, N, Chapter,
-                       Part, Timeline/Event, Detail, Callout, Region, City, Figure…), GuideFooter
+                       TripFilter + trip.tsx (trip filter), content.tsx (D, N, Chapter,
+                       Part, Timeline/Event, Detail, Callout, Region, City, Figure…),
+                       GuideOutro (closing recap: name, chapters, "Torna su")
 content/guides/        guide content, one file per country (romania.tsx) + index.ts
+i18n/                  UI strings: it.json (Italian, the only locale) + index.ts (t, format, locale)
 lib/printPlates.ts     SVG separation filters + the "press driver" (hover / pointer lean)
 lib/guide.ts           guide content types (places, index entries, cover, emblems)
 data/guides.ts         guide registry (one entry per country)
@@ -89,12 +91,16 @@ Rules of thumb:
    Guides with `status: 'ready'` are highlighted on the home map.
 2. Create `content/guides/<slug>.tsx` exporting a `GuideContent` (see `lib/guide.ts` and
    `romania.tsx` as the template), and register it in `content/guides/index.ts`:
-   - `places`: regions and cities for the "Il tuo viaggio" filter;
+   - a string `enum` of the guide's regions and cities, used as `GuideContent<MyEnum>` and for
+     `const Only: Gate<MyEnum> = AnyOnly` (same for `Unless`), so a wrong id is a type error;
+   - `places`: regions and cities for the trip filter (shown as "Il tuo viaggio");
    - `toc`: the index; each `id` is the anchor of a `Chapter`, `Part`, `DateList` or `Region`,
      and `when` hides an entry when none of its places is in the trip;
    - `body`: the text, built from `components/guide/content.tsx`. Wrap anything tied to a region
      or city in `<Only on="…">`.
-3. Put images in `public/guides/<slug>/`. Missing files show a neutral placeholder, so the page
+3. Put images in `public/guides/<slug>/` with English file names (`cover.jpg`, `coat-of-arms.png`,
+   `flag.svg`, `map.png`…); their alt texts go in `i18n/it.json` under `guides.<slug>.alt`, next to `toc` (index labels,
+   also used as section titles) and `regions` (region names). Missing files show a neutral placeholder, so the page
    can be written before the photos exist.
 
 The page `/guide/<slug>` is generated at build time.

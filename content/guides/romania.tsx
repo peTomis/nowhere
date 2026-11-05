@@ -11,7 +11,6 @@ import {
   Event,
   Figure,
   Glossary,
-  Legend,
   MapFigure,
   N,
   Note,
@@ -23,28 +22,52 @@ import {
   Source,
   Timeline,
 } from '@/components/guide/content'
-import { Only, Unless } from '@/components/guide/trip'
+import { Only as AnyOnly, Unless as AnyUnless, type Gate } from '@/components/guide/trip'
 import type { GuideContent } from '@/lib/guide'
-
-/** Guida Romania — from "Guida Romania - Sito.dc.html" (claude.ai/design). */
+import { format, t } from '@/i18n'
 
 const dir = '/guides/romania'
+const { toc: headings, regions, alt } = t.guides.romania
 
-export const romania: GuideContent = {
-  cover: { src: `${dir}/cover.jpg`, alt: 'Il castello di Bran sotto la neve' },
+/**
+ * Regions and cities of this guide. The values are stored in the reader's localStorage by the
+ * trip filter: don't rename them once published.
+ */
+enum Romania {
+  // regions
+  Dobrogea = 'dobrogea',
+  Moldavia = 'moldavia',
+  Transilvania = 'transilvania',
+  Valacchia = 'valacchia',
+  // cities
+  Sibiu = 'sibiu',
+  Brasov = 'brasov',
+  Sighisoara = 'sighisoara',
+  Bucarest = 'bucarest',
+  Iasi = 'iasi',
+  Suceava = 'suceava',
+  Constanta = 'constanta',
+  Tulcea = 'tulcea',
+}
+
+const Only: Gate<Romania> = AnyOnly
+const Unless: Gate<Romania> = AnyUnless
+
+export const romania: GuideContent<Romania> = {
+  cover: { src: `${dir}/cover.jpg`, alt: alt.cover },
   /** Country name and nowhere logo on the cover. */
   coverInk: 'var(--color-text)',
   emblems: [
     {
-      src: `${dir}/stemma.png`,
-      alt: 'Stemma della Romania',
+      src: `${dir}/coat-of-arms.png`,
+      alt: alt.coatOfArms,
       kind: 'coat-of-arms',
       width: 480,
       height: 695,
     },
     {
-      src: `${dir}/bandiera.svg`,
-      alt: 'Bandiera della Romania',
+      src: `${dir}/flag.svg`,
+      alt: alt.flag,
       kind: 'flag',
       width: 72,
       height: 48,
@@ -52,38 +75,38 @@ export const romania: GuideContent = {
   ],
   places: [
     {
-      id: 'dobrogea',
-      name: 'Dobrogea',
+      id: Romania.Dobrogea,
+      name: regions.dobrogea,
       cities: [],
     },
     {
-      id: 'moldavia',
-      name: 'Moldavia',
+      id: Romania.Moldavia,
+      name: regions.moldavia,
       cities: [],
     },
     {
-      id: 'transilvania',
-      name: 'Transilvania',
+      id: Romania.Transilvania,
+      name: regions.transilvania,
       cities: [],
     },
-    { id: 'valacchia', name: 'Valacchia', cities: [] },
+    { id: Romania.Valacchia, name: regions.valacchia, cities: [] },
   ],
   toc: [
-    { id: 'cap-1', label: 'Dalla Dacia ai principati', level: 1 },
-    { id: 'parte-1', label: 'Dacia e Roma', level: 2, dates: '200 a.C. – 274' },
-    { id: 'popoli', label: 'Popoli di passaggio', level: 3 },
+    { id: 'cap-1', label: headings.chapter1, level: 1 },
+    { id: 'parte-1', label: headings.part1, level: 2, dates: headings.part1Dates },
+    { id: 'popoli', label: headings.peoples, level: 3 },
     {
       id: 'parte-2',
-      label: 'I principati',
+      label: headings.part2,
       level: 2,
-      dates: '1310 – 1359',
-      when: ['valacchia', 'moldavia'],
+      dates: headings.part2Dates,
+      when: [Romania.Valacchia, Romania.Moldavia],
     },
-    { id: 'cap-2', label: 'Regioni e città', level: 1 },
-    { id: 'reg-transilvania', label: 'Transilvania', level: 2, when: ['transilvania'] },
-    { id: 'reg-valacchia', label: 'Valacchia', level: 2, when: ['valacchia'] },
-    { id: 'reg-moldavia', label: 'Moldavia', level: 2, when: ['moldavia'] },
-    { id: 'reg-dobrogea', label: 'Dobrogea', level: 2, when: ['dobrogea'] },
+    { id: 'cap-2', label: headings.chapter2, level: 1 },
+    { id: 'reg-transilvania', label: regions.transilvania, level: 2, when: [Romania.Transilvania] },
+    { id: 'reg-valacchia', label: regions.valacchia, level: 2, when: [Romania.Valacchia] },
+    { id: 'reg-moldavia', label: regions.moldavia, level: 2, when: [Romania.Moldavia] },
+    { id: 'reg-dobrogea', label: regions.dobrogea, level: 2, when: [Romania.Dobrogea] },
   ],
   body: <Body />,
 }
@@ -94,7 +117,7 @@ function Body() {
       <Chapter
         id="cap-1"
         number={1}
-        title="Dalla Dacia ai principati"
+        title={headings.chapter1}
         lede="Le regioni, i popoli e le date per leggere i musei del viaggio."
         period="200 a.C. – 1359"
       >
@@ -105,8 +128,8 @@ function Body() {
           propria storia.
         </p>
         <MapFigure
-          src={`${dir}/mappa.png`}
-          alt="Cartina della Romania con le regioni storiche"
+          src={`${dir}/map.png`}
+          alt={alt.map}
           ratio="666/400"
           places={[
             { name: 'Sarmizegetusa Regia', note: 'capitale dacica, sito UNESCO' },
@@ -114,10 +137,9 @@ function Body() {
             { name: 'Delta del Danubio', note: 'Dobrogea, ciò che resta dopo il 274' },
           ]}
         />
-        <Legend />
       </Chapter>
 
-      <Part id="parte-1" kicker="Parte I · 200 a.C. – 274" title="Dacia e Roma">
+      <Part id="parte-1" kicker={`Parte I · ${headings.part1Dates}`} title={headings.part1}>
         <Timeline>
           <Event
             date="200 a.C."
@@ -150,7 +172,7 @@ function Body() {
             <Detail>
               Rimane solo la <N>Dobrogea</N> (delta del Danubio).
             </Detail>
-            <Only on="dobrogea">
+            <Only on={Romania.Dobrogea}>
               <Callout kind="onsite">
                 La Dobrogea, insieme a <N>Orșova</N> e alla <N>statua di Decebalo</N>.
               </Callout>
@@ -163,7 +185,7 @@ function Body() {
           <Figure caption="Statua di Decebalo sul Danubio" ratio="4/5" />
         </PhotoGrid>
 
-        <Only on="transilvania">
+        <Only on={Romania.Transilvania}>
           <Callout kind="debate" title="Chi è arrivato prima in Transilvania?">
             <Positions>
               <Position title="Continuità daco-romana">
@@ -186,7 +208,7 @@ function Body() {
           id="popoli"
           title={
             <>
-              Popoli di passaggio <Aside italic>290 – 895</Aside>
+              {headings.peoples} <Aside italic>290 – 895</Aside>
             </>
           }
         >
@@ -200,14 +222,14 @@ function Body() {
               Gli <N>Unni</N> sconfiggono i Goti
             </div>
           </DateRow>
-          <Only on="transilvania">
+          <Only on={Romania.Transilvania}>
             <DateRow date="454">
               <div>
                 I <N>Gepidi</N> (Germani) dominano Transilvania, Banato e Crișana
               </div>
             </DateRow>
           </Only>
-          <Only on="dobrogea">
+          <Only on={Romania.Dobrogea}>
             <DateRow date="568">
               <div>
                 Gli <N>Avari</N> (turcici) sottomettono i Gepidi; la Dobrugia diventa bulgara
@@ -215,7 +237,7 @@ function Body() {
               </div>
             </DateRow>
           </Only>
-          <Only on="transilvania">
+          <Only on={Romania.Transilvania}>
             <DateRow date="895">
               <div>
                 Prima presenza documentata dei <N>Siculi</N> (Székely)
@@ -229,10 +251,10 @@ function Body() {
         </DateList>
       </Part>
 
-      <Only on={['valacchia', 'moldavia']}>
-        <Part id="parte-2" kicker="Parte II · 1310 – 1359" title="I principati">
+      <Only on={[Romania.Valacchia, Romania.Moldavia]}>
+        <Part id="parte-2" kicker={`Parte II · ${headings.part2Dates}`} title={headings.part2}>
           <Timeline>
-            <Only on="valacchia">
+            <Only on={Romania.Valacchia}>
               <Event
                 date="1310"
                 title={
@@ -250,7 +272,7 @@ function Body() {
                 </Detail>
               </Event>
             </Only>
-            <Only on="moldavia">
+            <Only on={Romania.Moldavia}>
               <Event date="1359" title="Indipendenza della Moldavia dal Regno d’Ungheria">
                 <Detail>
                   Per mano di <N>Bogdan I</N>, voivoda del Maramureș (regione storica oggi divisa
@@ -260,8 +282,8 @@ function Body() {
                   comandante di un’unità militare; poi titolo del sovrano.
                 </Glossary>
                 <Annotated
-                  src={`${dir}/bandiera-moldavia-storica.png`}
-                  alt="Bandiera della Moldavia storica"
+                  src={`${dir}/moldavia-historical-flag.png`}
+                  alt={alt.moldaviaHistoricalFlag}
                   ratio="180/119"
                   label={
                     <>
@@ -280,19 +302,19 @@ function Body() {
       <Chapter
         id="cap-2"
         number={2}
-        title="Regioni e città"
+        title={headings.chapter2}
         lede="Cosa vedere sul posto, regione per regione."
         gap="wide"
       >
-        <Unless on={['transilvania', 'valacchia', 'moldavia', 'dobrogea']}>
+        <Unless on={[Romania.Transilvania, Romania.Valacchia, Romania.Moldavia, Romania.Dobrogea]}>
           <p className="m-0 text-neutral-700 italic">
-            Nessuna regione attiva: scegline almeno una in «Il tuo viaggio».
+            {format(t.guide.trip.noRegions, { trip: t.guide.trip.title })}
           </p>
         </Unless>
-        <Only on="transilvania">
+        <Only on={Romania.Transilvania}>
           <Region
             id="reg-transilvania"
-            name="Transilvania"
+            name={regions.transilvania}
             photo={{ caption: 'Sibiu, Piața Mare' }}
             intro={
               <>
@@ -303,7 +325,7 @@ function Body() {
               </>
             }
           >
-            <Only on="sibiu">
+            <Only on={Romania.Sibiu}>
               <City name="Sibiu" local="Hermannstadt">
                 <Detail>
                   La principale città dei Sassoni, Capitale europea della cultura nel <D>2007</D>.
@@ -314,7 +336,7 @@ function Body() {
                 </Detail>
               </City>
             </Only>
-            <Only on="brasov">
+            <Only on={Romania.Brasov}>
               <City name="Brașov" local="Kronstadt">
                 <Detail>
                   Città sassone ai piedi del monte <N>Tâmpa</N>.
@@ -328,7 +350,7 @@ function Body() {
                 </Detail>
               </City>
             </Only>
-            <Only on="sighisoara">
+            <Only on={Romania.Sighisoara}>
               <City
                 name="Sighișoara"
                 local="Schäßburg"
@@ -345,10 +367,10 @@ function Body() {
           </Region>
         </Only>
 
-        <Only on="valacchia">
+        <Only on={Romania.Valacchia}>
           <Region
             id="reg-valacchia"
-            name="Valacchia"
+            name={regions.valacchia}
             photo={{ caption: 'Bucarest, Ateneo Romeno' }}
             intro={
               <>
@@ -358,7 +380,7 @@ function Body() {
               </>
             }
           >
-            <Only on="bucarest">
+            <Only on={Romania.Bucarest}>
               <City name="Bucarest" local="București">
                 <Detail>
                   Capitale della Valacchia dal <D>1659</D> e della Romania dal <D>1862</D>.
@@ -375,10 +397,10 @@ function Body() {
           </Region>
         </Only>
 
-        <Only on="moldavia">
+        <Only on={Romania.Moldavia}>
           <Region
             id="reg-moldavia"
-            name="Moldavia"
+            name={regions.moldavia}
             photo={{ caption: 'Voroneț, monastero dipinto' }}
             intro={
               <>
@@ -388,7 +410,7 @@ function Body() {
               </>
             }
           >
-            <Only on="iasi">
+            <Only on={Romania.Iasi}>
               <City name="Iași">
                 <Detail>
                   Capitale della Moldavia dal <D>1564</D>; dal <D>1860</D> sede della prima
@@ -400,7 +422,7 @@ function Body() {
                 </Detail>
               </City>
             </Only>
-            <Only on="suceava">
+            <Only on={Romania.Suceava}>
               <City name="Suceava">
                 <Detail>
                   Capitale della Moldavia sotto <N>Stefano il Grande</N> (<D>1457–1504</D>).
@@ -414,10 +436,10 @@ function Body() {
           </Region>
         </Only>
 
-        <Only on="dobrogea">
+        <Only on={Romania.Dobrogea}>
           <Region
             id="reg-dobrogea"
-            name="Dobrogea"
+            name={regions.dobrogea}
             photo={{ caption: 'Delta del Danubio' }}
             intro={
               <>
@@ -426,7 +448,7 @@ function Body() {
               </>
             }
           >
-            <Only on="constanta">
+            <Only on={Romania.Constanta}>
               <City name="Constanța">
                 <Detail>
                   L’antica <N>Tomis</N>, colonia greca sul Mar Nero.
@@ -437,7 +459,7 @@ function Body() {
                 </Detail>
               </City>
             </Only>
-            <Only on="tulcea">
+            <Only on={Romania.Tulcea}>
               <City name="Tulcea">
                 <Detail>
                   Porta d’accesso al <N>delta del Danubio</N>, sito UNESCO dal <D>1991</D>.
