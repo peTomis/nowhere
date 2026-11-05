@@ -6,7 +6,7 @@ import { guides } from '@/data/guides'
 export default function HomePage() {
   const ready: MapGuide[] = guides
     .filter((g) => g.status === 'ready')
-    .map(({ slug, countryId, name, at }) => ({ slug, countryId, name, at }))
+    .map(({ slug, countryId, name }) => ({ slug, countryId, name }))
   return (
     <div className="flex h-svh flex-col">
       <WorldMap guides={ready} />

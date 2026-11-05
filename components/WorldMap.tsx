@@ -31,8 +31,6 @@ export type MapGuide = {
   /** ISO 3166-1 numeric, matches the TopoJSON feature id. */
   countryId: string
   name: string
-  /** [longitude, latitude]: on narrow screens the map opens zoomed on the first guide. */
-  at: [number, number]
 }
 
 type CountryProps = { n: string; k: number }
@@ -165,6 +163,15 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
         ],
         sphere,
       )
+      // On phones the width-bound world would be a thin strip: make it at least 70% of the
+      // viewport tall, overflowing sideways (panned horizontally).
+      if (narrow) {
+        const fit = proj.scale()
+        proj.fitHeight(Math.round(pageH * 0.7), sphere)
+        proj.scale(Math.max(fit, proj.scale()))
+      }
+      proj.translate([w / 2, pageH / 2])
+      const [[x0], [x1]] = geoPath(proj).bounds(sphere)
       const path = geoPath(proj)
       m.path = path
 
@@ -225,8 +232,8 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       const zoom = d3Zoom<SVGSVGElement, unknown>()
         .scaleExtent([1, 14])
         .translateExtent([
-          [0, 0],
-          [w, pageH],
+          [Math.min(0, x0), 0],
+          [Math.max(w, x1), pageH],
         ])
         .on('start', (e) => {
           if (e.sourceEvent) {
@@ -248,13 +255,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       m.svg = svg
       m.zoom = zoom
 
-      const k = 2.6
-      const c = guides[0] && proj(guides[0].at)
-      const start =
-        narrow && c
-          ? zoomIdentity.translate(w / 2 - k * c[0], h / 2 - k * c[1]).scale(k)
-          : zoomIdentity
-      svg.call(zoom.transform, start)
+      svg.call(zoom.transform, zoomIdentity)
       setStatus('ready')
     }
 

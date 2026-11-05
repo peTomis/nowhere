@@ -12,7 +12,7 @@ export type Guide = {
   countryId: string
   name: string
   status: GuideStatus
-  /** [longitude, latitude] of the country, used to center the map on narrow screens. */
+  /** [longitude, latitude] of the country. */
   at: [number, number]
   /** Trip date (ISO), if known. */
   tripDate?: string
