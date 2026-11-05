@@ -189,8 +189,9 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       g.append('path')
         .datum(sphere)
         .attr('d', path)
+        // Sea and background are both paper (the design's light-blue background is not ported), so
+        // the top of the home matches the status bar (theme-color) and the guide pages.
         .style('fill', 'var(--color-bg)')
-        .style('opacity', 0.55)
 
       m.paths = g
         .selectAll<SVGPathElement, Country>('path.c')
@@ -359,10 +360,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
   const listId = 'country-results'
 
   return (
-    <div
-      data-screen-label="Home · mappa"
-      className="relative min-h-0 flex-1 overflow-hidden bg-accent-100"
-    >
+    <div data-screen-label="Home · mappa" className="relative min-h-0 flex-1 overflow-hidden bg-bg">
       <div ref={mapRef} className="absolute inset-0" />
 
       {status !== 'ready' && (

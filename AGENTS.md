@@ -136,7 +136,8 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   "Realizzato da petomis" → https://www.petomis.com.
 - The home map (`components/WorldMap.tsx`) is a port of `Nowhere - Home.dc.html`: d3 owns the SVG
   (projection, zoom, country paths), React owns the overlays. d3 handlers read React state through
-  refs. Only guides with `status: 'ready'` are passed to the map.
+  refs. Only guides with `status: 'ready'` are passed to the map. Deviation: the design's light-blue
+  background is not ported: sea and background are `bg`, as the guides and the status bar.
 - `public/data/world-50m.json` is world-atlas `countries-50m` minus Antarctica, with Italian names
   in `properties.n` — identical to the design's `assets/mondo-50m.json`. Don't run prettier on it
   (`.prettierignore`).
