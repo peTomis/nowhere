@@ -7,7 +7,6 @@ export function SiteHeader() {
       <Link href="/" className="nav-brand" aria-label="Nowhere — home">
         <Logo variant="horizontal" tone="ink" className="h-6 w-auto" />
       </Link>
-      <Link href="/guide">Guide</Link>
     </header>
   )
 }

@@ -1,28 +1,20 @@
-import { ArrowRightIcon } from '@phosphor-icons/react/ssr'
-import Link from 'next/link'
-import { Logo } from '@/components/Logo'
+import type { CSSProperties } from 'react'
+import { SiteFooter } from '@/components/SiteFooter'
+import { WorldMap, type MapGuide } from '@/components/WorldMap'
 import { guides } from '@/data/guides'
 
-/**
- * Home placeholder. The final design ("Nowhere - Home") is a full-screen world map
- * (d3 + topojson) with country search: it will be implemented here.
- */
+/** Home: the world map with the footer below it, together filling the viewport. */
 export default function HomePage() {
+  const ready: MapGuide[] = guides
+    .filter((g) => g.status === 'ready')
+    .map(({ slug, countryId, name, at }) => ({ slug, countryId, name, at }))
   return (
-    <section className="flex max-w-3xl flex-col gap-6 pt-8">
-      <Logo variant="horizontal" className="h-12 w-auto" />
-      <p className="max-w-xl text-lg">
-        Le mie guide dei posti dove sono stato e di quelli dove sto per andare.
-      </p>
-      <ul className="flex flex-col gap-2">
-        {guides.map((g) => (
-          <li key={g.slug}>
-            <Link href={`/guide/${g.slug}`} className="btn btn-ghost text-base">
-              {g.name} <ArrowRightIcon weight="duotone" />
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <div
+      className="flex h-svh flex-col"
+      style={{ '--edge': 'clamp(12px, 3vw, 24px)' } as CSSProperties}
+    >
+      <WorldMap guides={ready} />
+      <SiteFooter />
+    </div>
   )
 }

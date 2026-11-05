@@ -2,7 +2,7 @@
 
 A personal site with travel guides to places I've been and places I'm about to go.
 
-**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS 4 · Phosphor Icons
+**Stack:** Next.js 16 (App Router, Turbopack) · React 19 · TypeScript · Tailwind CSS 4 · d3 + topojson · Phosphor Icons
 
 ## Development
 
@@ -21,11 +21,11 @@ npm run format:check
 
 ```
 app/
-  layout.tsx           root layout: Source Serif 4 via next/font, header, print-plate filters
+  layout.tsx           root layout: Source Serif 4 via next/font, print-plate filters
   globals.css          entry: tailwind + theme + components
-  page.tsx             home (placeholder for the world map)
-  guide/page.tsx       guide list
-  guide/[slug]/page.tsx  single guide (statically generated from data/guides.ts)
+  page.tsx             home: full-screen world map + footer (no site header)
+  (site)/layout.tsx    header + content shell for every other page
+  (site)/guide/[slug]/page.tsx  single guide (statically generated from data/guides.ts)
   not-found.tsx        404
   icon.svg             favicon
 components/
@@ -33,15 +33,18 @@ components/
                        tone: process | ink)
   PlateText.tsx        text printed as misregistered C/M/Y plates
   PrintPlates.tsx      client component that mounts lib/printPlates once
-  SiteHeader.tsx
+  SiteHeader.tsx       logo header for guide pages
+  SiteFooter.tsx       home footer: wordmark, tagline, credit to petomis
+  WorldMap.tsx         home map: d3 projection/zoom + search, tooltip, pin card, legend
 lib/printPlates.ts     SVG separation filters + the "press driver" (hover / pointer lean)
 data/guides.ts         guide registry (one entry per country)
 styles/
   theme.css            Broadsheet design-system tokens → Tailwind theme
   broadsheet.css       base styles and component classes (.btn, .card, .tag, .cmyk…)
+public/data/world-50m.json  world TopoJSON (Natural Earth 50m via world-atlas, Italian names)
 ```
 
-Components are Server Components by default; only `PrintPlates` is a Client Component.
+Components are Server Components by default; only `PrintPlates` and `WorldMap` are Client Components.
 Phosphor icons in Server Components are imported from `@phosphor-icons/react/ssr`.
 
 ## Design system
@@ -57,6 +60,8 @@ colors, process yellow reserved for print treatments only.
 | `_ds/broadsheet-…/styles.css` (components) | `styles/broadsheet.css`                            |
 | `print-plates.js` (inside `_ds_bundle.js`) | `lib/printPlates.ts`                               |
 | `NowhereLogo.dc.html`                      | `components/Logo.tsx` (Italian variant names → EN) |
+| `Nowhere - Home.dc.html`                   | `app/page.tsx` + `components/WorldMap.tsx`         |
+| `assets/mondo-50m.json`                    | `public/data/world-50m.json`                       |
 
 Rules of thumb:
 
@@ -72,5 +77,6 @@ Rules of thumb:
 ## Adding a guide
 
 1. Add an entry to `data/guides.ts` (`countryId` = ISO 3166-1 numeric code, e.g. Romania = `642`).
-   The page `/guide/<slug>` is generated at build time.
+   The page `/guide/<slug>` is generated at build time. Guides with `status: 'ready'` are
+   highlighted on the home map.
 2. Guide content will live alongside `app/guide/[slug]/page.tsx` (format to be defined, likely MDX).
