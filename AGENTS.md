@@ -84,8 +84,8 @@ The source of truth is the claude.ai/design project **Nowhere**
   `components/PrintPlates.tsx` in the root layout.
 - `components/Logo.tsx` — port of `NowhereLogo.dc.html`. Design variants map as
   Orizzontale→`horizontal`, Verticale→`vertical`, Simbolo→`symbol`, Parola→`wordmark`;
-  tones Quadricromia→`process`, Inchiostro→`ink`. Keep geometry (viewBoxes, plate offsets,
-  stroke widths) identical to the design file.
+  only the Quadricromia tone is used (Inchiostro is not ported). Keep geometry (viewBoxes, dot
+  radii, plate offsets) identical to the design file.
 - `components/PlateText.tsx` — wrapper for `.cmyk-head` / `.cmyk-num`.
 
 Rules:
@@ -129,7 +129,7 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   on content) and "Dai miei appunti" map variant are not ported.
 - One footer for the whole site (`components/SiteFooter.tsx`), on the home and on every guide. It
   follows the home design but replaces its guide links and "Identità visiva" link with the credit
-  "Fatto da petomis" → https://www.petomis.com.
+  "Realizzato da petomis" → https://www.petomis.com.
 - The home map (`components/WorldMap.tsx`) is a port of `Nowhere - Home.dc.html`: d3 owns the SVG
   (projection, zoom, country paths), React owns the overlays. d3 handlers read React state through
   refs. Only guides with `status: 'ready'` are passed to the map.

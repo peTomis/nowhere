@@ -28,8 +28,8 @@ app/
   not-found.tsx        404 (with the logo header)
   icon.svg             favicon
 components/
-  Logo.tsx             Nowhere logo (variant: horizontal | vertical | symbol | wordmark,
-                       tone: process | ink)
+  Logo.tsx             Nowhere logo in process colors (variant: horizontal | vertical |
+                       symbol | wordmark)
   PlateText.tsx        text printed as misregistered C/M/Y plates
   PrintPlates.tsx      client component that mounts lib/printPlates once
   SiteHeader.tsx       logo header (404)

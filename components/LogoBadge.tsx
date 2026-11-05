@@ -19,8 +19,8 @@ export function LogoBadge({
 }) {
   const className = `flex h-[48px] flex-none items-center px-[14px] text-text no-underline ${framed ? 'rounded-md bg-bg shadow-sm' : ''}`
   const logo = (
-    <div className="aspect-[226/48] w-[113px]">
-      <Logo variant="horizontal" tone="ink" ink={ink} className="size-full" />
+    <div className="aspect-[216/48] w-[108px]">
+      <Logo variant="horizontal" ink={ink} className="size-full" />
     </div>
   )
   return href ? (

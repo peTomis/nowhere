@@ -2,54 +2,60 @@ import type { CSSProperties } from 'react'
 
 /**
  * Nowhere logo — from NowhereLogo.dc.html (claude.ai/design).
- * Symbol: crosshair/compass rose; in the "process" tone it is printed as three
- * misregistered C/M/Y plates under the black plate. Wordmark: italic "now" + semibold "here".
+ * Symbol: a dot printed as three misregistered C/M/Y plates ("Quadricromia"; the design's
+ * "Inchiostro" tone is deliberately not ported). Wordmark: italic "now" + semibold "here".
  */
 export type LogoVariant = 'horizontal' | 'vertical' | 'symbol' | 'wordmark'
-export type LogoTone = 'process' | 'ink'
 
 type LogoProps = {
   variant?: LogoVariant
-  tone?: LogoTone
   className?: string
   style?: CSSProperties
   title?: string
-  /** Color of the black plate and the wordmark (any CSS color; prefer a token). */
+  /** Color of the wordmark (any CSS color; prefer a token). */
   ink?: string
 }
 
-const PLATES = [
-  { dx: -0.9, dy: 0.7, color: 'var(--color-accent)' },
-  { dx: 1, dy: 0.6, color: 'var(--color-accent-2)' },
-  { dx: 0.2, dy: -1, color: 'var(--color-process-yellow)' },
-]
+/** Symbol geometry per variant: dot center/radius and C/M/Y plate offsets. */
+type Dot = { cx: number; cy: number; r: number; offsets: [number, number][] }
 
-function Mark() {
-  return (
-    <>
-      <circle cx="24" cy="24" r="12.5" fill="none" stroke="currentColor" strokeWidth="2.6" />
-      <path d="M24 2.5V45.5M2.5 24H45.5" stroke="currentColor" strokeWidth="2.6" />
-      <circle cx="24" cy="24" r="3.4" fill="currentColor" />
-    </>
-  )
+const SMALL: Dot = {
+  cx: 20,
+  cy: 25,
+  r: 11,
+  offsets: [
+    [-2.2, 1.4],
+    [2.2, 1.2],
+    [0, -2.4],
+  ],
+}
+const LARGE: Dot = {
+  cx: 24,
+  cy: 24,
+  r: 14,
+  offsets: [
+    [-2.6, 1.6],
+    [2.6, 1.4],
+    [0, -2.8],
+  ],
 }
 
-function Symbol({ tone, ink }: { tone: LogoTone; ink: string }) {
+const PLATE_COLORS = ['var(--color-accent)', 'var(--color-accent-2)', 'var(--color-process-yellow)']
+
+/** Three misregistered C/M/Y plates, multiplied: no black plate. */
+function Symbol({ dot }: { dot: Dot }) {
   return (
     <>
-      {tone === 'process' &&
-        PLATES.map((p) => (
-          <g
-            key={p.color}
-            transform={`translate(${p.dx} ${p.dy})`}
-            style={{ color: p.color, mixBlendMode: 'multiply' }}
-          >
-            <Mark />
-          </g>
-        ))}
-      <g style={{ color: ink }}>
-        <Mark />
-      </g>
+      {dot.offsets.map(([dx, dy], i) => (
+        <circle
+          key={PLATE_COLORS[i]}
+          cx={dot.cx}
+          cy={dot.cy}
+          r={dot.r}
+          transform={`translate(${dx} ${dy})`}
+          style={{ fill: PLATE_COLORS[i], mixBlendMode: 'multiply' }}
+        />
+      ))}
     </>
   )
 }
@@ -71,7 +77,7 @@ function Word(props: { x: number; y: number; anchor?: 'start' | 'middle'; ink: s
 }
 
 const VIEWBOX: Record<LogoVariant, string> = {
-  horizontal: '0 0 226 48',
+  horizontal: '0 0 216 48',
   vertical: '0 0 166 101',
   symbol: '0 0 48 48',
   wordmark: '0 0 166 33',
@@ -79,7 +85,6 @@ const VIEWBOX: Record<LogoVariant, string> = {
 
 export function Logo({
   variant = 'horizontal',
-  tone = 'process',
   className,
   style,
   title = 'Nowhere',
@@ -97,19 +102,19 @@ export function Logo({
     >
       {variant === 'horizontal' && (
         <>
-          <Symbol tone={tone} ink={ink} />
-          <Word x={60} y={34} ink={ink} />
+          <Symbol dot={SMALL} />
+          <Word x={48} y={34} ink={ink} />
         </>
       )}
       {variant === 'vertical' && (
         <>
           <g transform="translate(55 0) scale(1.1667)">
-            <Symbol tone={tone} ink={ink} />
+            <Symbol dot={LARGE} />
           </g>
           <Word x={83} y={99} anchor="middle" ink={ink} />
         </>
       )}
-      {variant === 'symbol' && <Symbol tone={tone} ink={ink} />}
+      {variant === 'symbol' && <Symbol dot={LARGE} />}
       {variant === 'wordmark' && <Word x={0.5} y={31} ink={ink} />}
     </svg>
   )

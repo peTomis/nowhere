@@ -12,7 +12,7 @@ export function SiteFooter({ className = '' }: { className?: string }) {
     >
       <div className="flex min-h-[44px] items-center gap-3">
         <div className="aspect-[166/33] w-[76px]">
-          <Logo variant="wordmark" tone="ink" className="size-full" />
+          <Logo variant="wordmark" className="size-full" />
         </div>
         <span className="text-neutral-700 italic">{t.common.tagline}</span>
       </div>
