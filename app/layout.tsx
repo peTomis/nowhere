@@ -21,7 +21,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="it" className={sourceSerif.variable}>
+    <html lang="it" className={sourceSerif.variable} data-scroll-behavior="smooth">
       <body className="flex min-h-svh flex-col">
         <PrintPlates />
         {children}

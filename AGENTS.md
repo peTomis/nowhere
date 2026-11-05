@@ -83,7 +83,8 @@ Rules:
 - Spacing scale is 5px per step (`p-4` = 20px).
 - Structure pages with type scale and white space, not borders/boxes. `.card` is for discrete
   items only; avoid `.hr`.
-- `process-yellow` is only for print treatments, never interface accents or body text.
+- `process-yellow` is only for print treatments, never interface accents. The one text use is
+  the date highlighter in guide content (`<D>` / `.date-mark`), as in the design.
 - Plate constructions keep the real text in the `.paper` span; plate copies are `aria-hidden`.
 - Respect `prefers-reduced-motion` and coarse pointers (the press driver already stands down).
 
@@ -95,9 +96,21 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 
 - Guides are registered in `data/guides.ts`. `countryId` is the ISO 3166-1 numeric code
   (matches world TopoJSON feature ids); `at` is `[lon, lat]`; `status` is `ready | draft`.
-- Routes: `/` home (full-screen map, outside the `(site)` group so it has no header),
-  `(site)/guide/[slug]` guide, `not-found.tsx` 404 (renders the header itself). There is deliberately
-  no `/guide` index page: the map is the index.
+- Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `not-found.tsx` 404 (renders
+  `SiteHeader` itself). There is deliberately no `/guide` index page: the map is the index.
+- Guides: port of `Guida Romania - Sito.dc.html`. Content is TSX in `content/guides/<slug>.tsx`
+  built from `components/guide/content.tsx` (server) and `<Only>`/`<Unless>` from
+  `components/guide/trip.tsx` (client). Keep content files free of styling: if something new is
+  needed, add a primitive to the kit. The trip filter state is localStorage
+  `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
+  always renders the full text. Images go through `publicAsset()` (`lib/assets.ts`): missing
+  files render a placeholder instead of a broken image.
+- Cover ink: `coverInk` in a guide's content sets the color of the country name _and_ the nowhere
+  logo on the cover (`<GuideCover ink>` → `<LogoBadge ink>` → `<Logo ink>`). They must always be
+  the same color: don't color one without the other.
+- Design deviations on guide pages: "Tutte le guide" links are "Torna alla mappa", the footer
+  tagline is "La mia guida di viaggio" and the credit is "Fatto da petomis". The design's
+  `showRefs` (region tags on content) and the "Dai miei appunti" map variant are not ported.
 - The home footer (`components/SiteFooter.tsx`) follows the design but replaces its guide links and
   "Identità visiva" link with the credit "Fatto da petomis" → https://www.petomis.com.
 - The home map (`components/WorldMap.tsx`) is a port of `Nowhere - Home.dc.html`: d3 owns the SVG

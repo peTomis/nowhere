@@ -14,10 +14,10 @@ import { zoom as d3Zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } f
 import type { Feature, Geometry } from 'geojson'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
-import { Logo } from './Logo'
+import { LogoBadge } from './LogoBadge'
 
 /**
  * Home: full-screen world map with country search.
@@ -88,6 +88,20 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
     return (id: string | number | undefined) => (id == null ? undefined : byId.get(String(id)))
   }, [guides])
 
+  /**
+   * Forget pin, selection, hover and query before leaving for a guide. With cacheComponents the
+   * home is kept alive (React <Activity>) and shown again as it was on back navigation, so stale
+   * state would reappear. The hover fill is reset too: pointerleave never fires on navigation.
+   */
+  const clearSelection = useCallback(() => {
+    setPin(null)
+    setSel(null)
+    setHover(null)
+    setQ('')
+    selRef.current = null
+    engine.current.paths?.style('fill', (d) => fillOf(!!guideOf(d.id), false, false))
+  }, [guideOf])
+
   // Keep the refs d3 handlers read in step with React state, and repaint the selection.
   useEffect(() => {
     pinRef.current = pin
@@ -115,7 +129,10 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       cancelAnimationFrame(hoverRaf.current)
       hoverRaf.current = requestAnimationFrame(() => setHover(h))
     }
-    const go = (g: MapGuide) => router.push(`/guide/${g.slug}`)
+    const go = (g: MapGuide) => {
+      clearSelection()
+      router.push(`/guide/${g.slug}`)
+    }
     const pinAt = (f: Country, base: [number, number]) => {
       setSel(f.properties.k)
       setHover(null)
@@ -130,6 +147,10 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       const h = Math.round(el.clientHeight)
       if (!w || !h || (w === m.w && h === m.h)) return
       const narrow = w < 640
+      // The map sits above the footer, but the world is framed on the whole viewport (as the
+      // design's full-page map was), so it stays centered on the page; the footer covers the
+      // sliver of ocean below the sphere.
+      const pageH = Math.max(h, Math.round(window.innerHeight - el.getBoundingClientRect().top))
       m.w = w
       m.h = h
       setSize({ w, h })
@@ -139,7 +160,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       const proj = geoEqualEarth().fitExtent(
         [
           [8, 8],
-          [w - 8, h - 8],
+          [w - 8, pageH - 8],
         ],
         sphere,
       )
@@ -204,7 +225,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
         .scaleExtent([1, 14])
         .translateExtent([
           [0, 0],
-          [w, h],
+          [w, pageH],
         ])
         .on('start', (e) => {
           if (e.sourceEvent) {
@@ -273,7 +294,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       select(el).selectAll('svg').remove()
       Object.assign(m, { w: 0, h: 0, svg: undefined, zoom: undefined, paths: undefined })
     }
-  }, [guides, guideOf, router])
+  }, [guides, guideOf, router, clearSelection])
 
   useEffect(() => () => clearTimeout(blurTimer.current), [])
 
@@ -339,7 +360,6 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
     <div
       data-screen-label="Home · mappa"
       className="relative min-h-0 flex-1 overflow-hidden bg-accent-100"
-      style={{ '--edge': 'clamp(12px, 3vw, 24px)' } as CSSProperties}
     >
       <div ref={mapRef} className="absolute inset-0" />
 
@@ -370,6 +390,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
           {pin.guide ? (
             <Link
               href={`/guide/${pin.guide.slug}`}
+              onClick={clearSelection}
               className="btn btn-primary flex min-h-[44px] gap-[8px] text-bg no-underline"
             >
               Apri la guida <ArrowRightIcon weight="duotone" size={18} />
@@ -381,11 +402,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       )}
 
       <div className="absolute top-(--edge) left-(--edge) z-5 flex w-[min(540px,calc(100%-2*var(--edge)))] items-start gap-2">
-        <div className="flex h-[48px] flex-none items-center rounded-md bg-bg px-[14px] shadow-sm">
-          <div className="aspect-[226/48] w-[113px]">
-            <Logo variant="horizontal" tone="ink" className="size-full" />
-          </div>
-        </div>
+        <LogoBadge />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="relative">
             <MagnifyingGlassIcon

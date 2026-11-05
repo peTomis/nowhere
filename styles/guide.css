@@ -1,0 +1,62 @@
+/*
+ * Guide content treatments, from "Guida Romania - Sito.dc.html".
+ * The date highlighter is the one place process yellow appears in running text: it marks
+ * dates like a highlighter pen on the printed page.
+ */
+
+/* In-page anchors (guide index) scroll smoothly; Next disables it during route changes
+   because <html> carries data-scroll-behavior="smooth". */
+html {
+  scroll-behavior: smooth;
+}
+
+.date-mark {
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(
+    transparent 55%,
+    color-mix(in srgb, var(--color-process-yellow) 60%, transparent) 55%
+  );
+  padding: 0 2px;
+}
+
+/* Timeline: date | rail with dot | body. The rail joins only the entries actually rendered
+   (filtered-out entries are absent from the DOM), so first/last-child shape its ends. */
+.timeline-item {
+  display: grid;
+  grid-template-columns: clamp(62px, 16vw, 92px) clamp(24px, 5vw, 28px) minmax(0, 1fr);
+}
+.timeline-rail {
+  position: relative;
+}
+.timeline-rail::before {
+  content: '';
+  position: absolute;
+  left: calc(50% - 0.5px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-accent-300);
+}
+.timeline-rail::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 5.5px);
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+.timeline-item:first-child .timeline-rail::before {
+  top: 8px;
+}
+.timeline-item:last-child .timeline-rail::before {
+  bottom: auto;
+  height: 14px;
+}
+.timeline-item:first-child:last-child .timeline-rail::before {
+  display: none;
+}
+.timeline-item:not(:last-child) .timeline-body {
+  padding-bottom: var(--space-6);
+}

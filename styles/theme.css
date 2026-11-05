@@ -78,4 +78,7 @@
   --space-4: 20px;
   --space-6: 30px;
   --space-8: 40px;
+
+  /* Distance of floating chrome (logo badge, search, map controls) from the viewport edge. */
+  --edge: clamp(12px, 3vw, 24px);
 }

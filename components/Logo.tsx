@@ -14,6 +14,8 @@ type LogoProps = {
   className?: string
   style?: CSSProperties
   title?: string
+  /** Color of the black plate and the wordmark (any CSS color; prefer a token). */
+  ink?: string
 }
 
 const PLATES = [
@@ -32,7 +34,7 @@ function Mark() {
   )
 }
 
-function Symbol({ tone }: { tone: LogoTone }) {
+function Symbol({ tone, ink }: { tone: LogoTone; ink: string }) {
   return (
     <>
       {tone === 'process' &&
@@ -45,20 +47,20 @@ function Symbol({ tone }: { tone: LogoTone }) {
             <Mark />
           </g>
         ))}
-      <g style={{ color: 'var(--color-text)' }}>
+      <g style={{ color: ink }}>
         <Mark />
       </g>
     </>
   )
 }
 
-function Word(props: { x: number; y: number; anchor?: 'start' | 'middle' }) {
+function Word(props: { x: number; y: number; anchor?: 'start' | 'middle'; ink: string }) {
   return (
     <text
       x={props.x}
       y={props.y}
       textAnchor={props.anchor}
-      style={{ fontFamily: 'var(--font-body)', fontSize: 40, fill: 'var(--color-text)' }}
+      style={{ fontFamily: 'var(--font-body)', fontSize: 40, fill: props.ink }}
     >
       <tspan style={{ fontStyle: 'italic', fontWeight: 400 }}>now</tspan>
       <tspan dx="1.5" style={{ fontWeight: 600 }}>
@@ -81,6 +83,7 @@ export function Logo({
   className,
   style,
   title = 'Nowhere',
+  ink = 'var(--color-text)',
 }: LogoProps) {
   const leftAligned = variant === 'horizontal' || variant === 'wordmark'
   return (
@@ -94,20 +97,20 @@ export function Logo({
     >
       {variant === 'horizontal' && (
         <>
-          <Symbol tone={tone} />
-          <Word x={60} y={34} />
+          <Symbol tone={tone} ink={ink} />
+          <Word x={60} y={34} ink={ink} />
         </>
       )}
       {variant === 'vertical' && (
         <>
           <g transform="translate(55 0) scale(1.1667)">
-            <Symbol tone={tone} />
+            <Symbol tone={tone} ink={ink} />
           </g>
-          <Word x={83} y={99} anchor="middle" />
+          <Word x={83} y={99} anchor="middle" ink={ink} />
         </>
       )}
-      {variant === 'symbol' && <Symbol tone={tone} />}
-      {variant === 'wordmark' && <Word x={0.5} y={31} />}
+      {variant === 'symbol' && <Symbol tone={tone} ink={ink} />}
+      {variant === 'wordmark' && <Word x={0.5} y={31} ink={ink} />}
     </svg>
   )
 }

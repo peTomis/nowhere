@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import { SiteFooter } from '@/components/SiteFooter'
 import { WorldMap, type MapGuide } from '@/components/WorldMap'
 import { guides } from '@/data/guides'
@@ -9,10 +8,7 @@ export default function HomePage() {
     .filter((g) => g.status === 'ready')
     .map(({ slug, countryId, name, at }) => ({ slug, countryId, name, at }))
   return (
-    <div
-      className="flex h-svh flex-col"
-      style={{ '--edge': 'clamp(12px, 3vw, 24px)' } as CSSProperties}
-    >
+    <div className="flex h-svh flex-col">
       <WorldMap guides={ready} />
       <SiteFooter />
     </div>
