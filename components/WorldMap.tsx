@@ -400,7 +400,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       )}
 
       <div className="absolute top-(--edge) left-(--edge) z-5 flex w-[min(540px,calc(100%-2*var(--edge)))] items-start gap-2">
-        <LogoBadge />
+        <LogoBadge framed={false} />
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <div className="relative">
             <MagnifyingGlassIcon

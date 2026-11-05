@@ -4,8 +4,9 @@ import { t } from '@/i18n'
 
 /**
  * The logo badge, from "Nowhere - Home.dc.html". Used at the same spot (top-left, var(--edge))
- * on the home map, framed on paper so it reads over the map, and on guide covers, where it is
- * unframed and links back home. Box geometry is identical either way, so the logo lines up.
+ * on the home map and on guide covers (where it links back home). Both use it unframed: the design
+ * frames it on paper on the home, but the map now sits on paper too. Box geometry is identical
+ * either way, so the logo lines up.
  */
 export function LogoBadge({
   href,
