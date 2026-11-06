@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
-import { GuideCover } from '@/components/guide/GuideCover'
-import { GuideOutro } from '@/components/guide/GuideOutro'
-import { GuideShell } from '@/components/guide/GuideShell'
-import { SiteFooter } from '@/components/SiteFooter'
+import { Guide } from '@/components/guide/Guide'
 import { guideContent } from '@/content/guides'
 import { getGuide, guides } from '@/data/guides'
 
@@ -25,30 +22,16 @@ export async function generateMetadata({ params }: PageProps<'/guide/[slug]'>): 
 export default function GuidePage({ params }: PageProps<'/guide/[slug]'>) {
   return (
     <Suspense fallback={<div className="h-svh bg-neutral-300" />}>
-      <Guide params={params} />
+      <GuideFromParams params={params} />
     </Suspense>
   )
 }
 
-async function Guide({ params }: Pick<PageProps<'/guide/[slug]'>, 'params'>) {
+async function GuideFromParams({ params }: Pick<PageProps<'/guide/[slug]'>, 'params'>) {
   const { slug } = await params
   const guide = getGuide(slug)
   const content = guideContent[slug]
   if (!guide || !content) notFound()
 
-  return (
-    <>
-      <GuideCover
-        name={guide.name}
-        cover={content.cover}
-        emblems={content.emblems}
-        ink={content.coverInk}
-      />
-      <GuideShell slug={slug} country={guide.name} places={content.places} toc={content.toc}>
-        {content.body}
-      </GuideShell>
-      <GuideOutro name={guide.name} emblems={content.emblems} toc={content.toc} />
-      <SiteFooter />
-    </>
-  )
+  return <Guide slug={slug} name={guide.name} content={content} />
 }

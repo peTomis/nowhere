@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 /*
  * Place ids are generic: each guide declares a string enum of its regions and cities
  * (e.g. `enum Romania { Transilvania = 'transilvania', … }`) and uses GuideContent<Romania>,
- * so a mistyped id in places, toc `when` or <Only on> fails the typecheck.
+ * so a mistyped id in places, toc `on` or a block's `on` fails the typecheck.
  * The enum values are what gets stored in localStorage: don't rename them once published.
  */
 
@@ -14,6 +14,12 @@ export type Place<P extends string = string> = {
   cities: { id: P; name: string }[]
 }
 
+/**
+ * For which places of the trip a block (or an index entry) is shown: at least one of them must
+ * be in the trip. 'always' shows it whatever the reader has selected, even nothing.
+ */
+export type Visibility<P extends string = string> = P[] | 'always'
+
 /** One entry of the guide index. `id` is the anchor of the section it points to. */
 export type TocEntry<P extends string = string> = {
   id: string
@@ -21,8 +27,8 @@ export type TocEntry<P extends string = string> = {
   level: 1 | 2 | 3
   /** Period shown under (sidebar) or next to (menu) the label. */
   dates?: string
-  /** Show the entry only when at least one of these places is in the trip. */
-  when?: P[]
+  /** The same as the `on` of the section it points to. */
+  on: Visibility<P>
 }
 
 export type GuideContent<P extends string = string> = {

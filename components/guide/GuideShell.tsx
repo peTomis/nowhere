@@ -130,13 +130,18 @@ function Shell({
 
       <div className="flex justify-center gap-[clamp(48px,7vw,104px)] px-[clamp(20px,5vw,48px)] pt-[clamp(72px,11vw,144px)]">
         <aside className="hidden flex-[0_0_232px] min-[960px]:block">
-          <div className="sticky top-[40px] flex max-h-[calc(100vh-80px)] flex-col gap-[50px] overflow-y-auto">
-            <TripFilter country={country} size="sidebar" />
-            <nav aria-label={t.guide.shell.index} className="flex flex-col gap-4">
-              <div className="text-[11px] tracking-[.16em] text-neutral-700 uppercase">
+          {/* Trip filter and index title stay put; only the index list scrolls. */}
+          <div className="sticky top-[40px] flex max-h-[calc(100vh-80px)] flex-col gap-[50px]">
+            <div className="flex-none">
+              <TripFilter country={country} size="sidebar" />
+            </div>
+            <nav aria-label={t.guide.shell.index} className="flex min-h-0 flex-col gap-4">
+              <div className="flex-none text-[11px] tracking-[.16em] text-neutral-700 uppercase">
                 {t.guide.shell.index}
               </div>
-              <Toc entries={toc} active={active} size="sidebar" />
+              <div className="min-h-0 overflow-y-auto overscroll-contain pb-8">
+                <Toc entries={toc} active={active} size="sidebar" />
+              </div>
             </nav>
           </div>
         </aside>

@@ -1,7 +1,7 @@
 'use client'
 
 import { createContext, use, useMemo, useSyncExternalStore, type ReactNode } from 'react'
-import type { Place } from '@/lib/guide'
+import type { Place, Visibility } from '@/lib/guide'
 
 /*
  * Trip filter: the reader can switch regions and cities off; the guide then hides the
@@ -131,25 +131,18 @@ export function useTrip() {
   return t
 }
 
-export type GateProps<P extends string = string> = { on: P | P[]; children: ReactNode }
+export type GateProps<P extends string = string> = { on: Visibility<P>; children: ReactNode }
 
-/**
- * <Only>/<Unless> narrowed to one guide's place ids. In a content file:
- *   const Only: Gate<Romania> = AnyOnly
- * (a plain annotation, no cast: the component accepts any string, the alias only accepts P).
- */
-export type Gate<P extends string> = (props: GateProps<P>) => ReactNode
-
-/** Renders its children only when at least one of the given regions/cities is in the trip. */
-export function Only({ on, children }: GateProps) {
-  const trip = useTrip()
-  const ids = Array.isArray(on) ? on : [on]
-  return ids.some(trip.on) ? children : null
+function shown(on: Visibility, trip: Trip) {
+  return on === 'always' || on.some(trip.on)
 }
 
-/** Renders its children only when none of the given regions/cities is in the trip. */
-export function Unless({ on, children }: GateProps) {
-  const trip = useTrip()
-  const ids = Array.isArray(on) ? on : [on]
-  return ids.some(trip.on) ? null : children
+/** Renders its children when `on` is 'always' or one of its regions/cities is in the trip. */
+export function Only<P extends string>({ on, children }: GateProps<P>) {
+  return shown(on, useTrip()) ? children : null
+}
+
+/** The opposite of <Only>. */
+export function Unless<P extends string>({ on, children }: GateProps<P>) {
+  return shown(on, useTrip()) ? null : children
 }

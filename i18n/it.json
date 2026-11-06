@@ -37,8 +37,7 @@
       "showAll": "Mostra tutto",
       "fullText": "Testo completo",
       "recap": "{regions} di {regionsTotal} regioni · {cities} di {citiesTotal} città",
-      "citiesOf": "Città di {name}",
-      "noRegions": "Nessuna regione attiva: scegline almeno una in «{trip}»."
+      "citiesOf": "Città di {name}"
     },
     "outro": {
       "label": "{name}, riepilogo",
@@ -50,34 +49,9 @@
       "chapter": "Capitolo {number}",
       "onsite": "Da approfondire sul posto",
       "debate": "Punto controverso",
+      "remember": "Da ricordare",
       "glossary": "Glossario",
       "source": "Fonte"
-    }
-  },
-  "guides": {
-    "romania": {
-      "toc": {
-        "chapter1": "Dalla Dacia ai principati",
-        "part1": "Dacia e Roma",
-        "part1Dates": "200 a.C. – 274",
-        "peoples": "Popoli di passaggio",
-        "part2": "I principati",
-        "part2Dates": "1310 – 1359",
-        "chapter2": "Regioni e città"
-      },
-      "regions": {
-        "dobrogea": "Dobrogea",
-        "moldavia": "Moldavia",
-        "transilvania": "Transilvania",
-        "valacchia": "Valacchia"
-      },
-      "alt": {
-        "cover": "Il castello di Bran al tramonto",
-        "coatOfArms": "Stemma della Romania",
-        "flag": "Bandiera della Romania",
-        "map": "Cartina della Romania con le regioni storiche",
-        "moldaviaHistoricalFlag": "Bandiera della Moldavia storica"
-      }
     }
   }
 }

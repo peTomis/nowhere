@@ -25,6 +25,7 @@ app/
   globals.css          entry: tailwind + theme + components
   page.tsx             home: full-screen world map + footer (no site header)
   guide/[slug]/page.tsx  a guide: cover, reading layout, footer (prerendered per guide)
+  template/page.tsx    /template: every guide element with placeholder text (not indexed)
   not-found.tsx        404 (with the logo header)
   icon.svg             favicon
 components/
@@ -35,11 +36,11 @@ components/
   SiteHeader.tsx       logo header (404)
   SiteFooter.tsx       site footer (home and guides): wordmark, tagline, credit to petomis
   WorldMap.tsx         home map: d3 projection/zoom + search, tooltip, pin card, legend
-  guide/               guide kit: GuideCover, GuideShell (sidebar, index, mobile menu),
+  guide/               guide kit: Guide (the whole page), GuideCover, GuideShell (sidebar, index, mobile menu),
                        TripFilter + trip.tsx (trip filter), content.tsx (D, N, Chapter,
                        Part, Timeline/Event, Detail, Callout, Region, City, Figure…),
                        GuideOutro (closing recap: name, chapters, "Torna su")
-content/guides/        guide content, one file per country (romania.tsx) + index.ts
+content/guides/        guide content, one file per country (romania.tsx) + template.tsx + index.ts
 i18n/                  UI strings: it.json (Italian, the only locale) + index.ts (t, format, locale)
 lib/printPlates.ts     SVG separation filters + the "press driver" (hover / pointer lean)
 lib/guide.ts           guide content types (places, index entries, cover, emblems)
@@ -89,18 +90,22 @@ Rules of thumb:
 
 1. Add an entry to `data/guides.ts` (`countryId` = ISO 3166-1 numeric code, e.g. Romania = `642`).
    Guides with `status: 'ready'` are highlighted on the home map.
-2. Create `content/guides/<slug>.tsx` exporting a `GuideContent` (see `lib/guide.ts` and
-   `romania.tsx` as the template), and register it in `content/guides/index.ts`:
+2. Copy `content/guides/template.tsx` (every element of the kit, shown at `/template`) to
+   `content/guides/<slug>.tsx`, then register the content in `content/guides/index.ts`. All the
+   guide's texts live in that file (titles and place names used in more than one spot are local
+   constants). A guide has:
    - a string `enum` of the guide's regions and cities, used as `GuideContent<MyEnum>` and for
-     `const Only: Gate<MyEnum> = AnyOnly` (same for `Unless`), so a wrong id is a type error;
+     `const { Chapter, Text, … } = guideKit<MyEnum>()`, so a wrong id is a type error;
    - `places`: regions and cities for the trip filter (shown as "Il tuo viaggio");
-   - `toc`: the index; each `id` is the anchor of a `Chapter`, `Part`, `DateList` or `Region`,
-     and `when` hides an entry when none of its places is in the trip;
-   - `body`: the text, built from `components/guide/content.tsx`. Wrap anything tied to a region
-     or city in `<Only on="…">`.
+   - `toc`: the index; each `id` is the anchor of a `Chapter`, `Part`, titled `Timeline` or `Region`,
+     and `on` lists the same places as that section;
+   - `body`: the text, built from the kit. Every block has a required `on`: an array of the places
+     for which it is shown (at least one must be in the trip), or `"always"` to show it whatever
+     the reader selected. Blocks nest, so give a
+     chapter the widest list (its parts go inside it) and its texts the same list or a part of it:
+     `<Chapter on={[Dobrogea, Transilvania]}>` → `<Text on={[Dobrogea]}>`.
 3. Put images in `public/guides/<slug>/` with English file names (`cover.jpg`, `coat-of-arms.png`,
-   `flag.svg`, `map.png`…); their alt texts go in `i18n/it.json` under `guides.<slug>.alt`, next to `toc` (index labels,
-   also used as section titles) and `regions` (region names). Missing files show a neutral placeholder, so the page
-   can be written before the photos exist.
+   `flag.svg`, `map.png`…); their alt texts go next to them in the content file. Missing files
+   show a neutral placeholder, so the page can be written before the photos exist.
 
 The page `/guide/<slug>` is generated at build time.

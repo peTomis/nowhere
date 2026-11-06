@@ -61,9 +61,10 @@ There is no test suite yet.
   `t.map.searchPlaceholder` or `format(t.guide.trip.citiesOf, { name })` for `{placeholders}`.
   Keys are typed from the JSON. Guide prose is content, not UI: it stays in `content/guides/`.
   Use `locale` from `@/i18n` for `lang`, `localeCompare`, `Intl` and similar. Image alt texts
-  are UI strings too. Per guide, `guides.<slug>` holds `toc` (index labels and dates, reused as
-  the matching section titles), `regions` (place names, used by `places`, index and `Region`) and
-  `alt`; captions and prose stay in content.
+  are UI strings too, except in guides. Everything specific to a guide (prose, captions, alt
+  texts, index labels, place names) lives in its content file, not in the JSON: titles shared by
+  the index and the sections, and place names shared by `places`, index, `Region` and `City`, are
+  local constants (`headings`, `regions`, `cities`) so they are written once.
 - Asset file names are English and kebab-case (`coat-of-arms.png`, `flag.svg`, `map.png`).
 - Pages/layouts use `export default`; shared components use named exports with props typed via a
   local `type`.
@@ -112,14 +113,23 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 
 - Guides are registered in `data/guides.ts`. `countryId` is the ISO 3166-1 numeric code
   (matches world TopoJSON feature ids); `at` is `[lon, lat]`; `status` is `ready | draft`.
-- Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `not-found.tsx` 404 (renders
+- Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `/template` (every element
+  of the guide kit with placeholder text, `noindex`, not on the map), `not-found.tsx` 404 (renders
   `SiteHeader` itself). There is deliberately no `/guide` index page: the map is the index.
+- `content/guides/template.tsx` is the starting point for a new guide and the showcase of the kit:
+  when you add or change a primitive in `components/guide/content.tsx`, show it there too. Both
+  `/guide/[slug]` and `/template` render through `components/guide/Guide.tsx`.
 - Guides: port of `Guida Romania - Sito.dc.html`. Content is TSX in `content/guides/<slug>.tsx`
-  built from `components/guide/content.tsx` (server) and `<Only>`/`<Unless>` from
-  `components/guide/trip.tsx` (client). Keep content files free of styling: if something new is
-  needed, add a primitive to the kit. Place ids are a per-guide string `enum` (see
-  `romania.tsx`): type the content as `GuideContent<Enum>` and alias `Only`/`Unless` as
-  `Gate<Enum>`; never write place ids as bare strings. Enum values are persisted in localStorage,
+  built from the kit in `components/guide/content.tsx` (server; the gates `Only`/`Unless` are
+  client components in `components/guide/trip.tsx`). Keep content files free of
+  styling: if something new is needed, add a primitive to the kit. Place ids are a per-guide string
+  `enum` (see `romania.tsx`): type the content as `GuideContent<Enum>` and take the kit from
+  `guideKit<Enum>()`; never write place ids as bare strings. Every block primitive has a required
+  `on: P[] | 'always'` (an array, as a text can be shown for several places; `'always'` ignores the
+  trip filter) and wraps itself in `Only`;
+  inline marks (`D`, `N`, `Aside`) and pure containers (`PhotoGrid`, `Positions`) have
+  none. Blocks nest (parts go inside their chapter), so a child's `on` is the parent's or a subset;
+  a toc entry's `on` matches its section. Enum values are persisted in localStorage,
   so don't rename them after publishing. The trip filter state is localStorage
   `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
   always renders the full text. Images go through `publicAsset()` (`lib/assets.ts`): missing

@@ -1,9 +1,13 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import type { TocEntry } from '@/lib/guide'
 import { useTrip } from './trip'
 
-/** Guide index. The active section gets the cyan dot. */
+/**
+ * Guide index. The active section gets the cyan dot. When the index is taller than its scrolling
+ * box (the sidebar), the box follows the active entry so the dot stays in view.
+ */
 export function Toc({
   entries,
   active,
@@ -16,11 +20,27 @@ export function Toc({
   onNavigate?: () => void
 }) {
   const trip = useTrip()
-  const visible = entries.filter((e) => !e.when || e.when.some(trip.on))
+  const visible = entries.filter((e) => e.on === 'always' || e.on.some(trip.on))
   const big = size === 'menu'
+  const list = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const link = list.current?.querySelector<HTMLElement>('[aria-current]')
+    const box = link && scrollBox(link)
+    if (!link || !box) return
+    const l = link.getBoundingClientRect()
+    const b = box.getBoundingClientRect()
+    const margin = 40
+    if (l.top >= b.top + margin && l.bottom <= b.bottom - margin) return
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    box.scrollBy({
+      top: l.top + l.height / 2 - (b.top + b.height / 2),
+      behavior: reduce ? 'instant' : 'smooth',
+    })
+  }, [active, visible.length])
 
   return (
-    <div className={`flex flex-col ${big ? '' : 'gap-3'}`}>
+    <div ref={list} className={`flex flex-col ${big ? '' : 'gap-3'}`}>
       {visible.map((e, i) => {
         const level =
           e.level === 1
@@ -63,4 +83,14 @@ export function Toc({
       })}
     </div>
   )
+}
+
+/** The nearest ancestor that scrolls vertically (not the page itself). */
+function scrollBox(el: HTMLElement) {
+  for (let p = el.parentElement; p && p !== document.body; p = p.parentElement) {
+    const { overflowY } = getComputedStyle(p)
+    if ((overflowY === 'auto' || overflowY === 'scroll') && p.scrollHeight > p.clientHeight)
+      return p
+  }
+  return null
 }
