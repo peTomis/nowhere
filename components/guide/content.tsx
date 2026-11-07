@@ -9,7 +9,7 @@ import { Only, Unless } from './trip'
 /*
  * Building blocks for guide content, from "Guida Romania - Sito.dc.html".
  * Inline (no trip gate): <D> date, <N> name/place/work (`href` to link it), <A> link, <Aside>. Containers (no gate):
- * PhotoGrid, Positions. Every other block takes a required `on`: the regions/cities of the trip
+ * PhotoGrid, PhotoRow, Positions. Every other block takes a required `on`: the regions/cities of the trip
  * for which it is shown — at least one of them must be in the trip — or 'always'. Blocks nest, so
  * a block is shown only if its parents are too: give a chapter the widest set, its texts a subset.
  * Content files get the kit narrowed to their place enum through guideKit<Enum>().
@@ -185,6 +185,34 @@ export function Event<P extends string>({
   )
 }
 
+/**
+ * A context card in a timeline, between the events: the background of a period (society, climate,
+ * economy). Boxed like the glossary, labelled "Contesto · period" in place of a date, with a
+ * hollow dot on the rail so it reads apart from the events.
+ */
+export function Context<P extends string>({
+  on,
+  ...props
+}: On<P> & { period: ReactNode; title: ReactNode; children: ReactNode }) {
+  return (
+    <Only on={on}>
+      <div className="timeline-item timeline-context">
+        <div />
+        <div className="timeline-rail" aria-hidden="true" />
+        <div className="timeline-body">
+          <div className="flex max-w-[52ch] flex-col gap-2 rounded-md bg-surface p-4">
+            <div className={`${label} text-accent-700`}>
+              {t.guide.content.context} · {props.period}
+            </div>
+            <h4 className="m-0 text-[17px] leading-[1.3] font-semibold">{props.title}</h4>
+            <div className="text-[15px] leading-normal">{props.children}</div>
+          </div>
+        </div>
+      </div>
+    </Only>
+  )
+}
+
 /** A detail line, marked with the cyan diamond. */
 export function Detail<P extends string>({ on, children }: On<P> & { children: ReactNode }) {
   return (
@@ -327,15 +355,23 @@ function Picture(props: {
   ratio: string
   sizes: string
   className?: string
+  /** Transparent image (an emblem): no backdrop, shown whole instead of cropped. */
+  cutout?: boolean
 }) {
   const src = publicAsset(props.src)
   return (
     <div
-      className={`relative overflow-hidden rounded-md bg-neutral-200 ${props.className ?? ''}`}
+      className={`relative overflow-hidden rounded-md ${src && props.cutout ? '' : 'bg-neutral-200'} ${props.className ?? ''}`}
       style={{ aspectRatio: props.ratio }}
     >
       {src ? (
-        <Image src={src} alt={props.alt} fill sizes={props.sizes} className="object-cover" />
+        <Image
+          src={src}
+          alt={props.alt}
+          fill
+          sizes={props.sizes}
+          className={props.cutout ? 'object-contain' : 'object-cover'}
+        />
       ) : (
         <div
           className="absolute inset-0 grid place-items-center text-neutral-500"
@@ -363,17 +399,26 @@ function Photo(props: {
   alt?: string
   caption: string
   ratio: string
+  /** Transparent image (an emblem): no backdrop, shown whole instead of cropped. */
+  cutout?: boolean
+  /** `emblem`: a flag or coat of arms at a fixed height, as wide as its `ratio` makes it. */
+  size?: 'full' | 'emblem'
   className?: string
   style?: CSSProperties
 }) {
+  const emblem = props.size === 'emblem'
   return (
-    <figure className={`m-0 flex flex-col gap-2 ${props.className ?? ''}`} style={props.style}>
+    <figure
+      className={`m-0 flex flex-col gap-2 ${props.className ?? ''}`}
+      style={{ '--ratio': `calc(${props.ratio})`, ...props.style } as CSSProperties}
+    >
       <Picture
         src={props.src}
         alt={props.alt ?? props.caption}
         ratio={props.ratio}
-        sizes="(min-width: 960px) 720px, 100vw"
-        className="w-full"
+        cutout={props.cutout}
+        sizes={emblem ? '320px' : '(min-width: 960px) 720px, 100vw'}
+        className={emblem ? 'h-40 w-[calc(var(--ratio)*var(--spacing)*40)] max-w-full' : 'w-full'}
       />
       <figcaption className="mt-0 text-sm leading-[1.4] text-neutral-700 italic">
         {props.caption}
@@ -387,6 +432,16 @@ export function PhotoGrid({ children }: { children: ReactNode }) {
     <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-x-4 gap-y-6">
       {children}
     </div>
+  )
+}
+
+/**
+ * Figures side by side at the same height (e.g. a flag and a coat of arms): each takes a width
+ * proportional to its `ratio`, read from the `--ratio` its <figure> publishes.
+ */
+export function PhotoRow({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex items-start gap-4 *:min-w-0 *:flex-[var(--ratio)_1_0%]">{children}</div>
   )
 }
 
@@ -499,6 +554,7 @@ export function guideKit<P extends string>() {
     N,
     Aside,
     PhotoGrid,
+    PhotoRow,
     Positions,
     Only: Only<P>,
     Unless: Unless<P>,
@@ -507,6 +563,7 @@ export function guideKit<P extends string>() {
     Part: Part<P>,
     Text: Text<P>,
     Event: Event<P>,
+    Context: Context<P>,
     Detail: Detail<P>,
     Source: Source<P>,
     Callout: Callout<P>,

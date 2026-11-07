@@ -59,6 +59,7 @@ const {
   Callout,
   Chapter,
   City,
+  Context,
   D,
   Detail,
   Event,
@@ -69,6 +70,7 @@ const {
   Note,
   Part,
   PhotoGrid,
+  PhotoRow,
   Position,
   Positions,
   Region,
@@ -204,6 +206,10 @@ function Body() {
                 la definizione, breve, dopo il trattino.
               </Glossary>
             </Event>
+            <Context on="always" period="XI secolo" title="Scheda di contesto tra gli eventi">
+              Lo sfondo di un periodo (società, clima, economia): al posto della data c’è la
+              dicitura “Contesto” con il periodo, e sul binario un pallino vuoto.
+            </Context>
             <Event on="always" title="Evento senza data: niente evidenziatore a margine">
               <Detail on="always">Per un fatto senza una data precisa: basta non indicarla.</Detail>
             </Event>
@@ -213,6 +219,23 @@ function Body() {
             <Figure on="always" caption="Griglia di foto: prima didascalia" ratio="4/5" />
             <Figure on="always" caption="Seconda didascalia, stessa proporzione" ratio="4/5" />
           </PhotoGrid>
+
+          <PhotoRow>
+            <Figure on="always" caption="Riga di foto: stessa altezza" ratio="3/2" />
+            <Figure
+              on="always"
+              caption="Con cutout: immagine trasparente (uno stemma), senza fondo né ritaglio"
+              ratio="2/3"
+              cutout
+            />
+          </PhotoRow>
+
+          <Figure
+            on="always"
+            caption="Emblema: bandiera o stemma ad altezza fissa, largo quanto la sua proporzione"
+            ratio="3/2"
+            size="emblem"
+          />
 
           <Callout on="always" kind="debate" title="Un punto controverso, posto come domanda?">
             <Positions>
