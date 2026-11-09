@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "icons": "node scripts/app-icons.mjs",
-    "validate": "node scripts/validate.mjs"
+    "validate": "node scripts/validate.mjs",
+    "db:setup": "node --env-file=.env scripts/db-setup.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -20,7 +21,9 @@
     "d3-selection": "^3.0.1",
     "d3-transition": "^3.0.2",
     "d3-zoom": "^3.0.1",
+    "mongodb": "^7.8.0",
     "next": "^16.4.5",
+    "next-auth": "5.0.0-beta.32",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "server-only": "^0.0.1",

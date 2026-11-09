@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import { Logo } from './Logo'
 import { t } from '@/i18n'
 
 /**
- * Site footer, from "Nowhere - Home.dc.html": wordmark + tagline (from 640px), credit on the right.
+ * Site footer, from "Nowhere - Home.dc.html": wordmark + tagline (from 640px), credit on the right,
+ * preceded by the link to the account page (sign-in for the collection; not in the design).
  * The same footer closes the home and every guide.
  */
 export function SiteFooter({ className = '' }: { className?: string }) {
@@ -16,14 +18,22 @@ export function SiteFooter({ className = '' }: { className?: string }) {
         </div>
         <span className="hidden text-neutral-700 italic sm:inline">{t.common.tagline}</span>
       </div>
-      <p className="m-0 flex min-h-[44px] items-center">
-        {t.common.madeBy}&nbsp;
-        <a
-          href="https://www.petomis.com"
+      <p className="m-0 flex min-h-[44px] items-center gap-x-4">
+        <Link
+          href="/account"
           className="text-accent-700 no-underline hover:text-accent-800 hover:underline"
         >
-          petomis
-        </a>
+          {t.common.account}
+        </Link>
+        <span>
+          {t.common.madeBy}&nbsp;
+          <a
+            href="https://www.petomis.com"
+            className="text-accent-700 no-underline hover:text-accent-800 hover:underline"
+          >
+            petomis
+          </a>
+        </span>
       </p>
     </footer>
   )

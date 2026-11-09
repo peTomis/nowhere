@@ -6,7 +6,8 @@
     "homeLabel": "Nowhere, torna alla mappa",
     "backToMap": "Torna alla mappa",
     "tagline": "Le mie guide di viaggio",
-    "madeBy": "Realizzato da"
+    "madeBy": "Realizzato da",
+    "account": "Il tuo account"
   },
   "map": {
     "ariaLabel": "Mappa del mondo: i paesi dove sono stato sono in azzurro",
@@ -55,5 +56,15 @@
       "context": "Contesto",
       "source": "Fonte"
     }
+  },
+  "account": {
+    "title": "Il tuo account",
+    "intro": "L’account serve solo a salvare la tua collezione: i luoghi visti, le foto e le note. Le guide si leggono anche senza.",
+    "signIn": "Accedi con Google",
+    "signOut": "Esci",
+    "signedInAs": "Hai effettuato l’accesso come {email}.",
+    "denied": "Questo account Google non è abilitato. Per ora l’accesso è solo su invito.",
+    "error": "Accesso non riuscito. Riprova tra poco.",
+    "loading": "Controllo l’accesso…"
   }
 }
