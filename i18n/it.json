@@ -47,6 +47,7 @@
     },
     "content": {
       "chapter": "Capitolo {number}",
+      "part": "Parte {number}",
       "onsite": "Da approfondire sul posto",
       "debate": "Punto controverso",
       "remember": "Da ricordare",

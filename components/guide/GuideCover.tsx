@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { LogoBadge } from '@/components/LogoBadge'
 import { publicAsset } from '@/lib/assets'
-import type { GuideContent } from '@/lib/guide'
+import type { GuideContent } from '@/content/types'
 
 /** Full-height cover: photo fading into the paper, logo, emblems and the country name. */
 export function GuideCover({

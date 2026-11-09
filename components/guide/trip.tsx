@@ -1,53 +1,15 @@
 'use client'
 
 import { createContext, use, useMemo, useSyncExternalStore, type ReactNode } from 'react'
-import type { Place, Visibility } from '@/lib/guide'
+import type { Place, Visibility } from '@/content/types'
+import { setTripOff, subscribePrefs, tripOff } from '@/lib/reader/prefs'
 
 /*
  * Trip filter: the reader can switch regions and cities off; the guide then hides the
- * content tied to them. The excluded ids live in localStorage, one key per guide.
+ * content tied to them. The excluded ids are a device preference (lib/reader/prefs.ts).
  */
 
 const EMPTY: string[] = []
-const cache = new Map<string, string[]>()
-const listeners = new Set<() => void>()
-
-function read(key: string): string[] {
-  let v = cache.get(key)
-  if (!v) {
-    try {
-      const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? '[]')
-      v = Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === 'string') : []
-    } catch {
-      v = []
-    }
-    cache.set(key, v)
-  }
-  return v
-}
-
-function write(key: string, off: string[]) {
-  cache.set(key, off)
-  try {
-    localStorage.setItem(key, JSON.stringify(off))
-  } catch {
-    // storage unavailable (private mode): keep the in-memory value
-  }
-  listeners.forEach((l) => l())
-}
-
-function subscribe(cb: () => void) {
-  listeners.add(cb)
-  const onStorage = (e: StorageEvent) => {
-    if (e.key) cache.delete(e.key)
-    cb()
-  }
-  window.addEventListener('storage', onStorage)
-  return () => {
-    listeners.delete(cb)
-    window.removeEventListener('storage', onStorage)
-  }
-}
 
 type Trip = {
   places: Place[]
@@ -65,17 +27,18 @@ type Trip = {
 const TripContext = createContext<Trip | null>(null)
 
 export function TripProvider({
-  storageKey,
+  country,
   places,
   children,
 }: {
-  storageKey: string
+  /** ISO 3166-1 alpha-2 of the guide: the key of its filter in the prefs. */
+  country: string
   places: Place[]
   children: ReactNode
 }) {
   const off = useSyncExternalStore(
-    subscribe,
-    () => read(storageKey),
+    subscribePrefs,
+    () => tripOff(country),
     () => EMPTY,
   )
 
@@ -96,7 +59,7 @@ export function TripProvider({
         if (con) cities++
       }
     }
-    const set = (next: Set<string>) => write(storageKey, [...next])
+    const set = (next: Set<string>) => setTripOff(country, [...next])
     return {
       places,
       on: (id) => onMap.get(id) ?? true,
@@ -120,7 +83,7 @@ export function TripProvider({
       },
       showAll: () => set(new Set()),
     }
-  }, [off, places, storageKey])
+  }, [off, places, country])
 
   return <TripContext value={trip}>{children}</TripContext>
 }

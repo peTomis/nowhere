@@ -1,67 +1,12 @@
 import { guideKit } from '@/components/guide/content'
-import type { GuideContent } from '@/lib/guide'
+import type { GuideContent } from '@/content/types'
+import { Ro, RoSection, structure } from '../structure'
+import { names } from './names'
 
 const dir = '/guides/romania'
 
-/** Index labels and dates, reused as the titles of the matching sections. */
-const headings = {
-  chapter1: 'La bandiera e lo stemma',
-  flag: 'Bandiera',
-  coatOfArms: 'Stemma',
-  chapter2: 'Dalla Dacia ai principati',
-  part1: 'Dalla Dacia agli Ungari',
-  part1Dates: 'I sec. a.C. – 895',
-  dacia: 'Dacia e Roma',
-  daciaDates: 'I sec. a.C. – 275',
-  peoples: 'Anni di passaggio',
-  peoplesDates: '290 – 895',
-  part2: 'I principati',
-  part2Dates: '1003 – 1395',
-  part3: 'Il basso Medioevo',
-  part3Dates: '1416 – 1538',
-  chapter3: 'L’era moderna',
-  part4: 'Sotto la sovranità ottomana',
-  part4Dates: '1541 – 1688',
-  part4TransilvaniaDates: '1608 – 1686',
-  part4ValacchiaDates: '1611 – 1688',
-  part4MoldaviaDates: '1606 – 1680',
-  part4DobrogeaDates: '1541 – 1688',
-  part5: 'Tra tre imperi',
-  part5Dates: '1688 – 1818',
-  part5TransilvaniaDates: '1688 – 1792',
-  part5ValacchiaDates: '1688 – 1746',
-  part5MoldaviaDates: '1709 – 1818',
-  part5DobrogeaDates: '1775 – 1812',
-}
-
-/** Region names: trip filter, index and region titles. */
-const regions = {
-  dobrogea: 'Dobrogea',
-  moldavia: 'Moldavia',
-  transilvania: 'Transilvania',
-  valacchia: 'Valacchia',
-}
-
-/**
- * Regions and cities of this guide. The values are stored in the reader's localStorage by the
- * trip filter: don't rename them once published.
- */
-enum Romania {
-  // regions
-  Dobrogea = 'dobrogea',
-  Moldavia = 'moldavia',
-  Transilvania = 'transilvania',
-  Valacchia = 'valacchia',
-  // cities
-  Sibiu = 'sibiu',
-  Brasov = 'brasov',
-  Sighisoara = 'sighisoara',
-  Bucarest = 'bucarest',
-  Iasi = 'iasi',
-  Suceava = 'suceava',
-  Constanta = 'constanta',
-  Tulcea = 'tulcea',
-}
+/** Images whose author and licence are not recorded yet: the validator lists them as warnings. */
+const creditToVerify = { unverified: 'author and licence to record' }
 
 const {
   Aside,
@@ -83,17 +28,24 @@ const {
   Text,
   Timeline,
   Unless,
-} = guideKit<Romania>()
+} = guideKit(structure, names)
 
-const { Dobrogea, Moldavia, Transilvania, Valacchia } = Romania
+const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
 
-export const romania: GuideContent<Romania> = {
-  cover: { src: `${dir}/cover.jpg`, alt: 'Il castello di Bran al tramonto' },
+export const romania: GuideContent<Ro, RoSection> = {
+  structure,
+  names,
+  cover: {
+    src: `${dir}/cover.jpg`,
+    alt: 'Il castello di Bran al tramonto',
+    credit: creditToVerify,
+  },
   /** Country name and nowhere logo on the cover. */
   coverInk: 'var(--color-text)',
   emblems: [
     {
       src: `${dir}/coat-of-arms.png`,
+      credit: creditToVerify,
       alt: 'Stemma della Romania',
       kind: 'coat-of-arms',
       width: 480,
@@ -101,122 +53,11 @@ export const romania: GuideContent<Romania> = {
     },
     {
       src: `${dir}/flag.svg`,
+      credit: creditToVerify,
       alt: 'Bandiera della Romania',
       kind: 'flag',
       width: 72,
       height: 48,
-    },
-  ],
-  places: [
-    {
-      id: Romania.Dobrogea,
-      name: regions.dobrogea,
-      cities: [],
-    },
-    {
-      id: Romania.Moldavia,
-      name: regions.moldavia,
-      cities: [],
-    },
-    {
-      id: Romania.Transilvania,
-      name: regions.transilvania,
-      cities: [],
-    },
-    { id: Romania.Valacchia, name: regions.valacchia, cities: [] },
-  ],
-  toc: [
-    { id: 'c-emblems', label: headings.chapter1, level: 1, on: 'always' },
-    { id: 'p-flag', label: headings.flag, level: 2, on: 'always' },
-    { id: 'p-coat-of-arms', label: headings.coatOfArms, level: 2, on: 'always' },
-    { id: 'c-1', label: headings.chapter2, level: 1, on: 'always' },
-    { id: 'p-1', label: headings.part1, level: 2, dates: headings.part1Dates, on: 'always' },
-    { id: 's-1-1', label: headings.dacia, level: 3, dates: headings.daciaDates, on: 'always' },
-    { id: 's-1-2', label: headings.peoples, level: 3, dates: headings.peoplesDates, on: 'always' },
-    {
-      id: 'p-2',
-      label: headings.part2,
-      level: 2,
-      dates: headings.part2Dates,
-      on: [Transilvania, Valacchia, Moldavia, Dobrogea],
-    },
-    {
-      id: 'p-3',
-      label: headings.part3,
-      level: 2,
-      dates: headings.part3Dates,
-      on: [Transilvania, Valacchia, Moldavia, Dobrogea],
-    },
-    { id: 'c-2', label: headings.chapter3, level: 1, on: 'always' },
-    {
-      id: 'p-4',
-      label: headings.part4,
-      level: 2,
-      dates: headings.part4Dates,
-      on: [Transilvania, Valacchia, Moldavia, Dobrogea],
-    },
-    {
-      id: 's-4-2',
-      label: regions.transilvania,
-      level: 3,
-      dates: headings.part4TransilvaniaDates,
-      on: [Transilvania],
-    },
-    {
-      id: 's-4-3',
-      label: regions.valacchia,
-      level: 3,
-      dates: headings.part4ValacchiaDates,
-      on: [Valacchia],
-    },
-    {
-      id: 's-4-4',
-      label: regions.moldavia,
-      level: 3,
-      dates: headings.part4MoldaviaDates,
-      on: [Moldavia],
-    },
-    {
-      id: 's-4-5',
-      label: regions.dobrogea,
-      level: 3,
-      dates: headings.part4DobrogeaDates,
-      on: [Dobrogea],
-    },
-    {
-      id: 'p-5',
-      label: headings.part5,
-      level: 2,
-      dates: headings.part5Dates,
-      on: [Transilvania, Valacchia, Moldavia, Dobrogea],
-    },
-    {
-      id: 's-5-2',
-      label: regions.transilvania,
-      level: 3,
-      dates: headings.part5TransilvaniaDates,
-      on: [Transilvania],
-    },
-    {
-      id: 's-5-3',
-      label: regions.valacchia,
-      level: 3,
-      dates: headings.part5ValacchiaDates,
-      on: [Valacchia],
-    },
-    {
-      id: 's-5-4',
-      label: regions.moldavia,
-      level: 3,
-      dates: headings.part5MoldaviaDates,
-      on: [Moldavia],
-    },
-    {
-      id: 's-5-5',
-      label: regions.dobrogea,
-      level: 3,
-      dates: headings.part5DobrogeaDates,
-      on: [Dobrogea],
     },
   ],
   body: <Body />,
@@ -226,16 +67,14 @@ function Body() {
   return (
     <>
       <Chapter
-        on="always"
-        id="c-emblems"
-        number={1}
-        title={headings.chapter1}
+        section={RoSection.Emblems}
         lede="I simboli che vedi su edifici pubblici, monete e passaporti."
       >
-        <Part on="always" id="p-flag" kicker="Parte I" title={headings.flag}>
+        <Part section={RoSection.Flag}>
           <Figure
             on="always"
             src={`${dir}/flag.svg`}
+            credit={creditToVerify}
             alt="Bandiera della Romania"
             caption="Il tricolore: blu, giallo e rosso, dall’asta."
             ratio="3/2"
@@ -268,10 +107,11 @@ function Body() {
           </Text>
         </Part>
 
-        <Part on="always" id="p-coat-of-arms" kicker="Parte II" title={headings.coatOfArms}>
+        <Part section={RoSection.CoatOfArms}>
           <Figure
             on="always"
             src={`${dir}/coat-of-arms.png`}
+            credit={creditToVerify}
             alt="Stemma della Romania"
             caption="L’aquila d’oro con lo scudo delle regioni storiche."
             ratio="480/695"
@@ -308,14 +148,7 @@ function Body() {
         </Part>
       </Chapter>
 
-      <Chapter
-        on="always"
-        id="c-1"
-        number={2}
-        title={headings.chapter2}
-        lede="Le regioni, i popoli e le date."
-        period="I sec. a.C. – 1538"
-      >
+      <Chapter section={RoSection.DaciaToPrincipalities} lede="Le regioni, i popoli e le date.">
         <Text on="always">
           La Romania di oggi riunisce tre principati storici {'('}
           <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>,{' '}
@@ -328,26 +161,14 @@ function Body() {
         <MapFigure
           on="always"
           src={`${dir}/historical-regions.webp`}
+          credit={creditToVerify}
           alt="Cartina della Romania con le regioni storiche"
           ratio="666/400"
           places={[]}
         />
 
-        <Part
-          on="always"
-          id="p-1"
-          kicker={`Parte I · ${headings.part1Dates}`}
-          title={headings.part1}
-        >
-          <Timeline
-            on="always"
-            id="s-1-1"
-            title={
-              <>
-                {headings.dacia} <Aside italic>{headings.daciaDates}</Aside>
-              </>
-            }
-          >
+        <Part section={RoSection.DaciaToHungarians}>
+          <Timeline section={RoSection.DaciaAndRome}>
             <Event on="always" title={<>Geti e Daci</>}>
               <Detail on="always">
                 Discendenti dai <N href="https://it.wikipedia.org/wiki/Traci">Traci</N>, popolazioni
@@ -355,7 +176,7 @@ function Body() {
                 si parla già nel VI secolo a.C., dei{' '}
                 <N href="https://it.wikipedia.org/wiki/Daci">Daci</N> solo dal I secolo a.C.
               </Detail>
-              <Detail on={[Valacchia, Transilvania]}>
+              <Detail on={[Wallachia, Transylvania]}>
                 Probabilmente lo stesso popolo ma in due zone geografiche diverse: i{' '}
                 <N href="https://it.wikipedia.org/wiki/Geti">Geti</N> tra il Danubio e il Mar Nero,
                 a contatto con i Greci, i <N href="https://it.wikipedia.org/wiki/Daci">Daci</N> a
@@ -371,7 +192,7 @@ function Body() {
                 <D>82–44 a.C.</D> <N href="https://it.wikipedia.org/wiki/Burebista">Burebista</N>,
                 re dei Geti e dei Daci, riunisce sotto il suo potere le tribù della regione.
               </Detail>
-              <Detail on={[Valacchia, Transilvania]}>
+              <Detail on={[Wallachia, Transylvania]}>
                 Oggi lo ricordano due statue: a{' '}
                 <N href="https://it.wikipedia.org/wiki/Călărași_(Romania)">Călărași</N>, capoluogo
                 dell’omonimo distretto, e a{' '}
@@ -432,23 +253,23 @@ function Body() {
           </Timeline>
 
           <Callout
-            on={[Transilvania]}
+            on={[Transylvania]}
             kind="debate"
             title="Dopo il ritiro romano, dove si continua a parlare latino?"
           >
             <Positions>
-              <Position on={[Transilvania]} title="Continuità a nord del Danubio">
+              <Position on={[Transylvania]} title="Continuità a nord del Danubio">
                 Formulata nel Settecento da Inocențiu Micu-Klein e dagli eruditi della Scuola
                 transilvana, sostenuta dalla maggior parte degli storici romeni: una popolazione
                 latinofona resta nell’ex provincia e lì si forma il romeno.
               </Position>
-              <Position on={[Transilvania]} title="Formazione a sud del Danubio">
+              <Position on={[Transylvania]} title="Formazione a sud del Danubio">
                 Formulata nel 1871 dall’austriaco <N>Eduard Robert Roesler</N> e ripresa poi da gran
                 parte della storiografia ungherese: il romeno si forma nelle province a sud del
                 Danubio e i valacchi arrivano a nord del Danubio più tardi, fra XII e XIII secolo.
               </Position>
             </Positions>
-            <Note on={[Transilvania]}>
+            <Note on={[Transylvania]}>
               Tre cose vanno tenute distinte. Gli scavi mostrano abitati nell’ex provincia anche
               dopo il 275, ma non dicono che lingua vi si parlasse. Fra il IV e il XII secolo le
               fonti scritte sulla regione sono quasi assenti. I valacchi a nord del Danubio
@@ -458,15 +279,7 @@ function Body() {
             </Note>
           </Callout>
 
-          <Timeline
-            on="always"
-            id="s-1-2"
-            title={
-              <>
-                {headings.peoples} <Aside italic>{headings.peoplesDates}</Aside>
-              </>
-            }
-          >
+          <Timeline section={RoSection.MigrationPeriod}>
             <Event
               on="always"
               date="290"
@@ -487,7 +300,7 @@ function Body() {
               }
             />
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="454"
               title={
                 <>
@@ -510,7 +323,7 @@ function Body() {
               }
             />
             <Event
-              on={[Dobrogea]}
+              on={[Dobruja]}
               date="681"
               title={
                 <>
@@ -521,7 +334,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Dobrogea]}>
+              <Detail on={[Dobruja]}>
                 <D>864–865</D> La Bulgaria si converte al{' '}
                 <N href="https://it.wikipedia.org/wiki/Cristianizzazione_della_Bulgaria">
                   cristianesimo
@@ -552,12 +365,12 @@ function Body() {
                 Spinti da Bulgari e Peceneghi, attraversano i Carpazi e occupano la pianura
                 pannonica.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Secondo le Gesta Hungarorum in Crișana vivono già i{' '}
                 <N href="https://it.wikipedia.org/wiki/Siculi_(Transilvania)">Siculi</N> (Székely),
                 che si uniscono a loro.
               </Detail>
-              <Source on={[Transilvania]}>
+              <Source on={[Transylvania]}>
                 La fonte principale di questo periodo è l’opera{' '}
                 <N work href="https://it.wikipedia.org/wiki/Gesta_Hungarorum">
                   Gesta Hungarorum
@@ -570,15 +383,10 @@ function Body() {
           </Timeline>
         </Part>
 
-        <Part
-          on={[Transilvania, Valacchia, Moldavia, Dobrogea]}
-          id="p-2"
-          kicker={`Parte II · ${headings.part2Dates}`}
-          title={headings.part2}
-        >
-          <Timeline on="always" id="s-2-1">
+        <Part section={RoSection.Principalities}>
+          <Timeline on="always">
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1003 ca."
               title={
                 <>
@@ -587,7 +395,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Intorno al 1003{' '}
                 <N href="https://it.wikipedia.org/wiki/Stefano_I_d%27Ungheria">
                   Stefano I d’Ungheria
@@ -595,7 +403,7 @@ function Body() {
                 porta le sue truppe in Transilvania. Il controllo del regno sulla regione si
                 consolida nei due secoli successivi.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Dalla fine del XII secolo è governata da un{' '}
                 <N href="https://it.wikipedia.org/wiki/Voivodato">voivoda</N>. Il{' '}
                 <N href="https://it.wikipedia.org/wiki/Banato">Banato</N> e la{' '}
@@ -604,7 +412,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1150"
               title={
                 <>
@@ -613,7 +421,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il re d’Ungheria invita coloni tedeschi, fiamminghi e valloni, poi chiamati{' '}
                 <N href="https://it.wikipedia.org/wiki/Sassoni">sassoni</N>, a popolare e difendere
                 la frontiera orientale. Nel 1224 il <N work>Diploma Andreanum</N> garantisce loro
@@ -621,7 +429,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1241"
               title={
                 <>
@@ -633,19 +441,19 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 I mongoli distruggono Rodna e saccheggiano Bistrița, Cluj, Oradea, Alba Iulia e
                 Sibiu. Dopo la ritirata i re spingono nobili e città a costruire fortificazioni in
                 pietra.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Castelli, mura cittadine e chiese fortificate si costruiscono e si ampliano in più
                 fasi, dal XIII al XVI secolo. Sette villaggi con chiese fortificate, fra cui Biertan
                 e Viscri, sono patrimonio dell’UNESCO.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1310 ca."
               title={
                 <>
@@ -654,13 +462,13 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Istituito da <N href="https://it.wikipedia.org/wiki/Basarab_I">Basarab I</N>.
               </Detail>
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Nel 1330 sconfigge Carlo I d’Ungheria a Posada e rende la Valacchia indipendente.
               </Detail>
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 <D>1386</D> Sale al trono{' '}
                 <N href="https://it.wikipedia.org/wiki/Mircea_il_Vecchio">Mircea il Vecchio</N>. Da
                 lui discendono i <N href="https://it.wikipedia.org/wiki/Drăculești">Drăculești</N>,
@@ -686,7 +494,7 @@ function Body() {
                 comandante di un’unità militare; poi titolo del sovrano.
               </Glossary>
             </Event>
-            <Context on={[Valacchia, Moldavia]} period="Dal 1385" title="La schiavitù dei rom">
+            <Context on={[Wallachia, Moldavia]} period="Dal 1385" title="La schiavitù dei rom">
               Il primo documento che nomina i{' '}
               <N href="https://it.wikipedia.org/wiki/Rom_(popolo)">rom</N> in Valacchia è del 1385:
               il principe <N href="https://it.wikipedia.org/wiki/Dan_I_di_Valacchia">Dan I</N>{' '}
@@ -696,8 +504,8 @@ function Body() {
               riforme del Settecento sulla servitù dei contadini non li riguardano: la schiavitù dei
               rom è ancora in vigore nel 1818 e viene abolita solo nel 1855–1856.
             </Context>
-            <Event on={[Dobrogea]} date="XIV sec." title="Nasce la Dobrogea">
-              <Detail on={[Dobrogea]}>
+            <Event on={[Dobruja]} date="XIV sec." title="Nasce la Dobrogea">
+              <Detail on={[Dobruja]}>
                 Dopo il dominio mongolo, nella regione tra il Danubio e il Mar Nero si forma un
                 piccolo principato legato a Bisanzio. Il suo signore Dobrotitsa le dà il nome. Nel
                 1390 la conquista{' '}
@@ -708,15 +516,10 @@ function Body() {
           </Timeline>
         </Part>
 
-        <Part
-          on={[Transilvania, Valacchia, Moldavia, Dobrogea]}
-          id="p-3"
-          kicker={`Parte III · ${headings.part3Dates}`}
-          title={headings.part3}
-        >
-          <Timeline on="always" id="s-3-1">
-            <Event on={[Dobrogea]} date="1416–1420" title="La Dobrogea diventa ottomana">
-              <Detail on={[Dobrogea]}>
+        <Part section={RoSection.LateMiddleAges}>
+          <Timeline on="always">
+            <Event on={[Dobruja]} date="1416–1420" title="La Dobrogea diventa ottomana">
+              <Detail on={[Dobruja]}>
                 Dopo un periodo sotto{' '}
                 <N href="https://it.wikipedia.org/wiki/Mircea_il_Vecchio">Mircea il Vecchio</N>, la
                 regione passa agli ottomani: gli storici indicano il 1416, il 1417 o il 1420. Le
@@ -724,17 +527,17 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Kilija">Chilia</N> (oggi Kilija, in Ucraina),
                 restano a Valacchia e Moldavia fino al 1484.
               </Detail>
-              <Detail on={[Dobrogea]}>
+              <Detail on={[Dobruja]}>
                 A differenza di Valacchia e Moldavia non diventa uno Stato vassallo ma una provincia
                 ottomana, e lo resterà fino al 1878.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1417"
               title="La Valacchia diventa vassalla degli ottomani"
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 <N href="https://it.wikipedia.org/wiki/Mircea_il_Vecchio">Mircea il Vecchio</N>{' '}
                 accetta di pagare un tributo, ma la{' '}
                 <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> mantiene la propria
@@ -742,11 +545,11 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1437"
               title="Nobiltà, siculi e sassoni stringono un’alleanza"
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Durante la{' '}
                 <N href="https://it.wikipedia.org/wiki/Rivolta_di_Bobâlna">rivolta di Bobâlna</N>,
                 la nobiltà, i siculi e i sassoni di{' '}
@@ -758,7 +561,7 @@ function Body() {
                 </N>
                 .
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Le tre <i>nationes</i> non sono popoli in senso moderno, ma corpi politici definiti
                 da privilegi. Singole famiglie di origine romena possono entrare nella nobiltà, e
                 spesso ne adottano lingua e confessione. La popolazione romena ortodossa resta però
@@ -778,7 +581,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1512–1521"
               title={
                 <>
@@ -786,14 +589,14 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 <N href="https://it.wikipedia.org/wiki/Basarab_V_Neagoe">Neagoe Basarab</N> scrive
                 in slavone gli <N work>Insegnamenti al figlio Teodosio</N>, una delle opere più
                 antiche della cultura romena. Nel 1517 fa consacrare la chiesa di Curtea de Argeș.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1514" title="La ribellione di György Dózsa">
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1514" title="La ribellione di György Dózsa">
+              <Detail on={[Transylvania]}>
                 I contadini, guidati da{' '}
                 <N href="https://it.wikipedia.org/wiki/György_Dózsa">György Dózsa</N>, si ribellano
                 e vengono sconfitti a{' '}
@@ -801,26 +604,26 @@ function Body() {
                 durissima: la Dieta del 1514 vincola per sempre i contadini alla terra.
               </Detail>
             </Event>
-            <Event on={[Valacchia, Transilvania]} date="1521" title="La lettera di Neacșu">
-              <Detail on={[Valacchia, Transilvania]}>
+            <Event on={[Wallachia, Transylvania]} date="1521" title="La lettera di Neacșu">
+              <Detail on={[Wallachia, Transylvania]}>
                 Da <N href="https://it.wikipedia.org/wiki/Câmpulung">Câmpulung</N>, in Valacchia, il
                 mercante Neacșu avverte Hans Benkner, giudice di{' '}
                 <N href="https://it.wikipedia.org/wiki/Brașov">Brașov</N>, dei movimenti delle
                 truppe ottomane sul Danubio. Le due città commerciano attraverso i Carpazi, e un
                 attacco minaccerebbe entrambe.
               </Detail>
-              <Detail on={[Valacchia, Transilvania]}>
+              <Detail on={[Wallachia, Transylvania]}>
                 Neacșu scrive in romeno con l’alfabeto cirillico, con formule di apertura e chiusura
                 in slavone. È il più antico documento in romeno giunto fino a noi di cui si conosca
                 la data.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1522–1529"
               title="Radu de la Afumați resiste agli ottomani"
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 <N href="https://it.wikipedia.org/wiki/Radu_de_la_Afumați">Radu de la Afumați</N>{' '}
                 combatte gli ottomani ma, dopo una ventina di battaglie, viene sconfitto e deve
                 accettarne la sovranità e sopportare un aumento dei tributi.
@@ -840,8 +643,8 @@ function Body() {
                 .
               </Detail>
             </Event>
-            <Event on={[Moldavia, Transilvania]} date="1529" title="Petru Rareș in Transilvania">
-              <Detail on={[Moldavia, Transilvania]}>
+            <Event on={[Moldavia, Transylvania]} date="1529" title="Petru Rareș in Transilvania">
+              <Detail on={[Moldavia, Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Petru_Rareș">Petru Rareș</N> interviene nella
                 lotta per la corona del Regno d’Ungheria, invade la{' '}
                 <N href="https://it.wikipedia.org/wiki/Terra_dei_Siculi">Terra dei Siculi</N> e
@@ -851,8 +654,8 @@ function Body() {
                 diventa vassallo del sultano, ma il regno resta suo.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1538" title="Trattato di Gran Varadino">
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1538" title="Trattato di Gran Varadino">
+              <Detail on={[Transylvania]}>
                 Con il{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Gran_Varadino">
                   trattato di Gran Varadino
@@ -868,32 +671,23 @@ function Body() {
       </Chapter>
 
       <Chapter
-        on="always"
-        id="c-2"
-        number={3}
-        title={headings.chapter3}
+        section={RoSection.EarlyModern}
         lede="Principati e province tra ottomani, Asburgo e Russia."
-        period="1541 – 1818"
       >
-        <Part
-          on={[Transilvania, Valacchia, Moldavia, Dobrogea]}
-          id="p-4"
-          kicker={`Parte I · ${headings.part4Dates}`}
-          title={headings.part4}
-        >
-          <Text on={[Transilvania, Valacchia, Moldavia, Dobrogea]}>
+        <Part section={RoSection.OttomanSuzerainty}>
+          <Text on={[Transylvania, Wallachia, Moldavia, Dobruja]}>
             Dal Cinquecento le quattro regioni dipendono dalla Porta in modi diversi. La Dobrogea è
             una provincia amministrata direttamente dagli ottomani. Valacchia e Moldavia sono
             principati tributari, con principi e istituzioni proprie. In Transilvania, dopo la crisi
             del Regno d’Ungheria, nasce un principato tributario con una propria Dieta.
           </Text>
-          <Timeline on="always" id="s-4-1">
+          <Timeline on="always">
             <Event
-              on={[Moldavia, Transilvania]}
+              on={[Moldavia, Transylvania]}
               date="1541"
               title="La caduta di Buda e il ritorno di Petru Rareș"
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Con la caduta di <N href="https://it.wikipedia.org/wiki/Buda">Buda</N> (oggi parte
                 di Budapest), gli ottomani di{' '}
                 <N href="https://it.wikipedia.org/wiki/Solimano_il_Magnifico">
@@ -904,7 +698,7 @@ function Body() {
                 cambio di un tributo annuo, il sultano affida le terre a est del Tibisco alla regina
                 Isabella e a suo figlio.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il 18 ottobre, alla <N>Dieta di Debrecen</N> (oggi in Ungheria), le regioni
                 orientali del regno, compresa la{' '}
                 <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N>, giurano
@@ -927,8 +721,8 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Boiari">boiardi</N>.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1545" title="Il primo principe nominato dal sultano">
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1545" title="Il primo principe nominato dal sultano">
+              <Detail on={[Wallachia]}>
                 <N href="https://it.wikipedia.org/wiki/Mircea_V_il_Pastore">Mircea Ciobanul</N>{' '}
                 diventa il primo principe di{' '}
                 <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> insediato dal
@@ -936,7 +730,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1568"
               title={
                 <>
@@ -944,14 +738,14 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 La Dieta stabilisce che i predicatori possono annunciare il Vangelo secondo la
                 propria interpretazione. Ogni comunità può tenere il predicatore di cui accetta
                 l’insegnamento, e nessuno può essere costretto o oltraggiato per la sua religione.
                 Non è una libertà religiosa individuale in senso moderno: la delibera tutela
                 predicatori e comunità.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il sistema delle quattro confessioni riconosciute,{' '}
                 <N href="https://it.wikipedia.org/wiki/Chiesa_cattolica">cattolica</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Luteranesimo">luterana</N>,{' '}
@@ -963,7 +757,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1570"
               title={
                 <>
@@ -971,7 +765,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Giovanni_II_d'Ungheria">János Zsigmond</N>{' '}
                 rinuncia al titolo di re di Ungheria. Viene formalizzato il{' '}
                 <N href="https://it.wikipedia.org/wiki/Principato_di_Transilvania">
@@ -993,22 +787,22 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania, Valacchia, Moldavia]}
+              on={[Transylvania, Wallachia, Moldavia]}
               date="1594–1595"
               title="Rivolta anti-ottomana"
             >
-              <Detail on={[Transilvania, Valacchia, Moldavia]}>
+              <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N> e{' '}
                 <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> si alleano contro i{' '}
                 <N href="https://it.wikipedia.org/wiki/Impero_ottomano">turchi</N>.
               </Detail>
-              <Detail on={[Transilvania, Valacchia, Moldavia]}>
+              <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 Nell’agosto 1595 Michele il Coraggioso batte gli ottomani a Călugăreni.
               </Detail>
             </Event>
             <Event
-              on={[Transilvania, Valacchia, Moldavia]}
+              on={[Transylvania, Wallachia, Moldavia]}
               date="1599–1600"
               title={
                 <>
@@ -1018,7 +812,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania, Valacchia, Moldavia]}>
+              <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 Il principe di <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>{' '}
                 conquista la <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N>{' '}
                 nell’ottobre 1599 e la{' '}
@@ -1026,18 +820,18 @@ function Body() {
                 nella primavera del 1600. Per pochi mesi del 1600 i tre principati sono sotto un
                 unico sovrano, ma ciascuno conserva le proprie istituzioni.
               </Detail>
-              <Detail on={[Transilvania, Valacchia, Moldavia]}>
+              <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 Nel settembre 1600 la nobiltà transilvana, con le truppe imperiali di{' '}
                 <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N>, lo
                 sconfigge a Mirăslău. Michele perde la Transilvania.
               </Detail>
             </Event>
             <Event
-              on={[Transilvania, Valacchia, Moldavia]}
+              on={[Transylvania, Wallachia, Moldavia]}
               date="1601"
               title="Morte di Michele il Coraggioso"
             >
-              <Detail on={[Transilvania, Valacchia, Moldavia]}>
+              <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 {/* Days omitted on purpose: sources mix Julian and Gregorian dates (murder on 9 or 19 August). */}
                 In agosto, insieme al generale imperiale{' '}
                 <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N>,{' '}
@@ -1053,7 +847,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Valacchia, Transilvania]}
+              on={[Wallachia, Transylvania]}
               date="1602"
               title={
                 <>
@@ -1061,7 +855,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia, Transilvania]}>
+              <Detail on={[Wallachia, Transylvania]}>
                 Con l’appoggio di{' '}
                 <N href="https://it.wikipedia.org/wiki/Rodolfo_II_d%27Asburgo">Rodolfo II</N> sale
                 al trono di <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>. L’anno
@@ -1071,7 +865,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1604"
               title={
                 <>
@@ -1080,7 +874,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il comandante imperiale{' '}
                 <N href="https://it.wikipedia.org/wiki/Giovan_Giacomo_Barbiano_di_Belgioioso">
                   Giovan Giacomo Barbiano di Belgioioso
@@ -1090,8 +884,8 @@ function Body() {
                 5.000 <N href="https://it.wikipedia.org/wiki/Aiduchi">aiduchi</N> e si ribella.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1605–1606" title="Trattato di Vienna">
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1605–1606" title="Trattato di Vienna">
+              <Detail on={[Transylvania]}>
                 Il 14 settembre 1605 le{' '}
                 <N href="https://it.wikipedia.org/wiki/Unio_Trium_Nationum">Tre Nazioni</N> giurano
                 fedeltà a <N href="https://it.wikipedia.org/wiki/István_Bocskai">Bocskai</N>,
@@ -1108,7 +902,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1606"
               title={
                 <>
@@ -1118,7 +912,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Finisce la{' '}
                 <N href="https://it.wikipedia.org/wiki/Lunga_guerra_turca">Lunga guerra</N>.{' '}
                 <N href="https://it.wikipedia.org/wiki/Rodolfo_II_d%27Asburgo">Rodolfo II</N>{' '}
@@ -1127,7 +921,7 @@ function Body() {
                 il 29 dicembre.
               </Detail>
             </Event>
-            <Context on={[Transilvania]} period="1593–1606" title="La catastrofe demografica">
+            <Context on={[Transylvania]} period="1593–1606" title="La catastrofe demografica">
               La <N href="https://it.wikipedia.org/wiki/Lunga_guerra_turca">Lunga guerra</N> spopola
               la Transilvania. In una lettera del 1603{' '}
               <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N> descrive il
@@ -1135,17 +929,9 @@ function Body() {
             </Context>
           </Timeline>
 
-          <Timeline
-            on={[Transilvania]}
-            id="s-4-2"
-            title={
-              <>
-                {regions.transilvania} <Aside italic>{headings.part4TransilvaniaDates}</Aside>
-              </>
-            }
-          >
+          <Timeline section={RoSection.OttomanSuzeraintyTransylvania}>
             <Context
-              on={[Transilvania]}
+              on={[Transylvania]}
               period="XVII secolo"
               title="Piccola era glaciale ed epidemie"
             >
@@ -1156,7 +942,7 @@ function Body() {
               riprese.
             </Context>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1608–1613"
               title={
                 <>
@@ -1164,7 +950,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Toglie il trono a{' '}
                 <N href="https://ro.wikipedia.org/wiki/Sigismund_Rákóczi">Zsigmond Rákóczi</N> con
                 l’aiuto degli <N href="https://it.wikipedia.org/wiki/Aiduchi">aiduchi</N>. Nel
@@ -1173,7 +959,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> senza il consenso
                 del sultano.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Brașov">Brașov</N> gli resiste sotto la guida
                 del magistrato <N>Michael Weiss</N>. Il 16 ottobre 1612 l’esercito della città è
                 sconfitto a <N href="https://it.wikipedia.org/wiki/Feldioara">Feldioara</N>, dove
@@ -1182,7 +968,7 @@ function Body() {
                 Báthory.
               </Detail>
             </Event>
-            <Context on={[Transilvania]} period="1611–1700" title="Nuove colture">
+            <Context on={[Transylvania]} period="1611–1700" title="Nuove colture">
               Il <N href="https://it.wikipedia.org/wiki/Mais">mais</N> arriva dalle Americhe:
               compare per la prima volta nelle fonti nel 1611 e diventa un alimento popolare. Il{' '}
               <N href="https://it.wikipedia.org/wiki/Tabacco">tabacco</N> si coltiva dalla seconda
@@ -1191,7 +977,7 @@ function Body() {
               montuose verso la fine del secolo.
             </Context>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1613"
               title={
                 <>
@@ -1199,7 +985,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Arriva con truppe ottomane, valacche e{' '}
                 <N href="https://it.wikipedia.org/wiki/Tatari_di_Crimea">tatare</N>. Il 23 ottobre
                 la Dieta riunita a <N href="https://it.wikipedia.org/wiki/Cluj-Napoca">Cluj</N> lo
@@ -1207,14 +993,14 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Mercantilismo">mercantilismo</N>, crea
                 monopoli di Stato e rilancia le miniere.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <D>1622</D> Fonda ad{' '}
                 <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N>, sua capitale, un
                 collegio riformato di livello superiore. L’edificio, poi trasformato in caserma,
                 sorge ancora nella cittadella.
               </Detail>
             </Event>
-            <Context on={[Transilvania]} period="Dal 1618" title="La rinascita mineraria">
+            <Context on={[Transylvania]} period="Dal 1618" title="La rinascita mineraria">
               La Dieta del 1618 permette a minatori locali e stranieri di aprire liberamente nuove
               miniere, esentandoli dalle tasse. Oltre a oro, argento e ferro, ad{' '}
               <N href="https://it.wikipedia.org/wiki/Abrud">Abrud</N> e{' '}
@@ -1223,7 +1009,7 @@ function Body() {
               fonte importante di entrate per lo Stato.
             </Context>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1619–1626"
               title={
                 <>
@@ -1233,7 +1019,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Gabriele_Bethlen">Bethlen</N> si allea con l’
                 <N href="https://it.wikipedia.org/wiki/Unione_evangelica">Unione evangelica</N> e
                 invade per tre volte l’
@@ -1243,7 +1029,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1630"
               title={
                 <>
@@ -1251,7 +1037,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Vince la contesa per la successione contro la vedova di Bethlen,{' '}
                 <N href="https://it.wikipedia.org/wiki/Caterina_di_Brandeburgo">
                   Caterina di Brandeburgo
@@ -1261,7 +1047,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1648"
               title={
                 <>
@@ -1269,7 +1055,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il trattato di Osnabrück include il principe di{' '}
                 <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N> fra i soggetti
                 compresi nella pace, sia fra gli alleati dell’imperatore sia fra quelli della
@@ -1278,7 +1064,7 @@ function Body() {
               </Detail>
             </Event>
             <Context
-              on={[Transilvania]}
+              on={[Transylvania]}
               period="1613–1648"
               title="Ricostruzione e nuovo volto delle città"
             >
@@ -1294,7 +1080,7 @@ function Body() {
               la popolazione si sta riprendendo.
             </Context>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1653"
               title={
                 <>
@@ -1304,14 +1090,14 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Giorgio_II_Rákóczi">György II Rákóczi</N> fa
                 pubblicare il codice delle leggi del principato. Impone il ritorno dei contadini
                 fuggiaschi nelle tenute come servi e vieta ai romeni di portare armi.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1657" title={<>Disfatta in Polonia</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1657" title={<>Disfatta in Polonia</>}>
+              <Detail on={[Transylvania]}>
                 <N href="https://it.wikipedia.org/wiki/Giorgio_II_Rákóczi">György II Rákóczi</N>{' '}
                 invade la{' '}
                 <N href="https://it.wikipedia.org/wiki/Confederazione_polacco-lituana">Polonia</N>{' '}
@@ -1324,8 +1110,8 @@ function Body() {
                 fa deporre.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1658–1662" title={<>Anni di guerra civile</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1658–1662" title={<>Anni di guerra civile</>}>
+              <Detail on={[Transylvania]}>
                 Principi filo-ottomani e anti-ottomani si scontrano. Gli ottomani conquistano{' '}
                 <N href="https://it.wikipedia.org/wiki/Oradea">Oradea</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Ineu">Ineu</N>,{' '}
@@ -1337,11 +1123,11 @@ function Body() {
                 1662.
               </Detail>
             </Event>
-            <Unless on={[Dobrogea]}>
-              <MocaniContext on={[Transilvania]} />
+            <Unless on={[Dobruja]}>
+              <MocaniContext on={[Transylvania]} />
             </Unless>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1661–1690"
               title={
                 <>
@@ -1349,15 +1135,15 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il principe è scelto su richiesta degli ottomani. È il primo a invitare il vescovo
                 ortodosso alla Dieta e nel 1669 fa pubblicare le <N work>Compilatae</N>. Nel 1683 è
                 costretto a marciare con gli ottomani su{' '}
                 <N href="https://it.wikipedia.org/wiki/Battaglia_di_Vienna">Vienna</N>.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1685–1686" title={<>Verso gli Asburgo</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1685–1686" title={<>Verso gli Asburgo</>}>
+              <Detail on={[Transylvania]}>
                 Con il trattato di <N href="https://it.wikipedia.org/wiki/Cârțișoara">Cârțișoara</N>{' '}
                 la <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N> aderisce in
                 segreto alla{' '}
@@ -1369,18 +1155,10 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Valacchia]}
-            id="s-4-3"
-            title={
-              <>
-                {regions.valacchia} <Aside italic>{headings.part4ValacchiaDates}</Aside>
-              </>
-            }
-          >
-            <BoyarsContext on={[Valacchia]} />
+          <Timeline section={RoSection.OttomanSuzeraintyWallachia}>
+            <BoyarsContext on={[Wallachia]} />
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1611"
               title={
                 <>
@@ -1389,7 +1167,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 La <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> insedia Radu
                 Mihnea al posto dell’anti-ottomano{' '}
                 <N href="https://ro.wikipedia.org/wiki/Radu_Șerban">Radu Șerban</N>. Comincia
@@ -1398,15 +1176,15 @@ function Body() {
                 il rango di <N href="https://it.wikipedia.org/wiki/Boiari">boiardi</N>.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1618" title={<>Rivolta anti-greca</>}>
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1618" title={<>Rivolta anti-greca</>}>
+              <Detail on={[Wallachia]}>
                 I <N href="https://it.wikipedia.org/wiki/Boiari">boiardi</N> guidati da{' '}
                 <N>Lupu Mehedițeanu</N> uccidono possidenti e mercanti greci, protetti dal principe{' '}
                 <N href="https://ro.wikipedia.org/wiki/Alexandru_Iliaș">Alexandru Iliaș</N>.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1621" title="Radu Mihnea media fra ottomani e polacchi">
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1621" title="Radu Mihnea media fra ottomani e polacchi">
+              <Detail on={[Wallachia]}>
                 <N href="https://it.wikipedia.org/wiki/Radu_Mihnea">Radu Mihnea</N>, di nuovo
                 principe di Valacchia dal 1620, fa da mediatore nella pace tra ottomani e{' '}
                 <N href="https://it.wikipedia.org/wiki/Confederazione_polacco-lituana">polacchi</N>{' '}
@@ -1417,16 +1195,16 @@ function Body() {
                 (oggi Chotyn, in Ucraina).
               </Detail>
             </Event>
-            <RaduMihneaEvent on={[Valacchia]} />
-            <Event on={[Valacchia]} date="1631" title={<>Espulsione dei greci</>}>
-              <Detail on={[Valacchia]}>
+            <RaduMihneaEvent on={[Wallachia]} />
+            <Event on={[Wallachia]} date="1631" title={<>Espulsione dei greci</>}>
+              <Detail on={[Wallachia]}>
                 Il 19 luglio i boiardi ribelli costringono{' '}
                 <N href="https://ro.wikipedia.org/wiki/Leon_Tomșa">Leon Tomșa</N> a cacciare i greci
                 senza moglie locale né terre, e a esentare i boiardi dalle tasse.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1632–1654"
               title={
                 <>
@@ -1434,7 +1212,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Sconfigge <N href="https://ro.wikipedia.org/wiki/Radu_Iliaș">Radu Iliaș</N> a{' '}
                 <N href="https://ro.wikipedia.org/wiki/Mănăstirea_Plumbuita">Plumbuita</N> e
                 triplica il tributo, da 45.000 a 135.000{' '}
@@ -1444,7 +1222,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1655"
               title={
                 <>
@@ -1452,7 +1230,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 I mercenari congedati da{' '}
                 <N href="https://ro.wikipedia.org/wiki/Constantin_Șerban">Constantin Șerban</N> si
                 uniscono ai servi ribelli. Vengono sconfitti sul{' '}
@@ -1460,16 +1238,16 @@ function Body() {
                 dalle truppe transilvane e moldave.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1659" title={<>Battaglia di Frătești</>}>
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1659" title={<>Battaglia di Frătești</>}>
+              <Detail on={[Wallachia]}>
                 Il 23 novembre{' '}
                 <N href="https://ro.wikipedia.org/wiki/Mihnea_al_III-lea">Mihnea III</N> batte gli
                 ottomani, ma un’invasione turco-tatara lo costringe a fuggire in{' '}
                 <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N>.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1659–1660" title="Bucarest diventa la capitale">
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1659–1660" title="Bucarest diventa la capitale">
+              <Detail on={[Wallachia]}>
                 Fino ad allora i principi risiedono ora a{' '}
                 <N href="https://it.wikipedia.org/wiki/Târgoviște">Târgoviște</N>, ora a{' '}
                 <N href="https://it.wikipedia.org/wiki/Bucarest">Bucarest</N>, che si trova sulla
@@ -1481,7 +1259,7 @@ function Body() {
               </Detail>
             </Event>
             <Context
-              on={[Valacchia]}
+              on={[Wallachia]}
               period="Metà XVII secolo"
               title="Caravanserragli e ville nobiliari"
             >
@@ -1495,7 +1273,7 @@ function Body() {
               ricchezza dell’alta nobiltà.
             </Context>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1673"
               title={
                 <>
@@ -1506,7 +1284,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Il principe valacco{' '}
                 <N href="https://ro.wikipedia.org/wiki/Grigore_I_Ghica">Grigore I Ghica</N> viene
                 catturato dai polacchi e gli ottomani sono sconfitti l’11 novembre. La{' '}
@@ -1514,7 +1292,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1678–1688"
               title={
                 <>
@@ -1522,7 +1300,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Fa giustiziare molti Băleni, fonda una scuola superiore, costruisce strade e ponti e
                 porta il <N href="https://it.wikipedia.org/wiki/Mais">mais</N> in Valacchia. Offre a{' '}
                 <N href="https://it.wikipedia.org/wiki/Leopoldo_I_d%27Asburgo">Leopoldo I</N> la
@@ -1533,16 +1311,8 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Moldavia]}
-            id="s-4-4"
-            title={
-              <>
-                {regions.moldavia} <Aside italic>{headings.part4MoldaviaDates}</Aside>
-              </>
-            }
-          >
-            <Unless on={[Valacchia]}>
+          <Timeline section={RoSection.OttomanSuzeraintyMoldavia}>
+            <Unless on={[Wallachia]}>
               <BoyarsContext on={[Moldavia]} />
             </Unless>
             <Event
@@ -1597,7 +1367,7 @@ function Body() {
                 boiardi lo assassinano.
               </Detail>
             </Event>
-            <Unless on={[Valacchia]}>
+            <Unless on={[Wallachia]}>
               <RaduMihneaEvent on={[Moldavia]} />
             </Unless>
             <Event
@@ -1672,16 +1442,8 @@ function Body() {
             </Context>
           </Timeline>
 
-          <Timeline
-            on={[Dobrogea]}
-            id="s-4-5"
-            title={
-              <>
-                {regions.dobrogea} <Aside italic>{headings.part4DobrogeaDates}</Aside>
-              </>
-            }
-          >
-            <Context on={[Dobrogea]} period="XVI–XVII secolo" title="Una provincia di frontiera">
+          <Timeline section={RoSection.OttomanSuzeraintyDobruja}>
+            <Context on={[Dobruja]} period="XVI–XVII secolo" title="Una provincia di frontiera">
               La regione fa parte del{' '}
               <N href="https://it.wikipedia.org/wiki/Sangiaccato">sangiaccato</N> di{' '}
               <N href="https://it.wikipedia.org/wiki/Silistra">Silistra</N> (oggi in Bulgaria), dove
@@ -1693,8 +1455,8 @@ function Body() {
               <N href="https://it.wikipedia.org/wiki/Babadag">Babadag</N>. Per rafforzarla
               militarmente i sultani vi insediano tatari, con terre in cambio del servizio militare.
             </Context>
-            <MocaniContext on={[Dobrogea]} />
-            <Context on={[Dobrogea]} period="XVII–XVIII secolo" title="I lipoveni">
+            <MocaniContext on={[Dobruja]} />
+            <Context on={[Dobruja]} period="XVII–XVIII secolo" title="I lipoveni">
               Nel delta e nelle attuali province di Tulcea e Constanța si stabiliscono i{' '}
               <N href="https://it.wikipedia.org/wiki/Lipoveni">lipoveni</N>, Vecchi credenti russi
               in fuga dalle persecuzioni. Le fonti collocano il loro arrivo tra la seconda metà del
@@ -1703,15 +1465,10 @@ function Body() {
           </Timeline>
         </Part>
 
-        <Part
-          on={[Transilvania, Valacchia, Moldavia, Dobrogea]}
-          id="p-5"
-          kicker={`Parte II · ${headings.part5Dates}`}
-          title={headings.part5}
-        >
-          <Timeline on="always" id="s-5-1">
+        <Part section={RoSection.ThreeEmpires}>
+          <Timeline on="always">
             <Event
-              on={[Moldavia, Valacchia]}
+              on={[Moldavia, Wallachia]}
               date="1711 e 1716"
               title={
                 <>
@@ -1719,7 +1476,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 Dopo la <N href="https://it.wikipedia.org/wiki/Pace_del_Prut">pace del Prut</N> la{' '}
                 <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> non lascia più
                 scegliere i principi ai boiardi:{' '}
@@ -1730,7 +1487,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Fanar">Fanar</N>. Il sistema dura fino al
                 1821.
               </Detail>
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 La nomina dipende dalle somme pagate a Istanbul, e ogni nuovo principe impone nuove
                 tasse per recuperarle. La storiografia romena ha descritto a lungo questo periodo
                 come un’epoca di oppressione fiscale. Meno spesso si ricordano le scuole finanziate
@@ -1742,7 +1499,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Moldavia, Valacchia]}
+              on={[Moldavia, Wallachia]}
               date="1768–1774"
               title={
                 <>
@@ -1752,7 +1509,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 La <N href="https://it.wikipedia.org/wiki/Impero_russo">Russia</N> occupa{' '}
                 <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N> e
                 Valacchia per tutta la guerra e conquista{' '}
@@ -1767,7 +1524,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Bug_Meridionale">Bug</N>. I principati
                 restano sotto sovranità ottomana.
               </Detail>
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 Il trattato permette ai principi di tenere propri rappresentanti a Istanbul e al
                 ministro russo di intervenire presso la Porta a favore dei principati. Più tardi la
                 Russia di{' '}
@@ -1795,11 +1552,11 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Moldavia, Valacchia]}
+              on={[Moldavia, Wallachia]}
               date="1806–1812"
               title={<>Occupazione russa e pace di Bucarest</>}
             >
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 Nell’agosto 1806, mentre la Francia di{' '}
                 <N href="https://it.wikipedia.org/wiki/Napoleone_Bonaparte">Napoleone</N> e la
                 Russia si contendono l’influenza a Istanbul, la{' '}
@@ -1811,7 +1568,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Alessandro_I_di_Russia">Alessandro I</N>{' '}
                 occupa i due principati.
               </Detail>
-              <Detail on={[Moldavia, Valacchia]}>
+              <Detail on={[Moldavia, Wallachia]}>
                 Dal marzo 1811{' '}
                 <N href="https://it.wikipedia.org/wiki/Michail_Illarionovič_Kutuzov">Kutuzov</N> è
                 comandante in capo dell’armata del Danubio e conduce le trattative. La{' '}
@@ -1828,17 +1585,9 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Transilvania]}
-            id="s-5-2"
-            title={
-              <>
-                {regions.transilvania} <Aside italic>{headings.part5TransilvaniaDates}</Aside>
-              </>
-            }
-          >
-            <Event on={[Transilvania]} date="1688–1699" title={<>Dagli ottomani agli Asburgo</>}>
-              <Detail on={[Transilvania]}>
+          <Timeline section={RoSection.ThreeEmpiresTransylvania}>
+            <Event on={[Transylvania]} date="1688–1699" title={<>Dagli ottomani agli Asburgo</>}>
+              <Detail on={[Transylvania]}>
                 Nel febbraio 1688 il generale imperiale{' '}
                 <N href="https://it.wikipedia.org/wiki/Antonio_Carafa_(generale)">Antonio Carafa</N>{' '}
                 costringe le{' '}
@@ -1851,22 +1600,22 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Baia_Mare">Baia Mare</N>. Nello stesso anno
                 la Dieta rinuncia alla sovranità ottomana e accetta la protezione austriaca.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 <D>1691</D> Con il <N work>Diploma Leopoldinum</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Leopoldo_I_d%27Asburgo">Leopoldo I</N>{' '}
                 conferma le libertà delle Tre Nazioni e delle quattro confessioni riconosciute. Gli
                 ortodossi romeni restano fuori da entrambi i sistemi di privilegio. Il governo passa
                 a un governatorato con sede a Sibiu, sotto il controllo di Vienna.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Nel 1699, con la{' '}
                 <N href="https://it.wikipedia.org/wiki/Pace_di_Carlowitz">pace di Carlowitz</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Istanbul">Istanbul</N> riconosce il dominio{' '}
                 <N href="https://it.wikipedia.org/wiki/Asburgo">asburgico</N>.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1699–1701" title={<>L’Unione con Roma</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1699–1701" title={<>L’Unione con Roma</>}>
+              <Detail on={[Transylvania]}>
                 I <N href="https://it.wikipedia.org/wiki/Compagnia_di_Gesù">gesuiti</N> promettono
                 al clero ortodosso promozione sociale ed esenzione dalla servitù. Con i decreti di{' '}
                 <N href="https://it.wikipedia.org/wiki/Leopoldo_I_d%27Asburgo">Leopoldo I</N> nasce
@@ -1879,14 +1628,14 @@ function Body() {
                 rifiutano l’Unione.
               </Detail>
             </Event>
-            <Context on={[Transilvania]} period="XVIII secolo" title="La condizione dei romeni">
+            <Context on={[Transylvania]} period="XVIII secolo" title="La condizione dei romeni">
               La maggioranza romena resta esclusa dalla politica e quasi tutta asservita. Per
               sposarsi, trasferirsi o fare un mestiere serve il permesso del signore. Gli ortodossi
               pagano la <N href="https://it.wikipedia.org/wiki/Decima">decima</N> alla Chiesa del
               proprietario, cattolica o protestante, e molti preti ortodossi vivono da contadini.
             </Context>
-            <Event on={[Transilvania]} date="1711" title={<>Fine della rivolta di Rákóczi</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1711" title={<>Fine della rivolta di Rákóczi</>}>
+              <Detail on={[Transylvania]}>
                 Repressa la{' '}
                 <N href="https://it.wikipedia.org/wiki/Guerra_d%27indipendenza_di_Rákóczi">
                   ribellione
@@ -1899,7 +1648,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1729–1744"
               title={
                 <>
@@ -1909,7 +1658,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Il vescovo greco-cattolico, diventato barone e membro della Dieta, chiede parità per
                 i romeni. Sostiene che pagano più tasse e danno più soldati di ogni altra nazione. I
                 deputati lo deridono paragonando i romeni alle tarme nei vestiti. Klein ripara a
@@ -1917,7 +1666,7 @@ function Body() {
               </Detail>
             </Event>
             <Context
-              on={[Transilvania]}
+              on={[Transylvania]}
               period="XVIII secolo"
               title="Blaj e la rinascita culturale"
             >
@@ -1930,7 +1679,7 @@ function Body() {
               greco-cattolica, diventa il centro culturale romeno.
             </Context>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1784"
               title={
                 <>
@@ -1940,7 +1689,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 I servi, convinti di avere l’appoggio dell’imperatore, saccheggiano castelli e
                 uccidono circa 100 nobili.{' '}
                 <N href="https://it.wikipedia.org/wiki/Giuseppe_II_d%27Asburgo-Lorena">
@@ -1950,8 +1699,8 @@ function Body() {
                 ruota ad Alba Iulia nel febbraio 1785; Crișan si toglie la vita in carcere.
               </Detail>
             </Event>
-            <Event on={[Transilvania]} date="1785–1790" title={<>Le riforme di Giuseppe II</>}>
-              <Detail on={[Transilvania]}>
+            <Event on={[Transylvania]} date="1785–1790" title={<>Le riforme di Giuseppe II</>}>
+              <Detail on={[Transylvania]}>
                 L’imperatore abolisce la{' '}
                 <N href="https://it.wikipedia.org/wiki/Servitù_della_gleba">servitù della gleba</N>,
                 annulla la costituzione transilvana, scioglie l’
@@ -1963,7 +1712,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Transilvania]}
+              on={[Transylvania]}
               date="1791–1792"
               title={
                 <>
@@ -1974,7 +1723,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Nel 1791 gli intellettuali romeni legati alla Scuola transilvana preparano una
                 petizione collettiva per{' '}
                 <N href="https://it.wikipedia.org/wiki/Leopoldo_II_d%27Asburgo-Lorena">
@@ -1984,7 +1733,7 @@ function Body() {
                 Invocando la discendenza dai coloni romani, chiedono che i romeni siano riconosciuti
                 come quarta nazione, con diritti politici e una rappresentanza proporzionale.
               </Detail>
-              <Detail on={[Transilvania]}>
+              <Detail on={[Transylvania]}>
                 Nell’agosto 1791 la Dieta concede la libertà di culto agli ortodossi, ma respinge la
                 parità politica. Nel 1792 i vescovi Ioan Bob, greco-cattolico, e Gherasim Adamovici,
                 ortodosso, presentano a Vienna un secondo memoriale, più organico. Anche questo
@@ -1993,17 +1742,9 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Valacchia]}
-            id="s-5-3"
-            title={
-              <>
-                {regions.valacchia} <Aside italic>{headings.part5ValacchiaDates}</Aside>
-              </>
-            }
-          >
+          <Timeline section={RoSection.ThreeEmpiresWallachia}>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1688"
               title={
                 <>
@@ -2013,13 +1754,13 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 A <N href="https://it.wikipedia.org/wiki/Bucarest">Bucarest</N> viene stampata la
                 prima traduzione completa della Bibbia in romeno.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1688–1714"
               title={
                 <>
@@ -2029,7 +1770,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Con i <N href="https://ro.wikipedia.org/wiki/Familia_Cantemir">Cantemir</N> in
                 Moldavia, il principe spera nell’aiuto russo per cacciare gli ottomani dalle
                 fortezze di confine come <N href="https://it.wikipedia.org/wiki/Kilija">Chilia</N>{' '}
@@ -2037,14 +1778,14 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Bilhorod-Dnistrovs%27kyj">Cetatea Albă</N>{' '}
                 (oggi Bilhorod-Dnistrovs’kyj, in Ucraina). Non si arriva a un’intesa stabile.
               </Detail>
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 Nel 1714 viene deposto e decapitato a Istanbul insieme ai quattro figli. Il suo nome
                 resta legato allo stile brâncovenesc, che vedi al monastero di Horezu e al palazzo
                 di Mogoșoaia, vicino a Bucarest.
               </Detail>
             </Event>
             <Event
-              on={[Valacchia]}
+              on={[Wallachia]}
               date="1718–1739"
               title={
                 <>
@@ -2052,7 +1793,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Valacchia]}>
+              <Detail on={[Wallachia]}>
                 L’<N href="https://it.wikipedia.org/wiki/Oltenia">Oltenia</N>, la parte occidentale
                 della Valacchia, passa all’
                 <N href="https://it.wikipedia.org/wiki/Monarchia_asburgica">Austria</N> con il nome
@@ -2060,8 +1801,8 @@ function Body() {
                 nella Valacchia, principato tributario della Porta.
               </Detail>
             </Event>
-            <Event on={[Valacchia]} date="1746" title="Mavrocordat abolisce la servitù personale">
-              <Detail on={[Valacchia]}>
+            <Event on={[Wallachia]} date="1746" title="Mavrocordat abolisce la servitù personale">
+              <Detail on={[Wallachia]}>
                 Il principe fanariota{' '}
                 <N href="https://ro.wikipedia.org/wiki/Constantin_Mavrocordat">
                   Constantin Mavrocordat
@@ -2074,15 +1815,7 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Moldavia]}
-            id="s-5-4"
-            title={
-              <>
-                {regions.moldavia} <Aside italic>{headings.part5MoldaviaDates}</Aside>
-              </>
-            }
-          >
+          <Timeline section={RoSection.ThreeEmpiresMoldavia}>
             <Event
               on={[Moldavia]}
               date="1709"
@@ -2239,17 +1972,9 @@ function Body() {
             </Event>
           </Timeline>
 
-          <Timeline
-            on={[Dobrogea]}
-            id="s-5-5"
-            title={
-              <>
-                {regions.dobrogea} <Aside italic>{headings.part5DobrogeaDates}</Aside>
-              </>
-            }
-          >
+          <Timeline section={RoSection.ThreeEmpiresDobruja}>
             <Event
-              on={[Dobrogea]}
+              on={[Dobruja]}
               date="Dal 1775"
               title={
                 <>
@@ -2257,7 +1982,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Dobrogea]}>
+              <Detail on={[Dobruja]}>
                 Dopo la distruzione della{' '}
                 <N href="https://it.wikipedia.org/wiki/Sič_di_Zaporižžja">Sič di Zaporož’e</N>,
                 cosacchi zaporoghi si rifugiano nel delta, sotto la protezione del sultano.
@@ -2267,7 +1992,7 @@ function Body() {
               </Detail>
             </Event>
             <Event
-              on={[Dobrogea]}
+              on={[Dobruja]}
               date="1791"
               title={
                 <>
@@ -2277,7 +2002,7 @@ function Body() {
                 </>
               }
             >
-              <Detail on={[Dobrogea]}>
+              <Detail on={[Dobruja]}>
                 Il 9 luglio i circa 30.000 russi di{' '}
                 <N href="https://it.wikipedia.org/wiki/Nikolaj_Vasil%27evič_Repnin">Repnin</N>, con{' '}
                 <N href="https://it.wikipedia.org/wiki/Michail_Illarionovič_Kutuzov">Kutuzov</N>,
@@ -2286,14 +2011,14 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Iași">pace di Iași</N>.
               </Detail>
             </Event>
-            <Event on={[Dobrogea]} date="1809–1810" title="Le fortezze del Danubio">
-              <Detail on={[Dobrogea]}>
+            <Event on={[Dobruja]} date="1809–1810" title="Le fortezze del Danubio">
+              <Detail on={[Dobruja]}>
                 I russi passano il Danubio e prendono Isaccea e Tulcea senza combattere, poi Măcin e
                 Hârșova. Silistra (oggi in Bulgaria) si arrende il 30 maggio 1810.
               </Detail>
             </Event>
-            <Event on={[Dobrogea]} date="1812" title="Il Danubio diventa frontiera">
-              <Detail on={[Dobrogea]}>
+            <Event on={[Dobruja]} date="1812" title="Il Danubio diventa frontiera">
+              <Detail on={[Dobruja]}>
                 Con la{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Bucarest_(1812)">
                   pace di Bucarest
@@ -2322,7 +2047,7 @@ function Body() {
  * Context card shared by Valacchia and Moldavia: at the top of the Valacchia part, and of the
  * Moldavia part when Valacchia is not in the trip (so it is never shown twice).
  */
-function BoyarsContext({ on }: { on: Romania[] }) {
+function BoyarsContext({ on }: { on: Ro[] }) {
   return (
     <Context on={on} period="Dopo il 1601" title="Boiardi, servi e troni in vendita">
       In <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> e{' '}
@@ -2340,7 +2065,7 @@ function BoyarsContext({ on }: { on: Romania[] }) {
  * Event shared by Valacchia and Moldavia: in the Valacchia part, and in the Moldavia part when
  * Valacchia is not in the trip (so it is never shown twice).
  */
-function RaduMihneaEvent({ on }: { on: Romania[] }) {
+function RaduMihneaEvent({ on }: { on: Ro[] }) {
   return (
     <Event
       on={on}
@@ -2364,7 +2089,7 @@ function RaduMihneaEvent({ on }: { on: Romania[] }) {
  * Context card shared by Dobrogea and Transilvania: in the Dobrogea section, and in the
  * Transilvania one when Dobrogea is not in the trip (so it is never shown twice).
  */
-function MocaniContext({ on }: { on: Romania[] }) {
+function MocaniContext({ on }: { on: Ro[] }) {
   return (
     <Context on={on} period="Dal 1662" title="I mocani">
       Pastori romeni della <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N>, i{' '}

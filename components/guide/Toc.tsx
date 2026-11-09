@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import type { TocEntry } from '@/lib/guide'
+import { anchorOf, type TocEntry } from '@/content/types'
 import { useTrip } from './trip'
 
 /**
@@ -58,7 +58,7 @@ export function Toc({
         return (
           <a
             key={e.id}
-            href={`#${e.id}`}
+            href={`#${anchorOf(e.id)}`}
             onClick={onNavigate}
             aria-current={active === e.id ? 'location' : undefined}
             className={`grid items-baseline text-text no-underline hover:text-accent-700 ${big ? 'grid-cols-[20px_minmax(0,1fr)]' : 'grid-cols-[16px_minmax(0,1fr)]'} ${level} ${gapBefore}`}

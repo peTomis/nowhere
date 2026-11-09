@@ -1,7 +1,7 @@
 import { ArrowUpIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import { publicAsset } from '@/lib/assets'
-import type { GuideContent } from '@/lib/guide'
+import { anchorOf, type GuideContent, type TocEntry } from '@/content/types'
 import { format, t } from '@/i18n'
 
 const heading = 'mb-1 text-[11px] tracking-[.16em] text-neutral-700 uppercase'
@@ -16,7 +16,7 @@ export function GuideOutro({
   name,
   emblems = [],
   toc,
-}: { name: string } & Pick<GuideContent, 'emblems' | 'toc'>) {
+}: { name: string; toc: TocEntry[] } & Pick<GuideContent, 'emblems'>) {
   const shown = emblems.filter((e) => publicAsset(e.src))
   return (
     <section
@@ -51,7 +51,7 @@ export function GuideOutro({
           {toc
             .filter((e) => e.level === 1)
             .map((e) => (
-              <a key={e.id} href={`#${e.id}`} className={link}>
+              <a key={e.id} href={`#${anchorOf(e.id)}`} className={link}>
                 {e.label}
               </a>
             ))}

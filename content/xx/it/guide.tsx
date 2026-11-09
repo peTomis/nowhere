@@ -1,58 +1,24 @@
 import { guideKit } from '@/components/guide/content'
-import type { GuideContent } from '@/lib/guide'
+import type { GuideContent } from '@/content/types'
+import { Section, Template, structure } from '../structure'
+import { names } from './names'
 
 /*
  * Template guide, shown at /template: every element of the guide kit with placeholder text that
- * says what the element is for. To start a new guide, copy this file to content/guides/<slug>.tsx,
- * register the guide in data/guides.ts and content/guides/index.ts, and put the images in
- * public/guides/<slug>/. Guide texts (titles, place names, alt texts) live here, not in i18n.
- * The image paths below point to files that don't exist, so the page shows the placeholders.
+ * says what the element is for. A guide is a folder content/<cc>/ (cc = ISO 3166-1 alpha-2):
+ * structure.ts (ids, regions, sections: the same in every language), it/names.ts (place and
+ * section names), it/guide.tsx (this file: cover, emblems and the body). To start a new guide,
+ * copy content/xx/, register it in content/countries.ts and content/guides.ts, and put the images
+ * in public/guides/<slug>/. Guide texts (titles, place names, alt texts) live in the guide, not in
+ * i18n. The image paths below point to files that don't exist, so the page shows the placeholders.
  */
 
-/** The country name on the cover (a real guide takes it from data/guides.ts). */
+/** The country name on the cover (a real guide takes it from content/countries.ts). */
 export const name = 'Paese'
 
 const dir = '/guides/template'
 
-/** Index labels and dates, reused as the titles of the matching sections. */
-const headings = {
-  chapter1: 'Titolo del capitolo',
-  part1: 'Titolo della parte',
-  part1Dates: '1000 a.C. – 1000',
-  list: 'Elenco di date',
-  part2: 'Parte legata a una regione',
-  part2Dates: '1500',
-  chapter2: 'Regioni e città',
-}
-
-/** Region names: trip filter, index and region titles. */
-const regions = {
-  nord: 'Nord',
-  sud: 'Sud',
-}
-
-/** City names: trip filter and city titles. */
-const cities = {
-  cittaUno: 'Città uno',
-  cittaDue: 'Città due',
-  cittaTre: 'Città tre',
-}
-
-/**
- * Regions and cities of the guide, with their Italian names. The values are stored in the
- * reader's localStorage by the trip filter: don't rename them once published.
- */
-enum Template {
-  // regions
-  Nord = 'nord',
-  Sud = 'sud',
-  // cities
-  CittaUno = 'citta-uno',
-  CittaDue = 'citta-due',
-  CittaTre = 'citta-tre',
-}
-
-/** The guide kit, narrowed to this guide's places: `on` only accepts Template ids. */
+/** The guide kit bound to this guide: `on` only accepts Template ids, `section` Section ids. */
 const {
   A,
   Aside,
@@ -77,11 +43,13 @@ const {
   Source,
   Text,
   Timeline,
-} = guideKit<Template>()
+} = guideKit(structure, names)
 
-const { Nord, Sud, CittaUno, CittaDue, CittaTre } = Template
+const { North, South, CityOne, CityTwo, CityThree } = Template
 
-export const template: GuideContent<Template> = {
+export const template: GuideContent<Template, Section> = {
+  structure,
+  names,
   cover: { src: `${dir}/cover.jpg`, alt: 'Foto di copertina' },
   /** Country name and nowhere logo on the cover: always one color. */
   coverInk: 'var(--color-text)',
@@ -95,38 +63,6 @@ export const template: GuideContent<Template> = {
     },
     { src: `${dir}/flag.svg`, alt: 'Bandiera del paese', kind: 'flag', width: 72, height: 48 },
   ],
-  /** Trip filter: regions, each with its cities (a region may have none). */
-  places: [
-    {
-      id: Nord,
-      name: regions.nord,
-      cities: [
-        { id: CittaUno, name: cities.cittaUno },
-        { id: CittaDue, name: cities.cittaDue },
-      ],
-    },
-    {
-      id: Sud,
-      name: regions.sud,
-      cities: [{ id: CittaTre, name: cities.cittaTre }],
-    },
-  ],
-  /** Index: `id` is the anchor of the section, `on` the same places as the section's `on`. */
-  toc: [
-    { id: 'cap-1', label: headings.chapter1, level: 1, on: 'always' },
-    { id: 'parte-1', label: headings.part1, level: 2, dates: headings.part1Dates, on: 'always' },
-    { id: 'elenco', label: headings.list, level: 3, on: 'always' },
-    {
-      id: 'parte-2',
-      label: headings.part2,
-      level: 2,
-      dates: headings.part2Dates,
-      on: [Sud],
-    },
-    { id: 'cap-2', label: headings.chapter2, level: 1, on: 'always' },
-    { id: 'reg-nord', label: regions.nord, level: 2, on: [Nord] },
-    { id: 'reg-sud', label: regions.sud, level: 2, on: [Sud] },
-  ],
   body: <Body />,
 }
 
@@ -138,15 +74,11 @@ export const template: GuideContent<Template> = {
 function Body() {
   return (
     <>
-      {/* Chapter: number, title (from the toc), lede and an optional period. Its parts go inside. */}
-      <Chapter
-        on="always"
-        id="cap-1"
-        number={1}
-        title={headings.chapter1}
-        lede="Il sommario del capitolo in una frase, in corsivo."
-        period="1000 a.C. – 1500"
-      >
+      {/*
+        Chapter: `section` gives its anchor, `on`, title and period (structure.ts + names.ts); the
+        number follows the order of the sections. The lede is written here. Its parts go inside.
+      */}
+      <Chapter section={Section.Chapter} lede="Il sommario del capitolo in una frase, in corsivo.">
         <Text on="always">
           Paragrafo introduttivo: un quadro generale in due o tre frasi. I nomi di persone, luoghi e
           opere vanno in <N>magenta</N>, le opere anche in corsivo, come{' '}
@@ -155,8 +87,8 @@ function Body() {
           <N href="https://it.wikipedia.org/wiki/Pagina_principale">questo</N>, e anche un testo
           normale: <A href="https://it.wikipedia.org/wiki/Pagina_principale">un link</A>.
         </Text>
-        <Text on={[Nord]}>Un paragrafo visibile solo se il viaggio include il Nord.</Text>
-        <Text on={[Nord, Sud]}>
+        <Text on={[North]}>Un paragrafo visibile solo se il viaggio include il Nord.</Text>
+        <Text on={[North, South]}>
           Un paragrafo con più motivi per essere visto: basta una delle regioni della lista.
         </Text>
         <MapFigure
@@ -171,13 +103,8 @@ function Body() {
           ]}
         />
 
-        {/* Part: a section of the chapter; the kicker repeats the dates of the toc entry. */}
-        <Part
-          on="always"
-          id="parte-1"
-          kicker={`Parte I · ${headings.part1Dates}`}
-          title={headings.part1}
-        >
+        {/* Part: numbered in its chapter; the kicker shows the number and the section's dates. */}
+        <Part section={Section.Part}>
           <Timeline on="always">
             <Event
               on="always"
@@ -197,7 +124,7 @@ function Body() {
               <Detail on="always">
                 Un dettaglio con un nome: <N>Nome proprio</N>.
               </Detail>
-              <Callout on={[Nord]} kind="onsite">
+              <Callout on={[North]} kind="onsite">
                 Da approfondire sul posto: visibile solo se il viaggio include il <N>Nord</N>.
               </Callout>
             </Event>
@@ -249,19 +176,11 @@ function Body() {
             <Note on="always">La nota finale: cosa sappiamo davvero e cosa vedrai nei musei.</Note>
           </Callout>
 
-          <Timeline
-            on="always"
-            id="elenco"
-            title={
-              <>
-                {headings.list} <Aside italic>1000 – 1400</Aside>
-              </>
-            }
-          >
+          <Timeline section={Section.DateList}>
             <Event
               on="always"
               date="1000"
-              title="Timeline con titolo e id: compare nell’indice e si segue scorrendo"
+              title="Timeline con una sezione: compare nell’indice e si segue scorrendo"
             />
             <Event
               on="always"
@@ -273,27 +192,22 @@ function Body() {
               }
             />
             <Event
-              on={[Sud]}
+              on={[South]}
               date="1400"
               title="Un evento visibile solo con il Sud, con una fonte al posto di un dettaglio"
             >
-              <Source on={[Sud]}>
+              <Source on={[South]}>
                 <N work>Titolo della fonte</N>, con un giudizio sulla sua attendibilità.
               </Source>
             </Event>
           </Timeline>
         </Part>
 
-        {/* A part tied to a region: its toc entry has the same `on`. */}
-        <Part
-          on={[Sud]}
-          id="parte-2"
-          kicker={`Parte II · ${headings.part2Dates}`}
-          title={headings.part2}
-        >
+        {/* A part tied to a region: its `on` (in structure.ts) hides it and its index entry. */}
+        <Part section={Section.RegionalPart}>
           <Timeline on="always">
-            <Event on={[Sud]} date="1500" title="Evento di una parte legata a una regione">
-              <Detail on={[Sud]}>
+            <Event on={[South]} date="1500" title="Evento di una parte legata a una regione">
+              <Detail on={[South]}>
                 Questa parte e la sua voce nell’indice spariscono senza il Sud.
               </Detail>
             </Event>
@@ -309,17 +223,12 @@ function Body() {
 
       {/* gap="wide" spaces out the regions. */}
       <Chapter
-        on="always"
-        id="cap-2"
-        number={2}
-        title={headings.chapter2}
+        section={Section.RegionsAndCities}
         lede="Cosa vedere sul posto, regione per regione."
         gap="wide"
       >
         <Region
-          on={[Nord]}
-          id="reg-nord"
-          name={regions.nord}
+          section={Section.RegionsAndCitiesNorth}
           photo={{ caption: 'Foto della regione, in proporzione 3:2' }}
           intro={
             <>
@@ -328,35 +237,33 @@ function Body() {
             </>
           }
         >
-          <City on={[CittaUno]} name={cities.cittaUno} local="Nome locale">
-            <Detail on={[CittaUno]}>
+          <City on={[CityOne]} name={names.places[CityOne]} local="Nome locale">
+            <Detail on={[CityOne]}>
               Città senza foto, con il nome nella lingua locale accanto al titolo.
             </Detail>
-            <Detail on={[CittaUno]}>
+            <Detail on={[CityOne]}>
               <N>Un monumento</N>, del <D>1817</D>.
             </Detail>
           </City>
           <City
-            on={[CittaDue]}
-            name={cities.cittaDue}
+            on={[CityTwo]}
+            name={names.places[CityTwo]}
             photo={{ caption: 'Città con foto accanto al testo' }}
           >
-            <Detail on={[CittaDue]}>Con la foto, testo e immagine stanno affiancati.</Detail>
+            <Detail on={[CityTwo]}>Con la foto, testo e immagine stanno affiancati.</Detail>
           </City>
-          <Text on={[CittaUno, CittaDue]}>
+          <Text on={[CityOne, CityTwo]}>
             Un paragrafo per chi visita almeno una delle due città.
           </Text>
         </Region>
 
         <Region
-          on={[Sud]}
-          id="reg-sud"
-          name={regions.sud}
+          section={Section.RegionsAndCitiesSouth}
           photo={{ caption: 'Foto della seconda regione' }}
           intro={<>Una seconda regione, per vedere la spaziatura tra le regioni.</>}
         >
-          <City on={[CittaTre]} name={cities.cittaTre}>
-            <Detail on={[CittaTre]}>Città minima: solo il nome e i dettagli.</Detail>
+          <City on={[CityThree]} name={names.places[CityThree]}>
+            <Detail on={[CityThree]}>Città minima: solo il nome e i dettagli.</Detail>
           </City>
         </Region>
       </Chapter>

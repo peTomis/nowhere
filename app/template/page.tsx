@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Guide } from '@/components/guide/Guide'
-import { name, template } from '@/content/guides/template'
+import { name, template } from '@/content/xx/it/guide'
 
 export const metadata: Metadata = {
   title: 'Template',

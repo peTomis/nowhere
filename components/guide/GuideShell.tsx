@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Logo } from '@/components/Logo'
-import type { Place, TocEntry } from '@/lib/guide'
+import { anchorOf, type Place, type TocEntry } from '@/content/types'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
@@ -15,14 +15,15 @@ import { t } from '@/i18n'
  * filter and the index on wide screens; a sticky bar and a full-screen index menu below 960px.
  */
 export function GuideShell(props: {
-  slug: string
+  /** ISO 3166-1 alpha-2: the trip filter's key in the reader's prefs. */
+  countryId: string
   country: string
   places: Place[]
   toc: TocEntry[]
   children: ReactNode
 }) {
   return (
-    <TripProvider storageKey={`guida-${props.slug}-off`} places={props.places}>
+    <TripProvider country={props.countryId} places={props.places}>
       <Shell {...props} />
     </TripProvider>
   )
@@ -35,7 +36,7 @@ function useActiveSection(ids: string[], recheck: unknown) {
     const onScroll = () => {
       let cur = ids[0] ?? ''
       for (const id of ids) {
-        const el = document.getElementById(id)
+        const el = document.getElementById(anchorOf(id))
         if (el && el.getBoundingClientRect().top < window.innerHeight * 0.35) cur = id
       }
       setActive(cur)

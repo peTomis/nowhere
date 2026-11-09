@@ -2,10 +2,12 @@ import { GuideCover } from '@/components/guide/GuideCover'
 import { GuideOutro } from '@/components/guide/GuideOutro'
 import { GuideShell } from '@/components/guide/GuideShell'
 import { SiteFooter } from '@/components/SiteFooter'
-import type { GuideContent } from '@/lib/guide'
+import { placesOf, tocOf } from '@/content/build'
+import type { GuideContent } from '@/content/types'
+import { assertValidGuide } from '@/lib/content/validate'
 
 type GuideProps = {
-  /** Also the trip filter's localStorage namespace (`guida-<slug>-off`). */
+  /** Names the guide in content errors. */
   slug: string
   name: string
   content: GuideContent
@@ -13,6 +15,10 @@ type GuideProps = {
 
 /** A whole guide page: cover, index + content, closing section, site footer. */
 export function Guide({ slug, name, content }: GuideProps) {
+  // Content errors fail the build (every guide is prerendered) and show in the dev overlay.
+  assertValidGuide(slug, content)
+  const places = placesOf(content.structure, content.names)
+  const toc = tocOf(content.structure, content.names)
   return (
     <>
       <GuideCover
@@ -21,10 +27,10 @@ export function Guide({ slug, name, content }: GuideProps) {
         emblems={content.emblems}
         ink={content.coverInk}
       />
-      <GuideShell slug={slug} country={name} places={content.places} toc={content.toc}>
+      <GuideShell countryId={content.structure.country} country={name} places={places} toc={toc}>
         {content.body}
       </GuideShell>
-      <GuideOutro name={name} emblems={content.emblems} toc={content.toc} />
+      <GuideOutro name={name} emblems={content.emblems} toc={toc} />
       <SiteFooter />
     </>
   )

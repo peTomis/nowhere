@@ -2,7 +2,15 @@ import { ImageIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import type { CSSProperties, ReactNode } from 'react'
 import { publicAsset } from '@/lib/assets'
-import type { Visibility } from '@/lib/guide'
+import {
+  anchorOf,
+  type GuideNames,
+  type GuideStructure,
+  type Credit,
+  type SectionDef,
+  type Visibility,
+} from '@/content/types'
+import { formatPeriod, roman } from '@/i18n/dates'
 import { format, t } from '@/i18n'
 import { Only, Unless } from './trip'
 
@@ -12,7 +20,7 @@ import { Only, Unless } from './trip'
  * PhotoGrid, PhotoRow, Positions. Every other block takes a required `on`: the regions/cities of the trip
  * for which it is shown — at least one of them must be in the trip — or 'always'. Blocks nest, so
  * a block is shown only if its parents are too: give a chapter the widest set, its texts a subset.
- * Content files get the kit narrowed to their place enum through guideKit<Enum>().
+ * Content files get the kit bound to their structure through guideKit(structure, names).
  */
 
 /** Places for which a block is shown: a list (one text can serve several places) or 'always'. */
@@ -59,7 +67,7 @@ export function A({ href, children }: { href: string; children: ReactNode }) {
   )
 }
 
-export function Chapter<P extends string>({
+function ChapterView<P extends string>({
   on,
   ...props
 }: On<P> & {
@@ -74,7 +82,7 @@ export function Chapter<P extends string>({
   return (
     <Only on={on}>
       <section
-        id={props.id}
+        id={anchorOf(props.id)}
         className={`flex scroll-mt-[80px] flex-col ${props.gap === 'wide' ? 'gap-[60px]' : 'gap-8'}`}
       >
         <div className="flex flex-col gap-2">
@@ -98,13 +106,13 @@ export function Chapter<P extends string>({
 }
 
 /** A part of a chapter (inside <Chapter>): the top margin keeps the chapters' 100px rhythm. */
-export function Part<P extends string>({
+function PartView<P extends string>({
   on,
   ...props
 }: On<P> & { id: string; kicker: string; title: string; children: ReactNode }) {
   return (
     <Only on={on}>
-      <section id={props.id} className="mt-12 flex scroll-mt-[80px] flex-col gap-8">
+      <section id={anchorOf(props.id)} className="mt-12 flex scroll-mt-[80px] flex-col gap-8">
         <div className="flex flex-col gap-1">
           <div className={`${kicker} text-accent-700`}>{props.kicker}</div>
           <h3 className="m-0 text-[clamp(28px,5vw,36px)] leading-[1.1]">{props.title}</h3>
@@ -132,7 +140,7 @@ export function Text<P extends string>({
  * A list of events on a rail. With a `title` it is a section of its own (heading as in the
  * design's date lists); give it an `id` to anchor a toc entry and follow it in the index.
  */
-export function Timeline<P extends string>({
+function TimelineView<P extends string>({
   on,
   id,
   title,
@@ -142,12 +150,12 @@ export function Timeline<P extends string>({
   return (
     <Only on={on}>
       {title ? (
-        <div id={id} className="mt-4 flex scroll-mt-[80px] flex-col gap-3">
+        <div id={id && anchorOf(id)} className="mt-4 flex scroll-mt-[80px] flex-col gap-3">
           <h4 className="m-0 text-[clamp(21px,4vw,24px)] leading-[1.2]">{title}</h4>
           {events}
         </div>
       ) : (
-        <div id={id} className="scroll-mt-[80px]">
+        <div id={id && anchorOf(id)} className="scroll-mt-[80px]">
           {events}
         </div>
       )}
@@ -397,6 +405,8 @@ export function Figure<P extends string>({ on, ...props }: On<P> & Parameters<ty
 function Photo(props: {
   src?: string
   alt?: string
+  /** Author and licence: required by the validator once the file exists. */
+  credit?: Credit
   caption: string
   ratio: string
   /** Transparent image (an emblem): no backdrop, shown whole instead of cropped. */
@@ -452,6 +462,7 @@ export function MapFigure<P extends string>({
 }: On<P> & {
   src?: string
   alt: string
+  credit?: Credit
   ratio: string
   places: { name: string; note: string }[]
 }) {
@@ -484,7 +495,7 @@ export function MapFigure<P extends string>({
   )
 }
 
-export function Region<P extends string>({
+function RegionView<P extends string>({
   on,
   ...props
 }: On<P> & {
@@ -492,11 +503,11 @@ export function Region<P extends string>({
   name: string
   children: ReactNode
   intro: ReactNode
-  photo: { src?: string; caption: string }
+  photo: { src?: string; caption: string; credit?: Credit }
 }) {
   return (
     <Only on={on}>
-      <div id={props.id} className="flex scroll-mt-[80px] flex-col gap-6">
+      <div id={anchorOf(props.id)} className="flex scroll-mt-[80px] flex-col gap-6">
         <div className="flex flex-col gap-3">
           <h3 className="m-0 text-[clamp(28px,5vw,36px)] leading-[1.1]">{props.name}</h3>
           <p className="m-0 max-w-[62ch]">{props.intro}</p>
@@ -514,7 +525,7 @@ export function City<P extends string>({
 }: On<P> & {
   name: string
   local?: string
-  photo?: { src?: string; caption: string }
+  photo?: { src?: string; caption: string; credit?: Credit }
   children: ReactNode
 }) {
   // flex-[1_1_260px] only in the side-by-side layout with a photo: in a column the basis
@@ -543,11 +554,149 @@ export function City<P extends string>({
   )
 }
 
-/**
- * The kit narrowed to one guide's place enum, so `on` only accepts its ids:
- *   const { Chapter, Detail, … } = guideKit<Romania>()
+/*
+ * What the content validator (lib/content/validate.ts) needs to know about each kit component:
+ * it walks a guide's element tree without rendering it, and recognises the kit by reference.
  */
-export function guideKit<P extends string>() {
+export type KitKind =
+  | 'gate' // a block with `on`
+  | 'event' // a gate with a `date`
+  | 'figure' // a gate with an image (`src`, `credit`)
+  | 'city' // a gate with an optional `photo`
+  | 'section' // Chapter, Part, Region: `section`
+  | 'timeline' // `section` or `on`
+  | 'only'
+  | 'unless'
+  | 'container' // no `on`: inline marks and pure containers
+
+/** Kind and name by component (names survive minification, for readable error paths). */
+const kinds = new WeakMap<object, { kind: KitKind; name: string }>()
+const kind = (k: KitKind, fns: Record<string, object>) =>
+  Object.entries(fns).forEach(([name, f]) => kinds.set(f, { kind: k, name }))
+
+const known = (type: unknown) =>
+  typeof type === 'function' || (typeof type === 'object' && type !== null)
+    ? kinds.get(type)
+    : undefined
+
+export const kitKindOf = (type: unknown) => known(type)?.kind
+export const kitNameOf = (type: unknown) => known(type)?.name
+
+kind('gate', { Text, Context, Detail, Source, Callout, Position, Note, Glossary })
+kind('event', { Event })
+kind('figure', { Figure, MapFigure })
+kind('city', { City })
+kind('only', { Only })
+kind('unless', { Unless })
+kind('container', { A, D, N, Aside, PhotoGrid, PhotoRow, Positions })
+
+/**
+ * The kit bound to one guide: `on` only accepts its place ids, and the sectioning blocks
+ * (Chapter, Part, titled Timeline, Region) take a `section` id from which they read their anchor,
+ * `on`, title, number and dates (the same data that builds the index):
+ *   const { Chapter, Detail, … } = guideKit(structure, names)
+ */
+export function guideKit<P extends string, S extends string>(
+  structure: GuideStructure<P, S>,
+  names: GuideNames<P, S>,
+) {
+  const { sections } = structure
+  const def = (id: S) => {
+    const d = sections.find((s) => s.id === id)
+    if (!d) throw new Error(`Unknown section ${id}`)
+    return d
+  }
+  /** Position among the sections of the same level since the enclosing one: Parte I, II… */
+  const number = (id: S) => {
+    const i = sections.findIndex((s) => s.id === id)
+    const level = sections[i].level
+    let n = 0
+    for (let j = i; j >= 0 && sections[j].level >= level; j--) if (sections[j].level === level) n++
+    return n
+  }
+  const dates = (d: SectionDef<S, P>) => (d.period ? formatPeriod(d.period) : undefined)
+
+  function Chapter(props: {
+    section: S
+    lede: string
+    children: ReactNode
+    gap?: 'normal' | 'wide'
+  }) {
+    const d = def(props.section)
+    return (
+      <ChapterView
+        on={d.on}
+        id={d.id}
+        number={number(d.id)}
+        title={names.sections[d.id]}
+        lede={props.lede}
+        period={dates(d)}
+        gap={props.gap}
+      >
+        {props.children}
+      </ChapterView>
+    )
+  }
+
+  function Part(props: { section: S; children: ReactNode }) {
+    const d = def(props.section)
+    const when = dates(d)
+    const kicker = format(t.guide.content.part, { number: roman(number(d.id)) })
+    return (
+      <PartView
+        on={d.on}
+        id={d.id}
+        kicker={when ? `${kicker} · ${when}` : kicker}
+        title={names.sections[d.id]}
+      >
+        {props.children}
+      </PartView>
+    )
+  }
+
+  /** With `section`: a titled timeline in the index. Without: a plain list of events. */
+  function Timeline(props: ({ section: S } | On<P>) & { children: ReactNode }) {
+    if (!('section' in props)) return <TimelineView on={props.on}>{props.children}</TimelineView>
+    const d = def(props.section)
+    const when = dates(d)
+    return (
+      <TimelineView
+        on={d.on}
+        id={d.id}
+        title={
+          <>
+            {names.sections[d.id]} {when && <Aside italic>{when}</Aside>}
+          </>
+        }
+      >
+        {props.children}
+      </TimelineView>
+    )
+  }
+
+  function Region(props: {
+    section: S
+    intro: ReactNode
+    photo: { src?: string; caption: string; credit?: Credit }
+    children: ReactNode
+  }) {
+    const d = def(props.section)
+    return (
+      <RegionView
+        on={d.on}
+        id={d.id}
+        name={names.sections[d.id]}
+        intro={props.intro}
+        photo={props.photo}
+      >
+        {props.children}
+      </RegionView>
+    )
+  }
+
+  kind('section', { Chapter, Part, Region })
+  kind('timeline', { Timeline })
+
   return {
     A,
     D,
@@ -558,9 +707,10 @@ export function guideKit<P extends string>() {
     Positions,
     Only: Only<P>,
     Unless: Unless<P>,
-    Chapter: Chapter<P>,
-    Timeline: Timeline<P>,
-    Part: Part<P>,
+    Chapter,
+    Timeline,
+    Part,
+    Region,
     Text: Text<P>,
     Event: Event<P>,
     Context: Context<P>,
@@ -572,7 +722,6 @@ export function guideKit<P extends string>() {
     Glossary: Glossary<P>,
     Figure: Figure<P>,
     MapFigure: MapFigure<P>,
-    Region: Region<P>,
     City: City<P>,
   }
 }

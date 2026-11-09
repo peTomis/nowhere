@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 import { Guide } from '@/components/guide/Guide'
 import { guideContent } from '@/content/guides'
-import { getGuide, guides } from '@/data/guides'
+import { getGuide, guides } from '@/content/countries'
 
 export function generateStaticParams() {
   return guides.filter((g) => guideContent[g.slug]).map((g) => ({ slug: g.slug }))
