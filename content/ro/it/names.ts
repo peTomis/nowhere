@@ -21,16 +21,16 @@ const places: Record<Ro, string> = {
 export const names: GuideNames<Ro, RoSection> = {
   places,
   sections: {
-    [RoSection.Emblems]: 'La bandiera e lo stemma',
+    // Chapters: their line in the summary (the titles are the same in every guide).
+    [RoSection.Emblems]: 'Bandiera e stemma',
     [RoSection.Flag]: 'Bandiera',
     [RoSection.CoatOfArms]: 'Stemma',
-    [RoSection.DaciaToPrincipalities]: 'Dalla Dacia ai principati',
+    [RoSection.History]: 'Dalla Dacia ai tre imperi',
     [RoSection.DaciaToHungarians]: 'Dalla Dacia agli Ungari',
     [RoSection.DaciaAndRome]: 'Dacia e Roma',
     [RoSection.MigrationPeriod]: 'Anni di passaggio',
     [RoSection.Principalities]: 'I principati',
     [RoSection.LateMiddleAges]: 'Il basso Medioevo',
-    [RoSection.EarlyModern]: 'L’era moderna',
     [RoSection.OttomanSuzerainty]: 'Sotto la sovranità ottomana',
     [RoSection.OttomanSuzeraintyTransylvania]: places[Ro.Transylvania],
     [RoSection.OttomanSuzeraintyWallachia]: places[Ro.Wallachia],

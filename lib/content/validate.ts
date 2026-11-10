@@ -3,7 +3,14 @@ import { join } from 'node:path'
 import { isValidElement, type ReactNode } from 'react'
 import { kitKindOf, kitNameOf } from '@/components/guide/content'
 import { BUILT_IN_TRACES } from '@/content/subjects'
-import type { Credit, GuideContent, SectionDef, Visibility, Year } from '@/content/types'
+import {
+  CHAPTERS,
+  type Credit,
+  type GuideContent,
+  type SectionDef,
+  type Visibility,
+  type Year,
+} from '@/content/types'
 
 /*
  * Content validation (docs/data-model.md §8). It walks a guide's element tree without rendering
@@ -105,7 +112,17 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       for (const p of s.on) if (!placeIds.has(p)) error(`sections › ${s.id}`, `unknown place ${p}`)
     if (s.period?.to !== undefined && rangeOfYear(s.period.from)[0] > rangeOfYear(s.period.to)[1])
       error(`sections › ${s.id}`, 'period ends before it starts')
+    if (s.level === 1 && !s.chapter)
+      error(`sections › ${s.id}`, `a chapter must say which one it is (${CHAPTERS.join(', ')})`)
+    if (s.level !== 1 && s.chapter) error(`sections › ${s.id}`, 'only a chapter has `chapter`')
   }
+  // The six chapters: each at most once, in their fixed order (their numbers come from it).
+  const chapters = structure.sections.flatMap((s) => (s.chapter ? [s.chapter] : []))
+  for (const c of new Set(chapters))
+    if (chapters.indexOf(c) !== chapters.lastIndexOf(c))
+      error('sections', `chapter "${c}" used twice`)
+  if (chapters.some((c, i) => i > 0 && CHAPTERS.indexOf(c) < CHAPTERS.indexOf(chapters[i - 1])))
+    error('sections', `chapters must follow the order ${CHAPTERS.join(', ')}`)
 
   const traceIds = new Set<string>()
   for (const tr of structure.traces ?? []) {

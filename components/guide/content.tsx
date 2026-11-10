@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from 'react'
 import { publicAsset } from '@/lib/assets'
 import {
   anchorOf,
+  chapterNumber,
   type GuideNames,
   type GuideStructure,
   type Credit,
@@ -615,7 +616,7 @@ export function guideKit<P extends string, S extends string>(
     if (!d) throw new Error(`Unknown section ${id}`)
     return d
   }
-  /** Position among the sections of the same level since the enclosing one: Parte I, II… */
+  /** Position among the parts since the enclosing chapter: Parte I, II… */
   const number = (id: S) => {
     const i = sections.findIndex((s) => s.id === id)
     const level = sections[i].level
@@ -625,6 +626,10 @@ export function guideKit<P extends string, S extends string>(
   }
   const dates = (d: SectionDef<S, P>) => (d.period ? formatPeriod(d.period) : undefined)
 
+  /**
+   * One of the six chapters (`chapter` in structure.ts): its number and title are fixed, the lede
+   * is the guide's.
+   */
   function Chapter(props: {
     section: S
     lede: string
@@ -632,12 +637,13 @@ export function guideKit<P extends string, S extends string>(
     gap?: 'normal' | 'wide'
   }) {
     const d = def(props.section)
+    if (!d.chapter) throw new Error(`Section ${d.id} is not a chapter`)
     return (
       <ChapterView
         on={d.on}
         id={d.id}
-        number={number(d.id)}
-        title={names.sections[d.id]}
+        number={chapterNumber(d.chapter)}
+        title={t.guide.chapters[d.chapter]}
         lede={props.lede}
         period={dates(d)}
         gap={props.gap}

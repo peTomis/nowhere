@@ -79,10 +79,25 @@ function Body() {
   return (
     <>
       {/*
-        Chapter: `section` gives its anchor, `on`, title and period (structure.ts + names.ts); the
-        number follows the order of the sections. The lede is written here. Its parts go inside.
+        Chapter: one of the six of every guide. `section` gives its anchor, `on` and period
+        (structure.ts), its fixed number and title (`chapter`) and its line in the summary
+        (names.ts). The lede is written here. Its parts go inside.
       */}
-      <Chapter section={Section.Chapter} lede="Il sommario del capitolo in una frase, in corsivo.">
+      {/*
+        Identity: the flag and the coat of arms as traces of the album (02, 03). Their placeholder
+        is the guide's emblem image (emblems, above), in grey.
+      */}
+      <Chapter
+        section={Section.Identity}
+        lede="Bandiera e stemma: i simboli che ritroverai ovunque."
+      >
+        <Emblem kind="flag" on="always" />
+        <Text on="always">Com’è fatta la bandiera, da quando, e che storia racconta.</Text>
+        <Emblem kind="coat-of-arms" on="always" />
+        <Text on="always">Cosa riunisce lo stemma: le regioni storiche e i loro simboli.</Text>
+      </Chapter>
+
+      <Chapter section={Section.History} lede="Il sommario del capitolo in una frase, in corsivo.">
         <Text on="always">
           Paragrafo introduttivo: un quadro generale in due o tre frasi. I nomi di persone, luoghi e
           opere vanno in <N>magenta</N>, le opere anche in corsivo, come{' '}
@@ -170,12 +185,6 @@ function Body() {
             size="emblem"
           />
 
-          {/*
-            The flag or the coat of arms as a trace of the album (02, 03): put it in the emblems
-            chapter. Its placeholder is the guide's emblem image (emblems, above), in grey.
-          */}
-          <Emblem kind="flag" on="always" />
-
           <Callout on="always" kind="debate" title="Un punto controverso, posto come domanda?">
             <Positions>
               <Position on="always" title="Prima tesi">
@@ -231,6 +240,20 @@ function Body() {
             Il riassunto del capitolo: le due o tre cose da tenere a mente prima di passare oltre.
           </Text>
         </Callout>
+      </Chapter>
+
+      {/* A person card: its kicker names its region; traces in the trip come first. */}
+      <Chapter section={Section.People} lede="Poche figure, e i luoghi dove le si incontra ancora.">
+        <Card
+          card={Person.Someone}
+          on="always"
+          intro={
+            <>
+              Chi era, in un paragrafo: date come <D>1448</D>, nomi come <N>Un altro</N>.
+            </>
+          }
+          remember="Il nome è di famiglia: la storia è un’altra."
+        />
       </Chapter>
 
       {/* gap="wide" spaces out the regions. */}
@@ -297,18 +320,22 @@ function Body() {
         </Region>
       </Chapter>
 
-      {/* A person card: its kicker names its region; traces in the trip come first. */}
-      <Chapter section={Section.People} lede="Poche figure, e i luoghi dove le si incontra ancora.">
-        <Card
-          card={Person.Someone}
-          on="always"
-          intro={
-            <>
-              Chi era, in un paragrafo: date come <D>1448</D>, nomi come <N>Un altro</N>.
-            </>
-          }
-          remember="Il nome è di famiglia: la storia è un’altra."
-        />
+      <Chapter
+        section={Section.Nature}
+        lede="Montagne, foreste e fiumi: il paese fuori dalle città."
+      >
+        <Figure on="always" caption="Foto di un paesaggio, in proporzione 3:2" ratio="3/2" />
+        <Text on="always">
+          Un paragrafo per ogni ambiente: dove si trova, cosa vedere, quando andarci.
+        </Text>
+        <Detail on={[South]}>Un dettaglio visibile solo se il viaggio include il Sud.</Detail>
+      </Chapter>
+
+      <Chapter section={Section.Food} lede="Cosa ordinare, e come riconoscerlo nel menù.">
+        <Figure on="always" caption="Foto di un piatto tipico" ratio="3/2" />
+        <Text on="always">
+          I piatti, i dolci e le bevande: il <N>nome locale</N> e cosa c’è dentro.
+        </Text>
       </Chapter>
     </>
   )

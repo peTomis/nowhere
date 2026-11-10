@@ -67,6 +67,9 @@ export function Toc({
               className={`rounded-full bg-accent transition-opacity ${big ? 'size-[8px] -translate-y-[3px]' : 'size-[7px] -translate-y-[2px]'} ${active === e.id ? 'opacity-100' : 'opacity-0'}`}
             />
             <span>
+              {e.number !== undefined && (
+                <span className="text-accent-700 tabular-nums">{e.number}&nbsp; </span>
+              )}
               {e.label}
               {e.dates &&
                 (big ? (

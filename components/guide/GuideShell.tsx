@@ -67,6 +67,8 @@ type ShellProps = {
   traces: AlbumTrace[]
   /** Copies of the cards for "In evidenza", by card id (lib/content/cards.ts). */
   copies: Record<string, ReactNode>
+  /** The chapters' summary, at the top of the text before "In evidenza". */
+  summary: ReactNode
   children: ReactNode
 }
 
@@ -143,7 +145,7 @@ function useBarPush() {
   return [bar, button] as const
 }
 
-function Shell({ country, toc, traces, copies, children }: ShellProps) {
+function Shell({ country, toc, traces, copies, summary, children }: ShellProps) {
   const view = useGuideView()
   // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album.
   useEffect(() => {
@@ -278,6 +280,7 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
           </div>
         </aside>
         <main className="flex min-w-0 flex-[0_1_720px] flex-col gap-20 text-[17px] leading-[1.6] text-pretty">
+          {summary}
           <Pinned copies={copies} />
           {children}
         </main>

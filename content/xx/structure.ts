@@ -25,14 +25,17 @@ export enum Template {
  * dropped). Their titles are in it/names.ts, their `on` and dates here.
  */
 export enum Section {
-  Chapter = 'xx.section.chapter',
+  Identity = 'xx.section.identity',
+  History = 'xx.section.history',
   Part = 'xx.section.part',
   DateList = 'xx.section.date-list',
   RegionalPart = 'xx.section.regional-part',
+  People = 'xx.section.people',
   RegionsAndCities = 'xx.section.regions-and-cities',
   RegionsAndCitiesNorth = 'xx.section.regions-and-cities.north',
   RegionsAndCitiesSouth = 'xx.section.regions-and-cities.south',
-  People = 'xx.section.people',
+  Nature = 'xx.section.nature',
+  Food = 'xx.section.food',
 }
 
 /** Traces of the album (`<cc>.place.<slug>`) and persons (`<cc>.person.<slug>`): stored with the reader's photos, never rename them. */
@@ -57,18 +60,29 @@ export const structure = defineGuide<Template, Section>({
     { id: South, cities: [CityThree] },
   ],
   /**
-   * In page order: chapters (level 1) and parts (2) are numbered from it. `period` gives the dates
-   * of the section's title and index entry (chapters show theirs only under the title).
+   * In page order. Chapters (level 1) are the six of every guide, in their fixed order: `chapter`
+   * gives their number and title (identity 1, history 2, people 3, cities 4, nature 5, food 6); a
+   * guide leaves out those not written yet. Parts (2) are numbered from this order. `period` gives
+   * the dates of the section's title and index entry (chapters show theirs only under the title).
    */
   sections: [
-    { id: Section.Chapter, level: 1, on: 'always', period: { from: -1000, to: 1500 } },
+    { id: Section.Identity, level: 1, chapter: 'identity', on: 'always' },
+    {
+      id: Section.History,
+      level: 1,
+      chapter: 'history',
+      on: 'always',
+      period: { from: -1000, to: 1500 },
+    },
     { id: Section.Part, level: 2, on: 'always', period: { from: -1000, to: 1400 } },
     { id: Section.DateList, level: 3, on: 'always', period: { from: 1000, to: 1400 } },
     { id: Section.RegionalPart, level: 2, on: [South], period: { from: 1500 } },
-    { id: Section.RegionsAndCities, level: 1, on: 'always' },
+    { id: Section.People, level: 1, chapter: 'people', on: 'always' },
+    { id: Section.RegionsAndCities, level: 1, chapter: 'cities', on: 'always' },
     { id: Section.RegionsAndCitiesNorth, level: 2, on: [North] },
     { id: Section.RegionsAndCitiesSouth, level: 2, on: [South] },
-    { id: Section.People, level: 1, on: 'always' },
+    { id: Section.Nature, level: 1, chapter: 'nature', on: 'always' },
+    { id: Section.Food, level: 1, chapter: 'food', on: 'always' },
   ],
   /**
    * The album's own traces, from 04 (01–03 are the cover, the coat of arms and the flag, added

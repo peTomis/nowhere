@@ -131,7 +131,7 @@ function Body() {
         </Part>
       </Chapter>
 
-      <Chapter section={RoSection.DaciaToPrincipalities} lede="Le regioni, i popoli e le date.">
+      <Chapter section={RoSection.History} lede="Le regioni, i popoli e le date.">
         <Text on="always">
           La Romania di oggi riunisce tre principati storici {'('}
           <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>,{' '}
@@ -651,12 +651,7 @@ function Body() {
             </Event>
           </Timeline>
         </Part>
-      </Chapter>
 
-      <Chapter
-        section={RoSection.EarlyModern}
-        lede="Principati e province tra ottomani, Asburgo e Russia."
-      >
         <Part section={RoSection.OttomanSuzerainty}>
           <Text on={[Transylvania, Wallachia, Moldavia, Dobruja]}>
             Dal Cinquecento le quattro regioni dipendono dalla Porta in modi diversi. La Dobrogea è

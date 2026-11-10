@@ -27,11 +27,25 @@ export type Place<P extends string = string> = {
  */
 export type Visibility<P extends string = string> = P[] | 'always'
 
+/**
+ * The six chapters every guide is made of, in page order: their number is their position here
+ * (Città is always chapter 4) and their title is the same in every guide (i18n `guide.chapters`).
+ * A guide may leave some out while they are not written yet.
+ */
+export const CHAPTERS = ['identity', 'history', 'people', 'cities', 'nature', 'food'] as const
+
+export type ChapterKind = (typeof CHAPTERS)[number]
+
+/** A chapter's fixed number, from 1. */
+export const chapterNumber = (kind: ChapterKind) => CHAPTERS.indexOf(kind) + 1
+
 /** One entry of the guide index. `id` is the anchor of the section it points to. */
 export type TocEntry<P extends string = string> = {
   id: string
   label: string
   level: 1 | 2 | 3
+  /** A chapter's fixed number. */
+  number?: number
   /** Period shown under (sidebar) or next to (menu) the label. */
   dates?: string
   /** The same as the `on` of the section it points to. */
@@ -87,12 +101,17 @@ export type RegionDef<P extends string = string> = { id: P; cities: P[] }
 
 /**
  * A chapter (level 1), part (2) or titled timeline/region (3) of the body: one index entry. The
- * order of the list is the order of the page; chapter and part numbers come from it.
+ * order of the list is the order of the page; part numbers come from it.
  */
 export type SectionDef<S extends string = string, P extends string = string> = {
   id: S
   /** Index level; also how the kit numbers it (chapters and parts are numbered). */
   level: 1 | 2 | 3
+  /**
+   * Which of the six chapters a level-1 section is (required there, not allowed below): it gives
+   * the chapter's number and title.
+   */
+  chapter?: ChapterKind
   /** The places for which the section and its index entry are shown. */
   on: Visibility<P>
   period?: Period
@@ -218,6 +237,10 @@ export type CardText = {
 /** A locale's short texts for a guide's structure. The default locale must name every id. */
 export type GuideNames<P extends string = string, S extends string = string> = {
   places: Record<P, string>
+  /**
+   * Section titles. A chapter's title is fixed (i18n `guide.chapters`): its entry here is instead
+   * its line under the title in the guide's summary, e.g. "Bandiera e stemma".
+   */
   sections: Record<S, string>
   /** Trace texts by trace id. */
   traces?: Record<string, TraceText>

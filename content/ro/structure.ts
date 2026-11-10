@@ -28,16 +28,17 @@ export enum Ro {
 
 /** Chapters, parts and titled timelines: index entries and URL anchors (`ro.section.` dropped). */
 export enum RoSection {
+  /** Chapter 1, Identità. */
   Emblems = 'ro.section.emblems',
   Flag = 'ro.section.emblems.flag',
   CoatOfArms = 'ro.section.emblems.coat-of-arms',
-  DaciaToPrincipalities = 'ro.section.dacia-to-principalities',
+  /** Chapter 2, Timeline storica. */
+  History = 'ro.section.history',
   DaciaToHungarians = 'ro.section.dacia-to-hungarians',
   DaciaAndRome = 'ro.section.dacia-and-rome',
   MigrationPeriod = 'ro.section.migration-period',
   Principalities = 'ro.section.principalities',
   LateMiddleAges = 'ro.section.late-middle-ages',
-  EarlyModern = 'ro.section.early-modern',
   OttomanSuzerainty = 'ro.section.ottoman-suzerainty',
   OttomanSuzeraintyTransylvania = 'ro.section.ottoman-suzerainty.transylvania',
   OttomanSuzeraintyWallachia = 'ro.section.ottoman-suzerainty.wallachia',
@@ -63,15 +64,16 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: Wallachia, cities: [] },
   ],
   sections: [
-    { id: RoSection.Emblems, level: 1, on: 'always' },
+    { id: RoSection.Emblems, level: 1, chapter: 'identity', on: 'always' },
     { id: RoSection.Flag, level: 2, on: 'always' },
     { id: RoSection.CoatOfArms, level: 2, on: 'always' },
 
     {
-      id: RoSection.DaciaToPrincipalities,
+      id: RoSection.History,
       level: 1,
+      chapter: 'history',
       on: 'always',
-      period: { from: bc1, to: 1538 },
+      period: { from: bc1, to: 1818 },
     },
     { id: RoSection.DaciaToHungarians, level: 2, on: 'always', period: { from: bc1, to: 895 } },
     { id: RoSection.DaciaAndRome, level: 3, on: 'always', period: { from: bc1, to: 275 } },
@@ -79,7 +81,6 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: RoSection.Principalities, level: 2, on: all, period: { from: 1003, to: 1395 } },
     { id: RoSection.LateMiddleAges, level: 2, on: all, period: { from: 1416, to: 1538 } },
 
-    { id: RoSection.EarlyModern, level: 1, on: 'always', period: { from: 1541, to: 1818 } },
     {
       id: RoSection.OttomanSuzerainty,
       level: 2,

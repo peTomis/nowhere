@@ -6,6 +6,7 @@ import { cardAnchor } from './anchors'
 import { BUILT_IN_TRACES, builtInTrace, subjectKey, type Subject } from './subjects'
 import {
   RARITY_POINTS,
+  chapterNumber,
   type Credit,
   type GuideContent,
   type GuideNames,
@@ -30,18 +31,44 @@ export function placesOf<P extends string, S extends string>(
   }))
 }
 
-/** The index, from the sections. Chapters show their period in the body only, not in the index. */
+/**
+ * The index, from the sections. Chapters show their number and fixed title, and their period in
+ * the body only, not in the index.
+ */
 export function tocOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
 ): TocEntry<P>[] {
   return structure.sections.map((s) => ({
     id: s.id,
-    label: names.sections[s.id],
+    label: s.chapter ? t.guide.chapters[s.chapter] : names.sections[s.id],
     level: s.level,
+    number: s.chapter && chapterNumber(s.chapter),
     dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
     on: s.on,
   }))
+}
+
+/** A chapter in the guide's summary ("La guida in sei capitoli"). */
+export type ChapterEntry = { id: string; number: number; title: string; line: string }
+
+/** The guide's chapters, for its summary: the fixed title and the guide's line under it. */
+export function chaptersOf<P extends string, S extends string>(
+  structure: GuideStructure<P, S>,
+  names: GuideNames<P, S>,
+): ChapterEntry[] {
+  return structure.sections.flatMap((s) =>
+    s.chapter
+      ? [
+          {
+            id: s.id,
+            number: chapterNumber(s.chapter),
+            title: t.guide.chapters[s.chapter],
+            line: names.sections[s.id],
+          },
+        ]
+      : [],
+  )
 }
 
 /** Stock image of a trace, only when the file exists (else the box shows a placeholder). */

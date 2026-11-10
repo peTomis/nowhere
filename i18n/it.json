@@ -99,6 +99,26 @@
       "backToTop": "Torna su",
       "allGuides": "Tutte le guide"
     },
+    "chapters": {
+      "identity": "Identità",
+      "history": "Timeline storica",
+      "people": "Personaggi",
+      "cities": "Città",
+      "nature": "Natura",
+      "food": "Gastronomia"
+    },
+    "summary": {
+      "label": "Sommario",
+      "title": "La guida in {count}",
+      "count": [
+        "un capitolo",
+        "due capitoli",
+        "tre capitoli",
+        "quattro capitoli",
+        "cinque capitoli",
+        "sei capitoli"
+      ]
+    },
     "content": {
       "chapter": "Capitolo {number}",
       "part": "Parte {number}",

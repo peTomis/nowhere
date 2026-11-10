@@ -141,6 +141,14 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
   always renders the full text. Images go through `publicAsset()` (`lib/assets.ts`): missing
   files render a placeholder instead of a broken image.
+- Six chapters (`Guida Romania - Sito v5.dc.html`): every guide is made of the same six chapters,
+  in this order: Identità (flag and coat of arms), Timeline storica, Personaggi, Città, Natura,
+  Gastronomia (`CHAPTERS` in `content/types.ts`). A level-1 section declares which one it is with
+  `chapter`; its number and title are fixed (titles in `guide.chapters` in `i18n/it.json`), and its
+  entry in `names.sections` is its line under the title in the summary at the top of the text
+  ("La guida in sei capitoli", `components/guide/ChapterSummary.tsx`). Everything historical is a
+  part of the Timeline storica chapter. A guide leaves out the chapters not written yet; the
+  validator checks the order and that each appears once.
 - Cover ink: `coverInk` in a guide's content sets the color of the country name _and_ the nowhere
   logo on the cover (`<GuideCover ink>` → `<LogoBadge ink>` → `<Logo ink>`). They must always be
   the same color: don't color one without the other.

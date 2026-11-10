@@ -1,9 +1,10 @@
+import { ChapterSummary } from '@/components/guide/ChapterSummary'
 import { GuideAlbumIntro } from '@/components/guide/GuideAlbumIntro'
 import { GuideCover } from '@/components/guide/GuideCover'
 import { GuideOutro } from '@/components/guide/GuideOutro'
 import { GuideShell } from '@/components/guide/GuideShell'
 import { SiteFooter } from '@/components/SiteFooter'
-import { cardsOf, placesOf, tocOf, tracesOf } from '@/content/build'
+import { cardsOf, chaptersOf, placesOf, tocOf, tracesOf } from '@/content/build'
 import type { GuideContent } from '@/content/types'
 import { cardCopies } from '@/lib/content/cards'
 import { assertValidGuide } from '@/lib/content/validate'
@@ -46,6 +47,7 @@ export function Guide({ slug, name, content }: GuideProps) {
         traces={traces}
         cards={cards}
         copies={cardCopies(content.body)}
+        summary={<ChapterSummary chapters={chaptersOf(content.structure, content.names)} />}
       >
         {content.body}
       </GuideShell>

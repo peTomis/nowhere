@@ -13,15 +13,22 @@ const places: Record<Template, string> = {
 
 export const names: GuideNames<Template, Section> = {
   places,
+  /**
+   * Section titles. A chapter's title is the same in every guide: its entry here is its line
+   * under the title in the summary ("La guida in sei capitoli").
+   */
   sections: {
-    [Section.Chapter]: 'Titolo del capitolo',
+    [Section.Identity]: 'Bandiera e stemma',
+    [Section.History]: 'La riga del capitolo nel sommario',
     [Section.Part]: 'Titolo della parte',
     [Section.DateList]: 'Elenco di date',
     [Section.RegionalPart]: 'Parte legata a una regione',
-    [Section.RegionsAndCities]: 'Regioni e città',
+    [Section.People]: 'Chi incontrerai nei musei',
+    [Section.RegionsAndCities]: 'Cosa vedere sul posto',
     [Section.RegionsAndCitiesNorth]: places[Template.North],
     [Section.RegionsAndCitiesSouth]: places[Template.South],
-    [Section.People]: 'Personaggi',
+    [Section.Nature]: 'Montagne, fiumi e parchi',
+    [Section.Food]: 'Cosa ordinare',
   },
   /** Trace texts: plain text, also shown in the album. `place` is the line under the name. */
   traces: {
