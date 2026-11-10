@@ -1,7 +1,7 @@
 'use client'
 
 import {
-  ArrowRightIcon,
+  CameraIcon,
   GlobeHemisphereWestIcon,
   MagnifyingGlassIcon,
   MinusIcon,
@@ -12,18 +12,21 @@ import { select, type Selection } from 'd3-selection'
 import 'd3-transition'
 import { zoom as d3Zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } from 'd3-zoom'
 import type { Feature, Geometry } from 'geojson'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
+import { AccountMenu } from './AccountMenu'
+import { CountryCard } from './CountryCard'
 import { LogoBadge } from './LogoBadge'
 import { locale, t } from '@/i18n'
 
 /**
  * Home: full-screen world map with country search.
- * Port of "Nowhere - Home.dc.html" (claude.ai/design). d3 owns the SVG (projection, zoom,
- * country paths); React owns the overlays (search, tooltip, pin card, controls).
+ * Port of "Nowhere - Home v2.dc.html" (claude.ai/design). d3 owns the SVG (projection, zoom,
+ * country paths); React owns the overlays (search, account, tooltip, country card, controls).
+ *
+ * Countries are lit (accent fill) by the reader's photos; guide countries that are not lit get a
+ * quiet fill with an accent outline (docs/data-model.md §7).
  */
 
 export type MapGuide = {
@@ -37,7 +40,7 @@ type CountryProps = { n: string; k: number }
 type Country = Feature<Geometry, CountryProps>
 type WorldTopology = Topology<{ countries: GeometryCollection<{ n: string }> }>
 
-type Hover = { x: number; y: number; name: string; guide: boolean }
+type Hover = { x: number; y: number; name: string; guide: boolean; lit: boolean }
 type Pin = { name: string; guide?: MapGuide; base: [number, number] }
 type Entry = { f: Country; name: string; key: string; guide?: MapGuide }
 
@@ -56,14 +59,26 @@ type Engine = {
 const TOPOLOGY_URL = '/data/world-50m.json'
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
-function fillOf(hasGuide: boolean, hover: boolean, selected: boolean) {
-  if (hasGuide) return hover || selected ? 'var(--color-accent-800)' : 'var(--color-accent)'
+/** How a country is drawn: lit by the reader's photos, with a guide (not lit), or neither. */
+type Kind = 'lit' | 'guide' | 'none'
+
+function fillOf(kind: Kind, hover: boolean, selected: boolean) {
+  const on = hover || selected
+  if (kind === 'lit') return on ? 'var(--color-accent-600)' : 'var(--color-accent)'
+  if (kind === 'guide') return on ? 'var(--color-accent-100)' : 'var(--color-neutral-200)'
   if (hover) return 'var(--color-neutral-400)'
   return selected ? 'var(--color-neutral-500)' : 'var(--color-neutral-300)'
 }
 
-export function WorldMap({ guides }: { guides: MapGuide[] }) {
-  const router = useRouter()
+const NONE_LIT: ReadonlySet<string> = new Set()
+
+type Props = {
+  guides: MapGuide[]
+  /** Numeric ids of the countries lit by the reader's photos (none until the collection exists). */
+  lit?: ReadonlySet<string>
+}
+
+export function WorldMap({ guides, lit = NONE_LIT }: Props) {
   const mapRef = useRef<HTMLDivElement>(null)
   const engine = useRef<Engine>({ w: 0, h: 0, tr: zoomIdentity })
   const selRef = useRef<number | null>(null)
@@ -86,6 +101,11 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
     const byId = new Map(guides.map((g) => [g.countryId, g]))
     return (id: string | number | undefined) => (id == null ? undefined : byId.get(String(id)))
   }, [guides])
+  const kindOf = useCallback(
+    (id: string | number | undefined): Kind =>
+      id != null && lit.has(String(id)) ? 'lit' : guideOf(id) ? 'guide' : 'none',
+    [guideOf, lit],
+  )
 
   /**
    * Forget pin, selection, hover and query before leaving for a guide. With cacheComponents the
@@ -98,8 +118,8 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
     setHover(null)
     setQ('')
     selRef.current = null
-    engine.current.paths?.style('fill', (d) => fillOf(!!guideOf(d.id), false, false))
-  }, [guideOf])
+    engine.current.paths?.style('fill', (d) => fillOf(kindOf(d.id), false, false))
+  }, [kindOf])
 
   // Keep the refs d3 handlers read in step with React state, and repaint the selection.
   useEffect(() => {
@@ -107,10 +127,8 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
   }, [pin])
   useEffect(() => {
     selRef.current = sel
-    engine.current.paths?.style('fill', (d) =>
-      fillOf(!!guideOf(d.id), false, sel === d.properties.k),
-    )
-  }, [sel, guideOf])
+    engine.current.paths?.style('fill', (d) => fillOf(kindOf(d.id), false, sel === d.properties.k))
+  }, [sel, kindOf])
 
   // Load the topology, draw, and redraw on resize.
   useEffect(() => {
@@ -127,10 +145,6 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
     const setHoverSoon = (h: Hover | null) => {
       cancelAnimationFrame(hoverRaf.current)
       hoverRaf.current = requestAnimationFrame(() => setHover(h))
-    }
-    const go = (g: MapGuide) => {
-      clearSelection()
-      router.push(`/guide/${g.slug}`)
     }
     const pinAt = (f: Country, base: [number, number]) => {
       setSel(f.properties.k)
@@ -200,35 +214,40 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
         .attr('class', 'c')
         .attr('d', path)
         .attr('vector-effect', 'non-scaling-stroke')
-        .style('fill', (d) => fillOf(!!guideOf(d.id), false, selRef.current === d.properties.k))
-        .style('stroke', 'var(--color-bg)')
-        .style('stroke-width', '0.6px')
+        .style('fill', (d) => fillOf(kindOf(d.id), false, selRef.current === d.properties.k))
+        .style('stroke', (d) =>
+          kindOf(d.id) === 'guide' ? 'var(--color-accent)' : 'var(--color-bg)',
+        )
+        .style('stroke-width', (d) => (kindOf(d.id) === 'guide' ? '2px' : '0.6px'))
         .style('cursor', 'pointer')
         .on('pointerenter', function (e: PointerEvent, d) {
           if (e.pointerType === 'mouse')
             select(this).style(
               'fill',
-              fillOf(!!guideOf(d.id), true, selRef.current === d.properties.k),
+              fillOf(kindOf(d.id), true, selRef.current === d.properties.k),
             )
         })
         .on('pointermove', (e: PointerEvent, d) => {
           if (e.pointerType !== 'mouse' || pinRef.current) return
           const [x, y] = local(e)
-          setHoverSoon({ x, y, name: d.properties.n, guide: !!guideOf(d.id) })
+          setHoverSoon({
+            x,
+            y,
+            name: d.properties.n,
+            guide: !!guideOf(d.id),
+            lit: kindOf(d.id) === 'lit',
+          })
         })
         .on('pointerleave', function (e: PointerEvent, d) {
-          select(this).style(
-            'fill',
-            fillOf(!!guideOf(d.id), false, selRef.current === d.properties.k),
-          )
+          select(this).style('fill', fillOf(kindOf(d.id), false, selRef.current === d.properties.k))
           if (e.pointerType === 'mouse') setHoverSoon(null)
         })
         .on('click', (e: MouseEvent, d) => {
           e.stopPropagation()
-          const gd = guideOf(d.id)
-          if (gd) return go(gd)
           pinAt(d, m.tr.invert(local(e)))
         })
+      // Outlines of guide countries are drawn above their neighbours'.
+      m.paths.filter((d) => kindOf(d.id) === 'guide').raise()
 
       const zoom = d3Zoom<SVGSVGElement, unknown>()
         .scaleExtent([1, 14])
@@ -297,7 +316,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
       select(el).selectAll('svg').remove()
       Object.assign(m, { w: 0, h: 0, svg: undefined, zoom: undefined, paths: undefined })
     }
-  }, [guides, guideOf, router, clearSelection])
+  }, [guides, guideOf, kindOf])
 
   useEffect(() => () => clearTimeout(blurTimer.current), [])
 
@@ -346,12 +365,15 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
 
   // — overlay positions —
   const { w, h } = size
-  let px = 0
-  let py = 0
-  if (pin) {
+  const narrow = w < 640
+  // The country card sits under the picked point, or above it in the lower part of the map; on
+  // phones it is a full-width sheet at the bottom.
+  const pinPos: { left: number; top?: number; bottom?: number } = { left: 12, bottom: 12 }
+  if (pin && !narrow) {
     const p = tr.apply(pin.base)
-    px = Math.max(8, Math.min(p[0] - 116, w - 240))
-    py = Math.max(80, p[1] + 150 > h ? p[1] - 140 : p[1] + 16)
+    pinPos.left = Math.max(12, Math.min(p[0] - 140, w - 292))
+    if (p[1] > h * 0.55) pinPos.bottom = Math.max(12, h - p[1] + 16)
+    else Object.assign(pinPos, { top: Math.max(80, p[1] + 16), bottom: undefined })
   }
   const showHover = !!hover && !pin
   const hx = hover ? Math.max(8, Math.min(hover.x + 16, w - 230)) : 0
@@ -375,33 +397,41 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
           style={{ left: hx, top: hy }}
         >
           <span className="text-base leading-tight font-semibold">{hover.name}</span>
-          {!hover.guide && <span className="text-sm text-neutral-700 italic">{t.map.noGuide}</span>}
+          {hover.lit && (
+            <span className="flex items-center gap-[6px] text-sm text-neutral-800">
+              <CameraIcon weight="duotone" aria-hidden="true" />
+              {t.map.yourPhotos}
+            </span>
+          )}
+          {hover.guide && <span className="text-sm text-accent-700">{t.map.hasGuide}</span>}
+          {!hover.guide && !hover.lit && (
+            <span className="text-sm text-neutral-700 italic">{t.map.noGuide}</span>
+          )}
         </div>
       )}
 
       {pin && (
         <div
-          className="absolute z-4 flex w-[232px] flex-col gap-2 rounded-md bg-bg px-4 pt-3 pb-4 shadow-md"
-          style={{ left: px, top: py }}
+          className="absolute z-6 max-h-[calc(100%-24px)] w-[calc(100%-24px)] overflow-y-auto rounded-md bg-bg px-4 pt-3 pb-4 shadow-md sm:w-[280px]"
+          style={pinPos}
         >
-          <span className="text-xl leading-[1.2] font-semibold">{pin.name}</span>
-          {pin.guide ? (
-            <Link
-              href={`/guide/${pin.guide.slug}`}
-              onClick={clearSelection}
-              className="btn btn-primary flex min-h-[44px] gap-[8px] text-bg no-underline"
-            >
-              {t.map.openGuide} <ArrowRightIcon weight="duotone" size={18} />
-            </Link>
-          ) : (
-            <span className="text-[15px] text-neutral-700 italic">{t.map.noGuide}</span>
-          )}
+          <CountryCard
+            name={pin.name}
+            href={pin.guide && `/guide/${pin.guide.slug}`}
+            onClose={() => {
+              setPin(null)
+              setSel(null)
+            }}
+            onOpen={clearSelection}
+          />
         </div>
       )}
 
-      <div className="absolute top-(--edge) left-(--edge) z-5 flex w-[min(540px,calc(100%-2*var(--edge)))] items-start gap-2">
-        <LogoBadge framed={false} />
-        <div className="flex min-w-0 flex-1 flex-col gap-1">
+      <div className="pointer-events-none absolute top-(--edge) right-(--edge) left-(--edge) z-7 flex flex-wrap items-start gap-2">
+        <div className="pointer-events-auto flex-none">
+          <LogoBadge framed={false} />
+        </div>
+        <div className="pointer-events-auto order-2 flex min-w-0 flex-[1_1_100%] flex-col gap-1 sm:order-0 sm:flex-[0_1_390px]">
           <div className="relative">
             <MagnifyingGlassIcon
               weight="duotone"
@@ -456,7 +486,7 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
             >
               {!q.trim() && (
                 <span className="px-3 pt-2 pb-1 text-[11px] tracking-[.14em] text-neutral-700 uppercase">
-                  {t.map.visited}
+                  {t.map.guideCountries}
                 </span>
               )}
               {results.map((x, i) => (
@@ -478,6 +508,9 @@ export function WorldMap({ guides }: { guides: MapGuide[] }) {
               )}
             </div>
           )}
+        </div>
+        <div className="pointer-events-auto order-1 ml-auto flex-none">
+          <AccountMenu />
         </div>
       </div>
 

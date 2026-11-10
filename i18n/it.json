@@ -10,15 +10,18 @@
     "account": "Il tuo account"
   },
   "map": {
-    "ariaLabel": "Mappa del mondo: i paesi dove sono stato sono in azzurro",
+    "ariaLabel": "Mappa del mondo: pieni in azzurro i paesi delle tue foto, con il contorno azzurro quelli che hanno una guida",
     "loading": "Carico la mappa…",
     "unavailable": "Mappa non disponibile.",
     "searchPlaceholder": "Cerca un paese",
-    "visited": "Paesi dove sono stato",
+    "guideCountries": "Paesi con guida",
     "noResults": "Nessun paese trovato",
     "guideTag": "Guida",
     "openGuide": "Apri la guida",
     "noGuide": "Guida non ancora scritta",
+    "hasGuide": "C’è una guida",
+    "yourPhotos": "Le tue foto",
+    "close": "Chiudi",
     "zoomIn": "Ingrandisci",
     "zoomOut": "Riduci",
     "zoomWorld": "Mostra tutto il mondo"
@@ -56,6 +59,17 @@
       "context": "Contesto",
       "source": "Fonte"
     }
+  },
+  "accountMenu": {
+    "title": "Account",
+    "signIn": "Accedi",
+    "buttonSignedIn": "Account, {email}",
+    "close": "Chiudi",
+    "signInPrompt": "Accedi per ritrovare foto, note e copertine su ogni dispositivo.",
+    "signInGoogle": "Accedi con Google",
+    "signingIn": "Accesso in corso…",
+    "yourData": "I tuoi dati",
+    "signOut": "Esci"
   },
   "account": {
     "title": "Il tuo account",

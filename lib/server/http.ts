@@ -16,7 +16,7 @@ export class HttpError extends Error {
   }
 }
 
-export type CurrentUser = { id: string; email: string; name?: string }
+export type CurrentUser = { id: string; email: string; name?: string; image?: string }
 
 /**
  * The signed-in user, checked on every request: a session, a user document, and an email still
@@ -33,7 +33,8 @@ export async function requireUser(): Promise<CurrentUser> {
     .findOne({ _id: new ObjectId(id) }, { projection: { email: 1, name: 1 } })
   if (!user) throw new HttpError(401, 'Unknown user')
   if (!isAllowedEmail(user.email)) throw new HttpError(403, 'Not allowed')
-  return { id, email: user.email, name: user.name }
+  // The picture comes from the Google profile in the session, not from the user document.
+  return { id, email: user.email, name: user.name, image: session.user.image ?? undefined }
 }
 
 /**
