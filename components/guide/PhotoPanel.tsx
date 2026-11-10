@@ -148,25 +148,6 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
       onClick={closePhotoPanel}
       className="fixed inset-0 z-60 flex items-end justify-center bg-[color-mix(in_srgb,var(--color-neutral-900)_50%,transparent)] font-body [text-wrap:pretty] text-text sm:items-center sm:p-6"
     >
-      <input
-        ref={camera}
-        type="file"
-        accept="image/*"
-        capture="environment"
-        onChange={pick}
-        tabIndex={-1}
-        aria-hidden="true"
-        hidden
-      />
-      <input
-        ref={gallery}
-        type="file"
-        accept="image/*"
-        onChange={pick}
-        tabIndex={-1}
-        aria-hidden="true"
-        hidden
-      />
       <div
         role="dialog"
         aria-modal="true"
@@ -174,6 +155,26 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
         onClick={(e) => e.stopPropagation()}
         className="flex max-h-[94%] w-full flex-col overflow-hidden rounded-t-lg bg-bg shadow-lg sm:max-h-[min(780px,100%)] sm:w-[min(540px,100%)] sm:rounded-lg"
       >
+        {/* Inside the dialog: their clicks must not reach the backdrop, which closes it. */}
+        <input
+          ref={camera}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          onChange={pick}
+          tabIndex={-1}
+          aria-hidden="true"
+          hidden
+        />
+        <input
+          ref={gallery}
+          type="file"
+          accept="image/*"
+          onChange={pick}
+          tabIndex={-1}
+          aria-hidden="true"
+          hidden
+        />
         <div aria-hidden="true" className="flex flex-none justify-center pt-[10px] sm:hidden">
           <span className="h-[4px] w-[40px] rounded-[2px] bg-neutral-300" />
         </div>
