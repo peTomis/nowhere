@@ -9,7 +9,7 @@
     "madeBy": "Realizzato da"
   },
   "map": {
-    "ariaLabel": "Mappa del mondo: pieni in azzurro i paesi delle tue foto, con il contorno azzurro quelli che hanno una guida",
+    "ariaLabel": "Mappa del mondo: pieni in azzurro i paesi delle tue foto",
     "loading": "Carico la mappa…",
     "unavailable": "Mappa non disponibile.",
     "searchPlaceholder": "Cerca un paese",

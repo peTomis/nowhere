@@ -17,19 +17,19 @@ import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } fro
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
 import { AccountMenu } from './AccountMenu'
-import { Completion, type Scored } from './Completion'
+import { Completion, completionOf, type Scored } from './Completion'
 import { CountryCard } from './CountryCard'
 import { LogoBadge } from './LogoBadge'
 import { locale, t } from '@/i18n'
-import { useCollection } from '@/lib/reader/collection'
+import { isSeen, useCollection } from '@/lib/reader/collection'
 
 /**
  * Home: full-screen world map with country search.
  * Port of "Nowhere - Home v2.dc.html" (claude.ai/design). d3 owns the SVG (projection, zoom,
  * country paths); React owns the overlays (search, account, tooltip, country card, controls).
  *
- * Countries are lit (accent fill) by the reader's photos; guide countries that are not lit get a
- * quiet fill with an accent outline (docs/data-model.md §7). Hovering a guide country shows its
+ * Countries are lit (accent fill) by the reader's photos: a guide country is lit once its album
+ * completion is above 0%. Until then it is drawn as every other country. Hovering a guide country shows its
  * album completion; clicking it opens the guide (other countries do nothing on click). The
  * country card is shown only for a country picked in the search.
  */
@@ -66,13 +66,12 @@ type Engine = {
 const TOPOLOGY_URL = '/data/world-50m.json'
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
-/** How a country is drawn: lit by the reader's photos, with a guide (not lit), or neither. */
-type Kind = 'lit' | 'guide' | 'none'
+/** How a country is drawn: lit by the reader's photos, or not. */
+type Kind = 'lit' | 'none'
 
 function fillOf(kind: Kind, hover: boolean, selected: boolean) {
   const on = hover || selected
   if (kind === 'lit') return on ? 'var(--color-accent-600)' : 'var(--color-accent)'
-  if (kind === 'guide') return on ? 'var(--color-accent-100)' : 'var(--color-neutral-200)'
   if (hover) return 'var(--color-neutral-400)'
   return selected ? 'var(--color-neutral-500)' : 'var(--color-neutral-300)'
 }
@@ -81,14 +80,16 @@ const NONE_LIT: ReadonlySet<string> = new Set()
 
 type Props = {
   guides: MapGuide[]
-  /** Numeric ids of the countries lit by the reader's photos (none until the collection exists). */
+  /** Numeric ids of other countries lit by the reader's photos (guide countries light up by
+   * their album completion). */
   lit?: ReadonlySet<string>
 }
 
 export function WorldMap({ guides, lit = NONE_LIT }: Props) {
   const router = useRouter()
-  // Load the reader's collection up front, so the completion is ready on the first hover.
-  useCollection()
+  // The reader's collection, loaded up front: it lights the guide countries and is ready for the
+  // first hover.
+  const { entries } = useCollection()
   const mapRef = useRef<HTMLDivElement>(null)
   const engine = useRef<Engine>({ w: 0, h: 0, tr: zoomIdentity })
   const selRef = useRef<number | null>(null)
@@ -111,11 +112,21 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
     const byId = new Map(guides.map((g) => [g.countryId, g]))
     return (id: string | number | undefined) => (id == null ? undefined : byId.get(String(id)))
   }, [guides])
+  // Guide countries with an album completion above 0%, plus the other lit countries.
+  const litIds = useMemo(() => {
+    const ids = new Set(lit)
+    for (const g of guides)
+      if (completionOf(g.traces, (key) => isSeen(entries[key])).pct > 0) ids.add(g.countryId)
+    return ids
+  }, [guides, lit, entries])
   const kindOf = useCallback(
     (id: string | number | undefined): Kind =>
-      id != null && lit.has(String(id)) ? 'lit' : guideOf(id) ? 'guide' : 'none',
-    [guideOf, lit],
+      id != null && litIds.has(String(id)) ? 'lit' : 'none',
+    [litIds],
   )
+  // d3 handlers read the kind through a ref: a change (the collection loading) repaints the
+  // countries instead of redrawing the map, which would reset the zoom.
+  const kindRef = useRef(kindOf)
 
   /**
    * Forget pin, selection, hover and query before leaving for a guide. With cacheComponents the
@@ -128,8 +139,8 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
     setHover(null)
     setQ('')
     selRef.current = null
-    engine.current.paths?.style('fill', (d) => fillOf(kindOf(d.id), false, false))
-  }, [kindOf])
+    engine.current.paths?.style('fill', (d) => fillOf(kindRef.current(d.id), false, false))
+  }, [])
 
   // Keep the refs d3 handlers read in step with React state, and repaint the selection.
   useEffect(() => {
@@ -137,6 +148,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
   }, [pin])
   useEffect(() => {
     selRef.current = sel
+    kindRef.current = kindOf
     engine.current.paths?.style('fill', (d) => fillOf(kindOf(d.id), false, sel === d.properties.k))
   }, [sel, kindOf])
 
@@ -161,6 +173,17 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       clearSelection()
       router.push(`/guide/${g.slug}`)
     }
+    // Touch has no hover: a tap on a guide country opens the country card (a bottom sheet on
+    // phones) with the hover's content and the button to the guide.
+    const pinAt = (f: Country, g: MapGuide, base: [number, number]) => {
+      setSel(f.properties.k)
+      setHover(null)
+      setTr(m.tr)
+      setPin({ name: f.properties.n, guide: g, base })
+    }
+    // The pointer type of the last press, for the click that follows it (not every browser's
+    // click event carries pointerType).
+    let pressedWith = 'mouse'
 
     const draw = () => {
       const feats = m.feats
@@ -223,18 +246,21 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
         .attr('class', 'c')
         .attr('d', path)
         .attr('vector-effect', 'non-scaling-stroke')
-        .style('fill', (d) => fillOf(kindOf(d.id), false, selRef.current === d.properties.k))
-        .style('stroke', (d) =>
-          kindOf(d.id) === 'guide' ? 'var(--color-accent)' : 'var(--color-bg)',
+        .style('fill', (d) =>
+          fillOf(kindRef.current(d.id), false, selRef.current === d.properties.k),
         )
-        .style('stroke-width', (d) => (kindOf(d.id) === 'guide' ? '2px' : '0.6px'))
+        .style('stroke', 'var(--color-bg)')
+        .style('stroke-width', '0.6px')
         // Only guide countries do something on click.
         .style('cursor', (d) => (guideOf(d.id) ? 'pointer' : 'inherit'))
+        .on('pointerdown', (e: PointerEvent) => {
+          pressedWith = e.pointerType
+        })
         .on('pointerenter', function (e: PointerEvent, d) {
           if (e.pointerType === 'mouse')
             select(this).style(
               'fill',
-              fillOf(kindOf(d.id), true, selRef.current === d.properties.k),
+              fillOf(kindRef.current(d.id), true, selRef.current === d.properties.k),
             )
         })
         .on('pointermove', (e: PointerEvent, d) => {
@@ -245,21 +271,23 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
             y,
             name: d.properties.n,
             guide: guideOf(d.id),
-            lit: kindOf(d.id) === 'lit',
+            lit: kindRef.current(d.id) === 'lit',
           })
         })
         .on('pointerleave', function (e: PointerEvent, d) {
-          select(this).style('fill', fillOf(kindOf(d.id), false, selRef.current === d.properties.k))
+          select(this).style(
+            'fill',
+            fillOf(kindRef.current(d.id), false, selRef.current === d.properties.k),
+          )
           if (e.pointerType === 'mouse') setHoverSoon(null)
         })
         .on('click', (e: MouseEvent, d) => {
           e.stopPropagation()
           const g = guideOf(d.id)
-          if (g) open(g)
+          if (!g) return
+          if (pressedWith === 'mouse') open(g)
+          else pinAt(d, g, m.tr.invert(local(e)))
         })
-      // Outlines of guide countries are drawn above their neighbours'.
-      m.paths.filter((d) => kindOf(d.id) === 'guide').raise()
-
       const zoom = d3Zoom<SVGSVGElement, unknown>()
         .scaleExtent([1, 14])
         .translateExtent([
@@ -327,7 +355,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       select(el).selectAll('svg').remove()
       Object.assign(m, { w: 0, h: 0, svg: undefined, zoom: undefined, paths: undefined })
     }
-  }, [guides, guideOf, kindOf, clearSelection, router])
+  }, [guides, guideOf, clearSelection, router])
 
   useEffect(() => () => clearTimeout(blurTimer.current), [])
 
@@ -424,7 +452,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
           >
             {hover.name}
           </span>
-          {hover.lit && (
+          {hover.lit && !hover.guide && (
             <span className="flex items-center gap-[6px] text-sm text-neutral-800">
               <CameraIcon weight="duotone" aria-hidden="true" />
               {t.map.yourPhotos}
@@ -447,6 +475,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
           <CountryCard
             name={pin.name}
             href={pin.guide && `/guide/${pin.guide.slug}`}
+            traces={pin.guide?.traces}
             onClose={() => {
               setPin(null)
               setSel(null)

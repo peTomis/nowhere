@@ -145,7 +145,7 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   logo on the cover (`<GuideCover ink>` → `<LogoBadge ink>` → `<Logo ink>`). They must always be
   the same color: don't color one without the other.
 - Guide chrome follows `Guida Romania - Sito v4.dc.html`: the account avatar (`AccountMenu
-panel={false}`: not clickable, no panel; sign-in and sign-out are on the home only) at the
+panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-out are on the home only) at the
   home's spot, pushed up by the sticky bar until it sits centered in it; emblems and the
   compact album completion (`components/Completion.tsx`) under the country name on the cover; the
   album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album", "Personaggi e
@@ -179,11 +179,14 @@ panel={false}`: not clickable, no panel; sign-in and sign-out are on the home on
 - The home map (`components/WorldMap.tsx`) is a port of `Nowhere - Home v2.dc.html`: d3 owns the SVG
   (projection, zoom, country paths), React owns the overlays. d3 handlers read React state through
   refs. Only guides with `status: 'ready'` are passed to the map. Countries lit by the reader's
-  photos are filled with the accent; guide countries not lit are `neutral-200` with a 2px accent
-  outline. Hovering a guide country shows its album completion (`Completion` `card`: the design's
-  country card completion without title, threshold labels and points total). Deviation from the design: a click on a guide country opens the guide
-  directly, a click elsewhere does nothing; the country card (`components/CountryCard.tsx`, port
-  of `SchedaPaese.dc.html`) is only shown for a country picked in the search; the account button and panel are `components/AccountMenu.tsx` (port of
+  photos are filled with the accent: a guide country is lit once its album completion is above
+  0%, and until then it looks like every other country (no outline). The lit set is computed from
+  the collection and repaints the paths (no redraw, which would reset the zoom). Hovering a guide country shows its album completion (`Completion` `card`: the design's
+  country card completion without title, threshold labels and points total). Deviation from the design: a mouse click on a guide country opens the
+  guide directly, a click elsewhere does nothing; the country card (`components/CountryCard.tsx`,
+  port of `SchedaPaese.dc.html`, with the same completion and "Apri la guida"; a bottom sheet on
+  phones) is shown for a tap on a guide country (touch has no hover) and for a country picked in
+  the search; the account button and panel are `components/AccountMenu.tsx` (port of
   `Account.dc.html`, session read from `/api/me` after hydration). Not ported yet, pending the
   collection: cover photos, album completion and levels, the sync status. Deviations: the design's
   light-blue background is not ported (sea and background are `bg`, as the guides and the status

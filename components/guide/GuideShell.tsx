@@ -16,7 +16,15 @@ import { Toast } from './Toast'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
-import { GUIDE_BAR_ID, openAlbum, setGuideView, useGuideView, type GuideView } from './view'
+import {
+  GUIDE_BAR_HEIGHT,
+  GUIDE_BAR_ID,
+  openAlbum,
+  openView,
+  setGuideView,
+  useGuideView,
+  type GuideView,
+} from './view'
 import { t } from '@/i18n'
 
 /**
@@ -102,7 +110,7 @@ function useStuck() {
 }
 
 /** Bar height and account button size: the button settles centered in the stuck bar. */
-const BAR = 64
+const BAR = GUIDE_BAR_HEIGHT
 const BUTTON = 48
 
 /**
@@ -153,8 +161,18 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
   const [barRef, buttonRef] = useBarPush()
   const inset = (BAR - BUTTON) / 2
 
+  // The index menu covers the page, which is locked under it. It opens at its top and, when it
+  // closes, the page is put back exactly where it was (instantly: <html> scrolls smoothly), unless
+  // a menu entry moved it on purpose (a section of the index, the Guida/Album switch).
+  const menuRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const menuMoved = useRef(false)
   useEffect(() => {
     if (!menu) return
+    const y = window.scrollY
+    menuMoved.current = false
+    menuRef.current?.scrollTo({ top: 0, behavior: 'instant' })
+    closeRef.current?.focus({ preventScroll: true })
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenu(false)
     const mq = window.matchMedia('(min-width: 960px)')
     const onWide = () => mq.matches && setMenu(false)
@@ -165,6 +183,8 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
       document.removeEventListener('keydown', onKey)
       mq.removeEventListener('change', onWide)
       document.documentElement.style.overflow = ''
+      if (!menuMoved.current && window.scrollY !== y)
+        window.scrollTo({ top: y, behavior: 'instant' })
     }
   }, [menu])
 
@@ -173,7 +193,8 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
       <div ref={sentinel} aria-hidden />
       <div
         ref={buttonRef}
-        className="fixed right-(--edge) z-30"
+        // Desktop only: on phones the guide has no account avatar (the account is on the home).
+        className="fixed right-(--edge) z-30 hidden min-[960px]:block"
         // Before hydration --bar-y is unset: the fallback keeps the button at var(--edge).
         style={{ top: `min(var(--edge), max(${inset}px, calc(var(--bar-y, 100vh) + ${inset}px)))` }}
       >
@@ -186,7 +207,7 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
         // room: its bottom line sits right under the opening and scrolls up with the page until
         // it reaches 64px from the top, where it stops; the bar then fills the space above it.
         // Until stuck it is see-through and lets clicks pass to the opening.
-        className={`sticky top-0 z-20 -mt-[64px] flex h-[64px] items-center gap-2 pr-[calc(var(--edge)+56px)] pl-[clamp(16px,4.5vw,64px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
+        className={`sticky top-0 z-20 -mt-[64px] flex h-[64px] items-center gap-2 pr-(--edge) pl-[clamp(16px,4.5vw,64px)] min-[960px]:pr-[calc(var(--edge)+56px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
       >
         {/*
           The bar's controls repeat the cover and the album opening: they appear only once the bar
@@ -264,26 +285,34 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
 
       {menu && (
         <div
+          ref={menuRef}
           role="dialog"
           aria-modal="true"
           aria-label={t.guide.shell.index}
-          className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-bg px-[clamp(16px,5vw,32px)] pb-8"
+          className="fixed inset-0 z-50 flex flex-col overflow-y-auto overscroll-contain bg-bg px-[clamp(16px,5vw,32px)] pb-8"
         >
           <div className="flex h-[56px] flex-none items-center justify-between">
             <span className="text-xs font-semibold tracking-[.16em] text-accent-700 uppercase">
               {country}
             </span>
             <button
+              ref={closeRef}
               type="button"
               className="btn btn-ghost min-h-[44px]"
-              autoFocus
               onClick={() => setMenu(false)}
             >
               {t.guide.shell.close}
             </button>
           </div>
           <div className="mt-4 flex flex-col gap-3">
-            <ViewSwitch view={view} className="flex self-start" onPick={() => setMenu(false)} />
+            <ViewSwitch
+              view={view}
+              className="flex self-start"
+              onPick={() => {
+                menuMoved.current = true
+                setMenu(false)
+              }}
+            />
             <Completion name={country} traces={traces} />
           </div>
           <div className="mt-8">
@@ -298,6 +327,7 @@ function Shell({ country, toc, traces, copies, children }: ShellProps) {
               active={active}
               size="menu"
               onNavigate={() => {
+                menuMoved.current = true
                 setGuideView('guide')
                 setMenu(false)
               }}
@@ -338,7 +368,7 @@ function ViewSwitch({
           type="button"
           aria-pressed={view === v}
           onClick={() => {
-            setGuideView(v)
+            openView(v)
             onPick?.()
           }}
           className={`min-h-[40px] cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
