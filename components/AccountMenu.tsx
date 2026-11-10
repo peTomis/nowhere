@@ -21,11 +21,19 @@ import { format, t } from '@/i18n'
  * to upload until the collection exists, docs/data-model.md §6).
  *
  * The session is read from /api/me after hydration, so the pages that host it stay static.
+ *
+ * `panel={false}` (guide pages): only the avatar, not clickable and without the panel, so signing
+ * in and out happen from the home only.
  */
 
 export type Me = { email: string; name?: string; image?: string }
 
-export function AccountMenu() {
+type Props = {
+  /** Whether the button opens the account panel. */
+  panel?: boolean
+}
+
+export function AccountMenu({ panel = true }: Props) {
   const [me, setMe] = useState<Me | null>(null)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -56,24 +64,38 @@ export function AccountMenu() {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  const face = me ? (
+    <Avatar me={me} className="size-full text-lg" />
+  ) : (
+    <UserIcon weight="duotone" size={22} aria-hidden="true" />
+  )
+  const label = me
+    ? format(t.accountMenu.buttonSignedIn, { email: me.email })
+    : t.accountMenu.signIn
+
+  if (!panel)
+    return (
+      <span
+        role="img"
+        aria-label={me ? label : t.accountMenu.title}
+        className="relative grid size-[48px] flex-none place-items-center overflow-hidden rounded-full bg-bg font-body text-text shadow-sm"
+      >
+        {face}
+      </span>
+    )
+
   return (
     <>
       <button
         ref={btnRef}
         type="button"
-        aria-label={
-          me ? format(t.accountMenu.buttonSignedIn, { email: me.email }) : t.accountMenu.signIn
-        }
+        aria-label={label}
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className="relative grid size-[48px] flex-none cursor-pointer place-items-center rounded-full border-0 bg-bg p-0 font-body text-text shadow-sm hover:bg-accent-100"
       >
-        {me ? (
-          <Avatar me={me} className="size-full text-lg" />
-        ) : (
-          <UserIcon weight="duotone" size={22} aria-hidden="true" />
-        )}
+        {face}
       </button>
 
       {/* Always mounted, so it can slide in from the right and out again; inert while closed. */}

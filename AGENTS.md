@@ -144,8 +144,9 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Cover ink: `coverInk` in a guide's content sets the color of the country name _and_ the nowhere
   logo on the cover (`<GuideCover ink>` → `<LogoBadge ink>` → `<Logo ink>`). They must always be
   the same color: don't color one without the other.
-- Guide chrome follows `Guida Romania - Sito v4.dc.html`: the account button (`AccountMenu`) at
-  the home's spot, pushed up by the sticky bar until it sits centered in it; emblems and the
+- Guide chrome follows `Guida Romania - Sito v4.dc.html`: the account avatar (`AccountMenu
+panel={false}`: not clickable, no panel; sign-in and sign-out are on the home only) at the
+  home's spot, pushed up by the sticky bar until it sits centered in it; emblems and the
   compact album completion (`components/Completion.tsx`) under the country name on the cover; the
   album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album", "Personaggi e
   città"); a sticky top bar at every width whose controls fade in only once it is stuck

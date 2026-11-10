@@ -32,9 +32,12 @@ export function GuideAlbumIntro({ name, traces, scored, cards }: Props) {
           { n: traces.length, regions },
         )
   return (
+    // The sticky bar (64px) is pulled up over the bottom padding: the padding is the bar's height
+    // plus a gap, so the last row (the button, on phones) is never under the bar when it turns
+    // opaque.
     <section
       aria-label={t.guide.album.title}
-      className="flex flex-col gap-[clamp(40px,6vw,72px)] px-[clamp(16px,4.5vw,64px)] pt-[clamp(32px,6vw,64px)] pb-[clamp(40px,6vw,72px)]"
+      className="flex flex-col gap-[clamp(40px,6vw,72px)] px-[clamp(16px,4.5vw,64px)] pt-[clamp(32px,6vw,64px)] pb-[calc(64px+clamp(24px,3vw,32px))]"
     >
       <div className="flex flex-wrap items-center gap-x-[clamp(24px,4vw,64px)] gap-y-4">
         <div className="flex flex-none flex-col gap-[2px]">
