@@ -12,13 +12,16 @@ import { select, type Selection } from 'd3-selection'
 import 'd3-transition'
 import { zoom as d3Zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } from 'd3-zoom'
 import type { Feature, Geometry } from 'geojson'
+import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
 import { AccountMenu } from './AccountMenu'
+import { Completion, type Scored } from './Completion'
 import { CountryCard } from './CountryCard'
 import { LogoBadge } from './LogoBadge'
 import { locale, t } from '@/i18n'
+import { useCollection } from '@/lib/reader/collection'
 
 /**
  * Home: full-screen world map with country search.
@@ -26,7 +29,9 @@ import { locale, t } from '@/i18n'
  * country paths); React owns the overlays (search, account, tooltip, country card, controls).
  *
  * Countries are lit (accent fill) by the reader's photos; guide countries that are not lit get a
- * quiet fill with an accent outline (docs/data-model.md §7).
+ * quiet fill with an accent outline (docs/data-model.md §7). Hovering a guide country shows its
+ * album completion; clicking it opens the guide (other countries do nothing on click). The
+ * country card is shown only for a country picked in the search.
  */
 
 export type MapGuide = {
@@ -34,13 +39,15 @@ export type MapGuide = {
   /** ISO 3166-1 numeric, matches the TopoJSON feature id. */
   countryId: string
   name: string
+  /** The guide's traces, for the album completion in the hover. */
+  traces: Scored[]
 }
 
 type CountryProps = { n: string; k: number }
 type Country = Feature<Geometry, CountryProps>
 type WorldTopology = Topology<{ countries: GeometryCollection<{ n: string }> }>
 
-type Hover = { x: number; y: number; name: string; guide: boolean; lit: boolean }
+type Hover = { x: number; y: number; name: string; guide?: MapGuide; lit: boolean }
 type Pin = { name: string; guide?: MapGuide; base: [number, number] }
 type Entry = { f: Country; name: string; key: string; guide?: MapGuide }
 
@@ -79,6 +86,9 @@ type Props = {
 }
 
 export function WorldMap({ guides, lit = NONE_LIT }: Props) {
+  const router = useRouter()
+  // Load the reader's collection up front, so the completion is ready on the first hover.
+  useCollection()
   const mapRef = useRef<HTMLDivElement>(null)
   const engine = useRef<Engine>({ w: 0, h: 0, tr: zoomIdentity })
   const selRef = useRef<number | null>(null)
@@ -146,11 +156,10 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       cancelAnimationFrame(hoverRaf.current)
       hoverRaf.current = requestAnimationFrame(() => setHover(h))
     }
-    const pinAt = (f: Country, base: [number, number]) => {
-      setSel(f.properties.k)
-      setHover(null)
-      setTr(m.tr)
-      setPin({ name: f.properties.n, guide: guideOf(f.id), base })
+    const open = (g: MapGuide) => {
+      cancelAnimationFrame(hoverRaf.current)
+      clearSelection()
+      router.push(`/guide/${g.slug}`)
     }
 
     const draw = () => {
@@ -219,7 +228,8 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
           kindOf(d.id) === 'guide' ? 'var(--color-accent)' : 'var(--color-bg)',
         )
         .style('stroke-width', (d) => (kindOf(d.id) === 'guide' ? '2px' : '0.6px'))
-        .style('cursor', 'pointer')
+        // Only guide countries do something on click.
+        .style('cursor', (d) => (guideOf(d.id) ? 'pointer' : 'inherit'))
         .on('pointerenter', function (e: PointerEvent, d) {
           if (e.pointerType === 'mouse')
             select(this).style(
@@ -234,7 +244,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
             x,
             y,
             name: d.properties.n,
-            guide: !!guideOf(d.id),
+            guide: guideOf(d.id),
             lit: kindOf(d.id) === 'lit',
           })
         })
@@ -244,7 +254,8 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
         })
         .on('click', (e: MouseEvent, d) => {
           e.stopPropagation()
-          pinAt(d, m.tr.invert(local(e)))
+          const g = guideOf(d.id)
+          if (g) open(g)
         })
       // Outlines of guide countries are drawn above their neighbours'.
       m.paths.filter((d) => kindOf(d.id) === 'guide').raise()
@@ -316,7 +327,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       select(el).selectAll('svg').remove()
       Object.assign(m, { w: 0, h: 0, svg: undefined, zoom: undefined, paths: undefined })
     }
-  }, [guides, guideOf, kindOf])
+  }, [guides, guideOf, kindOf, clearSelection, router])
 
   useEffect(() => () => clearTimeout(blurTimer.current), [])
 
@@ -375,9 +386,17 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
     if (p[1] > h * 0.55) pinPos.bottom = Math.max(12, h - p[1] + 16)
     else Object.assign(pinPos, { top: Math.max(80, p[1] + 16), bottom: undefined })
   }
+  // The hover sits below-right of the pointer, or above it when it would overflow the map. A
+  // guide country's hover carries the full completion (the design's country card), so it is wider
+  // and taller.
   const showHover = !!hover && !pin
-  const hx = hover ? Math.max(8, Math.min(hover.x + 16, w - 230)) : 0
-  const hy = hover ? (hover.y + 84 > h ? hover.y - 76 : hover.y + 18) : 0
+  const hoverW = hover?.guide ? 280 : 230
+  const hoverH = hover?.guide ? 190 : 84
+  const hx = hover ? Math.max(8, Math.min(hover.x + 16, w - hoverW)) : 0
+  const hoverPos =
+    hover && hover.y + 18 + hoverH > h
+      ? { left: hx, bottom: Math.max(8, h - hover.y + 10) }
+      : { left: hx, top: hover ? hover.y + 18 : 0 }
   const listOn = focus && status === 'ready'
   const listId = 'country-results'
 
@@ -393,17 +412,27 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
 
       {showHover && (
         <div
-          className="pointer-events-none absolute z-3 flex flex-col gap-[2px] rounded-md bg-bg px-3 py-2 whitespace-nowrap shadow-md"
-          style={{ left: hx, top: hy }}
+          className={`pointer-events-none absolute z-3 flex flex-col rounded-md bg-bg shadow-md ${hover.guide ? 'w-[264px] gap-3 px-4 pt-3 pb-4' : 'gap-[2px] px-3 py-2 whitespace-nowrap'}`}
+          style={hoverPos}
         >
-          <span className="text-base leading-tight font-semibold">{hover.name}</span>
+          <span
+            className={
+              hover.guide
+                ? 'text-xl leading-[1.2] font-semibold'
+                : 'text-base leading-tight font-semibold'
+            }
+          >
+            {hover.name}
+          </span>
           {hover.lit && (
             <span className="flex items-center gap-[6px] text-sm text-neutral-800">
               <CameraIcon weight="duotone" aria-hidden="true" />
               {t.map.yourPhotos}
             </span>
           )}
-          {hover.guide && <span className="text-sm text-accent-700">{t.map.hasGuide}</span>}
+          {hover.guide && (
+            <Completion name={hover.name} traces={hover.guide.traces} variant="card" />
+          )}
           {!hover.guide && !hover.lit && (
             <span className="text-sm text-neutral-700 italic">{t.map.noGuide}</span>
           )}

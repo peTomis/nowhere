@@ -8,7 +8,10 @@ import { isSeen, useCollection } from '@/lib/reader/collection'
  * Album completion of a country, port of "Completamento.dc.html". `compact`: a thin bar with the
  * level thresholds cut into it, and the percentage (cover, guide bar). `full`: title, percentage
  * and level, a thicker bar with the thresholds labelled below, and the points to the next level
- * (the album opening of a guide).
+ * (the album opening of a guide). `card`: the full one cut down for the home map's hover, where the
+ * country name is right above it: no title; under the bar, in place of the threshold labels, the
+ * number of traces with a photo (at the end of the fill) and the total (at the right end); only the
+ * points to the next level.
  */
 
 /** Percentages at which the reader reaches level 1, 2 and 3. */
@@ -17,18 +20,37 @@ export const THRESHOLDS = [25, 50, 80]
 /** A trace as the completion counts it: its collection key and its points. */
 export type Scored = { key: string; points: number }
 
-export type CompletionState = { pct: number; points: number; total: number; level: number }
+export type CompletionState = {
+  pct: number
+  points: number
+  total: number
+  level: number
+  /** Traces with a photo, out of `count`. */
+  seen: number
+  count: number
+}
 
 /** Points of the traces with a photo, out of the points of all the country's traces. */
 export function completionOf(traces: Scored[], seen: (key: string) => boolean): CompletionState {
   let points = 0
   let total = 0
+  let n = 0
   for (const tr of traces) {
     total += tr.points
-    if (seen(tr.key)) points += tr.points
+    if (seen(tr.key)) {
+      points += tr.points
+      n++
+    }
   }
   const pct = total ? Math.floor((points / total) * 100) : 0
-  return { pct, points, total, level: THRESHOLDS.filter((s) => pct >= s).length }
+  return {
+    pct,
+    points,
+    total,
+    level: THRESHOLDS.filter((s) => pct >= s).length,
+    seen: n,
+    count: traces.length,
+  }
 }
 
 export function useCompletion(traces: Scored[]): CompletionState {
@@ -41,14 +63,14 @@ type Props = {
   name: string
   /** The country's traces (see RARITY_POINTS). */
   traces: Scored[]
-  variant?: 'compact' | 'full'
+  variant?: 'compact' | 'full' | 'card'
   /** Percentage the bar starts from, to show it growing (after a photo is added). */
   from?: number
   className?: string
 }
 
 export function Completion({ name, traces, variant = 'compact', from, className = '' }: Props) {
-  const { pct, points, total, level } = useCompletion(traces)
+  const { pct, points, total, level, seen, count } = useCompletion(traces)
   // Starts at `from`, then grows to the real value on the next frame (the bar's transition).
   const [grown, setGrown] = useState(from === undefined)
   useEffect(() => {
@@ -63,10 +85,10 @@ export function Completion({ name, traces, variant = 'compact', from, className 
 
   // "12 punti su 40. Ancora 4 punti per il livello 2."
   const next = THRESHOLDS.findIndex((s) => pct < s)
-  let line = ''
+  let toNext = ''
   if (total > 0) {
     const need = next < 0 ? 0 : Math.ceil((total * THRESHOLDS[next]) / 100) - points
-    line = `${format(t.completion.points, { points, total })} ${
+    toNext =
       pct >= 100
         ? t.completion.all
         : next < 0
@@ -75,8 +97,8 @@ export function Completion({ name, traces, variant = 'compact', from, className 
               n: need,
               level: next + 1,
             })
-    }`
   }
+  const line = total > 0 ? `${format(t.completion.points, { points, total })} ${toNext}` : ''
   const aria = `${format(t.completion.aria, {
     name,
     pct,
@@ -109,6 +131,52 @@ export function Completion({ name, traces, variant = 'compact', from, className 
       </div>
     )
 
+  const levelLabel = level
+    ? format(t.completion.levelLabel, { n: level })
+    : t.completion.noLevelLabel
+
+  if (variant === 'card')
+    return (
+      <div
+        role="group"
+        aria-label={aria}
+        className={`flex min-w-0 flex-col gap-2 font-body [text-wrap:pretty] text-text ${className}`}
+      >
+        <span className="flex items-baseline gap-[8px]">
+          <span className="text-[28px] leading-none font-semibold tabular-nums">{pct}%</span>
+          <span className="text-[15px] text-neutral-800">{levelLabel}</span>
+        </span>
+        <div aria-hidden="true" className="relative">
+          <div className="relative h-[10px] overflow-hidden rounded-[5px] bg-neutral-200">
+            <div className={`${fill} rounded-[5px]`} style={{ width }} />
+          </div>
+          {THRESHOLDS.map((s) => (
+            <span
+              key={s}
+              className="absolute -inset-y-[2px] w-[2px] -translate-x-1/2 bg-bg"
+              style={{ left: `${s}%` }}
+            />
+          ))}
+        </div>
+        <div aria-hidden="true" className="relative h-[18px] text-xs tabular-nums">
+          {seen < count && pct < 90 && (
+            <span
+              className={`absolute top-0 font-semibold ${shown < 4 ? 'left-0' : '-translate-x-1/2'}`}
+              style={shown < 4 ? undefined : { left: width }}
+            >
+              {seen}
+            </span>
+          )}
+          <span
+            className={`absolute top-0 right-0 ${seen === count ? 'font-semibold' : 'text-neutral-700'}`}
+          >
+            {count}
+          </span>
+        </div>
+        {toNext && <span className="text-sm leading-[1.45] text-neutral-800">{toNext}</span>}
+      </div>
+    )
+
   return (
     <div
       role="group"
@@ -123,9 +191,7 @@ export function Completion({ name, traces, variant = 'compact', from, className 
           <span className="text-[clamp(28px,6vw,36px)] leading-none font-semibold tabular-nums">
             {pct}%
           </span>
-          <span className="text-[15px] text-neutral-800">
-            {level ? format(t.completion.levelLabel, { n: level }) : t.completion.noLevelLabel}
-          </span>
+          <span className="text-[15px] text-neutral-800">{levelLabel}</span>
         </span>
       </div>
       <div aria-hidden="true" className="relative">

@@ -179,8 +179,10 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   (projection, zoom, country paths), React owns the overlays. d3 handlers read React state through
   refs. Only guides with `status: 'ready'` are passed to the map. Countries lit by the reader's
   photos are filled with the accent; guide countries not lit are `neutral-200` with a 2px accent
-  outline. A click always opens the country card (`components/CountryCard.tsx`, port of
-  `SchedaPaese.dc.html`); the account button and panel are `components/AccountMenu.tsx` (port of
+  outline. Hovering a guide country shows its album completion (`Completion` `card`: the design's
+  country card completion without title, threshold labels and points total). Deviation from the design: a click on a guide country opens the guide
+  directly, a click elsewhere does nothing; the country card (`components/CountryCard.tsx`, port
+  of `SchedaPaese.dc.html`) is only shown for a country picked in the search; the account button and panel are `components/AccountMenu.tsx` (port of
   `Account.dc.html`, session read from `/api/me` after hydration). Not ported yet, pending the
   collection: cover photos, album completion and levels, the sync status. Deviations: the design's
   light-blue background is not ported (sea and background are `bg`, as the guides and the status
