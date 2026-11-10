@@ -22,7 +22,9 @@ Prima di scrivere qualsiasi contenuto, compila con l’utente questa scheda e fa
 7. **Dibattiti storiografici aperti.** Elenca le questioni contese: origini etniche, confini rivendicati, figure divisive, periodi di occupazione o di regime. Per la Romania erano la continuità daco-romana, Vlad III e il comunismo. Ognuna va trattata come dibattito, non come fatto.
 8. **Narrazioni nazionali da cui guardarsi.** Indica le letture teleologiche tipiche del Paese, per esempio "terra nazionale in attesa di ricongiungersi" o "popolo che resiste da sempre allo straniero". Vanno riconosciute nelle fonti e non riprodotte.
 9. **Fonti di riferimento.** Indica almeno due storie generali affidabili, accademiche e preferibilmente non scritte dalla storiografia nazionale di un solo Paese coinvolto. Wikipedia non conta come fonte di riferimento.
-10. **Personaggi con scheda dedicata.** Elenca i pochi personaggi davvero centrali per il viaggiatore. Nelle timeline compariranno solo per l’evento della scheda.
+10. **Personaggi e città con scheda dedicata.** Elenca i pochi personaggi che il viaggiatore incontrerà davvero sul posto: in statue, castelli, monasteri, piazze, banconote, feste. Di norma sono da cinque a otto per tutta la guida, con almeno uno per regione dove possibile. Per ognuno indica le tracce visibili e il mito o dibattito da chiarire. Elenca anche le città con scheda. I criteri sono nelle sezioni B9 e B10. Nelle timeline i personaggi compariranno solo per l’evento della scheda.
+11. **Elenco dei luoghi.** Prima di scrivere le schede, compila l’elenco unico dei luoghi (le «tracce») con il loro `id`: monumenti, edifici, siti, oggetti. Personaggi e città li richiameranno da questo elenco, senza duplicarli. Vedi la sezione D6.
+12. **Archiviazione delle foto del lettore.** Decidi con l’utente se le foto restano solo sul dispositivo o devono essere ritrovabili su altri dispositivi. La scelta condiziona il modello dei dati e va presa prima di scrivere il codice della collezione. Vedi la sezione D6.
 
 ---
 
@@ -81,6 +83,10 @@ Prima di scrivere qualsiasi contenuto, compila con l’utente questa scheda e fa
 - **Titoli delle schede**: un nome proprio, per esempio «Trattato di Spira», oppure una frase breve con soggetto, per esempio «Gli ungari entrano nel bacino dei Carpazi». Niente titoli vaghi come «Un anno turbolento».
 - **Niente editoriali, niente superlativi e primati non verificati.** Formule come «il primo», «il più grande», «la prima opera» vanno verificate o tolte: sono spesso false o discusse.
 - **Coerenza tra titolo e testo.** Il titolo non deve affermare ciò che il testo smentisce, per esempio «La conquista ottomana» sopra «ma il regno resta suo».
+- **Niente giudizi complessivi su periodi, regimi o popoli** («epoca buia», «età d’oro», «dominazione straniera», «periodo di decadenza»). Al loro posto vanno i fatti documentati che stanno dietro il giudizio: per esempio il costo dell’investitura, la durata dei regni, la pressione fiscale.
+  - Se il giudizio stesso è un dato storico rilevante, attribuiscilo a chi lo ha formulato e quando, per esempio «la storiografia romena dell’Ottocento», e affiancalo ai fatti che lo mettono in discussione.
+  - «È considerato», «viene ricordato come», «è noto come» non sono attribuzioni: dicono che qualcuno lo pensa, ma non chi.
+  - Non spiegare fenomeni collettivi con un vizio o una virtù morale, come «l’avidità dei principi» o «il coraggio del popolo». Descrivi i meccanismi.
 
 ### B8. Tipografia
 
@@ -89,6 +95,113 @@ Prima di scrivere qualsiasi contenuto, compila con l’utente questa scheda e fa
 - **Intervalli di date**: trattino lungo `–`, senza spazi nelle schede (`1512–1521`) e con spazi negli `headings` e nell’indice (`290 – 895`).
 - **Date approssimative**: `1310 ca.`, `XIV sec.`, `I sec. a.C.`.
 - **Diacritici corretti** della lingua locale: per il romeno ș e ț con la virgola sotto, non ş e ţ con la cediglia.
+
+### B9. Schede personaggio
+
+Le schede personaggio non sono biografie. Il loro scopo è far capire al viaggiatore **perché quel personaggio è ovunque intorno a lui** e che cosa significa per chi vive nel Paese oggi. La scheda è costruita intorno alle **tracce**, cioè le cose che il lettore può vedere: ogni traccia è un’immagine da «collezionare». Una traccia risulta vista **solo quando il lettore carica una sua foto**. La nota libera è facoltativa.
+
+#### Chi merita una scheda
+
+Un personaggio entra solo se soddisfa entrambe le condizioni:
+
+1. **Il viaggiatore lo incontrerà**: monumenti, luoghi legati a lui, nomi di città, piazze e strade, banconote, festività, souvenir, film.
+2. **C’è qualcosa da spiegare che la timeline non può dire in due righe**: un mito, un uso politico, un dibattito tra due Paesi, una distanza tra figura storica e immagine popolare.
+
+Un personaggio importante ma senza tracce visibili resta nella timeline. Un personaggio molto visibile ma senza nulla da spiegare si risolve con una riga nella scheda della città.
+
+#### Struttura della scheda
+
+1. **Introduzione.** Da quattro a sei righe, non gamificate. Dice chi era il personaggio e perché lo si incontra ovunque. È l’unico testo che non dipende da una visita. Non parla di collezione, punteggi o completamento.
+2. **Tracce.** Da due a cinque, ognuna con un’immagine e un breve testo. Ogni traccia:
+   - porta **una sola idea** sul personaggio, legata a ciò che si vede in quel luogo;
+   - è **leggibile da sola**, perché il lettore potrebbe visitarne soltanto una;
+   - non ripete ciò che dicono le altre tracce o l’introduzione;
+   - ha un’indicazione **«Come trovarla»**: dove si trova esattamente (nome del museo, sala, lato della piazza, orari o accesso se rilevanti). È **obbligatoria per le tracce insolite**, che altrimenti sarebbero introvabili, e consigliata per tutte. Le informazioni pratiche che cambiano nel tempo (orari, biglietti) vanno verificate prima della pubblicazione o omesse.
+3. **Da ricordare.** Una sola frase in chiusura: l’idea che il lettore deve portarsi a casa. Se non riesci a scriverla, la scheda non ha ancora un fuoco.
+
+#### Come distribuire il contenuto tra le tracce
+
+Gli argomenti da coprire sono quattro: chi era, che cosa ha fatto, perché conta oggi, storia e mito. Non vanno in fila: si distribuiscono tra le tracce, ciascuno dove il luogo lo rende più evidente. Chi vede tutte le tracce ha il quadro completo; chi ne vede una ha capito comunque qualcosa.
+
+Esempio, Vlad III:
+
+- la casa natale di Sighișoara porta «chi era»;
+- le rovine di Poenari portano «che cosa ha fatto davvero»;
+- Bran porta «storia e mito», perché è il luogo dove il mito è più lontano dai fatti.
+
+Se un dibattito tra due letture o due Paesi è centrale, collocalo nella traccia dove si vede meglio e usa la struttura della sezione B3.
+
+#### Tipi di traccia
+
+Segna ogni traccia con uno di due tipi, così il lettore sa cosa aspettarsi:
+
+- **Sul percorso**: si incontra visitando le città principali o è ovunque, per esempio una banconota o una statua in una piazza centrale.
+- **Se passi di lì**: richiede una deviazione o un viaggio apposta.
+
+#### Numero, valore e completamento
+
+**Il modello è l’album di figurine.** Ogni Paese ha un album con un numero fisso di caselle, una per traccia. Al posto delle figurine, il lettore incolla le sue foto. L’album si progetta **completo prima della pubblicazione**, come un album stampato: tutte le caselle esistono dal primo giorno, anche vuote. Le aggiunte successive sono eccezioni (sezione «Aggiunte all’album»).
+
+- **Numero progressivo.** Ogni traccia ha un numero all’interno del Paese (01, 02, 03…), unico e **stabile**. Nell’album iniziale i numeri seguono l’ordine delle pagine (per esempio regione per regione). Dopo la pubblicazione non si cambiano più: una traccia aggiunta prende il numero successivo all’ultimo, una traccia eliminata lascia un buco. Non si rinumera mai.
+- **Valore.** Ogni traccia vale **bronzo (1 punto)**, **argento (2 punti)** oppure **oro (3 punti)**. Il valore dipende da due criteri: **quanto è impegnativo raggiungerla** e **quanto è insolita**. Non dipende da quanto è importante: altrimenti il lettore sarebbe spinto a saltare le tracce «minori», che spesso sono proprio quelle che spiegano meglio un luogo.
+  - **Raggiungibilità**: coincide con il tipo. «Sul percorso» non aggiunge nulla, «Se passi di lì» aggiunge un livello.
+  - **Originalità**: una traccia è insolita se non compare nei percorsi turistici abituali e bisogna sapere che esiste per trovarla. Esempi: un ritratto in un piccolo museo, un dettaglio su una facciata, un oggetto in una collezione locale. Aggiunge un livello.
+  - **Calcolo**: si parte da bronzo e si aggiunge un livello per ciascun criterio soddisfatto, fino a oro.
+
+  |                    | Nota    | Insolita |
+  | ------------------ | ------- | -------- |
+  | **Sul percorso**   | Bronzo  | Argento  |
+  | **Se passi di lì** | Argento | Oro      |
+
+  Esempi: il castello di Bran, famoso e facile da raggiungere, è bronzo. Le rovine di Poenari, note ma fuori strada, sono argento. Un ritratto conservato in un piccolo museo fuori dalle rotte è oro.
+
+- **L’originalità riguarda la traccia, non la foto.** La redazione la stabilisce una volta, per tutti. Non si valuta mai la foto del lettore.
+- **Completamento del Paese.** È la somma dei punti delle tracce viste diviso il totale dei punti del Paese. Le soglie dei livelli bronzo, argento e oro sono valori di configurazione unici per tutte le guide, così da essere confrontabili.
+- **Aggiunte all’album.** Sono rare e riservate a casi particolari: un luogo nuovo legato a fatti recenti (un monumento inaugurato, un museo aperto), una traccia importante dimenticata, un capitolo nuovo della guida. Una traccia aggiunta:
+  - prende il numero successivo all’ultimo;
+  - è segnalata come «nuova» per un certo periodo nella vista d’insieme.
+- **Livelli raggiunti non si perdono.** Ogni aggiunta fa crescere il totale e abbassa la percentuale dei lettori. Il livello già raggiunto resta: si salva con la data in cui è stato ottenuto, e la barra mostra la percentuale attuale accanto al livello ottenuto.
+- **Una guida pubblicata a metà fa crescere l’album.** Se la guida esce prima di essere completa (per esempio con la timeline ferma a un certo secolo), le tracce dei capitoli successivi saranno aggiunte. Ti conviene completare l’elenco dei luoghi (sezione A11) di tutta la guida prima di pubblicare l’album, anche se alcuni testi non sono ancora scritti.
+- **Il gioco resta fuori dal racconto.** Punti, percentuali e livelli compaiono solo nella barra di completamento, nel segno di valore della traccia e nella vista d’insieme. Introduzione, testi delle tracce e «Da ricordare» non parlano mai di punti, livelli o completamento.
+- **Niente confronti.** Nessuna classifica e nessun confronto di punteggi con altri utenti.
+
+#### Limiti
+
+- **Date: al massimo tre o quattro in tutta la scheda**, solo quelle che il lettore deve collegare a ciò che vede. Il resto si scrive senza date («all’inizio del regno», «pochi anni dopo», «nell’Ottocento») oppure si omette.
+- **Niente elenchi** di battaglie, mogli, figli, successori, trattati. Un solo episodio raccontato bene vale più di cinque citati.
+- **Niente genealogie**, salvo quando spiegano qualcosa che si vede, per esempio il nome di una dinastia su un castello.
+- **Nomi propri:** oltre al personaggio, solo quelli indispensabili. Un lettore che visita più Paesi non deve trattenere decine di nomi.
+- **Lunghezza:** introduzione e tracce si leggono in tutto in due o tre minuti. Ogni traccia, da sola, in meno di un minuto.
+- **Nessuna ripetizione della timeline.** La timeline dice che cosa è successo, la scheda dice che cosa significa. Se un fatto è già nella timeline, la scheda lo richiama in una frase.
+
+#### Immagini prima della visita
+
+- Prima che il lettore aggiunga la sua foto, la traccia mostra la **foto di repertorio del luogo in scala di grigi, con opacità molto bassa, bordo tratteggiato e il numero progressivo**. Quando il lettore carica la sua foto, questa prende il posto di quella di repertorio.
+- Ogni traccia deve quindi avere una foto di repertorio, con licenza libera. Se non se ne trova una utilizzabile, si usa un segnaposto neutro con lo stesso trattamento, e si segna con un `TODO immagine`.
+- La scala di grigi non elimina i diritti d’autore: vale la stessa verifica delle immagini a colori.
+- Per le foto di monumenti, opere e architetture recenti verifica i diritti: in alcuni Paesi la libertà di panorama è limitata. In caso di dubbio usa un’illustrazione o un segnaposto. Indica sempre autore e licenza delle immagini non originali.
+
+#### Tono e verifica
+
+- Le regole delle sezioni B2, B3 e B7 valgono ancora di più: i personaggi sono il terreno preferito dei miti nazionali. Non celebrare e non demolire. Mostra come e perché il personaggio è diventato quello che il lettore vede.
+- I dati delle schede (date, luoghi, attribuzioni di monumenti e opere) seguono la regola delle due fonti. Vale anche per le informazioni sulle tracce: dov’è la statua, quando è stata eretta, chi l’ha voluta.
+- Le tracce che cambiano nel tempo, come una banconota sostituita, una statua spostata o un museo chiuso, vanno verificate con una ricerca recente prima della consegna. In una collezione l’errore pesa di più: il lettore cerca una cosa che non trova.
+
+#### Filtri
+
+- L’`on` della scheda corrisponde alle regioni dove si trovano le sue tracce, non solo alla regione dove il personaggio ha regnato.
+- Ogni traccia ha l’`on` della regione in cui si trova. Con una sola regione selezionata, la scheda mostra comunque l’introduzione e la frase finale, e le tracce di quella regione per prime.
+- La guida ha due viste: **completa** (testi) e **d’insieme** (solo foto, numeri e titoli di tutte le tracce, in ordine di numero). Entrambe rispettano il filtro delle regioni. Ogni traccia deve quindi avere un titolo comprensibile anche senza il testo che l’accompagna.
+
+### B10. Schede città
+
+Le città seguono lo stesso modello dei personaggi, con un’introduzione più ampia: una città non è solo una lista di monumenti.
+
+1. **Introduzione.** Da sei a dieci righe, non gamificate: che cos’è la città, chi l’ha costruita e abitata, perché ha questa forma. È il testo che dà senso a tutte le tracce.
+2. **Tracce.** I luoghi da vedere, ognuno con un’immagine e una sola idea, leggibile da solo. Valgono i tipi «sul percorso» e «se passi di lì», ma riferiti alla città: «se passi di lì» indica un luogo fuori dal centro o con accesso limitato.
+3. **Da ricordare.** Una frase in chiusura.
+
+Le regole su date, nomi, immagini, verifica, numerazione e valore della sezione B9 valgono anche qui. La numerazione è unica per tutto il Paese, non per città. Quando una traccia è anche la traccia di un personaggio, per esempio la casa natale di un principe, è lo stesso luogo, non una copia (sezione D6). Il testo della città descrive il luogo, il testo del personaggio spiega perché quel luogo conta per lui.
 
 ---
 
@@ -101,6 +214,8 @@ Prima di scrivere qualsiasi contenuto, compila con l’utente questa scheda e fa
 - **Se un dato non è verificabile** non inventarlo e non ammorbidirlo: lascia `{/* TODO verificare: … */}` nel punto esatto, spiegando il dubbio.
 - **Quando correggi una fonte**, segnala l’errore: cosa dice la fonte, cosa è corretto e perché.
 - **Se un dato che avevi proposto tu era sbagliato**, dillo esplicitamente e correggilo.
+- **Un riferimento conta come fonte solo dopo averlo aperto e letto.** I modelli linguistici, compreso quello che sta lavorando, possono citare documenti inesistenti o attribuire a un documento ciò che non dice. Vale anche per le revisioni fatte da altri modelli. Segnala i link che non si aprono o che non confermano il dato.
+- **Due pagine che riprendono la stessa ricostruzione contano come una fonte sola**, per esempio una voce di Wikipedia e il sito che la copia.
 
 ### C2. Errori ricorrenti da cercare attivamente
 
@@ -113,23 +228,34 @@ Sono gli errori trovati nella guida della Romania. Vanno cercati in ogni nuova g
 3. **Senso invertito.** "Banato e Crișana restavano sotto il re", ma la scheda dice che facevano parte del voivodato.
 4. **Data simbolica usata come data dell’evento.** L’anno di un’incoronazione o di una fondazione tradizionale al posto del processo reale (conquista graduale, indipendenza ottenuta dopo).
 5. **Causa e conseguenza scambiate.** "La battaglia causa la servitù", mentre a causarla fu la repressione successiva.
+6. **Un processo compresso in un solo evento.** "Da qui nascono castelli e chiese fortificate" attribuisce a un’invasione strutture costruite nell’arco di tre secoli. Un titolo come "La Transilvania entra nel regno" condensa in un anno una conquista graduale. Data l’azione, poi descrivi il processo nel testo.
+7. **La fine di uno stato di cose attribuita all’evento sbagliato.** Esempio: "alla morte di Michele, nel 1601, l’unione si dissolve", mentre l’unione era già finita mesi prima. Controlla quando un dominio, un’alleanza o un’unione finisce davvero.
+8. **Più documenti fusi in uno.** Esempio: due petizioni distinte (1791 e 1792), con autori diversi, raccontate come una sola.
+9. **Condizioni previste presentate come realtà.** Un trattato che prevede frontiere o titoli in caso di vittoria non va scritto come se li assegnasse. Esempio: "il Budžak resterà moldavo", quando il principe non lo amministrava.
+10. **Statistiche senza unità contata.** Un calo dell’80% di cosa: abitanti, nuclei fiscali, villaggi? In quale territorio e periodo? Un calo di contribuenti può riflettere fughe ed esenzioni, oltre alle morti.
+11. **Una formulazione che contraddice il riepilogo.** Esempio: "l’Oltenia torna agli ottomani", mentre torna alla Valacchia, principato tributario e non provincia. Chiediti sempre chi amministra.
 
 **Nella fonte stessa:**
 
-6. **Etnonimi sbagliati** usati come sinonimi.
-7. **Negazioni e "bensì"** che rovesciano il senso.
-8. **Chi fa cosa scambiato**: due personaggi omonimi, il principe di un paese attribuito all’altro, un sovrano al posto di un altro.
-9. **Luoghi scambiati**, per esempio la capitale con il luogo di sepoltura, o una capitale antica con la capitale della provincia romana.
-10. **Battaglie e trattati con date o nomi sbagliati**, per esempio Lesnaja al posto di Poltava, o territori assegnati al trattato sbagliato.
-11. **Nomi rimasti nella lingua della traduzione**, segno che il testo non è stato rivisto.
+12. **Etnonimi sbagliati** usati come sinonimi.
+13. **Negazioni e "bensì"** che rovesciano il senso.
+14. **Chi fa cosa scambiato**: due personaggi omonimi, il principe di un paese attribuito all’altro, un sovrano al posto di un altro.
+15. **Luoghi scambiati**, per esempio la capitale con il luogo di sepoltura, o una capitale antica con la capitale della provincia romana.
+16. **Battaglie e trattati con date o nomi sbagliati**, per esempio Lesnaja al posto di Poltava, o territori assegnati al trattato sbagliato.
+17. **Nomi rimasti nella lingua della traduzione**, segno che il testo non è stato rivisto.
+18. **Giudizi complessivi riprodotti dalla fonte**, presentati come opinione comune. Esempio: "la fine del Settecento è considerata uno dei periodi più bui", senza dire chi lo considera e con una spiegazione morale ("i principi pensano ad arricchirsi"). Vedi B7.
 
 **Nella struttura della guida:**
 
-12. **Eventi regionali taggati per tutti** (`on="always"`), oppure eventi comuni taggati per una sola regione.
-13. **Regioni senza contenuti per secoli** in una parte.
-14. **Date di sezione che non coincidono** con il contenuto.
-15. **Sezioni contigue sovrapposte**, con lo stesso evento in due parti.
-16. **Testi d’apertura non aggiornati**, per esempio un sottotitolo che parla di «tre principati» quando le regioni sono quattro.
+19. **Eventi regionali taggati per tutti** (`on="always"`), oppure eventi comuni taggati per una sola regione.
+20. **Regioni senza contenuti per secoli** in una parte.
+21. **Date di sezione che non coincidono** con il contenuto.
+22. **Sezioni contigue sovrapposte**, con lo stesso evento in due parti.
+23. **Testi d’apertura non aggiornati**, per esempio un sottotitolo che parla di «tre principati» quando le regioni sono quattro.
+24. **Fatto di una regione dentro la scheda di un’altra.** Esempio: la riforma valacca del 1746 compare solo come frase finale della scheda moldava del 1749, con `on={[Moldavia]}`. Il codice è formalmente corretto, ma chi seleziona solo la Valacchia non la vede mai.
+25. **Vista filtrata squilibrata.** Una regione vede il giudizio o il fatto negativo (per esempio la scheda sul periodo fanariota), ma non quello che lo bilancia, perché sta in una scheda taggata per un’altra regione. Il quadro è equilibrato con tutte le regioni selezionate, ma non con una sola.
+26. **Una regione che sparisce prima della fine della parte.** La sezione regionale si ferma decenni prima, e la regione ricompare solo negli eventi comuni. Esempio: la Valacchia ferma al 1739 in una parte che arriva al 1818.
+27. **Lo stesso luogo duplicato in più schede**, con testi o date diversi. Il lettore lo fotografa in una scheda e lo trova «non visto» in un’altra. Ogni luogo esiste una volta sola (sezione D6).
 
 ---
 
@@ -146,22 +272,60 @@ Sono gli errori trovati nella guida della Romania. Vanno cercati in ogni nuova g
 - `on="always"` va usato solo per i fatti che riguardano tutto il territorio. Un evento di una sola regione ha `on={[Regione]}`.
 - **L’`on` di ogni figlio deve essere contenuto nell’`on` del genitore**, e anche nella voce dell’indice (`toc`) corrispondente. Se il genitore è più ristretto, i figli spariscono senza errori visibili.
 - Una scheda condivisa tra due regioni va estratta in un componente. Si mostra nella sezione della prima regione, e nella seconda dentro `<Unless on={[PrimaRegione]}>`, così non compare mai due volte.
+- **L’`on` deve corrispondere al contenuto, non solo al titolo.** Per ogni scheda, elenca le regioni di cui il testo afferma qualcosa: ognuna deve essere nell’`on`. Se una frase riguarda una regione esclusa, scegli una di queste soluzioni:
+  - spostala in un `Detail` con il suo `on`;
+  - spostala in una scheda propria nella sezione di quella regione;
+  - rendi la scheda condivisa con il meccanismo sopra.
+
+  Non basta che il codice sia coerente: un `on` corretto rispetto al titolo può nascondere un fatto a chi ha selezionato un’altra regione.
+
+- **Ogni vista filtrata deve reggersi da sola.** Con una sola regione selezionata, il lettore deve trovare:
+  - una storia continua, senza buchi di secoli;
+  - i fatti che bilanciano ogni valutazione che vede, per esempio le riforme accanto al giudizio sul periodo.
+
+  L’equilibrio si controlla regione per regione, non solo con tutte le regioni selezionate.
 
 ### D3. Intestazioni e indice
 
 - Etichette e date delle sezioni stanno in un oggetto `headings` e vanno riusate nei titoli e nel `toc`. Niente date scritte a mano nel `toc`.
 - Le date di una sezione coincidono con il primo e l’ultimo evento che contiene.
 
-### D4. Cosa non rinominare dopo la pubblicazione
+### D4. Convenzione degli `id` e cosa non rinominare
 
-- I valori dell’enum delle regioni e delle città: sono salvati nel `localStorage` dei lettori.
-- Gli `id` di capitoli, parti e sezioni: sono usati dall’indice.
-- Gli `href` si verificano con uno script dedicato, non a mano.
+Gli `id` sono interni e indipendenti dalla lingua: il lettore vede solo i testi tradotti.
+
+- **Paesi**: codice ISO 3166-1 alfa-2 in minuscolo (`ro`, `bg`).
+- **Tutto il resto**: slug in inglese, ASCII, minuscolo, con trattini, senza diacritici, preceduto dal codice del Paese. Esempi: `ro.transylvania`, `ro.bucharest`, `ro.place.biertan-fortified-church`, `ro.person.vlad-iii`.
+- **Sezioni**: `id` semantici, non posizionali come `p-4` o `s-4-2`, che cambiano significato quando si inserisce un capitolo.
+- Gli `id` non cambiano quando cambia un titolo o una traduzione.
+
+Dopo la pubblicazione non si rinominano:
+
+- gli `id` di regioni, città e luoghi: sono salvati nei dati dei lettori;
+- gli `id` di capitoli, parti e sezioni: sono usati dall’indice e dai link condivisi.
+
+Se una rinomina è inevitabile, serve una mappa dai vecchi `id` ai nuovi e una migrazione dei dati salvati.
+
+Gli `href` si verificano con uno script dedicato, non a mano.
 
 ### D5. Formattazione
 
 - JSX elimina gli a capo tra testo ed elemento: usa `{' '}` dove serve uno spazio prima o dopo un `<N>`. Un a capo dimenticato produce errori come "contro iTurchi".
 - Formatta con Prettier, con la configurazione del progetto.
+
+### D6. Luoghi e collezione
+
+- **Ogni traccia è un luogo con un `id` proprio**, definito una sola volta nell’elenco dei luoghi (sezione A11). Personaggi e città richiamano i luoghi per `id`. Non duplicare testo, coordinate o immagini dentro le singole schede.
+- **Il testo è legato al contesto, il luogo no.** Lo stesso luogo può avere un testo nella scheda della città e un altro nella scheda del personaggio. La foto del lettore appartiene al luogo: caricata una volta, il luogo risulta visto ovunque compaia.
+- **«Visto» si deduce dalla foto.** Un luogo è visto se ha almeno una foto valida del lettore. Non esiste un segno «visto» separato. Cancellare l’ultima foto riporta il luogo a «non visto».
+- **Numero e valore appartengono al luogo**, non alla scheda: un luogo ha lo stesso numero e lo stesso valore in ogni scheda che lo richiama.
+- **Punti e percentuali si calcolano**, non si salvano. Si salvano solo i livelli raggiunti, con la data, perché non devono andare persi quando il totale cambia.
+- **Gli `id` dei luoghi non si rinominano dopo la pubblicazione**, come quelli delle regioni: lo stato della collezione del lettore è salvato con quegli `id`.
+- **Le foto non vanno nel `localStorage`.** Il suo limite di pochi megabyte si riempie con poche immagini. Secondo la scelta presa nella sezione A12:
+  - se le foto restano sul dispositivo, usa IndexedDB e ridimensiona le immagini prima di salvarle;
+  - se devono essere ritrovabili su più dispositivi, serve un archivio esterno legato a un account.
+- **Gestisci gli errori di salvataggio** e mostra al lettore se una foto non è stata salvata. Una foto persa in silenzio è peggio di una non salvata.
+- **Privacy.** Le foto del lettore possono contenere dati di posizione (EXIF). Se escono dal dispositivo, rimuovili o chiedi il consenso.
 
 ---
 
@@ -199,4 +363,13 @@ Sono gli errori trovati nella guida della Romania. Vanno cercati in ogni nuova g
    - ogni regione da sola, senza buchi cronologici;
    - tutte le regioni insieme;
    - le coppie che usano `Unless`, senza schede duplicate o mancanti.
-7. Elenca i `TODO verificare` aperti.
+7. Per ogni scheda, le regioni di cui il testo afferma qualcosa sono tutte nel suo `on` (sezione D2).
+8. Con ogni regione selezionata da sola, rileggi le schede che contengono una valutazione e controlla che i fatti che la bilanciano siano visibili nella stessa vista.
+9. Nessun giudizio complessivo su periodi, regimi o popoli senza attribuzione (sezione B7). Cerca nel testo «buio», «età dell’oro», «decadenza», «è considerato», «viene ricordato».
+10. Ogni link usato come fonte è stato aperto e conferma il dato. Elenca quelli che non si aprono o non lo confermano.
+11. Ogni scheda personaggio e città segue le sezioni B9 e B10: introduzione non gamificata, tracce con una sola idea ciascuna e leggibili da sole, al massimo tre o quattro date, nessuna ripetizione della timeline, frase «Da ricordare» in chiusura.
+12. Ogni traccia è un luogo dell’elenco unico, richiamato per `id`. Nessun luogo è duplicato. Ogni traccia ha un tipo («sul percorso» o «se passi di lì»), un’indicazione di originalità («nota» o «insolita»), un valore coerente con la tabella della sezione B9, un numero progressivo unico nel Paese mai riassegnato, e una foto di repertorio con diritti verificati oppure un `TODO immagine`.
+13. Caricare la foto di un luogo lo segna come visto in tutte le schede e nella vista d’insieme. Cancellarla lo riporta a non visto. Le foto non sono nel `localStorage`.
+14. Testi delle schede senza riferimenti a punti, livelli o completamento.
+15. Le tracce soggette a cambiamenti (banconote, statue, musei) sono state verificate con una ricerca recente.
+16. Elenca i `TODO verificare` e i `TODO immagine` aperti.
