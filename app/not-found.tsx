@@ -6,8 +6,8 @@ import { t } from '@/i18n'
 export default function NotFound() {
   return (
     <>
-      <SiteHeader />
-      <main className="flex flex-1 flex-col gap-4 px-4 pt-8 pb-8">
+      <SiteHeader back={false} />
+      <main className="flex flex-1 flex-col gap-4 px-(--inset) pt-8 pb-8">
         <PlateText kind="num" className="text-[120px] font-semibold">
           404
         </PlateText>

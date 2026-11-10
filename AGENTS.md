@@ -115,8 +115,12 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Guides are registered in `data/guides.ts`. `countryId` is the ISO 3166-1 numeric code
   (matches world TopoJSON feature ids); `at` is `[lon, lat]`; `status` is `ready | draft`.
 - Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `/template` (every element
-  of the guide kit with placeholder text, `noindex`, not on the map), `not-found.tsx` 404 (renders
-  `SiteHeader` itself). There is deliberately no `/guide` index page: the map is the index.
+  of the guide kit with placeholder text, `noindex`, not on the map), `/account` "I tuoi dati" (port
+  of `Nowhere - I tuoi dati.dc.html`: account, sync status, completion per guide linking to
+  `/guide/<slug>#album`; export, import and storage used not ported yet), `not-found.tsx` 404.
+  Account and 404 use `SiteHeader` (logo badge at `--edge`, "Torna alla mappa") and start their
+  text at `--inset`, under the logo glyph. There is deliberately no `/guide` index page: the map is
+  the index.
 - `content/guides/template.tsx` is the starting point for a new guide and the showcase of the kit:
   when you add or change a primitive in `components/guide/content.tsx`, show it there too. Both
   `/guide/[slug]` and `/template` render through `components/guide/Guide.tsx`.

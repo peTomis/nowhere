@@ -1,5 +1,5 @@
 import 'server-only'
-import type { ObjectId } from 'mongodb'
+import { ObjectId } from 'mongodb'
 import { getDb } from './mongodb'
 
 export type UserDoc = {
@@ -36,4 +36,18 @@ export async function upsertGoogleUser(
   )
   if (!user) throw new Error('User upsert returned nothing')
   return user._id.toHexString()
+}
+
+/** When the user first signed in, or undefined if the database can't be reached. */
+export async function userSince(id: string): Promise<Date | undefined> {
+  try {
+    const user = await (
+      await getDb()
+    )
+      .collection<UserDoc>('users')
+      .findOne({ _id: new ObjectId(id) }, { projection: { createdAt: 1 } })
+    return user?.createdAt
+  } catch {
+    return undefined
+  }
 }

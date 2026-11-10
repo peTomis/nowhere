@@ -11,7 +11,7 @@ import { Album } from './Album'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
-import { GUIDE_BAR_ID, setGuideView, useGuideView, type GuideView } from './view'
+import { GUIDE_BAR_ID, openAlbum, setGuideView, useGuideView, type GuideView } from './view'
 import { t } from '@/i18n'
 
 /**
@@ -122,6 +122,10 @@ function Shell({
   children: ReactNode
 }) {
   const view = useGuideView()
+  // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album.
+  useEffect(() => {
+    if (window.location.hash === '#album') openAlbum()
+  }, [])
   const total = traces.reduce((sum, tr) => sum + tr.points, 0)
   const trip = useTrip()
   const [menu, setMenu] = useState(false)

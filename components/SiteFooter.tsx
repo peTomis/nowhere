@@ -1,20 +1,11 @@
-import Link from 'next/link'
 import { Logo } from './Logo'
 import { t } from '@/i18n'
 
 /**
  * Site footer, from "Nowhere - Home v2.dc.html": wordmark + tagline (from 640px), credit on the
- * right. Pages without the account button (<AccountMenu>) show a link to the account page before
- * the credit (not in the design). The same footer closes the home and every guide.
+ * right. The same footer closes every page.
  */
-export function SiteFooter({
-  className = '',
-  accountLink = true,
-}: {
-  className?: string
-  /** Off where the page already has the account button (the home). */
-  accountLink?: boolean
-}) {
+export function SiteFooter({ className = '' }: { className?: string }) {
   return (
     <footer
       className={`flex flex-none flex-wrap items-center justify-between gap-x-6 bg-bg px-(--edge) py-1 text-sm text-neutral-800 ${className}`}
@@ -26,14 +17,6 @@ export function SiteFooter({
         <span className="hidden text-neutral-700 italic sm:inline">{t.common.tagline}</span>
       </div>
       <p className="m-0 flex min-h-[44px] items-center gap-x-4">
-        {accountLink && (
-          <Link
-            href="/account"
-            className="text-accent-700 no-underline hover:text-accent-800 hover:underline"
-          >
-            {t.common.account}
-          </Link>
-        )}
         <span>
           {t.common.madeBy}&nbsp;
           <a

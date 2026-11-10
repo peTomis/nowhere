@@ -23,7 +23,7 @@ import { format, t } from '@/i18n'
  * The session is read from /api/me after hydration, so the pages that host it stay static.
  */
 
-type Me = { email: string; name?: string; image?: string }
+export type Me = { email: string; name?: string; image?: string }
 
 export function AccountMenu() {
   const [me, setMe] = useState<Me | null>(null)
@@ -194,7 +194,7 @@ export function AccountMenu() {
 }
 
 /** The Google profile picture, or the initial when there is none or it fails to load. */
-function Avatar({ me, className }: { me: Me; className: string }) {
+export function Avatar({ me, className }: { me: Me; className: string }) {
   const [failed, setFailed] = useState(false)
   const initial = (me.name || me.email).trim().charAt(0).toUpperCase()
   return (

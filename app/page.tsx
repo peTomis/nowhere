@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className="flex h-svh flex-col">
       <WorldMap guides={ready} />
-      <SiteFooter accountLink={false} />
+      <SiteFooter />
     </div>
   )
 }

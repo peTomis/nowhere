@@ -44,7 +44,7 @@ export function Guide({ slug, name, content }: GuideProps) {
         {content.body}
       </GuideShell>
       <GuideOutro name={name} emblems={content.emblems} toc={toc} />
-      <SiteFooter accountLink={false} />
+      <SiteFooter />
     </>
   )
 }

@@ -6,8 +6,7 @@
     "homeLabel": "Nowhere, torna alla mappa",
     "backToMap": "Torna alla mappa",
     "tagline": "Le mie guide di viaggio",
-    "madeBy": "Realizzato da",
-    "account": "Il tuo account"
+    "madeBy": "Realizzato da"
   },
   "map": {
     "ariaLabel": "Mappa del mondo: pieni in azzurro i paesi delle tue foto, con il contorno azzurro quelli che hanno una guida",
@@ -114,11 +113,18 @@
     "signOut": "Esci"
   },
   "account": {
-    "title": "Il tuo account",
-    "intro": "L’account serve solo a salvare la tua collezione: i luoghi visti, le foto e le note. Le guide si leggono anche senza.",
-    "signIn": "Accedi con Google",
+    "title": "I tuoi dati",
+    "subtitle": "Le tue foto, le note e le copertine: dove sono e come portarle con te.",
+    "accountHeading": "Account",
+    "signInPrompt": "Accedi per ritrovare foto, note e copertine su ogni dispositivo.",
+    "connected": "Collegato con Google",
+    "connectedSince": "Collegato con Google dal {date}",
     "signOut": "Esci",
-    "signedInAs": "Hai effettuato l’accesso come {email}.",
+    "syncHeading": "Sincronizzazione",
+    "syncOk": "Tutto salvato nel tuo account.",
+    "syncLocal": "Nessuna sincronizzazione: i dati sono solo su questo dispositivo.",
+    "completionHeading": "Completamento",
+    "openAlbum": "Apri l’album · {name}",
     "denied": "Questo account Google non è abilitato. Per ora l’accesso è solo su invito.",
     "error": "Accesso non riuscito. Riprova tra poco.",
     "loading": "Controllo l’accesso…"

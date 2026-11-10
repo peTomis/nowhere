@@ -81,4 +81,6 @@
 
   /* Distance of floating chrome (logo badge, search, map controls) from the viewport edge. */
   --edge: clamp(12px, 3vw, 24px);
+  /* Where the logo glyph starts inside the badge (edge + its 14px padding): text of simple pages. */
+  --inset: calc(var(--edge) + 14px);
 }
