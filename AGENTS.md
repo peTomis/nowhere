@@ -40,7 +40,9 @@ There is no test suite yet.
   `next typegen`).
 - Server Components by default. Add `'use client'` only where browser APIs or state are needed
   (today: `components/PrintPlates.tsx`, `components/WorldMap.tsx`, `components/AccountMenu.tsx`,
-  `components/Completion.tsx`, `components/guide/Album.tsx`, `components/guide/OpenAlbumButton.tsx`).
+  `components/Completion.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `Trace`,
+  `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `CardLink`, `OpenAlbumButton`, the filter
+  and index, `trip.tsx`, `data.tsx`).
   Keep client components at the leaves; pages stay server-side and pass plain data down.
 - Phosphor icons in Server Components: `import { XIcon } from '@phosphor-icons/react/ssr'`
   (use the `…Icon` names; the bare names are deprecated). Use `weight="duotone"`, except glyphs
@@ -73,7 +75,7 @@ There is no test suite yet.
 - Everything in the repo is in English: docs, code comments, identifiers, commit messages.
   Exceptions: user-facing UI copy (Italian), and place names in guides — region and city enum
   members/values keep their Italian names (`Romania.Valacchia = 'valacchia'`). Refer to UI
-  features by an English name in code and comments (e.g. "trip filter", shown as "Il tuo viaggio").
+  features by an English name in code and comments (e.g. "trip filter", shown as "Filtra per regione").
 
 ## Design system (Broadsheet)
 
@@ -145,16 +147,29 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Guide chrome follows `Guida Romania - Sito v4.dc.html`: the account button (`AccountMenu`) at
   the home's spot, pushed up by the sticky bar until it sits centered in it; emblems and the
   compact album completion (`components/Completion.tsx`) under the country name on the cover; the
-  album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album"; its "Personaggi e
-  città" is not ported); a sticky top bar at every width (country from 960px, Guida/Album switch,
-  completion, then the current section once the bar is stuck from 960px, or the index button
-  below). The switch shows the text or the album (`components/guide/Album.tsx`, state in
-  `components/guide/view.ts`, not persisted). Traces are `structure.traces` (`TraceDef`) with
-  names in `names.traces`; never add placeholder traces: the album shows an empty state instead.
-  Nothing is seen until the collection exists, so completion is 0%. Not ported yet: opening a
-  trace ("Traccia"), the album's "In evidenza", trace icons.
-- Design deviations on guide pages: the upper part of the design's guide footer (recap, chapters,
-  "Torna su") is a closing section (`GuideOutro`), then comes the site footer; the
+  album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album", "Personaggi e
+  città"); a sticky top bar at every width whose controls fade in only once it is stuck
+  (they repeat the cover and the opening): nowhere logo (home), country, current section; from
+  960px also the Guida/Album switch and the completion, below 960px the index button, whose
+  menu starts with the switch and the completion. "Apri l’album" in the opening becomes "Apri la
+  guida" while the album is shown. The switch shows the text or the album (`components/guide/Album.tsx`, state in
+  `components/guide/view.ts`, not persisted).
+- Album and collection (port of `Album`, `Traccia`, `Scheda`, `PannelloFoto`, `InEvidenza`,
+  `Fissa`, `Avviso`, `OggiTracce`; docs/data-model.md §11.1). **The first three traces of every
+  country are the cover (01), the flag (02) and the coat of arms (03)**: `tracesOf()` in
+  `content/build.ts` adds them to every album, with the guide's cover and emblems as stock images
+  and texts from `guide.builtIn` in `i18n/it.json`; in the text, the emblems chapter shows the
+  coat of arms and the flag as traces with `<Emblem kind on>` (not as `Figure`); never declare them in `structure.traces` (the
+  slugs `cover`, `coat-of-arms`, `flag` are reserved). A guide's own traces (`structure.traces`,
+  texts in `names.traces`) follow from 04, person and city cards in `structure.cards` /
+  `names.cards`, each placed once in the body with `<Card>`; `<Today traces>` links an event to
+  its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
+  a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
+  `/api/notes`. Pins ("In evidenza") are a device preference (`lib/reader/prefs.ts`), for cards
+  only. Not ported: pinning sections, the "Per chi mi segue" visibility, cover photos from the
+  map's country card.
+- Design deviations on guide pages: the upper part of the design's guide footer (recap, "Tutte le
+  guide", "Torna su"; the chapter list is left out) is a closing section (`GuideOutro`), then comes the site footer; the
   mobile menu's "Tutte le guide" is "Torna alla mappa", and the design's `showRefs` (region tags
   on content) and "Dai miei appunti" map variant are not ported.
 - One footer for the whole site (`components/SiteFooter.tsx`), on the home and on every guide. It

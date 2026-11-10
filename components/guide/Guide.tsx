@@ -3,8 +3,9 @@ import { GuideCover } from '@/components/guide/GuideCover'
 import { GuideOutro } from '@/components/guide/GuideOutro'
 import { GuideShell } from '@/components/guide/GuideShell'
 import { SiteFooter } from '@/components/SiteFooter'
-import { placesOf, tocOf, tracesOf } from '@/content/build'
+import { cardsOf, placesOf, tocOf, tracesOf } from '@/content/build'
 import type { GuideContent } from '@/content/types'
+import { cardCopies } from '@/lib/content/cards'
 import { assertValidGuide } from '@/lib/content/validate'
 
 type GuideProps = {
@@ -23,27 +24,32 @@ export function Guide({ slug, name, content }: GuideProps) {
   assertValidGuide(slug, content)
   const places = placesOf(content.structure, content.names)
   const toc = tocOf(content.structure, content.names)
-  const traces = tracesOf(content.structure, content.names)
+  const traces = tracesOf(content, name)
+  const cards = cardsOf(content.structure, content.names)
+  // What the completions outside the shell need (keeps the page's payload small).
+  const scored = traces.map(({ key, points }) => ({ key, points }))
   return (
     <>
       <GuideCover
-        countryId={content.structure.country}
         name={name}
         cover={content.cover}
         emblems={content.emblems}
         ink={content.coverInk}
+        traces={scored}
       />
-      <GuideAlbumIntro countryId={content.structure.country} name={name} traces={traces} />
+      <GuideAlbumIntro name={name} traces={traces} scored={scored} cards={cards} />
       <GuideShell
         countryId={content.structure.country}
         country={name}
         places={places}
         toc={toc}
         traces={traces}
+        cards={cards}
+        copies={cardCopies(content.body)}
       >
         {content.body}
       </GuideShell>
-      <GuideOutro name={name} emblems={content.emblems} toc={toc} />
+      <GuideOutro name={name} emblems={content.emblems} />
       <SiteFooter />
     </>
   )

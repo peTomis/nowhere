@@ -108,12 +108,39 @@ export type Rarity = 'common' | 'rare' | 'very-rare'
 
 export const RARITY_POINTS: Record<Rarity, number> = { common: 1, rare: 2, 'very-rare': 3 }
 
-/** Where a trace is: in a city of the guide, near one, or out of the way. */
-export type TraceWhere = 'city' | 'nearby' | 'remote'
+/**
+ * Where a trace is: in a city of the guide, near one, out of the way, or anywhere in the country
+ * (the three traces every album opens with: cover, coat of arms, flag).
+ */
+export type TraceWhere = 'city' | 'nearby' | 'remote' | 'anywhere'
+
+/** The icon of a trace still to find (components/guide/traceIcons.tsx). */
+export type TraceIcon =
+  | 'bank'
+  | 'bridge'
+  | 'castle'
+  | 'church'
+  | 'clock'
+  | 'flag'
+  | 'frame'
+  | 'house'
+  | 'image'
+  | 'mosaic'
+  | 'mountains'
+  | 'music'
+  | 'paint'
+  | 'pin'
+  | 'shield'
+  | 'steps'
+  | 'trophy'
+  | 'wall'
+  | 'waves'
 
 /**
  * A trace: a place to find on the trip, one box of the album (docs/data-model.md §3, a "place"
- * subject). Its number in the album is its position in the list, from 1.
+ * subject). Every album opens with three traces the kit adds by itself (the cover, the coat of
+ * arms and the flag, numbers 01–03, content/build.ts): the guide's own traces follow, from 04, in
+ * the order of this list.
  */
 export type TraceDef<P extends string = string> = {
   /** `<cc>.place.<slug>`, e.g. `ro.place.biertan-fortified-church`. Stored with the reader's photos. */
@@ -122,10 +149,30 @@ export type TraceDef<P extends string = string> = {
   region: P
   /** City of the region, when `where` is 'city'. */
   city?: P
-  where: TraceWhere
+  where: Exclude<TraceWhere, 'anywhere'>
   rarity: Rarity
+  icon: TraceIcon
+  /**
+   * Stock image ("Repertorio"), shown in grey until the reader adds a photo. Without it the box
+   * shows a plain placeholder. `credit` is required once the file exists (B9).
+   */
+  image?: { src: string; credit?: Credit }
   /** Marked "Nuova" in the album until seen. */
   isNew?: true
+}
+
+/**
+ * A person or city card ("Scheda", B9–B10): an introduction, its traces, and "Da ricordare". The
+ * texts are in the body (`<Card>`); the name in the names module.
+ */
+export type CardDef<P extends string = string> = {
+  /** A person: `<cc>.person.<slug>`. A city: the city's id (one card per city). */
+  id: string
+  kind: 'person' | 'city'
+  /** Region in the card's kicker ("Personaggio · Valacchia"). */
+  region: P
+  /** Trace ids, in order (2–5). */
+  traces: string[]
 }
 
 export type GuideStructure<P extends string = string, S extends string = string> = {
@@ -133,16 +180,49 @@ export type GuideStructure<P extends string = string, S extends string = string>
   country: string
   regions: RegionDef<P>[]
   sections: SectionDef<S, P>[]
-  /** The album's traces, in album order. */
+  /** The guide's own traces, in album order (after the cover, the flag and the coat of arms). */
   traces?: TraceDef<P>[]
+  /** Person and city cards, in the order of "Personaggi e città" in the album opening. */
+  cards?: CardDef<P>[]
+}
+
+/** A locale's texts for a trace (plain text: they are also shown in the album). */
+export type TraceText = {
+  name: string
+  /** Local name, after the name in italics: "Turnul cu Ceas". */
+  local?: string
+  /** Where it is, under the name: "Sighișoara, Transilvania". */
+  place: string
+  /**
+   * What it is: two or three sentences. Optional: leave it out when the text around the trace
+   * already says it (the trace then shows only "Come trovarla").
+   */
+  text?: string
+  /** "Come trovarla": the address and how to find the exact spot. */
+  find: string
+  /** Placeholder of the reader's note; defaults to "Che cosa ti ha colpito?". */
+  invite?: string
+  /** For 'nearby': how far, e.g. "a 30 km da Brașov". */
+  distance?: string
+}
+
+/** A locale's texts for a card's heading and its entry in "Personaggi e città". */
+export type CardText = {
+  name: string
+  /** Local or other names, after the name in italics: "Hermannstadt · Nagyszeben". */
+  local?: string
+  /** Under the heading: "1431 – 1476". */
+  dates?: string
 }
 
 /** A locale's short texts for a guide's structure. The default locale must name every id. */
 export type GuideNames<P extends string = string, S extends string = string> = {
   places: Record<P, string>
   sections: Record<S, string>
-  /** Trace names by trace id. */
-  traces?: Record<string, string>
+  /** Trace texts by trace id. */
+  traces?: Record<string, TraceText>
+  /** Card names by card id. */
+  cards?: Record<string, CardText>
 }
 
 /** Identity: ties a structure's enums together so the kit and the names are typed by them. */

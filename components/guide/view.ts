@@ -33,16 +33,13 @@ export function useGuideView(): GuideView {
   )
 }
 
-/** Id of the sticky bar, scrolled to when the album is opened from the top of the page. */
+/** Id of the sticky bar. */
 export const GUIDE_BAR_ID = 'guide-bar'
 
-/** Switches to the album and brings the bar to the top, so the album starts right below it. */
-export function openAlbum() {
-  setGuideView('album')
-  const bar = document.getElementById(GUIDE_BAR_ID)
-  if (!bar) return
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  // The bar is sticky: measure where it sits in the flow, through its wrapper.
-  const top = (bar.parentElement ?? bar).getBoundingClientRect().top + window.scrollY
-  window.scrollTo({ top, behavior: reduce ? 'auto' : 'smooth' })
+/** Switches to the album (the page doesn't scroll). */
+export const openAlbum = () => openView('album')
+
+/** Switches to a view, where the reader is: no scrolling. */
+export function openView(next: GuideView) {
+  setGuideView(next)
 }

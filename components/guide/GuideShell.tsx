@@ -4,10 +4,15 @@ import { ArrowLeftIcon, ListIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { AccountMenu } from '@/components/AccountMenu'
+import { Logo } from '@/components/Logo'
 import { Completion } from '@/components/Completion'
-import type { AlbumTrace } from '@/content/build'
+import type { AlbumTrace, GuideCard } from '@/content/build'
 import { anchorOf, type Place, type TocEntry } from '@/content/types'
 import { Album } from './Album'
+import { GuideDataProvider } from './data'
+import { PhotoPanel } from './PhotoPanel'
+import { Pinned } from './Pins'
+import { Toast } from './Toast'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
@@ -15,26 +20,46 @@ import { GUIDE_BAR_ID, openAlbum, setGuideView, useGuideView, type GuideView } f
 import { t } from '@/i18n'
 
 /**
- * Reading layout of a guide, from "Guida Romania - Sito v4.dc.html". A sticky top bar: country
- * (from 960px), Guida/Album switch, album completion, and on the right the current section (from
- * 960px, once the bar is stuck) or the index button (below 960px). Under it, the text (sticky
+ * Reading layout of a guide, from "Guida Romania - Sito v4.dc.html". A sticky top bar, whose
+ * controls show only once it is stuck (they repeat the cover and the album opening): nowhere logo,
+ * country, current section; from 960px also the Guida/Album switch and the completion, below
+ * 960px the index button, whose menu starts with them. Under it, the text (sticky
  * sidebar with the trip filter and the index on wide screens, full-screen index menu below 960px)
  * or the album. The bar keeps its right end free for the account button (see useBarPush).
  */
-export function GuideShell(props: {
+export function GuideShell(props: ShellProps & { cards: GuideCard[] }) {
+  const { countryId, country, places, traces, cards } = props
+  const data = useMemo(
+    () => ({
+      country: countryId,
+      name: country,
+      traces,
+      cards,
+      regions: Object.fromEntries(places.map((p) => [p.id, p.name])),
+    }),
+    [countryId, country, traces, cards, places],
+  )
+  return (
+    <GuideDataProvider value={data}>
+      <TripProvider country={countryId} places={places}>
+        <Shell {...props} />
+        <PhotoPanel />
+        <Toast />
+      </TripProvider>
+    </GuideDataProvider>
+  )
+}
+
+type ShellProps = {
   /** ISO 3166-1 alpha-2: the trip filter's key in the reader's prefs. */
   countryId: string
   country: string
   places: Place[]
   toc: TocEntry[]
   traces: AlbumTrace[]
+  /** Copies of the cards for "In evidenza", by card id (lib/content/cards.ts). */
+  copies: Record<string, ReactNode>
   children: ReactNode
-}) {
-  return (
-    <TripProvider country={props.countryId} places={props.places}>
-      <Shell {...props} />
-    </TripProvider>
-  )
 }
 
 /** The section whose top has passed 35% of the viewport. */
@@ -56,15 +81,19 @@ function useActiveSection(ids: string[], recheck: unknown) {
   return active
 }
 
-/** Whether the element placed right above a sticky bar has scrolled out the top (bar stuck). */
+/**
+ * Whether the bar is stuck. The sentinel sits where the bar's bottom edge is in the flow (the bar
+ * is pulled up by its height), so the bar sticks when the sentinel passes BAR px from the top.
+ */
 function useStuck() {
   const ref = useRef<HTMLDivElement>(null)
   const [stuck, setStuck] = useState(false)
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const io = new IntersectionObserver(([e]) =>
-      setStuck(!e.isIntersecting && e.boundingClientRect.top < 0),
+    const io = new IntersectionObserver(
+      ([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < BAR),
+      { rootMargin: `-${BAR}px 0px 0px 0px` },
     )
     io.observe(el)
     return () => io.disconnect()
@@ -106,27 +135,15 @@ function useBarPush() {
   return [bar, button] as const
 }
 
-function Shell({
-  countryId,
-  country,
-  places,
-  toc,
-  traces,
-  children,
-}: {
-  countryId: string
-  country: string
-  places: Place[]
-  toc: TocEntry[]
-  traces: AlbumTrace[]
-  children: ReactNode
-}) {
+function Shell({ country, toc, traces, copies, children }: ShellProps) {
   const view = useGuideView()
   // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album.
   useEffect(() => {
-    if (window.location.hash === '#album') openAlbum()
+    if (window.location.hash !== '#album') return
+    openAlbum()
+    // Arriving from a link (e.g. "I tuoi dati"): start at the album, not at the cover.
+    document.getElementById(GUIDE_BAR_ID)?.parentElement?.scrollIntoView()
   }, [])
-  const total = traces.reduce((sum, tr) => sum + tr.points, 0)
   const trip = useTrip()
   const [menu, setMenu] = useState(false)
   const ids = useMemo(() => toc.map((e) => e.id), [toc])
@@ -165,48 +182,50 @@ function Shell({
       <div
         ref={barRef}
         id={GUIDE_BAR_ID}
-        className="sticky top-0 z-20 flex h-[64px] items-center gap-2 bg-bg pr-[calc(var(--edge)+56px)] pl-[clamp(16px,4.5vw,64px)] shadow-sm"
+        // Pulled up by its own height (-mt), over the bottom margin of the opening, so it takes no
+        // room: its bottom line sits right under the opening and scrolls up with the page until
+        // it reaches 64px from the top, where it stops; the bar then fills the space above it.
+        // Until stuck it is see-through and lets clicks pass to the opening.
+        className={`sticky top-0 z-20 -mt-[64px] flex h-[64px] items-center gap-2 pr-[calc(var(--edge)+56px)] pl-[clamp(16px,4.5vw,64px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
       >
-        <a
-          href="#top"
-          className="mr-3 hidden flex-none text-xs font-semibold tracking-[.16em] text-accent-700 uppercase no-underline min-[960px]:block"
-        >
-          {country}
-        </a>
+        {/*
+          The bar's controls repeat the cover and the album opening: they appear only once the bar
+          is stuck. Every width: nowhere logo (home), country, current section, and below 960px the
+          index button. From 960px also the view switch and the completion, which below 960px are
+          at the top of the index menu.
+        */}
         <div
-          role="group"
-          aria-label={t.guide.view.label}
-          className="flex flex-none gap-[2px] rounded-md bg-surface p-[3px]"
+          inert={!stuck}
+          className={`flex min-w-0 flex-1 items-center gap-2 motion-safe:transition-opacity motion-safe:duration-200 ${stuck ? 'opacity-100' : 'opacity-0'}`}
         >
-          {(['guide', 'album'] as GuideView[]).map((v) => (
-            <button
-              key={v}
-              type="button"
-              aria-pressed={view === v}
-              onClick={() => setGuideView(v)}
-              className={`min-h-[40px] cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
-            >
-              {t.guide.view[v]}
-            </button>
-          ))}
+          <Link
+            href="/"
+            aria-label={t.common.homeLabel}
+            className="grid size-[44px] flex-none place-items-center no-underline"
+          >
+            <Logo variant="symbol" className="size-[32px]" />
+          </Link>
+          <a
+            href="#top"
+            className="flex-none text-xs font-semibold tracking-[.16em] text-accent-700 uppercase no-underline min-[960px]:mr-3"
+          >
+            {country}
+          </a>
+          <ViewSwitch view={view} className="hidden min-[960px]:flex" />
+          <div className="ml-2 hidden max-w-[220px] min-w-0 flex-[1_1_auto] min-[960px]:block">
+            <Completion name={country} traces={traces} />
+          </div>
+          {/* The current section, in the text. */}
+          {view === 'guide' && (
+            <span className="ml-auto min-w-0 truncate pl-2 text-[15px] text-neutral-800 italic min-[960px]:mr-3">
+              {current}
+            </span>
+          )}
         </div>
-        <Completion
-          country={countryId}
-          name={country}
-          total={total}
-          className="ml-2 max-w-[220px] flex-[1_1_auto]"
-        />
-        <div className="flex-1" />
-        {/* The current section, once the reader is in the text: the bar is stuck. */}
-        {stuck && view === 'guide' && (
-          <span className="mr-3 hidden min-w-0 flex-[0_1_auto] truncate text-[15px] text-neutral-800 italic min-[960px]:block">
-            {current}
-          </span>
-        )}
         <button
           type="button"
-          hidden={view !== 'guide'}
-          className="grid size-[44px] flex-none cursor-pointer place-items-center border-0 bg-transparent p-0 text-text hover:text-accent-700 min-[960px]:hidden"
+          inert={!stuck}
+          className={`grid size-[44px] flex-none cursor-pointer place-items-center border-0 bg-transparent p-0 text-text hover:text-accent-700 min-[960px]:hidden ${stuck ? '' : 'invisible'}`}
           aria-label={t.guide.shell.index}
           aria-haspopup="dialog"
           onClick={() => setMenu(true)}
@@ -215,9 +234,7 @@ function Shell({
         </button>
       </div>
 
-      {view === 'album' && (
-        <Album countryId={countryId} name={country} places={places} traces={traces} />
-      )}
+      {view === 'album' && <Album />}
       {/* The text stays mounted (and server-rendered) while the album is shown. */}
       <div
         hidden={view !== 'guide'}
@@ -240,6 +257,7 @@ function Shell({
           </div>
         </aside>
         <main className="flex min-w-0 flex-[0_1_720px] flex-col gap-20 text-[17px] leading-[1.6] text-pretty">
+          <Pinned copies={copies} />
           {children}
         </main>
       </div>
@@ -264,14 +282,26 @@ function Shell({
               {t.guide.shell.close}
             </button>
           </div>
-          <div className="mt-4">
+          <div className="mt-4 flex flex-col gap-3">
+            <ViewSwitch view={view} className="flex self-start" onPick={() => setMenu(false)} />
+            <Completion name={country} traces={traces} />
+          </div>
+          <div className="mt-8">
             <TripFilter country={country} size="menu" />
           </div>
           <div className="mt-8 text-[11px] tracking-[.16em] text-neutral-700 uppercase">
             {t.guide.shell.index}
           </div>
           <nav aria-label={t.guide.shell.index} className="mt-2">
-            <Toc entries={toc} active={active} size="menu" onNavigate={() => setMenu(false)} />
+            <Toc
+              entries={toc}
+              active={active}
+              size="menu"
+              onNavigate={() => {
+                setGuideView('guide')
+                setMenu(false)
+              }}
+            />
           </nav>
           <Link
             href="/"
@@ -282,6 +312,40 @@ function Shell({
           </Link>
         </div>
       )}
+    </div>
+  )
+}
+
+/** The Guida/Album switch: in the bar from 960px, at the top of the index menu below. */
+function ViewSwitch({
+  view,
+  className,
+  onPick,
+}: {
+  view: GuideView
+  className: string
+  onPick?: () => void
+}) {
+  return (
+    <div
+      role="group"
+      aria-label={t.guide.view.label}
+      className={`flex-none gap-[2px] rounded-md bg-surface p-[3px] ${className}`}
+    >
+      {(['guide', 'album'] as GuideView[]).map((v) => (
+        <button
+          key={v}
+          type="button"
+          aria-pressed={view === v}
+          onClick={() => {
+            setGuideView(v)
+            onPick?.()
+          }}
+          className={`min-h-[40px] cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
+        >
+          {t.guide.view[v]}
+        </button>
+      ))}
     </div>
   )
 }

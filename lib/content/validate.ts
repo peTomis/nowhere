@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { isValidElement, type ReactNode } from 'react'
 import { kitKindOf, kitNameOf } from '@/components/guide/content'
+import { BUILT_IN_TRACES } from '@/content/subjects'
 import type { Credit, GuideContent, SectionDef, Visibility, Year } from '@/content/types'
 
 /*
@@ -117,7 +118,28 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       error(`traces › ${tr.id}`, `${tr.city} is not a city of ${tr.region}`)
     if (tr.where === 'city' && tr.city === undefined)
       error(`traces › ${tr.id}`, `where: 'city' needs a city`)
-    if (!names.traces?.[tr.id]?.trim()) error('names', `no name for trace ${tr.id}`)
+    if (BUILT_IN_TRACES.some((b) => tr.id === `${cc}.place.${b}`))
+      error(`traces › ${tr.id}`, 'reserved: the kit adds this trace to every album')
+    const text = names.traces?.[tr.id]
+    if (!text) error('names', `no texts for trace ${tr.id}`)
+    else
+      for (const key of ['name', 'place', 'find'] as const)
+        if (!text[key]?.trim()) error('names', `trace ${tr.id} has no ${key}`)
+  }
+
+  const cardIds = new Set<string>()
+  for (const c of structure.cards ?? []) {
+    addId(c.id, 'cards', cardIds)
+    if (c.kind === 'person' && !c.id.startsWith(`${cc}.person.`))
+      error('cards', `${c.id} must start with "${cc}.person."`)
+    if (c.kind === 'city' && regionOf.get(c.id) !== c.region)
+      error(`cards › ${c.id}`, `a city card's id must be a city of ${c.region}`)
+    if (regionOf.has(c.region) || !placeIds.has(c.region))
+      error(`cards › ${c.id}`, `${c.region} is not a region`)
+    if (c.traces.length === 0) error(`cards › ${c.id}`, 'no traces')
+    for (const id of c.traces)
+      if (!traceIds.has(id)) error(`cards › ${c.id}`, `unknown trace ${id}`)
+    if (!names.cards?.[c.id]?.name.trim()) error('names', `no name for card ${c.id}`)
   }
 
   // --- body walk -------------------------------------------------------------------------------
@@ -148,6 +170,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
 
   const order: string[] = []
   const anchors = new Set<string>()
+  const cardsUsed = new Set<string>()
   /** Events' years, per section with a period. */
   const eventYears = new Map<string, EventYears[]>()
 
@@ -174,7 +197,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     const inner = (on: Visibility, extra: Partial<Ctx> = {}) => {
       const next = { ...ctx, on: on === 'always' ? ctx.on : on, path: here, ...extra }
       walk(props.children, next)
-      for (const key of ['title', 'intro'] as const) walk(props[key] as ReactNode, next)
+      for (const key of ['title', 'intro', 'remember'] as const) walk(props[key] as ReactNode, next)
     }
     const gate = (where = here) => {
       const on = checkOn(props.on, where)
@@ -221,8 +244,21 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       walk(props.intro as ReactNode, next)
       return
     }
+    if (k === 'today') {
+      const list = Array.isArray(props.traces) ? (props.traces as unknown[]) : []
+      if (list.length === 0 || list.length > 2) error(here, 'traces: one or two trace ids')
+      for (const id of list)
+        if (!traceIds.has(String(id))) error(here, `unknown trace ${String(id)}`)
+      return
+    }
     const on = gate()
     if (!on) return
+    if (k === 'card') {
+      const id = String(props.card)
+      if (!cardIds.has(id)) error(here, `unknown card ${id}`)
+      else if (cardsUsed.has(id)) error(here, `card ${id} used twice`)
+      cardsUsed.add(id)
+    }
     if (k === 'event' && props.date != null) {
       if (typeof props.date !== 'string') warn(here, 'date is not plain text: not checked')
       else {
@@ -240,6 +276,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   }
 
   walk(content.body, { on: 'always', path: slug, sections: [] })
+  for (const id of cardIds) if (!cardsUsed.has(id)) error('body', `card ${id} is not in the body`)
 
   // --- sections: all used, in order, dates matching their events --------------------------------
   const expected = structure.sections.map((s) => s.id)

@@ -1,19 +1,24 @@
 'use client'
 
-import { SquaresFourIcon } from '@phosphor-icons/react'
+import { BookOpenTextIcon, SquaresFourIcon } from '@phosphor-icons/react'
 import { t } from '@/i18n'
-import { openAlbum } from './view'
+import { openView, useGuideView } from './view'
 
-/** "Apri l’album": switches the guide to the album view and scrolls the bar to the top. */
+/**
+ * "Apri l’album" in the album opening: switches the guide to the album (without scrolling).
+ * While the album is shown it becomes "Apri la guida" and switches back.
+ */
 export function OpenAlbumButton() {
+  const album = useGuideView() === 'album'
+  const Icon = album ? BookOpenTextIcon : SquaresFourIcon
   return (
     <button
       type="button"
-      onClick={openAlbum}
+      onClick={() => openView(album ? 'guide' : 'album')}
       className="btn btn-secondary flex min-h-[48px] flex-none gap-[8px] bg-bg text-base"
     >
-      <SquaresFourIcon weight="duotone" size={20} aria-hidden="true" className="text-accent-700" />
-      {t.guide.album.open}
+      <Icon weight="duotone" size={20} aria-hidden="true" className="text-accent-700" />
+      {album ? t.guide.album.openGuide : t.guide.album.open}
     </button>
   )
 }

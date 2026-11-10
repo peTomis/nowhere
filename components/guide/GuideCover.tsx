@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Completion } from '@/components/Completion'
+import { Completion, type Scored } from '@/components/Completion'
 import { LogoBadge } from '@/components/LogoBadge'
 import { publicAsset } from '@/lib/assets'
 import type { GuideContent } from '@/content/types'
@@ -9,16 +9,15 @@ import type { GuideContent } from '@/content/types'
  * bottom the country name over a row with the emblems and the album completion.
  */
 export function GuideCover({
-  countryId,
   name,
   cover,
   emblems = [],
   ink = 'var(--color-text)',
+  traces,
 }: {
-  /** ISO 3166-1 alpha-2. */
-  countryId: string
   name: string
   ink?: string
+  traces: Scored[]
 } & Pick<GuideContent, 'cover' | 'emblems'>) {
   const src = publicAsset(cover?.src)
   const shown = emblems.filter((e) => publicAsset(e.src))
@@ -67,7 +66,7 @@ export function GuideCover({
               }
             />
           ))}
-          <Completion country={countryId} name={name} className="w-[clamp(120px,18vw,180px)]" />
+          <Completion name={name} traces={traces} className="w-[clamp(120px,18vw,180px)]" />
         </div>
       </div>
     </div>

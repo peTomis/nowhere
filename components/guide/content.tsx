@@ -12,6 +12,12 @@ import {
 } from '@/content/types'
 import { formatPeriod, roman } from '@/i18n/dates'
 import { format, t } from '@/i18n'
+import { cardAnchor } from '@/content/anchors'
+import { builtInTrace } from '@/content/subjects'
+import { CardTraces } from './CardTraces'
+import { PinButton } from './Pins'
+import { Today } from './Today'
+import { Trace } from './Trace'
 import { Only, Unless } from './trip'
 
 /*
@@ -568,6 +574,8 @@ export type KitKind =
   | 'only'
   | 'unless'
   | 'container' // no `on`: inline marks and pure containers
+  | 'card' // a gate with a `card` id, `intro` and `remember`
+  | 'today' // `traces`
 
 /** Kind and name by component (names survive minification, for readable error paths). */
 const kinds = new WeakMap<object, { kind: KitKind; name: string }>()
@@ -589,6 +597,7 @@ kind('city', { City })
 kind('only', { Only })
 kind('unless', { Unless })
 kind('container', { A, D, N, Aside, PhotoGrid, PhotoRow, Positions })
+kind('today', { Today })
 
 /**
  * The kit bound to one guide: `on` only accepts its place ids, and the sectioning blocks
@@ -694,8 +703,88 @@ export function guideKit<P extends string, S extends string>(
     )
   }
 
+  /**
+   * A person or city card ("Scheda", B9–B10): heading with the pin button, introduction, the
+   * card's traces (from structure.cards, those in the trip first) and "Da ricordare". `intro` and
+   * `remember` are one paragraph each. A copy of it is shown in "In evidenza" when pinned
+   * (`idPrefix` and `heading` are set by the guide for that copy, never in content).
+   */
+  function Card(props: {
+    card: string
+    on: Visibility<P>
+    intro: ReactNode
+    remember: ReactNode
+    idPrefix?: string
+    heading?: boolean
+  }) {
+    const def = structure.cards?.find((c) => c.id === props.card)
+    if (!def) throw new Error(`Unknown card ${props.card}`)
+    const text = names.cards?.[def.id]
+    const name = text?.name ?? def.id
+    const H = def.kind === 'person' ? 'h3' : 'h4'
+    const prefix = props.idPrefix ?? ''
+    return (
+      <Only on={props.on}>
+        <article
+          id={`${prefix}${cardAnchor(def.id)}`}
+          className="flex scroll-mt-[80px] flex-col gap-8"
+        >
+          <div className="flex flex-col gap-4">
+            {props.heading !== false && (
+              <header className="flex flex-col gap-1">
+                <div className={`${kicker} text-accent-700`}>
+                  {t.guide.album.kind[def.kind]} · {names.places[def.region]}
+                </div>
+                <div className="flex items-center gap-2">
+                  <H
+                    className={`m-0 ${def.kind === 'person' ? 'text-[clamp(28px,5vw,36px)] leading-[1.1]' : 'text-[clamp(26px,4.6vw,32px)] leading-[1.15]'}`}
+                  >
+                    {name}
+                    {text?.local && (
+                      <>
+                        {' '}
+                        <span className="font-normal text-neutral-700 italic">{text.local}</span>
+                      </>
+                    )}
+                  </H>
+                  <PinButton card={def.id} name={name} />
+                </div>
+                {text?.dates && (
+                  <div className="text-[13px] tracking-[.04em] text-neutral-700">{text.dates}</div>
+                )}
+              </header>
+            )}
+            <p className="m-0 max-w-[62ch]">{props.intro}</p>
+          </div>
+          <CardTraces card={def.id} prefix={prefix} />
+          <div className="flex flex-col gap-2">
+            <span className={`${label} text-accent-2-700`}>{t.guide.trace.remember}</span>
+            <p className="m-0 max-w-[34ch] text-[clamp(20px,3.4vw,24px)] leading-[1.35] italic">
+              {props.remember}
+            </p>
+          </div>
+        </article>
+      </Only>
+    )
+  }
+
+  /**
+   * The flag or the coat of arms as a trace of the album (02, 03): the guide's emblem image as
+   * the placeholder, in grey, until the reader adds their photo. Goes in the emblems chapter.
+   */
+  function Emblem(props: { kind: 'coat-of-arms' | 'flag'; on: Visibility<P> }) {
+    const { id } = builtInTrace(structure.country, props.kind)
+    return (
+      <Only on={props.on}>
+        <Trace id={id} anchor={`trace-${props.kind}`} showPlace={false} />
+      </Only>
+    )
+  }
+
   kind('section', { Chapter, Part, Region })
   kind('timeline', { Timeline })
+  kind('card', { Card })
+  kind('gate', { Emblem })
 
   return {
     A,
@@ -723,5 +812,8 @@ export function guideKit<P extends string, S extends string>(
     Figure: Figure<P>,
     MapFigure: MapFigure<P>,
     City: City<P>,
+    Card,
+    Emblem,
+    Today,
   }
 }

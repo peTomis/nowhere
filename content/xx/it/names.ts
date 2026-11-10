@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Section, Template } from '../structure'
+import { Person, Section, Template, Trace } from '../structure'
 
 /** Italian names of the template's places and sections (index, titles, trip filter). */
 
@@ -21,5 +21,42 @@ export const names: GuideNames<Template, Section> = {
     [Section.RegionsAndCities]: 'Regioni e città',
     [Section.RegionsAndCitiesNorth]: places[Template.North],
     [Section.RegionsAndCitiesSouth]: places[Template.South],
+    [Section.People]: 'Personaggi',
+  },
+  /** Trace texts: plain text, also shown in the album. `place` is the line under the name. */
+  traces: {
+    [Trace.ClockTower]: {
+      name: 'Torre dell’orologio',
+      local: 'Nome locale',
+      place: `${places[Template.CityOne]}, ${places[Template.North]}`,
+      text: 'Cos’è la traccia, in due o tre frasi: perché vale la pena cercarla.',
+      find: 'Come trovarla: indirizzo e punto preciso, da dove si vede meglio.',
+    },
+    [Trace.BirthHouse]: {
+      name: 'Casa natale',
+      place: `${places[Template.CityOne]}, ${places[Template.North]}`,
+      text: 'Una traccia che compare in due schede: nella seconda si legge «Anche in».',
+      find: 'Piazza principale, angolo nord.',
+      invite: 'L’invito della nota, se diverso da «Che cosa ti ha colpito?»',
+    },
+    [Trace.Fortress]: {
+      name: 'Fortezza sul monte',
+      place: `Valle del fiume, ${places[Template.North]}`,
+      // No `text`: optional, when the text around the trace already says it. Only "Come trovarla".
+      find: 'A piedi dal parcheggio sulla strada, un’ora di salita.',
+    },
+    [Trace.Painting]: {
+      name: 'Il quadro del museo',
+      local: 'Titolo originale',
+      place: `${places[Template.CityThree]}, ${places[Template.South]}`,
+      text: 'Una traccia nuova, con un’immagine di repertorio (qui manca: segnaposto).',
+      find: 'Museo civico, primo piano, ultima sala.',
+    },
+  },
+  /** Card headings; a city card takes the city's name. */
+  cards: {
+    [Person.Someone]: { name: 'Un personaggio', local: 'Nome locale', dates: '1431 – 1476' },
+    [Template.CityOne]: { name: places[Template.CityOne], local: 'Nome locale · Altro nome' },
+    [Template.CityThree]: { name: places[Template.CityThree] },
   },
 }

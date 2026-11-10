@@ -32,6 +32,19 @@ export enum Section {
   RegionsAndCities = 'xx.section.regions-and-cities',
   RegionsAndCitiesNorth = 'xx.section.regions-and-cities.north',
   RegionsAndCitiesSouth = 'xx.section.regions-and-cities.south',
+  People = 'xx.section.people',
+}
+
+/** Traces of the album (`<cc>.place.<slug>`) and persons (`<cc>.person.<slug>`): stored with the reader's photos, never rename them. */
+export enum Trace {
+  ClockTower = 'xx.place.clock-tower',
+  BirthHouse = 'xx.place.birth-house',
+  Fortress = 'xx.place.fortress',
+  Painting = 'xx.place.painting',
+}
+
+export enum Person {
+  Someone = 'xx.person.someone',
 }
 
 const { North, South, CityOne, CityTwo, CityThree } = Template
@@ -55,5 +68,51 @@ export const structure = defineGuide<Template, Section>({
     { id: Section.RegionsAndCities, level: 1, on: 'always' },
     { id: Section.RegionsAndCitiesNorth, level: 2, on: [North] },
     { id: Section.RegionsAndCitiesSouth, level: 2, on: [South] },
+    { id: Section.People, level: 1, on: 'always' },
+  ],
+  /**
+   * The album's own traces, from 04 (01–03 are the cover, the coat of arms and the flag, added
+   * by the kit). `where`: 'city' (needs `city`), 'nearby' or 'remote'. `image`: stock picture
+   * shown in grey until the reader's photo (missing here, so a placeholder).
+   */
+  traces: [
+    {
+      id: Trace.ClockTower,
+      region: North,
+      city: CityOne,
+      where: 'city',
+      rarity: 'common',
+      icon: 'clock',
+    },
+    {
+      id: Trace.BirthHouse,
+      region: North,
+      city: CityOne,
+      where: 'city',
+      rarity: 'common',
+      icon: 'house',
+    },
+    { id: Trace.Fortress, region: North, where: 'remote', rarity: 'very-rare', icon: 'mountains' },
+    {
+      id: Trace.Painting,
+      region: South,
+      city: CityThree,
+      where: 'city',
+      rarity: 'rare',
+      icon: 'frame',
+      image: { src: '/guides/template/trace-painting.jpg' },
+      isNew: true,
+    },
+  ],
+  /** Person and city cards (a city card's id is the city): each listed once in the body with <Card>. */
+  cards: [
+    {
+      id: Person.Someone,
+      kind: 'person',
+      region: North,
+      traces: [Trace.BirthHouse, Trace.Fortress],
+    },
+    { id: CityOne, kind: 'city', region: North, traces: [Trace.ClockTower, Trace.BirthHouse] },
+    { id: CityThree, kind: 'city', region: South, traces: [Trace.Painting] },
   ],
 })

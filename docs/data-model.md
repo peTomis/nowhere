@@ -1,6 +1,7 @@
 # Data model: guide content and reader data
 
-Status: **approved with changes (revision 2), not implemented yet.**
+Status: **approved with changes (revision 2); phases 1–6 implemented** (phase 6 with the
+deviations in [§11.1](#111-phase-6-as-implemented)), phases 7–8 not yet.
 
 This document designs the data structure behind the guides and the reader's collection. It must
 work today (Italian only, one allowed account) and accept followers and more languages later
@@ -898,6 +899,42 @@ Phases 5–8 need, from you: a MongoDB Atlas M0 cluster (connection string), a G
 (redirect URI per environment), an R2 bucket with an API token and CORS, and the same variables in
 the hosting environment. Until they exist, phases 5–8 are verified with a local MongoDB and
 mocked bucket calls only, and I will say so.
+
+### 11.1 Phase 6 as implemented
+
+What the code does, where it differs from the sections above (follows the v4 design,
+`Guida Romania - Sito v4.dc.html`):
+
+- **Three built-in traces per country.** Every album opens with 01 **cover**, 02 **flag**,
+  03 **coat of arms** (fixed order), added by `tracesOf()` (`content/build.ts`) and never written in a guide.
+  Subjects (`content/subjects.ts`): the cover is `{ kind: 'country', id: cc }` (role `cover`, the
+  same photo that will light the country on the map, §7); the others are places with reserved
+  slugs, `<cc>.place.coat-of-arms` and `<cc>.place.flag` (the validator refuses them in
+  `structure.traces`). Their stock images are the guide's cover and emblems (shown whole, `fit: 'contain'`, for the
+  emblems); in the text the coat of arms and the flag are placed as traces with the kit's
+  `<Emblem>`; their texts are UI
+  strings (`guide.builtIn` in `i18n/it.json`); 1 point each. A guide's own traces follow from 04.
+- **Structure, not `PlaceDef`/`PersonDef`/`CityCardDef`.** `TraceDef` (region, city, `where`:
+  city/nearby/remote, rarity, icon, optional stock `image`, `isNew`) and `CardDef` (person or
+  city, region, trace ids) in `content/types.ts`; texts in `names.traces` (`TraceText`: name,
+  local, place line, optional text, "Come trovarla", note invite, distance) and `names.cards`. The card's
+  prose is the kit's `<Card card on intro remember>`; `<Today traces>` is the "Oggi:" line under
+  an event. `TraceKind` (on-route/detour) became `where` + rarity, as in the design.
+- **Seen = has a photo.** The design asks for a photo to put a trace in the album, so there are
+  no visits: `/api/visits` is not implemented and the `visits` collection stays unused.
+- **One photo per subject.** Committing a photo tombstones the subject's previous one and deletes
+  its objects (`lib/server/collection.ts`).
+- **Routes:** `/api/photos` (GET, POST), `/api/photos/[id]/commit`, `/api/photos/[id]`
+  (DELETE), `/api/notes` (GET, PUT; an empty text deletes the note, which also stores `country`
+  for `?country=`). Subjects are checked against `content/structures.ts`.
+- **Browser:** `lib/reader/photos.ts` (§6.4), `lib/reader/collection.ts` (one in-memory store per
+  page instead of the `ReaderStore` interface; photos being uploaded are kept with a local
+  preview, and those interrupted by the network restart when it comes back while the page is
+  open). The UI caps notes at 300 characters (the server at 2000).
+- **Pins** ("In evidenza") are a device preference in `nowhere.prefs` (`pins`, added within
+  schema 1), for person and city cards only: pinning sections is not ported.
+- **Not ported:** the "Per chi mi segue" note visibility, export/import (phase 8), the lit map
+  and cover photos from the country card (phase 7).
 
 ---
 

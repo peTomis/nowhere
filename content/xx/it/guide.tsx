@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Section, Template, structure } from '../structure'
+import { Person, Section, Template, Trace, structure } from '../structure'
 import { names } from './names'
 
 /*
@@ -8,7 +8,8 @@ import { names } from './names'
  * says what the element is for. A guide is a folder content/<cc>/ (cc = ISO 3166-1 alpha-2):
  * structure.ts (ids, regions, sections: the same in every language), it/names.ts (place and
  * section names), it/guide.tsx (this file: cover, emblems and the body). To start a new guide,
- * copy content/xx/, register it in content/countries.ts and content/guides.ts, and put the images
+ * copy content/xx/, register it in content/countries.ts, content/guides.ts and
+ * content/structures.ts, and put the images
  * in public/guides/<slug>/. Guide texts (titles, place names, alt texts) live in the guide, not in
  * i18n. The image paths below point to files that don't exist, so the page shows the placeholders.
  */
@@ -23,11 +24,13 @@ const {
   A,
   Aside,
   Callout,
+  Card,
   Chapter,
   City,
   Context,
   D,
   Detail,
+  Emblem,
   Event,
   Figure,
   Glossary,
@@ -43,6 +46,7 @@ const {
   Source,
   Text,
   Timeline,
+  Today,
 } = guideKit(structure, names)
 
 const { North, South, CityOne, CityTwo, CityThree } = Template
@@ -119,6 +123,8 @@ function Body() {
                 <D>950–900 a.C.</D> Un dettaglio che inizia con la sua data
               </Detail>
               <Detail on="always">Un dettaglio senza data: ogni riga ha il rombo azzurro.</Detail>
+              {/* "Oggi:": up to two traces where the event can be seen today. */}
+              <Today traces={[Trace.BirthHouse, Trace.Fortress]} />
             </Event>
             <Event on="always" date="500" title="Evento con un riquadro da vedere sul posto">
               <Detail on="always">
@@ -163,6 +169,12 @@ function Body() {
             ratio="3/2"
             size="emblem"
           />
+
+          {/*
+            The flag or the coat of arms as a trace of the album (02, 03): put it in the emblems
+            chapter. Its placeholder is the guide's emblem image (emblems, above), in grey.
+          */}
+          <Emblem kind="flag" on="always" />
 
           <Callout on="always" kind="debate" title="Un punto controverso, posto come domanda?">
             <Positions>
@@ -255,6 +267,17 @@ function Body() {
           <Text on={[CityOne, CityTwo]}>
             Un paragrafo per chi visita almeno una delle due città.
           </Text>
+          {/* City card: its traces come from structure.cards; heading and pin button come by themselves. */}
+          <Card
+            card={CityOne}
+            on={[CityOne]}
+            intro={
+              <>
+                Introduzione alla città: un paragrafo, con <N>nomi</N> e date come <D>1999</D>.
+              </>
+            }
+            remember="La frase da ricordare della città."
+          />
         </Region>
 
         <Region
@@ -265,7 +288,27 @@ function Body() {
           <City on={[CityThree]} name={names.places[CityThree]}>
             <Detail on={[CityThree]}>Città minima: solo il nome e i dettagli.</Detail>
           </City>
+          <Card
+            card={CityThree}
+            on={[CityThree]}
+            intro="Una scheda con una sola traccia, con immagine di repertorio."
+            remember="Da ricordare: una frase sola."
+          />
         </Region>
+      </Chapter>
+
+      {/* A person card: its kicker names its region; traces in the trip come first. */}
+      <Chapter section={Section.People} lede="Poche figure, e i luoghi dove le si incontra ancora.">
+        <Card
+          card={Person.Someone}
+          on="always"
+          intro={
+            <>
+              Chi era, in un paragrafo: date come <D>1448</D>, nomi come <N>Un altro</N>.
+            </>
+          }
+          remember="Il nome è di famiglia: la storia è un’altra."
+        />
       </Chapter>
     </>
   )

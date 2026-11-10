@@ -22,40 +22,45 @@ yarn format:check
 ```
 app/
   layout.tsx           root layout: Source Serif 4 via next/font, print-plate filters
-  globals.css          entry: tailwind + theme + components
-  page.tsx             home: full-screen world map + footer (no site header)
-  guide/[slug]/page.tsx  a guide: cover, reading layout, footer (prerendered per guide)
+  page.tsx             home: full-screen world map + footer
+  guide/[slug]/page.tsx  a guide: cover, album opening, text or album, footer (prerendered)
   template/page.tsx    /template: every guide element with placeholder text (not indexed)
-  not-found.tsx        404 (with the logo header)
-  icon.svg             favicon
+  account/page.tsx     "I tuoi dati": account, sync, completion per guide
+  api/                 me, auth, photos (+ [id], [id]/commit), notes
 components/
-  Logo.tsx             Nowhere logo in process colors (variant: horizontal | vertical |
-                       symbol | wordmark)
-  PlateText.tsx        text printed as misregistered C/M/Y plates
-  PrintPlates.tsx      client component that mounts lib/printPlates once
-  SiteHeader.tsx       logo header (404)
-  SiteFooter.tsx       site footer (home and guides): wordmark, tagline, credit to petomis
-  WorldMap.tsx         home map: d3 projection/zoom + search, tooltip, pin card, legend
-  guide/               guide kit: Guide (the whole page), GuideCover, GuideShell (sidebar, index, mobile menu),
-                       TripFilter + trip.tsx (trip filter), content.tsx (D, N, Chapter,
-                       Part, Timeline/Event, Detail, Callout, Region, City, Figure…),
-                       GuideOutro (closing recap: name, chapters, "Torna su")
-content/guides/        guide content, one file per country (romania.tsx) + template.tsx + index.ts
-i18n/                  UI strings: it.json (Italian, the only locale) + index.ts (t, format, locale)
-lib/printPlates.ts     SVG separation filters + the "press driver" (hover / pointer lean)
-lib/guide.ts           guide content types (places, index entries, cover, emblems)
-data/guides.ts         guide registry (one entry per country)
-styles/
-  theme.css            Broadsheet design-system tokens → Tailwind theme
-  broadsheet.css       base styles and component classes (.btn, .card, .tag, .cmyk…)
-  guide.css            guide treatments: date highlighter, timeline rail
-public/data/world-50m.json  world TopoJSON (Natural Earth 50m via world-atlas, Italian names)
+  Logo.tsx, PlateText.tsx, PrintPlates.tsx, SiteHeader.tsx, SiteFooter.tsx
+  WorldMap.tsx, CountryCard.tsx, AccountMenu.tsx, Completion.tsx
+  guide/               Guide (the whole page), GuideCover, GuideAlbumIntro, GuideShell (sticky bar,
+                       sidebar, index menu), content.tsx (the kit: Chapter, Part, Timeline, Event,
+                       Region, City, Card, Today, Figure…), Album, Trace, CardTraces, PhotoPanel,
+                       Pins ("In evidenza"), Toast, GuideOutro
+content/
+  countries.ts         guide registry (one entry per country)
+  guides.ts            guide content by slug
+  types.ts, build.ts   content types; places, index, traces and cards for the page
+  subjects.ts          what a reader's photo is about; the three built-in traces
+  <cc>/structure.ts    ids, regions, sections, traces, cards (no text)
+  <cc>/it/             names.ts (short texts) and guide.tsx (the body)
+  xx/                  the template guide (/template)
+lib/
+  content/             validate.ts (content checks), cards.ts (pinned copies)
+  reader/              prefs.ts (trip filter, pins), collection.ts, photos.ts, schema.ts
+  server/              mongodb, http (requireUser, route), bucket (S3/R2), collection
+i18n/                  UI strings: it.json + index.ts (t, format, locale)
+styles/                theme.css (tokens), broadsheet.css (components), guide.css
 public/guides/<slug>/  guide images (cover, coat of arms, flag, maps, photos)
 ```
 
-Components are Server Components by default. Client Components: `PrintPlates`, `WorldMap` and the
-interactive parts of the guide kit (`GuideShell`, `TripFilter`, `Toc`, `trip.tsx`).
+Components are Server Components by default; client components are listed in `AGENTS.md`.
 Phosphor icons in Server Components are imported from `@phosphor-icons/react/ssr`.
+
+## The album
+
+Every guide has an album: one box per trace, filled by the reader's own photos (signed in, stored
+in a private S3-compatible bucket, see `docs/data-model.md`). **The first three boxes of every
+country are always the cover (01), the flag (02) and the coat of arms (03)**: the kit adds them,
+with the guide's cover and emblems as stock images. A guide's own traces start at 04. Each trace
+is worth 1–3 points; the completion bar and the levels (25, 50, 80%) come from them.
 
 ## Design system
 
@@ -88,24 +93,16 @@ Rules of thumb:
 
 ## Adding a guide
 
-1. Add an entry to `data/guides.ts` (`countryId` = ISO 3166-1 numeric code, e.g. Romania = `642`).
-   Guides with `status: 'ready'` are highlighted on the home map.
-2. Copy `content/guides/template.tsx` (every element of the kit, shown at `/template`) to
-   `content/guides/<slug>.tsx`, then register the content in `content/guides/index.ts`. All the
-   guide's texts live in that file (titles and place names used in more than one spot are local
-   constants). A guide has:
-   - a string `enum` of the guide's regions and cities, used as `GuideContent<MyEnum>` and for
-     `const { Chapter, Text, … } = guideKit<MyEnum>()`, so a wrong id is a type error;
-   - `places`: regions and cities for the trip filter (shown as "Il tuo viaggio");
-   - `toc`: the index; each `id` is the anchor of a `Chapter`, `Part`, titled `Timeline` or `Region`,
-     and `on` lists the same places as that section;
-   - `body`: the text, built from the kit. Every block has a required `on`: an array of the places
-     for which it is shown (at least one must be in the trip), or `"always"` to show it whatever
-     the reader selected. Blocks nest, so give a
-     chapter the widest list (its parts go inside it) and its texts the same list or a part of it:
-     `<Chapter on={[Dobrogea, Transilvania]}>` → `<Text on={[Dobrogea]}>`.
+1. Register the country in `content/countries.ts` (`id` = ISO 3166-1 alpha-2, `numeric` = the
+   numeric code, e.g. Romania = `642`). Guides with `status: 'ready'` are shown on the home map.
+2. Copy `content/xx/` (every element of the kit, shown at `/template`) to `content/<cc>/`,
+   register the content in `content/guides.ts` and the structure in `content/structures.ts`.
+   - `structure.ts`: region/city enum, sections (index, anchors, periods), traces and cards;
+   - `it/names.ts`: place and section names, trace texts, card names;
+   - `it/guide.tsx`: cover, emblems and the body, built from the kit. Every block has a required
+     `on`: the places for which it is shown, or `"always"`.
+   - Don't declare the cover, coat of arms and flag traces: the album gets them by itself, using
+     the guide's `cover` and `emblems`.
 3. Put images in `public/guides/<slug>/` with English file names (`cover.jpg`, `coat-of-arms.png`,
-   `flag.svg`, `map.png`…); their alt texts go next to them in the content file. Missing files
-   show a neutral placeholder, so the page can be written before the photos exist.
-
-The page `/guide/<slug>` is generated at build time.
+   `flag.svg`, `map.png`…). Missing files show a neutral placeholder.
+4. `yarn validate` checks the content; the page `/guide/<slug>` is generated at build time.

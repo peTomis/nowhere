@@ -1,6 +1,8 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { format, t } from '@/i18n'
+import { isSeen, useCollection } from '@/lib/reader/collection'
 
 /**
  * Album completion of a country, port of "Completamento.dc.html". `compact`: a thin bar with the
@@ -10,40 +12,52 @@ import { format, t } from '@/i18n'
  */
 
 /** Percentages at which the reader reaches level 1, 2 and 3. */
-const THRESHOLDS = [25, 50, 80]
+export const THRESHOLDS = [25, 50, 80]
 
-type Completion = { pct: number; points: number; total: number }
+/** A trace as the completion counts it: its collection key and its points. */
+export type Scored = { key: string; points: number }
 
-/**
- * The reader's completion of a country: points of the traces seen, out of the points of all its
- * traces. Nothing is seen until the collection exists (visits, docs/data-model.md §6).
- */
-function useCompletion(_country: string, total: number): Completion {
-  const points = 0
-  return { pct: total ? Math.floor((points / total) * 100) : 0, points, total }
+export type CompletionState = { pct: number; points: number; total: number; level: number }
+
+/** Points of the traces with a photo, out of the points of all the country's traces. */
+export function completionOf(traces: Scored[], seen: (key: string) => boolean): CompletionState {
+  let points = 0
+  let total = 0
+  for (const tr of traces) {
+    total += tr.points
+    if (seen(tr.key)) points += tr.points
+  }
+  const pct = total ? Math.floor((points / total) * 100) : 0
+  return { pct, points, total, level: THRESHOLDS.filter((s) => pct >= s).length }
+}
+
+export function useCompletion(traces: Scored[]): CompletionState {
+  const { entries } = useCollection()
+  return completionOf(traces, (key) => isSeen(entries[key]))
 }
 
 type Props = {
-  /** ISO 3166-1 alpha-2. */
-  country: string
   /** Country name, for the title and the accessible label. */
   name: string
-  /** Points of all the country's traces (see RARITY_POINTS). */
-  total?: number
+  /** The country's traces (see RARITY_POINTS). */
+  traces: Scored[]
   variant?: 'compact' | 'full'
+  /** Percentage the bar starts from, to show it growing (after a photo is added). */
+  from?: number
   className?: string
 }
 
-export function Completion({
-  country,
-  name,
-  total: totalPoints = 0,
-  variant = 'compact',
-  className = '',
-}: Props) {
-  const { pct, points, total } = useCompletion(country, totalPoints)
-  const level = THRESHOLDS.filter((s) => pct >= s).length
-  const width = `${Math.max(0, Math.min(100, pct))}%`
+export function Completion({ name, traces, variant = 'compact', from, className = '' }: Props) {
+  const { pct, points, total, level } = useCompletion(traces)
+  // Starts at `from`, then grows to the real value on the next frame (the bar's transition).
+  const [grown, setGrown] = useState(from === undefined)
+  useEffect(() => {
+    if (grown) return
+    const id = requestAnimationFrame(() => requestAnimationFrame(() => setGrown(true)))
+    return () => cancelAnimationFrame(id)
+  }, [grown])
+  const shown = grown ? pct : (from ?? pct)
+  const width = `${Math.max(0, Math.min(100, shown))}%`
   const fill =
     'absolute inset-y-0 left-0 bg-text motion-safe:transition-[width] motion-safe:duration-[1.2s] motion-safe:ease-[cubic-bezier(.2,.7,.2,1)]'
 

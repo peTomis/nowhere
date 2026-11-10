@@ -16,7 +16,7 @@ const {
   D,
   Detail,
   Event,
-  Figure,
+  Emblem,
   Glossary,
   MapFigure,
   N,
@@ -71,15 +71,7 @@ function Body() {
         lede="I simboli che vedi su edifici pubblici, monete e passaporti."
       >
         <Part section={RoSection.Flag}>
-          <Figure
-            on="always"
-            src={`${dir}/flag.svg`}
-            credit={creditToVerify}
-            alt="Bandiera della Romania"
-            caption="Il tricolore: blu, giallo e rosso, dall’asta."
-            ratio="3/2"
-            size="emblem"
-          />
+          <Emblem kind="flag" on="always" />
           <Text on="always">
             La bandiera romena ha tre bande verticali di uguale larghezza. Il blu è vicino all’asta,
             il giallo al centro e il rosso sul bordo esterno.
@@ -108,16 +100,7 @@ function Body() {
         </Part>
 
         <Part section={RoSection.CoatOfArms}>
-          <Figure
-            on="always"
-            src={`${dir}/coat-of-arms.png`}
-            credit={creditToVerify}
-            alt="Stemma della Romania"
-            caption="L’aquila d’oro con lo scudo delle regioni storiche."
-            ratio="480/695"
-            size="emblem"
-            cutout
-          />
+          <Emblem kind="coat-of-arms" on="always" />
           <Text on="always">
             L’aquila d’oro coronata riprende un antico emblema della{' '}
             <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>. Già nel XIV secolo il

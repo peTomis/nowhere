@@ -1,6 +1,6 @@
 /*
- * Device preferences of the reader (docs/data-model.md §3.3): today only the trip filter, i.e.
- * the region/city ids each guide's reader switched off. They stay in this browser's localStorage
+ * Device preferences of the reader (docs/data-model.md §3.3): the trip filter (the region/city
+ * ids each guide's reader switched off) and the cards pinned to "In evidenza". They stay in this browser's localStorage
  * (they must work signed out and render synchronously after hydration) under one versioned key.
  * Account data (visits, photos, notes) is on the server, never here.
  */
@@ -12,7 +12,15 @@ export type Prefs = {
   schema: typeof PREFS_SCHEMA
   /** Excluded region and city ids, by country (ISO 3166-1 alpha-2). */
   trip: Record<string, { off: string[] }>
+  /**
+   * Cards pinned to "In evidenza", by country, newest first. Optional: added within schema 1
+   * (older prefs simply have none).
+   */
+  pins?: Record<string, { used: boolean; list: Pin[] }>
 }
+
+/** A person or city card pinned to the top of its guide. */
+export type Pin = { card: string; collapsed: boolean; createdAt: number }
 
 const empty = (): Prefs => ({ schema: PREFS_SCHEMA, trip: {} })
 
@@ -82,6 +90,25 @@ export function tripOff(country: string): string[] {
 export function setTripOff(country: string, off: string[]) {
   const prefs = load()
   cache = { ...prefs, trip: { ...prefs.trip, [country]: { off } } }
+  save(cache)
+  listeners.forEach((l) => l())
+}
+
+const NO_PINS: Pin[] = []
+
+/** The cards pinned for a country, newest first. Same array until it changes. */
+export function pinsOf(country: string): Pin[] {
+  return load().pins?.[country]?.list ?? NO_PINS
+}
+
+/** Whether the reader ever pinned something in this guide (the empty box explains pinning until then). */
+export function pinsUsed(country: string): boolean {
+  return !!load().pins?.[country]?.used
+}
+
+export function setPins(country: string, list: Pin[]) {
+  const prefs = load()
+  cache = { ...prefs, pins: { ...prefs.pins, [country]: { used: true, list } } }
   save(cache)
   listeners.forEach((l) => l())
 }

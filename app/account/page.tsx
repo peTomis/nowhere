@@ -55,15 +55,10 @@ export default function AccountPage({ searchParams }: PageProps<'/account'>) {
           <Section title={t.account.completionHeading} gap="gap-4">
             {ready.map((g) => {
               const content = guideContent[g.slug]
-              const traces = tracesOf(content.structure, content.names)
+              const traces = tracesOf(content, g.name).map(({ key, points }) => ({ key, points }))
               return (
                 <div key={g.slug} className="flex max-w-[520px] flex-col gap-2">
-                  <Completion
-                    country={g.id}
-                    name={g.name}
-                    total={traces.reduce((sum, tr) => sum + tr.points, 0)}
-                    variant="full"
-                  />
+                  <Completion name={g.name} traces={traces} variant="full" />
                   <Link
                     href={`/guide/${g.slug}#album`}
                     className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[15px] text-accent-700 no-underline hover:text-accent-800"

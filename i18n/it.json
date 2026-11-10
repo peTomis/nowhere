@@ -36,6 +36,7 @@
       "tracesOne": "1 traccia in {regions} regioni",
       "noTraces": "Ancora nessuna traccia",
       "open": "Apri l’album",
+      "openGuide": "Apri la guida",
       "kicker": "{name} · {n} tracce",
       "heading": "Album",
       "all": "Tutte",
@@ -43,7 +44,7 @@
       "regionLine": "{seen} di {n} · {points} punti su {total}",
       "empty": "Questa guida non ha ancora tracce.",
       "isNew": "Nuova",
-      "traceAria": "Traccia {num}, {name}, rarità {rarity}, {where}, da trovare",
+      "traceAria": "Traccia {num}, {name}, rarità {rarity}, {where}, {state}",
       "rarity": {
         "common": "comune",
         "rare": "rara",
@@ -52,8 +53,30 @@
       "where": {
         "city": "In città",
         "nearby": "Nei dintorni",
-        "remote": "Fuori mano"
-      }
+        "remote": "Fuori mano",
+        "anywhere": "In tutto il paese"
+      },
+      "rarityLabel": {
+        "common": "Comune",
+        "rare": "Rara",
+        "very-rare": "Rarissima"
+      },
+      "seen": "vista",
+      "toFind": "da trovare",
+      "isNewAria": ", nuova",
+      "pinnedTitle": "In evidenza",
+      "pinnedLede": "Le città e i personaggi che hai fissato. Le stesse caselle restano anche nella pagina della loro regione.",
+      "dialogKicker": "Album · {region}",
+      "close": "Chiudi",
+      "peopleAndCities": "Personaggi e città",
+      "cardTraces": "{n} tracce",
+      "cardTracesOne": "1 traccia",
+      "kind": {
+        "person": "Personaggio",
+        "city": "Città"
+      },
+      "tracesOnly": "{n} tracce",
+      "tracesOneRegion": "{n} tracce in una regione"
     },
     "view": {
       "label": "Vista",
@@ -65,17 +88,17 @@
       "close": "Chiudi"
     },
     "trip": {
-      "title": "Il tuo viaggio",
+      "title": "Filtra per regione",
       "showAll": "Mostra tutto",
-      "fullText": "Testo completo",
+      "fullText": "Tutte le regioni e le città",
       "recap": "{regions} di {regionsTotal} regioni · {cities} di {citiesTotal} città",
       "citiesOf": "Città di {name}"
     },
     "outro": {
       "label": "{name}, riepilogo",
-      "chapters": "Capitoli",
       "more": "Altro",
-      "backToTop": "Torna su"
+      "backToTop": "Torna su",
+      "allGuides": "Tutte le guide"
     },
     "content": {
       "chapter": "Capitolo {number}",
@@ -86,6 +109,109 @@
       "glossary": "Glossario",
       "context": "Contesto",
       "source": "Fonte"
+    },
+    "builtIn": {
+      "cover": {
+        "name": "Copertina",
+        "place": "La foto che apre il tuo album di {name}",
+        "find": "Dove vuoi, quando la vedi: non c’è un posto giusto.",
+        "invite": "Perché proprio questa?"
+      },
+      "coat-of-arms": {
+        "name": "Stemma",
+        "place": "Lo stemma di {name}",
+        "find": "Sulle facciate dei palazzi pubblici, nei municipi e nei tribunali, sulle monete e sui francobolli.",
+        "invite": "Dove l’hai trovato?"
+      },
+      "flag": {
+        "name": "Bandiera",
+        "place": "La bandiera di {name}",
+        "find": "Sui palazzi pubblici e nelle piazze principali di ogni città.",
+        "invite": "Dove sventolava?"
+      }
+    },
+    "trace": {
+      "aria": "Traccia {num}, {name}",
+      "ariaSeen": "Traccia {num}, {name}, vista",
+      "altSeen": "La tua foto: {name}, {date}",
+      "altStock": "Traccia {num} da vedere: {name}, immagine di repertorio in grigio",
+      "altEmpty": "Traccia {num} da vedere: {name}",
+      "stock": "Repertorio",
+      "rarityAria": "Rarità: {rarity}, {points}",
+      "pointOne": "1 punto",
+      "points": "{n} punti",
+      "add": "Aggiungi la tua foto",
+      "signIn": "Accedi per aggiungere la tua foto",
+      "seenOn": "Vista il {date}",
+      "edit": "Modifica",
+      "saving": "Vista il {date} · sto salvando la foto…",
+      "loadingPhoto": "Carico la foto…",
+      "offline": "Vista il {date}. Sei offline: la foto è in questa pagina e la carico quando torna la rete.",
+      "errorTitle": "La foto non è stata salvata",
+      "errorText": "Il caricamento non è riuscito. La foto è ancora in questa pagina: non chiuderla.",
+      "errorSession": "La sessione è scaduta. Accedi di nuovo, poi riprova.",
+      "retry": "Riprova",
+      "alsoIn": "Anche in",
+      "find": "Come trovarla",
+      "private": "Solo per me",
+      "traces": "Tracce",
+      "tripFirst": "Prima quelle in {regions}, la parte del tuo viaggio.",
+      "outsideTrip": "Fuori dal tuo viaggio",
+      "remember": "Da ricordare",
+      "today": "Oggi:",
+      "todaySeen": ", vista",
+      "and": " e "
+    },
+    "photo": {
+      "kickerEdit": "Modifica",
+      "kickerNew": "La tua foto",
+      "close": "Chiudi",
+      "prompt": "Una tua foto mette la traccia nell’album.",
+      "camera": "Scatta una foto",
+      "gallery": "Dalla galleria",
+      "cameraAgain": "Scatta di nuovo",
+      "preview": "Anteprima della tua foto",
+      "unreadableTitle": "Questa foto non si può aprire",
+      "unreadable": "«{file}» è in un formato che il browser non legge. Scegline un’altra, oppure salvala come JPEG e riprova.",
+      "tooLarge": "«{file}» è troppo grande anche dopo averla ridotta. Scegline un’altra.",
+      "offline": "Sei offline. La foto resta in questa pagina e la carico quando torna la rete.",
+      "noteLabel": "Una nota, se vuoi",
+      "invite": "Che cosa ti ha colpito?",
+      "noteHint": "Una didascalia per te, fino a 300 caratteri.",
+      "noteLeftOne": "Resta 1 carattere.",
+      "noteLeft": "Restano {n} caratteri.",
+      "privateTitle": "Solo per me.",
+      "privateText": "La nota la vedi solo tu.",
+      "remove": "Togli dall’album",
+      "confirmTitle": "Togliere la traccia dall’album?",
+      "confirmText": "La foto e la nota verranno eliminate dal tuo account e la traccia esce dal completamento ({points} in meno). Non si possono recuperare.",
+      "confirmDelete": "Elimina foto e nota",
+      "cancel": "Annulla",
+      "save": "Metti nell’album",
+      "saveEdit": "Salva le modifiche",
+      "inAlbum": "Nell’album",
+      "plusOne": "+1 punto",
+      "plus": "+{n} punti",
+      "levelTitle": "Livello {n} in {name}",
+      "levelLine": "Hai superato il {pct}% dei punti della guida.",
+      "done": "Fatto",
+      "noteError": "La nota non è stata salvata. Riprova.",
+      "deleteError": "Non sono riuscito a togliere la traccia. Riprova."
+    },
+    "pins": {
+      "title": "In evidenza",
+      "empty": "Tocca {icon} accanto a una città o a un personaggio: la ritrovi qui, completa, per tutto il viaggio.",
+      "iconLabel": "l’icona Fissa",
+      "button": "In evidenza: {name}",
+      "pin": "Fissa in evidenza",
+      "unpin": "Togli da In evidenza",
+      "seenCount": "{seen} di {n} viste",
+      "outside": "Fuori dal viaggio",
+      "outsideText": "{name} non è nel viaggio che hai scelto. È qui perché l’hai fissata.",
+      "pinned": "{name} è in evidenza, in cima alla guida.",
+      "see": "Vedi",
+      "unpinned": "Tolto da In evidenza: {name}.",
+      "undo": "Annulla"
     }
   },
   "completion": {

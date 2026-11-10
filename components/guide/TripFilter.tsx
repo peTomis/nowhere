@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { useTrip } from './trip'
 import { format, t } from '@/i18n'
 
-/** Trip filter (shown as "Il tuo viaggio"): regions as checkboxes, each expandable into its cities. */
+/** Trip filter (shown as "Filtra per regione"): regions as checkboxes, each expandable into its cities. */
 export function TripFilter({ country, size }: { country: string; size: 'sidebar' | 'menu' }) {
   const trip = useTrip()
   const [open, setOpen] = useState<string[]>([])
