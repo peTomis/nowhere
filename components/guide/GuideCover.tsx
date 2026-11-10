@@ -1,15 +1,25 @@
 import Image from 'next/image'
+import { Completion } from '@/components/Completion'
 import { LogoBadge } from '@/components/LogoBadge'
 import { publicAsset } from '@/lib/assets'
 import type { GuideContent } from '@/content/types'
 
-/** Full-height cover: photo fading into the paper, logo, emblems and the country name. */
+/**
+ * Full-height cover, from "Guida Romania - Sito v4": photo fading into the paper, logo, and at the
+ * bottom the country name over a row with the emblems and the album completion.
+ */
 export function GuideCover({
+  countryId,
   name,
   cover,
   emblems = [],
   ink = 'var(--color-text)',
-}: { name: string; ink?: string } & Pick<GuideContent, 'cover' | 'emblems'>) {
+}: {
+  /** ISO 3166-1 alpha-2. */
+  countryId: string
+  name: string
+  ink?: string
+} & Pick<GuideContent, 'cover' | 'emblems'>) {
   const src = publicAsset(cover?.src)
   const shown = emblems.filter((e) => publicAsset(e.src))
   return (
@@ -34,8 +44,14 @@ export function GuideCover({
       <div className="absolute top-(--edge) left-(--edge) z-2">
         <LogoBadge href="/" framed={false} ink={ink} />
       </div>
-      {shown.length > 0 && (
-        <div className="pointer-events-none absolute top-(--edge) right-(--edge) flex items-center gap-[clamp(12px,2vw,20px)]">
+      <div className="absolute bottom-[clamp(20px,4vw,48px)] left-[clamp(16px,4.5vw,64px)] z-2 flex flex-col gap-[clamp(12px,2vw,20px)]">
+        <h1
+          className="m-0 text-[clamp(76px,17vw,210px)] leading-[.88] font-semibold tracking-[-.04em]"
+          style={{ color: ink }}
+        >
+          {name}
+        </h1>
+        <div className="flex items-center gap-[clamp(12px,2vw,20px)]">
           {shown.map((e) => (
             <Image
               key={e.src}
@@ -46,19 +62,14 @@ export function GuideCover({
               priority
               className={
                 e.kind === 'flag'
-                  ? 'block aspect-[3/2] h-auto w-[clamp(48px,7vw,72px)]'
-                  : 'block h-[clamp(64px,9vw,96px)] w-auto'
+                  ? 'block aspect-[3/2] h-auto w-[clamp(36px,5vw,48px)]'
+                  : 'block h-[clamp(40px,6vw,56px)] w-auto'
               }
             />
           ))}
+          <Completion country={countryId} name={name} className="w-[clamp(120px,18vw,180px)]" />
         </div>
-      )}
-      <h1
-        className="absolute bottom-[clamp(20px,4vw,48px)] left-[clamp(16px,4.5vw,64px)] m-0 text-[clamp(76px,17vw,210px)] leading-[.88] font-semibold tracking-[-.04em]"
-        style={{ color: ink }}
-      >
-        {name}
-      </h1>
+      </div>
     </div>
   )
 }

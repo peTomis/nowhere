@@ -103,17 +103,46 @@ export type SectionDef<S extends string = string, P extends string = string> = {
   verify?: string
 }
 
+/** How rare a trace is; worth 1, 2 or 3 points toward the album completion. */
+export type Rarity = 'common' | 'rare' | 'very-rare'
+
+export const RARITY_POINTS: Record<Rarity, number> = { common: 1, rare: 2, 'very-rare': 3 }
+
+/** Where a trace is: in a city of the guide, near one, or out of the way. */
+export type TraceWhere = 'city' | 'nearby' | 'remote'
+
+/**
+ * A trace: a place to find on the trip, one box of the album (docs/data-model.md §3, a "place"
+ * subject). Its number in the album is its position in the list, from 1.
+ */
+export type TraceDef<P extends string = string> = {
+  /** `<cc>.place.<slug>`, e.g. `ro.place.biertan-fortified-church`. Stored with the reader's photos. */
+  id: string
+  /** Region of the trip filter. */
+  region: P
+  /** City of the region, when `where` is 'city'. */
+  city?: P
+  where: TraceWhere
+  rarity: Rarity
+  /** Marked "Nuova" in the album until seen. */
+  isNew?: true
+}
+
 export type GuideStructure<P extends string = string, S extends string = string> = {
   /** ISO 3166-1 alpha-2, the prefix of every id of the guide. */
   country: string
   regions: RegionDef<P>[]
   sections: SectionDef<S, P>[]
+  /** The album's traces, in album order. */
+  traces?: TraceDef<P>[]
 }
 
 /** A locale's short texts for a guide's structure. The default locale must name every id. */
 export type GuideNames<P extends string = string, S extends string = string> = {
   places: Record<P, string>
   sections: Record<S, string>
+  /** Trace names by trace id. */
+  traces?: Record<string, string>
 }
 
 /** Identity: ties a structure's enums together so the kit and the names are typed by them. */

@@ -31,10 +31,39 @@
   },
   "guide": {
     "tagline": "La mia guida di viaggio",
+    "album": {
+      "title": "Il tuo album",
+      "traces": "{n} tracce in {regions} regioni",
+      "tracesOne": "1 traccia in {regions} regioni",
+      "noTraces": "Ancora nessuna traccia",
+      "open": "Apri l’album",
+      "kicker": "{name} · {n} tracce",
+      "heading": "Album",
+      "all": "Tutte",
+      "regionFilter": "Regione",
+      "regionLine": "{seen} di {n} · {points} punti su {total}",
+      "empty": "Questa guida non ha ancora tracce.",
+      "isNew": "Nuova",
+      "traceAria": "Traccia {num}, {name}, rarità {rarity}, {where}, da trovare",
+      "rarity": {
+        "common": "comune",
+        "rare": "rara",
+        "very-rare": "rarissima"
+      },
+      "where": {
+        "city": "In città",
+        "nearby": "Nei dintorni",
+        "remote": "Fuori mano"
+      }
+    },
+    "view": {
+      "label": "Vista",
+      "guide": "Guida",
+      "album": "Album"
+    },
     "shell": {
       "index": "Indice",
-      "close": "Chiudi",
-      "filtered": "Selezione"
+      "close": "Chiudi"
     },
     "trip": {
       "title": "Il tuo viaggio",
@@ -59,6 +88,19 @@
       "context": "Contesto",
       "source": "Fonte"
     }
+  },
+  "completion": {
+    "title": "Completamento · {name}",
+    "aria": "Completamento {name}: {pct} per cento, {level}.",
+    "level": "livello {n}",
+    "noLevel": "nessun livello",
+    "levelLabel": "Livello {n}",
+    "noLevelLabel": "Nessun livello",
+    "points": "{points} punti su {total}.",
+    "toNext": "Ancora {n} punti per il livello {level}.",
+    "toNextOne": "Ancora 1 punto per il livello {level}.",
+    "top": "Livello più alto raggiunto.",
+    "all": "Tutte le tracce sono nell’album."
   },
   "accountMenu": {
     "title": "Account",

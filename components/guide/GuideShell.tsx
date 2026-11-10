@@ -1,18 +1,25 @@
 'use client'
 
-import { ArrowLeftIcon } from '@phosphor-icons/react'
+import { ArrowLeftIcon, ListIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
-import { Logo } from '@/components/Logo'
+import { AccountMenu } from '@/components/AccountMenu'
+import { Completion } from '@/components/Completion'
+import type { AlbumTrace } from '@/content/build'
 import { anchorOf, type Place, type TocEntry } from '@/content/types'
+import { Album } from './Album'
 import { Toc } from './Toc'
 import { TripFilter } from './TripFilter'
 import { TripProvider, useTrip } from './trip'
+import { GUIDE_BAR_ID, setGuideView, useGuideView, type GuideView } from './view'
 import { t } from '@/i18n'
 
 /**
- * Reading layout of a guide, from "Guida Romania - Sito.dc.html": sticky sidebar with the trip
- * filter and the index on wide screens; a sticky bar and a full-screen index menu below 960px.
+ * Reading layout of a guide, from "Guida Romania - Sito v4.dc.html". A sticky top bar: country
+ * (from 960px), Guida/Album switch, album completion, and on the right the current section (from
+ * 960px, once the bar is stuck) or the index button (below 960px). Under it, the text (sticky
+ * sidebar with the trip filter and the index on wide screens, full-screen index menu below 960px)
+ * or the album. The bar keeps its right end free for the account button (see useBarPush).
  */
 export function GuideShell(props: {
   /** ISO 3166-1 alpha-2: the trip filter's key in the reader's prefs. */
@@ -20,6 +27,7 @@ export function GuideShell(props: {
   country: string
   places: Place[]
   toc: TocEntry[]
+  traces: AlbumTrace[]
   children: ReactNode
 }) {
   return (
@@ -64,21 +72,65 @@ function useStuck() {
   return [ref, stuck] as const
 }
 
+/** Bar height and account button size: the button settles centered in the stuck bar. */
+const BAR = 64
+const BUTTON = 48
+
+/**
+ * Publishes the bar's top edge (viewport px) as --bar-y on the account button's wrapper. Its `top`
+ * is min(var(--edge), max(8px, bar top + 8px)): fixed where the home has it until the bar comes
+ * up to it, then pushed up with the bar, and sticky once centered in the stuck bar.
+ */
+function useBarPush() {
+  const bar = useRef<HTMLDivElement>(null)
+  const button = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const frame = { id: 0 }
+    const update = () => {
+      frame.id = 0
+      if (bar.current && button.current)
+        button.current.style.setProperty('--bar-y', `${bar.current.getBoundingClientRect().top}px`)
+    }
+    const schedule = () => {
+      if (!frame.id) frame.id = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      cancelAnimationFrame(frame.id)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+    }
+  }, [])
+  return [bar, button] as const
+}
+
 function Shell({
+  countryId,
   country,
+  places,
   toc,
+  traces,
   children,
 }: {
+  countryId: string
   country: string
+  places: Place[]
   toc: TocEntry[]
+  traces: AlbumTrace[]
   children: ReactNode
 }) {
+  const view = useGuideView()
+  const total = traces.reduce((sum, tr) => sum + tr.points, 0)
   const trip = useTrip()
   const [menu, setMenu] = useState(false)
   const ids = useMemo(() => toc.map((e) => e.id), [toc])
   const active = useActiveSection(ids, trip)
   const current = (toc.find((e) => e.id === active) ?? toc[0])?.label
   const [sentinel, stuck] = useStuck()
+  const [barRef, buttonRef] = useBarPush()
+  const inset = (BAR - BUTTON) / 2
 
   useEffect(() => {
     if (!menu) return
@@ -98,41 +150,78 @@ function Shell({
   return (
     <div className="relative">
       <div ref={sentinel} aria-hidden />
-      <div className="sticky top-0 z-20 flex h-[56px] items-center gap-3 bg-bg px-[clamp(16px,5vw,32px)] shadow-sm min-[960px]:hidden">
-        {/* Once the bar is stuck the cover (and its logo) is gone: the symbol leads back home. */}
-        <Link
-          href="/"
-          aria-label={t.common.homeLabel}
-          className={`flex h-[44px] flex-none items-center overflow-hidden motion-safe:transition-[width,margin,opacity,visibility] motion-safe:duration-200 ${stuck ? 'visible w-[32px] opacity-100' : 'invisible -mr-3 w-0 opacity-0'}`}
-        >
-          <Logo variant="symbol" className="size-[32px] flex-none" />
-        </Link>
+      <div
+        ref={buttonRef}
+        className="fixed right-(--edge) z-30"
+        // Before hydration --bar-y is unset: the fallback keeps the button at var(--edge).
+        style={{ top: `min(var(--edge), max(${inset}px, calc(var(--bar-y, 100vh) + ${inset}px)))` }}
+      >
+        <AccountMenu />
+      </div>
+      <div
+        ref={barRef}
+        id={GUIDE_BAR_ID}
+        className="sticky top-0 z-20 flex h-[64px] items-center gap-2 bg-bg pr-[calc(var(--edge)+56px)] pl-[clamp(16px,4.5vw,64px)] shadow-sm"
+      >
         <a
           href="#top"
-          className="text-xs font-semibold tracking-[.16em] text-accent-700 uppercase no-underline"
+          className="mr-3 hidden flex-none text-xs font-semibold tracking-[.16em] text-accent-700 uppercase no-underline min-[960px]:block"
         >
           {country}
         </a>
-        <span className="min-w-0 flex-1 truncate text-[15px] text-neutral-800 italic">
-          {current}
-        </span>
-        {trip.filtered && (
-          <span className="tag tag-accent flex-none">{t.guide.shell.filtered}</span>
+        <div
+          role="group"
+          aria-label={t.guide.view.label}
+          className="flex flex-none gap-[2px] rounded-md bg-surface p-[3px]"
+        >
+          {(['guide', 'album'] as GuideView[]).map((v) => (
+            <button
+              key={v}
+              type="button"
+              aria-pressed={view === v}
+              onClick={() => setGuideView(v)}
+              className={`min-h-[40px] cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
+            >
+              {t.guide.view[v]}
+            </button>
+          ))}
+        </div>
+        <Completion
+          country={countryId}
+          name={country}
+          total={total}
+          className="ml-2 max-w-[220px] flex-[1_1_auto]"
+        />
+        <div className="flex-1" />
+        {/* The current section, once the reader is in the text: the bar is stuck. */}
+        {stuck && view === 'guide' && (
+          <span className="mr-3 hidden min-w-0 flex-[0_1_auto] truncate text-[15px] text-neutral-800 italic min-[960px]:block">
+            {current}
+          </span>
         )}
         <button
           type="button"
-          className="btn btn-ghost min-h-[44px]"
+          hidden={view !== 'guide'}
+          className="grid size-[44px] flex-none cursor-pointer place-items-center border-0 bg-transparent p-0 text-text hover:text-accent-700 min-[960px]:hidden"
+          aria-label={t.guide.shell.index}
           aria-haspopup="dialog"
           onClick={() => setMenu(true)}
         >
-          {t.guide.shell.index}
+          <ListIcon size={22} aria-hidden="true" />
         </button>
       </div>
 
-      <div className="flex justify-center gap-[clamp(48px,7vw,104px)] px-[clamp(20px,5vw,48px)] pt-[clamp(72px,11vw,144px)]">
+      {view === 'album' && (
+        <Album countryId={countryId} name={country} places={places} traces={traces} />
+      )}
+      {/* The text stays mounted (and server-rendered) while the album is shown. */}
+      <div
+        hidden={view !== 'guide'}
+        className="flex justify-center gap-[clamp(48px,7vw,104px)] px-[clamp(20px,5vw,48px)] pt-[clamp(72px,11vw,144px)]"
+      >
         <aside className="hidden flex-[0_0_232px] min-[960px]:block">
           {/* Trip filter and index title stay put; only the index list scrolls. */}
-          <div className="sticky top-[40px] flex max-h-[calc(100vh-80px)] flex-col gap-[50px]">
+          <div className="sticky top-[104px] flex max-h-[calc(100vh-144px)] flex-col gap-[50px]">
             <div className="flex-none">
               <TripFilter country={country} size="sidebar" />
             </div>

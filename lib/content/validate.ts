@@ -106,6 +106,20 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       error(`sections › ${s.id}`, 'period ends before it starts')
   }
 
+  const traceIds = new Set<string>()
+  for (const tr of structure.traces ?? []) {
+    addId(tr.id, 'traces', traceIds)
+    if (!tr.id.startsWith(`${cc}.place.`))
+      error('traces', `${tr.id} must start with "${cc}.place."`)
+    if (regionOf.has(tr.region) || !placeIds.has(tr.region))
+      error(`traces › ${tr.id}`, `${tr.region} is not a region`)
+    if (tr.city !== undefined && regionOf.get(tr.city) !== tr.region)
+      error(`traces › ${tr.id}`, `${tr.city} is not a city of ${tr.region}`)
+    if (tr.where === 'city' && tr.city === undefined)
+      error(`traces › ${tr.id}`, `where: 'city' needs a city`)
+    if (!names.traces?.[tr.id]?.trim()) error('names', `no name for trace ${tr.id}`)
+  }
+
   // --- body walk -------------------------------------------------------------------------------
   /** Whether every place of `child` is shown only when `parent` is (a city counts as its region). */
   const within = (child: Visibility, parent: Visibility) => {
