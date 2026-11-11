@@ -49,10 +49,12 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.People]: 'I volti della storia romena',
     [RoSection.Cities]: [
       places[Ro.Bucharest],
+      places[Ro.Iasi],
       places[Ro.Brasov],
       places[Ro.Sibiu],
       places[Ro.Sighisoara],
     ].join(', '),
+    [RoSection.CitiesMoldavia]: places[Ro.Moldavia],
     [RoSection.CitiesWallachia]: places[Ro.Wallachia],
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
   },
@@ -355,11 +357,44 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Ai due capi della piazza si guardano due edifici di due Stati. Il teatro, dello studio viennese Fellner & Helmer, apre nel 1906 come teatro nazionale ungherese e nel 1919 diventa teatro nazionale romeno. La cattedrale ortodossa viene costruita fra il 1923 e il 1933, quando la città fa ormai parte della Romania. Prima di loro, qui c’era un grande parco: la piazza nasce con questi edifici.',
       find: 'Piața Avram Iancu, a est di Piața Unirii lungo Bulevardul Eroilor, a pochi minuti a piedi. Il teatro è sul lato ovest, la cattedrale su quello est.',
     },
+    [RoTrace.IasiPalaceOfCulture]: {
+      name: 'Il Palazzo della Cultura',
+      local: 'Palatul Culturii',
+      place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
+      text: 'Il palazzo neogotico che domina il centro nasce come Palazzo amministrativo della Moldavia e viene inaugurato nel 1925. La facciata medievaleggiante nasconde una struttura moderna per l’epoca: cemento armato e una grande sala centrale. Oggi ospita musei, mentre sotto le sue fondamenta restano parti della corte principesca.',
+      find: 'Piața Palat, in fondo al viale Ștefan cel Mare. Il palazzo ospita il Museo di storia della Moldavia, il Museo d’arte e altri musei; controlla gli orari prima della visita.',
+    },
+    [RoTrace.IasiThreeHierarchsMonastery]: {
+      name: 'Il monastero dei Tre Gerarchi',
+      local: 'Mănăstirea Sfinții Trei Ierarhi',
+      place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
+      text: 'La chiesa fondata dal principe Vasile Lupu nel Seicento è rivestita da una decorazione in pietra scolpita, con motivi geometrici e vegetali diversi su ogni lato. Nel 1641 qui viene sepolto il metropolita moldavo Varlaam; nel 1642 il monastero ospita il sinodo che approva la Confessione ortodossa. La decorazione è unica, ma la chiesa appartiene a una rete di potere, culto e istruzione.',
+      find: 'Bulevardul Ștefan cel Mare și Sfânt 28, accanto alla Cattedrale metropolitana. Il cortile è nel cuore del centro storico.',
+    },
+    [RoTrace.IasiUnionMuseum]: {
+      name: 'Il Museo dell’Unione',
+      local: 'Muzeul Unirii',
+      place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
+      text: 'La casa neoclassica dove oggi si trova il museo è legata alla famiglia del principe Alexandru Ioan Cuza. Nel 1859 Cuza viene eletto principe sia in Moldavia sia in Valacchia: l’unione personale apre il percorso che porta alla Romania, ma non cancella le differenze fra i due principati. Le sale ricostruite raccontano quella memoria dinastica e politica.',
+      find: 'Strada Alexandru Lăpușneanu 14, nel centro di Iași. Le sale del museo seguono gli appartamenti e gli oggetti attribuiti alla famiglia Cuza.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
     [Ro.Brasov]: { name: places[Ro.Brasov], local: 'Kronstadt · Brassó' },
     [Ro.ClujNapoca]: { name: places[Ro.ClujNapoca], local: 'Kolozsvár · Klausenburg' },
+    [Ro.Iasi]: {
+      name: places[Ro.Iasi],
+      local: 'Iași · Jassy',
+      traceTexts: {
+        [RoTrace.IasiPalaceOfCulture]:
+          'Il palazzo in fondo al viale sembra una fortezza medievale, ma è il simbolo della modernizzazione della città nel Novecento. Entrando nei musei, confronta la facciata neogotica con la struttura in cemento e con le fondamenta della corte più antica: Iași mette in scena il proprio passato per costruire un centro culturale contemporaneo.',
+        [RoTrace.IasiThreeHierarchsMonastery]:
+          'La pietra scolpita della facciata attira lo sguardo, ma il monastero racconta anche la posizione di Iași nella Moldavia del Seicento: corte principesca, metropolita, libri e dibattiti religiosi sono nello stesso isolato. Osserva il rapporto fra la chiesa, il viale e la cattedrale vicina.',
+        [RoTrace.IasiUnionMuseum]:
+          'Nel museo l’unione del 1859 appare attraverso una casa e una famiglia, non come un confine già compiuto. Cuza è eletto in due principati distinti; la doppia elezione rende visibile il compromesso politico da cui nasce il nuovo Stato.',
+      },
+    },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },
     [Ro.Sighisoara]: {
       name: places[Ro.Sighisoara],

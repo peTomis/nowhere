@@ -2159,6 +2159,25 @@ function Body() {
         section={RoSection.Cities}
         lede="Le città, lette attraverso ciò che resta e ciò che cambia."
       >
+        <Part section={RoSection.CitiesMoldavia}>
+          <Card
+            card={Ro.Iasi}
+            intro={
+              <>
+                <N>Iași</N> è la capitale storica della Moldavia, costruita sulle colline fra il
+                Prut e i Carpazi. La corte principesca, le chiese e i monasteri fanno della città un
+                centro politico e religioso; nel <D>1859</D> qui viene eletto principe
+                <N> Alexandru Ioan Cuza</N>, che lo stesso giorno viene scelto anche in Valacchia.
+                L’unione personale apre la strada alla Romania, ma Iași non smette di essere il
+                centro culturale della Moldavia. Nel <D>1916–1917</D> governo e corte si rifugiano
+                qui durante la guerra; nel giugno <D>1941</D> la città è anche teatro di un pogrom
+                contro gli ebrei. Oggi il viale centrale accosta il monastero dei Tre Gerarchi, il
+                Palazzo della Cultura e il museo dell’unione: tre modi diversi di usare il passato.
+              </>
+            }
+            remember="A Iași il passato moldavo resta visibile come città di corte, centro religioso e luogo conteso della memoria."
+          />
+        </Part>
         <Part section={RoSection.CitiesWallachia}>
           <Card
             card={Ro.Bucharest}

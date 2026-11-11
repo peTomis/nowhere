@@ -57,6 +57,7 @@ export enum RoSection {
   /** Chapter 3, Personaggi. */
   People = 'ro.section.people',
   Cities = 'ro.section.cities',
+  CitiesMoldavia = 'ro.section.cities.moldavia',
   CitiesWallachia = 'ro.section.cities.wallachia',
   CitiesTransylvania = 'ro.section.cities.transylvania',
 }
@@ -105,6 +106,9 @@ export enum RoTrace {
   AlbaIuliaCitadel = 'ro.place.alba-iulia-citadel',
   AlbaIuliaStMichaelsCathedral = 'ro.place.alba-iulia-st-michaels-cathedral',
   AlbaIuliaUnionHall = 'ro.place.alba-iulia-union-hall',
+  IasiPalaceOfCulture = 'ro.place.iasi-palace-of-culture',
+  IasiThreeHierarchsMonastery = 'ro.place.iasi-three-hierarchs-monastery',
+  IasiUnionMuseum = 'ro.place.iasi-union-museum',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -212,8 +216,9 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.Cities,
       level: 1,
       chapter: 'cities',
-      on: [Ro.Bucharest, Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
+      on: [Ro.Bucharest, Ro.Iasi, Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
     },
+    { id: RoSection.CitiesMoldavia, level: 2, on: [Ro.Iasi] },
     { id: RoSection.CitiesWallachia, level: 2, on: [Ro.Bucharest] },
     {
       id: RoSection.CitiesTransylvania,
@@ -562,6 +567,33 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'bank',
     },
+    // TODO image: freely licensed photograph of the Palace of Culture.
+    {
+      id: RoTrace.IasiPalaceOfCulture,
+      region: Moldavia,
+      city: Ro.Iasi,
+      where: 'city',
+      rarity: 'common',
+      icon: 'castle',
+    },
+    // TODO image: freely licensed photograph of the Three Hierarchs Monastery.
+    {
+      id: RoTrace.IasiThreeHierarchsMonastery,
+      region: Moldavia,
+      city: Ro.Iasi,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of the Union Museum.
+    {
+      id: RoTrace.IasiUnionMuseum,
+      region: Moldavia,
+      city: Ro.Iasi,
+      where: 'city',
+      rarity: 'common',
+      icon: 'image',
+    },
     // TODO image: freely licensed photographs for the three Alba Iulia traces.
     {
       id: RoTrace.AlbaIuliaCitadel,
@@ -686,6 +718,17 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.AlbaIuliaCitadel,
         RoTrace.AlbaIuliaStMichaelsCathedral,
         RoTrace.AlbaIuliaUnionHall,
+      ],
+    },
+    {
+      id: Ro.Iasi,
+      kind: 'city',
+      region: Moldavia,
+      on: [Ro.Iasi],
+      traces: [
+        RoTrace.IasiPalaceOfCulture,
+        RoTrace.IasiThreeHierarchsMonastery,
+        RoTrace.IasiUnionMuseum,
       ],
     },
     {
