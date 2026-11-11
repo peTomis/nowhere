@@ -1628,12 +1628,380 @@ function Body() {
           </Timeline>
         </Part>
 
+        {/* Source ledger and outstanding independent checks: docs/romania-modern-history-sources.md. */}
+        <Part section={RoSection.NationalState}>
+          <Timeline on="always">
+            <Event
+              on={[Wallachia, Moldavia]}
+              date="1821–1822"
+              title="Finiscono le nomine fanariote"
+            >
+              <Detail on={[Wallachia, Moldavia]}>
+                La rivolta di <N>Tudor Vladimirescu</N> in Valacchia e l’insurrezione greca nei
+                principati vengono sconfitte dagli ottomani. Nel 1822 il sultano torna a nominare
+                principi delle famiglie locali. Valacchia e Moldavia restano tributarie della Porta.
+              </Detail>
+            </Event>
+            <Event
+              on={[Wallachia, Moldavia]}
+              date="1829–1832"
+              title="La Russia tutela i principati"
+            >
+              <Detail on={[Wallachia, Moldavia]}>
+                Il trattato di Adrianopoli rafforza il controllo russo, senza abolire la sovranità
+                ottomana. I <N>Regolamenti organici</N>, introdotti in Valacchia nel 1831 e in
+                Moldavia nel 1832, riorganizzano amministrazione e finanze, ma conservano il potere
+                dei boiardi.
+              </Detail>
+            </Event>
+            <Event
+              on={[Wallachia, Moldavia, Transylvania]}
+              date="1848–1849"
+              title="Le rivoluzioni dividono i progetti nazionali"
+            >
+              <Detail on={[Wallachia, Moldavia]}>
+                In Moldavia la protesta viene subito repressa; in Valacchia un governo
+                rivoluzionario chiede diritti e riforma agraria. L’intervento ottomano e russo
+                chiude l’esperienza.
+              </Detail>
+              <Detail on={[Transylvania]}>
+                In Transilvania viene abolita la servitù della gleba. La rivoluzione ungherese vuole
+                l’unione con l’Ungheria; l’assemblea romena di <N>Blaj</N> rivendica il
+                riconoscimento politico dei romeni. Il conflitto diventa una guerra, con violenze
+                contro i civili. Nel 1849 gli eserciti asburgico e russo sconfiggono la rivoluzione
+                ungherese.
+              </Detail>
+            </Event>
+            <Event
+              on={[Moldavia, Wallachia]}
+              date="1855–1856"
+              title="Viene abolita la schiavitù dei rom"
+            >
+              <Detail on={[Moldavia, Wallachia]}>
+                Dopo le liberazioni degli schiavi dello Stato e dei monasteri, le leggi del 1855 in
+                Moldavia e del 1856 in Valacchia liberano anche quelli dei privati. I proprietari
+                ricevono indennizzi; gli ex schiavi non ricevono un sostegno equivalente per vivere
+                autonomamente. La libertà giuridica non cancella l’esclusione sociale.
+              </Detail>
+            </Event>
+            <Event
+              on={[Wallachia, Moldavia]}
+              date="1859–1864"
+              title="Cuza unisce Valacchia e Moldavia"
+            >
+              <Detail on={[Wallachia, Moldavia]}>
+                Le due assemblee eleggono lo stesso principe, <N>Alexandru Ioan Cuza</N>. Nel 1862
+                governo e Parlamento vengono unificati: <N>Bucarest</N> diventa la capitale comune.
+                La sovranità ottomana continua. Nel 1864 Cuza vara una riforma agraria e rende
+                obbligatoria e gratuita l’istruzione primaria.
+              </Detail>
+            </Event>
+            {/* TODO verificare: second independent source for the railway opening; MWNF checked. */}
+            <Event on={[Dobruja]} date="1860" title="Una ferrovia attraversa la Dobrogea ottomana">
+              <Detail on={[Dobruja]}>
+                Una compagnia britannica apre la linea <N>Cernavodă–Constanța</N>: collega il
+                Danubio al Mar Nero per il trasporto delle merci. La regione è ancora amministrata
+                dagli ottomani. Ferrovie e porto anticipano il ruolo di collegamento commerciale che
+                conserva nella Romania di oggi.
+              </Detail>
+            </Event>
+            <Event on={[Wallachia, Moldavia]} date="1866" title="Carol I e la nuova costituzione">
+              <Detail on={[Wallachia, Moldavia]}>
+                Una coalizione di oppositori costringe Cuza ad abdicare. Arriva il principe
+                <N> Carol I</N>; la nuova costituzione istituisce una monarchia costituzionale. Il
+                voto dipende dal censo e la cittadinanza resta preclusa ai non cristiani, colpendo
+                soprattutto gli ebrei.
+              </Detail>
+            </Event>
+            <Event
+              on={[Transylvania]}
+              date="1867"
+              title="La Transilvania entra nella metà ungherese dell’impero"
+            >
+              <Detail on={[Transylvania]}>
+                Il compromesso austro-ungarico sancisce l’integrazione della Transilvania nel Regno
+                d’Ungheria. La politica di diffusione dell’ungherese nelle scuole e
+                nell’amministrazione alimenta le rivendicazioni dei romeni. La regione resta
+                nell’Austria-Ungheria fino al 1918.
+              </Detail>
+            </Event>
+            <Event
+              on={[Wallachia, Moldavia, Dobruja]}
+              date="1877–1878"
+              title="L’indipendenza e la Dobrogea settentrionale"
+            >
+              <Detail on={[Wallachia, Moldavia, Dobruja]}>
+                La Romania proclama l’indipendenza e combatte contro gli ottomani insieme alla
+                Russia. Il congresso di Berlino la riconosce nel 1878, subordinandola anche alla
+                rimozione delle discriminazioni religiose. La Romania riceve la Dobrogea
+                settentrionale e il delta del Danubio, ma cede alla Russia la Bessarabia meridionale
+                ricevuta nel 1856, oggi tra Moldova e Ucraina.
+              </Detail>
+            </Event>
+            <Event
+              on={[Wallachia, Moldavia, Dobruja]}
+              date="1881"
+              title="La Romania diventa un regno"
+            >
+              <Detail on={[Wallachia, Moldavia, Dobruja]}>
+                Carol I assume il titolo di re. Lo Stato comprende Valacchia, la parte occidentale
+                della Moldavia e la Dobrogea settentrionale. La Bucovina resta asburgica: il nome
+                «Moldavia» indica una regione storica più vasta del territorio governato da
+                Bucarest.
+              </Detail>
+            </Event>
+          </Timeline>
+        </Part>
+
+        <Part section={RoSection.WorldWars}>
+          <Timeline on="always">
+            <Event
+              on={[Moldavia, Wallachia]}
+              date="1907"
+              title="La rivolta contadina viene repressa dall’esercito"
+            >
+              <Detail on={[Moldavia, Wallachia]}>
+                La rivolta parte dalla Moldavia e si estende alla Valacchia. I contadini contestano
+                affitti e condizioni di lavoro sulle grandi proprietà; si verificano anche attacchi
+                antisemiti. Il governo impiega l’esercito. La distribuzione della terra resta una
+                frattura sociale dietro le facciate della modernizzazione.
+              </Detail>
+            </Event>
+            <Event on={[Dobruja]} date="1913" title="La Romania annette la Dobrogea meridionale">
+              <Detail on={[Dobruja]}>
+                Dopo la seconda guerra balcanica, il trattato di Bucarest assegna alla Romania anche
+                la Dobrogea meridionale, o <N>Quadrilatero</N>, oggi in Bulgaria. Questo territorio
+                resta romeno fino al 1940: non coincide con la Dobrogea romena che si visita oggi.
+              </Detail>
+            </Event>
+            <Event on="always" date="1916–1917" title="La Romania entra nella Grande guerra">
+              <Detail on="always">
+                Dopo due anni di neutralità, la Romania si schiera con l’Intesa e attacca
+                l’Austria-Ungheria. La controffensiva porta all’occupazione di gran parte del regno;
+                il governo si rifugia in Moldavia.
+              </Detail>
+              <Detail on={[Moldavia]}>
+                <N>Iași</N> ospita governo e corte. Nel 1917 il fronte resiste in Moldavia.
+              </Detail>
+            </Event>
+            <Event on="always" date="1918–1920" title="Le unioni del 1918 e i nuovi confini">
+              <Detail on="always">
+                Alla fine della guerra assemblee in Bessarabia, Bucovina e Transilvania votano
+                l’unione con la Romania. Nasce la cosiddetta «Grande Romania», con ampie minoranze
+                ungheresi, tedesche, ebraiche e ucraine. I trattati del dopoguerra definiscono i
+                confini; l’Unione Sovietica non riconoscerà l’annessione della Bessarabia, oggi tra
+                Moldova e Ucraina.
+              </Detail>
+              <Detail on={[Transylvania]}>
+                Il <D>1 dicembre 1918</D> l’assemblea romena di <N>Alba Iulia</N> proclama l’unione.
+                La Sala dell’Unione conserva la memoria dell’assemblea. Il trattato del Trianon del
+                1920 sancisce il passaggio della Transilvania dall’Ungheria alla Romania.
+              </Detail>
+              <Detail on={[Moldavia]}>
+                Anche la Bucovina entra nel regno. Solo la sua parte meridionale, con
+                <N> Suceava</N>, appartiene alla Romania attuale; quella settentrionale è oggi
+                ucraina.
+              </Detail>
+            </Event>
+            <Event
+              on="always"
+              date="1921–1923"
+              title="Riforma agraria e costituzione del regno ampliato"
+            >
+              <Detail on="always">
+                La riforma agraria ridistribuisce terre ai contadini. La costituzione del 1923
+                consolida uno Stato centralizzato e proclama l’uguaglianza dei cittadini. Il
+                suffragio maschile allarga la partecipazione, ma ingerenze del governo nelle
+                elezioni e discriminazioni verso le minoranze limitano quei diritti.
+              </Detail>
+            </Event>
+            <Event on="always" date="1938" title="Carol II impone la dittatura reale">
+              <Detail on="always">
+                Il re sospende il sistema parlamentare e scioglie i partiti. La violenza politica e
+                l’antisemitismo segnano il decennio; la <N>Guardia di Ferro</N>, movimento fascista,
+                mescola nazionalismo, religione e omicidi politici. La persecuzione degli ebrei
+                precede l’alleanza con la Germania nazista.
+              </Detail>
+            </Event>
+            <Event on="always" date="1940" title="La Romania perde territori e si allea con l’Asse">
+              <Detail on="always">
+                L’URSS occupa Bessarabia e Bucovina settentrionale, oggi tra Moldova e Ucraina.
+                L’arbitrato imposto da Germania e Italia assegna la Transilvania settentrionale
+                all’Ungheria; la Dobrogea meridionale torna alla Bulgaria. Carol II abdica e
+                <N> Ion Antonescu</N> prende il potere. La Romania aderisce all’Asse.
+              </Detail>
+            </Event>
+            <Event on="always" date="1941–1944" title="La guerra contro l’URSS e la Shoah">
+              <Detail on="always">
+                Antonescu partecipa all’invasione dell’URSS. Autorità e reparti romeni organizzano
+                massacri e deportazioni di ebrei; nel 1942 deportano anche rom in Transnistria, il
+                territorio allora occupato tra Dnestr e Bug, oggi tra Moldova e Ucraina. Fame,
+                malattie e uccisioni provocano morti di massa.
+              </Detail>
+              <Detail on={[Moldavia]}>
+                Nel giugno 1941 a <N>Iași</N> militari, poliziotti e civili partecipano al pogrom;
+                molti sopravvissuti muoiono sui «treni della morte».
+              </Detail>
+              <Detail on={[Transylvania]}>
+                Nella Transilvania settentrionale, amministrata dall’Ungheria, nel 1944 le autorità
+                ungheresi collaborano con i nazisti alla deportazione degli ebrei ad Auschwitz, oggi
+                in Polonia. Responsabilità e amministrazioni sono diverse da quelle del territorio
+                governato da Antonescu.
+              </Detail>
+            </Event>
+            <Event
+              on="always"
+              date="1944–1947"
+              title="Dal cambio di fronte alla fine della monarchia"
+            >
+              <Detail on="always">
+                Il <D>23 agosto 1944</D> re <N>Mihai I</N> fa arrestare Antonescu. La Romania cambia
+                schieramento, ma resta sotto occupazione sovietica. Il trattato di pace del 1947
+                restituisce la Transilvania settentrionale e conferma le altre perdite territoriali
+                del 1940. I comunisti eliminano le opposizioni e costringono il re ad abdicare il 30
+                dicembre: viene proclamata la repubblica popolare.
+              </Detail>
+            </Event>
+          </Timeline>
+        </Part>
+
+        <Part section={RoSection.Communism}>
+          <Timeline on="always">
+            <Event
+              on="always"
+              date="1948–1962"
+              title="Nazionalizzazioni, Securitate e collettivizzazione"
+            >
+              <Detail on="always">
+                Il regime di <N>Gheorghe Gheorghiu-Dej</N> nazionalizza le imprese e crea la
+                <N> Securitate</N>, la polizia politica. Dal 1949 al 1962 la collettivizzazione
+                impone ai contadini di cedere terre e mezzi di lavoro. Arresti, deportazioni e
+                lavoro forzato colpiscono oppositori reali o presunti.
+              </Detail>
+              <Detail on={[Dobruja]}>
+                Tra il 1949 e il 1953 il cantiere del canale Danubio–Mar Nero usa anche detenuti
+                politici. Il canale oggi visibile viene completato nel 1984, dopo la ripresa dei
+                lavori negli anni Settanta.
+              </Detail>
+            </Event>
+            <Event on="always" date="1965" title="Ceaușescu prende il potere">
+              <Detail on="always">
+                <N>Nicolae Ceaușescu</N> succede a Gheorghiu-Dej alla guida del partito. La nuova
+                costituzione cambia il nome dello Stato in Repubblica socialista di Romania; il
+                partito mantiene il monopolio politico.
+              </Detail>
+            </Event>
+            <Event on="always" date="1966" title="Il decreto 770 limita l’aborto">
+              <Detail on="always">
+                Il regime restringe drasticamente l’aborto e l’accesso alla contraccezione per
+                aumentare le nascite. Gli aborti clandestini causano morti evitabili e molte
+                famiglie non riescono a mantenere i figli. La politica demografica invade la vita
+                privata; le restrizioni vengono abrogate dopo la caduta del regime.
+              </Detail>
+            </Event>
+            <Event
+              on="always"
+              date="1968"
+              title="Ceaușescu condanna l’invasione della Cecoslovacchia"
+            >
+              <Detail on="always">
+                Il capo del partito condanna l’intervento militare guidato dall’URSS in
+                Cecoslovacchia. L’autonomia diplomatica gli procura credito in Occidente, ma non
+                abolisce la censura e la repressione interne.
+              </Detail>
+            </Event>
+            <Context
+              on="always"
+              period="Anni Settanta e Ottanta"
+              title="Fabbriche, quartieri di blocchi e razionamenti"
+            >
+              L’industrializzazione sposta popolazione dalle campagne alle città. I quartieri di
+              condomini ridisegnano i centri urbani. Negli anni Ottanta il rimborso accelerato del
+              debito estero comporta esportazioni e tagli ai consumi: cibo, riscaldamento ed
+              elettricità vengono razionati, mentre cresce il culto del capo.
+            </Context>
+            <Event on="always" date="1989" title="La rivoluzione abbatte il regime">
+              <Detail on="always">
+                La protesta comincia a <N>Timișoara</N>, nel Banato, e raggiunge altre città. La
+                repressione provoca vittime; il 22 dicembre Ceaușescu fugge dalla capitale. Il 25
+                dicembre Nicolae ed Elena Ceaușescu vengono processati sommariamente e fucilati. Il
+                Fronte di salvezza nazionale assume il potere.
+              </Detail>
+            </Event>
+          </Timeline>
+        </Part>
+
+        <Part section={RoSection.DemocracyAndEurope}>
+          <Timeline on="always">
+            <Event
+              on="always"
+              date="1990–1991"
+              title="Elezioni, violenza politica e nuova costituzione"
+            >
+              <Detail on="always">
+                Le elezioni del 1990 confermano <N>Ion Iliescu</N> e il Fronte di salvezza
+                nazionale. La repressione delle proteste, con l’intervento dei minatori, segna la
+                transizione. La costituzione del 1991 stabilisce il quadro della repubblica
+                pluralista.
+              </Detail>
+            </Event>
+            <Context
+              on="always"
+              period="Dagli anni Novanta"
+              title="Privatizzazioni ed emigrazione cambiano il Paese"
+            >
+              La transizione all’economia di mercato chiude o ridimensiona molte industrie. Le
+              opportunità si distribuiscono in modo diseguale; l’emigrazione per lavoro trasforma
+              famiglie e paesi. I legami con l’Italia fanno parte di questa storia recente, accanto
+              agli investimenti e alla crescita dei servizi nelle città.
+            </Context>
+            <Event
+              on="always"
+              date="2004–2007"
+              title="La Romania entra nella NATO e nell’Unione Europea"
+            >
+              <Detail on="always">
+                Il <D>29 marzo 2004</D> la Romania aderisce alla NATO; il <D>1 gennaio 2007</D>
+                entra nell’Unione Europea. Sono due passaggi distinti: il primo riguarda l’alleanza
+                militare, il secondo istituzioni, mercato e cittadinanza europei.
+              </Detail>
+            </Event>
+            <Event
+              on="always"
+              date="2024–2025"
+              title="Schengen elimina i controlli alle frontiere interne"
+            >
+              <Detail on="always">
+                I controlli sulle persone alle frontiere aeree e marittime interne vengono eliminati
+                il <D>31 marzo 2024</D>; quelli alle frontiere terrestri interne il{' '}
+                <D>1 gennaio 2025</D>. L’ingresso in Schengen completa un percorso diverso
+                dall’adesione all’UE e non comporta l’adozione dell’euro.
+              </Detail>
+            </Event>
+            <Event
+              on="always"
+              date="2024–2025"
+              title="Le presidenziali vengono annullate e ripetute"
+            >
+              <Detail on="always">
+                Il 6 dicembre 2024 la Corte costituzionale annulla il processo elettorale
+                presidenziale dopo la diffusione di documenti su irregolarità e interferenze. Nelle
+                nuove elezioni del maggio 2025 vince <N>Nicușor Dan</N>. La controversia riporta al
+                centro del dibattito la fiducia nelle istituzioni e l’influenza delle campagne
+                online.
+              </Detail>
+            </Event>
+          </Timeline>
+        </Part>
+
         <Callout on="always" kind="remember">
           <Text on="always">
-            Durante l’età moderna il territorio dell’attuale Romania resta diviso. La Transilvania
-            passa dalla sovranità ottomana al dominio asburgico. Valacchia e Moldavia conservano
-            principi e istituzioni proprie sotto la sovranità ottomana, con una crescente influenza
-            russa. La Dobrogea è invece una provincia amministrata direttamente dagli ottomani.
+            La Romania nasce dall’unione di Valacchia e Moldavia nel 1859; la Dobrogea
+            settentrionale entra nel 1878 e la Transilvania nel 1918. I confini cambiano ancora
+            durante la seconda guerra mondiale. Dopo la dittatura comunista e la rivoluzione del
+            1989, il Paese costruisce istituzioni democratiche ed entra nella NATO e nell’Unione
+            Europea. Le diverse storie regionali restano leggibili nelle lingue, nei luoghi di culto
+            e nei monumenti.
           </Text>
         </Callout>
       </Chapter>

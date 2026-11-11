@@ -50,6 +50,10 @@ export enum RoSection {
   ThreeEmpiresWallachia = 'ro.section.three-empires.wallachia',
   ThreeEmpiresMoldavia = 'ro.section.three-empires.moldavia',
   ThreeEmpiresDobruja = 'ro.section.three-empires.dobruja',
+  NationalState = 'ro.section.national-state',
+  WorldWars = 'ro.section.world-wars',
+  Communism = 'ro.section.communism',
+  DemocracyAndEurope = 'ro.section.democracy-and-europe',
   /** Chapter 3, Personaggi. */
   People = 'ro.section.people',
 }
@@ -118,7 +122,7 @@ export const structure = defineGuide<Ro, RoSection>({
       level: 1,
       chapter: 'history',
       on: 'always',
-      period: { from: bc1, to: 1818 },
+      period: { from: bc1, to: 2025 },
     },
     { id: RoSection.DaciaToHungarians, level: 2, on: 'always', period: { from: bc1, to: 895 } },
     { id: RoSection.DaciaAndRome, level: 3, on: 'always', period: { from: bc1, to: 275 } },
@@ -178,6 +182,11 @@ export const structure = defineGuide<Ro, RoSection>({
       on: [Dobruja],
       period: { from: 1775, to: 1812 },
     },
+
+    { id: RoSection.NationalState, level: 2, on: 'always', period: { from: 1821, to: 1881 } },
+    { id: RoSection.WorldWars, level: 2, on: 'always', period: { from: 1907, to: 1947 } },
+    { id: RoSection.Communism, level: 2, on: 'always', period: { from: 1948, to: 1989 } },
+    { id: RoSection.DemocracyAndEurope, level: 2, on: 'always', period: { from: 1990, to: 2025 } },
 
     { id: RoSection.People, level: 1, chapter: 'people', on: 'always' },
   ],
