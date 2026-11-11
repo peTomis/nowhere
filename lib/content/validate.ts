@@ -5,6 +5,7 @@ import { kitKindOf, kitNameOf } from '@/components/guide/content'
 import { BUILT_IN_TRACES } from '@/content/subjects'
 import {
   CHAPTERS,
+  cityCardSections,
   type Credit,
   type GuideContent,
   type SectionDef,
@@ -201,10 +202,20 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   const cardsUsed = new Set<string>()
   /** Person cards in body order: the index lists them in the order of structure.cards. */
   const personsSeen: string[] = []
+  /** City cards in body order, and the section of the index each one is listed under. */
+  const citiesSeen: string[] = []
+  const citySection = cityCardSections(structure)
   /** Events' years, per section with a period. */
   const eventYears = new Map<string, EventYears[]>()
 
-  type Ctx = { on: Visibility; path: string; sections: string[]; chapter?: string }
+  type Ctx = {
+    on: Visibility
+    path: string
+    sections: string[]
+    chapter?: string
+    /** The innermost section. */
+    section?: string
+  }
 
   const walk = (node: ReactNode, ctx: Ctx): void => {
     if (
@@ -275,6 +286,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
         path: where,
         sections,
         chapter: def.chapter ?? ctx.chapter,
+        section: id,
       }
       walk(props.children, next)
       walk(props.intro as ReactNode, next)
@@ -303,6 +315,13 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       if (def.kind === 'person') {
         personsSeen.push(id)
         if (ctx.chapter !== 'people') error(where, 'a person card goes in the Personaggi chapter')
+      } else {
+        citiesSeen.push(id)
+        const listed = citySection.get(id)
+        if (!listed || ctx.chapter !== 'cities')
+          error(where, 'a city card goes in the Città chapter')
+        else if (ctx.section !== listed)
+          error(where, `the index lists this card under ${listed}: put it in that section`)
       }
       inner(def.on === 'always' ? ctx.on : def.on, { path: where })
       return
@@ -330,6 +349,11 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   const personOrder = (structure.cards ?? []).filter((c) => c.kind === 'person').map((c) => c.id)
   if (personsSeen.join() !== personOrder.filter((id) => personsSeen.includes(id)).join())
     error('body', 'person cards must follow the order of structure.cards (the index order)')
+  const cityOrder = structure.sections.flatMap((s) =>
+    (structure.cards ?? []).filter((c) => citySection.get(c.id) === s.id).map((c) => c.id),
+  )
+  if (citiesSeen.join() !== cityOrder.filter((id) => citiesSeen.includes(id)).join())
+    error('body', 'city cards must follow the index order (by section, then structure.cards)')
 
   // --- sections: all used, in order, dates matching their events --------------------------------
   const expected = structure.sections.map((s) => s.id)

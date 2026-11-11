@@ -7,6 +7,7 @@ import { BUILT_IN_TRACES, builtInTrace, subjectKey, type Subject } from './subje
 import {
   RARITY_POINTS,
   chapterNumber,
+  cityCardSections,
   type Credit,
   type GuideContent,
   type GuideNames,
@@ -34,7 +35,8 @@ export function placesOf<P extends string, S extends string>(
 /**
  * The index, from the sections. Chapters show their number and fixed title, and their period in
  * the body only, not in the index. The person cards follow the Personaggi chapter as its entries,
- * in the order of structure.cards.
+ * in the order of structure.cards; the city cards follow the part of the Città chapter for their
+ * region, one level down, as the regions under a part of the history chapter.
  */
 export function tocOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
@@ -48,6 +50,16 @@ export function tocOf<P extends string, S extends string>(
       level: 2,
       on: c.on,
     }))
+  const citySection = cityCardSections(structure)
+  const citiesUnder = (s: { id: string; level: 1 | 2 | 3 }) =>
+    (structure.cards ?? [])
+      .filter((c) => citySection.get(c.id) === s.id)
+      .map((c): TocEntry<P> => ({
+        id: c.id,
+        label: names.cards?.[c.id]?.name ?? c.id,
+        level: s.level === 1 ? 2 : 3,
+        on: c.on,
+      }))
   return structure.sections.flatMap((s) => {
     const entry: TocEntry<P> = {
       id: s.id,
@@ -57,7 +69,7 @@ export function tocOf<P extends string, S extends string>(
       dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
       on: s.on,
     }
-    return s.chapter === 'people' ? [entry, ...persons] : [entry]
+    return s.chapter === 'people' ? [entry, ...persons] : [entry, ...citiesUnder(s)]
   })
 }
 

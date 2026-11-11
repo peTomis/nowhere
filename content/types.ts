@@ -14,7 +14,7 @@ import type { ReactNode } from 'react'
  * card's without `<cc>.person.` (the same as cardAnchor).
  */
 export function anchorOf(id: string): string {
-  return id.replace(/^[a-z]{2}\.(section|person)\./, '')
+  return id.replace(/^[a-z]{2}\.(section\.|person\.)?/, '')
 }
 
 /** A region the reader can include or exclude from their trip, with its cities. */
@@ -41,6 +41,30 @@ export type ChapterKind = (typeof CHAPTERS)[number]
 
 /** A chapter's fixed number, from 1. */
 export const chapterNumber = (kind: ChapterKind) => CHAPTERS.indexOf(kind) + 1
+
+/**
+ * Where each city card is listed in the index: under the part of the Città chapter whose `on`
+ * names the city or its region (the history chapter's regional parts work the same way), else
+ * under the chapter itself. Cards follow the order of structure.cards within each section.
+ */
+export function cityCardSections<P extends string, S extends string>(
+  structure: GuideStructure<P, S>,
+): Map<string, string> {
+  const result = new Map<string, string>()
+  const i = structure.sections.findIndex((s) => s.chapter === 'cities')
+  if (i < 0) return result
+  const chapter = structure.sections[i]
+  const end = structure.sections.findIndex((s, j) => j > i && s.level === 1)
+  const parts = structure.sections.slice(i + 1, end < 0 ? undefined : end)
+  for (const c of structure.cards ?? []) {
+    if (c.kind !== 'city') continue
+    const part = parts.find(
+      (s) => Array.isArray(s.on) && (s.on.includes(c.id as P) || s.on.includes(c.region)),
+    )
+    result.set(c.id, (part ?? chapter).id)
+  }
+  return result
+}
 
 /** One entry of the guide index. `id` is the anchor of the section it points to. */
 export type TocEntry<P extends string = string> = {

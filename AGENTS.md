@@ -172,7 +172,10 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   slugs `cover`, `coat-of-arms`, `flag` are reserved). A guide's own traces (`structure.traces`,
   texts in `names.traces`) follow from 04, person and city cards in `structure.cards` /
   `names.cards`, each placed once in the body with `<Card>` (person cards in the Personaggi chapter,
-  in `structure.cards` order: they are its entries in the index); `<Today traces>` links an event to
+  in `structure.cards` order: they are its entries in the index; city cards in the Città chapter,
+  inside the part whose `on` names the city or its region: the index lists them one level under
+  that part, as the regions under a history part — `cityCardSections()` in `content/types.ts`);
+  `<Today traces>` links an event to
   its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
   `/api/notes`. Pins ("In evidenza") are a device preference (`lib/reader/prefs.ts`), for cards
