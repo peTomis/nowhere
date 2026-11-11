@@ -78,6 +78,10 @@ export enum RoTrace {
   BrancusiHouseHobita = 'ro.place.brancusi-house-hobita',
   GateOfTheKiss = 'ro.place.gate-of-the-kiss',
   EndlessColumn = 'ro.place.endless-column',
+  PalaceOfTheParliament = 'ro.place.palace-of-the-parliament',
+  CentralCommitteeBuilding = 'ro.place.central-committee-building',
+  PrimaveriiPalace = 'ro.place.primaverii-palace',
+  CeausescuExecutionSite = 'ro.place.ceausescu-execution-site',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -89,6 +93,7 @@ export enum RoPerson {
   CarolI = 'ro.person.carol-i',
   MihaiEminescu = 'ro.person.mihai-eminescu',
   ConstantinBrancusi = 'ro.person.constantin-brancusi',
+  NicolaeCeausescu = 'ro.person.nicolae-ceausescu',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -365,6 +370,39 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'steps',
     },
+    // TODO image: freely licensed photographs for the four Ceaușescu traces.
+    {
+      id: RoTrace.PalaceOfTheParliament,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'bank',
+    },
+    {
+      id: RoTrace.CentralCommitteeBuilding,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'flag',
+    },
+    {
+      id: RoTrace.PrimaveriiPalace,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'rare',
+      icon: 'house',
+    },
+    {
+      id: RoTrace.CeausescuExecutionSite,
+      region: Wallachia,
+      city: Ro.Targoviste,
+      where: 'city',
+      rarity: 'rare',
+      icon: 'wall',
+    },
   ],
   cards: [
     {
@@ -429,6 +467,18 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Wallachia,
       on: [Wallachia],
       traces: [RoTrace.BrancusiHouseHobita, RoTrace.GateOfTheKiss, RoTrace.EndlessColumn],
+    },
+    {
+      id: RoPerson.NicolaeCeausescu,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [
+        RoTrace.PalaceOfTheParliament,
+        RoTrace.CentralCommitteeBuilding,
+        RoTrace.PrimaveriiPalace,
+        RoTrace.CeausescuExecutionSite,
+      ],
     },
   ],
 })

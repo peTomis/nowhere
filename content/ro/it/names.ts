@@ -202,6 +202,35 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'L’ultima tappa del percorso: sedici moduli romboidali, compresi i mezzi moduli alle estremità, per più di 29 metri. Il complesso viene inaugurato nel 1938; nel 2024 entra nel patrimonio mondiale dell’UNESCO. Una forma astratta ripetuta all’infinito al posto della statua di un eroe.',
       find: 'Parco della Colonna, in fondo a Calea Eroilor, oltre la chiesa dei Santi Pietro e Paolo: dalla Porta del bacio è circa un chilometro e mezzo a piedi.',
     },
+    // TODO verificare: the visitors' entrance on Strada Izvor and the booking rules.
+    [RoTrace.PalaceOfTheParliament]: {
+      name: 'Il Palazzo del Parlamento',
+      local: 'Palatul Parlamentului · Casa Poporului',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Ceaușescu lo chiama Casa del Popolo e ne avvia la costruzione nel 1984, al centro di un nuovo centro civico. Per fargli posto vengono spianati la collina e il quartiere di Uranus, con case, chiese e monasteri, e decine di migliaia di abitanti sono trasferiti. Alla sua morte non è finito; oggi ospita le due Camere del Parlamento.',
+      find: 'In fondo a Bulevardul Unirii. Si visita solo con visita guidata, da prenotare; l’ingresso dei visitatori è su Strada Izvor.',
+    },
+    [RoTrace.CentralCommitteeBuilding]: {
+      name: 'Il balcone del Comitato centrale',
+      local: 'Clădirea fostului Comitet Central',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Il 21 dicembre 1989 Ceaușescu parla da questo balcone a una folla convocata per sostenerlo e, per la prima volta in 24 anni di potere, viene fischiato in pubblico. Il giorno dopo, con i manifestanti ormai nel palazzo, fugge con Elena in elicottero dal tetto. Oggi l’edificio è sede del Ministero dell’Interno.',
+      find: 'Piața Revoluției, di fronte all’ex Palazzo reale; davanti all’edificio c’è il Memoriale della Rinascita.',
+    },
+    [RoTrace.PrimaveriiPalace]: {
+      name: 'Il Palazzo Primăverii',
+      local: 'Palatul Primăverii',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'La residenza privata della famiglia Ceaușescu, nel quartiere dei dirigenti del partito. Aperta al pubblico nel 2016, mostra sale di rappresentanza, appartamenti privati e una piscina coperta: il tenore di vita della famiglia negli anni in cui il paese vive di razionamenti di cibo, luce e riscaldamento.',
+      find: 'Bulevardul Primăverii 50, vicino alla metro Aviatorilor. Solo con visita guidata, da prenotare.',
+    },
+    [RoTrace.CeausescuExecutionSite]: {
+      name: 'La caserma di Târgoviște',
+      local: 'Fosta unitate militară',
+      place: `${places[Ro.Targoviste]}, ${places[Ro.Wallachia]}`,
+      text: 'Catturati dopo la fuga, Nicolae ed Elena Ceaușescu sono rinchiusi in questa caserma. Il 25 dicembre 1989 un tribunale militare straordinario li processa in poche ore e li condanna a morte; sono fucilati contro il muro del corpo di guardia. Il processo sommario è ancora discusso. Dal 2013 gli ambienti sono un punto museale.',
+      find: 'L’ex unità militare vicino alla stazione di Târgoviște, punto museale del Complesso Curtea Domnească: orari e visite alla Corte principesca.',
+    },
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
@@ -227,5 +256,9 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoPerson.MihaiEminescu]: { name: 'Mihai Eminescu', dates: 'Poeta, 1850 – 1889' },
     [RoPerson.ConstantinBrancusi]: { name: 'Constantin Brâncuși', dates: 'Scultore, 1876 – 1957' },
+    [RoPerson.NicolaeCeausescu]: {
+      name: 'Nicolae Ceaușescu',
+      dates: 'Capo del Partito comunista romeno, 1965 – 1989',
+    },
   },
 }

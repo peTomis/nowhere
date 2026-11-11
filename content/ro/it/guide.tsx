@@ -1762,6 +1762,24 @@ function Body() {
           }
           remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
         />
+        <Card
+          card={RoPerson.NicolaeCeausescu}
+          intro={
+            <>
+              Nel <D>1965</D> diventa capo del Partito comunista romeno e, dal 1974, presidente
+              della Repubblica. Nel <D>1968</D> condanna l’invasione sovietica della Cecoslovacchia,
+              e per anni l’Occidente lo tratta come il leader comunista che prende le distanze da
+              Mosca. In patria costruisce un culto della personalità che coinvolge anche la moglie
+              Elena; negli anni Ottanta, per ripagare il debito estero, impone il razionamento di
+              cibo, luce e riscaldamento, mentre la{' '}
+              <N href="https://it.wikipedia.org/wiki/Securitate">Securitate</N> sorveglia il paese.
+              Nel dicembre <D>1989</D> la rivolta partita da Timișoara arriva a Bucarest: in quattro
+              giorni fugge, viene catturato e fucilato. Se il dicembre 1989 sia stato una
+              rivoluzione popolare o anche un cambio di potere dentro il regime è ancora discusso.
+            </>
+          }
+          remember="Il dittatore che rifà Bucarest a sua misura e cade in quattro giorni, nel dicembre 1989."
+        />
       </Chapter>
     </>
   )
