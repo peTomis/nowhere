@@ -156,6 +156,11 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     if (c.traces.length === 0) error(`cards › ${c.id}`, 'no traces')
     for (const id of c.traces)
       if (!traceIds.has(id)) error(`cards › ${c.id}`, `unknown trace ${id}`)
+    // The card shows the traces' album numbers: listed out of order they read 04, 06, 05.
+    const albumOrder = (structure.traces ?? []).map((tr) => tr.id)
+    const positions = c.traces.map((id) => albumOrder.indexOf(id)).filter((i) => i >= 0)
+    if (positions.some((p, i) => i > 0 && p < positions[i - 1]))
+      error(`cards › ${c.id}`, 'traces must follow the album order of structure.traces')
     if (!names.cards?.[c.id]?.name.trim()) error('names', `no name for card ${c.id}`)
   }
 

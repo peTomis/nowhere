@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Ro, RoSection, structure } from '../structure'
+import { Ro, RoPerson, RoSection, RoTrace, structure } from '../structure'
 import { names } from './names'
 
 const dir = '/guides/romania'
@@ -10,6 +10,7 @@ const creditToVerify = { unverified: 'author and licence to record' }
 
 const {
   Callout,
+  Card,
   Chapter,
   Context,
   D,
@@ -26,6 +27,7 @@ const {
   Source,
   Text,
   Timeline,
+  Today,
   Unless,
 } = guideKit(structure, names)
 
@@ -212,6 +214,7 @@ function Body() {
                 </N>
                 , città fondata ex novo a circa 40 km dalla capitale dacica.
               </Detail>
+              <Today traces={[RoTrace.SarmizegetusaRegia, RoTrace.TrajansColumnCopy]} />
               <Detail on="always">
                 Comincia la{' '}
                 <N href="https://it.wikipedia.org/wiki/Romanizzazione">romanizzazione</N>: dal
@@ -1632,6 +1635,44 @@ function Body() {
             russa. La Dobrogea è invece una provincia amministrata direttamente dagli ottomani.
           </Text>
         </Callout>
+      </Chapter>
+
+      <Chapter
+        section={RoSection.People}
+        lede="Chi ha fatto la storia romena, e dove lo incontri ancora."
+      >
+        <Card
+          card={RoPerson.Decebalus}
+          on="always"
+          intro={
+            <>
+              Ultimo re della Dacia, regna dall’<D>87</D> al <D>106</D> da{' '}
+              <N href="https://it.wikipedia.org/wiki/Sarmizegetusa_Regia">Sarmizegetusa Regia</N>.
+              Tiene testa a due imperatori. Con{' '}
+              <N href="https://it.wikipedia.org/wiki/Domiziano">Domiziano</N> firma nell’<D>89</D>{' '}
+              una pace che gli porta denaro e ingegneri romani per le sue fortezze. Contro{' '}
+              <N href="https://it.wikipedia.org/wiki/Traiano">Traiano</N> perde due guerre: nel{' '}
+              <D>106</D> i romani prendono la capitale e lui, braccato sui monti, si toglie la vita
+              prima di essere catturato. La sua testa viene portata a Roma.
+            </>
+          }
+          remember="Il re che Traiano dovette vincere due volte."
+        />
+        <Card
+          card={RoPerson.StephenTheGreat}
+          on={[Moldavia]}
+          intro={
+            <>
+              Principe della Moldavia per quasi mezzo secolo, <N>Stefano il Grande</N> è il volto
+              che ritrovi nei monumenti e nei monasteri della regione. Difende il principato con le
+              armi e sostiene la vita religiosa con fondazioni e donazioni. La sua memoria tiene
+              insieme due immagini: il sovrano che protegge il proprio Stato e il santo venerato
+              dalla Chiesa ortodossa romena. A Putna e a Suceava puoi vedere come lo stesso principe
+              venga raccontato con linguaggi diversi.
+            </>
+          }
+          remember="Un principe di Moldavia, ricordato nelle piazze come sovrano e nelle chiese come santo."
+        />
       </Chapter>
     </>
   )

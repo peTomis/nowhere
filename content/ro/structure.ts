@@ -49,6 +49,23 @@ export enum RoSection {
   ThreeEmpiresWallachia = 'ro.section.three-empires.wallachia',
   ThreeEmpiresMoldavia = 'ro.section.three-empires.moldavia',
   ThreeEmpiresDobruja = 'ro.section.three-empires.dobruja',
+  /** Chapter 3, Personaggi. */
+  People = 'ro.section.people',
+}
+
+/** Traces of the album: stored with the reader's photos, never rename them. */
+export enum RoTrace {
+  SarmizegetusaRegia = 'ro.place.sarmizegetusa-regia',
+  DecebalusRockSculpture = 'ro.place.decebalus-rock-sculpture',
+  TrajansColumnCopy = 'ro.place.trajans-column-copy',
+  StephenTheGreatTomb = 'ro.place.stephen-the-great-tomb',
+  StephenTheGreatEquestrianStatue = 'ro.place.stephen-the-great-equestrian-statue',
+}
+
+/** Persons with a card: stored with the reader's pins, never rename them. */
+export enum RoPerson {
+  Decebalus = 'ro.person.decebalus',
+  StephenTheGreat = 'ro.person.stephen-the-great',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -59,9 +76,9 @@ export const structure = defineGuide<Ro, RoSection>({
   country: 'ro',
   regions: [
     { id: Dobruja, cities: [] },
-    { id: Moldavia, cities: [] },
+    { id: Moldavia, cities: [Ro.Suceava] },
     { id: Transylvania, cities: [] },
-    { id: Wallachia, cities: [] },
+    { id: Wallachia, cities: [Ro.Bucharest] },
   ],
   sections: [
     { id: RoSection.Emblems, level: 1, chapter: 'identity', on: 'always' },
@@ -132,6 +149,73 @@ export const structure = defineGuide<Ro, RoSection>({
       level: 3,
       on: [Dobruja],
       period: { from: 1775, to: 1812 },
+    },
+
+    { id: RoSection.People, level: 1, chapter: 'people', on: 'always' },
+  ],
+  traces: [
+    {
+      id: RoTrace.SarmizegetusaRegia,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'wall',
+    },
+    {
+      // Mehedinți county, on the Danube west of Orșova: historically Banat, which the trip filter
+      // has no entry for; Wallachia is the region of the county's capital today.
+      id: RoTrace.DecebalusRockSculpture,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'mountains',
+    },
+    {
+      id: RoTrace.TrajansColumnCopy,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'frame',
+    },
+    // TODO image: freely licensed photograph of Stephen the Great’s tomb at Putna.
+    // Sources: putna.ro/en/the-princely-church-the-monastic-complex;
+    // arhiva.basilica.ro/en/uk-ambassador-to-romania-lays-flowers-to-tomb-of-st-stephen-the-great/
+    {
+      id: RoTrace.StephenTheGreatTomb,
+      region: Moldavia,
+      where: 'remote',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: licensed photograph, including rights clearance for the modern sculpture.
+    // Sources: visitsuceava.ro/obiectiv-turistic/statuia-ecvestra-stefan-cel-mare/;
+    // primariasv.ro/dm_suceava/site.nsf/pagini/obiective+turistice-0001223E
+    {
+      id: RoTrace.StephenTheGreatEquestrianStatue,
+      region: Moldavia,
+      city: Ro.Suceava,
+      where: 'city',
+      rarity: 'common',
+      icon: 'shield',
+    },
+  ],
+  cards: [
+    {
+      id: RoPerson.Decebalus,
+      kind: 'person',
+      region: Transylvania,
+      traces: [
+        RoTrace.SarmizegetusaRegia,
+        RoTrace.DecebalusRockSculpture,
+        RoTrace.TrajansColumnCopy,
+      ],
+    },
+    {
+      id: RoPerson.StephenTheGreat,
+      kind: 'person',
+      region: Moldavia,
+      traces: [RoTrace.StephenTheGreatTomb, RoTrace.StephenTheGreatEquestrianStatue],
     },
   ],
 })
