@@ -10,6 +10,7 @@ const places: Record<Ro, string> = {
   [Ro.Wallachia]: 'Valacchia',
   [Ro.Sibiu]: 'Sibiu',
   [Ro.Brasov]: 'Brașov',
+  [Ro.AlbaIulia]: 'Alba Iulia',
   [Ro.ClujNapoca]: 'Cluj-Napoca',
   [Ro.Sighisoara]: 'Sighișoara',
   [Ro.Bucharest]: 'Bucarest',
@@ -328,6 +329,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Una casa medievale della città murata, dove la tradizione colloca la nascita di Mattia Corvino nel 1443. Non è una residenza reale: è la casa di un cittadino benestante, nel cuore del quartiere dei mercanti. Dal 1950 l’edificio appartiene alla scuola d’arte della città, oggi Università d’arte e design, che vi ha aperto una galleria.',
       find: 'Strada Matei Corvin 6, nella zona pedonale a pochi passi da Piața Unirii.',
     },
+    [RoTrace.AlbaIuliaCitadel]: {
+      name: 'La cittadella a stella',
+      local: 'Cetatea Alba Carolina',
+      place: `${places[Ro.AlbaIulia]}, ${places[Ro.Transylvania]}`,
+      text: 'Una fortezza a stella con sette bastioni, che gli Asburgo fanno costruire dal 1715 su progetto di Giovanni Morando Visconti, sopra il campo romano di Apulum e la cittadella medievale. Il nome Alba Carolina viene dall’imperatore Carlo VI. Cammina lungo le mura e i fossati: prima di essere un luogo della memoria, la città alta è una piazzaforte costruita secondo le regole militari del tempo.',
+      find: 'Sulla terrazza sopra la città bassa. Il percorso di visita attraversa le porte barocche della cittadella, da est verso ovest.',
+    },
+    [RoTrace.AlbaIuliaStMichaelsCathedral]: {
+      name: 'La cattedrale di San Michele',
+      local: 'Catedrala Romano-Catolică Sfântul Mihail',
+      place: `${places[Ro.AlbaIulia]}, ${places[Ro.Transylvania]}`,
+      text: 'La cattedrale cattolica, costruita fra il Duecento e il Cinquecento, è la chiesa dei vescovi di Transilvania al tempo del Regno d’Ungheria. Nella navata laterale sud c’è la tomba attribuita a Giovanni Hunyadi, Iancu de Hunedoara per i romeni, padre di Mattia Corvino, morto nel 1456. Le memorie ungherese e romena lo rivendicano entrambe: alle commemorazioni vi si posano corone con i colori dei due Paesi.',
+      find: 'Dentro la cittadella, accanto al palazzo vescovile. La tomba di Hunyadi è nella navata laterale sud.',
+    },
+    [RoTrace.AlbaIuliaUnionHall]: {
+      name: 'La Sala dell’Unione',
+      local: 'Sala Unirii',
+      place: `${places[Ro.AlbaIulia]}, ${places[Ro.Transylvania]}`,
+      text: 'Nel 1918 è il casinò degli ufficiali della guarnigione austro-ungarica. Il 1° dicembre vi si riuniscono 1.228 delegati, che votano l’unione della Transilvania, del Banato, della Crișana e del Maramureș con la Romania; il 1° dicembre è oggi la festa nazionale romena. Per l’incoronazione del 1922 la sala viene abbellita e riceve un portale ad arco di trionfo. Per gli ungheresi di Transilvania la stessa data segna il distacco dall’Ungheria.',
+      find: 'Dentro la cittadella, nel complesso del Museo nazionale dell’Unione, vicino alla Cattedrale dell’Incoronazione.',
+    },
     [RoTrace.ClujAvramIancuSquare]: {
       name: 'Piața Avram Iancu: il teatro e la cattedrale',
       local: 'Teatrul Național · Catedrala Ortodoxă',
@@ -337,6 +359,7 @@ export const names: GuideNames<Ro, RoSection> = {
     },
   },
   cards: {
+    [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
     [Ro.Brasov]: { name: places[Ro.Brasov], local: 'Kronstadt · Brassó' },
     [Ro.ClujNapoca]: { name: places[Ro.ClujNapoca], local: 'Kolozsvár · Klausenburg' },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },

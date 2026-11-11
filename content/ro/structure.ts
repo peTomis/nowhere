@@ -18,6 +18,7 @@ export enum Ro {
   // cities
   Sibiu = 'ro.sibiu',
   Brasov = 'ro.brasov',
+  AlbaIulia = 'ro.alba-iulia',
   ClujNapoca = 'ro.cluj-napoca',
   Sighisoara = 'ro.sighisoara',
   Bucharest = 'ro.bucharest',
@@ -103,6 +104,9 @@ export enum RoTrace {
   ClujUnionSquare = 'ro.place.cluj-union-square',
   ClujMatthiasCorvinusHouse = 'ro.place.cluj-matthias-corvinus-house',
   ClujAvramIancuSquare = 'ro.place.cluj-avram-iancu-square',
+  AlbaIuliaCitadel = 'ro.place.alba-iulia-citadel',
+  AlbaIuliaStMichaelsCathedral = 'ro.place.alba-iulia-st-michaels-cathedral',
+  AlbaIuliaUnionHall = 'ro.place.alba-iulia-union-hall',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -126,7 +130,7 @@ export const structure = defineGuide<Ro, RoSection>({
   regions: [
     { id: Dobruja, cities: [] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
-    { id: Transylvania, cities: [Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara] },
+    { id: Transylvania, cities: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara] },
     { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
   sections: [
@@ -210,13 +214,13 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.Cities,
       level: 1,
       chapter: 'cities',
-      on: [Ro.Bucharest, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
+      on: [Ro.Bucharest, Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
     },
     { id: RoSection.CitiesWallachia, level: 2, on: [Ro.Bucharest] },
     {
       id: RoSection.CitiesTransylvania,
       level: 2,
-      on: [Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
+      on: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
     },
   ],
   traces: [
@@ -560,6 +564,31 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'bank',
     },
+    // TODO image: freely licensed photographs for the three Alba Iulia traces.
+    {
+      id: RoTrace.AlbaIuliaCitadel,
+      region: Transylvania,
+      city: Ro.AlbaIulia,
+      where: 'city',
+      rarity: 'common',
+      icon: 'wall',
+    },
+    {
+      id: RoTrace.AlbaIuliaStMichaelsCathedral,
+      region: Transylvania,
+      city: Ro.AlbaIulia,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    {
+      id: RoTrace.AlbaIuliaUnionHall,
+      region: Transylvania,
+      city: Ro.AlbaIulia,
+      where: 'city',
+      rarity: 'common',
+      icon: 'flag',
+    },
   ],
   cards: [
     {
@@ -648,6 +677,17 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.CentralCommitteeBuilding,
         RoTrace.StavropoleosChurch,
         RoTrace.RomanianAthenaeum,
+      ],
+    },
+    {
+      id: Ro.AlbaIulia,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.AlbaIulia],
+      traces: [
+        RoTrace.AlbaIuliaCitadel,
+        RoTrace.AlbaIuliaStMichaelsCathedral,
+        RoTrace.AlbaIuliaUnionHall,
       ],
     },
     {

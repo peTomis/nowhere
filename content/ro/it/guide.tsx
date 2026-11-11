@@ -21,6 +21,7 @@ const {
   MapFigure,
   N,
   Note,
+  Only,
   Part,
   Position,
   Positions,
@@ -1797,6 +1798,10 @@ function Body() {
                 La Sala dell’Unione conserva la memoria dell’assemblea. Il trattato del Trianon del
                 1920 sancisce il passaggio della Transilvania dall’Ungheria alla Romania.
               </Detail>
+              {/* Only where the Alba Iulia card is shown: the link points to its trace. */}
+              <Only on={[Ro.AlbaIulia]}>
+                <Today traces={[RoTrace.AlbaIuliaUnionHall]} />
+              </Only>
               <Detail on={[Moldavia]}>
                 Anche la Bucovina entra nel regno. Solo la sua parte meridionale, con
                 <N> Suceava</N>, appartiene alla Romania attuale; quella settentrionale è oggi
@@ -2175,6 +2180,24 @@ function Body() {
           />
         </Part>
         <Part section={RoSection.CitiesTransylvania}>
+          <Card
+            card={Ro.AlbaIulia}
+            intro={
+              <>
+                <N>Alba Iulia</N> sta su una terrazza sopra il <N>Mureș</N>: in basso la città
+                nuova, in alto la cittadella. Qui sorge <N>Apulum</N>, uno dei centri principali
+                della Dacia romana; poi la città medievale, <N>Gyulafehérvár</N> per gli ungheresi,
+                sede del vescovo cattolico di Transilvania e, dal Cinquecento, capitale del
+                principato. Nel Settecento gli Asburgo vi costruiscono una grande fortezza a stella
+                e la chiamano Alba Carolina. Nel <D>1918</D> la città diventa il luogo dell’unione
+                con la Romania, e nel <D>1922</D> vi vengono incoronati Ferdinando e Maria. Dentro
+                la stessa cinta stanno così la cattedrale cattolica medievale e la cattedrale
+                ortodossa dell’incoronazione. Per leggere la città, guarda come ogni potere ha
+                lasciato il proprio segno sulla stessa altura.
+              </>
+            }
+            remember="Ad Alba Iulia ogni potere ha costruito sulla stessa altura: il campo romano, la cattedrale dei vescovi, la fortezza asburgica, la sala dell’unione."
+          />
           <Card
             card={Ro.Brasov}
             intro={
