@@ -110,26 +110,5 @@
   "[xml]": {
     "editor.defaultFormatter": "mikeburgh.xml-format"
   },
-  "cSpell.words": [
-    "bandiera",
-    "bucarest",
-    "cardmarket",
-    "dobrogea",
-    "extralight",
-    "hiresopt",
-    "HOLO",
-    "NEXTAUTH",
-    "Pokeball",
-    "Pokemontcg",
-    "pokemontcgsdk",
-    "sibiu",
-    "sighisoara",
-    "suceava",
-    "tcgdex",
-    "Topbar",
-    "transilvania",
-    "tulcea",
-    "valacchia",
-    "withcards"
-  ]
+  "cSpell.words": []
 }

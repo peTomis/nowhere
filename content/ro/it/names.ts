@@ -130,6 +130,35 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il bronzo è dello scultore francese Albert-Ernest Carrier-Belleuse, inaugurato nel 1874. Valacchia e Moldavia sono unite da quindici anni, la Transilvania fa parte del Regno d’Ungheria. Per gli storici e i politici del tempo il principe che ha regnato sui tre principati è il precursore della loro unione: la statua racconta quella lettura, non il 1600.',
       find: 'Piața Universității, davanti al palazzo dell’Università.',
     },
+    [RoTrace.PelesCastle]: {
+      name: 'Il castello di Peleș',
+      local: 'Castelul Peleș',
+      place: `Sinaia, ${places[Ro.Wallachia]}`,
+      distance: `a circa 50 km da ${places[Ro.Brasov]}`,
+      text: 'La residenza estiva che Carol si fa costruire nei Carpazi: i lavori cominciano nel 1873, il castello è inaugurato dieci anni dopo e ingrandito fino alla morte del re. Torri, legni intagliati e sale in stile neorinascimentale tedesco: è la casa di un principe venuto dalla Germania, non quella di un principe valacco. Nel 1948 il regime comunista lo confisca; oggi è un museo.',
+      find: 'Sopra il centro di Sinaia, nella valle della Prahova: si sale a piedi dal centro, passando accanto al monastero di Sinaia.',
+    },
+    [RoTrace.CurteaDeArgesRoyalTombs]: {
+      name: 'Le tombe reali di Curtea de Argeș',
+      local: 'Mănăstirea Curtea de Argeș',
+      place: `Curtea de Argeș, ${places[Ro.Wallachia]}`,
+      text: 'Una chiesa principesca del Cinquecento che Carol fa restaurare e sceglie come sepolcreto della nuova dinastia. Qui è sepolto con la moglie, la regina Elisabetta, scrittrice con il nome di Carmen Sylva. Un re venuto da fuori si fa seppellire accanto ai principi di Valacchia.',
+      find: 'Nel complesso del monastero di Curtea de Argeș, distretto di Argeș, sulla strada per la Transfăgărășan. Le tombe sono nel pronao della chiesa.',
+    },
+    [RoTrace.KingCarolIBridge]: {
+      name: 'Il ponte Re Carol I sul Danubio',
+      local: 'Podul Anghel Saligny',
+      place: `Cernavodă, ${places[Ro.Dobruja]}`,
+      text: 'Nel 1878 la Dobrogea passa alla Romania. Il ponte ferroviario dell’ingegnere Anghel Saligny, inaugurato nel 1895 con il nome del re, porta la ferrovia da Bucarest oltre il Danubio, fino al porto di Costanza. Il regime comunista gli dà il nome del suo ingegnere, quello che porta ancora oggi.',
+      find: 'A Cernavodă, distretto di Costanza. Il ponte corre accanto a quello stradale e ferroviario del 1987: lo vedi dalla riva della città.',
+    },
+    [RoTrace.CarolIEquestrianStatue]: {
+      name: 'Carol a cavallo in piazza della Rivoluzione',
+      local: 'Statuia ecvestră a lui Carol I',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'La statua originale, dello scultore croato Ivan Meštrović, viene abbattuta dal regime comunista nel 1948, l’anno dopo la fine della monarchia. Quella che vedi è di Florin Codre e viene inaugurata nel 2010, nello stesso punto: dopo il 1989 il re torna nelle piazze.',
+      find: 'Piața Revoluției, davanti alla Biblioteca centrale universitaria, di fronte all’ex Palazzo reale (oggi Museo nazionale d’arte).',
+    },
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
@@ -147,6 +176,11 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Michele il Coraggioso',
       local: 'Mihai Viteazul',
       dates: 'Principe di Valacchia, 1593 – 1601',
+    },
+    [RoPerson.CarolI]: {
+      name: 'Carol I',
+      local: 'Karl von Hohenzollern-Sigmaringen',
+      dates: 'Principe e poi re di Romania, 1866 – 1914',
     },
   },
 }

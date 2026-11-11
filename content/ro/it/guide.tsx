@@ -1709,6 +1709,25 @@ function Body() {
           }
           remember="Per pochi mesi del 1600 regna su tre principati: è l’Ottocento a farne il simbolo della loro unione."
         />
+        <Card
+          card={RoPerson.CarolI}
+          intro={
+            <>
+              Principe tedesco della famiglia Hohenzollern-Sigmaringen, nel <D>1866</D> è chiamato
+              sul trono dei principati uniti di Valacchia e Moldavia. Nella{' '}
+              <N href="https://it.wikipedia.org/wiki/Guerra_russo-turca_(1877-1878)">
+                guerra russo-turca
+              </N>{' '}
+              l’esercito romeno combatte a fianco della Russia: il{' '}
+              <N href="https://it.wikipedia.org/wiki/Congresso_di_Berlino">congresso di Berlino</N>{' '}
+              (<D>1878</D>) riconosce l’indipendenza e assegna alla Romania la Dobrogea. Nel{' '}
+              <D>1881</D> diventa re e regna fino alla morte, nel <D>1914</D>. Castelli, ponti e
+              piazze portano ancora il suo segno; il regime comunista lo toglie dai luoghi pubblici,
+              e dopo il 1989 ci torna.
+            </>
+          }
+          remember="Il principe tedesco con cui la Romania diventa un regno indipendente: il comunismo lo toglie dalle piazze, la Romania di oggi ce lo rimette."
+        />
       </Chapter>
     </>
   )

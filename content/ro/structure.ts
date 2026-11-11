@@ -68,6 +68,10 @@ export enum RoTrace {
   MichaelTheBraveObelisk = 'ro.place.michael-the-brave-obelisk',
   MichaelTheBraveHeadTomb = 'ro.place.michael-the-brave-head-tomb',
   MichaelTheBraveEquestrianStatue = 'ro.place.michael-the-brave-equestrian-statue',
+  PelesCastle = 'ro.place.peles-castle',
+  CurteaDeArgesRoyalTombs = 'ro.place.curtea-de-arges-royal-tombs',
+  KingCarolIBridge = 'ro.place.king-carol-i-bridge',
+  CarolIEquestrianStatue = 'ro.place.carol-i-equestrian-statue',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -76,6 +80,7 @@ export enum RoPerson {
   VladTheImpaler = 'ro.person.vlad-the-impaler',
   StephenTheGreat = 'ro.person.stephen-the-great',
   MichaelTheBrave = 'ro.person.michael-the-brave',
+  CarolI = 'ro.person.carol-i',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -268,6 +273,39 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'shield',
     },
+    // Sinaia, Prahova valley: historically Wallachia. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.PelesCastle,
+      region: Wallachia,
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'castle',
+    },
+    // TODO image: freely licensed photograph of the tombs in the pronaos.
+    {
+      id: RoTrace.CurteaDeArgesRoyalTombs,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of the bridge at Cernavodă.
+    {
+      id: RoTrace.KingCarolIBridge,
+      region: Dobruja,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'bridge',
+    },
+    // TODO image: licensed photograph, including rights clearance for the 2010 sculpture.
+    {
+      id: RoTrace.CarolIEquestrianStatue,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'shield',
+    },
   ],
   cards: [
     {
@@ -305,6 +343,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.MichaelTheBraveObelisk,
         RoTrace.MichaelTheBraveHeadTomb,
         RoTrace.MichaelTheBraveEquestrianStatue,
+      ],
+    },
+    {
+      id: RoPerson.CarolI,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia, Dobruja],
+      traces: [
+        RoTrace.PelesCastle,
+        RoTrace.CurteaDeArgesRoyalTombs,
+        RoTrace.KingCarolIBridge,
+        RoTrace.CarolIEquestrianStatue,
       ],
     },
   ],
