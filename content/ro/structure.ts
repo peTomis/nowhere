@@ -18,6 +18,7 @@ export enum Ro {
   // cities
   Sibiu = 'ro.sibiu',
   Brasov = 'ro.brasov',
+  ClujNapoca = 'ro.cluj-napoca',
   Sighisoara = 'ro.sighisoara',
   Bucharest = 'ro.bucharest',
   Targoviste = 'ro.targoviste',
@@ -99,6 +100,9 @@ export enum RoTrace {
   SibiuEvangelicalCathedral = 'ro.place.sibiu-evangelical-cathedral',
   SighisoaraClockTower = 'ro.place.sighisoara-clock-tower',
   SighisoaraCoveredStairway = 'ro.place.sighisoara-covered-stairway',
+  ClujUnionSquare = 'ro.place.cluj-union-square',
+  ClujMatthiasCorvinusHouse = 'ro.place.cluj-matthias-corvinus-house',
+  ClujAvramIancuSquare = 'ro.place.cluj-avram-iancu-square',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -122,7 +126,7 @@ export const structure = defineGuide<Ro, RoSection>({
   regions: [
     { id: Dobruja, cities: [] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
-    { id: Transylvania, cities: [Ro.Brasov, Ro.Sibiu, Ro.Sighisoara] },
+    { id: Transylvania, cities: [Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara] },
     { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
   sections: [
@@ -206,10 +210,14 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.Cities,
       level: 1,
       chapter: 'cities',
-      on: [Ro.Bucharest, Ro.Brasov, Ro.Sibiu, Ro.Sighisoara],
+      on: [Ro.Bucharest, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
     },
     { id: RoSection.CitiesWallachia, level: 2, on: [Ro.Bucharest] },
-    { id: RoSection.CitiesTransylvania, level: 2, on: [Ro.Brasov, Ro.Sibiu, Ro.Sighisoara] },
+    {
+      id: RoSection.CitiesTransylvania,
+      level: 2,
+      on: [Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
+    },
   ],
   traces: [
     {
@@ -524,6 +532,34 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'steps',
     },
+    // TODO image: freely licensed photograph of cluj-union-square (the 1902 monument is out of
+    // copyright).
+    {
+      id: RoTrace.ClujUnionSquare,
+      region: Transylvania,
+      city: Ro.ClujNapoca,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of cluj-matthias-corvinus-house.
+    {
+      id: RoTrace.ClujMatthiasCorvinusHouse,
+      region: Transylvania,
+      city: Ro.ClujNapoca,
+      where: 'city',
+      rarity: 'common',
+      icon: 'house',
+    },
+    // TODO image: freely licensed photograph of cluj-avram-iancu-square.
+    {
+      id: RoTrace.ClujAvramIancuSquare,
+      region: Transylvania,
+      city: Ro.ClujNapoca,
+      where: 'city',
+      rarity: 'common',
+      icon: 'bank',
+    },
   ],
   cards: [
     {
@@ -620,6 +656,17 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Transylvania,
       on: [Ro.Brasov],
       traces: [RoTrace.BrasovCouncilHouse, RoTrace.BrasovBlackChurch, RoTrace.BrasovCatherineGate],
+    },
+    {
+      id: Ro.ClujNapoca,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.ClujNapoca],
+      traces: [
+        RoTrace.ClujUnionSquare,
+        RoTrace.ClujMatthiasCorvinusHouse,
+        RoTrace.ClujAvramIancuSquare,
+      ],
     },
     {
       id: Ro.Sibiu,

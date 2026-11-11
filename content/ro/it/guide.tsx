@@ -2193,6 +2193,25 @@ function Body() {
             remember="Brașov vive di scambi attraverso i Carpazi: la piazza li raccoglie, le porte li controllano."
           />
           <Card
+            card={Ro.ClujNapoca}
+            intro={
+              <>
+                <N>Cluj</N> sorge sul luogo della <N>Napoca</N> romana, ma la città che percorri è
+                quella medievale: <N>Kolozsvár</N> per gli ungheresi, <N>Klausenburg</N> per i
+                sassoni, con le mura, la piazza del mercato e una grande chiesa al centro. Per
+                secoli la maggioranza degli abitanti parla ungherese; vi vivono anche tedeschi,
+                romeni ed ebrei. Dopo il <D>1918</D> la città passa alla Romania, dal 1940 al 1944
+                torna all’Ungheria, poi di nuovo alla Romania; nel dopoguerra industrie e nuovi
+                quartieri portano una maggioranza romena. Nel <D>1974</D> il regime aggiunge al nome
+                «Napoca», per richiamare l’origine romana. Le piazze del centro mostrano questa
+                storia a strati: monumenti di uno Stato, edifici dell’altro, targhe e nomi contesi.
+                Oggi è soprattutto una città universitaria, con corsi in romeno, ungherese e
+                tedesco.
+              </>
+            }
+            remember="A Cluj ogni piazza ha due memorie: guarda chi ha costruito cosa, e per chi."
+          />
+          <Card
             card={Ro.Sibiu}
             intro={
               <>
