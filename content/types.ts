@@ -9,9 +9,12 @@ import type { ReactNode } from 'react'
  * published, never rename them.
  */
 
-/** URL anchor (and HTML id) of a section: its id without `<cc>.section.`. */
+/**
+ * URL anchor (and HTML id) of an index entry: a section's id without `<cc>.section.`, a person
+ * card's without `<cc>.person.` (the same as cardAnchor).
+ */
 export function anchorOf(id: string): string {
-  return id.replace(/^[a-z]{2}\.section\./, '')
+  return id.replace(/^[a-z]{2}\.(section|person)\./, '')
 }
 
 /** A region the reader can include or exclude from their trip, with its cities. */
@@ -190,6 +193,11 @@ export type CardDef<P extends string = string> = {
   kind: 'person' | 'city'
   /** Region in the card's kicker ("Personaggio · Valacchia"). */
   region: P
+  /**
+   * For which places of the trip the card is shown, like a section's `on`. A person card is also
+   * an entry of the index, under the Personaggi chapter, shown for the same places.
+   */
+  on: Visibility<P>
   /** Trace ids, in order (2–5). */
   traces: string[]
 }
@@ -201,7 +209,7 @@ export type GuideStructure<P extends string = string, S extends string = string>
   sections: SectionDef<S, P>[]
   /** The guide's own traces, in album order (after the cover, the flag and the coat of arms). */
   traces?: TraceDef<P>[]
-  /** Person and city cards, in the order of "Personaggi e città" in the album opening. */
+  /** Person and city cards; person cards in this order in the index. */
   cards?: CardDef<P>[]
 }
 
@@ -225,7 +233,7 @@ export type TraceText = {
   distance?: string
 }
 
-/** A locale's texts for a card's heading and its entry in "Personaggi e città". */
+/** A locale's texts for a card's heading (and a person card's index entry). */
 export type CardText = {
   name: string
   /** Local or other names, after the name in italics: "Hermannstadt · Nagyszeben". */

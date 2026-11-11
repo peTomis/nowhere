@@ -38,7 +38,7 @@ export function Guide({ slug, name, content }: GuideProps) {
         ink={content.coverInk}
         traces={scored}
       />
-      <GuideAlbumIntro name={name} traces={traces} scored={scored} cards={cards} />
+      <GuideAlbumIntro name={name} traces={traces} scored={scored} />
       <GuideShell
         countryId={content.structure.country}
         country={name}

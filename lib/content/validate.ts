@@ -162,6 +162,8 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     if (positions.some((p, i) => i > 0 && p < positions[i - 1]))
       error(`cards › ${c.id}`, 'traces must follow the album order of structure.traces')
     if (!names.cards?.[c.id]?.name.trim()) error('names', `no name for card ${c.id}`)
+    if (c.on !== 'always')
+      for (const p of c.on) if (!placeIds.has(p)) error(`cards › ${c.id}`, `unknown place ${p}`)
   }
 
   // --- body walk -------------------------------------------------------------------------------
@@ -193,10 +195,12 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   const order: string[] = []
   const anchors = new Set<string>()
   const cardsUsed = new Set<string>()
+  /** Person cards in body order: the index lists them in the order of structure.cards. */
+  const personsSeen: string[] = []
   /** Events' years, per section with a period. */
   const eventYears = new Map<string, EventYears[]>()
 
-  type Ctx = { on: Visibility; path: string; sections: string[] }
+  type Ctx = { on: Visibility; path: string; sections: string[]; chapter?: string }
 
   const walk = (node: ReactNode, ctx: Ctx): void => {
     if (
@@ -261,7 +265,13 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
         checkImage(photo.src, photo.credit, where)
       }
       const sections = def.period ? [...ctx.sections, id] : ctx.sections
-      const next = { ...ctx, on: def.on === 'always' ? ctx.on : def.on, path: where, sections }
+      const next = {
+        ...ctx,
+        on: def.on === 'always' ? ctx.on : def.on,
+        path: where,
+        sections,
+        chapter: def.chapter ?? ctx.chapter,
+      }
       walk(props.children, next)
       walk(props.intro as ReactNode, next)
       return
@@ -273,14 +283,28 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
         if (!traceIds.has(String(id))) error(here, `unknown trace ${String(id)}`)
       return
     }
+    if (k === 'card') {
+      // Like a part: its `on` is in the structure (structure.cards).
+      const id = String(props.card)
+      const def = structure.cards?.find((c) => c.id === id)
+      const where = `${ctx.path} › ${name} ${id}`
+      if (!def) {
+        error(where, `unknown card ${id}`)
+        return
+      }
+      if (cardsUsed.has(id)) error(where, `card ${id} used twice`)
+      cardsUsed.add(id)
+      if (!within(def.on, ctx.on))
+        error(where, `on ${fmt(def.on)} is not within its parent's ${fmt(ctx.on)}`)
+      if (def.kind === 'person') {
+        personsSeen.push(id)
+        if (ctx.chapter !== 'people') error(where, 'a person card goes in the Personaggi chapter')
+      }
+      inner(def.on === 'always' ? ctx.on : def.on, { path: where })
+      return
+    }
     const on = gate()
     if (!on) return
-    if (k === 'card') {
-      const id = String(props.card)
-      if (!cardIds.has(id)) error(here, `unknown card ${id}`)
-      else if (cardsUsed.has(id)) error(here, `card ${id} used twice`)
-      cardsUsed.add(id)
-    }
     if (k === 'event' && props.date != null) {
       if (typeof props.date !== 'string') warn(here, 'date is not plain text: not checked')
       else {
@@ -299,6 +323,9 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
 
   walk(content.body, { on: 'always', path: slug, sections: [] })
   for (const id of cardIds) if (!cardsUsed.has(id)) error('body', `card ${id} is not in the body`)
+  const personOrder = (structure.cards ?? []).filter((c) => c.kind === 'person').map((c) => c.id)
+  if (personsSeen.join() !== personOrder.filter((id) => personsSeen.includes(id)).join())
+    error('body', 'person cards must follow the order of structure.cards (the index order)')
 
   // --- sections: all used, in order, dates matching their events --------------------------------
   const expected = structure.sections.map((s) => s.id)

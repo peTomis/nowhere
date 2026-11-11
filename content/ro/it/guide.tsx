@@ -1643,7 +1643,6 @@ function Body() {
       >
         <Card
           card={RoPerson.Decebalus}
-          on="always"
           intro={
             <>
               Ultimo re della Dacia, regna dall’<D>87</D> al <D>106</D> da{' '}
@@ -1659,8 +1658,28 @@ function Body() {
           remember="Il re che Traiano dovette vincere due volte."
         />
         <Card
+          card={RoPerson.VladTheImpaler}
+          intro={
+            <>
+              Figlio di <N href="https://it.wikipedia.org/wiki/Vlad_II_Dracul">Vlad II Dracul</N>,
+              da cui il nome Dracula, «figlio di Dracul». Nel <D>1442</D> il padre lo consegna come
+              ostaggio agli ottomani, insieme al fratello Radu. Regna sulla Valacchia tre volte, la
+              più lunga dal <D>1456</D> al <D>1462</D>. Nel giugno <D>1462</D> attacca di notte
+              l’accampamento di <N href="https://it.wikipedia.org/wiki/Maometto_II">Maometto II</N>{' '}
+              vicino a Târgoviște, ma deve fuggire in Transilvania, dove{' '}
+              <N href="https://it.wikipedia.org/wiki/Mattia_Corvino">Mattia Corvino</N> lo fa
+              imprigionare per più di dieci anni. Torna sul trono nel <D>1476</D> e muore
+              combattendo poco dopo. Le stampe tedesche dell’epoca ne fanno un tiranno sanguinario:
+              il soprannome Țepeș, «l’Impalatore», gli viene dato dopo la morte. In Romania è
+              ricordato anche come il principe che sfida gli ottomani. Il conte vampiro di{' '}
+              <N href="https://it.wikipedia.org/wiki/Bram_Stoker">Bram Stoker</N> (<D>1897</D>)
+              prende da lui il nome e poco altro.
+            </>
+          }
+          remember="Dracula è un nome di famiglia: il vampiro arriva quattro secoli dopo."
+        />
+        <Card
           card={RoPerson.StephenTheGreat}
-          on={[Moldavia]}
           intro={
             <>
               Principe della Moldavia per quasi mezzo secolo, <N>Stefano il Grande</N> è il volto

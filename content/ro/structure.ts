@@ -20,6 +20,7 @@ export enum Ro {
   Brasov = 'ro.brasov',
   Sighisoara = 'ro.sighisoara',
   Bucharest = 'ro.bucharest',
+  Targoviste = 'ro.targoviste',
   Iasi = 'ro.iasi',
   Suceava = 'ro.suceava',
   Constanta = 'ro.constanta',
@@ -58,6 +59,9 @@ export enum RoTrace {
   SarmizegetusaRegia = 'ro.place.sarmizegetusa-regia',
   DecebalusRockSculpture = 'ro.place.decebalus-rock-sculpture',
   TrajansColumnCopy = 'ro.place.trajans-column-copy',
+  VladDraculHouse = 'ro.place.vlad-dracul-house',
+  ChindiaTower = 'ro.place.chindia-tower',
+  PoenariCitadel = 'ro.place.poenari-citadel',
   StephenTheGreatTomb = 'ro.place.stephen-the-great-tomb',
   StephenTheGreatEquestrianStatue = 'ro.place.stephen-the-great-equestrian-statue',
 }
@@ -65,6 +69,7 @@ export enum RoTrace {
 /** Persons with a card: stored with the reader's pins, never rename them. */
 export enum RoPerson {
   Decebalus = 'ro.person.decebalus',
+  VladTheImpaler = 'ro.person.vlad-the-impaler',
   StephenTheGreat = 'ro.person.stephen-the-great',
 }
 
@@ -77,8 +82,8 @@ export const structure = defineGuide<Ro, RoSection>({
   regions: [
     { id: Dobruja, cities: [] },
     { id: Moldavia, cities: [Ro.Suceava] },
-    { id: Transylvania, cities: [] },
-    { id: Wallachia, cities: [Ro.Bucharest] },
+    { id: Transylvania, cities: [Ro.Sighisoara] },
+    { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
   sections: [
     { id: RoSection.Emblems, level: 1, chapter: 'identity', on: 'always' },
@@ -178,6 +183,29 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'frame',
     },
+    {
+      id: RoTrace.VladDraculHouse,
+      region: Transylvania,
+      city: Ro.Sighisoara,
+      where: 'city',
+      rarity: 'common',
+      icon: 'house',
+    },
+    {
+      id: RoTrace.ChindiaTower,
+      region: Wallachia,
+      city: Ro.Targoviste,
+      where: 'city',
+      rarity: 'common',
+      icon: 'castle',
+    },
+    {
+      id: RoTrace.PoenariCitadel,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'steps',
+    },
     // TODO image: freely licensed photograph of Stephen the Great’s tomb at Putna.
     // Sources: putna.ro/en/the-princely-church-the-monastic-complex;
     // arhiva.basilica.ro/en/uk-ambassador-to-romania-lays-flowers-to-tomb-of-st-stephen-the-great/
@@ -205,6 +233,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoPerson.Decebalus,
       kind: 'person',
       region: Transylvania,
+      on: 'always',
       traces: [
         RoTrace.SarmizegetusaRegia,
         RoTrace.DecebalusRockSculpture,
@@ -212,9 +241,17 @@ export const structure = defineGuide<Ro, RoSection>({
       ],
     },
     {
+      id: RoPerson.VladTheImpaler,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia, Transylvania],
+      traces: [RoTrace.VladDraculHouse, RoTrace.ChindiaTower, RoTrace.PoenariCitadel],
+    },
+    {
       id: RoPerson.StephenTheGreat,
       kind: 'person',
       region: Moldavia,
+      on: [Moldavia],
       traces: [RoTrace.StephenTheGreatTomb, RoTrace.StephenTheGreatEquestrianStatue],
     },
   ],

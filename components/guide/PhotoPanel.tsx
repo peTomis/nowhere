@@ -12,6 +12,7 @@ import {
 } from '@phosphor-icons/react'
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import { Completion, completionOf, THRESHOLDS } from '@/components/Completion'
+import { Medal, medalOf } from '@/components/Medal'
 import type { AlbumTrace } from '@/content/build'
 import { format, t } from '@/i18n'
 import { addPhoto, isSeen, removeFromAlbum, saveNote, useCollection } from '@/lib/reader/collection'
@@ -251,18 +252,18 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
               </div>
               {done.level && (
                 <div className="flex items-center gap-3">
-                  <span
-                    aria-hidden="true"
-                    className="grid size-[52px] flex-none place-items-center rounded-full bg-text text-[28px] leading-none font-semibold text-bg"
-                  >
-                    {done.level}
-                  </span>
+                  <Medal level={done.level} size={52} />
                   <span className="flex flex-col gap-[2px]">
                     <span className="text-[21px] leading-[1.2] font-semibold">
-                      {format(t.guide.photo.levelTitle, { n: done.level, name })}
+                      {format(t.guide.photo.levelTitle, {
+                        medal: t.completion.medalLabel[medalOf(done.level)],
+                        name,
+                      })}
                     </span>
                     <span className="text-[15px] text-neutral-800">
-                      {format(t.guide.photo.levelLine, { pct: THRESHOLDS[done.level - 1] })}
+                      {THRESHOLDS[done.level - 1] >= 100
+                        ? t.guide.photo.levelLineAll
+                        : format(t.guide.photo.levelLine, { pct: THRESHOLDS[done.level - 1] })}
                     </span>
                   </span>
                 </div>

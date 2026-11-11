@@ -3,19 +3,27 @@
 import { useEffect, useState } from 'react'
 import { format, t } from '@/i18n'
 import { isSeen, useCollection } from '@/lib/reader/collection'
+import { Medal, medalOf } from './Medal'
 
 /**
  * Album completion of a country, port of "Completamento.dc.html". `compact`: a thin bar with the
  * level thresholds cut into it, and the percentage (cover, guide bar). `full`: title, percentage
- * and level, a thicker bar with the thresholds labelled below, and the points to the next level
- * (the album opening of a guide). `card`: the full one cut down for the home map's hover, where the
+ * and medal, a thicker bar with the thresholds labelled below, and the points to the next medal
+ * (the album opening of a guide). Deviation from the design: the level is a medal (Medal.tsx: a
+ * dashed shield, then bronze, silver and gold, a platinum shield at 100%) instead of "Livello n" / "Nessun livello". `card`: the full one cut down for the home map's hover, where the
  * country name is right above it: no title; under the bar, in place of the threshold labels, the
  * number of traces with a photo (at the end of the fill) and the total (at the right end); only the
  * points to the next level.
  */
 
-/** Percentages at which the reader reaches level 1, 2 and 3. */
-export const THRESHOLDS = [25, 50, 80]
+/**
+ * Percentages at which the reader reaches level 1–4: the bronze, silver and gold medal, and at
+ * 100% the platinum shield. The bar marks only the first three (100% is its end).
+ */
+export const THRESHOLDS = [25, 50, 80, 100]
+
+/** The thresholds marked on the bar. */
+const MARKS = THRESHOLDS.filter((s) => s < 100)
 
 /** A trace as the completion counts it: its collection key and its points. */
 export type Scored = { key: string; points: number }
@@ -83,26 +91,24 @@ export function Completion({ name, traces, variant = 'compact', from, className 
   const fill =
     'absolute inset-y-0 left-0 bg-text motion-safe:transition-[width] motion-safe:duration-[1.2s] motion-safe:ease-[cubic-bezier(.2,.7,.2,1)]'
 
-  // "12 punti su 40. Ancora 4 punti per il livello 2."
+  // "12 punti su 40. Ancora 4 punti per la medaglia d’argento."
   const next = THRESHOLDS.findIndex((s) => pct < s)
   let toNext = ''
   if (total > 0) {
     const need = next < 0 ? 0 : Math.ceil((total * THRESHOLDS[next]) / 100) - points
     toNext =
-      pct >= 100
+      next < 0
         ? t.completion.all
-        : next < 0
-          ? t.completion.top
-          : format(need === 1 ? t.completion.toNextOne : t.completion.toNext, {
-              n: need,
-              level: next + 1,
-            })
+        : format(need === 1 ? t.completion.toNextOne : t.completion.toNext, {
+            n: need,
+            medal: t.completion.medalGoal[medalOf(next + 1)],
+          })
   }
   const line = total > 0 ? `${format(t.completion.points, { points, total })} ${toNext}` : ''
   const aria = `${format(t.completion.aria, {
     name,
     pct,
-    level: level ? format(t.completion.level, { n: level }) : t.completion.noLevel,
+    level: t.completion.medalLabel[medalOf(level)],
   })} ${line}`.trim()
 
   if (variant === 'compact')
@@ -117,7 +123,7 @@ export function Completion({ name, traces, variant = 'compact', from, className 
           className="relative h-[6px] min-w-[48px] flex-1 rounded-[3px] bg-neutral-200"
         >
           <span className={`${fill} rounded-[3px]`} style={{ width }} />
-          {THRESHOLDS.map((s) => (
+          {MARKS.map((s) => (
             <span
               key={s}
               className="absolute -inset-y-px w-[2px] bg-bg"
@@ -131,10 +137,6 @@ export function Completion({ name, traces, variant = 'compact', from, className 
       </div>
     )
 
-  const levelLabel = level
-    ? format(t.completion.levelLabel, { n: level })
-    : t.completion.noLevelLabel
-
   if (variant === 'card')
     return (
       <div
@@ -142,15 +144,15 @@ export function Completion({ name, traces, variant = 'compact', from, className 
         aria-label={aria}
         className={`flex min-w-0 flex-col gap-2 font-body [text-wrap:pretty] text-text ${className}`}
       >
-        <span className="flex items-baseline gap-[8px]">
+        <span className="flex items-center gap-[8px]">
           <span className="text-[28px] leading-none font-semibold tabular-nums">{pct}%</span>
-          <span className="text-[15px] text-neutral-800">{levelLabel}</span>
+          <Medal level={level} size={26} />
         </span>
         <div aria-hidden="true" className="relative">
           <div className="relative h-[10px] overflow-hidden rounded-[5px] bg-neutral-200">
             <div className={`${fill} rounded-[5px]`} style={{ width }} />
           </div>
-          {THRESHOLDS.map((s) => (
+          {MARKS.map((s) => (
             <span
               key={s}
               className="absolute -inset-y-[2px] w-[2px] -translate-x-1/2 bg-bg"
@@ -187,18 +189,18 @@ export function Completion({ name, traces, variant = 'compact', from, className 
         <span className="text-[11px] tracking-[.14em] text-neutral-700 uppercase">
           {format(t.completion.title, { name })}
         </span>
-        <span className="flex items-baseline gap-[8px]">
+        <span className="flex items-center gap-[8px]">
           <span className="text-[clamp(28px,6vw,36px)] leading-none font-semibold tabular-nums">
             {pct}%
           </span>
-          <span className="text-[15px] text-neutral-800">{levelLabel}</span>
+          <Medal level={level} size={30} />
         </span>
       </div>
       <div aria-hidden="true" className="relative">
         <div className="relative h-[10px] overflow-hidden rounded-[5px] bg-neutral-200">
           <div className={`${fill} rounded-[5px]`} style={{ width }} />
         </div>
-        {THRESHOLDS.map((s) => (
+        {MARKS.map((s) => (
           <span
             key={s}
             className="absolute -inset-y-[2px] w-[2px] -translate-x-1/2 bg-bg"
@@ -207,7 +209,7 @@ export function Completion({ name, traces, variant = 'compact', from, className 
         ))}
       </div>
       <div aria-hidden="true" className="relative h-[18px] text-xs text-neutral-700">
-        {THRESHOLDS.map((s) => (
+        {MARKS.map((s) => (
           <span
             key={s}
             className={`absolute top-0 -translate-x-1/2 whitespace-nowrap ${pct >= s ? 'font-semibold text-text' : ''}`}

@@ -12,6 +12,7 @@ const places: Record<Ro, string> = {
   [Ro.Brasov]: 'Brașov',
   [Ro.Sighisoara]: 'Sighișoara',
   [Ro.Bucharest]: 'Bucarest',
+  [Ro.Targoviste]: 'Târgoviște',
   [Ro.Iasi]: 'Iași',
   [Ro.Suceava]: 'Suceava',
   [Ro.Constanta]: 'Constanța',
@@ -64,6 +65,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'I rilievi della colonna che Traiano erige a Roma per la conquista della Dacia, in copia a grandezza naturale e all’altezza degli occhi. Cerca la scena di Decebalo che si toglie la vita mentre i cavalieri romani lo raggiungono.',
       find: 'Museo nazionale di storia della Romania, Calea Victoriei 12, nel Lapidarium. Chiuso lunedì e martedì.',
     },
+    [RoTrace.VladDraculHouse]: {
+      name: 'La casa di Vlad Dracul',
+      local: 'Casa Vlad Dracul',
+      place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
+      text: 'Una casa della cittadella dove il padre, Vlad II Dracul, vive negli anni Trenta del Quattrocento: la tradizione vuole che Vlad III sia nato qui. Non ci sono prove, ed è oggi un ristorante, ma è il primo posto dove la sua storia si lega a un indirizzo.',
+      find: 'Strada Cositorarilor 5, nella cittadella, a pochi passi dalla Torre dell’Orologio.',
+    },
+    [RoTrace.ChindiaTower]: {
+      name: 'La torre Chindia',
+      local: 'Turnul Chindiei',
+      place: `${places[Ro.Targoviste]}, ${places[Ro.Wallachia]}`,
+      text: 'La torre della Corte principesca di Târgoviște, la capitale dove Vlad III governa. La tradizione la attribuisce a lui; quella che vedi è in gran parte rifatta nell’Ottocento e nel Novecento. Dentro, una piccola mostra su Vlad e sul padre; dall’alto si vedono le rovine del palazzo.',
+      find: 'Complesso museale nazionale Curtea Domnească, nel centro di Târgoviște. La torre è dentro il recinto della corte, accanto alla chiesa principesca.',
+    },
+    [RoTrace.PoenariCitadel]: {
+      name: 'La cittadella di Poenari',
+      local: 'Cetatea Poenari',
+      place: `Valle dell’Argeș, ${places[Ro.Wallachia]}`,
+      text: 'Una fortezza più antica di lui, su uno sperone di roccia sopra la valle dell’Argeș, che Vlad III fa restaurare e rafforzare. Restano le mura e le basi delle torri, restaurate e riaperte nel 2025.',
+      find: 'Sulla Transfăgărășan (DN7C), a nord di Arefu: dal parcheggio sulla strada si sale a piedi per 1.480 gradini nel bosco.',
+    },
     [RoTrace.StephenTheGreatTomb]: {
       name: 'La tomba di Stefano il Grande',
       local: 'Mormântul lui Ștefan cel Mare',
@@ -81,6 +103,11 @@ export const names: GuideNames<Ro, RoSection> = {
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
+    [RoPerson.VladTheImpaler]: {
+      name: 'Vlad III',
+      local: 'Vlad Țepeș',
+      dates: 'Principe di Valacchia: 1448, 1456 – 1462, 1476',
+    },
     [RoPerson.StephenTheGreat]: {
       name: 'Stefano il Grande',
       local: 'Ștefan cel Mare',

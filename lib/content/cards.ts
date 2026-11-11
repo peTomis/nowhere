@@ -17,7 +17,7 @@ export function cardCopies(body: ReactNode, prefix = 'ev-'): Record<string, Reac
     const k = kitKindOf(el.type)
     if (k === 'card') {
       const id = String(el.props.card)
-      out[id] = cloneElement(el, { key: id, idPrefix: prefix, heading: false, on: 'always' })
+      out[id] = cloneElement(el, { key: id, idPrefix: prefix, heading: false, ungated: true })
       return
     }
     if (k === undefined && typeof el.type === 'function') {

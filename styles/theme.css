@@ -52,6 +52,12 @@
   /* Third process ink: only for type/photo print treatments, never for the interface. */
   --color-process-yellow: #edbb00;
 
+  /* Album completion medals (components/Medal.tsx) only. */
+  --color-medal-bronze: #c27c46;
+  --color-medal-silver: #c4c7cb;
+  --color-medal-gold: #d9ab2f;
+  --color-medal-platinum: #dcdde0;
+
   /* --font-source-serif is defined by next/font in app/layout.tsx (self-hosted, no Google Fonts at runtime). */
   --font-sans: var(--font-source-serif), 'Source Serif 4', system-ui, serif;
   --font-heading: var(--font-source-serif), 'Source Serif 4', system-ui, serif;

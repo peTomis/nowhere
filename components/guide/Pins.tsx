@@ -139,7 +139,7 @@ export function Pinned({ copies }: { copies: Record<string, ReactNode> }) {
           <span
             role="img"
             aria-label={t.guide.pins.iconLabel}
-            className="mx-[2px] inline-grid size-[26px] place-items-center rounded-full border-[1.5px] border-neutral-500 align-[-7px] text-neutral-800"
+            className="mx-[2px] inline-grid size-[26px] place-items-center rounded-full border-[1.5px] border-neutral-500 align-middle text-neutral-800"
           >
             <PushPinIcon weight="duotone" size={14} aria-hidden="true" />
           </span>

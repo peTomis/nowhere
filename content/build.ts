@@ -33,20 +33,32 @@ export function placesOf<P extends string, S extends string>(
 
 /**
  * The index, from the sections. Chapters show their number and fixed title, and their period in
- * the body only, not in the index.
+ * the body only, not in the index. The person cards follow the Personaggi chapter as its entries,
+ * in the order of structure.cards.
  */
 export function tocOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
 ): TocEntry<P>[] {
-  return structure.sections.map((s) => ({
-    id: s.id,
-    label: s.chapter ? t.guide.chapters[s.chapter] : names.sections[s.id],
-    level: s.level,
-    number: s.chapter && chapterNumber(s.chapter),
-    dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
-    on: s.on,
-  }))
+  const persons = (structure.cards ?? [])
+    .filter((c) => c.kind === 'person')
+    .map((c): TocEntry<P> => ({
+      id: c.id,
+      label: names.cards?.[c.id]?.name ?? c.id,
+      level: 2,
+      on: c.on,
+    }))
+  return structure.sections.flatMap((s) => {
+    const entry: TocEntry<P> = {
+      id: s.id,
+      label: s.chapter ? t.guide.chapters[s.chapter] : names.sections[s.id],
+      level: s.level,
+      number: s.chapter && chapterNumber(s.chapter),
+      dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
+      on: s.on,
+    }
+    return s.chapter === 'people' ? [entry, ...persons] : [entry]
+  })
 }
 
 /** A chapter in the guide's summary ("La guida in sei capitoli"). */
@@ -111,7 +123,7 @@ export type AlbumTrace = {
   cards: { id: string; name: string; anchor: string }[]
 }
 
-/** A person or city card, as "Personaggi e città", the pins and the album show it. */
+/** A person or city card, as the pins and the album show it. */
 export type GuideCard = {
   id: string
   kind: 'person' | 'city'

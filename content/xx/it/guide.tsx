@@ -246,7 +246,6 @@ function Body() {
       <Chapter section={Section.People} lede="Poche figure, e i luoghi dove le si incontra ancora.">
         <Card
           card={Person.Someone}
-          on="always"
           intro={
             <>
               Chi era, in un paragrafo: date come <D>1448</D>, nomi come <N>Un altro</N>.
@@ -293,7 +292,6 @@ function Body() {
           {/* City card: its traces come from structure.cards; heading and pin button come by themselves. */}
           <Card
             card={CityOne}
-            on={[CityOne]}
             intro={
               <>
                 Introduzione alla città: un paragrafo, con <N>nomi</N> e date come <D>1999</D>.
@@ -313,7 +311,6 @@ function Body() {
           </City>
           <Card
             card={CityThree}
-            on={[CityThree]}
             intro="Una scheda con una sola traccia, con immagine di repertorio."
             remember="Da ricordare: una frase sola."
           />

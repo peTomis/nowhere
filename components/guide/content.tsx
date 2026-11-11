@@ -712,16 +712,17 @@ export function guideKit<P extends string, S extends string>(
   /**
    * A person or city card ("Scheda", B9–B10): heading with the pin button, introduction, the
    * card's traces (from structure.cards, those in the trip first) and "Da ricordare". `intro` and
-   * `remember` are one paragraph each. A copy of it is shown in "In evidenza" when pinned
-   * (`idPrefix` and `heading` are set by the guide for that copy, never in content).
+   * `remember` are one paragraph each. Its `on` comes from structure.cards, as a part's comes from
+   * its section. A copy of it is shown in "In evidenza" when pinned (`idPrefix`, `heading` and
+   * `ungated` are set by the guide for that copy, never in content).
    */
   function Card(props: {
     card: string
-    on: Visibility<P>
     intro: ReactNode
     remember: ReactNode
     idPrefix?: string
     heading?: boolean
+    ungated?: boolean
   }) {
     const def = structure.cards?.find((c) => c.id === props.card)
     if (!def) throw new Error(`Unknown card ${props.card}`)
@@ -730,7 +731,7 @@ export function guideKit<P extends string, S extends string>(
     const H = def.kind === 'person' ? 'h3' : 'h4'
     const prefix = props.idPrefix ?? ''
     return (
-      <Only on={props.on}>
+      <Only on={props.ungated ? 'always' : def.on}>
         <article
           id={`${prefix}${cardAnchor(def.id)}`}
           className="flex scroll-mt-[80px] flex-col gap-8"

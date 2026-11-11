@@ -67,9 +67,6 @@
       "pinnedLede": "Le città e i personaggi che hai fissato. Le stesse caselle restano anche nella pagina della loro regione.",
       "dialogKicker": "Album · {region}",
       "close": "Chiudi",
-      "peopleAndCities": "Personaggi e città",
-      "cardTraces": "{n} tracce",
-      "cardTracesOne": "1 traccia",
       "kind": {
         "person": "Personaggio",
         "city": "Città"
@@ -211,8 +208,9 @@
       "inAlbum": "Nell’album",
       "plusOne": "+1 punto",
       "plus": "+{n} punti",
-      "levelTitle": "Livello {n} in {name}",
+      "levelTitle": "{medal} in {name}",
       "levelLine": "Hai superato il {pct}% dei punti della guida.",
+      "levelLineAll": "Tutte le tracce della guida sono nell’album.",
       "done": "Fatto",
       "noteError": "La nota non è stata salvata. Riprova.",
       "deleteError": "Non sono riuscito a togliere la traccia. Riprova."
@@ -236,14 +234,23 @@
   "completion": {
     "title": "Completamento · {name}",
     "aria": "Completamento {name}: {pct} per cento, {level}.",
-    "level": "livello {n}",
-    "noLevel": "nessun livello",
-    "levelLabel": "Livello {n}",
-    "noLevelLabel": "Nessun livello",
+    "medalLabel": {
+      "none": "Nessuna medaglia",
+      "bronze": "Medaglia di bronzo",
+      "silver": "Medaglia d’argento",
+      "gold": "Medaglia d’oro",
+      "platinum": "Stemma di platino"
+    },
+    "medalGoal": {
+      "none": "",
+      "bronze": "la medaglia di bronzo",
+      "silver": "la medaglia d’argento",
+      "gold": "la medaglia d’oro",
+      "platinum": "lo stemma di platino"
+    },
     "points": "{points} punti su {total}.",
-    "toNext": "Ancora {n} punti per il livello {level}.",
-    "toNextOne": "Ancora 1 punto per il livello {level}.",
-    "top": "Livello più alto raggiunto.",
+    "toNext": "Ancora {n} punti per {medal}.",
+    "toNextOne": "Ancora 1 punto per {medal}.",
     "all": "Tutte le tracce sono nell’album."
   },
   "accountMenu": {

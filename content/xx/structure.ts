@@ -118,15 +118,25 @@ export const structure = defineGuide<Template, Section>({
       isNew: true,
     },
   ],
-  /** Person and city cards (a city card's id is the city): each listed once in the body with <Card>. */
+  /**
+   * Person and city cards (a city card's id is the city): each listed once in the body with
+   * <Card>. `on` as for a section; person cards are also the Personaggi chapter's index entries.
+   */
   cards: [
     {
       id: Person.Someone,
       kind: 'person',
       region: North,
+      on: 'always',
       traces: [Trace.BirthHouse, Trace.Fortress],
     },
-    { id: CityOne, kind: 'city', region: North, traces: [Trace.ClockTower, Trace.BirthHouse] },
-    { id: CityThree, kind: 'city', region: South, traces: [Trace.Painting] },
+    {
+      id: CityOne,
+      kind: 'city',
+      region: North,
+      on: [CityOne],
+      traces: [Trace.ClockTower, Trace.BirthHouse],
+    },
+    { id: CityThree, kind: 'city', region: South, on: [CityThree], traces: [Trace.Painting] },
   ],
 })

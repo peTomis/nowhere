@@ -41,7 +41,7 @@ There is no test suite yet.
 - Server Components by default. Add `'use client'` only where browser APIs or state are needed
   (today: `components/PrintPlates.tsx`, `components/WorldMap.tsx`, `components/AccountMenu.tsx`,
   `components/Completion.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `Trace`,
-  `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `CardLink`, `OpenAlbumButton`, the filter
+  `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `OpenAlbumButton`, the filter
   and index, `trip.tsx`, `data.tsx`).
   Keep client components at the leaves; pages stay server-side and pass plain data down.
 - Phosphor icons in Server Components: `import { XIcon } from '@phosphor-icons/react/ssr'`
@@ -135,7 +135,7 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   `on: P[] | 'always'` (an array, as a text can be shown for several places; `'always'` ignores the
   trip filter) and wraps itself in `Only`;
   inline marks (`D`, `N`, `Aside`) and pure containers (`PhotoGrid`, `Positions`) have
-  none. Blocks nest (parts go inside their chapter), so a child's `on` is the parent's or a subset;
+  none; `Chapter`, `Part` and `Card` take theirs from the structure (section, `structure.cards`). Blocks nest (parts go inside their chapter), so a child's `on` is the parent's or a subset;
   a toc entry's `on` matches its section. Enum values are persisted in localStorage,
   so don't rename them after publishing. The trip filter state is localStorage
   `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
@@ -156,8 +156,8 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-out are on the home only) at the
   home's spot, pushed up by the sticky bar until it sits centered in it; emblems and the
   compact album completion (`components/Completion.tsx`) under the country name on the cover; the
-  album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album", "Personaggi e
-  città"); a sticky top bar at every width whose controls fade in only once it is stuck
+  album opening (`GuideAlbumIntro`: trace count, full completion, "Apri l’album"; the
+  design's "Personaggi e città" list is deliberately never shown); a sticky top bar at every width whose controls fade in only once it is stuck
   (they repeat the cover and the opening): nowhere logo (home), country, current section; from
   960px also the Guida/Album switch and the completion, below 960px the index button, whose
   menu starts with the switch and the completion. "Apri l’album" in the opening becomes "Apri la
@@ -171,7 +171,8 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   coat of arms and the flag as traces with `<Emblem kind on>` (not as `Figure`); never declare them in `structure.traces` (the
   slugs `cover`, `coat-of-arms`, `flag` are reserved). A guide's own traces (`structure.traces`,
   texts in `names.traces`) follow from 04, person and city cards in `structure.cards` /
-  `names.cards`, each placed once in the body with `<Card>`; `<Today traces>` links an event to
+  `names.cards`, each placed once in the body with `<Card>` (person cards in the Personaggi chapter,
+  in `structure.cards` order: they are its entries in the index); `<Today traces>` links an event to
   its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
   `/api/notes`. Pins ("In evidenza") are a device preference (`lib/reader/prefs.ts`), for cards
