@@ -72,6 +72,9 @@ export enum RoTrace {
   CurteaDeArgesRoyalTombs = 'ro.place.curtea-de-arges-royal-tombs',
   KingCarolIBridge = 'ro.place.king-carol-i-bridge',
   CarolIEquestrianStatue = 'ro.place.carol-i-equestrian-statue',
+  IpotestiMemorial = 'ro.place.ipotesti-memorial',
+  EminescusLindenTree = 'ro.place.eminescus-linden-tree',
+  EminescusGrave = 'ro.place.eminescus-grave',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -81,6 +84,7 @@ export enum RoPerson {
   StephenTheGreat = 'ro.person.stephen-the-great',
   MichaelTheBrave = 'ro.person.michael-the-brave',
   CarolI = 'ro.person.carol-i',
+  MihaiEminescu = 'ro.person.mihai-eminescu',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -91,7 +95,7 @@ export const structure = defineGuide<Ro, RoSection>({
   country: 'ro',
   regions: [
     { id: Dobruja, cities: [] },
-    { id: Moldavia, cities: [Ro.Suceava] },
+    { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
     { id: Transylvania, cities: [Ro.Sighisoara] },
     { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
@@ -306,6 +310,32 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'shield',
     },
+    // Botoșani county, not a city of the guide. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.IpotestiMemorial,
+      region: Moldavia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'house',
+    },
+    // TODO image: freely licensed photograph of the linden tree in Copou Park.
+    {
+      id: RoTrace.EminescusLindenTree,
+      region: Moldavia,
+      city: Ro.Iasi,
+      where: 'city',
+      rarity: 'common',
+      icon: 'pin',
+    },
+    // TODO image: freely licensed photograph of the grave at Bellu.
+    {
+      id: RoTrace.EminescusGrave,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'pin',
+    },
   ],
   cards: [
     {
@@ -356,6 +386,13 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.KingCarolIBridge,
         RoTrace.CarolIEquestrianStatue,
       ],
+    },
+    {
+      id: RoPerson.MihaiEminescu,
+      kind: 'person',
+      region: Moldavia,
+      on: [Moldavia, Wallachia],
+      traces: [RoTrace.IpotestiMemorial, RoTrace.EminescusLindenTree, RoTrace.EminescusGrave],
     },
   ],
 })

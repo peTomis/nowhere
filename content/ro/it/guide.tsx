@@ -1728,6 +1728,23 @@ function Body() {
           }
           remember="Il principe tedesco con cui la Romania diventa un regno indipendente: il comunismo lo toglie dalle piazze, la Romania di oggi ce lo rimette."
         />
+        <Card
+          card={RoPerson.MihaiEminescu}
+          intro={
+            <>
+              Nasce nel <D>1850</D> a Botoșani, in Moldavia, studia a Vienna e a Berlino e vive tra
+              Iași e Bucarest, dove scrive per il quotidiano conservatore <N>Timpul</N>. Nel{' '}
+              <D>1883</D> esce <N>Poesii</N>, l’unico volume di poesie pubblicato in vita, curato da{' '}
+              <N href="https://it.wikipedia.org/wiki/Titu_Maiorescu">Titu Maiorescu</N>; lo stesso
+              anno si ammala, e muore nel <D>1889</D>. La scuola romena lo insegna come «poeta
+              nazionale»: il 15 gennaio, giorno della sua nascita, è la Giornata della cultura
+              nazionale, il suo volto è sulla banconota da 500 lei e quasi ogni città ha una sua
+              strada o una sua statua. I suoi articoli politici, nazionalisti e con passaggi
+              xenofobi e antisemiti, dividono ancora gli studiosi.
+            </>
+          }
+          remember="Il poeta che i romeni studiano a scuola e ritrovano in ogni città: un simbolo nazionale, non solo un autore."
+        />
       </Chapter>
     </>
   )

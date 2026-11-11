@@ -159,6 +159,28 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'La statua originale, dello scultore croato Ivan Meštrović, viene abbattuta dal regime comunista nel 1948, l’anno dopo la fine della monarchia. Quella che vedi è di Florin Codre e viene inaugurata nel 2010, nello stesso punto: dopo il 1989 il re torna nelle piazze.',
       find: 'Piața Revoluției, davanti alla Biblioteca centrale universitaria, di fronte all’ex Palazzo reale (oggi Museo nazionale d’arte).',
     },
+    [RoTrace.IpotestiMemorial]: {
+      name: 'Ipotești, il villaggio dell’infanzia',
+      local: 'Memorialul Ipotești',
+      place: `Ipotești, distretto di Botoșani, ${places[Ro.Moldavia]}`,
+      text: 'Qui Eminescu passa l’infanzia, nella proprietà della famiglia Eminovici: il lago e il bosco intorno tornano nelle sue poesie. La casa che vedi è una ricostruzione del 1979 sulle vecchie fondamenta. Accanto restano la piccola chiesa di famiglia e le tombe dei genitori.',
+      find: 'Memoriale Ipotești – Centro nazionale di studi «Mihai Eminescu», nel villaggio di Ipotești, a pochi chilometri da Botoșani.',
+    },
+    [RoTrace.EminescusLindenTree]: {
+      name: 'Il tiglio di Eminescu',
+      local: 'Teiul lui Eminescu',
+      place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
+      text: 'Negli anni di Iași Eminescu è bibliotecario e ispettore scolastico e frequenta il circolo letterario Junimea. La tradizione vuole che scrivesse all’ombra di questo tiglio, vecchio di alcuni secoli: l’età esatta è discussa. È protetto come monumento naturale; davanti c’è un busto in bronzo del poeta.',
+      find: 'Parco Copou, nel piazzale centrale, vicino all’obelisco con i leoni.',
+    },
+    // TODO verificare: where the grave is inside the cemetery, for "Come trovarla".
+    [RoTrace.EminescusGrave]: {
+      name: 'La tomba al Bellu',
+      local: 'Mormântul lui Eminescu',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Eminescu muore a Bucarest e due giorni dopo è sepolto qui, all’ombra di un tiglio. La tomba è un luogo di pellegrinaggio: negli anniversari della nascita e della morte si riempie di fiori e candele.',
+      find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è nella parte storica del cimitero.',
+    },
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
@@ -182,5 +204,6 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Karl von Hohenzollern-Sigmaringen',
       dates: 'Principe e poi re di Romania, 1866 – 1914',
     },
+    [RoPerson.MihaiEminescu]: { name: 'Mihai Eminescu', dates: 'Poeta, 1850 – 1889' },
   },
 }
