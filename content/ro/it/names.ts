@@ -100,6 +100,36 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il principe a cavallo domina il parco vicino alla fortezza. È un monumento moderno: Iftimie Bârleanu lo realizza e viene inaugurato nel 1977, durante il regime comunista. Sul basamento, lo stemma della Moldavia e i rilievi di battaglia e di corte raccontano il sovrano come capo militare e politico. La sua immagine pubblica vive anche fuori dalle chiese.',
       find: 'Parco Șipote, lungo strada Cetății, vicino alla fortezza di Suceava. La statua è all’aperto, sul percorso tra la città e la cittadella.',
     },
+    [RoTrace.MihaiVodaChurch]: {
+      name: 'La chiesa che ha cambiato posto',
+      local: 'Biserica Mihai Vodă',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Michele fonda qui un monastero, sulla collina sopra la Dâmbovița. Nel 1985, per far posto al nuovo centro civico del regime di Ceaușescu, il monastero viene demolito: si salvano solo la chiesa e il campanile, spostati su rotaie di quasi 300 metri e abbassati di oltre 6 metri. Oggi la fondazione del principe è nascosta dietro i condomini.',
+      find: 'Strada Sapienței 4, tra i condomini vicino alla Dâmbovița, a pochi minuti a piedi da Piața Unirii.',
+    },
+    // TODO verificare: exact access to the obelisk area (road, parking) before publishing.
+    [RoTrace.MichaelTheBraveObelisk]: {
+      name: 'L’obelisco di Turda',
+      local: 'Mormântul lui Mihai Viteazul',
+      place: `Turda, distretto di Cluj, ${places[Ro.Transylvania]}`,
+      text: 'Qui, nella piana di Câmpia Turzii, i soldati di Giorgio Basta uccidono Michele nel suo accampamento. La tradizione vi colloca la tomba del corpo, ma nessuna fonte ne documenta la sepoltura: è un luogo della memoria più che una tomba. L’obelisco viene inaugurato nel 1977 ed è alto 16,01 metri, come l’anno della morte.',
+      find: 'Alle porte di Turda, verso Câmpia Turzii: l’obelisco sta al centro di un’area verde.',
+    },
+    [RoTrace.MichaelTheBraveHeadTomb]: {
+      name: 'La testa di Michele a Dealu',
+      local: 'Mănăstirea Dealu',
+      place: `Vicino a ${places[Ro.Targoviste]}, ${places[Ro.Wallachia]}`,
+      distance: `a 6 km da ${places[Ro.Targoviste]}`,
+      text: 'Dopo l’uccisione, la testa del principe arriva a uno dei suoi capitani, Radu Buzescu, che la fa seppellire in questo monastero. La lapide lo chiama principe di Valacchia, Transilvania e Moldavia: il titolo portato per pochi mesi resta inciso sulla pietra.',
+      find: 'Monastero di Dealu, a nord di Târgoviște, distretto di Dâmbovița. Nella chiesa, la tomba è sul lato destro del nartece.',
+    },
+    [RoTrace.MichaelTheBraveEquestrianStatue]: {
+      name: 'Michele a cavallo davanti all’Università',
+      local: 'Statuia ecvestră a lui Mihai Viteazul',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Il bronzo è dello scultore francese Albert-Ernest Carrier-Belleuse, inaugurato nel 1874. Valacchia e Moldavia sono unite da quindici anni, la Transilvania fa parte del Regno d’Ungheria. Per gli storici e i politici del tempo il principe che ha regnato sui tre principati è il precursore della loro unione: la statua racconta quella lettura, non il 1600.',
+      find: 'Piața Universității, davanti al palazzo dell’Università.',
+    },
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
@@ -112,6 +142,11 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Stefano il Grande',
       local: 'Ștefan cel Mare',
       dates: 'Principe di Moldavia, 1457 – 1504',
+    },
+    [RoPerson.MichaelTheBrave]: {
+      name: 'Michele il Coraggioso',
+      local: 'Mihai Viteazul',
+      dates: 'Principe di Valacchia, 1593 – 1601',
     },
   },
 }

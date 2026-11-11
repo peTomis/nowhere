@@ -809,6 +809,7 @@ function Body() {
                 uccidono a <N href="https://it.wikipedia.org/wiki/Câmpia_Turzii">Câmpia Turzii</N>,
                 vicino a <N href="https://it.wikipedia.org/wiki/Turda">Turda</N>.
               </Detail>
+              <Today traces={[RoTrace.MichaelTheBraveObelisk, RoTrace.MichaelTheBraveHeadTomb]} />
             </Event>
             <Event
               on={[Transylvania]}
@@ -1691,6 +1692,22 @@ function Body() {
             </>
           }
           remember="Un principe di Moldavia, ricordato nelle piazze come sovrano e nelle chiese come santo."
+        />
+        <Card
+          card={RoPerson.MichaelTheBrave}
+          intro={
+            <>
+              Principe di Valacchia dal <D>1593</D>, combatte gli ottomani nella{' '}
+              <N href="https://it.wikipedia.org/wiki/Lunga_guerra_turca">lunga guerra turca</N>,
+              alleato dell’imperatore asburgico. Nel <D>1600</D> regna per pochi mesi anche su
+              Transilvania e Moldavia, che conservano ciascuna le proprie istituzioni; l’anno dopo
+              viene ucciso. Dall’Ottocento, a partire da{' '}
+              <N href="https://it.wikipedia.org/wiki/Nicolae_Bălcescu">Nicolae Bălcescu</N>, gli
+              storici romeni ne fanno il simbolo dell’unione dei romeni: per questo il suo nome è su
+              piazze, strade e scuole in tutto il paese.
+            </>
+          }
+          remember="Per pochi mesi del 1600 regna su tre principati: è l’Ottocento a farne il simbolo della loro unione."
         />
       </Chapter>
     </>

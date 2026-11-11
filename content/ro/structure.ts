@@ -64,6 +64,10 @@ export enum RoTrace {
   PoenariCitadel = 'ro.place.poenari-citadel',
   StephenTheGreatTomb = 'ro.place.stephen-the-great-tomb',
   StephenTheGreatEquestrianStatue = 'ro.place.stephen-the-great-equestrian-statue',
+  MihaiVodaChurch = 'ro.place.mihai-voda-church',
+  MichaelTheBraveObelisk = 'ro.place.michael-the-brave-obelisk',
+  MichaelTheBraveHeadTomb = 'ro.place.michael-the-brave-head-tomb',
+  MichaelTheBraveEquestrianStatue = 'ro.place.michael-the-brave-equestrian-statue',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -71,6 +75,7 @@ export enum RoPerson {
   Decebalus = 'ro.person.decebalus',
   VladTheImpaler = 'ro.person.vlad-the-impaler',
   StephenTheGreat = 'ro.person.stephen-the-great',
+  MichaelTheBrave = 'ro.person.michael-the-brave',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -227,6 +232,42 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'shield',
     },
+    // TODO image: freely licensed photograph of the Mihai Vodă church on Strada Sapienței.
+    {
+      id: RoTrace.MihaiVodaChurch,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'rare',
+      icon: 'church',
+    },
+    // Near Turda (Cluj county), not a city of the guide. TODO image: licensed photograph of the
+    // 1977 obelisk.
+    {
+      id: RoTrace.MichaelTheBraveObelisk,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'pin',
+    },
+    // TODO image: freely licensed photograph of the Dealu monastery church.
+    {
+      id: RoTrace.MichaelTheBraveHeadTomb,
+      region: Wallachia,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of the statue in Piața Universității (1874, out of
+    // copyright).
+    {
+      id: RoTrace.MichaelTheBraveEquestrianStatue,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'shield',
+    },
   ],
   cards: [
     {
@@ -253,6 +294,18 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Moldavia],
       traces: [RoTrace.StephenTheGreatTomb, RoTrace.StephenTheGreatEquestrianStatue],
+    },
+    {
+      id: RoPerson.MichaelTheBrave,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia, Transylvania],
+      traces: [
+        RoTrace.MihaiVodaChurch,
+        RoTrace.MichaelTheBraveObelisk,
+        RoTrace.MichaelTheBraveHeadTomb,
+        RoTrace.MichaelTheBraveEquestrianStatue,
+      ],
     },
   ],
 })
