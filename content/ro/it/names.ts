@@ -50,6 +50,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.Cities]: [
       places[Ro.Bucharest],
       places[Ro.Iasi],
+      places[Ro.Suceava],
       places[Ro.Brasov],
       places[Ro.Sibiu],
       places[Ro.Sighisoara],
@@ -378,6 +379,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'La casa neoclassica dove oggi si trova il museo è legata alla famiglia del principe Alexandru Ioan Cuza. Nel 1859 Cuza viene eletto principe sia in Moldavia sia in Valacchia: l’unione personale apre il percorso che porta alla Romania, ma non cancella le differenze fra i due principati. Le sale ricostruite raccontano quella memoria dinastica e politica.',
       find: 'Strada Alexandru Lăpușneanu 14, nel centro di Iași. Le sale del museo seguono gli appartamenti e gli oggetti attribuiti alla famiglia Cuza.',
     },
+    [RoTrace.SuceavaCitadel]: {
+      name: 'La cittadella di Suceava',
+      local: 'Cetatea de Scaun a Sucevei',
+      place: `${places[Ro.Suceava]}, ${places[Ro.Moldavia]}`,
+      text: 'La fortezza costruita da Petru I e rafforzata da Stefano il Grande protegge la sede dei principi di Moldavia. Le mura e il fossato che vedi sono il risultato di ampliamenti medievali e restauri moderni: nel 1476 la cittadella resiste all’assedio di Maometto II, ma nel 1538 cede alle truppe ottomane senza una battaglia decisiva.',
+      find: 'Sul pianoro a est del centro, alla fine di Strada Cetății. Il percorso attraversa il fossato e il cortile interno; il sito è all’aperto.',
+    },
+    [RoTrace.SuceavaSaintJohnMonastery]: {
+      name: 'Il monastero di San Giovanni Nuovo',
+      local: 'Mănăstirea Sfântul Ioan cel Nou',
+      place: `${places[Ro.Suceava]}, ${places[Ro.Moldavia]}`,
+      text: 'La chiesa del monastero è costruita fra il 1514 e il 1522, sotto Bogdan III e Stefano il Giovane, e diventa il principale luogo di culto della corte di Suceava. Gli affreschi esterni sono quasi scomparsi, ma restano porzioni leggibili; dentro è venerato San Giovanni il Nuovo, le cui reliquie arrivano in Moldavia nel Quattrocento.',
+      find: 'Strada Ioan Vodă Viteazul 2, nel centro storico. La chiesa è ancora in uso: entra con abbigliamento rispettoso e verifica gli orari delle funzioni.',
+    },
+    [RoTrace.SuceavaBucovinaMuseum]: {
+      name: 'Il Museo della Bucovina',
+      local: 'Muzeul Național al Bucovinei',
+      place: `${places[Ro.Suceava]}, ${places[Ro.Moldavia]}`,
+      text: 'Le collezioni del museo mettono in relazione la storia della città, la corte moldava e la Bucovina passata agli Asburgo nel 1775. Armi, documenti e oggetti religiosi mostrano che la regione non è soltanto il paesaggio dei monasteri dipinti: è anche una frontiera amministrata da poteri diversi.',
+      find: 'Il museo ha sedi diverse; per la sezione storica controlla l’indirizzo aggiornato del Museo di storia in Strada Ștefan cel Mare.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -393,6 +415,18 @@ export const names: GuideNames<Ro, RoSection> = {
           'La pietra scolpita della facciata attira lo sguardo, ma il monastero racconta anche la posizione di Iași nella Moldavia del Seicento: corte principesca, metropolita, libri e dibattiti religiosi sono nello stesso isolato. Osserva il rapporto fra la chiesa, il viale e la cattedrale vicina.',
         [RoTrace.IasiUnionMuseum]:
           'Nel museo l’unione del 1859 appare attraverso una casa e una famiglia, non come un confine già compiuto. Cuza è eletto in due principati distinti; la doppia elezione rende visibile il compromesso politico da cui nasce il nuovo Stato.',
+      },
+    },
+    [Ro.Suceava]: {
+      name: places[Ro.Suceava],
+      local: 'Suceava · Suczawa',
+      traceTexts: {
+        [RoTrace.SuceavaCitadel]:
+          'La cittadella non è un castello isolato: è la sede da cui i principi governano e ricevono ambasciatori. Dal pianoro guarda il rapporto fra la fortezza e la città bassa; il fossato rende visibile il confine fra corte fortificata e abitato.',
+        [RoTrace.SuceavaSaintJohnMonastery]:
+          'San Giovanni Nuovo mostra il centro religioso della corte moldava. Le pitture esterne sono frammentarie, ma proprio questa stratificazione aiuta a leggere il monumento: il monastero non è una scenografia intatta, bensì un edificio ancora usato e trasformato.',
+        [RoTrace.SuceavaBucovinaMuseum]:
+          'Nel museo la Bucovina appare come una regione con più amministrazioni e memorie. Dopo il 1775 il confine politico cambia; le collezioni aiutano a separare la storia dei monasteri medievali da quella della provincia asburgica.',
       },
     },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },

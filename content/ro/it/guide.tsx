@@ -2177,6 +2177,22 @@ function Body() {
             }
             remember="A Iași il passato moldavo resta visibile come città di corte, centro religioso e luogo conteso della memoria."
           />
+          <Card
+            card={Ro.Suceava}
+            intro={
+              <>
+                <N>Suceava</N> è la città della corte moldava prima che il centro politico si sposti
+                a Iași. La cittadella domina la valle e ricorda il potere militare dei principi; il
+                monastero di San Giovanni Nuovo conserva il centro religioso della corte. Nel
+                <D>1775</D> la Bucovina passa all’Impero asburgico: Suceava resta nella Moldavia
+                ottomana e poi nella Romania, mentre i monasteri a nord del nuovo confine seguono
+                un’altra storia. La statua di <N>Stefano il Grande</N>, la fortezza e il museo
+                raccontano così una città di frontiera, non soltanto la capitale medievale di un
+                principe.
+              </>
+            }
+            remember="A Suceava la corte moldava diventa una frontiera: fortezza, monastero e museo mostrano cosa cambia quando cambia il confine."
+          />
         </Part>
         <Part section={RoSection.CitiesWallachia}>
           <Card
