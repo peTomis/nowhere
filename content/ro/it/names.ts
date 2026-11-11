@@ -181,6 +181,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Eminescu muore a Bucarest e due giorni dopo è sepolto qui, all’ombra di un tiglio. La tomba è un luogo di pellegrinaggio: negli anniversari della nascita e della morte si riempie di fiori e candele.',
       find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è nella parte storica del cimitero.',
     },
+    [RoTrace.BrancusiHouseHobita]: {
+      name: 'La casa di Hobița',
+      local: 'Casa memorială Constantin Brâncuși',
+      place: `Hobița, distretto di Gorj, ${places[Ro.Wallachia]}`,
+      text: 'Il villaggio dove Brâncuși nasce e cresce. La casa-museo, aperta nel 1971, sta sul terreno della famiglia ma non è la casa natale: è una casa contadina simile, portata qui. Le travi intagliate e gli attrezzi di legno sono quelli del mondo contadino che lui conosce da bambino.',
+      find: 'Nel villaggio di Hobița, comune di Peștișani, a nord-ovest di Târgu Jiu.',
+    },
+    [RoTrace.GateOfTheKiss]: {
+      name: 'La Porta del bacio e la Tavola del silenzio',
+      local: 'Poarta Sărutului · Masa Tăcerii',
+      place: `Târgu Jiu, distretto di Gorj, ${places[Ro.Wallachia]}`,
+      text: 'La Lega nazionale delle donne del Gorj gli chiede un monumento ai caduti della difesa di Târgu Jiu nel 1916. Brâncuși non scolpisce soldati: disegna un percorso. Si parte dalla Tavola del silenzio, un tavolo di pietra con dodici sedili a clessidra, e si passa sotto la Porta del bacio, un arco di travertino.',
+      find: 'Parco Constantin Brâncuși, nel centro di Târgu Jiu: la Tavola è verso il fiume Jiu, la Porta all’altra estremità del viale delle sedie.',
+    },
+    [RoTrace.EndlessColumn]: {
+      name: 'La Colonna senza fine',
+      local: 'Coloana fără sfârșit',
+      place: `Târgu Jiu, distretto di Gorj, ${places[Ro.Wallachia]}`,
+      text: 'L’ultima tappa del percorso: sedici moduli romboidali, compresi i mezzi moduli alle estremità, per più di 29 metri. Il complesso viene inaugurato nel 1938; nel 2024 entra nel patrimonio mondiale dell’UNESCO. Una forma astratta ripetuta all’infinito al posto della statua di un eroe.',
+      find: 'Parco della Colonna, in fondo a Calea Eroilor, oltre la chiesa dei Santi Pietro e Paolo: dalla Porta del bacio è circa un chilometro e mezzo a piedi.',
+    },
   },
   cards: {
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
@@ -205,5 +226,6 @@ export const names: GuideNames<Ro, RoSection> = {
       dates: 'Principe e poi re di Romania, 1866 – 1914',
     },
     [RoPerson.MihaiEminescu]: { name: 'Mihai Eminescu', dates: 'Poeta, 1850 – 1889' },
+    [RoPerson.ConstantinBrancusi]: { name: 'Constantin Brâncuși', dates: 'Scultore, 1876 – 1957' },
   },
 }

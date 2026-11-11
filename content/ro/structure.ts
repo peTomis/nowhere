@@ -75,6 +75,9 @@ export enum RoTrace {
   IpotestiMemorial = 'ro.place.ipotesti-memorial',
   EminescusLindenTree = 'ro.place.eminescus-linden-tree',
   EminescusGrave = 'ro.place.eminescus-grave',
+  BrancusiHouseHobita = 'ro.place.brancusi-house-hobita',
+  GateOfTheKiss = 'ro.place.gate-of-the-kiss',
+  EndlessColumn = 'ro.place.endless-column',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -85,6 +88,7 @@ export enum RoPerson {
   MichaelTheBrave = 'ro.person.michael-the-brave',
   CarolI = 'ro.person.carol-i',
   MihaiEminescu = 'ro.person.mihai-eminescu',
+  ConstantinBrancusi = 'ro.person.constantin-brancusi',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -336,6 +340,31 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'pin',
     },
+    // Gorj county (Oltenia): historically Wallachia; Hobița and Târgu Jiu are not cities of the
+    // guide. TODO image: freely licensed photographs for the three Brâncuși traces. Brâncuși died
+    // in 1957: his works at Târgu Jiu are protected until the end of 2027, so check the rights
+    // (Romania's freedom of panorama) before using a photograph.
+    {
+      id: RoTrace.BrancusiHouseHobita,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'house',
+    },
+    {
+      id: RoTrace.GateOfTheKiss,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'frame',
+    },
+    {
+      id: RoTrace.EndlessColumn,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'steps',
+    },
   ],
   cards: [
     {
@@ -393,6 +422,13 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Moldavia, Wallachia],
       traces: [RoTrace.IpotestiMemorial, RoTrace.EminescusLindenTree, RoTrace.EminescusGrave],
+    },
+    {
+      id: RoPerson.ConstantinBrancusi,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.BrancusiHouseHobita, RoTrace.GateOfTheKiss, RoTrace.EndlessColumn],
     },
   ],
 })

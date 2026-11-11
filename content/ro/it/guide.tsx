@@ -1745,6 +1745,23 @@ function Body() {
           }
           remember="Il poeta che i romeni studiano a scuola e ritrovano in ogni città: un simbolo nazionale, non solo un autore."
         />
+        <Card
+          card={RoPerson.ConstantinBrancusi}
+          intro={
+            <>
+              Nasce nel <D>1876</D> a Hobița, un villaggio del Gorj ai piedi dei Carpazi, in una
+              famiglia di contadini. Studia a Craiova e a Bucarest, poi si trasferisce a Parigi,
+              dove vive fino alla morte, nel <D>1957</D>. Le sue sculture, forme ridotte
+              all’essenziale, sono nei musei di Parigi e di New York, e il suo atelier è ricostruito
+              accanto al{' '}
+              <N href="https://it.wikipedia.org/wiki/Centre_Georges-Pompidou">Centre Pompidou</N>.
+              In Romania l’opera da vedere è all’aperto, a Târgu Jiu. Si racconta spesso che nel{' '}
+              <D>1951</D> il regime comunista abbia rifiutato la donazione del suo atelier;
+              l’Accademia romena lo smentisce e la questione è ancora discussa.
+            </>
+          }
+          remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
+        />
       </Chapter>
     </>
   )
