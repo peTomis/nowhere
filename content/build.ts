@@ -125,6 +125,7 @@ export type AlbumTrace = {
 
 /** A person or city card, as the pins and the album show it. */
 export type GuideCard = {
+  traceTexts?: Partial<Record<string, string>>
   id: string
   kind: 'person' | 'city'
   /** HTML id of the card: the id without `<cc>.` and `person.`. */
@@ -233,6 +234,7 @@ export function cardsOf<P extends string, S extends string>(
       region: c.region,
       regionName: names.places[c.region],
       traces: c.traces,
+      traceTexts: text?.traceTexts,
     }
   })
 }

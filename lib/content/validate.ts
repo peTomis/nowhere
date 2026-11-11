@@ -162,6 +162,10 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     if (positions.some((p, i) => i > 0 && p < positions[i - 1]))
       error(`cards › ${c.id}`, 'traces must follow the album order of structure.traces')
     if (!names.cards?.[c.id]?.name.trim()) error('names', `no name for card ${c.id}`)
+    for (const [id, text] of Object.entries(names.cards?.[c.id]?.traceTexts ?? {})) {
+      if (!c.traces.includes(id)) error(`cards › ${c.id}`, `description for unlisted trace ${id}`)
+      if (!text?.trim()) error(`cards › ${c.id}`, `empty description for trace ${id}`)
+    }
     if (c.on !== 'always')
       for (const p of c.on) if (!placeIds.has(p)) error(`cards › ${c.id}`, `unknown place ${p}`)
   }

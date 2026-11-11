@@ -63,7 +63,14 @@ export const names: GuideNames<Template, Section> = {
   /** Card headings; a city card takes the city's name. */
   cards: {
     [Person.Someone]: { name: 'Un personaggio', local: 'Nome locale', dates: '1431 – 1476' },
-    [Template.CityOne]: { name: places[Template.CityOne], local: 'Nome locale · Altro nome' },
+    [Template.CityOne]: {
+      name: places[Template.CityOne],
+      local: 'Nome locale · Altro nome',
+      traceTexts: {
+        [Trace.BirthHouse]:
+          'Nella scheda della città, la stessa casa racconta il quartiere. Foto, numero e indicazioni restano quelli della traccia condivisa con il personaggio.',
+      },
+    },
     [Template.CityThree]: { name: places[Template.CityThree] },
   },
 }

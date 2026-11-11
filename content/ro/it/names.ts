@@ -47,6 +47,14 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.Communism]: 'La Romania comunista',
     [RoSection.DemocracyAndEurope]: 'Democrazia e integrazione europea',
     [RoSection.People]: 'I volti della storia romena',
+    [RoSection.Cities]: [
+      places[Ro.Bucharest],
+      places[Ro.Brasov],
+      places[Ro.Sibiu],
+      places[Ro.Sighisoara],
+    ].join(', '),
+    [RoSection.CitiesWallachia]: places[Ro.Wallachia],
+    [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
   },
   traces: {
     [RoTrace.SarmizegetusaRegia]: {
@@ -235,8 +243,100 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Catturati dopo la fuga, Nicolae ed Elena Ceaușescu sono rinchiusi in questa caserma. Il 25 dicembre 1989 un tribunale militare straordinario li processa in poche ore e li condanna a morte; sono fucilati contro il muro del corpo di guardia. Il processo sommario è ancora discusso. Dal 2013 gli ambienti sono un punto museale.',
       find: 'L’ex unità militare vicino alla stazione di Târgoviște, punto museale del Complesso Curtea Domnească: orari e visite alla Corte principesca.',
     },
+    [RoTrace.StavropoleosChurch]: {
+      name: 'La chiesa di Stavropoleos',
+      local: 'Biserica Stavropoleos',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Fondata nel 1724, la chiesa serviva anche i viaggiatori di una locanda oggi scomparsa. Le colonne scolpite del portico e i motivi vegetali mostrano la tradizione brâncovenească, continuata sotto i principi fanarioti. Il cortile con le arcate viene ricostruito molto più tardi: non tutto ciò che sembra antico appartiene alla stessa epoca. Qui la città dei mercanti conserva una dimensione raccolta, a pochi passi dalle vie del centro storico.',
+      find: 'All’incrocio tra Strada Stavropoleos e Strada Poștei, dietro il Museo nazionale di storia. Cerca il piccolo portico con le colonne scolpite; il cortile è accanto alla chiesa.',
+    },
+    [RoTrace.RomanianAthenaeum]: {
+      name: 'L’Ateneo Romeno',
+      local: 'Ateneul Român',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Inaugurato nel 1888, l’Ateneo è un palazzo per la musica e le conferenze, costruito anche grazie a una raccolta pubblica di fondi. Il progetto dell’architetto francese Albert Galleron porta in città colonne classiche e una grande cupola. La capitale si presenta attraverso la cultura: l’edificio è ancora sede della Filarmonica George Enescu. La facciata racconta questa ambizione anche senza entrare nella sala da concerto.',
+      find: 'Strada Benjamin Franklin 1–3, sul giardino di Piața George Enescu, vicino a Calea Victoriei. La facciata principale si guarda dal giardino; per gli interni verifica le modalità di visita della Filarmonica.',
+    },
+    [RoTrace.BrasovCouncilHouse]: {
+      name: 'La Casa del Consiglio',
+      local: 'Casa Sfatului',
+      place: `${places[Ro.Brasov]}, ${places[Ro.Transylvania]}`,
+      text: 'La torre al centro di Piața Sfatului appartiene all’antico municipio. L’edificio unisce funzioni commerciali, amministrative e giudiziarie: il consiglio cittadino si riunisce sopra gli spazi dei mercanti. Oggi ospita il museo di storia. Guarda come le case si dispongono intorno alla piazza: il centro della città è anche il luogo dove si regolano gli scambi.',
+      find: 'Piața Sfatului 30, nell’edificio isolato con la torre al centro della piazza.',
+    },
+    [RoTrace.BrasovBlackChurch]: {
+      name: 'La Chiesa Nera',
+      local: 'Biserica Neagră',
+      place: `${places[Ro.Brasov]}, ${places[Ro.Transylvania]}`,
+      text: 'La chiesa gotica della comunità sassone diventa luterana con la Riforma. L’incendio del 1689 ne danneggia gravemente tetto e interni; la ricostruzione spiega perché dentro non tutto è gotico. I tappeti anatolici conservati nella chiesa raccontano i legami commerciali con il mondo ottomano. È un luogo in cui fede e mercati si incontrano, non una testimonianza di isolamento.',
+      find: 'Curtea Johannes Honterus, accanto a Piața Sfatului. Il portale e la mole della chiesa si vedono dal cortile; i tappeti sono all’interno.',
+    },
+    [RoTrace.BrasovCatherineGate]: {
+      name: 'La Porta di Caterina',
+      local: 'Poarta Ecaterinei',
+      place: `${places[Ro.Brasov]}, ${places[Ro.Transylvania]}`,
+      text: 'La torre con quattro torrette è ciò che resta di un accesso fortificato verso Șchei. Le sue proporzioni possono far pensare a un piccolo castello, ma serviva a controllare il passaggio fra la città murata e l’esterno. Cercala accanto alla più grande Porta Șchei: sono due edifici diversi, appartenenti a fasi diverse della città.',
+      find: 'Strada Poarta Șchei, nel giardino accanto alla Porta Șchei. Cerca la torre bassa con il tetto appuntito e quattro torrette agli angoli.',
+    },
+    [RoTrace.SibiuBrukenthalPalace]: {
+      name: 'Il Palazzo Brukenthal',
+      local: 'Palatul Brukenthal',
+      place: `${places[Ro.Sibiu]}, ${places[Ro.Transylvania]}`,
+      text: 'Il palazzo barocco di Piața Mare nasce come residenza di Samuel von Brukenthal, governatore della Transilvania asburgica. Le sue raccolte diventano il nucleo del museo aperto nel 1817. La facciata e il portale raccontano il rango del proprietario; nelle sale, la collezione di pittura europea mostra una città collegata ai gusti e alle reti culturali del continente.',
+      find: 'Piața Mare 4–5. Dalla piazza riconosci il grande portale del palazzo; le collezioni si visitano negli spazi del museo.',
+    },
+    [RoTrace.SibiuBridgeOfLies]: {
+      name: 'Il Ponte delle Bugie',
+      local: 'Podul Minciunilor',
+      place: `${places[Ro.Sibiu]}, ${places[Ro.Transylvania]}`,
+      text: 'Questo piccolo ponte metallico scavalca la strada che scende verso la città bassa. Fermati a guardare le ringhiere traforate e il dislivello: la città non si sviluppa su un solo piano. La storia secondo cui il ponte crollerebbe sotto chi mente è una leggenda locale. Il passaggio serve davvero a collegare le piazze alte senza interrompere la strada sottostante.',
+      find: 'All’estremità di Piața Mică, sopra Strada Ocnei, vicino a Piața Huet. Guarda anche il ponte dal passaggio sottostante.',
+    },
+    [RoTrace.SibiuEvangelicalCathedral]: {
+      name: 'La cattedrale evangelica di Piața Huet',
+      local: 'Catedrala Evanghelică',
+      place: `${places[Ro.Sibiu]}, ${places[Ro.Transylvania]}`,
+      text: 'Il campanile e i tetti ripidi della chiesa gotica dominano Piața Huet. È un riferimento della comunità luterana di lingua tedesca, i sassoni di Transilvania: un’eredità ancora religiosa, oltre che architettonica. Il termine «evangelica» qui indica la tradizione luterana. Cammina intorno all’edificio per osservare come la piazza segue il perimetro della chiesa.',
+      find: 'Piața Huet, dietro Piața Mică. La chiesa occupa il centro della piazza; non va confusa con la cattedrale ortodossa di Strada Mitropoliei.',
+    },
+    [RoTrace.SighisoaraClockTower]: {
+      name: 'La Torre dell’Orologio',
+      local: 'Turnul cu Ceas',
+      place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
+      text: 'La torre sorveglia uno degli accessi alla cittadella e ne rende visibile il potere civico. Alza lo sguardo verso i quadranti e le figure dell’orologio, poi osserva il passaggio alla base: lo stesso edificio controlla l’ingresso e scandisce il tempo. Il suo profilo attuale porta anche i segni delle ricostruzioni dopo gli incendi, non soltanto del Medioevo.',
+      find: 'All’ingresso orientale della cittadella, fra Strada Turnului e Piața Muzeului. Osserva le facciate prima e dopo il passaggio sotto la torre.',
+    },
+    [RoTrace.SighisoaraCoveredStairway]: {
+      name: 'La scala coperta degli scolari',
+      local: 'Scara Școlarilor',
+      place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
+      text: 'Un tetto di legno protegge la salita verso la scuola e la chiesa sulla collina. La scala rende leggibile una necessità quotidiana: raggiungere le lezioni e le funzioni religiose anche con il maltempo. È un collegamento fra parti della cittadella, non una difesa militare. Salendo, la piazza dei mercanti lascia il posto agli edifici della scuola e della comunità religiosa.',
+      find: 'In fondo a Strada Școlii, dentro la cittadella. L’imbocco è riconoscibile dalla copertura di legno; la salita conduce verso la Biserica din Deal.',
+    },
   },
   cards: {
+    [Ro.Brasov]: { name: places[Ro.Brasov], local: 'Kronstadt · Brassó' },
+    [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },
+    [Ro.Sighisoara]: {
+      name: places[Ro.Sighisoara],
+      local: 'Schäßburg · Segesvár',
+      traceTexts: {
+        [RoTrace.VladDraculHouse]:
+          'Questa casa vicino alla Torre dell’Orologio è legata alla memoria di Vlad Dracul, padre di Vlad III. La nascita del figlio qui è una tradizione, non un fatto documentato. Guardala come una casa della cittadella sulla quale si è concentrato un racconto turistico: il nome di Dracula attira l’attenzione, ma intorno restano le strade e le abitazioni di una città di artigiani e mercanti.',
+      },
+    },
+    [Ro.Bucharest]: {
+      name: places[Ro.Bucharest],
+      local: 'București',
+      traceTexts: {
+        [RoTrace.MihaiVodaChurch]:
+          'Tra i condomini compare una chiesa che sembra fuori posto: lo è davvero. Il regime fa demolire il monastero e spostare su rotaie la chiesa e il campanile per liberare l’area del nuovo centro civico. Guarda il rapporto fra l’edificio basso e le facciate che lo nascondono. La città precedente non scompare soltanto: in alcuni punti sopravvive privata del paesaggio che le dava senso.',
+        [RoTrace.PalaceOfTheParliament]:
+          'La facciata chiude la prospettiva di Bulevardul Unirii. Per il centro civico voluto da Ceaușescu vengono demolite case, chiese e strade del quartiere Uranus e trasferiti gli abitanti. Osserva la scala del palazzo e dei viali rispetto alle stradine del centro storico: il progetto cambia il modo di attraversare la città. Oggi il Parlamento occupa l’edificio nato come centro del potere della dittatura.',
+        [RoTrace.CentralCommitteeBuilding]:
+          'In Piața Revoluției cerca il balcone dell’ex Comitato centrale. Da qui Ceaușescu parla alla folla nel dicembre 1989; il giorno dopo fugge dal tetto. Il palazzo, oggi sede del Ministero dell’Interno, resta al suo posto, mentre la piazza cambia nome e accoglie il Memoriale della Rinascita. Il luogo del potere diventa anche un luogo in cui ricordarne la caduta.',
+      },
+    },
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
     [RoPerson.VladTheImpaler]: {
       name: 'Vlad III',

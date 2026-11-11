@@ -79,6 +79,7 @@ export function Trace({
   anchor,
   prefix = '',
   showPlace = true,
+  text,
 }: {
   id: string
   /** HTML id when the trace is not in a card (the coat of arms and the flag in the text). */
@@ -89,10 +90,13 @@ export function Trace({
   prefix?: string
   /** The place line under the name; city cards leave it out (it is the card's city). */
   showPlace?: boolean
+  /** Description in this card; the album keeps the shared trace description. */
+  text?: string
 }) {
   const trace = useTrace(id)
   const { session, entries } = useCollection()
   if (!trace) return null
+  const description = text ?? trace.text
   const entry = entries[trace.key]
   const seen = isSeen(entry)
   const num = pad(trace.num)
@@ -276,13 +280,13 @@ export function Trace({
 
       {/* The description is optional: without it, "Come trovarla" takes the whole row. */}
       <div className="flex flex-wrap items-start gap-x-6 gap-y-3">
-        {trace.text && (
+        {description && (
           <p className="m-0 max-w-[56ch] min-w-0 flex-[1_1_280px] text-base leading-[1.55]">
-            {trace.text}
+            {description}
           </p>
         )}
         <div
-          className={`flex min-w-0 flex-col gap-[2px] ${trace.text ? 'max-w-[56ch] flex-[1_1_240px]' : 'flex-1'}`}
+          className={`flex min-w-0 flex-col gap-[2px] ${description ? 'max-w-[56ch] flex-[1_1_240px]' : 'flex-1'}`}
         >
           <span className="flex items-center gap-[6px] text-[11px] tracking-[.14em] text-neutral-700 uppercase">
             <CompassIcon weight="duotone" size={16} aria-hidden="true" />

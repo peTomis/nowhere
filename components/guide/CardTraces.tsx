@@ -53,7 +53,14 @@ export function CardTraces({
         )}
       </div>
       {shown.map((tr) => (
-        <Trace key={tr.id} id={tr.id} card={card} prefix={prefix} showPlace={showPlace} />
+        <Trace
+          key={tr.id}
+          id={tr.id}
+          card={card}
+          prefix={prefix}
+          showPlace={showPlace}
+          text={def.traceTexts?.[tr.id]}
+        />
       ))}
       {split && (
         <>
@@ -61,7 +68,14 @@ export function CardTraces({
             {t.guide.trace.outsideTrip}
           </span>
           {rest.map((tr) => (
-            <Trace key={tr.id} id={tr.id} card={card} prefix={prefix} showPlace={showPlace} />
+            <Trace
+              key={tr.id}
+              id={tr.id}
+              card={card}
+              prefix={prefix}
+              showPlace={showPlace}
+              text={def.traceTexts?.[tr.id]}
+            />
           ))}
         </>
       )}

@@ -235,6 +235,8 @@ export type TraceText = {
 
 /** A locale's texts for a card's heading (and a person card's index entry). */
 export type CardText = {
+  /** Context-specific descriptions; identity, photos and practical information stay on the trace. */
+  traceTexts?: Partial<Record<string, string>>
   name: string
   /** Local or other names, after the name in italics: "Hermannstadt · Nagyszeben". */
   local?: string

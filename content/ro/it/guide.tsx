@@ -2149,6 +2149,85 @@ function Body() {
           remember="Il dittatore che rifà Bucarest a sua misura e cade in quattro giorni, nel dicembre 1989."
         />
       </Chapter>
+
+      <Chapter
+        section={RoSection.Cities}
+        lede="Le città, lette attraverso ciò che resta e ciò che cambia."
+      >
+        <Part section={RoSection.CitiesWallachia}>
+          <Card
+            card={Ro.Bucharest}
+            intro={
+              <>
+                <N>Bucarest</N> cresce nella pianura della <N>Dâmbovița</N>, intorno alla corte dei
+                principi e alle strade dei mercanti. Locande, botteghe e chiese formano una città di
+                quartieri, prima che i viali e i palazzi della capitale moderna le diano una nuova
+                immagine. Architetti e modelli francesi convivono con la tradizione locale: il
+                soprannome «Piccola Parigi» descrive soltanto una parte di ciò che vedi. Il regime
+                comunista aggiunge quartieri di condomini e impone al centro un progetto
+                monumentale, demolendo porzioni della città precedente. Oggi bastano pochi passi per
+                passare da una chiesa raccolta a un viale enorme. Per leggere Bucarest, guarda anche
+                gli spazi fra gli edifici: ciò che li separa, ciò che li nasconde e le prospettive
+                costruite per metterli in scena.
+              </>
+            }
+            remember="Bucarest si capisce nei contrasti di scala: una chiesa fra i condomini racconta la città quanto un palazzo monumentale."
+          />
+        </Part>
+        <Part section={RoSection.CitiesTransylvania}>
+          <Card
+            card={Ro.Brasov}
+            intro={
+              <>
+                <N>Brașov</N> si raccoglie sotto il monte <N>Tâmpa</N>, dove le strade attraverso i
+                Carpazi incontrano i mercati della Transilvania. La comunità sassone costruisce il
+                nucleo fortificato; mercanti romeni, ungheresi e di altre provenienze ne
+                attraversano le piazze. Mura e porte regolano gli accessi, mentre il quartiere di{' '}
+                <N>Șchei</N>, fuori dalla cinta, conserva una forte presenza romena. Il centro che
+                percorri oggi nasce da questa vicinanza fra comunità, commerci e confini urbani. La
+                piazza del consiglio e la grande chiesa mostrano due forme di autorità; le porte
+                ricordano che abitare dentro o fuori le mura non è la stessa cosa. Per capire la
+                città, segui il passaggio dal mercato verso Șchei.
+              </>
+            }
+            remember="Brașov vive di scambi attraverso i Carpazi: la piazza li raccoglie, le porte li controllano."
+          />
+          <Card
+            card={Ro.Sibiu}
+            intro={
+              <>
+                <N>Sibiu</N> si legge su due livelli: la città alta, con le piazze e gli edifici di
+                rappresentanza, e la città bassa, raggiunta da rampe, scale e passaggi. La comunità
+                sassone ne organizza il centro intorno a commerci, istituzioni cittadine e chiesa.
+                Più tardi, il palazzo barocco di Brukenthal aggiunge il linguaggio dell’aristocrazia
+                asburgica. Le facciate continue possono far sembrare il centro uniforme, ma basta
+                voltare un angolo per cambiare quota e prospettiva.
+                <N>Piața Mare</N>, <N>Piața Mică</N> e <N>Piața Huet</N> formano spazi diversi,
+                collegati fra loro. Guarda i passaggi tanto quanto i monumenti: spiegano come una
+                città di mercanti tiene insieme vita quotidiana e rappresentazione del potere.
+              </>
+            }
+            remember="A Sibiu le piazze mostrano la città di rappresentanza; scale e passaggi la ricuciono alla città di ogni giorno."
+          />
+          <Card
+            card={Ro.Sighisoara}
+            intro={
+              <>
+                <N>Sighișoara</N> conserva una cittadella sulla collina e una città bassa ai suoi
+                piedi. Artigiani e mercanti sassoni costruiscono case, chiese e difese; le
+                corporazioni partecipano alla protezione delle mura. La collina organizza ancora la
+                visita: si entra attraverso le porte, si attraversano le piazze e si sale verso
+                scuola e chiesa. Le case colorate non sono tutte rimaste identiche dal Medioevo:
+                incendi, ricostruzioni e trasformazioni ne fanno parte. Il centro storico,
+                riconosciuto dall’UNESCO, resta anche uno spazio abitato. La fama di Vlad III è una
+                delle storie raccontate qui, ma per leggere la città serve guardare oltre quella
+                casa: al lavoro, alle difese e ai percorsi quotidiani.
+              </>
+            }
+            remember="Sighișoara è una città costruita per abitare, lavorare e difendersi su una collina: Vlad è una storia dentro questa storia."
+          />
+        </Part>
+      </Chapter>
     </>
   )
 }

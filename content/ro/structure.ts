@@ -56,6 +56,9 @@ export enum RoSection {
   DemocracyAndEurope = 'ro.section.democracy-and-europe',
   /** Chapter 3, Personaggi. */
   People = 'ro.section.people',
+  Cities = 'ro.section.cities',
+  CitiesWallachia = 'ro.section.cities.wallachia',
+  CitiesTransylvania = 'ro.section.cities.transylvania',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -86,6 +89,16 @@ export enum RoTrace {
   CentralCommitteeBuilding = 'ro.place.central-committee-building',
   PrimaveriiPalace = 'ro.place.primaverii-palace',
   CeausescuExecutionSite = 'ro.place.ceausescu-execution-site',
+  StavropoleosChurch = 'ro.place.stavropoleos-church',
+  RomanianAthenaeum = 'ro.place.romanian-athenaeum',
+  BrasovCouncilHouse = 'ro.place.brasov-council-house',
+  BrasovBlackChurch = 'ro.place.brasov-black-church',
+  BrasovCatherineGate = 'ro.place.brasov-catherine-gate',
+  SibiuBrukenthalPalace = 'ro.place.sibiu-brukenthal-palace',
+  SibiuBridgeOfLies = 'ro.place.sibiu-bridge-of-lies',
+  SibiuEvangelicalCathedral = 'ro.place.sibiu-evangelical-cathedral',
+  SighisoaraClockTower = 'ro.place.sighisoara-clock-tower',
+  SighisoaraCoveredStairway = 'ro.place.sighisoara-covered-stairway',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -109,7 +122,7 @@ export const structure = defineGuide<Ro, RoSection>({
   regions: [
     { id: Dobruja, cities: [] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
-    { id: Transylvania, cities: [Ro.Sighisoara] },
+    { id: Transylvania, cities: [Ro.Brasov, Ro.Sibiu, Ro.Sighisoara] },
     { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
   sections: [
@@ -189,6 +202,14 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: RoSection.DemocracyAndEurope, level: 2, on: 'always', period: { from: 1990, to: 2025 } },
 
     { id: RoSection.People, level: 1, chapter: 'people', on: 'always' },
+    {
+      id: RoSection.Cities,
+      level: 1,
+      chapter: 'cities',
+      on: [Ro.Bucharest, Ro.Brasov, Ro.Sibiu, Ro.Sighisoara],
+    },
+    { id: RoSection.CitiesWallachia, level: 2, on: [Ro.Bucharest] },
+    { id: RoSection.CitiesTransylvania, level: 2, on: [Ro.Brasov, Ro.Sibiu, Ro.Sighisoara] },
   ],
   traces: [
     {
@@ -412,6 +433,97 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'wall',
     },
+    // Append new places to preserve all existing album numbers.
+    // TODO image: freely licensed exterior photograph of Stavropoleos church.
+    {
+      id: RoTrace.StavropoleosChurch,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: freely licensed exterior photograph of the Romanian Athenaeum.
+    {
+      id: RoTrace.RomanianAthenaeum,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'music',
+    },
+    // TODO image: freely licensed photograph of brasov-council-house.
+    {
+      id: RoTrace.BrasovCouncilHouse,
+      region: Transylvania,
+      city: Ro.Brasov,
+      where: 'city',
+      rarity: 'common',
+      icon: 'clock',
+    },
+    // TODO image: freely licensed photograph of brasov-black-church.
+    {
+      id: RoTrace.BrasovBlackChurch,
+      region: Transylvania,
+      city: Ro.Brasov,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of brasov-catherine-gate.
+    {
+      id: RoTrace.BrasovCatherineGate,
+      region: Transylvania,
+      city: Ro.Brasov,
+      where: 'city',
+      rarity: 'common',
+      icon: 'castle',
+    },
+    // TODO image: freely licensed photograph of sibiu-brukenthal-palace.
+    {
+      id: RoTrace.SibiuBrukenthalPalace,
+      region: Transylvania,
+      city: Ro.Sibiu,
+      where: 'city',
+      rarity: 'common',
+      icon: 'frame',
+    },
+    // TODO image: freely licensed photograph of sibiu-bridge-of-lies.
+    {
+      id: RoTrace.SibiuBridgeOfLies,
+      region: Transylvania,
+      city: Ro.Sibiu,
+      where: 'city',
+      rarity: 'common',
+      icon: 'bridge',
+    },
+    // TODO image: freely licensed photograph of sibiu-evangelical-cathedral.
+    {
+      id: RoTrace.SibiuEvangelicalCathedral,
+      region: Transylvania,
+      city: Ro.Sibiu,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    // TODO image: freely licensed photograph of sighisoara-clock-tower.
+    {
+      id: RoTrace.SighisoaraClockTower,
+      region: Transylvania,
+      city: Ro.Sighisoara,
+      where: 'city',
+      rarity: 'common',
+      icon: 'clock',
+    },
+    // TODO image: freely licensed photograph of sighisoara-covered-stairway.
+    {
+      id: RoTrace.SighisoaraCoveredStairway,
+      region: Transylvania,
+      city: Ro.Sighisoara,
+      where: 'city',
+      rarity: 'common',
+      icon: 'steps',
+    },
   ],
   cards: [
     {
@@ -487,6 +599,48 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.CentralCommitteeBuilding,
         RoTrace.PrimaveriiPalace,
         RoTrace.CeausescuExecutionSite,
+      ],
+    },
+    {
+      id: Ro.Bucharest,
+      kind: 'city',
+      region: Wallachia,
+      on: [Ro.Bucharest],
+      traces: [
+        RoTrace.MihaiVodaChurch,
+        RoTrace.PalaceOfTheParliament,
+        RoTrace.CentralCommitteeBuilding,
+        RoTrace.StavropoleosChurch,
+        RoTrace.RomanianAthenaeum,
+      ],
+    },
+    {
+      id: Ro.Brasov,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.Brasov],
+      traces: [RoTrace.BrasovCouncilHouse, RoTrace.BrasovBlackChurch, RoTrace.BrasovCatherineGate],
+    },
+    {
+      id: Ro.Sibiu,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.Sibiu],
+      traces: [
+        RoTrace.SibiuBrukenthalPalace,
+        RoTrace.SibiuBridgeOfLies,
+        RoTrace.SibiuEvangelicalCathedral,
+      ],
+    },
+    {
+      id: Ro.Sighisoara,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.Sighisoara],
+      traces: [
+        RoTrace.VladDraculHouse,
+        RoTrace.SighisoaraClockTower,
+        RoTrace.SighisoaraCoveredStairway,
       ],
     },
   ],
