@@ -5,22 +5,19 @@ import type { Place, Visibility } from '@/content/types'
 import { setTripOff, subscribePrefs, tripOff } from '@/lib/reader/prefs'
 
 /*
- * Trip filter: the reader can switch regions and cities off; the guide then hides the
- * content tied to them. The excluded ids are a device preference (lib/reader/prefs.ts).
+ * Trip filter: the reader can switch regions off; the guide then hides the content tied to them.
+ * The excluded ids are a device preference (lib/reader/prefs.ts).
  */
 
 const EMPTY: string[] = []
 
 type Trip = {
   places: Place[]
-  /** Whether a region or city id is in the trip (a city also needs its region). */
+  /** Whether a region or city id is in the trip. */
   on: (id: string) => boolean
-  /** Whether the id itself was switched off, regardless of its region. */
-  excluded: (id: string) => boolean
   filtered: boolean
-  counts: { regions: number; regionsTotal: number; cities: number; citiesTotal: number }
+  counts: { regions: number; regionsTotal: number; cities: number }
   toggleRegion: (id: string) => void
-  toggleCity: (regionId: string, cityId: string) => void
   showAll: () => void
 }
 
@@ -47,38 +44,25 @@ export function TripProvider({
     const onMap = new Map<string, boolean>()
     let regions = 0
     let cities = 0
-    let citiesTotal = 0
     for (const p of places) {
       const ron = !offSet.has(p.id)
       onMap.set(p.id, ron)
       if (ron) regions++
+      if (ron) cities += p.cities.length
       for (const c of p.cities) {
-        const con = ron && !offSet.has(c.id)
-        onMap.set(c.id, con)
-        citiesTotal++
-        if (con) cities++
+        onMap.set(c.id, ron)
       }
     }
     const set = (next: Set<string>) => setTripOff(country, [...next])
     return {
       places,
       on: (id) => onMap.get(id) ?? true,
-      excluded: (id) => offSet.has(id),
-      filtered: regions < places.length || cities < citiesTotal,
-      counts: { regions, regionsTotal: places.length, cities, citiesTotal },
+      filtered: regions < places.length,
+      counts: { regions, regionsTotal: places.length, cities },
       toggleRegion: (id) => {
         const s = new Set(off)
         if (s.has(id)) s.delete(id)
         else s.add(id)
-        set(s)
-      },
-      toggleCity: (rid, cid) => {
-        const s = new Set(off)
-        if (s.has(rid)) {
-          s.delete(rid)
-          s.delete(cid)
-        } else if (s.has(cid)) s.delete(cid)
-        else s.add(cid)
         set(s)
       },
       showAll: () => set(new Set()),
@@ -100,7 +84,7 @@ function shown(on: Visibility, trip: Trip) {
   return on === 'always' || on.some(trip.on)
 }
 
-/** Renders its children when `on` is 'always' or one of its regions/cities is in the trip. */
+/** Renders its children when `on` is 'always' or one of its places is in the trip. */
 export function Only<P extends string>({ on, children }: GateProps<P>) {
   return shown(on, useTrip()) ? children : null
 }

@@ -17,8 +17,6 @@ const places: Record<Ro, string> = {
   [Ro.Targoviste]: 'Târgoviște',
   [Ro.Iasi]: 'Iași',
   [Ro.Suceava]: 'Suceava',
-  [Ro.Constanta]: 'Constanța',
-  [Ro.Tulcea]: 'Tulcea',
 }
 
 export const names: GuideNames<Ro, RoSection> = {

@@ -25,8 +25,6 @@ export enum Ro {
   Targoviste = 'ro.targoviste',
   Iasi = 'ro.iasi',
   Suceava = 'ro.suceava',
-  Constanta = 'ro.constanta',
-  Tulcea = 'ro.tulcea',
 }
 
 /** Chapters, parts and titled timelines: index entries and URL anchors (`ro.section.` dropped). */

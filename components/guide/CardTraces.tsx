@@ -7,8 +7,7 @@ import { useTrip } from './trip'
 
 /**
  * The traces of a person or city card: those in the reader's trip first, then the others under
- * "Fuori dal tuo viaggio" (from "Scheda.dc.html"). A trace is in the trip when its region is, and
- * its city when it has one.
+ * "Fuori dal tuo viaggio" (from "Scheda.dc.html"). A trace is in the trip when its region is.
  */
 export function CardTraces({
   card,
@@ -26,8 +25,7 @@ export function CardTraces({
   const inTrip = (id: string) => {
     const tr = list.find((x) => x.id === id)
     if (!tr?.region) return true
-    const city = def.kind === 'city' ? undefined : tr.city
-    return trip.on(tr.region) && (!city || !trip.excluded(city))
+    return trip.on(tr.region)
   }
   const first = list.filter((tr) => inTrip(tr.id))
   const rest = list.filter((tr) => !inTrip(tr.id))

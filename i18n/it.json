@@ -86,8 +86,8 @@
     "trip": {
       "title": "Filtra per regione",
       "showAll": "Mostra tutto",
-      "fullText": "Tutte le regioni e le città",
-      "recap": "{regions} di {regionsTotal} regioni · {cities} di {citiesTotal} città",
+      "fullText": "Tutte le regioni",
+      "recap": "{regions} regioni · {cities} città",
       "citiesOf": "Città di {name}"
     },
     "outro": {

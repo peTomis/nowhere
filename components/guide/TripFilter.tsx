@@ -5,14 +5,14 @@ import { useState } from 'react'
 import { useTrip } from './trip'
 import { format, t } from '@/i18n'
 
-/** Trip filter (shown as "Filtra per regione"): regions as checkboxes, each expandable into its cities. */
+/** Trip filter (shown as "Filtra per regione"): regions as checkboxes and read-only cities. */
 export function TripFilter({ country, size }: { country: string; size: 'sidebar' | 'menu' }) {
   const trip = useTrip()
   const [open, setOpen] = useState<string[]>([])
   const big = size === 'menu'
-  const { regions, regionsTotal, cities, citiesTotal } = trip.counts
+  const { regions, regionsTotal, cities } = trip.counts
   const recap = trip.filtered
-    ? format(t.guide.trip.recap, { regions, regionsTotal, cities, citiesTotal })
+    ? format(t.guide.trip.recap, { regions, regionsTotal, cities })
     : t.guide.trip.fullText
 
   return (
@@ -45,9 +45,8 @@ export function TripFilter({ country, size }: { country: string; size: 'sidebar'
         {trip.places.map((p) => {
           const ron = trip.on(p.id)
           const isOpen = open.includes(p.id)
-          const nOn = p.cities.filter((c) => !trip.excluded(c.id)).length
-          const Caret = isOpen ? CaretUpIcon : CaretDownIcon
           const Box = ron ? CheckSquareIcon : SquareIcon
+          const Caret = isOpen ? CaretUpIcon : CaretDownIcon
           return (
             <div key={p.id} className="flex flex-col">
               <div className="flex items-center gap-1">
@@ -71,37 +70,30 @@ export function TripFilter({ country, size }: { country: string; size: 'sidebar'
                     aria-expanded={isOpen}
                     aria-label={format(t.guide.trip.citiesOf, { name: p.name })}
                     onClick={() =>
-                      setOpen((o) =>
-                        o.includes(p.id) ? o.filter((x) => x !== p.id) : [...o, p.id],
+                      setOpen((value) =>
+                        value.includes(p.id) ? value.filter((id) => id !== p.id) : [...value, p.id],
                       )
                     }
                     className={`flex flex-none cursor-pointer items-center gap-1 border-0 bg-transparent px-[2px] font-body text-neutral-700 tabular-nums hover:text-accent-700 ${big ? 'min-h-[44px] min-w-[64px] justify-end text-[15px]' : 'min-h-[28px] text-[13px]'}`}
                   >
-                    <span>
-                      {nOn}/{p.cities.length}
-                    </span>
+                    <span>{p.cities.length}</span>
                     <Caret weight="duotone" size={big ? 18 : 16} />
                   </button>
                 )}
               </div>
-              {isOpen && p.cities.length > 0 && (
+              {p.cities.length > 0 && isOpen && (
                 <div
                   className={`flex flex-wrap ${big ? 'gap-[8px] pt-1 pb-[12px] pl-[30px]' : 'gap-[6px] pt-1 pb-[8px] pl-[28px]'} ${ron ? '' : 'opacity-45'}`}
+                  aria-label={format(t.guide.trip.citiesOf, { name: p.name })}
                 >
-                  {p.cities.map((c) => {
-                    const con = !trip.excluded(c.id)
-                    return (
-                      <button
-                        key={c.id}
-                        type="button"
-                        aria-pressed={con}
-                        onClick={() => trip.toggleCity(p.id, c.id)}
-                        className={`tag cursor-pointer border-0 font-body ${con ? 'tag-accent' : 'tag-neutral line-through'} ${big ? 'min-h-[44px] px-[14px] text-[15px]' : 'text-[13px]'}`}
-                      >
-                        {c.name}
-                      </button>
-                    )
-                  })}
+                  {p.cities.map((c) => (
+                    <span
+                      key={c.id}
+                      className={`tag font-body ${ron ? 'tag-accent' : 'tag-neutral'} ${big ? 'min-h-[44px] px-[14px] text-[15px]' : 'text-[13px]'}`}
+                    >
+                      {c.name}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>

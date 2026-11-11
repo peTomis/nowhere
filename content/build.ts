@@ -20,15 +20,18 @@ import {
   type TraceWhere,
 } from './types'
 
-/** Trip filter entries (regions with their cities) from the structure and a locale's names. */
+/** Trip filter entries (regions with their city cards) from the structure and a locale's names. */
 export function placesOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
 ): Place<P>[] {
+  const cityCards = new Set(
+    (structure.cards ?? []).filter((card) => card.kind === 'city').map((card) => card.id),
+  )
   return structure.regions.map((r) => ({
     id: r.id,
     name: names.places[r.id],
-    cities: r.cities.map((c) => ({ id: c, name: names.places[c] })),
+    cities: r.cities.filter((c) => cityCards.has(c)).map((c) => ({ id: c, name: names.places[c] })),
   }))
 }
 
