@@ -78,22 +78,15 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: RoSection.DaciaToHungarians, level: 2, on: 'always', period: { from: bc1, to: 895 } },
     { id: RoSection.DaciaAndRome, level: 3, on: 'always', period: { from: bc1, to: 275 } },
     { id: RoSection.MigrationPeriod, level: 3, on: 'always', period: { from: 290, to: 895 } },
-    { id: RoSection.Principalities, level: 2, on: all, period: { from: 1003, to: 1395 } },
+    { id: RoSection.Principalities, level: 2, on: all, period: { from: 971, to: 1395 } },
     { id: RoSection.LateMiddleAges, level: 2, on: all, period: { from: 1416, to: 1538 } },
 
-    {
-      id: RoSection.OttomanSuzerainty,
-      level: 2,
-      on: all,
-      period: { from: 1541, to: 1688 },
-      verify: 'its last event (Apafi, 1661–1690) ends after 1688',
-    },
+    { id: RoSection.OttomanSuzerainty, level: 2, on: all, period: { from: 1541, to: 1688 } },
     {
       id: RoSection.OttomanSuzeraintyTransylvania,
       level: 3,
       on: [Transylvania],
-      period: { from: 1608, to: 1686 },
-      verify: 'its last event (Apafi, 1661–1690) ends after 1686',
+      period: { from: 1613, to: 1686 },
     },
     {
       id: RoSection.OttomanSuzeraintyWallachia,
@@ -105,8 +98,8 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.OttomanSuzeraintyMoldavia,
       level: 3,
       on: [Moldavia],
-      period: { from: 1606, to: 1680 },
-      verify: 'its last event is 1659; 1680 comes from the Context 1660–1680',
+      period: { from: 1634, to: 1680 },
+      verify: 'its last event is 1653; 1680 comes from the Context 1660–1680',
     },
     {
       id: RoSection.OttomanSuzeraintyDobruja,
@@ -132,7 +125,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.ThreeEmpiresMoldavia,
       level: 3,
       on: [Moldavia],
-      period: { from: 1709, to: 1818 },
+      period: { from: 1711, to: 1818 },
     },
     {
       id: RoSection.ThreeEmpiresDobruja,
