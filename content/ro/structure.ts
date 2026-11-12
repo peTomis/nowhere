@@ -443,7 +443,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoTrace.StephenTheGreatTomb,
       region: Moldavia,
       where: 'remote',
-      rarity: 'common',
+      rarity: 'rare',
       icon: 'church',
     },
     // TODO image: licensed photograph, including rights clearance for the modern sculpture.
@@ -981,7 +981,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoTrace.DeltaPelicans,
       region: Dobruja,
       where: 'remote',
-      rarity: 'rare',
+      rarity: 'very-rare',
       icon: 'bird',
     },
     // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia. TODO image: freely licensed photographs for the three traces.
@@ -1019,7 +1019,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoTrace.ZarnestiGorges,
       region: Transylvania,
       where: 'nearby',
-      rarity: 'rare',
+      rarity: 'common',
       icon: 'mountains',
     },
     {
@@ -1033,7 +1033,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoTrace.MaguraVillage,
       region: Transylvania,
       where: 'nearby',
-      rarity: 'rare',
+      rarity: 'common',
       icon: 'barn',
     },
     {
@@ -1115,7 +1115,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoTrace.MocanitaViseuDeSus,
       region: Transylvania,
       where: 'remote',
-      rarity: 'rare',
+      rarity: 'very-rare',
       icon: 'train',
     },
     {
