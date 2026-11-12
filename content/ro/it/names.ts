@@ -30,6 +30,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.IronGates]: 'Porte di Ferro',
   [RoLandscape.Retezat]: 'Retezat',
   [RoLandscape.VaserValleyRodna]: 'Valle del Vaser e Monti Rodnei',
+  [RoLandscape.BicazCeahlau]: 'Gole di Bicaz e Ceahlău',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -636,6 +637,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'A 2.303 m è la cima più alta dei Carpazi Orientali. Sotto la vetta, in un circo glaciale, c’è il lago Iezer. Il versante intorno è protetto come riserva dal 1932, molto prima che i Rodnei diventassero parco nazionale. Vicino alla cima c’è una stazione meteorologica.',
       find: 'Da Borșa, a piedi per sentiero segnato, passando per il lago Iezer: una lunga giornata di salita. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
+    [RoTrace.BicazGorges]: {
+      name: 'Il collo dell’inferno',
+      local: 'Cheile Bicazului · Gâtul Iadului',
+      place: `Cheile Bicazului, ${places[Ro.Moldavia]}`,
+      text: 'Per circa 8 km la strada segue il torrente Bicaz in una gola di calcare con pareti quasi verticali, alte fino a circa 300 m. Nel punto più stretto, il Gâtul Iadului, la carreggiata passa sotto le rocce a strapiombo. Lungo la strada, bancarelle vendono oggetti fatti dagli artigiani romeni e ungheresi della zona.',
+      find: 'Sulla strada DN12C fra Bicaz e Gheorgheni, che attraversa la gola. Ci sono slarghi per fermarsi vicino al tratto più stretto; la strada è stretta e senza marciapiede, attenzione al traffico.',
+    },
+    [RoTrace.RedLake]: {
+      name: 'Il lago dei tronchi',
+      local: 'Lacul Roșu · Gyilkos-tó',
+      place: `Lacu Roșu, ${places[Ro.Transylvania]}`,
+      text: 'Nel 1837 o nel 1838, secondo le fonti, una frana scende dal versante e sbarra il torrente: l’acqua sommerge un bosco di abeti. Le cime dei tronchi spuntano ancora dal lago, a circa 980 m, conservate dall’acqua ricca di calcio e di ferro. Il nome ungherese, «lago assassino», viene da una leggenda locale.',
+      find: 'Sulla DN12C, all’uscita ovest delle gole, nella località di Lacu Roșu (Harghita). Un sentiero fa il giro del lago; d’estate si noleggiano barche.',
+    },
+    [RoTrace.ToacaPeak]: {
+      name: 'La cima della Toaca',
+      local: 'Vârful Toaca',
+      place: `Ceahlău, ${places[Ro.Moldavia]}`,
+      text: 'A 1.904 m è una delle due cime principali del Ceahlău, appena più bassa dell’Ocolașul Mare (1.907 m). Sul pianoro sotto la vetta, accanto al rifugio Dochia e alla stazione meteorologica, sorge la chiesa del monastero del Ceahlău, costruita nel 1992–1993 e dedicata alla Trasfigurazione. Per la festa, il 6 agosto, migliaia di pellegrini salgono a piedi. All’alba, con il cielo sereno, l’ombra della cima si proietta sulle valli come una piramide: i giornali la chiamano «piramide olografica».',
+      find: 'Da Durău, a nord, per sentiero segnato fino al rifugio Dochia e poi alla cima: mezza giornata di salita. Il parco nazionale chiede un biglietto d’ingresso; campeggio solo nelle aree segnate.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -750,6 +772,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.VaserValleyRodna]: {
       name: landscapes[RoLandscape.VaserValleyRodna],
       local: 'Valea Vaserului · Munții Rodnei',
+    },
+    [RoLandscape.BicazCeahlau]: {
+      name: landscapes[RoLandscape.BicazCeahlau],
+      local: 'Cheile Bicazului · Masivul Ceahlău',
     },
   },
 }

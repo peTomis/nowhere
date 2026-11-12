@@ -2486,6 +2486,25 @@ function Body() {
           }
           remember="Nel Maramureș la foresta è un lavoro prima che un paesaggio: la Mocănița nasce per portare a valle i tronchi, sotto le creste dei Rodnei."
         />
+        <Card
+          card={RoLandscape.BicazCeahlau}
+          intro={
+            <>
+              Dove la Moldavia incontra la Transilvania, il torrente <N>Bicaz</N> ha scavato nel
+              calcare dei monti Hășmaș una gola di circa 8 km. Per la gola passa la strada fra il
+              distretto di Neamț, in Moldavia, e quello di Harghita, nella Terra dei Siculi.
+              All’uscita ovest c’è un lago nato da una frana nell’Ottocento. A nord-est, sopra la
+              valle della <N>Bistrița</N> e il lago artificiale di Bicaz, si alza isolato il{' '}
+              <N>Ceahlău</N>. È una montagna di eremiti e di leggende: per la tradizione popolare le
+              rocce di Dochia sono una donna trasformata in pietra con il suo gregge. All’inizio del
+              Settecento{' '}
+              <N href="https://it.wikipedia.org/wiki/Dimitrie_Cantemir">Dimitrie Cantemir</N>, nella{' '}
+              <N work>Descriptio Moldaviae</N>, scrive che se i poeti antichi l’avessero conosciuto
+              sarebbe famoso quanto l’Olimpo. Gole e Ceahlău sono oggi due parchi nazionali.
+            </>
+          }
+          remember="Le gole di Bicaz sono una porta fra Moldavia e Transilvania; il Ceahlău è la montagna che i moldavi hanno riempito di eremiti, leggende e pellegrinaggi."
+        />
       </Chapter>
     </>
   )

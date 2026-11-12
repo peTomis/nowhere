@@ -148,6 +148,9 @@ export enum RoTrace {
   MocanitaViseuDeSus = 'ro.place.mocanita-viseu-de-sus',
   HorsesWaterfall = 'ro.place.horses-waterfall',
   PietrosulRodnei = 'ro.place.pietrosul-rodnei',
+  BicazGorges = 'ro.place.bicaz-gorges',
+  RedLake = 'ro.place.red-lake',
+  ToacaPeak = 'ro.place.toaca-peak',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -171,6 +174,7 @@ export enum RoLandscape {
   IronGates = 'ro.landscape.iron-gates',
   Retezat = 'ro.landscape.retezat',
   VaserValleyRodna = 'ro.landscape.vaser-valley-rodna',
+  BicazCeahlau = 'ro.landscape.bicaz-gorges-ceahlau',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -293,7 +297,7 @@ export const structure = defineGuide<Ro, RoSection>({
     },
     { id: RoSection.CitiesDobruja, level: 2, on: [Ro.Constanta] },
 
-    { id: RoSection.Nature, level: 1, chapter: 'nature', on: [Transylvania, Wallachia, Dobruja] },
+    { id: RoSection.Nature, level: 1, chapter: 'nature', on: all },
   ],
   traces: [
     {
@@ -949,6 +953,28 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'mountains',
     },
+    // Bicaz gorges and Ceahlău (Neamț county, Moldavia; Lacu Roșu is in Harghita county, Transilvania). TODO image: freely licensed photographs for the three traces.
+    {
+      id: RoTrace.BicazGorges,
+      region: Moldavia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'mountains',
+    },
+    {
+      id: RoTrace.RedLake,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'tree',
+    },
+    {
+      id: RoTrace.ToacaPeak,
+      region: Moldavia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'church',
+    },
   ],
   cards: [
     {
@@ -1208,6 +1234,13 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Transylvania,
       on: [Transylvania],
       traces: [RoTrace.MocanitaViseuDeSus, RoTrace.HorsesWaterfall, RoTrace.PietrosulRodnei],
+    },
+    {
+      id: RoLandscape.BicazCeahlau,
+      kind: 'landscape',
+      region: Moldavia,
+      on: [Moldavia, Transylvania],
+      traces: [RoTrace.BicazGorges, RoTrace.RedLake, RoTrace.ToacaPeak],
     },
   ],
 })
