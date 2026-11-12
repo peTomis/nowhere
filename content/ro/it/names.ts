@@ -11,6 +11,7 @@ const places: Record<Ro, string> = {
   [Ro.Sibiu]: 'Sibiu',
   [Ro.Brasov]: 'Brașov',
   [Ro.AlbaIulia]: 'Alba Iulia',
+  [Ro.Timisoara]: 'Timișoara',
   [Ro.ClujNapoca]: 'Cluj-Napoca',
   [Ro.Sighisoara]: 'Sighișoara',
   [Ro.Bucharest]: 'Bucarest',
@@ -400,6 +401,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Le collezioni del museo mettono in relazione la storia della città, la corte moldava e la Bucovina passata agli Asburgo nel 1775. Armi, documenti e oggetti religiosi mostrano che la regione non è soltanto il paesaggio dei monasteri dipinti: è anche una frontiera amministrata da poteri diversi.',
       find: 'Il museo ha sedi diverse; per la sezione storica controlla l’indirizzo aggiornato del Museo di storia in Strada Ștefan cel Mare.',
     },
+    [RoTrace.TimisoaraUnionSquare]: {
+      name: 'Piața Unirii: due cattedrali e una colonna',
+      local: 'Piața Unirii · Domul romano-catolic',
+      place: `${places[Ro.Timisoara]}, Banato`,
+      text: 'La piazza più antica della città barocca ricostruita dagli Asburgo. Da un lato il duomo cattolico di San Giorgio, costruito fra il 1736 e il 1774; di fronte, la cattedrale ortodossa serba. Al centro, la colonna della Santissima Trinità ricorda un’epidemia di peste del Settecento. Due chiese di due confessioni si guardano attraverso la stessa piazza: la Timișoara asburgica è una città di più comunità. Il nome «Unirii» arriva dopo l’ingresso delle truppe romene, nel 1919.',
+      find: 'Piața Unirii, nel quartiere Cetate, il centro storico, a pochi minuti a piedi da Piața Victoriei.',
+    },
+    [RoTrace.TimisoaraTokesParsonage]: {
+      name: 'La casa del pastore Tőkés',
+      local: 'Casa parohială reformată',
+      place: `${places[Ro.Timisoara]}, Banato`,
+      text: 'Il regime vuole trasferire László Tőkés, pastore della chiesa riformata ungherese e critico verso il governo. Il 15 dicembre 1989 i suoi fedeli si radunano davanti a questa casa per impedire lo sfratto; il giorno dopo si uniscono abitanti di ogni lingua e confessione, e la protesta diventa una rivolta contro il regime. Da qui comincia la rivoluzione romena: una casa parrocchiale, non un palazzo del potere.',
+      find: 'Piața Maria, nel quartiere Elisabetin, a sud del centro: la casa parrocchiale è accanto alla chiesa riformata.',
+    },
+    [RoTrace.TimisoaraOperaBalcony]: {
+      name: 'Il balcone dell’Opera',
+      local: 'Piața Victoriei · Opera Națională',
+      place: `${places[Ro.Timisoara]}, Banato`,
+      text: 'Il 20 dicembre 1989, dopo giorni di repressione e decine di morti, una folla enorme riempie la piazza. Dal balcone dell’Opera si legge che Timișoara è la «prima città libera dal comunismo», mentre a Bucarest Ceaușescu è ancora al potere. Ogni 20 dicembre, a mezzogiorno, le sirene della città suonano per tre minuti in ricordo delle vittime.',
+      find: 'Piața Victoriei, il lungo viale pedonale fra l’Opera e la cattedrale ortodossa metropolitana. Il balcone è sulla facciata dell’Opera, verso la piazza.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -430,6 +452,7 @@ export const names: GuideNames<Ro, RoSection> = {
       },
     },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },
+    [Ro.Timisoara]: { name: places[Ro.Timisoara], local: 'Temesvár · Temeswar' },
     [Ro.Sighisoara]: {
       name: places[Ro.Sighisoara],
       local: 'Schäßburg · Segesvár',

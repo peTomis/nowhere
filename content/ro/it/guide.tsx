@@ -1932,6 +1932,10 @@ function Body() {
                 dicembre Nicolae ed Elena Ceaușescu vengono processati sommariamente e fucilati. Il
                 Fronte di salvezza nazionale assume il potere.
               </Detail>
+              {/* Only where the Timișoara card is shown: the link points to its traces. */}
+              <Only on={[Ro.Timisoara]}>
+                <Today traces={[RoTrace.TimisoaraTokesParsonage, RoTrace.TimisoaraOperaBalcony]} />
+              </Only>
             </Event>
           </Timeline>
         </Part>
@@ -2302,6 +2306,24 @@ function Body() {
               </>
             }
             remember="Sighișoara è una città costruita per abitare, lavorare e difendersi su una collina: Vlad è una storia dentro questa storia."
+          />
+          <Card
+            card={Ro.Timisoara}
+            intro={
+              <>
+                <N>Timișoara</N> è nel <N>Banato</N>, la pianura fra Danubio, Tibisco e Carpazi: non
+                fa parte del principato di Transilvania e ha una storia propria. Città del Regno
+                d’Ungheria, <N>Temesvár</N>, nel 1552 la prendono gli ottomani, che la tengono per
+                circa 160 anni. Nel <D>1716</D> l’esercito di Eugenio di Savoia la conquista per gli
+                Asburgo: diventa capitale di una provincia a sé, e ingegneri austriaci la
+                ricostruiscono quasi da zero come città fortificata barocca. Vi si stabiliscono
+                coloni di lingua tedesca, accanto a romeni, ungheresi, serbi ed ebrei: piazze e
+                chiese lo mostrano ancora. Dopo la Prima guerra mondiale il Banato viene diviso e
+                nel 1919 la città passa alla Romania. Nel dicembre <D>1989</D> la rivolta contro
+                Ceaușescu comincia qui. Nel 2023 è capitale europea della cultura.
+              </>
+            }
+            remember="Timișoara è una città barocca di molte lingue e confessioni: qui, nel 1989, comincia la rivolta contro Ceaușescu."
           />
         </Part>
       </Chapter>

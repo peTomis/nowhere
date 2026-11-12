@@ -19,6 +19,7 @@ export enum Ro {
   Sibiu = 'ro.sibiu',
   Brasov = 'ro.brasov',
   AlbaIulia = 'ro.alba-iulia',
+  Timisoara = 'ro.timisoara',
   ClujNapoca = 'ro.cluj-napoca',
   Sighisoara = 'ro.sighisoara',
   Bucharest = 'ro.bucharest',
@@ -112,6 +113,9 @@ export enum RoTrace {
   SuceavaCitadel = 'ro.place.suceava-citadel',
   SuceavaSaintJohnMonastery = 'ro.place.suceava-saint-john-monastery',
   SuceavaBucovinaMuseum = 'ro.place.suceava-bucovina-museum',
+  TimisoaraUnionSquare = 'ro.place.timisoara-union-square',
+  TimisoaraTokesParsonage = 'ro.place.timisoara-tokes-parsonage',
+  TimisoaraOperaBalcony = 'ro.place.timisoara-opera-balcony',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -135,7 +139,12 @@ export const structure = defineGuide<Ro, RoSection>({
   regions: [
     { id: Dobruja, cities: [] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
-    { id: Transylvania, cities: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara] },
+    // Timișoara is in the Banat, which the trip filter has no entry for (as for the Decebalus
+    // rock sculpture): it sits with Transilvania, and its card says it is the Banat.
+    {
+      id: Transylvania,
+      cities: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara, Ro.Timisoara],
+    },
     { id: Wallachia, cities: [Ro.Bucharest, Ro.Targoviste] },
   ],
   sections: [
@@ -228,6 +237,7 @@ export const structure = defineGuide<Ro, RoSection>({
         Ro.ClujNapoca,
         Ro.Sibiu,
         Ro.Sighisoara,
+        Ro.Timisoara,
       ],
     },
     { id: RoSection.CitiesMoldavia, level: 2, on: [Ro.Iasi, Ro.Suceava] },
@@ -235,7 +245,7 @@ export const structure = defineGuide<Ro, RoSection>({
     {
       id: RoSection.CitiesTransylvania,
       level: 2,
-      on: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara],
+      on: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara, Ro.Timisoara],
     },
   ],
   traces: [
@@ -658,6 +668,32 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'flag',
     },
+    // Timișoara (Banat, filed under Transilvania). TODO image: freely licensed photographs for
+    // the three Timișoara traces.
+    {
+      id: RoTrace.TimisoaraUnionSquare,
+      region: Transylvania,
+      city: Ro.Timisoara,
+      where: 'city',
+      rarity: 'common',
+      icon: 'church',
+    },
+    {
+      id: RoTrace.TimisoaraTokesParsonage,
+      region: Transylvania,
+      city: Ro.Timisoara,
+      where: 'city',
+      rarity: 'rare',
+      icon: 'house',
+    },
+    {
+      id: RoTrace.TimisoaraOperaBalcony,
+      region: Transylvania,
+      city: Ro.Timisoara,
+      where: 'city',
+      rarity: 'common',
+      icon: 'music',
+    },
   ],
   cards: [
     {
@@ -819,6 +855,17 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.VladDraculHouse,
         RoTrace.SighisoaraClockTower,
         RoTrace.SighisoaraCoveredStairway,
+      ],
+    },
+    {
+      id: Ro.Timisoara,
+      kind: 'city',
+      region: Transylvania,
+      on: [Ro.Timisoara],
+      traces: [
+        RoTrace.TimisoaraUnionSquare,
+        RoTrace.TimisoaraTokesParsonage,
+        RoTrace.TimisoaraOperaBalcony,
       ],
     },
   ],
