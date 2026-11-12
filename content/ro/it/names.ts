@@ -68,6 +68,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.CitiesDobruja]: places[Ro.Dobruja],
     [RoSection.FoodCommon]: 'In tutto il paese',
     [RoSection.FoodTransylvania]: places[Ro.Transylvania],
+    [RoSection.FoodWallachia]: places[Ro.Wallachia],
     [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
     [RoSection.Food]: 'Dalla mămăligă alla țuică: che cosa ordinare',
   },
@@ -729,6 +730,33 @@ export const names: GuideNames<Ro, RoSection> = {
       place: 'Maramureș',
       find: 'Nei ristoranti tradizionali e nelle pensioni del Maramureș; d’estate alle stâne, gli ovili di montagna, dove i pastori vendono i loro formaggi.',
     },
+    [RoTrace.FoodMici]: {
+      name: 'Mici',
+      local: 'Mititei',
+      place: `In tutta la ${places[Ro.Wallachia]}`,
+      find: 'Nelle birrerie, nei ristoranti e nelle griglie all’aperto, a porzioni di cinque o di dieci, con senape e pane; a Bucarest anche al mercato di Obor.',
+    },
+    [RoTrace.FoodCiorbaBurta]: {
+      name: 'Ciorbă de burtă',
+      place: `In tutta la ${places[Ro.Wallachia]}`,
+      find: 'Nei ristoranti di cucina romena, fra le zuppe: aglio, aceto e peperoncino arrivano a parte, da aggiungere a piacere.',
+    },
+    [RoTrace.FoodCovrigi]: {
+      name: 'Covrigi',
+      place: 'Buzău, Valacchia',
+      find: 'Nelle simigerii, i piccoli forni di strada, caldi e a pezzo: in ogni città, ma il nome da cercare è «covrigi de Buzău».',
+    },
+    [RoTrace.FoodMagiun]: {
+      name: 'Magiun di Topoloveni',
+      local: 'Magiun de prune Topoloveni',
+      place: 'Topoloveni, distretto di Argeș',
+      find: 'Nei supermercati e nei negozi di prodotti tradizionali, in vasetti: sull’etichetta «Magiun de prune Topoloveni» con il marchio europeo IGP.',
+    },
+    [RoTrace.FoodDealuMare]: {
+      name: 'Un vino del Dealu Mare',
+      place: 'Prahova e Buzău, Valacchia',
+      find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano su prenotazione.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -885,6 +913,22 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoFood.Balmos]: {
       name: 'Balmoș',
+    },
+    [RoFood.Mici]: {
+      name: 'Mici',
+      local: 'Mititei',
+    },
+    [RoFood.CiorbaBurta]: {
+      name: 'Ciorbă de burtă',
+    },
+    [RoFood.Covrigi]: {
+      name: 'Covrigi',
+    },
+    [RoFood.Magiun]: {
+      name: 'Magiun di Topoloveni',
+    },
+    [RoFood.DealuMare]: {
+      name: 'Dealu Mare',
     },
   },
 }

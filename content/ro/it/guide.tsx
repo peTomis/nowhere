@@ -2673,6 +2673,76 @@ function Body() {
             remember="Il balmoș è la mămăligă dei pastori: farina di mais cotta nel latte e nel formaggio di pecora."
           />
         </Part>
+        <Part section={RoSection.FoodWallachia}>
+          <Card
+            card={RoFood.Mici}
+            intro={
+              <>
+                I <N>mici</N>, o mititei, sono piccoli cilindri di carne tritata e speziata, senza
+                budello, cotti alla griglia. La leggenda li fa nascere a Bucarest alla fine
+                dell’Ottocento, in una locanda di strada Covaci, una sera in cui finiscono i budelli
+                per le salsicce; ma ricette di salsicce senza budello esistono già prima, e piatti
+                simili si mangiano in tutti i Balcani che sono stati ottomani. Una ricetta del 1872
+                li vuole di solo manzo: il maiale arriva più tardi. Sono il piatto del Primo maggio,
+                quando si accendono le griglie all’aperto.
+              </>
+            }
+            remember="I mici sono la griglia romena: niente budello, molta senape, e una leggenda di Bucarest che le fonti non confermano."
+          />
+          <Card
+            card={RoFood.CiorbaBurta}
+            intro={
+              <>
+                La <N>ciorbă de burtă</N> è una zuppa di trippa di manzo, legata con tuorli d’uovo e
+                smântână e acidulata con aceto o limone. Arriva in tavola chiara e densa, con aglio,
+                aceto e peperoncino a parte. Il modello è turco, la işkembe çorbası; zuppe di trippa
+                si mangiano dalla Grecia ai Balcani, e chi l’abbia inventata è oggetto di contese
+                fra paesi.
+              </>
+            }
+            remember="La ciorbă de burtă è la zuppa di trippa ottomana con panna e uova: ognuno la corregge a tavola con aglio e aceto."
+          />
+          <Card
+            card={RoFood.Covrigi}
+            intro={
+              <>
+                I <N>covrigi</N> sono ciambelle di pane a forma di anello o di nodo, cosparse di
+                sale grosso o di semi, vendute calde nelle simigerii, i piccoli forni di strada.{' '}
+                <N>Buzău</N> è la città dei covrigi: la tradizione locale ha più di duecento anni, e
+                una leggenda dice che li abbiano portati mercanti greci, ma la loro origine è
+                incerta. Dopo il 1990 i forni si moltiplicano e «covrigi de Buzău» diventa un
+                marchio.
+              </>
+            }
+            remember="I covrigi sono il pane da passeggio: caldi, salati, comprati al forno sotto casa."
+          />
+          <Card
+            card={RoFood.Magiun}
+            intro={
+              <>
+                Il <N>magiun</N> è una crema densa di prugne cotte a lungo a fuoco basso, senza
+                zucchero aggiunto. Quello di <N>Topoloveni</N>, nel distretto di Argeș, segue una
+                ricetta del 1914 e nel 2011 è il primo prodotto alimentare romeno a ottenere
+                un’indicazione geografica protetta dell’Unione europea. Si spalma sul pane o
+                farcisce i dolci.
+              </>
+            }
+            remember="Il magiun è solo prugne e tempo: quello di Topoloveni è il primo cibo romeno protetto dall’Unione europea."
+          />
+          <Card
+            card={RoFood.DealuMare}
+            intro={
+              <>
+                Il <N>Dealu Mare</N>, «la grande collina», è una striscia di colline lunga circa 65
+                km e larga da 3 a 12, ai piedi dei Carpazi fra i fiumi Teleajen e Buzău, nei
+                distretti di Prahova e Buzău. È una denominazione di origine protetta: rossi
+                soprattutto intorno a Valea Călugărească, bianchi intorno a Pietroasele. Il vitigno
+                simbolo è la <N>fetească neagră</N>, un rosso autoctono.
+              </>
+            }
+            remember="Il Dealu Mare è la collina del vino a un’ora da Bucarest: chiedi una fetească neagră."
+          />
+        </Part>
       </Chapter>
     </>
   )

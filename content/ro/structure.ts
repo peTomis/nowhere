@@ -69,6 +69,7 @@ export enum RoSection {
   Food = 'ro.section.food',
   FoodCommon = 'ro.section.food.common',
   FoodTransylvania = 'ro.section.food.transylvania',
+  FoodWallachia = 'ro.section.food.wallachia',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -169,6 +170,11 @@ export enum RoTrace {
   FoodWalnutNoodles = 'ro.place.food-walnut-noodles',
   FoodHorinca = 'ro.place.food-horinca',
   FoodBalmos = 'ro.place.food-balmos',
+  FoodMici = 'ro.place.food-mici',
+  FoodCiorbaBurta = 'ro.place.food-ciorba-burta',
+  FoodCovrigi = 'ro.place.food-covrigi',
+  FoodMagiun = 'ro.place.food-magiun-topoloveni',
+  FoodDealuMare = 'ro.place.food-dealu-mare',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -209,6 +215,11 @@ export enum RoFood {
   BanatCuisine = 'ro.food.banat-cuisine',
   Horinca = 'ro.food.horinca',
   Balmos = 'ro.food.balmos',
+  Mici = 'ro.food.mici',
+  CiorbaBurta = 'ro.food.ciorba-de-burta',
+  Covrigi = 'ro.food.covrigi',
+  Magiun = 'ro.food.magiun-topoloveni',
+  DealuMare = 'ro.food.dealu-mare',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -336,6 +347,7 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: RoSection.Food, level: 1, chapter: 'food', on: 'always' },
     { id: RoSection.FoodCommon, level: 2, on: 'always' },
     { id: RoSection.FoodTransylvania, level: 2, on: [Transylvania] },
+    { id: RoSection.FoodWallachia, level: 2, on: [Wallachia] },
   ],
   traces: [
     {
@@ -1108,6 +1120,42 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'pot',
     },
+    // Gastronomia, Valacchia. No images.
+    {
+      id: RoTrace.FoodMici,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'fork',
+    },
+    {
+      id: RoTrace.FoodCiorbaBurta,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'bowl',
+    },
+    {
+      id: RoTrace.FoodCovrigi,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'bread',
+    },
+    {
+      id: RoTrace.FoodMagiun,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'jar',
+    },
+    {
+      id: RoTrace.FoodDealuMare,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'wine',
+    },
   ],
   cards: [
     {
@@ -1391,7 +1439,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.CiorbaBors,
       kind: 'food',
       on: 'always',
-      traces: [RoTrace.FoodCiorba],
+      traces: [RoTrace.FoodCiorba, RoTrace.FoodCiorbaBurta],
     },
     {
       id: RoFood.Cozonac,
@@ -1453,6 +1501,41 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Transylvania,
       on: [Transylvania],
       traces: [RoTrace.FoodBalmos],
+    },
+    {
+      id: RoFood.Mici,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodMici],
+    },
+    {
+      id: RoFood.CiorbaBurta,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodCiorbaBurta],
+    },
+    {
+      id: RoFood.Covrigi,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodCovrigi],
+    },
+    {
+      id: RoFood.Magiun,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodMagiun],
+    },
+    {
+      id: RoFood.DealuMare,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodDealuMare],
     },
   ],
 })
