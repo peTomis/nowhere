@@ -99,8 +99,9 @@ export const structure = defineGuide<Template, Section>({
   ],
   /**
    * The album's own traces, from 04 (01–03 are the cover, the coat of arms and the flag, added
-   * by the kit). `where`: 'city' (needs `city`), 'nearby' or 'remote'. `image`: stock picture
-   * shown in grey until the reader's photo (missing here, so a placeholder).
+   * by the kit). `where`: 'city' (needs `city`), 'nearby' or 'remote', all three with `at`
+   * ([longitude, latitude], for the map view; placeholders here). `image`: stock picture shown in
+   * grey until the reader's photo (missing here, so a placeholder).
    */
   traces: [
     {
@@ -108,6 +109,7 @@ export const structure = defineGuide<Template, Section>({
       region: North,
       city: CityOne,
       where: 'city',
+      at: [10.0, 46.1],
       rarity: 'common',
       icon: 'clock',
     },
@@ -116,21 +118,37 @@ export const structure = defineGuide<Template, Section>({
       region: North,
       city: CityOne,
       where: 'city',
+      at: [10.004, 46.102],
       rarity: 'common',
       icon: 'house',
     },
-    { id: Trace.Fortress, region: North, where: 'remote', rarity: 'very-rare', icon: 'mountains' },
+    {
+      id: Trace.Fortress,
+      region: North,
+      where: 'remote',
+      at: [10.6, 46.5],
+      rarity: 'very-rare',
+      icon: 'mountains',
+    },
     {
       id: Trace.Painting,
       region: South,
       city: CityThree,
       where: 'city',
+      at: [10.4, 45.4],
       rarity: 'rare',
       icon: 'frame',
       image: { src: '/guides/template/trace-painting.jpg' },
       isNew: true,
     },
-    { id: Trace.Lake, region: South, where: 'remote', rarity: 'rare', icon: 'waves' },
+    {
+      id: Trace.Lake,
+      region: South,
+      where: 'remote',
+      at: [9.6, 45.6],
+      rarity: 'rare',
+      icon: 'waves',
+    },
     // A dish of the whole country: no region, on the album's first page with the emblems.
     { id: Trace.Dish, where: 'anywhere', rarity: 'common', icon: 'bowl' },
     // Its regional variant: anywhere in one region.

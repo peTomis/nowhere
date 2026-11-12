@@ -40,7 +40,7 @@ There is no test suite yet.
   `next typegen`).
 - Server Components by default. Add `'use client'` only where browser APIs or state are needed
   (today: `components/PrintPlates.tsx`, `components/WorldMap.tsx`, `components/AccountMenu.tsx`,
-  `components/Completion.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `Trace`,
+  `components/Completion.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `TraceMap`, `SourcesToggle`, `Trace`,
   `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `OpenAlbumButton`, the filter
   and index, `trip.tsx`, `data.tsx`).
   Keep client components at the leaves; pages stay server-side and pass plain data down.
@@ -62,7 +62,7 @@ There is no test suite yet.
   sorted by `prettier-plugin-tailwindcss`. 2-space indent, LF.
 - UI strings live in `i18n/it.json`, never inline: `import { t, format } from '@/i18n'`, then
   `t.map.searchPlaceholder` or `format(t.guide.trip.citiesOf, { name })` for `{placeholders}`.
-  Keys are typed from the JSON. Guide prose is content, not UI: it stays in `content/guides/`.
+  Keys are typed from the JSON. Guide prose is content, not UI: it stays in `content/<cc>/`.
   Use `locale` from `@/i18n` for `lang`, `localeCompare`, `Intl` and similar. Image alt texts
   are UI strings too, except in guides. Everything specific to a guide (prose, captions, alt
   texts, index labels, place names) lives in its content file, not in the JSON: titles shared by
@@ -114,8 +114,12 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 
 ## Content
 
-- Guides are registered in `data/guides.ts`. `countryId` is the ISO 3166-1 numeric code
-  (matches world TopoJSON feature ids); `at` is `[lon, lat]`; `status` is `ready | draft`.
+- Guides are registered in `content/countries.ts` (`id` ISO 3166-1 alpha-2, `numeric` the
+  numeric code that matches world TopoJSON feature ids, `at` `[lon, lat]`, `status`
+  `ready | draft`), their content in `content/guides.ts` and their structure in
+  `content/structures.ts`. A guide is a folder `content/<cc>/`: `structure.ts` (ids, regions,
+  sections, traces, cards: the same in every language), `sources.ts` (the bibliography),
+  `it/names.ts` and `it/guide.tsx` (texts and body), `research/` (see below).
 - Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `/template` (every element
   of the guide kit with placeholder text, `noindex`, not on the map), `/account` "I tuoi dati" (port
   of `Nowhere - I tuoi dati.dc.html`: account, sync status, completion per guide linking to
@@ -123,14 +127,14 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   Account and 404 use `SiteHeader` (logo badge at `--edge`, "Torna alla mappa") and start their
   text at `--inset`, under the logo glyph. There is deliberately no `/guide` index page: the map is
   the index.
-- `content/guides/template.tsx` is the starting point for a new guide and the showcase of the kit:
+- `content/xx/` (the template) is the starting point for a new guide and the showcase of the kit:
   when you add or change a primitive in `components/guide/content.tsx`, show it there too. Both
   `/guide/[slug]` and `/template` render through `components/guide/Guide.tsx`.
-- Guides: port of `Guida Romania - Sito.dc.html`. Content is TSX in `content/guides/<slug>.tsx`
+- Guides: port of `Guida Romania - Sito.dc.html`. Content is TSX in `content/<cc>/it/guide.tsx`
   built from the kit in `components/guide/content.tsx` (server; the gates `Only`/`Unless` are
   client components in `components/guide/trip.tsx`). Keep content files free of
   styling: if something new is needed, add a primitive to the kit. Place ids are a per-guide string
-  `enum` (see `romania.tsx`): type the content as `GuideContent<Enum>` and take the kit from
+  `enum` (see `content/ro/structure.ts`): type the content as `GuideContent<Enum>` and take the kit from
   `guideKit<Enum>()`; never write place ids as bare strings. Every block primitive has a required
   `on: P[] | 'always'` (an array, as a text can be shown for several places; `'always'` ignores the
   trip filter) and wraps itself in `Only`;
@@ -161,8 +165,27 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   (they repeat the cover and the opening): nowhere logo (home), country, current section; from
   960px also the Guida/Album switch and the completion, below 960px the index button, whose
   menu starts with the switch and the completion. "Apri l’album" in the opening becomes "Apri la
-  guida" while the album is shown. The switch shows the text or the album (`components/guide/Album.tsx`, state in
-  `components/guide/view.ts`, not persisted).
+  guida" while the album is shown. The switch shows the text or the album
+  (`components/guide/Album.tsx`, state in `components/guide/view.ts`, not persisted; `#album` in
+  the address opens the album).
+- The album's map (`components/guide/TraceMap.tsx`, not in the design), at the top of the album
+  under its filter: the filter's traces at their `at` (`[lon, lat]` in `structure.traces`,
+  required for `city`, `nearby`, `remote`, none for `region` and `anywhere`, which are only in the
+  album's pages), on the home's monochrome map (the country `neutral-300`, its neighbours
+  `neutral-200`), d3 for projection and zoom, React for SVG and pins: the reader's photo once
+  found, else the number in the album's dashed circle; close pins are grouped, a group zooms in; a
+  pin opens the trace as an album box. Readers' photos carry no GPS (stripped in the browser), so
+  pins are always at the trace's coordinates. Take coordinates from Wikidata or OpenStreetMap,
+  never from memory.
+- Sources (`components/guide/Sources.tsx`, not in the design): the last section of the text and
+  the last entry of the index ("Fonti", `#sources`), the list closed behind "Mostra le fonti"
+  (`SourcesToggle`), gated by the trip filter: the guide's bibliography, `content/<cc>/sources.ts` (`GuideSources`: pages with
+  title, site and URL, grouped by entry of the index, in the order of the index; set as `sources`
+  in the guide's content). The validator warns about person, city and landscape cards without
+  sources. The research notes behind it (what each page was used for, what is still to verify,
+  traces excluded from the album) are Markdown in `content/<cc>/research/` (`cities/`,
+  `nature/`, `food/`, `history/`, `album/`), English, never imported by the app; when a note gains a
+  page, add it to `sources.ts` too. `docs/` keeps only project documents.
 - Album and collection (port of `Album`, `Traccia`, `Scheda`, `PannelloFoto`, `InEvidenza`,
   `Fissa`, `Avviso`, `OggiTracce`; docs/data-model.md §11.1). **The first three traces of every
   country are the cover (01), the flag (02) and the coat of arms (03)**: `tracesOf()` in

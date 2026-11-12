@@ -82,6 +82,24 @@
       "guide": "Guida",
       "album": "Album"
     },
+    "map": {
+      "ariaLabel": "Mappa delle tracce di {name}",
+      "loading": "Carico la mappa…",
+      "unavailable": "Mappa non disponibile.",
+      "group": "{n} tracce qui: ingrandisci",
+      "here": "{n} tracce qui",
+      "zoomIn": "Ingrandisci",
+      "zoomOut": "Riduci",
+      "zoomAll": "Mostra tutto il paese"
+    },
+    "sources": {
+      "kicker": "{name} · {n} fonti",
+      "heading": "Fonti",
+      "lede": "Le pagine lette per scrivere la guida, capitolo per capitolo e scheda per scheda.",
+      "chapterSources": "Opere generali",
+      "show": "Mostra le fonti",
+      "hide": "Nascondi le fonti"
+    },
     "shell": {
       "index": "Indice",
       "close": "Chiudi"

@@ -1,6 +1,7 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
 import { Ro, RoFood, RoLandscape, RoPerson, RoSection, RoTrace, structure } from '../structure'
+import { sources } from '../sources'
 import { names } from './names'
 
 const dir = '/guides/romania'
@@ -61,6 +62,7 @@ export const romania: GuideContent<Ro, RoSection> = {
       height: 48,
     },
   ],
+  sources,
   body: <Body />,
 }
 
@@ -1639,7 +1641,7 @@ function Body() {
           </Timeline>
         </Part>
 
-        {/* Source ledger and outstanding independent checks: docs/romania-modern-history-sources.md. */}
+        {/* Source ledger and outstanding independent checks: content/ro/research/history/modern-history.md. */}
         <Part section={RoSection.NationalState}>
           <Timeline on="always">
             <Event

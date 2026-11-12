@@ -1,6 +1,7 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
 import { Food, Landscape, Person, Section, Template, Trace, structure } from '../structure'
+import { sources } from '../sources'
 import { names } from './names'
 
 /*
@@ -67,6 +68,7 @@ export const template: GuideContent<Template, Section> = {
     },
     { src: `${dir}/flag.svg`, alt: 'Bandiera del paese', kind: 'flag', width: 72, height: 48 },
   ],
+  sources,
   body: <Body />,
 }
 

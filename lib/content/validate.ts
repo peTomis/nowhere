@@ -140,6 +140,14 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       error(`traces › ${tr.id}`, `${tr.city} is not a city of ${tr.region}`)
     if (tr.where === 'city' && tr.city === undefined)
       error(`traces › ${tr.id}`, `where: 'city' needs a city`)
+    const onTheMap = tr.where === 'city' || tr.where === 'nearby' || tr.where === 'remote'
+    if (onTheMap && !tr.at) error(`traces › ${tr.id}`, `where: '${tr.where}' needs \`at\``)
+    if (!onTheMap && tr.at) error(`traces › ${tr.id}`, `where: '${tr.where}' takes no \`at\``)
+    if (tr.at) {
+      const [lon, lat] = tr.at
+      if (!(Math.abs(lon) <= 180 && Math.abs(lat) <= 90))
+        error(`traces › ${tr.id}`, 'at: [longitude, latitude], in degrees')
+    }
     if (BUILT_IN_TRACES.some((b) => tr.id === `${cc}.place.${b}`))
       error(`traces › ${tr.id}`, 'reserved: the kit adds this trace to every album')
     const text = names.traces?.[tr.id]
@@ -432,6 +440,30 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       }
       prev = s
     }
+  }
+
+  // --- sources ----------------------------------------------------------------------------------
+  // Grouped by entry of the index: chapters, parts, person, city and landscape cards.
+  if (content.sources) {
+    const entries = new Set([
+      ...structure.sections.map((s) => s.id),
+      ...(structure.cards ?? []).filter((c) => c.kind !== 'food').map((c) => c.id),
+    ])
+    for (const [key, refs] of Object.entries(content.sources)) {
+      const where = `sources › ${key}`
+      if (!entries.has(key))
+        error(where, 'not an entry of the index (a section, a person, city or landscape card)')
+      const urls = new Set<string>()
+      for (const ref of refs ?? []) {
+        if (!ref.title.trim() || !ref.site.trim()) error(where, `${ref.url}: empty title or site`)
+        if (!/^https:\/\/[^\s]+$/.test(ref.url)) error(where, `${ref.url}: not an https URL`)
+        if (urls.has(ref.url)) error(where, `${ref.url} listed twice`)
+        urls.add(ref.url)
+      }
+    }
+    for (const c of structure.cards ?? [])
+      if (c.kind !== 'food' && !content.sources[c.id]?.length)
+        warn(`sources › ${c.id}`, 'no sources for this card yet')
   }
 
   // --- images outside the body ----------------------------------------------------------------

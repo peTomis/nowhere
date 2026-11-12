@@ -4,11 +4,14 @@ import { useSyncExternalStore } from 'react'
 import { flushSync } from 'react-dom'
 
 /**
- * Which view of a guide is shown under the sticky bar: the text or the album. Shared by the bar's
- * switch and the opening's "Apri l’album" button. Not persisted: the page always opens on the
- * text, which is what the server renders.
+ * Which view of a guide is shown under the sticky bar: the text or the album (with the map of the
+ * traces). Shared by the bar's switch and the opening's "Apri l’album" button. Not persisted: the
+ * page opens on the text, which is what the server renders, unless the address is
+ * /guide/<slug>#album.
  */
 export type GuideView = 'guide' | 'album'
+
+export const GUIDE_VIEWS: GuideView[] = ['guide', 'album']
 
 let view: GuideView = 'guide'
 const listeners = new Set<() => void>()
@@ -41,9 +44,6 @@ export const GUIDE_BAR_HEIGHT = 64
 
 /** Where the reader was in each view, to come back to it. */
 const saved: Partial<Record<GuideView, number>> = {}
-
-/** Switches to the album. */
-export const openAlbum = () => openView('album')
 
 /**
  * Switches to a view. From the opening (bar not stuck) the page doesn't move. Below it, the views

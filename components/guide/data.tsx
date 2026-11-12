@@ -10,6 +10,8 @@ import type { AlbumTrace, GuideCard } from '@/content/build'
 export type GuideData = {
   /** ISO 3166-1 alpha-2. */
   country: string
+  /** ISO 3166-1 numeric: the country's shape in the world TopoJSON (none for the template). */
+  numeric?: string
   /** Country name. */
   name: string
   traces: AlbumTrace[]

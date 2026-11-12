@@ -1,7 +1,7 @@
 'use client'
 
 import { CheckIcon, PushPinIcon, XIcon } from '@phosphor-icons/react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Completion } from '@/components/Completion'
 import type { AlbumTrace } from '@/content/build'
 import { TRACE_THEMES, type TraceTheme } from '@/content/types'
@@ -11,17 +11,19 @@ import { pad, useGuideData } from './data'
 import { usePins } from './Pins'
 import { boxBorder, photoSrc, RarityMarks, Trace } from './Trace'
 import { TRACE_ICONS } from './traceIcons'
+import { TraceMap } from './TraceMap'
 
 /** The album's filter: everything (null), one region, or one theme across the regions. */
 type Filter = null | { kind: 'region'; id: string } | { kind: 'theme'; id: TraceTheme }
 
 /**
- * The album view of a guide, port of "Album.dc.html": title, full completion, filter, the pinned
- * cards ("In evidenza") and one page per region with a box per trace. The first page is the whole
- * country: the cover, the coat of arms and the flag. Besides the regions, the filter has the
- * themes Natura and Gastronomia (TRACE_THEMES): the region pages with only that theme's traces,
- * whose boxes are dashed green and yellow. A box opens the trace ("Traccia") in a
- * bottom sheet on phones, a window from 640px.
+ * The album view of a guide, port of "Album.dc.html": title, full completion, filter, the map of
+ * the filter's traces (TraceMap; not in the design), the pinned cards ("In evidenza") and one page
+ * per region with a box per trace. The first page is the whole country: the cover, the coat of
+ * arms and the flag. Besides the regions, the filter has the themes Natura and Gastronomia
+ * (TRACE_THEMES): the region pages with only that theme's traces, whose boxes are dashed green and
+ * yellow. A box or a pin of the map opens the trace ("Traccia") in a bottom sheet on phones, a
+ * window from 640px.
  */
 export function Album() {
   const { traces, cards, name, country, regions } = useGuideData()
@@ -50,6 +52,17 @@ export function Album() {
   ]
   // A theme keeps the pages of the regions, with only its traces.
   const inFilter = (tr: AlbumTrace) => filter?.kind !== 'theme' || tr.theme === filter.id
+  // The map shows the filter's traces that have a spot. Memoized: a new array resets its zoom.
+  const onMap = useMemo(
+    () =>
+      traces.filter(
+        (tr) =>
+          tr.at &&
+          (filter === null ||
+            (filter.kind === 'region' ? tr.region === filter.id : tr.theme === filter.id)),
+      ),
+    [traces, filter],
+  )
   const pages = [
     ...(filter?.kind === 'region' ? [] : [{ id: 'country', name, region: null }]),
     ...Object.entries(regions)
@@ -108,6 +121,8 @@ export function Album() {
           )}
         </div>
 
+        {onMap.length > 0 && <TraceMap traces={onMap} entries={entries} onOpen={setOpen} />}
+
         {pinned.length > 0 && (
           <section aria-labelledby="album-pinned" className="flex flex-col gap-6">
             <div className="flex flex-col gap-1">
@@ -150,7 +165,7 @@ export function Album() {
   )
 }
 
-function Page({
+export function Page({
   page,
   entries,
   onOpen,
@@ -273,7 +288,7 @@ function TraceBox({
 }
 
 /** An open box: the whole trace, in a bottom sheet (phones) or a window (from 640px). */
-function TraceDialog({
+export function TraceDialog({
   trace,
   region,
   onClose,

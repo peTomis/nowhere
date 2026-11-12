@@ -109,8 +109,24 @@ export type GuideContent<P extends string = string, S extends string = string> =
     width: number
     height: number
   })[]
+  /** The guide's bibliography, shown in its "Fonti" view (content/<cc>/sources.ts). */
+  sources?: GuideSources
   body: ReactNode
 }
+
+/**
+ * A page read while writing the guide. `title` and `site` as the page gives them, in its own
+ * language; `url` is the address that was read.
+ */
+export type SourceRef = { title: string; site: string; url: string }
+
+/**
+ * The guide's bibliography, by what each group of pages supports: an entry of the index (a
+ * chapter, a part, a person, city or landscape card), in any order (the "Fonti" view follows the
+ * index). The same for every locale. The research notes behind it (what each page was used for,
+ * what is still to verify) stay in content/<cc>/research/.
+ */
+export type GuideSources = Partial<Record<string, SourceRef[]>>
 
 /*
  * Structure (docs/data-model.md §2): what is the same in every language. Texts live in the
@@ -230,6 +246,12 @@ export type TraceDef<P extends string = string> = {
   /** City of the region, when `where` is 'city'. */
   city?: P
   where: TraceWhere
+  /**
+   * [longitude, latitude] of the spot, for the guide's map: required when `where` is 'city',
+   * 'nearby' or 'remote', left out for 'region' and 'anywhere' (listed under the map). Four
+   * decimals (about 10 m); taken from Wikidata or OpenStreetMap, not from memory.
+   */
+  at?: [number, number]
   rarity: Rarity
   icon: TraceIcon
   /**

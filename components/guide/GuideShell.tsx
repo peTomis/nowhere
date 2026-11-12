@@ -19,7 +19,7 @@ import { TripProvider, useTrip } from './trip'
 import {
   GUIDE_BAR_HEIGHT,
   GUIDE_BAR_ID,
-  openAlbum,
+  GUIDE_VIEWS,
   openView,
   setGuideView,
   useGuideView,
@@ -31,21 +31,23 @@ import { t } from '@/i18n'
  * Reading layout of a guide, from "Guida Romania - Sito v4.dc.html". A sticky top bar, whose
  * controls show only once it is stuck (they repeat the cover and the album opening): nowhere logo,
  * country, current section; from 960px also the Guida/Album switch and the completion, below
- * 960px the index button, whose menu starts with them. Under it, the text (sticky
- * sidebar with the trip filter and the index on wide screens, full-screen index menu below 960px)
- * or the album. The bar keeps its right end free for the account button (see useBarPush).
+ * 960px the index button, whose menu starts with them. Under it, the text (sticky sidebar with
+ * the trip filter and the index on wide screens, full-screen index menu below 960px), ending with
+ * the sources, or the album (with the map of the traces). The bar keeps its right end free for
+ * the account button (see useBarPush).
  */
 export function GuideShell(props: ShellProps & { cards: GuideCard[] }) {
-  const { countryId, country, places, traces, cards } = props
+  const { countryId, numeric, country, places, traces, cards } = props
   const data = useMemo(
     () => ({
       country: countryId,
+      numeric,
       name: country,
       traces,
       cards,
       regions: Object.fromEntries(places.map((p) => [p.id, p.name])),
     }),
-    [countryId, country, traces, cards, places],
+    [countryId, numeric, country, traces, cards, places],
   )
   return (
     <GuideDataProvider value={data}>
@@ -61,6 +63,8 @@ export function GuideShell(props: ShellProps & { cards: GuideCard[] }) {
 type ShellProps = {
   /** ISO 3166-1 alpha-2: the trip filter's key in the reader's prefs. */
   countryId: string
+  /** ISO 3166-1 numeric: the country's shape on the album's map (none for the template). */
+  numeric?: string
   country: string
   places: Place[]
   toc: TocEntry[]
@@ -69,6 +73,8 @@ type ShellProps = {
   copies: Record<string, ReactNode>
   /** The chapters' summary, at the top of the text before "In evidenza". */
   summary: ReactNode
+  /** "Fonti", the last section of the text (components/guide/Sources.tsx). */
+  sources: ReactNode
   children: ReactNode
 }
 
@@ -145,14 +151,20 @@ function useBarPush() {
   return [bar, button] as const
 }
 
-function Shell({ country, toc, traces, copies, summary, children }: ShellProps) {
+function Shell({ country, toc, traces, copies, summary, sources, children }: ShellProps) {
   const view = useGuideView()
-  // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album.
+  // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album, on arrival or when the
+  // address changes to it (the section anchors leave the view alone).
   useEffect(() => {
-    if (window.location.hash !== '#album') return
-    openAlbum()
-    // Arriving from a link (e.g. "I tuoi dati"): start at the album, not at the cover.
-    document.getElementById(GUIDE_BAR_ID)?.parentElement?.scrollIntoView()
+    const fromHash = () => {
+      if (window.location.hash !== '#album') return
+      openView('album')
+      // Arriving from a link (e.g. "I tuoi dati"): start at the album, not at the cover.
+      document.getElementById(GUIDE_BAR_ID)?.parentElement?.scrollIntoView()
+    }
+    fromHash()
+    window.addEventListener('hashchange', fromHash)
+    return () => window.removeEventListener('hashchange', fromHash)
   }, [])
   const trip = useTrip()
   const [menu, setMenu] = useState(false)
@@ -258,7 +270,7 @@ function Shell({ country, toc, traces, copies, summary, children }: ShellProps) 
       </div>
 
       {view === 'album' && <Album />}
-      {/* The text stays mounted (and server-rendered) while the album is shown. */}
+      {/* The text stays mounted (and server-rendered) while another view is shown. */}
       <div
         hidden={view !== 'guide'}
         className="flex justify-center gap-[clamp(48px,7vw,104px)] px-[clamp(20px,5vw,48px)] pt-[clamp(72px,11vw,144px)]"
@@ -283,6 +295,7 @@ function Shell({ country, toc, traces, copies, summary, children }: ShellProps) 
           {summary}
           <Pinned copies={copies} />
           {children}
+          {sources}
         </main>
       </div>
 
@@ -349,7 +362,7 @@ function Shell({ country, toc, traces, copies, summary, children }: ShellProps) 
   )
 }
 
-/** The Guida/Album switch: in the bar from 960px, at the top of the index menu below. */
+/** The view switch: in the bar from 960px, at the top of the index menu below. */
 function ViewSwitch({
   view,
   className,
@@ -365,7 +378,7 @@ function ViewSwitch({
       aria-label={t.guide.view.label}
       className={`flex-none gap-[2px] rounded-md bg-surface p-[3px] ${className}`}
     >
-      {(['guide', 'album'] as GuideView[]).map((v) => (
+      {GUIDE_VIEWS.map((v) => (
         <button
           key={v}
           type="button"

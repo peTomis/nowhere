@@ -12,9 +12,11 @@ import {
   type Credit,
   type GuideContent,
   type GuideNames,
+  type GuideSources,
   type GuideStructure,
   type Place,
   type Rarity,
+  type SourceRef,
   type TocEntry,
   type TraceIcon,
   type TraceText,
@@ -131,6 +133,8 @@ export type AlbumTrace = {
   /** City name when the trace is in a city. */
   city?: string
   where: TraceWhere
+  /** [longitude, latitude] on the guide's map; absent for 'region' and 'anywhere'. */
+  at?: [number, number]
   distance?: string
   rarity: Rarity
   points: number
@@ -148,6 +152,47 @@ export type AlbumTrace = {
    * card ("Specialità"); null otherwise.
    */
   theme: TraceTheme | null
+}
+
+/** An entry of the index with its sources, in the "Fonti" view. */
+export type SourceGroup = {
+  id: string
+  label: string
+  level: 2 | 3
+  on: Visibility
+  refs: SourceRef[]
+}
+
+/** A chapter in the "Fonti" view: its general works, then its parts and cards with sources. */
+export type SourceChapter = {
+  id: string
+  number?: number
+  title: string
+  on: Visibility
+  refs: SourceRef[]
+  groups: SourceGroup[]
+}
+
+/**
+ * The guide's sources in the order of the index: per chapter, the pages about the whole chapter,
+ * then its parts and cards (only those with sources). Chapters without any are left out.
+ */
+export function sourcesOf<P extends string, S extends string>(
+  structure: GuideStructure<P, S>,
+  names: GuideNames<P, S>,
+  sources: GuideSources | undefined,
+): SourceChapter[] {
+  if (!sources) return []
+  const chapters: SourceChapter[] = []
+  for (const e of tocOf(structure, names)) {
+    const refs = sources[e.id] ?? []
+    if (e.level === 1) {
+      chapters.push({ id: e.id, number: e.number, title: e.label, on: e.on, refs, groups: [] })
+    } else if (refs.length > 0) {
+      chapters.at(-1)?.groups.push({ id: e.id, label: e.label, level: e.level, on: e.on, refs })
+    }
+  }
+  return chapters.filter((c) => c.refs.length > 0 || c.groups.length > 0)
 }
 
 /** A person, city, landscape or food card, as the pins and the album show it. */
@@ -237,6 +282,7 @@ export function tracesOf<P extends string, S extends string>(
       region: tr.region ?? null,
       city: tr.city && names.places[tr.city],
       where: tr.where,
+      at: tr.at,
       distance: text.distance,
       rarity: tr.rarity,
       points: RARITY_POINTS[tr.rarity],

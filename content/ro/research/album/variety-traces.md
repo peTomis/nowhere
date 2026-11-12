@@ -1,7 +1,7 @@
 # Romania: traces added for variety
 
 On 2026-11-12, while the album was still in design, fourteen traces were taken out
-(`docs/excluded-traces-ro.md`) and twenty-six added, to cover passions the album
+(`excluded-traces.md`) and twenty-six added, to cover passions the album
 left out: music, cinema and myths, sport, science, crafts and folk art, wildlife,
 plus two dishes. The album has 125 boxes (3 built-in, 122 of the guide). Three
 person cards are new (Queen Marie, George Enescu, Nadia Comăneci) and two food
