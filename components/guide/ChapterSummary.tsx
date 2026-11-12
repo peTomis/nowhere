@@ -27,7 +27,13 @@ export function ChapterSummary({ chapters }: ChapterSummaryProps) {
               </span>
               <span className="flex flex-col gap-[2px]">
                 <span className="text-xl leading-[1.2] font-semibold">{c.title}</span>
-                <span className="text-sm leading-[1.35] text-neutral-700 italic">{c.line}</span>
+                {/* At most two lines: a long list (cities, landscapes) ends in an ellipsis. */}
+                <span
+                  title={c.line}
+                  className="line-clamp-2 text-sm leading-[1.35] text-neutral-700 italic"
+                >
+                  {c.line}
+                </span>
               </span>
             </a>
           </li>

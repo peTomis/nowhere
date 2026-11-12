@@ -40,7 +40,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.Emblems]: 'Bandiera e stemma',
     [RoSection.Flag]: 'Bandiera',
     [RoSection.CoatOfArms]: 'Stemma',
-    [RoSection.History]: 'Dalla Dacia alla Romania contemporanea',
+    [RoSection.History]: 'Dai Daci a oggi, regione per regione',
     [RoSection.DaciaToHungarians]: 'Dalla Dacia agli Ungari',
     [RoSection.DaciaAndRome]: 'Dacia e Roma',
     [RoSection.MigrationPeriod]: 'Anni di passaggio',
