@@ -21,7 +21,6 @@ const {
   MapFigure,
   N,
   Note,
-  Only,
   Part,
   Position,
   Positions,
@@ -202,6 +201,7 @@ function Body() {
                 </N>
                 .
               </Detail>
+              <Today traces={[RoTrace.SarmizegetusaRegia]} />
             </Event>
             <Event on="always" date="101–106" title="Traiano conquista la Dacia">
               <Detail on="always">
@@ -215,7 +215,7 @@ function Body() {
                 </N>
                 , città fondata ex novo a circa 40 km dalla capitale dacica.
               </Detail>
-              <Today traces={[RoTrace.SarmizegetusaRegia, RoTrace.TrajansColumnCopy]} />
+              <Today traces={[RoTrace.TrajansBridgeRuins, RoTrace.TrajansColumnCopy]} />
               <Detail on="always">
                 Comincia la{' '}
                 <N href="https://it.wikipedia.org/wiki/Romanizzazione">romanizzazione</N>: dal
@@ -234,6 +234,7 @@ function Body() {
                 tra il Danubio e il Mar Nero, che non fa parte della Dacia ma della{' '}
                 <N href="https://it.wikipedia.org/wiki/Mesia">Mesia</N>.
               </Detail>
+              <Today traces={[RoTrace.ConstantaRomanMosaic]} />
             </Event>
           </Timeline>
 
@@ -435,6 +436,7 @@ function Body() {
                 la frontiera orientale. Nel 1224 il <N work>Diploma Andreanum</N> garantisce loro
                 ampie autonomie.
               </Detail>
+              <Today traces={[RoTrace.BrasovBlackChurch, RoTrace.BranCastle]} />
             </Event>
             <Event
               on={[Transylvania]}
@@ -485,6 +487,7 @@ function Body() {
                 discendono i <N href="https://it.wikipedia.org/wiki/Dăneștii">Dăneștii</N>. Sono le
                 due linee principali della Casa di Basarab.
               </Detail>
+              <Today traces={[RoTrace.VladDraculHouse]} />
             </Event>
             <Event
               on={[Moldavia]}
@@ -586,6 +589,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Stefano_III_il_Grande">Stefano il Grande</N>{' '}
                 (1457–1504), che combatterà a lungo gli ottomani.
               </Detail>
+              <Today traces={[RoTrace.SuceavaCitadel]} />
             </Event>
             <Event on={[Wallachia]} date="1512–1521" title="Neagoe Basarab e Curtea de Argeș">
               <Detail on={[Wallachia]}>
@@ -600,6 +604,7 @@ function Body() {
                 A Neagoe sono attribuiti gli <N work>Insegnamenti al figlio Teodosio</N>, consigli
                 sul governo scritti in slavone. Gli studiosi discutono se ne sia davvero l’autore.
               </Detail>
+              <Today traces={[RoTrace.CurteaDeArgesRoyalTombs]} />
             </Event>
             <Event on={[Transylvania]} date="1514" title="La ribellione di György Dózsa">
               <Detail on={[Transylvania]}>
@@ -669,6 +674,7 @@ function Body() {
                 costruita dai Movilă negli anni Ottanta del Cinquecento e dipinta alla fine del
                 secolo, ne riprende i temi.
               </Detail>
+              <Today traces={[RoTrace.VoronetMonastery]} />
             </Event>
           </Timeline>
         </Part>
@@ -810,7 +816,7 @@ function Body() {
                 uccidono a <N href="https://it.wikipedia.org/wiki/Câmpia_Turzii">Câmpia Turzii</N>,
                 vicino a <N href="https://it.wikipedia.org/wiki/Turda">Turda</N>.
               </Detail>
-              <Today traces={[RoTrace.MichaelTheBraveHeadTomb]} />
+              <Today traces={[RoTrace.MichaelTheBraveHeadTomb, RoTrace.MihaiVodaChurch]} />
             </Event>
             <Event
               on={[Transylvania]}
@@ -1126,6 +1132,7 @@ function Body() {
                 <N href="https://ro.wikipedia.org/wiki/Bătălia_de_la_Finta">Finta</N> nel maggio
                 1653.
               </Detail>
+              <Today traces={[RoTrace.IasiThreeHierarchsMonastery]} />
             </Event>
             <Context
               on={[Moldavia]}
@@ -1307,6 +1314,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Istanbul">Istanbul</N> riconosce il dominio{' '}
                 <N href="https://it.wikipedia.org/wiki/Asburgo">asburgico</N>.
               </Detail>
+              <Today traces={[RoTrace.AlbaIuliaCitadel, RoTrace.SibiuBrukenthalPalace]} />
             </Event>
             <Event on={[Transylvania]} date="1699–1701" title={<>L’Unione con Roma</>}>
               <Detail on={[Transylvania]}>
@@ -1441,6 +1449,7 @@ function Body() {
                 resta legato allo stile brâncovenesc, che vedi al monastero di Horezu e al palazzo
                 di Mogoșoaia, vicino a Bucarest.
               </Detail>
+              <Today traces={[RoTrace.StavropoleosChurch]} />
             </Event>
             <Event
               on={[Wallachia]}
@@ -1556,6 +1565,7 @@ function Body() {
                 regione attira coloni ucraini, tedeschi, ungheresi, ebrei e armeni con terre
                 gratuite ed esenzioni fiscali.
               </Detail>
+              <Today traces={[RoTrace.StephenTheGreatTomb]} />
             </Event>
             <Event
               on={[Moldavia]}
@@ -1713,6 +1723,7 @@ function Body() {
                 voto dipende dal censo e la cittadinanza resta preclusa ai non cristiani, colpendo
                 soprattutto gli ebrei.
               </Detail>
+              <Today traces={[RoTrace.PelesCastle]} />
             </Event>
             <Event
               on={[Transylvania]}
@@ -1738,10 +1749,13 @@ function Body() {
                 settentrionale e il delta del Danubio, ma cede alla Russia la Bessarabia meridionale
                 ricevuta nel 1856, oggi tra Moldova e Ucraina.
               </Detail>
-              {/* Only where the Constanța card is shown: what the new state builds in the city. */}
-              <Only on={[Ro.Constanta]}>
-                <Today traces={[RoTrace.ConstantaOvidSquare, RoTrace.ConstantaGrandMosque]} />
-              </Only>
+              <Today
+                traces={[
+                  RoTrace.ConstantaOvidSquare,
+                  RoTrace.ConstantaGrandMosque,
+                  RoTrace.KingCarolIBridge,
+                ]}
+              />
             </Event>
             <Event
               on={[Wallachia, Moldavia, Dobruja]}
@@ -1802,10 +1816,13 @@ function Body() {
                 La Sala dell’Unione conserva la memoria dell’assemblea. Il trattato del Trianon del
                 1920 sancisce il passaggio della Transilvania dall’Ungheria alla Romania.
               </Detail>
-              {/* Only where the Alba Iulia card is shown: the link points to its trace. */}
-              <Only on={[Ro.AlbaIulia]}>
-                <Today traces={[RoTrace.AlbaIuliaUnionHall]} />
-              </Only>
+              <Today
+                traces={[
+                  RoTrace.AlbaIuliaUnionHall,
+                  RoTrace.ClujAvramIancuSquare,
+                  RoTrace.TimisoaraUnionSquare,
+                ]}
+              />
               <Detail on={[Moldavia]}>
                 Anche la Bucovina entra nel regno. Solo la sua parte meridionale, con
                 <N> Suceava</N>, appartiene alla Romania attuale; quella settentrionale è oggi
@@ -1899,6 +1916,7 @@ function Body() {
                 costituzione cambia il nome dello Stato in Repubblica socialista di Romania; il
                 partito mantiene il monopolio politico.
               </Detail>
+              <Today traces={[RoTrace.PrimaveriiPalace, RoTrace.PalaceOfTheParliament]} />
             </Event>
             <Event on="always" date="1966" title="Il decreto 770 limita l’aborto">
               <Detail on="always">
@@ -1936,10 +1954,13 @@ function Body() {
                 dicembre Nicolae ed Elena Ceaușescu vengono processati sommariamente e fucilati. Il
                 Fronte di salvezza nazionale assume il potere.
               </Detail>
-              {/* Only where the Timișoara card is shown: the link points to its traces. */}
-              <Only on={[Ro.Timisoara]}>
-                <Today traces={[RoTrace.TimisoaraTokesParsonage, RoTrace.TimisoaraOperaBalcony]} />
-              </Only>
+              <Today
+                traces={[
+                  RoTrace.TimisoaraTokesParsonage,
+                  RoTrace.CentralCommitteeBuilding,
+                  RoTrace.TimisoaraOperaBalcony,
+                ]}
+              />
             </Event>
           </Timeline>
         </Part>

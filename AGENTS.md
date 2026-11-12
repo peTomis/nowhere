@@ -181,8 +181,11 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   or drink is a trace with `where: 'region'` (anywhere in its region) or `where: 'anywhere'`
   (whole country: no region, on the album's first page), and a card of the whole country has no
   `region` and lists its regional variants' traces; `CARD_CHAPTER` in `content/types.ts`);
-  `<Today traces>` links an event to
-  its traces. After "Tutte" and the regions, the album's filter ends with the themes Natura and
+  `<Today traces>` shows, under a
+  timeline event ("Oggi"), its traces in full as in the cards, so the photo can be added from the
+  timeline too (deviation from the design's line of links): the first two whose card the trip
+  filter shows, a third listed as fallback; never wrap it in `Only`, never put it in a `Context`
+  box, one event per trace. After "Tutte" and the regions, the album's filter ends with the themes Natura and
   Gastronomia (`TRACE_THEMES` in `content/types.ts`: traces of landscape and food cards); their
   boxes still to find are dashed in `album-nature` (green) and `album-food` (yellow), not grey. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to

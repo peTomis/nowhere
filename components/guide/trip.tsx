@@ -84,6 +84,12 @@ function shown(on: Visibility, trip: Trip) {
   return on === 'always' || on.some(trip.on)
 }
 
+/** Whether something with this `on` is shown in the current trip, as <Only> decides. */
+export function useShown() {
+  const trip = useTrip()
+  return (on: Visibility) => shown(on, trip)
+}
+
 /** Renders its children when `on` is 'always' or one of its places is in the trip. */
 export function Only<P extends string>({ on, children }: GateProps<P>) {
   return shown(on, useTrip()) ? children : null

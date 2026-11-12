@@ -209,6 +209,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
 
   const order: string[] = []
   const anchors = new Set<string>()
+  const todayUsed = new Set<string>()
   const cardsUsed = new Set<string>()
   /** Person and landscape cards in body order: the index lists them in the order of structure.cards. */
   const listedSeen: Record<'person' | 'landscape', string[]> = { person: [], landscape: [] }
@@ -304,9 +305,15 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     }
     if (k === 'today') {
       const list = Array.isArray(props.traces) ? (props.traces as unknown[]) : []
-      if (list.length === 0 || list.length > 2) error(here, 'traces: one or two trace ids')
-      for (const id of list)
+      // Two are shown; a third is the fallback when the trip filter hides one of their cards.
+      if (list.length === 0 || list.length > 3) error(here, 'traces: one to three trace ids')
+      for (const id of list) {
         if (!traceIds.has(String(id))) error(here, `unknown trace ${String(id)}`)
+        // Its anchor in the timeline is trace-today-<slug>: one event per trace.
+        if (todayUsed.has(String(id)))
+          error(here, `trace ${String(id)} already under another event`)
+        todayUsed.add(String(id))
+      }
       return
     }
     if (k === 'card') {

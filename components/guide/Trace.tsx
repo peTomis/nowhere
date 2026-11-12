@@ -92,6 +92,7 @@ export function Trace({
   prefix = '',
   showPlace = true,
   text,
+  heading: Heading = 'h4',
 }: {
   id: string
   /** HTML id when the trace is not in a card (the coat of arms and the flag in the text). */
@@ -104,6 +105,8 @@ export function Trace({
   showPlace?: boolean
   /** Description in this card; the album keeps the shared trace description. */
   text?: string
+  /** The name's heading: h5 under a timeline event, whose title is an h4. */
+  heading?: 'h4' | 'h5'
 }) {
   const trace = useTrace(id)
   const { session, entries } = useCollection()
@@ -240,12 +243,12 @@ export function Trace({
               <span aria-hidden="true">{rarity}</span>
             </span>
           </div>
-          <h4 className="m-0 text-[clamp(20px,3.6vw,24px)] leading-[1.2]">
+          <Heading className="m-0 text-[clamp(20px,3.6vw,24px)] leading-[1.2]">
             {trace.name}
             {trace.local && trace.local !== trace.name && (
               <span className="ml-[.3em] font-normal text-neutral-700 italic">{trace.local}</span>
             )}
-          </h4>
+          </Heading>
           {showPlace && trace.place && (
             <span className="flex items-center gap-[6px] text-sm leading-[1.4] text-neutral-700">
               <MapPinIcon weight="duotone" size={16} aria-hidden="true" />
