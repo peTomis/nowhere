@@ -218,6 +218,17 @@ Le regole delle sezioni B9 e B10 valgono anche qui. In più:
 - **Niente primati non verificati**: «la più grande», «l’ultima foresta vergine», «il canyon più profondo».
 - **La regione del filtro** è quella del luogo; un paesaggio a cavallo di due regioni ha nel suo `on` tutte e due.
 
+### B12. Schede specialità
+
+Il capitolo Gastronomia è fatto di schede specialità: un piatto, un dolce, una bevanda, un vino. Lo scopo è far riconoscere al lettore che cosa ordinare e che cosa ha nel piatto.
+
+1. **Introduzione.** Da tre a sei righe: che cos’è, di che cosa è fatto, quando e dove si mangia, da dove viene. Le origini contese (turca, ungherese, tedesca, ebraica…) si dicono come tali, senza attribuire il piatto a un solo popolo.
+2. **Tracce.** La specialità stessa è una traccia: il lettore la fotografa dove la mangia. Una specialità di tutto il paese ha `where: 'anywhere'` e nessuna regione; una specialità regionale ha `where: 'region'` e la sua regione. Il «Come trovarla» dice in quali locali o negozi si trova, in quale stagione, con quale nome nel menù. Niente nomi di ristoranti: cambiano.
+3. **Varianti.** Una specialità comune elenca fra le sue tracce le varianti regionali, che hanno anche una scheda nella parte della loro regione: la stessa traccia, non una copia (D6).
+4. **Da ricordare.** Una frase in chiusura.
+
+Valore: «comune» quando si trova in ogni ristorante tradizionale della regione, «rara» quando bisogna cercarla (un villaggio, una stagione, una produzione piccola).
+
 ---
 
 ## Parte C — Fonti e verifica

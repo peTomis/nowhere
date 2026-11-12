@@ -710,7 +710,7 @@ export function guideKit<P extends string, S extends string>(
   }
 
   /**
-   * A person, city or landscape card ("Scheda", B9–B11): heading with the pin button, introduction, the
+   * A person, city, landscape or food card ("Scheda", B9–B12): heading with the pin button, introduction, the
    * card's traces (from structure.cards, those in the trip first) and "Da ricordare". `intro` and
    * `remember` are one paragraph each. Its `on` comes from structure.cards, as a part's comes from
    * its section. A copy of it is shown in "In evidenza" when pinned (`idPrefix`, `heading` and
@@ -728,8 +728,8 @@ export function guideKit<P extends string, S extends string>(
     if (!def) throw new Error(`Unknown card ${props.card}`)
     const text = names.cards?.[def.id]
     const name = text?.name ?? def.id
-    // Person and landscape cards sit right under their chapter; city cards under a part.
-    const H = def.kind === 'city' ? 'h4' : 'h3'
+    // Person and landscape cards sit right under their chapter; city and food cards under a part.
+    const H = def.kind === 'city' || def.kind === 'food' ? 'h4' : 'h3'
     const prefix = props.idPrefix ?? ''
     return (
       <Only on={props.ungated ? 'always' : def.on}>
@@ -741,7 +741,8 @@ export function guideKit<P extends string, S extends string>(
             {props.heading !== false && (
               <header className="flex flex-col gap-1">
                 <div className={`${kicker} text-accent-700`}>
-                  {t.guide.album.kind[def.kind]} · {names.places[def.region]}
+                  {t.guide.album.kind[def.kind]} ·{' '}
+                  {def.region ? names.places[def.region] : t.guide.album.where.anywhere}
                 </div>
                 <div className="flex items-center gap-2">
                   <H

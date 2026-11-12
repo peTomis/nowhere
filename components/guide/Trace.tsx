@@ -13,6 +13,7 @@ import {
   ImageIcon,
   LockSimpleIcon,
   MapPinIcon,
+  MapTrifoldIcon,
   PathIcon,
   PencilSimpleIcon,
   SignpostIcon,
@@ -40,6 +41,7 @@ export const WHERE_ICONS: Record<TraceWhere, typeof BuildingsIcon> = {
   city: BuildingsIcon,
   nearby: SignpostIcon,
   remote: PathIcon,
+  region: MapTrifoldIcon,
   anywhere: GlobeHemisphereEastIcon,
 }
 

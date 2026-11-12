@@ -53,6 +53,7 @@
         "city": "In città",
         "nearby": "Nei dintorni",
         "remote": "Fuori mano",
+        "region": "In tutta la regione",
         "anywhere": "In tutto il paese"
       },
       "rarityLabel": {
@@ -70,7 +71,8 @@
       "kind": {
         "person": "Personaggio",
         "city": "Città",
-        "landscape": "Paesaggio"
+        "landscape": "Paesaggio",
+        "food": "Specialità"
       },
       "tracesOnly": "{n} tracce",
       "tracesOneRegion": "{n} tracce in una regione"
@@ -227,6 +229,7 @@
       "outside": "Fuori dal viaggio",
       "outsideText": "{name} non è nel viaggio che hai scelto. È qui perché l’hai fissata.",
       "outsideLandscapeText": "Questo paesaggio non è nel viaggio che hai scelto. È qui perché hai fissato la sua scheda.",
+      "outsideFoodText": "Questa specialità è di una regione che non è nel viaggio che hai scelto. È qui perché hai fissato la sua scheda.",
       "pinned": "{name} è in evidenza, in cima alla guida.",
       "see": "Vedi",
       "unpinned": "Tolto da In evidenza: {name}.",

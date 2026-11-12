@@ -131,8 +131,11 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     addId(tr.id, 'traces', traceIds)
     if (!tr.id.startsWith(`${cc}.place.`))
       error('traces', `${tr.id} must start with "${cc}.place."`)
-    if (regionOf.has(tr.region) || !placeIds.has(tr.region))
-      error(`traces › ${tr.id}`, `${tr.region} is not a region`)
+    if (tr.where === 'anywhere') {
+      if (tr.region !== undefined || tr.city !== undefined)
+        error(`traces › ${tr.id}`, `where: 'anywhere' takes no region or city`)
+    } else if (tr.region === undefined || regionOf.has(tr.region) || !placeIds.has(tr.region))
+      error(`traces › ${tr.id}`, `${tr.region ?? 'no region'}: needs a region of the trip filter`)
     if (tr.city !== undefined && regionOf.get(tr.city) !== tr.region)
       error(`traces › ${tr.id}`, `${tr.city} is not a city of ${tr.region}`)
     if (tr.where === 'city' && tr.city === undefined)
@@ -153,9 +156,13 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       error('cards', `${c.id} must start with "${cc}.person."`)
     if (c.kind === 'landscape' && !c.id.startsWith(`${cc}.landscape.`))
       error('cards', `${c.id} must start with "${cc}.landscape."`)
+    if (c.kind === 'food' && !c.id.startsWith(`${cc}.food.`))
+      error('cards', `${c.id} must start with "${cc}.food."`)
     if (c.kind === 'city' && regionOf.get(c.id) !== c.region)
       error(`cards › ${c.id}`, `a city card's id must be a city of ${c.region}`)
-    if (regionOf.has(c.region) || !placeIds.has(c.region))
+    if (c.region === undefined) {
+      if (c.kind !== 'food') error(`cards › ${c.id}`, 'only a food card can have no region')
+    } else if (regionOf.has(c.region) || !placeIds.has(c.region))
       error(`cards › ${c.id}`, `${c.region} is not a region`)
     if (c.traces.length === 0) error(`cards › ${c.id}`, 'no traces')
     for (const id of c.traces)
@@ -315,7 +322,10 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       cardsUsed.add(id)
       if (!within(def.on, ctx.on))
         error(where, `on ${fmt(def.on)} is not within its parent's ${fmt(ctx.on)}`)
-      if (def.kind !== 'city') {
+      if (def.kind === 'food') {
+        // Not in the index (too many): only its chapter is checked.
+        if (ctx.chapter !== 'food') error(where, 'a food card goes in the food chapter')
+      } else if (def.kind !== 'city') {
         listedSeen[def.kind].push(id)
         if (ctx.chapter !== CARD_CHAPTER[def.kind])
           error(where, `a ${def.kind} card goes in the ${CARD_CHAPTER[def.kind]} chapter`)

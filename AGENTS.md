@@ -176,7 +176,11 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   inside the part whose `on` names the city or its region: the index lists them one level under
   that part, as the regions under a history part — `cityCardSections()` in `content/types.ts`;
   landscape cards, id `<cc>.landscape.<slug>`, in the Natura chapter, in `structure.cards` order:
-  they are its entries in the index, as the person cards; `CARD_CHAPTER` in `content/types.ts`);
+  they are its entries in the index, as the person cards; food cards ("Specialità"), id
+  `<cc>.food.<slug>`, in the parts of the Gastronomia chapter, not listed in the index: the dish
+  or drink is a trace with `where: 'region'` (anywhere in its region) or `where: 'anywhere'`
+  (whole country: no region, on the album's first page), and a card of the whole country has no
+  `region` and lists its regional variants' traces; `CARD_CHAPTER` in `content/types.ts`);
   `<Today traces>` links an event to
   its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to

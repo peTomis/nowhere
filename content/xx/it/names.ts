@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Landscape, Person, Section, Template, Trace } from '../structure'
+import { Food, Landscape, Person, Section, Template, Trace } from '../structure'
 
 /** Italian names of the template's places and sections (index, titles, trip filter). */
 
@@ -66,6 +66,20 @@ export const names: GuideNames<Template, Section> = {
       text: 'Una traccia di paesaggio: un punto preciso, da fotografare, dentro un ambiente più grande.',
       find: 'Sentiero segnato dal rifugio, due ore di cammino; percorribile da giugno a ottobre.',
     },
+    [Trace.Dish]: {
+      name: 'Il piatto nazionale',
+      local: 'Nome nel menù',
+      place: 'In tutto il paese',
+      // No `text`: the card's intro already says what it is.
+      find: 'Dove ordinarlo e come riconoscerlo: in quali locali, in quale stagione.',
+    },
+    [Trace.RegionalDish]: {
+      name: 'La variante del Sud',
+      local: 'Nome locale',
+      place: places[Template.South],
+      text: 'Che cosa cambia rispetto alla ricetta comune, in una o due frasi.',
+      find: 'Nei ristoranti tradizionali della regione.',
+    },
   },
   /** Card headings; a city card takes the city's name. */
   cards: {
@@ -80,5 +94,6 @@ export const names: GuideNames<Template, Section> = {
     },
     [Template.CityThree]: { name: places[Template.CityThree] },
     [Landscape.Mountains]: { name: 'Le montagne', local: 'Nome locale' },
+    [Food.Dish]: { name: 'Il piatto nazionale', local: 'Nome locale' },
   },
 }

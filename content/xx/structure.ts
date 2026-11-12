@@ -45,6 +45,8 @@ export enum Trace {
   Fortress = 'xx.place.fortress',
   Painting = 'xx.place.painting',
   Lake = 'xx.place.lake',
+  Dish = 'xx.place.food-dish',
+  RegionalDish = 'xx.place.food-regional-dish',
 }
 
 export enum Person {
@@ -54,6 +56,11 @@ export enum Person {
 /** Landscapes with a card (`<cc>.landscape.<slug>`): stored with the reader's pins, never rename them. */
 export enum Landscape {
   Mountains = 'xx.landscape.mountains',
+}
+
+/** Dishes and drinks with a card (`<cc>.food.<slug>`): stored with the reader's pins. */
+export enum Food {
+  Dish = 'xx.food.dish',
 }
 
 const { North, South, CityOne, CityTwo, CityThree } = Template
@@ -124,6 +131,10 @@ export const structure = defineGuide<Template, Section>({
       isNew: true,
     },
     { id: Trace.Lake, region: South, where: 'remote', rarity: 'rare', icon: 'waves' },
+    // A dish of the whole country: no region, on the album's first page with the emblems.
+    { id: Trace.Dish, where: 'anywhere', rarity: 'common', icon: 'bowl' },
+    // Its regional variant: anywhere in one region.
+    { id: Trace.RegionalDish, region: South, where: 'region', rarity: 'rare', icon: 'bowl' },
   ],
   /**
    * Person, city and landscape cards (a city card's id is the city): each listed once in the body
@@ -153,5 +164,7 @@ export const structure = defineGuide<Template, Section>({
       on: [North, South],
       traces: [Trace.Fortress, Trace.Lake],
     },
+    // A food card of the whole country has no region; it lists its regional variants too.
+    { id: Food.Dish, kind: 'food', on: 'always', traces: [Trace.Dish, Trace.RegionalDish] },
   ],
 })

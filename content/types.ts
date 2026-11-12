@@ -11,10 +11,11 @@ import type { ReactNode } from 'react'
 
 /**
  * URL anchor (and HTML id) of an index entry: a section's id without `<cc>.section.`, a person
- * or landscape card's without `<cc>.person.` / `<cc>.landscape.` (the same as cardAnchor).
+ * landscape or food card's without `<cc>.person.` / `<cc>.landscape.` / `<cc>.food.` (the same
+ * as cardAnchor).
  */
 export function anchorOf(id: string): string {
-  return id.replace(/^[a-z]{2}\.(section\.|person\.|landscape\.)?/, '')
+  return id.replace(/^[a-z]{2}\.(section\.|person\.|landscape\.|food\.)?/, '')
 }
 
 /** A region the reader can include or exclude from their trip, with its cities. */
@@ -59,7 +60,9 @@ export function cityCardSections<P extends string, S extends string>(
   for (const c of structure.cards ?? []) {
     if (c.kind !== 'city') continue
     const part = parts.find(
-      (s) => Array.isArray(s.on) && (s.on.includes(c.id as P) || s.on.includes(c.region)),
+      (s) =>
+        Array.isArray(s.on) &&
+        (s.on.includes(c.id as P) || (c.region !== undefined && s.on.includes(c.region))),
     )
     result.set(c.id, (part ?? chapter).id)
   }
@@ -155,26 +158,34 @@ export type Rarity = 'common' | 'rare' | 'very-rare'
 export const RARITY_POINTS: Record<Rarity, number> = { common: 1, rare: 2, 'very-rare': 3 }
 
 /**
- * Where a trace is: in a city of the guide, near one, out of the way, or anywhere in the country
- * (the three traces every album opens with: cover, coat of arms, flag).
+ * Where a trace is: in a city of the guide, near one, out of the way, anywhere in one region (a
+ * regional dish or drink), or anywhere in the country (the three traces every album opens with —
+ * cover, coat of arms, flag — and the dishes of the whole country).
  */
-export type TraceWhere = 'city' | 'nearby' | 'remote' | 'anywhere'
+export type TraceWhere = 'city' | 'nearby' | 'remote' | 'region' | 'anywhere'
 
 /** The icon of a trace still to find (components/guide/traceIcons.tsx). */
 export type TraceIcon =
   | 'bank'
   | 'barn'
   | 'boat'
+  | 'bowl'
+  | 'brandy'
+  | 'bread'
   | 'bridge'
+  | 'cake'
   | 'castle'
   | 'church'
   | 'clock'
   | 'drop'
+  | 'fish'
   | 'flag'
   | 'flower'
+  | 'fork'
   | 'frame'
   | 'house'
   | 'image'
+  | 'jar'
   | 'lighthouse'
   | 'lightning'
   | 'mosaic'
@@ -184,6 +195,7 @@ export type TraceIcon =
   | 'paint'
   | 'paw'
   | 'pin'
+  | 'pot'
   | 'shield'
   | 'snowflake'
   | 'steps'
@@ -192,6 +204,7 @@ export type TraceIcon =
   | 'trophy'
   | 'wall'
   | 'waves'
+  | 'wine'
 
 /**
  * A trace: a place to find on the trip, one box of the album (docs/data-model.md §3, a "place"
@@ -202,11 +215,14 @@ export type TraceIcon =
 export type TraceDef<P extends string = string> = {
   /** `<cc>.place.<slug>`, e.g. `ro.place.biertan-fortified-church`. Stored with the reader's photos. */
   id: string
-  /** Region of the trip filter. */
-  region: P
+  /**
+   * Region of the trip filter. Left out only with `where: 'anywhere'`: the trace is then on the
+   * album's first page, with the cover, the flag and the coat of arms.
+   */
+  region?: P
   /** City of the region, when `where` is 'city'. */
   city?: P
-  where: Exclude<TraceWhere, 'anywhere'>
+  where: TraceWhere
   rarity: Rarity
   icon: TraceIcon
   /**
@@ -219,10 +235,10 @@ export type TraceDef<P extends string = string> = {
 }
 
 /**
- * The kinds of card: a person (Personaggi chapter), a city (Città chapter) or a landscape (Natura
- * chapter).
+ * The kinds of card: a person (Personaggi chapter), a city (Città chapter), a landscape (Natura
+ * chapter) or a dish or drink, "Specialità" (Gastronomia chapter).
  */
-export type CardKind = 'person' | 'city' | 'landscape'
+export type CardKind = 'person' | 'city' | 'landscape' | 'food'
 
 /**
  * The chapter each kind of card goes in. Person and landscape cards are their chapter's entries
@@ -233,6 +249,7 @@ export const CARD_CHAPTER: Record<CardKind, ChapterKind> = {
   person: 'people',
   city: 'cities',
   landscape: 'nature',
+  food: 'food',
 }
 
 /**
@@ -242,12 +259,15 @@ export const CARD_CHAPTER: Record<CardKind, ChapterKind> = {
 export type CardDef<P extends string = string> = {
   /**
    * A person: `<cc>.person.<slug>`. A city: the city's id (one card per city). A landscape:
-   * `<cc>.landscape.<slug>`.
+   * `<cc>.landscape.<slug>`. A dish or drink: `<cc>.food.<slug>`.
    */
   id: string
   kind: CardKind
-  /** Region in the card's kicker ("Personaggio · Valacchia"). */
-  region: P
+  /**
+   * Region in the card's kicker ("Personaggio · Valacchia"). Only a food card of the whole
+   * country leaves it out ("Specialità · In tutto il paese").
+   */
+  region?: P
   /**
    * For which places of the trip the card is shown, like a section's `on`. A person or landscape
    * card is also an entry of the index, under its chapter, shown for the same places.

@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Landscape, Person, Section, Template, Trace, structure } from '../structure'
+import { Food, Landscape, Person, Section, Template, Trace, structure } from '../structure'
 import { names } from './names'
 
 /*
@@ -344,6 +344,17 @@ function Body() {
         <Text on="always">
           I piatti, i dolci e le bevande: il <N>nome locale</N> e cosa c’è dentro.
         </Text>
+        {/* Food card ("Specialità"): the dish is a trace, photographed wherever it is eaten. */}
+        <Card
+          card={Food.Dish}
+          intro={
+            <>
+              Che cos’è, di che cosa è fatto, quando si mangia e da dove viene: un paragrafo, con il{' '}
+              <N>nome locale</N>.
+            </>
+          }
+          remember="La frase da ricordare del piatto."
+        />
       </Chapter>
     </>
   )

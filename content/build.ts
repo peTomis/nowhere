@@ -144,7 +144,7 @@ export type AlbumTrace = {
   cards: { id: string; name: string; anchor: string }[]
 }
 
-/** A person, city or landscape card, as the pins and the album show it. */
+/** A person, city, landscape or food card, as the pins and the album show it. */
 export type GuideCard = {
   traceTexts?: Partial<Record<string, string>>
   id: string
@@ -156,8 +156,9 @@ export type GuideCard = {
   name: string
   local?: string
   dates?: string
-  region: string
-  regionName: string
+  /** Absent for a food card of the whole country. */
+  region?: string
+  regionName?: string
   /** Trace ids, in order. */
   traces: string[]
 }
@@ -222,7 +223,7 @@ export function tracesOf<P extends string, S extends string>(
       name: text.name,
       local: text.local,
       place: text.place,
-      region: tr.region,
+      region: tr.region ?? null,
       city: tr.city && names.places[tr.city],
       where: tr.where,
       distance: text.distance,
@@ -256,7 +257,7 @@ export function cardsOf<P extends string, S extends string>(
       local: text?.local,
       dates: text?.dates,
       region: c.region,
-      regionName: names.places[c.region],
+      regionName: c.region && names.places[c.region],
       traces: c.traces,
       traceTexts: text?.traceTexts,
     }
