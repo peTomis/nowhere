@@ -24,6 +24,7 @@ const places: Record<Ro, string> = {
 /** Landscapes of the Natura chapter: card names, also its line in the summary. */
 const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.DanubeDelta]: 'Delta del Danubio',
+  [RoLandscape.FagarasMountains]: 'Monti Făgăraș',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -487,6 +488,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Le mura di pietra sul colle sono del Trecento; chi le abbia costruite è discusso: la tradizione indica mercanti genovesi, altri studiosi pensano a un principe tataro o a Mircea il Vecchio. Quando la fortezza sorge, sotto il colle si apre un golfo del Mar Nero. Poi i cordoni di sabbia lo separano dal mare e ne fanno una laguna, il lago Razim: la fortezza perde la sua funzione e nel Cinquecento, con gli ottomani, viene abbandonata. Dall’alto si vedono il lago Razim e il lago Babadag.',
       find: 'Sul colle sopra il villaggio di Enisala, a pochi chilometri da Babadag, sulla strada per Jurilovca. Dal parcheggio si sale a piedi in pochi minuti. Si visita con biglietto: controlla orari e stagione sul sito dell’ICEM Tulcea.',
     },
+    [RoTrace.VidraruDam]: {
+      name: 'La diga di Vidraru',
+      local: 'Barajul Vidraru',
+      place: `Valle dell’Argeș, ${places[Ro.Wallachia]}`,
+      text: 'Una diga ad arco alta 166 m chiude la gola dell’Argeș e forma il lago di Vidraru. È completata nel 1966, alcuni anni prima del Transfăgărășan, e la centrale idroelettrica entra in funzione nel dicembre di quell’anno. La strada che sale verso la cresta passa sopra la diga, lungo il coronamento di circa 300 m: da un lato il lago, dall’altro il salto nella gola.',
+      find: 'Sul Transfăgărășan (DN7C), poco a monte della cittadella di Poenari: la strada attraversa la diga sul coronamento, con parcheggi alle due estremità. Si raggiunge tutto l’anno dal lato di Curtea de Argeș.',
+    },
+    [RoTrace.BaleaLake]: {
+      name: 'Il lago di Bâlea',
+      local: 'Bâlea Lac',
+      place: `Monti Făgăraș, ${places[Ro.Transylvania]}`,
+      text: 'Un lago glaciale a circa 2.034 m, in un circo scavato dal ghiaccio sotto la cresta: è il più grande dei Făgăraș, profondo una dozzina di metri. Il lago e il circo sono riserva naturale. Il Transfăgărășan ci arriva dal nord con una lunga serie di tornanti e qui passa la cresta in galleria: il tunnel, lungo 884 m, sbuca sul versante della Valacchia.',
+      find: 'Sul versante nord del Transfăgărășan, all’imbocco della galleria di Bâlea. La strada di solito è chiusa da fine ottobre a fine giugno, e a volte anche d’estate per neve o frane: controlla prima di partire. D’inverno si sale in funivia da Bâlea Cascadă.',
+    },
+    [RoTrace.MoldoveanuPeak]: {
+      name: 'La cima del Moldoveanu',
+      local: 'Vârful Moldoveanu',
+      place: `Monti Făgăraș, ${places[Ro.Wallachia]}`,
+      text: 'Con i suoi 2.544 m è la cima più alta della Romania. È una delle otto vette dei Făgăraș che superano i 2.500 m. Nessuna strada ci arriva: dalla cima si vede la cresta correre da est a ovest, con la Transilvania da una parte e la Valacchia dall’altra.',
+      find: 'A piedi, di solito da Victoria (Brașov), per la valle della Viștea Mare: una lunga salita su sentiero segnato, spesso con un pernottamento in rifugio o in tenda. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -569,6 +591,14 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.DanubeDelta]: {
       name: landscapes[RoLandscape.DanubeDelta],
       local: 'Delta Dunării',
+    },
+    [RoLandscape.FagarasMountains]: {
+      name: landscapes[RoLandscape.FagarasMountains],
+      local: 'Munții Făgărașului',
+      traceTexts: {
+        [RoTrace.PoenariCitadel]:
+          'La fortezza sta su uno sperone dove la valle dell’Argeș si stringe ed entra nei monti: dall’alto si controlla la via che risale la valle verso la cresta. Oggi sotto la cittadella passa il Transfăgărășan.',
+      },
     },
   },
 }

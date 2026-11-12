@@ -128,6 +128,9 @@ export enum RoTrace {
   LeteaForest = 'ro.place.letea-forest',
   JurilovcaHarbour = 'ro.place.jurilovca-harbour',
   EnisalaFortress = 'ro.place.enisala-fortress',
+  VidraruDam = 'ro.place.vidraru-dam',
+  BaleaLake = 'ro.place.balea-lake',
+  MoldoveanuPeak = 'ro.place.moldoveanu-peak',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -145,6 +148,7 @@ export enum RoPerson {
 /** Landscapes with a card (Natura chapter): stored with the reader's pins, never rename them. */
 export enum RoLandscape {
   DanubeDelta = 'ro.landscape.danube-delta',
+  FagarasMountains = 'ro.landscape.fagaras-mountains',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -267,7 +271,7 @@ export const structure = defineGuide<Ro, RoSection>({
     },
     { id: RoSection.CitiesDobruja, level: 2, on: [Ro.Constanta] },
 
-    { id: RoSection.Nature, level: 1, chapter: 'nature', on: [Dobruja] },
+    { id: RoSection.Nature, level: 1, chapter: 'nature', on: [Transylvania, Wallachia, Dobruja] },
   ],
   traces: [
     {
@@ -777,6 +781,28 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'castle',
     },
+    // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia. TODO image: freely licensed photographs for the three traces.
+    {
+      id: RoTrace.VidraruDam,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'wall',
+    },
+    {
+      id: RoTrace.BaleaLake,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'waves',
+    },
+    {
+      id: RoTrace.MoldoveanuPeak,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'mountains',
+    },
   ],
   cards: [
     {
@@ -973,6 +999,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.LeteaForest,
         RoTrace.JurilovcaHarbour,
         RoTrace.EnisalaFortress,
+      ],
+    },
+    {
+      id: RoLandscape.FagarasMountains,
+      kind: 'landscape',
+      region: Transylvania,
+      on: [Transylvania, Wallachia],
+      traces: [
+        RoTrace.PoenariCitadel,
+        RoTrace.VidraruDam,
+        RoTrace.BaleaLake,
+        RoTrace.MoldoveanuPeak,
       ],
     },
   ],

@@ -2378,6 +2378,25 @@ function Body() {
           }
           remember="Il delta è una terra che il Danubio costruisce ogni anno: anche le persone l’hanno scavata, arginata e poi in parte restituita all’acqua."
         />
+        <Card
+          card={RoLandscape.FagarasMountains}
+          intro={
+            <>
+              I <N>Monti Făgăraș</N> sono una cresta lunga e stretta dei Carpazi Meridionali, a est
+              della valle dell’<N>Olt</N>. Qui stanno le cime più alte della Romania: il{' '}
+              <N>Moldoveanu</N>, a 2.544 m, e il <N>Negoiu</N>. A nord il versante scende ripido
+              sulla depressione di Făgăraș, in Transilvania; a sud lunghe valli, come quella dell’
+              <N>Argeș</N>, portano verso la Valacchia. Per secoli la cresta è il confine fra i due
+              paesi, fino al 1918. Nell’ultima glaciazione il ghiaccio scava sotto le cime circhi e
+              valli, dove oggi restano molti piccoli laghi. Dopo l’invasione sovietica della
+              Cecoslovacchia, nel <D>1968</D>, Ceaușescu vuole una strada che porti rapidamente le
+              truppe da un versante all’altro. L’esercito la costruisce fra il <D>1970</D> e il{' '}
+              <D>1974</D>: è il <N>Transfăgărășan</N>. Le cifre ufficiali parlano di 40 soldati
+              morti nei lavori; le testimonianze di chi ci ha lavorato, di centinaia.
+            </>
+          }
+          remember="La cresta dei Făgăraș ha diviso per secoli Transilvania e Valacchia; il Transfăgărășan la attraversa come strada militare, costruita dall’esercito in quattro anni."
+        />
       </Chapter>
     </>
   )
