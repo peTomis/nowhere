@@ -2469,6 +2469,23 @@ function Body() {
           }
           remember="Il Retezat è la montagna che la Romania ha protetto per prima: circhi e laghi lasciati dai ghiacci, dove si arriva solo a piedi."
         />
+        <Card
+          card={RoLandscape.VaserValleyRodna}
+          intro={
+            <>
+              Nel nord della Romania, al confine con l’Ucraina, il <N>Maramureș</N> è chiuso da
+              montagne coperte di foreste. La valle del <N>Vaser</N> sale da Vișeu de Sus per decine
+              di chilometri dentro il bosco. Per secoli il legno è la ricchezza della regione: lo
+              mostrano le chiese di legno del Maramureș, patrimonio UNESCO. Per portare a valle i
+              tronchi si usa l’acqua, liberata a ondate da dighe di legno lungo il fiume; dopo
+              un’alluvione del <D>1929</D>, che ne rompe una, si costruisce una ferrovia forestale,
+              la <N>Mocănița</N>, ancora in servizio. A sud, oltre la valle di Borșa, si alzano i{' '}
+              <N>Monti Rodnei</N>, la catena più alta dei Carpazi Orientali: creste di oltre 2.000
+              m, circhi e laghi lasciati dai ghiacciai. Oggi sono un parco nazionale.
+            </>
+          }
+          remember="Nel Maramureș la foresta è un lavoro prima che un paesaggio: la Mocănița nasce per portare a valle i tronchi, sotto le creste dei Rodnei."
+        />
       </Chapter>
     </>
   )

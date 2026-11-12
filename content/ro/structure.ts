@@ -145,6 +145,9 @@ export enum RoTrace {
   BucuraLake = 'ro.place.bucura-lake',
   ZanoagaLake = 'ro.place.zanoaga-lake',
   PeleagaPeak = 'ro.place.peleaga-peak',
+  MocanitaViseuDeSus = 'ro.place.mocanita-viseu-de-sus',
+  HorsesWaterfall = 'ro.place.horses-waterfall',
+  PietrosulRodnei = 'ro.place.pietrosul-rodnei',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -167,6 +170,7 @@ export enum RoLandscape {
   ApuseniMountains = 'ro.landscape.apuseni-mountains',
   IronGates = 'ro.landscape.iron-gates',
   Retezat = 'ro.landscape.retezat',
+  VaserValleyRodna = 'ro.landscape.vaser-valley-rodna',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -923,6 +927,28 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'mountains',
     },
+    // Vaser valley and Rodna Mountains (Maramureș county): Maramureș has no entry in the trip filter, so it sits with Transilvania. TODO image: freely licensed photographs for the three traces.
+    {
+      id: RoTrace.MocanitaViseuDeSus,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'train',
+    },
+    {
+      id: RoTrace.HorsesWaterfall,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'drop',
+    },
+    {
+      id: RoTrace.PietrosulRodnei,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'mountains',
+    },
   ],
   cards: [
     {
@@ -1175,6 +1201,13 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Transylvania,
       on: [Transylvania],
       traces: [RoTrace.BucuraLake, RoTrace.ZanoagaLake, RoTrace.PeleagaPeak],
+    },
+    {
+      id: RoLandscape.VaserValleyRodna,
+      kind: 'landscape',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.MocanitaViseuDeSus, RoTrace.HorsesWaterfall, RoTrace.PietrosulRodnei],
     },
   ],
 })

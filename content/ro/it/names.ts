@@ -29,6 +29,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.ApuseniMountains]: 'Monti Apuseni',
   [RoLandscape.IronGates]: 'Porte di Ferro',
   [RoLandscape.Retezat]: 'Retezat',
+  [RoLandscape.VaserValleyRodna]: 'Valle del Vaser e Monti Rodnei',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -614,6 +615,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'A 2.509 m è la cima più alta del Retezat, una delle più di sessanta che nel parco superano i 2.300 m. Dalla vetta si vedono in basso i circhi glaciali con i loro laghi, Bucura per primo.',
       find: 'Dal lago di Bucura, a piedi per sentiero segnato fino alla sella e poi lungo la cresta: un paio d’ore di salita su terreno di blocchi. Solo d’estate, con tempo stabile.',
     },
+    [RoTrace.MocanitaViseuDeSus]: {
+      name: 'Il treno del legname',
+      local: 'Mocănița · CFF Vișeu de Sus',
+      place: `Vișeu de Sus, Maramureș`,
+      text: 'Una ferrovia forestale a scartamento ridotto, 760 mm, costruita all’inizio degli anni Trenta lungo la valle del Vaser. I treni salgono vuoti nella foresta e tornano carichi di tronchi per le segherie di Vișeu de Sus. Danneggiata alla fine della Seconda guerra mondiale, viene ricostruita fra il 1946 e il 1948. Dal 2005 vi circolano anche treni turistici a vapore, che risalgono la valle per 21 km fino a Paltin.',
+      find: 'La stazione della Mocănița è a Vișeu de Sus, all’imbocco della valle del Vaser. I treni turistici partono la mattina nella stagione, dalla primavera all’autunno: prenota sul sito della ferrovia. Andata e ritorno fino a Paltin richiedono buona parte della giornata.',
+    },
+    [RoTrace.HorsesWaterfall]: {
+      name: 'La cascata dei Cavalli',
+      local: 'Cascada Cailor',
+      place: `Borșa, Maramureș`,
+      text: 'Sopra Borșa, a circa 1.300 m, l’acqua raccolta in un circo glaciale dei Monti Rodnei cade a gradini da una parete di calcare per circa 90 m: le misure vanno da 80 a 97 m. Il nome viene da una leggenda locale, che racconta di cavalli precipitati dalla parete.',
+      find: 'Da Borșa Complex, la parte alta della località, in seggiovia e poi circa mezz’ora a piedi; senza seggiovia, circa un’ora di sentiero.',
+    },
+    [RoTrace.PietrosulRodnei]: {
+      name: 'La cima del Pietrosul',
+      local: 'Vârful Pietrosul Rodnei',
+      place: `Monti Rodnei, Maramureș`,
+      text: 'A 2.303 m è la cima più alta dei Carpazi Orientali. Sotto la vetta, in un circo glaciale, c’è il lago Iezer. Il versante intorno è protetto come riserva dal 1932, molto prima che i Rodnei diventassero parco nazionale. Vicino alla cima c’è una stazione meteorologica.',
+      find: 'Da Borșa, a piedi per sentiero segnato, passando per il lago Iezer: una lunga giornata di salita. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -724,6 +746,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.Retezat]: {
       name: landscapes[RoLandscape.Retezat],
       local: 'Parcul Național Retezat',
+    },
+    [RoLandscape.VaserValleyRodna]: {
+      name: landscapes[RoLandscape.VaserValleyRodna],
+      local: 'Valea Vaserului · Munții Rodnei',
     },
   },
 }
