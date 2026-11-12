@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Ro, RoLandscape, RoPerson, RoSection, RoTrace, structure } from '../structure'
+import { Ro, RoFood, RoLandscape, RoPerson, RoSection, RoTrace, structure } from '../structure'
 import { names } from './names'
 
 const dir = '/guides/romania'
@@ -2505,6 +2505,81 @@ function Body() {
           }
           remember="Le gole di Bicaz sono una porta fra Moldavia e Transilvania; il Ceahlău è la montagna che i moldavi hanno riempito di eremiti, leggende e pellegrinaggi."
         />
+      </Chapter>
+
+      <Chapter
+        section={RoSection.Food}
+        lede="Che cosa ordinare, e come riconoscerlo nel menù: prima ciò che si mangia ovunque, poi le specialità di ogni regione."
+      >
+        <Part section={RoSection.FoodCommon}>
+          <Card
+            card={RoFood.Mamaliga}
+            intro={
+              <>
+                La <N>mămăligă</N> è una polenta di farina di mais, cotta in acqua e sale in un
+                paiolo di ghisa, il ceaun. Prima del mais si faceva con il miglio; il mais si
+                diffonde nei principati nel Seicento e nelle carestie del Seicento e del Settecento
+                diventa il cibo di base delle campagne. Densa come un pane, accompagna quasi tutto:
+                formaggio e smântână (panna acida), stufati, pesce fritto con il mujdei, una salsa
+                d’aglio. Si taglia con un filo, perché al coltello si attacca. Il <N>bulz</N> è
+                mămăligă ripiena di formaggio e passata al forno.
+              </>
+            }
+            remember="La mămăligă sta accanto a quasi tutto: da tre secoli è il pane delle campagne romene."
+          />
+          <Card
+            card={RoFood.Sarmale}
+            intro={
+              <>
+                Le <N>sarmale</N> sono involtini di foglie di cavolo, di solito in salamoia, o di
+                vite, ripieni di carne di maiale tritata, riso e cipolla, e cotti a lungo in
+                pentola. Il nome viene dal turco sarma, «involto»: piatti simili si mangiano in
+                tutti i paesi che sono stati ottomani. In Romania sono il piatto delle feste, a
+                Natale e a Pasqua, e arrivano in tavola con mămăligă e smântână.
+              </>
+            }
+            remember="Le sarmale sono il piatto delle feste: un involtino di origine ottomana diventato la cucina di casa."
+          />
+          <Card
+            card={RoFood.CiorbaBors}
+            intro={
+              <>
+                La <N>ciorbă</N> è una zuppa acidula, spesso il primo piatto del pranzo. L’acidità
+                viene dal <N>borș</N>, crusca di grano fermentata in acqua, oppure da limone, aceto
+                o succo di crauti; in Moldavia la parola borș indica anche la zuppa stessa. Si serve
+                con smântână e peperoncino a parte, e la profuma il levistico (leuștean). Il nome
+                viene dal turco çorba. Ogni regione ha le sue: quella di trippa, quella di pollo di
+                Rădăuți, il borș dei lipoveni con il pesce del delta.
+              </>
+            }
+            remember="La ciorbă è la zuppa acidula che apre il pranzo: chiedi con che cosa è acidulata, e ogni regione risponde a modo suo."
+          />
+          <Card
+            card={RoFood.Cozonac}
+            intro={
+              <>
+                Il <N>cozonac</N> è un pane dolce lievitato, cotto in uno stampo lungo, con un
+                ripieno a spirale di noci e cacao e a volte rahat, il lokum turco. Si prepara per
+                Pasqua e per Natale, e ogni famiglia ha la sua ricetta. Pani dolci simili si fanno
+                in molti paesi vicini.
+              </>
+            }
+            remember="Il cozonac è il dolce delle feste: tagliato a fette, mostra la sua spirale di noci."
+          />
+          <Card
+            card={RoFood.Tuica}
+            intro={
+              <>
+                La <N>țuică</N> è l’acquavite di prugne: le prugne fermentano per settimane in
+                botte, poi si distillano in un alambicco di rame. Distillata una volta ha di solito
+                fra 24 e 40 gradi; distillata due volte è più forte e prende altri nomi, come
+                pălincă in Transilvania e horincă nel Maramureș. Si beve in un bicchierino prima del
+                pasto, è il brindisi delle feste e nelle campagne si offre all’ospite.
+              </>
+            }
+            remember="La țuică è il benvenuto: un bicchierino di prugne prima di mangiare, offerto a chi arriva."
+          />
+        </Part>
       </Chapter>
     </>
   )

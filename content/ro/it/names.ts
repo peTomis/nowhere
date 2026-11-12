@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Ro, RoLandscape, RoPerson, RoSection, RoTrace } from '../structure'
+import { Ro, RoFood, RoLandscape, RoPerson, RoSection, RoTrace } from '../structure'
 
 /** Italian names of the Romania guide's places and sections (index, titles, trip filter). */
 
@@ -66,7 +66,9 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.CitiesWallachia]: places[Ro.Wallachia],
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
     [RoSection.CitiesDobruja]: places[Ro.Dobruja],
+    [RoSection.FoodCommon]: 'In tutto il paese',
     [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
+    [RoSection.Food]: 'Dalla mămăligă alla țuică: che cosa ordinare',
   },
   traces: {
     [RoTrace.SarmizegetusaRegia]: {
@@ -650,6 +652,31 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'A 1.904 m è una delle due cime principali del Ceahlău, appena più bassa dell’Ocolașul Mare (1.907 m). Sul pianoro sotto la vetta, accanto al rifugio Dochia e alla stazione meteorologica, sorge la chiesa del monastero del Ceahlău, costruita nel 1992–1993 e dedicata alla Trasfigurazione. Per la festa, il 6 agosto, migliaia di pellegrini salgono a piedi. All’alba, con il cielo sereno, l’ombra della cima si proietta sulle valli come una piramide: i giornali la chiamano «piramide olografica».',
       find: 'Da Durău, a nord, per sentiero segnato fino al rifugio Dochia e poi alla cima: mezza giornata di salita. Il parco nazionale chiede un biglietto d’ingresso; campeggio solo nelle aree segnate.',
     },
+    [RoTrace.FoodMamaliga]: {
+      name: 'Mămăligă',
+      place: 'In tutta la Romania',
+      find: 'In ogni ristorante di cucina romena, come contorno: nel menù anche «mămăliguță». Il bulz si trova soprattutto nei locali di montagna.',
+    },
+    [RoTrace.FoodSarmale]: {
+      name: 'Sarmale',
+      place: 'In tutta la Romania',
+      find: 'Nei ristoranti tradizionali tutto l’anno, spesso come «sarmale cu mămăliguță»; nelle case soprattutto a Natale.',
+    },
+    [RoTrace.FoodCiorba]: {
+      name: 'Una ciorbă',
+      place: 'In tutta la Romania',
+      find: 'In ogni ristorante, fra le zuppe del menù («ciorbe»): smântână e peperoncino arrivano a parte.',
+    },
+    [RoTrace.FoodCozonac]: {
+      name: 'Cozonac',
+      place: 'In tutta la Romania',
+      find: 'Nelle pasticcerie e nei panifici tutto l’anno, intero o a fette; nei giorni prima di Pasqua e di Natale ovunque.',
+    },
+    [RoTrace.FoodTuica]: {
+      name: 'Un bicchierino di țuică',
+      place: 'In tutta la Romania',
+      find: 'Nei ristoranti fra gli aperitivi, spesso «de casă»; nei mercati e nelle case di campagna, in bottiglie senza etichetta.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -768,6 +795,21 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.BicazCeahlau]: {
       name: landscapes[RoLandscape.BicazCeahlau],
       local: 'Cheile Bicazului · Masivul Ceahlău',
+    },
+    [RoFood.Mamaliga]: {
+      name: 'Mămăligă',
+    },
+    [RoFood.Sarmale]: {
+      name: 'Sarmale',
+    },
+    [RoFood.CiorbaBors]: {
+      name: 'Ciorbă e borș',
+    },
+    [RoFood.Cozonac]: {
+      name: 'Cozonac',
+    },
+    [RoFood.Tuica]: {
+      name: 'Țuică',
     },
   },
 }

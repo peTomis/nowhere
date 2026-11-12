@@ -65,6 +65,9 @@ export enum RoSection {
   CitiesDobruja = 'ro.section.cities.dobruja',
   /** Chapter 5, Natura. */
   Nature = 'ro.section.nature',
+  /** Chapter 6, Gastronomia. */
+  Food = 'ro.section.food',
+  FoodCommon = 'ro.section.food.common',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -151,6 +154,11 @@ export enum RoTrace {
   BicazGorges = 'ro.place.bicaz-gorges',
   RedLake = 'ro.place.red-lake',
   ToacaPeak = 'ro.place.toaca-peak',
+  FoodMamaliga = 'ro.place.food-mamaliga',
+  FoodSarmale = 'ro.place.food-sarmale',
+  FoodCiorba = 'ro.place.food-ciorba',
+  FoodCozonac = 'ro.place.food-cozonac',
+  FoodTuica = 'ro.place.food-tuica',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -175,6 +183,15 @@ export enum RoLandscape {
   Retezat = 'ro.landscape.retezat',
   VaserValleyRodna = 'ro.landscape.vaser-valley-rodna',
   BicazCeahlau = 'ro.landscape.bicaz-gorges-ceahlau',
+}
+
+/** Dishes and drinks with a card (Gastronomia chapter): stored with the reader's pins. */
+export enum RoFood {
+  Mamaliga = 'ro.food.mamaliga',
+  Sarmale = 'ro.food.sarmale',
+  CiorbaBors = 'ro.food.ciorba-bors',
+  Cozonac = 'ro.food.cozonac',
+  Tuica = 'ro.food.tuica',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -298,6 +315,9 @@ export const structure = defineGuide<Ro, RoSection>({
     { id: RoSection.CitiesDobruja, level: 2, on: [Ro.Constanta] },
 
     { id: RoSection.Nature, level: 1, chapter: 'nature', on: all },
+
+    { id: RoSection.Food, level: 1, chapter: 'food', on: 'always' },
+    { id: RoSection.FoodCommon, level: 2, on: 'always' },
   ],
   traces: [
     {
@@ -975,6 +995,37 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'church',
     },
+    // Gastronomia, whole country: the dishes are traces anywhere (album first page). No images.
+    {
+      id: RoTrace.FoodMamaliga,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'pot',
+    },
+    {
+      id: RoTrace.FoodSarmale,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'pot',
+    },
+    {
+      id: RoTrace.FoodCiorba,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'bowl',
+    },
+    {
+      id: RoTrace.FoodCozonac,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'bread',
+    },
+    {
+      id: RoTrace.FoodTuica,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'brandy',
+    },
   ],
   cards: [
     {
@@ -1241,6 +1292,36 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Moldavia, Transylvania],
       traces: [RoTrace.BicazGorges, RoTrace.RedLake, RoTrace.ToacaPeak],
+    },
+    {
+      id: RoFood.Mamaliga,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodMamaliga],
+    },
+    {
+      id: RoFood.Sarmale,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodSarmale],
+    },
+    {
+      id: RoFood.CiorbaBors,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodCiorba],
+    },
+    {
+      id: RoFood.Cozonac,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodCozonac],
+    },
+    {
+      id: RoFood.Tuica,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodTuica],
     },
   ],
 })
