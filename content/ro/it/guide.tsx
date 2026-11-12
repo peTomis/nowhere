@@ -2451,6 +2451,24 @@ function Body() {
           }
           remember="Alle Porte di Ferro il Danubio è sempre stato un confine: lo è per Traiano, per gli imperi, e oggi corre su un lago che ha sommerso un’isola e una città."
         />
+        <Card
+          card={RoLandscape.Retezat}
+          intro={
+            <>
+              Il <N>Retezat</N> è un massiccio dei Carpazi Meridionali fra la valle del <N>Jiu</N> e
+              la depressione di <N>Hațeg</N>, nel distretto di Hunedoara. I ghiacciai dell’ultima
+              glaciazione lo hanno scavato in circhi e valli: oltre sessanta cime superano i 2.300
+              m, e nelle conche restano circa ottanta laghi glaciali, più di cinquanta dei quali non
+              si asciugano mai. Nel <D>1935</D>, dopo una campagna dei naturalisti Alexandru Borza
+              ed Emil Racoviță, il governo vi istituisce il primo parco nazionale della Romania. Nel{' '}
+              <D>1979</D> l’UNESCO lo include fra le riserve della biosfera. Al centro c’è la
+              riserva scientifica di <N>Gemenele</N>, circa 1.800 ettari di foresta antica dove si
+              entra solo per ricerca. Nei boschi vivono orsi, lupi e linci. Nessuna strada
+              attraversa il massiccio: si arriva in auto ai margini, poi si cammina.
+            </>
+          }
+          remember="Il Retezat è la montagna che la Romania ha protetto per prima: circhi e laghi lasciati dai ghiacci, dove si arriva solo a piedi."
+        />
       </Chapter>
     </>
   )

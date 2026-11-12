@@ -28,6 +28,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.PiatraCraiului]: 'Piatra Craiului',
   [RoLandscape.ApuseniMountains]: 'Monti Apuseni',
   [RoLandscape.IronGates]: 'Porte di Ferro',
+  [RoLandscape.Retezat]: 'Retezat',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -592,6 +593,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Fra il 103 e il 105 l’architetto Apollodoro di Damasco costruisce per Traiano un ponte sul Danubio lungo oltre un chilometro, con piloni di pietra e arcate di legno: serve a portare l’esercito romano in Dacia per la seconda guerra contro Decebalo. Sulla riva romena restano i ruderi dei primi piloni, accanto all’accampamento romano di Drobeta; sulla riva serba, a Kostol, quelli della sponda opposta.',
       find: 'A Drobeta-Turnu Severin, nel parco archeologico accanto al Museo della regione delle Porte di Ferro, sulla riva del Danubio. Nel museo c’è una ricostruzione del ponte.',
     },
+    [RoTrace.BucuraLake]: {
+      name: 'Il lago di Bucura',
+      local: 'Lacul Bucura',
+      place: `Retezat, ${places[Ro.Transylvania]}`,
+      text: 'A circa 2.040 m, in un grande circo glaciale sotto le cime più alte del Retezat, è il lago glaciale più esteso della Romania: le misure vanno da 9 a 10 ettari e mezzo. Intorno stanno altri laghi più piccoli, lasciati dallo stesso ghiacciaio. È anche il crocevia dei sentieri del parco: da qui si sale al Peleaga e si passa verso Zănoaga.',
+      find: 'La via più breve parte da Poiana Pelegii, sul versante sud, dove si arriva in auto per una lunga strada forestale: poi circa due ore a piedi. Dal versante nord si parte da Cârnic, sopra Nucșoara, con una giornata di cammino. Campeggio solo nelle aree segnate; serve il biglietto del parco.',
+    },
+    [RoTrace.ZanoagaLake]: {
+      name: 'Il lago più profondo',
+      local: 'Lacul Zănoaga',
+      place: `Retezat, ${places[Ro.Transylvania]}`,
+      text: 'Un lago glaciale intorno ai 2.000 m, sul versante sud-ovest del Retezat, profondo circa 29 m: il più profondo dei laghi glaciali della Romania. La superficie è di pochi ettari: la conca scavata dal ghiaccio è stretta e profonda.',
+      find: 'Da Bucura, a piedi per sentiero segnato verso ovest oltre la sella, o dal basso per la valle della Zlata. Solo d’estate.',
+    },
+    [RoTrace.PeleagaPeak]: {
+      name: 'La cima del Peleaga',
+      local: 'Vârful Peleaga',
+      place: `Retezat, ${places[Ro.Transylvania]}`,
+      text: 'A 2.509 m è la cima più alta del Retezat, una delle più di sessanta che nel parco superano i 2.300 m. Dalla vetta si vedono in basso i circhi glaciali con i loro laghi, Bucura per primo.',
+      find: 'Dal lago di Bucura, a piedi per sentiero segnato fino alla sella e poi lungo la cresta: un paio d’ore di salita su terreno di blocchi. Solo d’estate, con tempo stabile.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -698,6 +720,10 @@ export const names: GuideNames<Ro, RoSection> = {
         [RoTrace.DecebalusRockSculpture]:
           'Il volto del re dei Daci, scolpito fra il 1994 e il 2004, guarda il Danubio dalle rocce dei Cazanele Mici, dove la gola si apre sul golfo di Mraconia. Dall’acqua, in barca, si vede quanto il lago della diga ha alzato il fiume ai suoi piedi.',
       },
+    },
+    [RoLandscape.Retezat]: {
+      name: landscapes[RoLandscape.Retezat],
+      local: 'Parcul Național Retezat',
     },
   },
 }

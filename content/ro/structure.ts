@@ -142,6 +142,9 @@ export enum RoTrace {
   MraconiaMonastery = 'ro.place.mraconia-monastery',
   IronGatesDam = 'ro.place.iron-gates-dam',
   TrajansBridgeRuins = 'ro.place.trajans-bridge-ruins',
+  BucuraLake = 'ro.place.bucura-lake',
+  ZanoagaLake = 'ro.place.zanoaga-lake',
+  PeleagaPeak = 'ro.place.peleaga-peak',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -163,6 +166,7 @@ export enum RoLandscape {
   PiatraCraiului = 'ro.landscape.piatra-craiului',
   ApuseniMountains = 'ro.landscape.apuseni-mountains',
   IronGates = 'ro.landscape.iron-gates',
+  Retezat = 'ro.landscape.retezat',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -897,6 +901,28 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'bridge',
     },
+    // Retezat (Hunedoara county). TODO image: freely licensed photographs for the three traces.
+    {
+      id: RoTrace.BucuraLake,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'waves',
+    },
+    {
+      id: RoTrace.ZanoagaLake,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'waves',
+    },
+    {
+      id: RoTrace.PeleagaPeak,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'mountains',
+    },
   ],
   cards: [
     {
@@ -1142,6 +1168,13 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.IronGatesDam,
         RoTrace.TrajansBridgeRuins,
       ],
+    },
+    {
+      id: RoLandscape.Retezat,
+      kind: 'landscape',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.BucuraLake, RoTrace.ZanoagaLake, RoTrace.PeleagaPeak],
     },
   ],
 })
