@@ -2580,6 +2580,99 @@ function Body() {
             remember="La țuică è il benvenuto: un bicchierino di prugne prima di mangiare, offerto a chi arriva."
           />
         </Part>
+        <Part section={RoSection.FoodTransylvania}>
+          <Card
+            card={RoFood.SibiuSalami}
+            intro={
+              <>
+                Il <N>salam de Sibiu</N> è un salame crudo di carne di maiale, stagionato a lungo e
+                coperto da una muffa nobile bianca che gli dà il suo aroma. La produzione comincia
+                all’inizio del Novecento con salumieri italiani, nella zona di Sibiu e nella valle
+                della Prahova: sulle date e sul luogo preciso le fonti non sono d’accordo. Dal 2016
+                è un’indicazione geografica protetta dell’Unione europea.
+              </>
+            }
+            remember="Il salam de Sibiu porta il nome di una città transilvana e la mano di salumieri italiani: lo riconosci dalla muffa bianca."
+          />
+          <Card
+            card={RoFood.Kurtoskalacs}
+            intro={
+              <>
+                Il <N>kürtőskalács</N>, «colac secuiesc» in romeno, è un dolce cavo a spirale: un
+                nastro di pasta lievitata avvolto su un cilindro di legno, cotto girando sulla brace
+                e coperto di zucchero che caramella. È il dolce dei siculi, gli ungheresi della
+                Transilvania orientale; la ricetta più antica che si conosce è in un ricettario
+                transilvano del 1784. Dolci simili si fanno fra i sassoni, che lo chiamano
+                Baumstriezel, in Ungheria, in Slovacchia e in Cechia, e il nome è conteso fra più
+                paesi.
+              </>
+            }
+            remember="Il kürtőskalács si mangia caldo, appena tolto dal suo cilindro: è il dolce della Transilvania ungherese."
+          />
+          <Card
+            card={RoFood.VarzaCluj}
+            intro={
+              <>
+                La <N>varză à la Cluj</N> è uno sformato al forno a strati di crauti, carne di
+                maiale tritata, riso e smântână. Un ricettario ungherese del 1695 parla già di un
+                «cavolo di Kolozsvár», ma era cavolo cotto con oca o pollo; la versione a strati è
+                più recente, e su chi l’abbia inventata circolano solo aneddoti. Si mangia in tutta
+                la Transilvania e in Ungheria.
+              </>
+            }
+            remember="La varză à la Cluj porta il nome della città nelle due lingue: è il piatto di crauti della Transilvania ungherese e romena."
+          />
+          <Card
+            card={RoFood.Palinca}
+            intro={
+              <>
+                La <N>pălincă</N> è l’acquavite forte della Transilvania: frutta fermentata, di
+                solito prugne ma anche pere, mele, albicocche o mele cotogne, distillata due volte
+                fino a circa 50 gradi. È un’indicazione geografica dell’Unione europea: fra 40 e 52
+                gradi, prodotta in tredici distretti dell’arco dei Carpazi, dal Maramureș al Bihor.
+                In Ungheria si fa la pálinka, che per la legge europea è un’altra bevanda.
+              </>
+            }
+            remember="La pălincă è la țuică della Transilvania, distillata due volte: più forte, e di molti frutti."
+          />
+          <Card
+            card={RoFood.BanatCuisine}
+            intro={
+              <>
+                Il <N>Banato</N> mette insieme le cucine di chi vi abita da tre secoli: romeni,
+                svevi, ungheresi e serbi. Dagli svevi e dagli ungheresi vengono tagliatelle, zuppe
+                di patate, piatti di prosciutto poco speziati e il papricaș di pollo; dai serbi la
+                pljeskavica, una grande polpetta di carne tritata alla griglia, che dopo il 1989 si
+                diffonde in tutta Timișoara. Per il 2028 il Banato è stato nominato Regione
+                gastronomica europea.
+              </>
+            }
+            remember="Nel Banato la tavola parla più lingue: tagliatelle sveve e griglia serba nella stessa città."
+          />
+          <Card
+            card={RoFood.Horinca}
+            intro={
+              <>
+                La <N>horincă</N> è il nome che nel Maramureș e nell’Oaș si dà all’acquavite di
+                prugne: la più forte è distillata due volte. Come la țuică nel resto del paese, si
+                offre all’ospite e apre il pranzo.
+              </>
+            }
+            remember="Nel Maramureș la țuică si chiama horincă, e arriva in tavola prima di tutto il resto."
+          />
+          <Card
+            card={RoFood.Balmos}
+            intro={
+              <>
+                Il <N>balmoș</N> è il piatto dei pastori: alla stână, l’ovile di montagna, il
+                formaggio fresco di pecora bolle nel latte di pecora o nella panna e si addensa con
+                un po’ di farina di mais. È un parente ricco della mămăligă, che invece si cuoce in
+                acqua.
+              </>
+            }
+            remember="Il balmoș è la mămăligă dei pastori: farina di mais cotta nel latte e nel formaggio di pecora."
+          />
+        </Part>
       </Chapter>
     </>
   )

@@ -68,6 +68,7 @@ export enum RoSection {
   /** Chapter 6, Gastronomia. */
   Food = 'ro.section.food',
   FoodCommon = 'ro.section.food.common',
+  FoodTransylvania = 'ro.section.food.transylvania',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -159,6 +160,15 @@ export enum RoTrace {
   FoodCiorba = 'ro.place.food-ciorba',
   FoodCozonac = 'ro.place.food-cozonac',
   FoodTuica = 'ro.place.food-tuica',
+  FoodSibiuSalami = 'ro.place.food-sibiu-salami',
+  FoodKurtoskalacs = 'ro.place.food-kurtoskalacs',
+  FoodVarzaCluj = 'ro.place.food-varza-cluj',
+  FoodPalinca = 'ro.place.food-palinca',
+  FoodPalincaBihor = 'ro.place.food-palinca-bihor',
+  FoodPljeskavica = 'ro.place.food-pljeskavica',
+  FoodWalnutNoodles = 'ro.place.food-walnut-noodles',
+  FoodHorinca = 'ro.place.food-horinca',
+  FoodBalmos = 'ro.place.food-balmos',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -192,6 +202,13 @@ export enum RoFood {
   CiorbaBors = 'ro.food.ciorba-bors',
   Cozonac = 'ro.food.cozonac',
   Tuica = 'ro.food.tuica',
+  SibiuSalami = 'ro.food.sibiu-salami',
+  Kurtoskalacs = 'ro.food.kurtoskalacs',
+  VarzaCluj = 'ro.food.varza-a-la-cluj',
+  Palinca = 'ro.food.palinca',
+  BanatCuisine = 'ro.food.banat-cuisine',
+  Horinca = 'ro.food.horinca',
+  Balmos = 'ro.food.balmos',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -318,6 +335,7 @@ export const structure = defineGuide<Ro, RoSection>({
 
     { id: RoSection.Food, level: 1, chapter: 'food', on: 'always' },
     { id: RoSection.FoodCommon, level: 2, on: 'always' },
+    { id: RoSection.FoodTransylvania, level: 2, on: [Transylvania] },
   ],
   traces: [
     {
@@ -1026,6 +1044,70 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'brandy',
     },
+    // Gastronomia, Transilvania (with the Banat, Crișana and Maramureș, which the trip filter has no entry for). No images.
+    {
+      id: RoTrace.FoodSibiuSalami,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'fork',
+    },
+    {
+      id: RoTrace.FoodKurtoskalacs,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'bread',
+    },
+    {
+      id: RoTrace.FoodVarzaCluj,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'pot',
+    },
+    {
+      id: RoTrace.FoodPalinca,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'brandy',
+    },
+    {
+      id: RoTrace.FoodPalincaBihor,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'brandy',
+    },
+    {
+      id: RoTrace.FoodPljeskavica,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'fork',
+    },
+    {
+      id: RoTrace.FoodWalnutNoodles,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'bowl',
+    },
+    {
+      id: RoTrace.FoodHorinca,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'brandy',
+    },
+    {
+      id: RoTrace.FoodBalmos,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'pot',
+    },
   ],
   cards: [
     {
@@ -1297,7 +1379,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.Mamaliga,
       kind: 'food',
       on: 'always',
-      traces: [RoTrace.FoodMamaliga],
+      traces: [RoTrace.FoodMamaliga, RoTrace.FoodBalmos],
     },
     {
       id: RoFood.Sarmale,
@@ -1321,7 +1403,56 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.Tuica,
       kind: 'food',
       on: 'always',
-      traces: [RoTrace.FoodTuica],
+      traces: [RoTrace.FoodTuica, RoTrace.FoodPalinca, RoTrace.FoodHorinca],
+    },
+    {
+      id: RoFood.SibiuSalami,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodSibiuSalami],
+    },
+    {
+      id: RoFood.Kurtoskalacs,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodKurtoskalacs],
+    },
+    {
+      id: RoFood.VarzaCluj,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodVarzaCluj],
+    },
+    {
+      id: RoFood.Palinca,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodPalinca, RoTrace.FoodPalincaBihor],
+    },
+    {
+      id: RoFood.BanatCuisine,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodPljeskavica, RoTrace.FoodWalnutNoodles],
+    },
+    {
+      id: RoFood.Horinca,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodHorinca],
+    },
+    {
+      id: RoFood.Balmos,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodBalmos],
     },
   ],
 })

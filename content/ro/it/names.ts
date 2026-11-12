@@ -67,6 +67,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
     [RoSection.CitiesDobruja]: places[Ro.Dobruja],
     [RoSection.FoodCommon]: 'In tutto il paese',
+    [RoSection.FoodTransylvania]: places[Ro.Transylvania],
     [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
     [RoSection.Food]: 'Dalla mămăligă alla țuică: che cosa ordinare',
   },
@@ -677,6 +678,57 @@ export const names: GuideNames<Ro, RoSection> = {
       place: 'In tutta la Romania',
       find: 'Nei ristoranti fra gli aperitivi, spesso «de casă»; nei mercati e nelle case di campagna, in bottiglie senza etichetta.',
     },
+    [RoTrace.FoodSibiuSalami]: {
+      name: 'Salam de Sibiu',
+      place: `In tutta la ${places[Ro.Transylvania]}`,
+      find: 'In ogni salumeria e supermercato, intero o affettato: sull’etichetta cerca la dicitura «Salam de Sibiu» con il marchio europeo IGP.',
+    },
+    [RoTrace.FoodKurtoskalacs]: {
+      name: 'Kürtőskalács',
+      local: 'Colac secuiesc',
+      place: `In tutta la ${places[Ro.Transylvania]}`,
+      find: 'Alle bancarelle delle fiere, dei mercatini e dei centri storici, cotto al momento sulla brace; soprattutto nella Terra dei Siculi (Harghita e Covasna).',
+    },
+    [RoTrace.FoodVarzaCluj]: {
+      name: 'Varză à la Cluj',
+      local: 'Kolozsvári rakott káposzta',
+      place: `In tutta la ${places[Ro.Transylvania]}`,
+      find: 'Nei ristoranti di cucina tradizionale della Transilvania, soprattutto a Cluj; nel menù anche «varză a la Cluj».',
+    },
+    [RoTrace.FoodPalinca]: {
+      name: 'Un bicchierino di pălincă',
+      place: `In tutta la ${places[Ro.Transylvania]}`,
+      find: 'Nei ristoranti della Transilvania fra le acquaviti, di prugne («de prune») o di altri frutti; nei mercati e dai produttori, in bottiglia.',
+    },
+    [RoTrace.FoodPalincaBihor]: {
+      name: 'La pălincă del Bihor',
+      place: 'Bihor, Crișana',
+      text: 'Nel Bihor si contano centinaia di alambicchi. I produttori distillano prugne, ma anche pere, mele, albicocche e mele cotogne, e il mestiere passa spesso di padre in figlio. Un etnologo fa nascere proprio qui, fra Satu Mare, Sălaj e Bihor, la parola pălincă.',
+      find: 'Dai produttori dei villaggi del Bihor, che vendono in bottiglia, e alle fiere dei prodotti tradizionali di Oradea.',
+    },
+    [RoTrace.FoodPljeskavica]: {
+      name: 'Pljeskavica',
+      local: 'Pleșcaviță',
+      place: 'Timișoara, Banato',
+      find: 'Nelle griglierie e nei fast food di Timișoara, in un panino o nel piatto con patatine.',
+    },
+    [RoTrace.FoodWalnutNoodles]: {
+      name: 'Tagliatelle con noci e zucchero',
+      local: 'Tăiței cu nucă',
+      place: 'Banato',
+      text: 'Un piatto dolce: tagliatelle all’uovo condite con noci tritate e zucchero, dalla cucina sveva e ungherese del Banato.',
+      find: 'Nei ristoranti di cucina bănățeană e nelle case; più facile da trovare a Timișoara.',
+    },
+    [RoTrace.FoodHorinca]: {
+      name: 'Un bicchierino di horincă',
+      place: 'Maramureș',
+      find: 'Nelle pensioni e nei ristoranti del Maramureș, spesso fatta in casa e offerta all’arrivo.',
+    },
+    [RoTrace.FoodBalmos]: {
+      name: 'Balmoș',
+      place: 'Maramureș',
+      find: 'Nei ristoranti tradizionali e nelle pensioni del Maramureș; d’estate alle stâne, gli ovili di montagna, dove i pastori vendono i loro formaggi.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -810,6 +862,29 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoFood.Tuica]: {
       name: 'Țuică',
+    },
+    [RoFood.SibiuSalami]: {
+      name: 'Salam de Sibiu',
+    },
+    [RoFood.Kurtoskalacs]: {
+      name: 'Kürtőskalács',
+      local: 'Colac secuiesc',
+    },
+    [RoFood.VarzaCluj]: {
+      name: 'Varză à la Cluj',
+      local: 'Kolozsvári rakott káposzta',
+    },
+    [RoFood.Palinca]: {
+      name: 'Pălincă',
+    },
+    [RoFood.BanatCuisine]: {
+      name: 'Cucina sveva e serba del Banato',
+    },
+    [RoFood.Horinca]: {
+      name: 'Horincă',
+    },
+    [RoFood.Balmos]: {
+      name: 'Balmoș',
     },
   },
 }
