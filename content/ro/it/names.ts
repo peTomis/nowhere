@@ -70,6 +70,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.FoodTransylvania]: places[Ro.Transylvania],
     [RoSection.FoodWallachia]: places[Ro.Wallachia],
     [RoSection.FoodMoldavia]: places[Ro.Moldavia],
+    [RoSection.FoodDobruja]: places[Ro.Dobruja],
     [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
     [RoSection.Food]: 'Dalla mămăligă alla țuică: che cosa ordinare',
   },
@@ -778,6 +779,32 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `Cotnari, ${places[Ro.Moldavia]}`,
       find: 'Nelle enoteche e nei ristoranti, con «Cotnari» in etichetta. A Cotnari, a nord-ovest di Iași, le cantine si visitano su prenotazione.',
     },
+    [RoTrace.FoodBorsLipovenesc]: {
+      name: 'Borș lipovenesc',
+      place: `Delta del Danubio, ${places[Ro.Dobruja]}`,
+      find: 'Nelle pensioni e nei ristoranti del delta, a Tulcea, Sulina e Jurilovca; nel menù anche «borș de pește» o «ciorbă de pește».',
+    },
+    [RoTrace.FoodSaramura]: {
+      name: 'Saramură di pesce',
+      local: 'Saramură de pește',
+      place: `In tutta la ${places[Ro.Dobruja]}`,
+      find: 'Nelle pensioni del delta e nei ristoranti di pesce di Tulcea e della costa: chiedi quale pesce è del giorno.',
+    },
+    [RoTrace.FoodPlacintaDobrogeana]: {
+      name: 'Plăcintă dobrogeană',
+      place: `In tutta la ${places[Ro.Dobruja]}`,
+      find: 'Nei forni e nelle pasticcerie della Dobrogea, a fette, e nei ristoranti tradizionali di Constanța e Tulcea.',
+    },
+    [RoTrace.FoodSuberek]: {
+      name: 'Șuberek',
+      place: `In tutta la ${places[Ro.Dobruja]}`,
+      find: 'Nei locali tatari e turchi di Constanța e alle feste della comunità tatara; fritto al momento.',
+    },
+    [RoTrace.FoodMurfatlar]: {
+      name: 'Un vino di Murfatlar',
+      place: `Murfatlar, ${places[Ro.Dobruja]}`,
+      find: 'Nelle enoteche e nei ristoranti, con «Murfatlar» in etichetta. Le cantine della zona, fra Constanța e il Danubio, organizzano degustazioni.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -962,6 +989,22 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoFood.Cotnari]: {
       name: 'Cotnari',
+    },
+    [RoFood.BorsLipovenesc]: {
+      name: 'Borș lipovenesc',
+    },
+    [RoFood.Saramura]: {
+      name: 'Saramură di pesce',
+      local: 'Saramură de pește',
+    },
+    [RoFood.PlacintaDobrogeana]: {
+      name: 'Plăcintă dobrogeană',
+    },
+    [RoFood.Suberek]: {
+      name: 'Șuberek',
+    },
+    [RoFood.Murfatlar]: {
+      name: 'Murfatlar',
     },
   },
 }

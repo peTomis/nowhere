@@ -2797,6 +2797,69 @@ function Body() {
             remember="A Cotnari si bevono solo uve romene: chiedi una grasă, il bianco dolce della Moldavia."
           />
         </Part>
+        <Part section={RoSection.FoodDobruja}>
+          <Card
+            card={RoFood.BorsLipovenesc}
+            intro={
+              <>
+                Il <N>borș lipovenesc</N> è la zuppa di pesce dei lipoveni del delta: si cuoce a
+                fuoco lento, spesso in grandi paioli sul fuoco di legna, con almeno quattro pesci
+                del Danubio diversi, come abramide, luccio, siluro e carassio, e poche verdure.
+                Nonostante il nome, non sempre è acidulato con il borș: molti pescatori usano solo
+                sale e aceto. Ogni anno a Jurilovca un festival ne cucina decine di migliaia di
+                porzioni.
+              </>
+            }
+            remember="Il borș dei lipoveni si fa con il pesce del giorno, e più pesci ci sono, meglio è."
+          />
+          <Card
+            card={RoFood.Saramura}
+            intro={
+              <>
+                La <N>saramură</N> è pesce cotto sulla brace viva e poi bagnato in una salamoia di
+                acqua, sale grosso e molto peperoncino. È il modo in cui i pescatori del delta
+                cuociono il pesce appena preso, e si mangia spesso con la mămăligă.
+              </>
+            }
+            remember="La saramură è il pesce dei pescatori: brace, sale e peperoncino, niente altro."
+          />
+          <Card
+            card={RoFood.PlacintaDobrogeana}
+            intro={
+              <>
+                La <N>plăcintă dobrogeană</N> è una torta di sfoglie sottili tirate a mano, farcite
+                di formaggio salato, di solito telemea, e uova, e cotta al forno in teglia; esistono
+                anche versioni con carne o dolci. La ricetta passa di generazione in generazione, e
+                la Bulgaria ha contestato la sua registrazione come specialità romena: torte di
+                sfoglia simili si fanno su entrambe le rive del Danubio.
+              </>
+            }
+            remember="La plăcintă dobrogeană è sfoglia tirata a mano e formaggio salato: una torta che due paesi rivendicano."
+          />
+          <Card
+            card={RoFood.Suberek}
+            intro={
+              <>
+                Il <N>șuberek</N> è una mezzaluna di pasta croccante, fritta, ripiena di carne
+                tritata con cipolla o di formaggio. È il piatto dei tatari di Dobrogea, quello con
+                cui le famiglie accolgono gli ospiti, e viene dalla cucina ottomana.
+              </>
+            }
+            remember="Il șuberek è il benvenuto dei tatari di Dobrogea: una mezzaluna fritta, da mangiare calda."
+          />
+          <Card
+            card={RoFood.Murfatlar}
+            intro={
+              <>
+                <N>Murfatlar</N> è una zona vinicola dell’altopiano della Dobrogea, fra il Danubio e
+                il Mar Nero: suoli calcarei e poca acqua. Dall’inizio del Novecento vi si studiano
+                viti adatte alla siccità. È conosciuta per i vini dolci, da uve stramature,
+                soprattutto chardonnay e pinot gris.
+              </>
+            }
+            remember="Murfatlar è il vino di una terra secca vicino al mare: dolce, da uve lasciate maturare a lungo."
+          />
+        </Part>
       </Chapter>
     </>
   )
