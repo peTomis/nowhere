@@ -26,6 +26,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.DanubeDelta]: 'Delta del Danubio',
   [RoLandscape.FagarasMountains]: 'Monti Făgăraș',
   [RoLandscape.PiatraCraiului]: 'Piatra Craiului',
+  [RoLandscape.ApuseniMountains]: 'Monti Apuseni',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -541,6 +542,34 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'A 2.238 m è il punto più alto della cresta. Sulle rocce intorno cresce il garofano della Piatra Craiului, Dianthus callizonus, una pianta che esiste solo su questa montagna: è il simbolo del parco e fiorisce nella seconda metà di luglio. Non va raccolto: si fotografa.',
       find: 'A piedi da Zărnești, per la Curmătura o per la Plaiul Foii: una giornata intera di salita, con passaggi esposti e catene sulla cresta. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
+    [RoTrace.ScarisoaraIceCave]: {
+      name: 'La grotta di ghiaccio',
+      local: 'Peștera Ghețarul de la Scărișoara',
+      place: `Gârda de Sus, ${places[Ro.Transylvania]}`,
+      text: 'Una scala di metallo scende in un pozzo largo circa 60 m e profondo 50, fino a una sala dove l’aria fredda dell’inverno ristagna tutto l’anno. Sul fondo c’è un blocco di ghiaccio stimato in circa 75.000 m³, spesso in alcuni punti una ventina di metri. I suoi strati conservano la storia del clima: i ricercatori li studiano e misurano che negli ultimi anni il ghiaccio si scioglie più in fretta che in passato.',
+      find: 'Sopra Gârda de Sus (Alba): una strada di montagna sale verso la grotta; c’è anche un sentiero segnato di circa 7 km da Arieșeni. Si visita la parte iniziale, con biglietto; dentro la temperatura è intorno a 0 °C. Controlla orari e stagione prima di partire.',
+    },
+    [RoTrace.BearsCave]: {
+      name: 'La grotta degli orsi',
+      local: 'Peștera Urșilor',
+      place: `Chișcău, Crișana`,
+      text: 'Il 17 settembre 1975 un’esplosione nella cava di marmo di Chișcău apre un varco in una grotta fino ad allora chiusa: un minatore del villaggio è il primo a calarsi dentro. Nelle gallerie si trovano ossa e scheletri dell’orso delle caverne, una specie estinta: da qui il nome. Aperta al pubblico nel 1980, ha sale di stalattiti e stalagmiti a temperatura costante, intorno ai 10 °C.',
+      find: 'Nel villaggio di Chișcău (Bihor), sul versante ovest degli Apuseni: dal parcheggio si sale all’ingresso. Si visita solo con la guida e con biglietto, per un percorso attrezzato.',
+    },
+    [RoTrace.CetatilePonorului]: {
+      name: 'Le cittadelle dell’inghiottitoio',
+      local: 'Cetățile Ponorului',
+      place: `Altopiano di Padiș, Crișana`,
+      text: 'Sull’altopiano carsico di Padiș i torrenti spariscono sotto terra. Qui uno di loro scende in una depressione nel bosco profonda circa 300 m e larga oltre un chilometro, attraversa tre grandi voragini con pareti di roccia, le «cittadelle», e si infila nella montagna da un portale di pietra. È un’area protetta del Parco naturale Apuseni.',
+      find: 'Dall’altopiano di Padiș, a piedi per sentiero segnato fino ai belvedere sopra le voragini; scale e passerelle scendono verso il portale. Mezza giornata di cammino. Le strade sterrate per Padiș sono praticabili solo nella bella stagione.',
+    },
+    [RoTrace.AvramIancuMemorialHouse]: {
+      name: 'La casa di Avram Iancu',
+      local: 'Casa memorială Avram Iancu',
+      place: `Avram Iancu, ${places[Ro.Transylvania]}`,
+      text: 'Una casa di legno costruita dai genitori di Avram Iancu intorno al 1800, nella forma tipica delle case dei moți. Qui nasce nel 1824 il capo dei rivoluzionari romeni degli Apuseni nel 1848–1849, che i moți chiamano «Crăișorul Munților», il piccolo re dei monti. Il museo apre nel 1924, nel centenario della nascita, per iniziativa dell’associazione culturale romena ASTRA. Accanto, una mostra di armi e documenti del 1848 e di costumi e attrezzi dei moți: quelli per fare secchi e carri di legno e i lunghi corni dei pastori.',
+      find: 'Nel villaggio di Incești, comune di Avram Iancu (Alba), nella valle dell’Arieșul Mic. Il vicino monte Găina ospita ogni anno a luglio la Fiera delle ragazze (Târgul de fete).',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -635,6 +664,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.PiatraCraiului]: {
       name: landscapes[RoLandscape.PiatraCraiului],
       local: 'Parcul Național Piatra Craiului',
+    },
+    [RoLandscape.ApuseniMountains]: {
+      name: landscapes[RoLandscape.ApuseniMountains],
+      local: 'Munții Apuseni',
     },
   },
 }

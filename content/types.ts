@@ -183,6 +183,7 @@ export type TraceIcon =
   | 'paw'
   | 'pin'
   | 'shield'
+  | 'snowflake'
   | 'steps'
   | 'tree'
   | 'trophy'

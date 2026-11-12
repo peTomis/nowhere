@@ -135,6 +135,10 @@ export enum RoTrace {
   LibeartyBearSanctuary = 'ro.place.libearty-bear-sanctuary',
   MaguraVillage = 'ro.place.magura-village',
   LaOmPeak = 'ro.place.la-om-peak',
+  ScarisoaraIceCave = 'ro.place.scarisoara-ice-cave',
+  BearsCave = 'ro.place.bears-cave',
+  CetatilePonorului = 'ro.place.cetatile-ponorului',
+  AvramIancuMemorialHouse = 'ro.place.avram-iancu-memorial-house',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -154,6 +158,7 @@ export enum RoLandscape {
   DanubeDelta = 'ro.landscape.danube-delta',
   FagarasMountains = 'ro.landscape.fagaras-mountains',
   PiatraCraiului = 'ro.landscape.piatra-craiului',
+  ApuseniMountains = 'ro.landscape.apuseni-mountains',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -837,6 +842,35 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'flower',
     },
+    // Apuseni Mountains (Alba, Bihor, Cluj counties): the Bihor side is Crișana, which the trip filter has no entry for, so it sits with Transilvania (as Timișoara for the Banat). TODO image: freely licensed photographs for the four traces.
+    {
+      id: RoTrace.ScarisoaraIceCave,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'snowflake',
+    },
+    {
+      id: RoTrace.BearsCave,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'paw',
+    },
+    {
+      id: RoTrace.CetatilePonorului,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'mountains',
+    },
+    {
+      id: RoTrace.AvramIancuMemorialHouse,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'house',
+    },
   ],
   cards: [
     {
@@ -1057,6 +1091,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.LibeartyBearSanctuary,
         RoTrace.MaguraVillage,
         RoTrace.LaOmPeak,
+      ],
+    },
+    {
+      id: RoLandscape.ApuseniMountains,
+      kind: 'landscape',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [
+        RoTrace.ScarisoaraIceCave,
+        RoTrace.BearsCave,
+        RoTrace.CetatilePonorului,
+        RoTrace.AvramIancuMemorialHouse,
       ],
     },
   ],

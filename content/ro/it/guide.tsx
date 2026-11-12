@@ -2414,6 +2414,24 @@ function Body() {
           }
           remember="La Piatra Craiului è una sola lama di calcare: sotto, i villaggi d’alta quota e i boschi degli orsi; sopra, un fiore che non cresce altrove."
         />
+        <Card
+          card={RoLandscape.ApuseniMountains}
+          intro={
+            <>
+              I <N>Monti Apuseni</N> chiudono la Transilvania a ovest, fra la valle del <N>Mureș</N>{' '}
+              e le pianure della Crișana. Non sono alti: la cima più alta, il <N>Bihor</N>, arriva a
+              1.849 m. Ma in gran parte sono di calcare, e l’acqua li ha scavati: doline,
+              inghiottitoi, torrenti che spariscono e riemergono, grotte con fiumi e ghiacci
+              sotterranei. Il cuore del massiccio è il Parco naturale Apuseni. Sugli altipiani
+              vivono i <N>moți</N>, in villaggi di case sparse che salgono fino a circa 1.400 m: per
+              secoli vivono del bosco, del legno lavorato e delle miniere. A <N>Roșia Montană</N>{' '}
+              l’oro si estrae dall’epoca romana: le gallerie antiche sono patrimonio UNESCO dal
+              2021. Da queste montagne partono la rivolta di Horea, nel <D>1784</D>, e nel{' '}
+              <D>1848</D> la rivolta romena guidata da Avram Iancu.
+            </>
+          }
+          remember="Negli Apuseni il paesaggio è sotto i piedi: grotte e ghiacci nel calcare, e sopra le case sparse dei moți, che da qui sono scesi in due rivolte."
+        />
       </Chapter>
     </>
   )
