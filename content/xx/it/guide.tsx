@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Person, Section, Template, Trace, structure } from '../structure'
+import { Landscape, Person, Section, Template, Trace, structure } from '../structure'
 import { names } from './names'
 
 /*
@@ -326,6 +326,17 @@ function Body() {
           Un paragrafo per ogni ambiente: dove si trova, cosa vedere, quando andarci.
         </Text>
         <Detail on={[South]}>Un dettaglio visibile solo se il viaggio include il Sud.</Detail>
+        {/* Landscape card: an entry of the index under Natura, like a person under Personaggi. */}
+        <Card
+          card={Landscape.Mountains}
+          intro={
+            <>
+              Introduzione al paesaggio: dove si trova, come si è formato, chi lo abita e lo usa. Un
+              paragrafo, con <N>nomi</N> e date come <D>1935</D>.
+            </>
+          }
+          remember="La frase da ricordare del paesaggio."
+        />
       </Chapter>
 
       <Chapter section={Section.Food} lede="Cosa ordinare, e come riconoscerlo nel menù.">

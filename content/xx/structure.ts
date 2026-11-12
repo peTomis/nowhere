@@ -44,10 +44,16 @@ export enum Trace {
   BirthHouse = 'xx.place.birth-house',
   Fortress = 'xx.place.fortress',
   Painting = 'xx.place.painting',
+  Lake = 'xx.place.lake',
 }
 
 export enum Person {
   Someone = 'xx.person.someone',
+}
+
+/** Landscapes with a card (`<cc>.landscape.<slug>`): stored with the reader's pins, never rename them. */
+export enum Landscape {
+  Mountains = 'xx.landscape.mountains',
 }
 
 const { North, South, CityOne, CityTwo, CityThree } = Template
@@ -117,10 +123,12 @@ export const structure = defineGuide<Template, Section>({
       image: { src: '/guides/template/trace-painting.jpg' },
       isNew: true,
     },
+    { id: Trace.Lake, region: South, where: 'remote', rarity: 'rare', icon: 'waves' },
   ],
   /**
-   * Person and city cards (a city card's id is the city): each listed once in the body with
-   * <Card>. `on` as for a section; person cards are also the Personaggi chapter's index entries.
+   * Person, city and landscape cards (a city card's id is the city): each listed once in the body
+   * with <Card>. `on` as for a section; person and landscape cards are also the index entries of
+   * the Personaggi and Natura chapters.
    */
   cards: [
     {
@@ -138,5 +146,12 @@ export const structure = defineGuide<Template, Section>({
       traces: [Trace.ClockTower, Trace.BirthHouse],
     },
     { id: CityThree, kind: 'city', region: South, on: [CityThree], traces: [Trace.Painting] },
+    {
+      id: Landscape.Mountains,
+      kind: 'landscape',
+      region: North,
+      on: [North, South],
+      traces: [Trace.Fortress, Trace.Lake],
+    },
   ],
 })

@@ -4,6 +4,7 @@ import { isValidElement, type ReactNode } from 'react'
 import { kitKindOf, kitNameOf } from '@/components/guide/content'
 import { BUILT_IN_TRACES } from '@/content/subjects'
 import {
+  CARD_CHAPTER,
   CHAPTERS,
   cityCardSections,
   type Credit,
@@ -150,6 +151,8 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     addId(c.id, 'cards', cardIds)
     if (c.kind === 'person' && !c.id.startsWith(`${cc}.person.`))
       error('cards', `${c.id} must start with "${cc}.person."`)
+    if (c.kind === 'landscape' && !c.id.startsWith(`${cc}.landscape.`))
+      error('cards', `${c.id} must start with "${cc}.landscape."`)
     if (c.kind === 'city' && regionOf.get(c.id) !== c.region)
       error(`cards › ${c.id}`, `a city card's id must be a city of ${c.region}`)
     if (regionOf.has(c.region) || !placeIds.has(c.region))
@@ -200,8 +203,8 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   const order: string[] = []
   const anchors = new Set<string>()
   const cardsUsed = new Set<string>()
-  /** Person cards in body order: the index lists them in the order of structure.cards. */
-  const personsSeen: string[] = []
+  /** Person and landscape cards in body order: the index lists them in the order of structure.cards. */
+  const listedSeen: Record<'person' | 'landscape', string[]> = { person: [], landscape: [] }
   /** City cards in body order, and the section of the index each one is listed under. */
   const citiesSeen: string[] = []
   const citySection = cityCardSections(structure)
@@ -312,9 +315,10 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       cardsUsed.add(id)
       if (!within(def.on, ctx.on))
         error(where, `on ${fmt(def.on)} is not within its parent's ${fmt(ctx.on)}`)
-      if (def.kind === 'person') {
-        personsSeen.push(id)
-        if (ctx.chapter !== 'people') error(where, 'a person card goes in the Personaggi chapter')
+      if (def.kind !== 'city') {
+        listedSeen[def.kind].push(id)
+        if (ctx.chapter !== CARD_CHAPTER[def.kind])
+          error(where, `a ${def.kind} card goes in the ${CARD_CHAPTER[def.kind]} chapter`)
       } else {
         citiesSeen.push(id)
         const listed = citySection.get(id)
@@ -346,9 +350,12 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
 
   walk(content.body, { on: 'always', path: slug, sections: [] })
   for (const id of cardIds) if (!cardsUsed.has(id)) error('body', `card ${id} is not in the body`)
-  const personOrder = (structure.cards ?? []).filter((c) => c.kind === 'person').map((c) => c.id)
-  if (personsSeen.join() !== personOrder.filter((id) => personsSeen.includes(id)).join())
-    error('body', 'person cards must follow the order of structure.cards (the index order)')
+  for (const kind of ['person', 'landscape'] as const) {
+    const seen = listedSeen[kind]
+    const order = (structure.cards ?? []).filter((c) => c.kind === kind).map((c) => c.id)
+    if (seen.join() !== order.filter((id) => seen.includes(id)).join())
+      error('body', `${kind} cards must follow the order of structure.cards (the index order)`)
+  }
   const cityOrder = structure.sections.flatMap((s) =>
     (structure.cards ?? []).filter((c) => citySection.get(c.id) === s.id).map((c) => c.id),
   )

@@ -11,10 +11,10 @@ import type { ReactNode } from 'react'
 
 /**
  * URL anchor (and HTML id) of an index entry: a section's id without `<cc>.section.`, a person
- * card's without `<cc>.person.` (the same as cardAnchor).
+ * or landscape card's without `<cc>.person.` / `<cc>.landscape.` (the same as cardAnchor).
  */
 export function anchorOf(id: string): string {
-  return id.replace(/^[a-z]{2}\.(section\.|person\.)?/, '')
+  return id.replace(/^[a-z]{2}\.(section\.|person\.|landscape\.)?/, '')
 }
 
 /** A region the reader can include or exclude from their trip, with its cities. */
@@ -209,18 +209,38 @@ export type TraceDef<P extends string = string> = {
 }
 
 /**
- * A person or city card ("Scheda", B9–B10): an introduction, its traces, and "Da ricordare". The
- * texts are in the body (`<Card>`); the name in the names module.
+ * The kinds of card: a person (Personaggi chapter), a city (Città chapter) or a landscape (Natura
+ * chapter).
+ */
+export type CardKind = 'person' | 'city' | 'landscape'
+
+/**
+ * The chapter each kind of card goes in. Person and landscape cards are their chapter's entries
+ * in the index, in the order of structure.cards; city cards are listed under the Città part of
+ * their region (cityCardSections).
+ */
+export const CARD_CHAPTER: Record<CardKind, ChapterKind> = {
+  person: 'people',
+  city: 'cities',
+  landscape: 'nature',
+}
+
+/**
+ * A person, city or landscape card ("Scheda", B9–B11): an introduction, its traces, and "Da
+ * ricordare". The texts are in the body (`<Card>`); the name in the names module.
  */
 export type CardDef<P extends string = string> = {
-  /** A person: `<cc>.person.<slug>`. A city: the city's id (one card per city). */
+  /**
+   * A person: `<cc>.person.<slug>`. A city: the city's id (one card per city). A landscape:
+   * `<cc>.landscape.<slug>`.
+   */
   id: string
-  kind: 'person' | 'city'
+  kind: CardKind
   /** Region in the card's kicker ("Personaggio · Valacchia"). */
   region: P
   /**
-   * For which places of the trip the card is shown, like a section's `on`. A person card is also
-   * an entry of the index, under the Personaggi chapter, shown for the same places.
+   * For which places of the trip the card is shown, like a section's `on`. A person or landscape
+   * card is also an entry of the index, under its chapter, shown for the same places.
    */
   on: Visibility<P>
   /** Trace ids, in order (2–5). */
@@ -234,7 +254,7 @@ export type GuideStructure<P extends string = string, S extends string = string>
   sections: SectionDef<S, P>[]
   /** The guide's own traces, in album order (after the cover, the flag and the coat of arms). */
   traces?: TraceDef<P>[]
-  /** Person and city cards; person cards in this order in the index. */
+  /** Person, city and landscape cards; person and landscape cards in this order in the index. */
   cards?: CardDef<P>[]
 }
 

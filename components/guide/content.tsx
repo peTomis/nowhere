@@ -710,7 +710,7 @@ export function guideKit<P extends string, S extends string>(
   }
 
   /**
-   * A person or city card ("Scheda", B9–B10): heading with the pin button, introduction, the
+   * A person, city or landscape card ("Scheda", B9–B11): heading with the pin button, introduction, the
    * card's traces (from structure.cards, those in the trip first) and "Da ricordare". `intro` and
    * `remember` are one paragraph each. Its `on` comes from structure.cards, as a part's comes from
    * its section. A copy of it is shown in "In evidenza" when pinned (`idPrefix`, `heading` and
@@ -728,7 +728,8 @@ export function guideKit<P extends string, S extends string>(
     if (!def) throw new Error(`Unknown card ${props.card}`)
     const text = names.cards?.[def.id]
     const name = text?.name ?? def.id
-    const H = def.kind === 'person' ? 'h3' : 'h4'
+    // Person and landscape cards sit right under their chapter; city cards under a part.
+    const H = def.kind === 'city' ? 'h4' : 'h3'
     const prefix = props.idPrefix ?? ''
     return (
       <Only on={props.ungated ? 'always' : def.on}>
@@ -744,7 +745,7 @@ export function guideKit<P extends string, S extends string>(
                 </div>
                 <div className="flex items-center gap-2">
                   <H
-                    className={`m-0 ${def.kind === 'person' ? 'text-[clamp(28px,5vw,36px)] leading-[1.1]' : 'text-[clamp(26px,4.6vw,32px)] leading-[1.15]'}`}
+                    className={`m-0 ${H === 'h3' ? 'text-[clamp(28px,5vw,36px)] leading-[1.1]' : 'text-[clamp(26px,4.6vw,32px)] leading-[1.15]'}`}
                   >
                     {name}
                     {text?.local && (

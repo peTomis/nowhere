@@ -204,6 +204,20 @@ Le città seguono lo stesso modello dei personaggi, con un’introduzione più a
 
 Le regole su date, nomi, immagini, verifica, numerazione e valore della sezione B9 valgono anche qui. La numerazione è unica per tutto il Paese, non per città. Quando una traccia è anche la traccia di un personaggio, per esempio la casa natale di un principe, è lo stesso luogo, non una copia (sezione D6). Il testo della città descrive il luogo, il testo del personaggio spiega perché quel luogo conta per lui.
 
+### B11. Schede paesaggio
+
+Il capitolo Natura è fatto di schede paesaggio: un parco, una catena montuosa, un delta, una gola. Seguono il modello delle città, ma il fuoco è la lettura del paesaggio: come si è formato e che cosa ci hanno fatto le persone.
+
+1. **Introduzione.** Da sei a dieci righe, non gamificate: dove si trova, che tipo di paesaggio è (la geologia o il clima che lo spiegano), chi lo abita e lo usa, che cosa vi è cambiato nel Novecento. È il testo che dà senso a tutte le tracce.
+2. **Tracce.** Da due a cinque punti precisi da fotografare: un lago, una cima, una grotta, una diga, un villaggio, una ferrovia. Ognuna porta una sola idea ed è leggibile da sola. Quasi tutte sono «se passi di lì»: il «Come trovarla» dice da dove si parte (villaggio, parcheggio, rifugio), con che mezzo e in quali mesi si raggiunge. Strade e sentieri d’alta quota chiusi d’inverno, grotte con visita guidata e permessi vanno indicati.
+3. **Da ricordare.** Una frase in chiusura.
+
+Le regole delle sezioni B9 e B10 valgono anche qui. In più:
+
+- **Numeri della natura con due fonti**: altitudini, superfici, numero di laghi o di specie, anni di istituzione di parchi e riserve. Le cifre arrotondate dei siti turistici («oltre 80 laghi») vanno controllate sulle fonti dell’ente parco o dell’UNESCO.
+- **Niente primati non verificati**: «la più grande», «l’ultima foresta vergine», «il canyon più profondo».
+- **La regione del filtro** è quella del luogo; un paesaggio a cavallo di due regioni ha nel suo `on` tutte e due.
+
 ---
 
 ## Parte C — Fonti e verifica

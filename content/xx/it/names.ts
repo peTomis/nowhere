@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Person, Section, Template, Trace } from '../structure'
+import { Landscape, Person, Section, Template, Trace } from '../structure'
 
 /** Italian names of the template's places and sections (index, titles, trip filter). */
 
@@ -59,6 +59,13 @@ export const names: GuideNames<Template, Section> = {
       text: 'Una traccia nuova, con un’immagine di repertorio (qui manca: segnaposto).',
       find: 'Museo civico, primo piano, ultima sala.',
     },
+    [Trace.Lake]: {
+      name: 'Il lago sotto la cima',
+      local: 'Nome locale del lago',
+      place: `Parco nazionale, ${places[Template.South]}`,
+      text: 'Una traccia di paesaggio: un punto preciso, da fotografare, dentro un ambiente più grande.',
+      find: 'Sentiero segnato dal rifugio, due ore di cammino; percorribile da giugno a ottobre.',
+    },
   },
   /** Card headings; a city card takes the city's name. */
   cards: {
@@ -72,5 +79,6 @@ export const names: GuideNames<Template, Section> = {
       },
     },
     [Template.CityThree]: { name: places[Template.CityThree] },
+    [Landscape.Mountains]: { name: 'Le montagne', local: 'Nome locale' },
   },
 }

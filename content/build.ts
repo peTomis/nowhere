@@ -8,6 +8,7 @@ import {
   RARITY_POINTS,
   chapterNumber,
   cityCardSections,
+  type CardKind,
   type Credit,
   type GuideContent,
   type GuideNames,
@@ -18,6 +19,7 @@ import {
   type TraceIcon,
   type TraceText,
   type TraceWhere,
+  type Visibility,
 } from './types'
 
 /** Trip filter entries (regions with their city cards) from the structure and a locale's names. */
@@ -37,22 +39,24 @@ export function placesOf<P extends string, S extends string>(
 
 /**
  * The index, from the sections. Chapters show their number and fixed title, and their period in
- * the body only, not in the index. The person cards follow the Personaggi chapter as its entries,
- * in the order of structure.cards; the city cards follow the part of the Città chapter for their
- * region, one level down, as the regions under a part of the history chapter.
+ * the body only, not in the index. The person and landscape cards follow the Personaggi and Natura
+ * chapters as their entries, in the order of structure.cards; the city cards follow the part of
+ * the Città chapter for their region, one level down, as the regions under a part of the history
+ * chapter.
  */
 export function tocOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
 ): TocEntry<P>[] {
-  const persons = (structure.cards ?? [])
-    .filter((c) => c.kind === 'person')
-    .map((c): TocEntry<P> => ({
-      id: c.id,
-      label: names.cards?.[c.id]?.name ?? c.id,
-      level: 2,
-      on: c.on,
-    }))
+  const cardsOf = (kind: CardKind) =>
+    (structure.cards ?? [])
+      .filter((c) => c.kind === kind)
+      .map((c): TocEntry<P> => ({
+        id: c.id,
+        label: names.cards?.[c.id]?.name ?? c.id,
+        level: 2,
+        on: c.on,
+      }))
   const citySection = cityCardSections(structure)
   const citiesUnder = (s: { id: string; level: 1 | 2 | 3 }) =>
     (structure.cards ?? [])
@@ -72,7 +76,9 @@ export function tocOf<P extends string, S extends string>(
       dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
       on: s.on,
     }
-    return s.chapter === 'people' ? [entry, ...persons] : [entry, ...citiesUnder(s)]
+    if (s.chapter === 'people') return [entry, ...cardsOf('person')]
+    if (s.chapter === 'nature') return [entry, ...cardsOf('landscape')]
+    return [entry, ...citiesUnder(s)]
   })
 }
 
@@ -138,12 +144,14 @@ export type AlbumTrace = {
   cards: { id: string; name: string; anchor: string }[]
 }
 
-/** A person or city card, as the pins and the album show it. */
+/** A person, city or landscape card, as the pins and the album show it. */
 export type GuideCard = {
   traceTexts?: Partial<Record<string, string>>
   id: string
-  kind: 'person' | 'city'
-  /** HTML id of the card: the id without `<cc>.` and `person.`. */
+  kind: CardKind
+  /** For which places of the trip the card is shown (CardDef.on). */
+  on: Visibility
+  /** HTML id of the card: the id without `<cc>.`, `person.` and `landscape.`. */
   anchor: string
   name: string
   local?: string
@@ -242,6 +250,7 @@ export function cardsOf<P extends string, S extends string>(
     return {
       id: c.id,
       kind: c.kind,
+      on: c.on,
       anchor: cardAnchor(c.id),
       name: text?.name ?? c.id,
       local: text?.local,

@@ -151,8 +151,8 @@ export function Pinned({ copies }: { copies: Record<string, ReactNode> }) {
         const seen = card.traces.filter((id) =>
           isSeen(entries[traces.find((tr) => tr.id === id)?.key ?? '']),
         ).length
-        // A person belongs to the whole guide; a city can be out of the trip.
-        const outside = card.kind === 'city' && !trip.on(card.id)
+        // A person belongs to the whole guide; a city or a landscape can be out of the trip.
+        const outside = card.kind !== 'person' && card.on !== 'always' && !card.on.some(trip.on)
         const Caret = open ? CaretDownIcon : CaretRightIcon
         return (
           <div key={card.id} className="flex flex-col">
@@ -196,7 +196,9 @@ export function Pinned({ copies }: { copies: Record<string, ReactNode> }) {
               <div className="flex flex-col gap-4 pt-3 pb-6">
                 {outside && (
                   <p className="m-0 max-w-[56ch] text-[15px] leading-[1.5] text-neutral-800 italic">
-                    {format(t.guide.pins.outsideText, { name: card.name })}
+                    {card.kind === 'landscape'
+                      ? t.guide.pins.outsideLandscapeText
+                      : format(t.guide.pins.outsideText, { name: card.name })}
                   </p>
                 )}
                 {copies[card.id]}

@@ -174,7 +174,9 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   `names.cards`, each placed once in the body with `<Card>` (person cards in the Personaggi chapter,
   in `structure.cards` order: they are its entries in the index; city cards in the Città chapter,
   inside the part whose `on` names the city or its region: the index lists them one level under
-  that part, as the regions under a history part — `cityCardSections()` in `content/types.ts`);
+  that part, as the regions under a history part — `cityCardSections()` in `content/types.ts`;
+  landscape cards, id `<cc>.landscape.<slug>`, in the Natura chapter, in `structure.cards` order:
+  they are its entries in the index, as the person cards; `CARD_CHAPTER` in `content/types.ts`);
   `<Today traces>` links an event to
   its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
