@@ -18,6 +18,7 @@ const places: Record<Ro, string> = {
   [Ro.Targoviste]: 'Târgoviște',
   [Ro.Iasi]: 'Iași',
   [Ro.Suceava]: 'Suceava',
+  [Ro.Constanta]: 'Constanța',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -55,10 +56,12 @@ export const names: GuideNames<Ro, RoSection> = {
       places[Ro.Brasov],
       places[Ro.Sibiu],
       places[Ro.Sighisoara],
+      places[Ro.Constanta],
     ].join(', '),
     [RoSection.CitiesMoldavia]: places[Ro.Moldavia],
     [RoSection.CitiesWallachia]: places[Ro.Wallachia],
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
+    [RoSection.CitiesDobruja]: places[Ro.Dobruja],
   },
   traces: {
     [RoTrace.SarmizegetusaRegia]: {
@@ -422,6 +425,34 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il 20 dicembre 1989, dopo giorni di repressione e decine di morti, una folla enorme riempie la piazza. Dal balcone dell’Opera si legge che Timișoara è la «prima città libera dal comunismo», mentre a Bucarest Ceaușescu è ancora al potere. Ogni 20 dicembre, a mezzogiorno, le sirene della città suonano per tre minuti in ricordo delle vittime.',
       find: 'Piața Victoriei, il lungo viale pedonale fra l’Opera e la cattedrale ortodossa metropolitana. Il balcone è sulla facciata dell’Opera, verso la piazza.',
     },
+    [RoTrace.ConstantaOvidSquare]: {
+      name: 'Ovidio in piazza',
+      local: 'Piața Ovidiu · Statuia lui Ovidiu',
+      place: `${places[Ro.Constanta]}, ${places[Ro.Dobruja]}`,
+      text: 'Il poeta romano che Augusto esilia a Tomis nell’8 d.C. sta al centro della piazza che porta il suo nome. La statua in bronzo è dello scultore italiano Ettore Ferrari ed è inaugurata nel 1887: le autorità romene la vogliono dopo la guerra d’indipendenza, quando la Dobrogea è appena passata alla Romania, come segno del legame fra la regione e il mondo romano. Nel 1925 una copia viene collocata a Sulmona, la città natale di Ovidio.',
+      find: 'Piața Ovidiu, nel centro storico sulla penisola, davanti al Museo di storia nazionale e archeologia, l’ex municipio.',
+    },
+    [RoTrace.ConstantaRomanMosaic]: {
+      name: 'Il mosaico di Tomis',
+      local: 'Edificiul roman cu mozaic',
+      place: `${places[Ro.Constanta]}, ${places[Ro.Dobruja]}`,
+      text: 'Nel 1959 alcuni lavori edilizi sulla scogliera riportano alla luce un edificio del IV secolo, costruito a terrazze su tre livelli fra la città alta e il porto antico. Il grande salone ha un vasto pavimento a mosaico policromo, con motivi geometrici e vegetali. Era probabilmente un luogo di commerci legato al porto: mostra la ricchezza di Tomis quando è la capitale della provincia di Scizia Minore.',
+      find: 'Piața Ovidiu, accanto al Museo di storia nazionale e archeologia, sul pendio verso il porto. Riaperto nel novembre 2025 dopo un lungo restauro: controlla orari e accesso sul sito del museo.',
+    },
+    [RoTrace.ConstantaGrandMosque]: {
+      name: 'La moschea del re',
+      local: 'Marea Moschee · Moscheea Carol I',
+      place: `${places[Ro.Constanta]}, ${places[Ro.Dobruja]}`,
+      text: 'Nel 1910 il re Carol I, sovrano cristiano, fa costruire una moschea per i musulmani della città, turchi e tatari. Sorge al posto di una moschea ottomana del 1822; l’architetto Victor Ștefănescu si ispira a una moschea di Konya (Turchia). La cupola e il minareto sono fra le prime strutture in cemento armato del paese. Il re la inaugura nel 1913: la Dobrogea entrata nella Romania ha una popolazione in parte musulmana, e il sovrano lo riconosce nel cuore della città.',
+      find: 'Nel centro storico sulla penisola, a pochi passi da Piața Ovidiu. Si sale sul minareto per una scala interna di circa 140 gradini: dalla cima si vedono la penisola e il porto.',
+    },
+    [RoTrace.ConstantaCasino]: {
+      name: 'Il casinò sul mare',
+      local: 'Cazinoul din Constanța',
+      place: `${places[Ro.Constanta]}, ${places[Ro.Dobruja]}`,
+      text: 'Il progetto Art Nouveau dell’architetto Daniel Renard passa di mano più volte, a ogni cambio di amministrazione cittadina, prima di essere realizzato: il casinò viene inaugurato nel 1910. Le grandi finestre a forma di conchiglia guardano il mare: è il simbolo della città di villeggiatura che cresce insieme al porto moderno. Dopo il 1948 diventa una casa della cultura, poi un ristorante; chiuso e degradato per anni, riapre nel 2025 dopo un restauro di cinque anni.',
+      find: 'Sulla passeggiata a mare della penisola, vicino al faro genovese. Si visita con biglietto: controlla orari e prenotazioni sul sito ufficiale.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -453,6 +484,7 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },
     [Ro.Timisoara]: { name: places[Ro.Timisoara], local: 'Temesvár · Temeswar' },
+    [Ro.Constanta]: { name: places[Ro.Constanta], local: 'Tomis · Köstence' },
     [Ro.Sighisoara]: {
       name: places[Ro.Sighisoara],
       local: 'Schäßburg · Segesvár',

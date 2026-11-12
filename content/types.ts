@@ -172,6 +172,7 @@ export type TraceIcon =
   | 'house'
   | 'image'
   | 'mosaic'
+  | 'mosque'
   | 'mountains'
   | 'music'
   | 'paint'

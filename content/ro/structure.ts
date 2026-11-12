@@ -26,6 +26,7 @@ export enum Ro {
   Targoviste = 'ro.targoviste',
   Iasi = 'ro.iasi',
   Suceava = 'ro.suceava',
+  Constanta = 'ro.constanta',
 }
 
 /** Chapters, parts and titled timelines: index entries and URL anchors (`ro.section.` dropped). */
@@ -61,6 +62,7 @@ export enum RoSection {
   CitiesMoldavia = 'ro.section.cities.moldavia',
   CitiesWallachia = 'ro.section.cities.wallachia',
   CitiesTransylvania = 'ro.section.cities.transylvania',
+  CitiesDobruja = 'ro.section.cities.dobruja',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -116,6 +118,10 @@ export enum RoTrace {
   TimisoaraUnionSquare = 'ro.place.timisoara-union-square',
   TimisoaraTokesParsonage = 'ro.place.timisoara-tokes-parsonage',
   TimisoaraOperaBalcony = 'ro.place.timisoara-opera-balcony',
+  ConstantaOvidSquare = 'ro.place.constanta-ovid-square',
+  ConstantaRomanMosaic = 'ro.place.constanta-roman-mosaic',
+  ConstantaGrandMosque = 'ro.place.constanta-grand-mosque',
+  ConstantaCasino = 'ro.place.constanta-casino',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -137,7 +143,7 @@ const bc1 = { century: -1 }
 export const structure = defineGuide<Ro, RoSection>({
   country: 'ro',
   regions: [
-    { id: Dobruja, cities: [] },
+    { id: Dobruja, cities: [Ro.Constanta] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },
     // Timișoara is in the Banat, which the trip filter has no entry for (as for the Decebalus
     // rock sculpture): it sits with Transilvania, and its card says it is the Banat.
@@ -238,6 +244,7 @@ export const structure = defineGuide<Ro, RoSection>({
         Ro.Sibiu,
         Ro.Sighisoara,
         Ro.Timisoara,
+        Ro.Constanta,
       ],
     },
     { id: RoSection.CitiesMoldavia, level: 2, on: [Ro.Iasi, Ro.Suceava] },
@@ -247,6 +254,7 @@ export const structure = defineGuide<Ro, RoSection>({
       level: 2,
       on: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara, Ro.Timisoara],
     },
+    { id: RoSection.CitiesDobruja, level: 2, on: [Ro.Constanta] },
   ],
   traces: [
     {
@@ -694,6 +702,39 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'music',
     },
+    // Constanța. TODO image: freely licensed photographs for the four Constanța traces.
+    {
+      id: RoTrace.ConstantaOvidSquare,
+      region: Dobruja,
+      city: Ro.Constanta,
+      where: 'city',
+      rarity: 'common',
+      icon: 'shield',
+    },
+    {
+      id: RoTrace.ConstantaRomanMosaic,
+      region: Dobruja,
+      city: Ro.Constanta,
+      where: 'city',
+      rarity: 'common',
+      icon: 'mosaic',
+    },
+    {
+      id: RoTrace.ConstantaGrandMosque,
+      region: Dobruja,
+      city: Ro.Constanta,
+      where: 'city',
+      rarity: 'common',
+      icon: 'mosque',
+    },
+    {
+      id: RoTrace.ConstantaCasino,
+      region: Dobruja,
+      city: Ro.Constanta,
+      where: 'city',
+      rarity: 'common',
+      icon: 'waves',
+    },
   ],
   cards: [
     {
@@ -866,6 +907,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.TimisoaraUnionSquare,
         RoTrace.TimisoaraTokesParsonage,
         RoTrace.TimisoaraOperaBalcony,
+      ],
+    },
+    {
+      id: Ro.Constanta,
+      kind: 'city',
+      region: Dobruja,
+      on: [Ro.Constanta],
+      traces: [
+        RoTrace.ConstantaOvidSquare,
+        RoTrace.ConstantaRomanMosaic,
+        RoTrace.ConstantaGrandMosque,
+        RoTrace.ConstantaCasino,
       ],
     },
   ],

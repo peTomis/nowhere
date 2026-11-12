@@ -1738,6 +1738,10 @@ function Body() {
                 settentrionale e il delta del Danubio, ma cede alla Russia la Bessarabia meridionale
                 ricevuta nel 1856, oggi tra Moldova e Ucraina.
               </Detail>
+              {/* Only where the Constanța card is shown: what the new state builds in the city. */}
+              <Only on={[Ro.Constanta]}>
+                <Today traces={[RoTrace.ConstantaOvidSquare, RoTrace.ConstantaGrandMosque]} />
+              </Only>
             </Event>
             <Event
               on={[Wallachia, Moldavia, Dobruja]}
@@ -2324,6 +2328,27 @@ function Body() {
               </>
             }
             remember="Timișoara è una città barocca di molte lingue e confessioni: qui, nel 1989, comincia la rivolta contro Ceaușescu."
+          />
+        </Part>
+        <Part section={RoSection.CitiesDobruja}>
+          <Card
+            card={Ro.Constanta}
+            intro={
+              <>
+                <N>Constanța</N> sta su una penisola fra il porto e il Mar Nero. Nel VI secolo a.C.
+                coloni greci vi fondano <N>Tomis</N>; la città passa poi ai romani e, dalla fine del
+                III secolo, è la capitale della provincia di Scizia Minore. Nell’<D>8 d.C.</D>{' '}
+                Augusto vi esilia il poeta <N>Ovidio</N>, che vi resta fino alla morte. Per gli
+                ottomani è <N>Köstence</N>, una piccola città portuale che una ferrovia costruita da
+                una compagnia britannica collega al Danubio. Nel <D>1878</D> la Dobrogea
+                settentrionale passa alla Romania, e Constanța diventa il porto del paese sul Mar
+                Nero. Il porto moderno, voluto da Carol I, è inaugurato nel <D>1909</D>; sulla
+                passeggiata a mare sorge il casinò. Intorno al 1900 nella città vivono romeni,
+                greci, tatari, bulgari, turchi ed ebrei: chiese e moschee stanno a pochi passi l’una
+                dall’altra. Oggi il porto di Constanța è il più grande della Romania.
+              </>
+            }
+            remember="A Constanța la Romania arriva al mare: sotto la città di Carol I restano la Tomis greca e romana e la Köstence ottomana."
           />
         </Part>
       </Chapter>
