@@ -1,5 +1,6 @@
 import {
   BankIcon,
+  BoatIcon,
   BridgeIcon,
   CastleTurretIcon,
   ChurchIcon,
@@ -9,6 +10,7 @@ import {
   GridFourIcon,
   HouseLineIcon,
   ImageSquareIcon,
+  LighthouseIcon,
   MapPinIcon,
   MosqueIcon,
   MountainsIcon,
@@ -16,6 +18,7 @@ import {
   PaintBrushIcon,
   ShieldIcon,
   StepsIcon,
+  TreeIcon,
   TrophyIcon,
   WallIcon,
   WavesIcon,
@@ -26,6 +29,7 @@ import type { TraceIcon } from '@/content/types'
 /** The Phosphor glyph of each trace icon (shown in a trace's box until it is seen). */
 export const TRACE_ICONS: Record<TraceIcon, Icon> = {
   bank: BankIcon,
+  boat: BoatIcon,
   bridge: BridgeIcon,
   castle: CastleTurretIcon,
   church: ChurchIcon,
@@ -34,6 +38,7 @@ export const TRACE_ICONS: Record<TraceIcon, Icon> = {
   frame: FrameCornersIcon,
   house: HouseLineIcon,
   image: ImageSquareIcon,
+  lighthouse: LighthouseIcon,
   mosaic: GridFourIcon,
   mosque: MosqueIcon,
   mountains: MountainsIcon,
@@ -42,6 +47,7 @@ export const TRACE_ICONS: Record<TraceIcon, Icon> = {
   pin: MapPinIcon,
   shield: ShieldIcon,
   steps: StepsIcon,
+  tree: TreeIcon,
   trophy: TrophyIcon,
   wall: WallIcon,
   waves: WavesIcon,

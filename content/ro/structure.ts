@@ -63,6 +63,8 @@ export enum RoSection {
   CitiesWallachia = 'ro.section.cities.wallachia',
   CitiesTransylvania = 'ro.section.cities.transylvania',
   CitiesDobruja = 'ro.section.cities.dobruja',
+  /** Chapter 5, Natura. */
+  Nature = 'ro.section.nature',
 }
 
 /** Traces of the album: stored with the reader's photos, never rename them. */
@@ -122,6 +124,10 @@ export enum RoTrace {
   ConstantaRomanMosaic = 'ro.place.constanta-roman-mosaic',
   ConstantaGrandMosque = 'ro.place.constanta-grand-mosque',
   ConstantaCasino = 'ro.place.constanta-casino',
+  SulinaOldLighthouse = 'ro.place.sulina-old-lighthouse',
+  LeteaForest = 'ro.place.letea-forest',
+  JurilovcaHarbour = 'ro.place.jurilovca-harbour',
+  EnisalaFortress = 'ro.place.enisala-fortress',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -134,6 +140,11 @@ export enum RoPerson {
   MihaiEminescu = 'ro.person.mihai-eminescu',
   ConstantinBrancusi = 'ro.person.constantin-brancusi',
   NicolaeCeausescu = 'ro.person.nicolae-ceausescu',
+}
+
+/** Landscapes with a card (Natura chapter): stored with the reader's pins, never rename them. */
+export enum RoLandscape {
+  DanubeDelta = 'ro.landscape.danube-delta',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -255,6 +266,8 @@ export const structure = defineGuide<Ro, RoSection>({
       on: [Ro.AlbaIulia, Ro.Brasov, Ro.ClujNapoca, Ro.Sibiu, Ro.Sighisoara, Ro.Timisoara],
     },
     { id: RoSection.CitiesDobruja, level: 2, on: [Ro.Constanta] },
+
+    { id: RoSection.Nature, level: 1, chapter: 'nature', on: [Dobruja] },
   ],
   traces: [
     {
@@ -735,6 +748,35 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'waves',
     },
+    // Danube Delta (Tulcea county). TODO image: freely licensed photographs for the four traces.
+    {
+      id: RoTrace.SulinaOldLighthouse,
+      region: Dobruja,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'lighthouse',
+    },
+    {
+      id: RoTrace.LeteaForest,
+      region: Dobruja,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'tree',
+    },
+    {
+      id: RoTrace.JurilovcaHarbour,
+      region: Dobruja,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'boat',
+    },
+    {
+      id: RoTrace.EnisalaFortress,
+      region: Dobruja,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'castle',
+    },
   ],
   cards: [
     {
@@ -919,6 +961,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.ConstantaRomanMosaic,
         RoTrace.ConstantaGrandMosque,
         RoTrace.ConstantaCasino,
+      ],
+    },
+    {
+      id: RoLandscape.DanubeDelta,
+      kind: 'landscape',
+      region: Dobruja,
+      on: [Dobruja],
+      traces: [
+        RoTrace.SulinaOldLighthouse,
+        RoTrace.LeteaForest,
+        RoTrace.JurilovcaHarbour,
+        RoTrace.EnisalaFortress,
       ],
     },
   ],

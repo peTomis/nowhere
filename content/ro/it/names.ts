@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Ro, RoPerson, RoSection, RoTrace } from '../structure'
+import { Ro, RoLandscape, RoPerson, RoSection, RoTrace } from '../structure'
 
 /** Italian names of the Romania guide's places and sections (index, titles, trip filter). */
 
@@ -19,6 +19,11 @@ const places: Record<Ro, string> = {
   [Ro.Iasi]: 'Iași',
   [Ro.Suceava]: 'Suceava',
   [Ro.Constanta]: 'Constanța',
+}
+
+/** Landscapes of the Natura chapter: card names, also its line in the summary. */
+const landscapes: Record<RoLandscape, string> = {
+  [RoLandscape.DanubeDelta]: 'Delta del Danubio',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -62,6 +67,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.CitiesWallachia]: places[Ro.Wallachia],
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
     [RoSection.CitiesDobruja]: places[Ro.Dobruja],
+    [RoSection.Nature]: Object.values(landscapes).join(', '),
   },
   traces: {
     [RoTrace.SarmizegetusaRegia]: {
@@ -453,6 +459,34 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il progetto Art Nouveau dell’architetto Daniel Renard passa di mano più volte, a ogni cambio di amministrazione cittadina, prima di essere realizzato: il casinò viene inaugurato nel 1910. Le grandi finestre a forma di conchiglia guardano il mare: è il simbolo della città di villeggiatura che cresce insieme al porto moderno. Dopo il 1948 diventa una casa della cultura, poi un ristorante; chiuso e degradato per anni, riapre nel 2025 dopo un restauro di cinque anni.',
       find: 'Sulla passeggiata a mare della penisola, vicino al faro genovese. Si visita con biglietto: controlla orari e prenotazioni sul sito ufficiale.',
     },
+    [RoTrace.SulinaOldLighthouse]: {
+      name: 'Il faro della Commissione',
+      local: 'Farul vechi · Farul Comisiei Europene a Dunării',
+      place: `Sulina, ${places[Ro.Dobruja]}`,
+      text: 'Dopo la guerra di Crimea, il trattato di Parigi del 1856 affida a una commissione europea la navigazione alle foci del Danubio. Gli ingegneri della commissione dragano e raddrizzano il braccio di Sulina, che si accorcia di oltre 20 km, e prolungano i moli nel mare. Il faro, rifatto dalla commissione su una torre più antica, è completato nel 1870. Oggi è a circa 2,5 km dalla riva e non guida più le navi: è un museo della commissione e dello scrittore Jean Bart, funzionario del porto di Sulina all’inizio del Novecento.',
+      find: 'Sulina non è collegata da strade: ci si arriva in battello o aliscafo da Tulcea, lungo il braccio di Sulina. Il faro è sul lungofiume, in Strada II nr. 15. Riaperto dopo un lungo restauro: controlla orari e stagione sul sito dell’ICEM Tulcea, che lo gestisce.',
+    },
+    [RoTrace.LeteaForest]: {
+      name: 'La foresta sulle dune',
+      local: 'Pădurea Letea',
+      place: `Letea, Delta del Danubio, ${places[Ro.Dobruja]}`,
+      text: 'Fra i bracci di Chilia e di Sulina, su un antico cordone di dune sabbiose, cresce un bosco di querce con frassini, tigli e pioppi, avvolti da piante rampicanti: la periploca greca, un rampicante mediterraneo, qui ha il suo rifugio più settentrionale. Il bosco è protetto dal 1938. Fra gli alberi e sulle dune pascolano cavalli inselvatichiti, discendenti di animali domestici: quanti tenerne, e se danneggino la foresta, è oggetto di discussione fra studiosi e autorità della riserva.',
+      find: 'Si parte da Sulina o dal villaggio di Letea, in barca e poi in fuoristrada o in carro: non ci sono strade aperte alle auto. La riserva si visita solo lungo il percorso segnato, accompagnati da un agente dell’Amministrazione della riserva (ARBDD), di solito con un’escursione organizzata. Serve il permesso di accesso alla riserva.',
+    },
+    [RoTrace.JurilovcaHarbour]: {
+      name: 'Il porto dei lipoveni',
+      local: 'Portul Jurilovca',
+      place: `Jurilovca, ${places[Ro.Dobruja]}`,
+      text: 'Jurilovca, sulla riva del lago Golovița, è fondata all’inizio dell’Ottocento da lipoveni, Vecchi credenti russi che rifiutano le riforme della Chiesa russa del Seicento e per questo sono perseguitati. Alla fine dell’Ottocento è un centro importante della pesca; alla fine del Novecento la pesca cala, perché le risorse sono state sfruttate troppo. Il porto, rifatto nel 2023, guarda le lagune di Razim e Sinoe: ancora oggi è un villaggio di pescatori.',
+      find: 'Jurilovca è sulla strada da Babadag verso la costa, nel sud della riserva. Il porto è sulla riva del lago Golovița; da Jurilovca partono anche i trasporti per Gura Portiței, il villaggio di vacanze fra la laguna e il mare.',
+    },
+    [RoTrace.EnisalaFortress]: {
+      name: 'La fortezza sulla laguna',
+      local: 'Cetatea Enisala · Heracleea',
+      place: `Enisala, ${places[Ro.Dobruja]}`,
+      text: 'Le mura di pietra sul colle sono del Trecento; chi le abbia costruite è discusso: la tradizione indica mercanti genovesi, altri studiosi pensano a un principe tataro o a Mircea il Vecchio. Quando la fortezza sorge, sotto il colle si apre un golfo del Mar Nero. Poi i cordoni di sabbia lo separano dal mare e ne fanno una laguna, il lago Razim: la fortezza perde la sua funzione e nel Cinquecento, con gli ottomani, viene abbandonata. Dall’alto si vedono il lago Razim e il lago Babadag.',
+      find: 'Sul colle sopra il villaggio di Enisala, a pochi chilometri da Babadag, sulla strada per Jurilovca. Dal parcheggio si sale a piedi in pochi minuti. Si visita con biglietto: controlla orari e stagione sul sito dell’ICEM Tulcea.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -531,6 +565,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoPerson.NicolaeCeausescu]: {
       name: 'Nicolae Ceaușescu',
       dates: 'Capo del Partito comunista romeno, 1965 – 1989',
+    },
+    [RoLandscape.DanubeDelta]: {
+      name: landscapes[RoLandscape.DanubeDelta],
+      local: 'Delta Dunării',
     },
   },
 }

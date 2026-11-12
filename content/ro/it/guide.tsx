@@ -1,6 +1,6 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Ro, RoPerson, RoSection, RoTrace, structure } from '../structure'
+import { Ro, RoLandscape, RoPerson, RoSection, RoTrace, structure } from '../structure'
 import { names } from './names'
 
 const dir = '/guides/romania'
@@ -2351,6 +2351,33 @@ function Body() {
             remember="A Constanța la Romania arriva al mare: sotto la città di Carol I restano la Tomis greca e romana e la Köstence ottomana."
           />
         </Part>
+      </Chapter>
+
+      <Chapter
+        section={RoSection.Nature}
+        lede="Fuori dalle città: come si sono formati i paesaggi, e che cosa ne hanno fatto le persone."
+      >
+        <Card
+          card={RoLandscape.DanubeDelta}
+          intro={
+            <>
+              Il <N>Danubio</N> finisce in Dobrogea. Poco prima di <N>Tulcea</N> si divide in tre
+              bracci, <N>Chilia</N>, <N>Sulina</N> e <N>Sfântu Gheorghe</N>, e prima del Mar Nero
+              costruisce con i suoi sedimenti una pianura d’acqua: canali, laghi, canneti, isole di
+              sabbia. Il braccio di Chilia, il più ricco d’acqua, segna il confine con l’Ucraina; la
+              maggior parte del delta è in Romania. A sud, le lagune di <N>Razim</N> e <N>Sinoe</N>,
+              chiuse verso il mare da cordoni di sabbia, fanno parte dello stesso sistema. È terra
+              di pescatori, e di comunità diverse: fra queste i lipoveni, Vecchi credenti russi.
+              Nell’Ottocento una commissione europea raddrizza il braccio di Sulina per le navi. Nel{' '}
+              <D>1983</D> il regime comunista lancia un programma per sfruttare il delta: dighe e
+              drenaggi ne trasformano una parte in campi e vasche per i pesci, e dopo il 1990 alcune
+              aree arginate tornano allagate. Nel <D>1990</D> il delta diventa riserva della
+              biosfera, l’anno dopo patrimonio dell’umanità UNESCO. Molti villaggi si raggiungono
+              solo in barca.
+            </>
+          }
+          remember="Il delta è una terra che il Danubio costruisce ogni anno: anche le persone l’hanno scavata, arginata e poi in parte restituita all’acqua."
+        />
       </Chapter>
     </>
   )

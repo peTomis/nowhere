@@ -163,6 +163,7 @@ export type TraceWhere = 'city' | 'nearby' | 'remote' | 'anywhere'
 /** The icon of a trace still to find (components/guide/traceIcons.tsx). */
 export type TraceIcon =
   | 'bank'
+  | 'boat'
   | 'bridge'
   | 'castle'
   | 'church'
@@ -171,6 +172,7 @@ export type TraceIcon =
   | 'frame'
   | 'house'
   | 'image'
+  | 'lighthouse'
   | 'mosaic'
   | 'mosque'
   | 'mountains'
@@ -179,6 +181,7 @@ export type TraceIcon =
   | 'pin'
   | 'shield'
   | 'steps'
+  | 'tree'
   | 'trophy'
   | 'wall'
   | 'waves'
