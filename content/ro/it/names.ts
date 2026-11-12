@@ -21,7 +21,7 @@ const places: Record<Ro, string> = {
   [Ro.Constanta]: 'Constanța',
 }
 
-/** Landscapes of the Natura chapter: card names, also its line in the summary. */
+/** Landscapes of the Natura chapter: their card names. */
 const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.DanubeDelta]: 'Delta del Danubio',
   [RoLandscape.FagarasMountains]: 'Monti Făgăraș',
@@ -61,20 +61,12 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.Communism]: 'La Romania comunista',
     [RoSection.DemocracyAndEurope]: 'Democrazia e integrazione europea',
     [RoSection.People]: 'I volti della storia romena',
-    [RoSection.Cities]: [
-      places[Ro.Bucharest],
-      places[Ro.Iasi],
-      places[Ro.Suceava],
-      places[Ro.Brasov],
-      places[Ro.Sibiu],
-      places[Ro.Sighisoara],
-      places[Ro.Constanta],
-    ].join(', '),
+    [RoSection.Cities]: 'Le città e chi le ha costruite',
     [RoSection.CitiesMoldavia]: places[Ro.Moldavia],
     [RoSection.CitiesWallachia]: places[Ro.Wallachia],
     [RoSection.CitiesTransylvania]: places[Ro.Transylvania],
     [RoSection.CitiesDobruja]: places[Ro.Dobruja],
-    [RoSection.Nature]: Object.values(landscapes).join(', '),
+    [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
   },
   traces: {
     [RoTrace.SarmizegetusaRegia]: {
