@@ -139,6 +139,9 @@ export enum RoTrace {
   BearsCave = 'ro.place.bears-cave',
   CetatilePonorului = 'ro.place.cetatile-ponorului',
   AvramIancuMemorialHouse = 'ro.place.avram-iancu-memorial-house',
+  MraconiaMonastery = 'ro.place.mraconia-monastery',
+  IronGatesDam = 'ro.place.iron-gates-dam',
+  TrajansBridgeRuins = 'ro.place.trajans-bridge-ruins',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -159,6 +162,7 @@ export enum RoLandscape {
   FagarasMountains = 'ro.landscape.fagaras-mountains',
   PiatraCraiului = 'ro.landscape.piatra-craiului',
   ApuseniMountains = 'ro.landscape.apuseni-mountains',
+  IronGates = 'ro.landscape.iron-gates',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -871,6 +875,28 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'house',
     },
+    // Iron Gates (Mehedinți county): filed under Valacchia, as the Decebalus sculpture. TODO image: freely licensed photographs for the three traces.
+    {
+      id: RoTrace.MraconiaMonastery,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'church',
+    },
+    {
+      id: RoTrace.IronGatesDam,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'lightning',
+    },
+    {
+      id: RoTrace.TrajansBridgeRuins,
+      region: Wallachia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'bridge',
+    },
   ],
   cards: [
     {
@@ -1103,6 +1129,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.BearsCave,
         RoTrace.CetatilePonorului,
         RoTrace.AvramIancuMemorialHouse,
+      ],
+    },
+    {
+      id: RoLandscape.IronGates,
+      kind: 'landscape',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [
+        RoTrace.DecebalusRockSculpture,
+        RoTrace.MraconiaMonastery,
+        RoTrace.IronGatesDam,
+        RoTrace.TrajansBridgeRuins,
       ],
     },
   ],

@@ -2402,7 +2402,7 @@ function Body() {
           intro={
             <>
               La <N>Piatra Craiului</N> è una cresta di calcare lunga circa 25 km, stretta e
-              frastagliata, fra le province di Brașov e di Argeș: la cima più alta, La Om, arriva a
+              frastagliata, fra i distretti di Brașov e di Argeș: la cima più alta, La Om, arriva a
               2.238 m. Il calcare, formatosi nel Giurassico, si spacca in pareti, gole e grotte.
               Protetta in parte già dal 1938, è parco nazionale dal <D>1990</D>. Sul versante est
               passa il corridoio di <N>Bran</N>, da secoli una via fra Transilvania e Valacchia:
@@ -2431,6 +2431,25 @@ function Body() {
             </>
           }
           remember="Negli Apuseni il paesaggio è sotto i piedi: grotte e ghiacci nel calcare, e sopra le case sparse dei moți, che da qui sono scesi in due rivolte."
+        />
+        <Card
+          card={RoLandscape.IronGates}
+          intro={
+            <>
+              Fra il Banato e l’Oltenia il <N>Danubio</N> attraversa i Carpazi in una serie di gole
+              lunga oltre 130 km, che segna il confine con la Serbia. Nei <N>Cazane</N>, i
+              «calderoni», il fiume si stringe fino a circa 150 m fra pareti di calcare. Per i
+              Romani il Danubio è la frontiera della Mesia: prima della guerra contro Decebalo
+              Traiano fa scavare nella roccia una strada lungo la riva oggi serba e, nel <D>105</D>,
+              costruire a Drobeta un ponte sul fiume. Nei secoli successivi la gola separa imperi:
+              l’isola di <N>Ada Kaleh</N>, vicino a Orșova, resta ottomana fino al Novecento e passa
+              alla Romania solo nel 1923. Nel 1964 Romania e Iugoslavia cominciano insieme la diga
+              di Porțile de Fier I, che entra in funzione nel <D>1972</D>: il lago sommerge Ada
+              Kaleh, la vecchia Orșova e altri villaggi. Dal 2001 la riva romena è un parco
+              naturale.
+            </>
+          }
+          remember="Alle Porte di Ferro il Danubio è sempre stato un confine: lo è per Traiano, per gli imperi, e oggi corre su un lago che ha sommerso un’isola e una città."
         />
       </Chapter>
     </>

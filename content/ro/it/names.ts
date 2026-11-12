@@ -27,6 +27,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.FagarasMountains]: 'Monti Făgăraș',
   [RoLandscape.PiatraCraiului]: 'Piatra Craiului',
   [RoLandscape.ApuseniMountains]: 'Monti Apuseni',
+  [RoLandscape.IronGates]: 'Porte di Ferro',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -570,6 +571,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Una casa di legno costruita dai genitori di Avram Iancu intorno al 1800, nella forma tipica delle case dei moți. Qui nasce nel 1824 il capo dei rivoluzionari romeni degli Apuseni nel 1848–1849, che i moți chiamano «Crăișorul Munților», il piccolo re dei monti. Il museo apre nel 1924, nel centenario della nascita, per iniziativa dell’associazione culturale romena ASTRA. Accanto, una mostra di armi e documenti del 1848 e di costumi e attrezzi dei moți: quelli per fare secchi e carri di legno e i lunghi corni dei pastori.',
       find: 'Nel villaggio di Incești, comune di Avram Iancu (Alba), nella valle dell’Arieșul Mic. Il vicino monte Găina ospita ogni anno a luglio la Fiera delle ragazze (Târgul de fete).',
     },
+    [RoTrace.MraconiaMonastery]: {
+      name: 'Il monastero sopra il lago',
+      local: 'Mănăstirea Mraconia',
+      place: `Cazanele Dunării, distretto di Mehedinți`,
+      text: 'Il vecchio monastero di Mraconia sorgeva più in basso, sulla riva. Durante i lavori per la diga di Porțile de Fier I viene demolito, e poi le sue rovine finiscono sotto l’acqua del lago: in paese lo chiamano «il monastero sotto le acque». La nuova chiesa è costruita sulla riva fra il 1993 e il 1995. Del monastero antico restano poche cose, fra cui le porte dell’iconostasi, conservate nel museo parrocchiale di Eșelnița.',
+      find: 'Sulla strada lungo il Danubio (DN57) fra Orșova e Dubova, sul golfo di Mraconia, a pochi passi dal volto di Decebalo. Visibile anche dalle barche che percorrono i Cazane.',
+    },
+    [RoTrace.IronGatesDam]: {
+      name: 'La diga sul confine',
+      local: 'Barajul Porțile de Fier I',
+      place: `Gura Văii, distretto di Mehedinți`,
+      text: 'Una diga con due centrali idroelettriche, una romena e una iugoslava, costruita insieme dai due paesi fra il 1964 e il 1972 alla fine delle gole. Il lago che forma alza il fiume di decine di metri fino a molti chilometri a monte: sotto l’acqua finiscono la vecchia Orșova, l’isola di Ada Kaleh e altri villaggi, e circa 17.000 persone devono trasferirsi. Sul coronamento passa la strada che porta in Serbia.',
+      find: 'A Gura Văii, una decina di chilometri a monte di Drobeta-Turnu Severin, sulla strada (DN6) per Orșova. Il valico di frontiera con la Serbia è sulla diga: si vede bene dalla strada e dai belvedere sopra la centrale.',
+    },
+    [RoTrace.TrajansBridgeRuins]: {
+      name: 'Il ponte di Traiano',
+      local: 'Podul lui Traian',
+      place: `Drobeta-Turnu Severin, ${places[Ro.Wallachia]}`,
+      text: 'Fra il 103 e il 105 l’architetto Apollodoro di Damasco costruisce per Traiano un ponte sul Danubio lungo oltre un chilometro, con piloni di pietra e arcate di legno: serve a portare l’esercito romano in Dacia per la seconda guerra contro Decebalo. Sulla riva romena restano i ruderi dei primi piloni, accanto all’accampamento romano di Drobeta; sulla riva serba, a Kostol, quelli della sponda opposta.',
+      find: 'A Drobeta-Turnu Severin, nel parco archeologico accanto al Museo della regione delle Porte di Ferro, sulla riva del Danubio. Nel museo c’è una ricostruzione del ponte.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -668,6 +690,14 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.ApuseniMountains]: {
       name: landscapes[RoLandscape.ApuseniMountains],
       local: 'Munții Apuseni',
+    },
+    [RoLandscape.IronGates]: {
+      name: landscapes[RoLandscape.IronGates],
+      local: 'Porțile de Fier · Cazanele Dunării',
+      traceTexts: {
+        [RoTrace.DecebalusRockSculpture]:
+          'Il volto del re dei Daci, scolpito fra il 1994 e il 2004, guarda il Danubio dalle rocce dei Cazanele Mici, dove la gola si apre sul golfo di Mraconia. Dall’acqua, in barca, si vede quanto il lago della diga ha alzato il fiume ai suoi piedi.',
+      },
     },
   },
 }

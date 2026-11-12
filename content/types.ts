@@ -175,6 +175,7 @@ export type TraceIcon =
   | 'house'
   | 'image'
   | 'lighthouse'
+  | 'lightning'
   | 'mosaic'
   | 'mosque'
   | 'mountains'
