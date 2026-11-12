@@ -25,6 +25,7 @@ const places: Record<Ro, string> = {
 const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.DanubeDelta]: 'Delta del Danubio',
   [RoLandscape.FagarasMountains]: 'Monti Făgăraș',
+  [RoLandscape.PiatraCraiului]: 'Piatra Craiului',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -509,6 +510,37 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Con i suoi 2.544 m è la cima più alta della Romania. È una delle otto vette dei Făgăraș che superano i 2.500 m. Nessuna strada ci arriva: dalla cima si vede la cresta correre da est a ovest, con la Transilvania da una parte e la Valacchia dall’altra.',
       find: 'A piedi, di solito da Victoria (Brașov), per la valle della Viștea Mare: una lunga salita su sentiero segnato, spesso con un pernottamento in rifugio o in tenda. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
+    [RoTrace.ZarnestiGorges]: {
+      name: 'Le gole di Zărnești',
+      local: 'Prăpăstiile Zărneștilor',
+      place: `Zărnești, ${places[Ro.Transylvania]}`,
+      distance: 'a circa 30 km da Brașov',
+      text: 'Una gola lunga circa 4 km, scavata nel calcare all’estremità nord della Piatra Craiului. Le pareti salgono per 100–200 m e in alcuni punti distano fra loro solo 5–6 m. È una riserva naturale, molto frequentata da chi arrampica.',
+      find: 'Da Zărnești si segue la strada verso la Plaiul Foii fino all’ingresso della gola, poi si cammina sulla sterrata che la percorre. Sentiero facile; serve il biglietto del parco nazionale.',
+    },
+    [RoTrace.LibeartyBearSanctuary]: {
+      name: 'Il rifugio degli orsi',
+      local: 'Sanctuarul de urși Libearty',
+      place: `Zărnești, ${places[Ro.Transylvania]}`,
+      distance: 'a circa 30 km da Brașov',
+      text: 'Nel bosco sopra Zărnești, in un recinto di circa 69 ettari, vivono oltre cento orsi bruni tolti dalla cattività: piccole gabbie, circhi, proprietari privati. Il rifugio nasce nel 2005 per iniziativa di un’associazione per la protezione degli animali e apre ai visitatori nel 2008. Gli orsi, cresciuti in gabbia, non possono tornare liberi: qui vivono fra alberi e stagni.',
+      find: 'Nel bosco alla periferia di Zărnești. Solo visite guidate, a orari fissi e su prenotazione, chiuso il lunedì: controlla il sito dell’associazione Millions of Friends.',
+    },
+    [RoTrace.MaguraVillage]: {
+      name: 'Il villaggio di fronte alla cresta',
+      local: 'Măgura',
+      place: `Moieciu, ${places[Ro.Transylvania]}`,
+      distance: 'a circa 30 km da Brașov',
+      text: 'Măgura sta sulle colline del corridoio di Bran, sul fianco est della Piatra Craiului: case, fienili e prati stanno intorno ai 1.000 m. Dal villaggio la cresta calcarea si vede in tutta la sua lunghezza, e il sentiero prosegue fino al vicino villaggio di Peștera. Oggi il villaggio vive anche delle sue pensioni.',
+      find: 'Da Bran verso Moieciu, poi la strada asfaltata che sale a Măgura; oppure a piedi dalle gole di Zărnești. Il punto più bello è la cima della collina di Măgura, sopra il villaggio.',
+    },
+    [RoTrace.LaOmPeak]: {
+      name: 'La cima di La Om',
+      local: 'Vârful La Om · Piscul Baciului',
+      place: `Piatra Craiului, ${places[Ro.Transylvania]}`,
+      text: 'A 2.238 m è il punto più alto della cresta. Sulle rocce intorno cresce il garofano della Piatra Craiului, Dianthus callizonus, una pianta che esiste solo su questa montagna: è il simbolo del parco e fiorisce nella seconda metà di luglio. Non va raccolto: si fotografa.',
+      find: 'A piedi da Zărnești, per la Curmătura o per la Plaiul Foii: una giornata intera di salita, con passaggi esposti e catene sulla cresta. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -599,6 +631,10 @@ export const names: GuideNames<Ro, RoSection> = {
         [RoTrace.PoenariCitadel]:
           'La fortezza sta su uno sperone dove la valle dell’Argeș si stringe ed entra nei monti: dall’alto si controlla la via che risale la valle verso la cresta. Oggi sotto la cittadella passa il Transfăgărășan.',
       },
+    },
+    [RoLandscape.PiatraCraiului]: {
+      name: landscapes[RoLandscape.PiatraCraiului],
+      local: 'Parcul Național Piatra Craiului',
     },
   },
 }

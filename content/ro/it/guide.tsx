@@ -2397,6 +2397,23 @@ function Body() {
           }
           remember="La cresta dei Făgăraș ha diviso per secoli Transilvania e Valacchia; il Transfăgărășan la attraversa come strada militare, costruita dall’esercito in quattro anni."
         />
+        <Card
+          card={RoLandscape.PiatraCraiului}
+          intro={
+            <>
+              La <N>Piatra Craiului</N> è una cresta di calcare lunga circa 25 km, stretta e
+              frastagliata, fra le province di Brașov e di Argeș: la cima più alta, La Om, arriva a
+              2.238 m. Il calcare, formatosi nel Giurassico, si spacca in pareti, gole e grotte.
+              Protetta in parte già dal 1938, è parco nazionale dal <D>1990</D>. Sul versante est
+              passa il corridoio di <N>Bran</N>, da secoli una via fra Transilvania e Valacchia:
+              sulle sue colline stanno villaggi d’alta quota come <N>Măgura</N> e <N>Peștera</N>,
+              fra prati da fieno e pascoli. Nelle foreste intorno alla cresta vivono orsi, lupi e
+              linci. Sulle rocce cresce un garofano che non esiste in nessun altro luogo, simbolo
+              del parco.
+            </>
+          }
+          remember="La Piatra Craiului è una sola lama di calcare: sotto, i villaggi d’alta quota e i boschi degli orsi; sopra, un fiore che non cresce altrove."
+        />
       </Chapter>
     </>
   )

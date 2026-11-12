@@ -131,6 +131,10 @@ export enum RoTrace {
   VidraruDam = 'ro.place.vidraru-dam',
   BaleaLake = 'ro.place.balea-lake',
   MoldoveanuPeak = 'ro.place.moldoveanu-peak',
+  ZarnestiGorges = 'ro.place.zarnesti-gorges',
+  LibeartyBearSanctuary = 'ro.place.libearty-bear-sanctuary',
+  MaguraVillage = 'ro.place.magura-village',
+  LaOmPeak = 'ro.place.la-om-peak',
 }
 
 /** Persons with a card: stored with the reader's pins, never rename them. */
@@ -149,6 +153,7 @@ export enum RoPerson {
 export enum RoLandscape {
   DanubeDelta = 'ro.landscape.danube-delta',
   FagarasMountains = 'ro.landscape.fagaras-mountains',
+  PiatraCraiului = 'ro.landscape.piatra-craiului',
 }
 
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
@@ -803,6 +808,35 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'mountains',
     },
+    // Piatra Craiului (Brașov county side): Zărnești and Măgura are about 30 km from Brașov. TODO image: freely licensed photographs for the four traces.
+    {
+      id: RoTrace.ZarnestiGorges,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'mountains',
+    },
+    {
+      id: RoTrace.LibeartyBearSanctuary,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'paw',
+    },
+    {
+      id: RoTrace.MaguraVillage,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'barn',
+    },
+    {
+      id: RoTrace.LaOmPeak,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'very-rare',
+      icon: 'flower',
+    },
   ],
   cards: [
     {
@@ -1011,6 +1045,18 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.VidraruDam,
         RoTrace.BaleaLake,
         RoTrace.MoldoveanuPeak,
+      ],
+    },
+    {
+      id: RoLandscape.PiatraCraiului,
+      kind: 'landscape',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [
+        RoTrace.ZarnestiGorges,
+        RoTrace.LibeartyBearSanctuary,
+        RoTrace.MaguraVillage,
+        RoTrace.LaOmPeak,
       ],
     },
   ],
