@@ -69,6 +69,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoSection.FoodCommon]: 'In tutto il paese',
     [RoSection.FoodTransylvania]: places[Ro.Transylvania],
     [RoSection.FoodWallachia]: places[Ro.Wallachia],
+    [RoSection.FoodMoldavia]: places[Ro.Moldavia],
     [RoSection.Nature]: 'Dal Delta del Danubio alle creste dei Carpazi',
     [RoSection.Food]: 'Dalla mămăligă alla țuică: che cosa ordinare',
   },
@@ -757,6 +758,26 @@ export const names: GuideNames<Ro, RoSection> = {
       place: 'Prahova e Buzău, Valacchia',
       find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano su prenotazione.',
     },
+    [RoTrace.FoodTochitura]: {
+      name: 'Tochitură moldovenească',
+      place: `In tutta la ${places[Ro.Moldavia]}`,
+      find: 'Nei ristoranti di cucina tradizionale della Moldavia; nel menù «tochitură moldovenească», con mămăliguță e uovo.',
+    },
+    [RoTrace.FoodPoaleInBrau]: {
+      name: 'Poale-n brâu',
+      place: `In tutta la ${places[Ro.Moldavia]}`,
+      find: 'Nelle pasticcerie e nei forni della Moldavia, fra le plăcinte; nei ristoranti tradizionali come dolce.',
+    },
+    [RoTrace.FoodCiorbaRadauteana]: {
+      name: 'Ciorbă rădăuțeană',
+      place: `Rădăuți, ${places[Ro.Moldavia]}`,
+      find: 'Nei ristoranti di tutto il paese, fra le zuppe; in Bucovina, a Rădăuți e Suceava, nei locali di cucina tradizionale.',
+    },
+    [RoTrace.FoodCotnari]: {
+      name: 'Un vino di Cotnari',
+      place: `Cotnari, ${places[Ro.Moldavia]}`,
+      find: 'Nelle enoteche e nei ristoranti, con «Cotnari» in etichetta. A Cotnari, a nord-ovest di Iași, le cantine si visitano su prenotazione.',
+    },
   },
   cards: {
     [Ro.AlbaIulia]: { name: places[Ro.AlbaIulia], local: 'Gyulafehérvár · Karlsburg' },
@@ -929,6 +950,18 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoFood.DealuMare]: {
       name: 'Dealu Mare',
+    },
+    [RoFood.Tochitura]: {
+      name: 'Tochitură',
+    },
+    [RoFood.PoaleInBrau]: {
+      name: 'Poale-n brâu',
+    },
+    [RoFood.CiorbaRadauteana]: {
+      name: 'Ciorbă rădăuțeană',
+    },
+    [RoFood.Cotnari]: {
+      name: 'Cotnari',
     },
   },
 }

@@ -2743,6 +2743,60 @@ function Body() {
             remember="Il Dealu Mare è la collina del vino a un’ora da Bucarest: chiedi una fetească neagră."
           />
         </Part>
+        <Part section={RoSection.FoodMoldavia}>
+          <Card
+            card={RoFood.Tochitura}
+            intro={
+              <>
+                La <N>tochitură</N> è uno spezzatino di carne di maiale e salsiccia affumicata,
+                cotti lentamente in un paiolo nel loro stesso grasso: il nome viene probabilmente da
+                a topi, «fondere». Quella moldava arriva in tavola con mămăligă, un uovo al tegamino
+                e formaggio salato di pecora.
+              </>
+            }
+            remember="La tochitură è il piatto unico della Moldavia: maiale, mămăligă, uovo e formaggio nello stesso piatto."
+          />
+          <Card
+            card={RoFood.PoaleInBrau}
+            intro={
+              <>
+                Le <N>poale-n brâu</N>, «gonne nella cintura», sono focaccine di pasta lievitata
+                ripiegate dai bordi verso il centro sopra un ripieno di formaggio dolce, spesso con
+                uvetta; esiste anche una versione salata, con formaggio salato e aneto. Il nome
+                viene dal modo di chiuderle, con i lembi rimboccati come una gonna nella cintura.
+                Ion Creangă le ricorda nei suoi <N work>Amintiri din copilărie</N>, i ricordi
+                d’infanzia di un villaggio moldavo dell’Ottocento.
+              </>
+            }
+            remember="Le poale-n brâu sono il dolce moldavo di formaggio: lo riconosci dai lembi ripiegati verso il centro."
+          />
+          <Card
+            card={RoFood.CiorbaRadauteana}
+            intro={
+              <>
+                La <N>ciorbă rădăuțeană</N> è una ciorbă di pollo legata con tuorli e smântână,
+                acidulata con aceto o limone e profumata di aglio: una versione più leggera della
+                zuppa di trippa. Viene da <N>Rădăuți</N>, in Bucovina, dove la crea una cuoca,
+                Cornelia Dumitrescu, fra la fine degli anni Settanta e l’inizio degli Ottanta: le
+                date variano da una fonte all’altra. Da allora è nei menù di tutto il paese.
+              </>
+            }
+            remember="La ciorbă rădăuțeană è una ricetta recente con un’autrice: in pochi decenni è diventata una zuppa di tutta la Romania."
+          />
+          <Card
+            card={RoFood.Cotnari}
+            intro={
+              <>
+                <N>Cotnari</N>, nel distretto di Iași, è una zona vinicola di soli vitigni romeni:
+                la grasă de Cotnari e la frâncușă crescono soltanto qui, accanto alla tămâioasă
+                românească e alla fetească albă. La frâncușă dà un bianco secco; grasă, tămâioasă e
+                fetească albă i bianchi dolci per cui Cotnari è nota. All’inizio del Settecento
+                Dimitrie Cantemir ne loda già il vino.
+              </>
+            }
+            remember="A Cotnari si bevono solo uve romene: chiedi una grasă, il bianco dolce della Moldavia."
+          />
+        </Part>
       </Chapter>
     </>
   )
