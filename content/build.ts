@@ -18,6 +18,7 @@ import {
   type TocEntry,
   type TraceIcon,
   type TraceText,
+  type TraceTheme,
   type TraceWhere,
   type Visibility,
 } from './types'
@@ -142,6 +143,11 @@ export type AlbumTrace = {
   image?: TraceImage
   /** Cards that list the trace: its anchors are `trace-<card anchor>-<trace slug>`. */
   cards: { id: string; name: string; anchor: string }[]
+  /**
+   * The album's theme filter: 'nature' for a trace listed by a landscape card, 'food' by a food
+   * card ("Specialità"); null otherwise.
+   */
+  theme: TraceTheme | null
 }
 
 /** A person, city, landscape or food card, as the pins and the album show it. */
@@ -180,6 +186,10 @@ export function tracesOf<P extends string, S extends string>(
     (structure.cards ?? [])
       .filter((c) => c.traces.includes(id))
       .map((c) => ({ id: c.id, name: names.cards?.[c.id]?.name ?? c.id, anchor: cardAnchor(c.id) }))
+  const themeOf = (id: string): TraceTheme | null => {
+    const kinds = (structure.cards ?? []).filter((c) => c.traces.includes(id)).map((c) => c.kind)
+    return kinds.includes('food') ? 'food' : kinds.includes('landscape') ? 'nature' : null
+  }
   const stock = (
     src: string | undefined,
     c: Credit | undefined,
@@ -210,6 +220,7 @@ export function tracesOf<P extends string, S extends string>(
       invite: text.invite,
       image: stock(image?.src, image?.credit, kind === 'cover' ? 'cover' : 'contain'),
       cards: [],
+      theme: null,
     }
   })
   const own = (structure.traces ?? []).map((tr): AlbumTrace => {
@@ -236,6 +247,7 @@ export function tracesOf<P extends string, S extends string>(
       invite: text.invite ?? t.guide.photo.invite,
       image: stock(tr.image?.src, tr.image?.credit),
       cards: cardsOf(tr.id),
+      theme: themeOf(tr.id),
     }
   })
   return [...builtIn, ...own].map((tr, i) => ({ ...tr, num: i + 1 }))

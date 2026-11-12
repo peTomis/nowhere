@@ -182,7 +182,9 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   (whole country: no region, on the album's first page), and a card of the whole country has no
   `region` and lists its regional variants' traces; `CARD_CHAPTER` in `content/types.ts`);
   `<Today traces>` links an event to
-  its traces. Never add placeholder traces. A trace is in the album when the signed-in reader has
+  its traces. After "Tutte" and the regions, the album's filter ends with the themes Natura and
+  Gastronomia (`TRACE_THEMES` in `content/types.ts`: traces of landscape and food cards); their
+  boxes still to find are dashed in `album-nature` (green) and `album-food` (yellow), not grey. Never add placeholder traces. A trace is in the album when the signed-in reader has
   a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
   `/api/notes`. Pins ("In evidenza") are a device preference (`lib/reader/prefs.ts`), for cards
   only. Not ported: pinning sections, the "Per chi mi segue" visibility, cover photos from the

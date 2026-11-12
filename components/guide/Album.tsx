@@ -4,44 +4,63 @@ import { CheckIcon, PushPinIcon, XIcon } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
 import { Completion } from '@/components/Completion'
 import type { AlbumTrace } from '@/content/build'
+import { TRACE_THEMES, type TraceTheme } from '@/content/types'
 import { format, t } from '@/i18n'
 import { isSeen, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useGuideData } from './data'
 import { usePins } from './Pins'
-import { photoSrc, RarityMarks, Trace } from './Trace'
+import { boxBorder, photoSrc, RarityMarks, Trace } from './Trace'
 import { TRACE_ICONS } from './traceIcons'
 
+/** The album's filter: everything (null), one region, or one theme across the regions. */
+type Filter = null | { kind: 'region'; id: string } | { kind: 'theme'; id: TraceTheme }
+
 /**
- * The album view of a guide, port of "Album.dc.html": title, full completion, region filter, the
- * pinned cards ("In evidenza") and one page per region with a box per trace. The first page is the
- * whole country: the cover, the coat of arms and the flag. A box opens the trace ("Traccia") in a
+ * The album view of a guide, port of "Album.dc.html": title, full completion, filter, the pinned
+ * cards ("In evidenza") and one page per region with a box per trace. The first page is the whole
+ * country: the cover, the coat of arms and the flag. Besides the regions, the filter has the
+ * themes Natura and Gastronomia (TRACE_THEMES): the region pages with only that theme's traces,
+ * whose boxes are dashed green and yellow. A box opens the trace ("Traccia") in a
  * bottom sheet on phones, a window from 640px.
  */
 export function Album() {
   const { traces, cards, name, country, regions } = useGuideData()
   const { entries } = useCollection()
   const pins = usePins(country)
-  const [region, setRegion] = useState<string | null>(null)
+  const [filter, setFilter] = useState<Filter>(null)
   const [open, setOpen] = useState<string | null>(null)
   const seen = (tr: AlbumTrace) => isSeen(entries[tr.key])
-  const ofRegion = (r: string | null) => traces.filter((tr) => r === null || tr.region === r)
-  // Regions without traces have no page and no filter.
+  const ofRegion = (r: string) => traces.filter((tr) => tr.region === r)
+  const ofTheme = (theme: TraceTheme) => traces.filter((tr) => tr.theme === theme)
+  // Regions and themes without traces have no page and no filter.
   const withTraces = Object.entries(regions).filter(([id]) => ofRegion(id).length > 0)
-  const filters = [
-    { id: null, name: t.guide.album.all },
-    ...withTraces.map(([id, n]) => ({ id, name: n })),
-  ].map((f) => {
-    const list = ofRegion(f.id)
-    return { ...f, count: `${list.filter(seen).length}/${list.length}` }
-  })
+  const themes = TRACE_THEMES.filter((theme) => ofTheme(theme).length > 0)
+  const filters: { filter: Filter; name: string; list: AlbumTrace[] }[] = [
+    { filter: null, name: t.guide.album.all, list: traces },
+    ...withTraces.map(([id, n]) => ({
+      filter: { kind: 'region' as const, id },
+      name: n,
+      list: ofRegion(id),
+    })),
+    ...themes.map((id) => ({
+      filter: { kind: 'theme' as const, id },
+      name: t.guide.chapters[id],
+      list: ofTheme(id),
+    })),
+  ]
+  // A theme keeps the pages of the regions, with only its traces.
+  const inFilter = (tr: AlbumTrace) => filter?.kind !== 'theme' || tr.theme === filter.id
   const pages = [
-    ...(region === null
-      ? [{ id: 'country', name, traces: traces.filter((tr) => !tr.region) }]
-      : []),
+    ...(filter?.kind === 'region' ? [] : [{ id: 'country', name, region: null }]),
     ...Object.entries(regions)
-      .filter(([id]) => region === null || id === region)
-      .map(([id, n]) => ({ id, name: n, traces: ofRegion(id) })),
-  ].filter((p) => p.traces.length > 0)
+      .filter(([id]) => filter?.kind !== 'region' || id === filter.id)
+      .map(([id, n]) => ({ id, name: n, region: id })),
+  ]
+    .map(({ region, ...p }) => ({
+      ...p,
+      traces: traces.filter((tr) => tr.region === region && inFilter(tr)),
+    }))
+    .filter((p) => p.traces.length > 0)
   const pinned = pins.flatMap((p) => {
     const card = cards.find((c) => c.id === p.card)
     if (!card) return []
@@ -65,24 +84,23 @@ export function Album() {
             </h2>
           </div>
           <Completion name={name} traces={traces} variant="full" className="max-w-[560px]" />
-          {withTraces.length > 0 && (
-            <div
-              role="group"
-              aria-label={t.guide.album.regionFilter}
-              className="flex flex-wrap gap-2"
-            >
+          {filters.length > 1 && (
+            <div role="group" aria-label={t.guide.album.filter} className="flex flex-wrap gap-2">
               {filters.map((f) => {
-                const on = region === f.id
+                const key = f.filter ? `${f.filter.kind}-${f.filter.id}` : 'all'
+                const on = key === (filter ? `${filter.kind}-${filter.id}` : 'all')
                 return (
                   <button
-                    key={f.id ?? 'all'}
+                    key={key}
                     type="button"
                     aria-pressed={on}
-                    onClick={() => setRegion(f.id)}
+                    onClick={() => setFilter(f.filter)}
                     className={`flex min-h-[44px] cursor-pointer items-center gap-[8px] rounded-md border-0 px-4 font-body text-[15px] hover:bg-accent-100 ${on ? 'bg-accent-100 text-accent-800 shadow-[inset_0_0_0_1.5px_var(--color-accent)]' : 'bg-transparent text-text shadow-[inset_0_0_0_1px_var(--color-neutral-300)]'}`}
                   >
                     <span>{f.name}</span>
-                    <span className="text-[13px] text-neutral-700 tabular-nums">{f.count}</span>
+                    <span className="text-[13px] text-neutral-700 tabular-nums">
+                      {f.list.filter(seen).length}/{f.list.length}
+                    </span>
                   </button>
                 )
               })}
@@ -207,7 +225,7 @@ function TraceBox({
       className="flex w-full cursor-pointer flex-col gap-2 border-0 bg-transparent p-0 text-left font-body text-text hover:text-accent-800"
     >
       <span
-        className={`relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${seen ? 'border-transparent' : 'border-dashed border-neutral-500'}`}
+        className={`relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${boxBorder(seen, trace.theme)}`}
       >
         {seen ? (
           <>

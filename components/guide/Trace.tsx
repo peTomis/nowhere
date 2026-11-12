@@ -23,7 +23,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { AlbumTrace } from '@/content/build'
 import { traceAnchor } from '@/content/anchors'
-import type { TraceWhere } from '@/content/types'
+import type { TraceTheme, TraceWhere } from '@/content/types'
 import { format, locale, t } from '@/i18n'
 import { isSeen, retryPhoto, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useTrace } from './data'
@@ -64,6 +64,16 @@ export function RarityMarks({ points, height = 11 }: { points: number; height?: 
 }
 
 /** The image of a photo saved or being saved. */
+/** Border of a trace's box: none with the reader's photo, else dashed in the theme's color. */
+export const boxBorder = (seen: boolean, theme: TraceTheme | null) =>
+  seen
+    ? 'border-transparent'
+    : theme === 'nature'
+      ? 'border-dashed border-album-nature'
+      : theme === 'food'
+        ? 'border-dashed border-album-food'
+        : 'border-dashed border-neutral-500'
+
 export const photoSrc = (e: Entry | undefined, size: 'full' | 'thumb') =>
   e?.local?.preview ?? e?.photo?.[size]
 
@@ -129,7 +139,7 @@ export function Trace({
           <div
             role="img"
             aria-label={alt}
-            className={`relative aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${seen ? 'border-transparent' : 'border-dashed border-neutral-500'}`}
+            className={`relative aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${boxBorder(seen, trace.theme)}`}
           >
             {seen && src ? (
               // eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview

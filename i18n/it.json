@@ -39,7 +39,7 @@
       "kicker": "{name} · {n} tracce",
       "heading": "Album",
       "all": "Tutte",
-      "regionFilter": "Regione",
+      "filter": "Filtra l’album",
       "regionLine": "{seen} di {n} · {points} punti su {total}",
       "empty": "Questa guida non ha ancora tracce.",
       "isNew": "Nuova",

@@ -241,6 +241,14 @@ export type TraceDef<P extends string = string> = {
 export type CardKind = 'person' | 'city' | 'landscape' | 'food'
 
 /**
+ * The album's themes, besides the regions, named after their chapter: a trace listed by a
+ * landscape card is 'nature', by a food card 'food'. Its box still to find is dashed in the
+ * theme's color (green, yellow) instead of grey.
+ */
+export type TraceTheme = 'nature' | 'food'
+export const TRACE_THEMES = ['nature', 'food'] as const satisfies (TraceTheme & ChapterKind)[]
+
+/**
  * The chapter each kind of card goes in. Person and landscape cards are their chapter's entries
  * in the index, in the order of structure.cards; city cards are listed under the Città part of
  * their region (cityCardSections).

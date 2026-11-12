@@ -58,6 +58,10 @@
   --color-medal-gold: #d9ab2f;
   --color-medal-platinum: #dcdde0;
 
+  /* Dashed box of a trace still to find, by album theme (TraceBox, Trace) only. */
+  --color-album-nature: #3f9a52;
+  --color-album-food: #e2ad00;
+
   /* --font-source-serif is defined by next/font in app/layout.tsx (self-hosted, no Google Fonts at runtime). */
   --font-sans: var(--font-source-serif), 'Source Serif 4', system-ui, serif;
   --font-heading: var(--font-source-serif), 'Source Serif 4', system-ui, serif;
