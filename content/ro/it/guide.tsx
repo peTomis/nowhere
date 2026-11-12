@@ -810,7 +810,7 @@ function Body() {
                 uccidono a <N href="https://it.wikipedia.org/wiki/Câmpia_Turzii">Câmpia Turzii</N>,
                 vicino a <N href="https://it.wikipedia.org/wiki/Turda">Turda</N>.
               </Detail>
-              <Today traces={[RoTrace.MichaelTheBraveObelisk, RoTrace.MichaelTheBraveHeadTomb]} />
+              <Today traces={[RoTrace.MichaelTheBraveHeadTomb]} />
             </Event>
             <Event
               on={[Transylvania]}
@@ -2127,6 +2127,23 @@ function Body() {
           remember="Il poeta che i romeni studiano a scuola e ritrovano in ogni città: un simbolo nazionale, non solo un autore."
         />
         <Card
+          card={RoPerson.QueenMarie}
+          intro={
+            <>
+              Nipote della{' '}
+              <N href="https://it.wikipedia.org/wiki/Regina_Vittoria">regina Vittoria</N>, nasce in
+              Inghilterra nel <D>1875</D> e a diciassette anni sposa Ferdinando, nipote ed erede di
+              Carol I. Diventa regina nel <D>1914</D>. Nella Prima guerra mondiale, quando i
+              tedeschi occupano Bucarest, segue governo e corte a Iași e lavora negli ospedali; nel{' '}
+              <D>1919</D> va alla conferenza di pace di Parigi a difendere la causa della Grande
+              Romania. Nel <D>1922</D> è incoronata con Ferdinando ad Alba Iulia. Scrive romanzi,
+              fiabe e memorie, in inglese. Il regime comunista la toglie dai libri di storia; dopo
+              il 1989 diventa una delle figure più amate dai romeni.
+            </>
+          }
+          remember="La principessa inglese diventata la regina più amata dai romeni: Bran la rende famosa, Pelișor custodisce il suo cuore."
+        />
+        <Card
           card={RoPerson.ConstantinBrancusi}
           intro={
             <>
@@ -2142,6 +2159,24 @@ function Body() {
             </>
           }
           remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
+        />
+        <Card
+          card={RoPerson.GeorgeEnescu}
+          intro={
+            <>
+              Nasce nel <D>1881</D> a Liveni, in Moldavia, un villaggio che oggi porta il suo nome.
+              A sette anni entra al conservatorio di Vienna, poi studia a Parigi, dove passa gran
+              parte della vita come violinista, direttore d’orchestra, compositore e insegnante: fra
+              i suoi allievi c’è{' '}
+              <N href="https://it.wikipedia.org/wiki/Yehudi_Menuhin">Yehudi Menuhin</N>. Le due{' '}
+              <N work>Rapsodie romene</N> (<D>1901</D>) portano la musica popolare nelle sale da
+              concerto; la sua opera <N work>Œdipe</N> va in scena a Parigi nel <D>1936</D>. Nel{' '}
+              <D>1946</D> lascia la Romania, dove si sta instaurando il regime comunista, e non
+              torna più: muore a Parigi nel <D>1955</D>. Dal 1958 Bucarest gli dedica un festival
+              internazionale, il Festival Enescu, che si tiene ogni due anni a settembre.
+            </>
+          }
+          remember="Il violinista moldavo diventato europeo: in Romania lo incontri in una villa di montagna, in un palazzo di Calea Victoriei e nel portafoglio."
         />
         <Card
           card={RoPerson.NicolaeCeausescu}
@@ -2161,6 +2196,21 @@ function Body() {
           }
           remember="Il dittatore che rifà Bucarest a sua misura e cade in quattro giorni, nel dicembre 1989."
         />
+        <Card
+          card={RoPerson.NadiaComaneci}
+          intro={
+            <>
+              Nasce nel <D>1961</D> a Onești, in Moldavia; a sei anni la scelgono per la scuola di
+              ginnastica di Béla e Márta Károlyi. Il 18 luglio <D>1976</D>, alle Olimpiadi di
+              Montréal, a quattordici anni, ottiene il primo 10 della storia della ginnastica
+              olimpica: il tabellone, che non prevede quattro cifre, mostra 1.00. Vince tre ori a
+              Montréal e due a Mosca nel <D>1980</D>. Il regime ne fa un simbolo e la sorveglia; nel
+              novembre <D>1989</D>, poche settimane prima della caduta di Ceaușescu, attraversa di
+              notte a piedi il confine con l’Ungheria e arriva negli Stati Uniti, dove vive ancora.
+            </>
+          }
+          remember="La bambina di Onești che a Montréal prende il primo 10: il tabellone non era pronto, i romeni non l’hanno più dimenticata."
+        />
       </Chapter>
 
       <Chapter
@@ -2179,8 +2229,9 @@ function Body() {
                 L’unione personale apre la strada alla Romania, ma Iași non smette di essere il
                 centro culturale della Moldavia. Nel <D>1916–1917</D> governo e corte si rifugiano
                 qui durante la guerra; nel giugno <D>1941</D> la città è anche teatro di un pogrom
-                contro gli ebrei. Oggi il viale centrale accosta il monastero dei Tre Gerarchi, il
-                Palazzo della Cultura e il museo dell’unione: tre modi diversi di usare il passato.
+                contro gli ebrei. Oggi il viale centrale accosta il monastero dei Tre Gerarchi e il
+                Palazzo della Cultura; sulla collina di Țicău, la casetta di Ion Creangă ricorda che
+                Iași è anche la città degli scrittori.
               </>
             }
             remember="A Iași il passato moldavo resta visibile come città di corte, centro religioso e luogo conteso della memoria."
@@ -2194,12 +2245,13 @@ function Body() {
                 monastero di San Giovanni Nuovo conserva il centro religioso della corte. Nel
                 <D>1775</D> la Bucovina passa all’Impero asburgico: Suceava resta nella Moldavia
                 ottomana e poi nella Romania, mentre i monasteri a nord del nuovo confine seguono
-                un’altra storia. La statua di <N>Stefano il Grande</N>, la fortezza e il museo
-                raccontano così una città di frontiera, non soltanto la capitale medievale di un
-                principe.
+                un’altra storia. La statua di <N>Stefano il Grande</N> e la fortezza raccontano così
+                una città di frontiera, non soltanto la capitale medievale di un principe. A una
+                quarantina di chilometri cominciano i monasteri dipinti della Bucovina, come
+                Voroneț: l’altra faccia della corte, la fede messa in immagini.
               </>
             }
-            remember="A Suceava la corte moldava diventa una frontiera: fortezza, monastero e museo mostrano cosa cambia quando cambia il confine."
+            remember="A Suceava la corte moldava diventa una frontiera: la fortezza la difende, i monasteri dipinti della Bucovina la raccontano."
           />
         </Part>
         <Part section={RoSection.CitiesWallachia}>
@@ -2345,7 +2397,9 @@ function Body() {
                 Nero. Il porto moderno, voluto da Carol I, è inaugurato nel <D>1909</D>; sulla
                 passeggiata a mare sorge il casinò. Intorno al 1900 nella città vivono romeni,
                 greci, tatari, bulgari, turchi ed ebrei: chiese e moschee stanno a pochi passi l’una
-                dall’altra. Oggi il porto di Constanța è il più grande della Romania.
+                dall’altra. Oggi il porto di Constanța è il più grande della Romania. Appena fuori
+                città, a Ovidiu, Gheorghe Hagi ha costruito la sua scuola di calcio; più a sud la
+                costa finisce a Vama Veche, sul confine bulgaro.
               </>
             }
             remember="A Constanța la Romania arriva al mare: sotto la città di Carol I restano la Tomis greca e romana e la Köstence ottomana."
@@ -2373,7 +2427,8 @@ function Body() {
               drenaggi ne trasformano una parte in campi e vasche per i pesci, e dopo il 1990 alcune
               aree arginate tornano allagate. Nel <D>1990</D> il delta diventa riserva della
               biosfera, l’anno dopo patrimonio dell’umanità UNESCO. Molti villaggi si raggiungono
-              solo in barca.
+              solo in barca. Fra canneti e lagune vivono centinaia di specie di uccelli: il simbolo
+              della riserva è il pellicano.
             </>
           }
           remember="Il delta è una terra che il Danubio costruisce ogni anno: anche le persone l’hanno scavata, arginata e poi in parte restituita all’acqua."
@@ -2427,7 +2482,8 @@ function Body() {
               secoli vivono del bosco, del legno lavorato e delle miniere. A <N>Roșia Montană</N>{' '}
               l’oro si estrae dall’epoca romana: le gallerie antiche sono patrimonio UNESCO dal
               2021. Da queste montagne partono la rivolta di Horea, nel <D>1784</D>, e nel{' '}
-              <D>1848</D> la rivolta romena guidata da Avram Iancu.
+              <D>1848</D> la rivolta romena guidata da Avram Iancu. Sul margine orientale, a{' '}
+              <N>Turda</N>, la ricchezza sotterranea è il sale: lo si scava dal Medioevo.
             </>
           }
           remember="Negli Apuseni il paesaggio è sotto i piedi: grotte e ghiacci nel calcare, e sopra le case sparse dei moți, che da qui sono scesi in due rivolte."
@@ -2476,12 +2532,13 @@ function Body() {
               Nel nord della Romania, al confine con l’Ucraina, il <N>Maramureș</N> è chiuso da
               montagne coperte di foreste. La valle del <N>Vaser</N> sale da Vișeu de Sus per decine
               di chilometri dentro il bosco. Per secoli il legno è la ricchezza della regione: lo
-              mostrano le chiese di legno del Maramureș, patrimonio UNESCO. Per portare a valle i
-              tronchi si usa l’acqua, liberata a ondate da dighe di legno lungo il fiume; dopo
-              un’alluvione del <D>1929</D>, che ne rompe una, si costruisce una ferrovia forestale,
-              la <N>Mocănița</N>, ancora in servizio. A sud, oltre la valle di Borșa, si alzano i{' '}
-              <N>Monti Rodnei</N>, la catena più alta dei Carpazi Orientali: creste di oltre 2.000
-              m, circhi e laghi lasciati dai ghiacciai. Oggi sono un parco nazionale.
+              mostrano le chiese di legno del Maramureș, patrimonio UNESCO, e a Săpânța le croci
+              scolpite e dipinte del Cimitero allegro. Per portare a valle i tronchi si usa l’acqua,
+              liberata a ondate da dighe di legno lungo il fiume; dopo un’alluvione del <D>1929</D>,
+              che ne rompe una, si costruisce una ferrovia forestale, la <N>Mocănița</N>, ancora in
+              servizio. A sud, oltre la valle di Borșa, si alzano i <N>Monti Rodnei</N>, la catena
+              più alta dei Carpazi Orientali: creste di oltre 2.000 m, circhi e laghi lasciati dai
+              ghiacciai. Oggi sono un parco nazionale.
             </>
           }
           remember="Nel Maramureș la foresta è un lavoro prima che un paesaggio: la Mocănița nasce per portare a valle i tronchi, sotto le creste dei Rodnei."
@@ -2565,6 +2622,18 @@ function Body() {
               </>
             }
             remember="Il cozonac è il dolce delle feste: tagliato a fette, mostra la sua spirale di noci."
+          />
+          <Card
+            card={RoFood.Papanasi}
+            intro={
+              <>
+                I <N>papanași</N> sono ciambelle di formaggio fresco, uova e farina, fritte o
+                bollite, con sopra una pallina della stessa pasta. Arrivano caldi, coperti di
+                smântână e di marmellata, di solito di frutti di bosco o di amarene. Sono il dolce
+                che quasi tutti ordinano a fine pasto, in città come in montagna.
+              </>
+            }
+            remember="I papanași si ordinano alla fine, anche quando non c’è più posto: ciambella calda, smântână e marmellata."
           />
           <Card
             card={RoFood.Tuica}
@@ -2671,6 +2740,20 @@ function Body() {
               </>
             }
             remember="Il balmoș è la mămăligă dei pastori: farina di mais cotta nel latte e nel formaggio di pecora."
+          />
+          <Card
+            card={RoFood.BranzaDeBurduf}
+            intro={
+              <>
+                La <N>brânză de burduf</N> è il formaggio dei pastori dei Carpazi. Il caș, la
+                cagliata di latte di pecora, si lascia maturare qualche giorno, poi si sbriciola, si
+                impasta con il sale e si pressa in un sacco di pelle o di stomaco di pecora, il
+                burduf, oppure in cilindri di corteccia d’abete. Il gusto è forte e salato; nella
+                corteccia prende un profumo di resina. Nel corridoio fra Bran e Rucăr il cilindro di
+                corteccia si vende lungo la strada.
+              </>
+            }
+            remember="La brânză de burduf è il formaggio dei pastori impastato a mano: nella corteccia d’abete prende il profumo del bosco."
           />
         </Part>
         <Part section={RoSection.FoodWallachia}>

@@ -85,45 +85,54 @@ export enum RoTrace {
   StephenTheGreatTomb = 'ro.place.stephen-the-great-tomb',
   StephenTheGreatEquestrianStatue = 'ro.place.stephen-the-great-equestrian-statue',
   MihaiVodaChurch = 'ro.place.mihai-voda-church',
-  MichaelTheBraveObelisk = 'ro.place.michael-the-brave-obelisk',
   MichaelTheBraveHeadTomb = 'ro.place.michael-the-brave-head-tomb',
   MichaelTheBraveEquestrianStatue = 'ro.place.michael-the-brave-equestrian-statue',
   PelesCastle = 'ro.place.peles-castle',
   CurteaDeArgesRoyalTombs = 'ro.place.curtea-de-arges-royal-tombs',
   KingCarolIBridge = 'ro.place.king-carol-i-bridge',
-  CarolIEquestrianStatue = 'ro.place.carol-i-equestrian-statue',
   IpotestiMemorial = 'ro.place.ipotesti-memorial',
   EminescusLindenTree = 'ro.place.eminescus-linden-tree',
   EminescusGrave = 'ro.place.eminescus-grave',
+  EminescuBanknote = 'ro.place.eminescu-500-lei-banknote',
+  BranCastle = 'ro.place.bran-castle',
+  PelisorCastle = 'ro.place.pelisor-castle',
   BrancusiHouseHobita = 'ro.place.brancusi-house-hobita',
   GateOfTheKiss = 'ro.place.gate-of-the-kiss',
   EndlessColumn = 'ro.place.endless-column',
+  LuminisVilla = 'ro.place.luminis-villa',
+  EnescuMuseum = 'ro.place.enescu-museum-cantacuzino-palace',
+  EnescuBanknote = 'ro.place.enescu-5-lei-banknote',
   PalaceOfTheParliament = 'ro.place.palace-of-the-parliament',
   CentralCommitteeBuilding = 'ro.place.central-committee-building',
   PrimaveriiPalace = 'ro.place.primaverii-palace',
-  CeausescuExecutionSite = 'ro.place.ceausescu-execution-site',
+  NadiaStatueOtopeni = 'ro.place.nadia-comaneci-statue-otopeni',
+  OnestiPathOfPerfection = 'ro.place.onesti-path-of-perfection',
   StavropoleosChurch = 'ro.place.stavropoleos-church',
   RomanianAthenaeum = 'ro.place.romanian-athenaeum',
+  VillageMuseum = 'ro.place.village-museum',
+  SteauaStadium = 'ro.place.steaua-stadium',
   BrasovCouncilHouse = 'ro.place.brasov-council-house',
   BrasovBlackChurch = 'ro.place.brasov-black-church',
-  BrasovCatherineGate = 'ro.place.brasov-catherine-gate',
+  BrasovTampaLetters = 'ro.place.brasov-tampa-letters',
+  CantacuzinoCastle = 'ro.place.cantacuzino-castle-busteni',
   SibiuBrukenthalPalace = 'ro.place.sibiu-brukenthal-palace',
   SibiuBridgeOfLies = 'ro.place.sibiu-bridge-of-lies',
-  SibiuEvangelicalCathedral = 'ro.place.sibiu-evangelical-cathedral',
+  AstraMuseum = 'ro.place.sibiu-astra-museum',
   SighisoaraClockTower = 'ro.place.sighisoara-clock-tower',
   SighisoaraCoveredStairway = 'ro.place.sighisoara-covered-stairway',
+  OberthHouse = 'ro.place.hermann-oberth-house',
   ClujUnionSquare = 'ro.place.cluj-union-square',
-  ClujMatthiasCorvinusHouse = 'ro.place.cluj-matthias-corvinus-house',
   ClujAvramIancuSquare = 'ro.place.cluj-avram-iancu-square',
+  BanffyCastle = 'ro.place.banffy-castle-bontida',
   AlbaIuliaCitadel = 'ro.place.alba-iulia-citadel',
   AlbaIuliaStMichaelsCathedral = 'ro.place.alba-iulia-st-michaels-cathedral',
   AlbaIuliaUnionHall = 'ro.place.alba-iulia-union-hall',
   IasiPalaceOfCulture = 'ro.place.iasi-palace-of-culture',
   IasiThreeHierarchsMonastery = 'ro.place.iasi-three-hierarchs-monastery',
-  IasiUnionMuseum = 'ro.place.iasi-union-museum',
+  CreangaBojdeuca = 'ro.place.creanga-bojdeuca',
   SuceavaCitadel = 'ro.place.suceava-citadel',
   SuceavaSaintJohnMonastery = 'ro.place.suceava-saint-john-monastery',
-  SuceavaBucovinaMuseum = 'ro.place.suceava-bucovina-museum',
+  VoronetMonastery = 'ro.place.voronet-monastery',
   TimisoaraUnionSquare = 'ro.place.timisoara-union-square',
   TimisoaraTokesParsonage = 'ro.place.timisoara-tokes-parsonage',
   TimisoaraOperaBalcony = 'ro.place.timisoara-opera-balcony',
@@ -131,13 +140,16 @@ export enum RoTrace {
   ConstantaRomanMosaic = 'ro.place.constanta-roman-mosaic',
   ConstantaGrandMosque = 'ro.place.constanta-grand-mosque',
   ConstantaCasino = 'ro.place.constanta-casino',
+  HagiAcademyStadium = 'ro.place.hagi-academy-stadium',
+  VamaVeche = 'ro.place.vama-veche',
   SulinaOldLighthouse = 'ro.place.sulina-old-lighthouse',
   LeteaForest = 'ro.place.letea-forest',
   JurilovcaHarbour = 'ro.place.jurilovca-harbour',
-  EnisalaFortress = 'ro.place.enisala-fortress',
+  DeltaPelicans = 'ro.place.delta-pelicans',
   VidraruDam = 'ro.place.vidraru-dam',
   BaleaLake = 'ro.place.balea-lake',
   MoldoveanuPeak = 'ro.place.moldoveanu-peak',
+  Transfagarasan = 'ro.place.transfagarasan',
   ZarnestiGorges = 'ro.place.zarnesti-gorges',
   LibeartyBearSanctuary = 'ro.place.libearty-bear-sanctuary',
   MaguraVillage = 'ro.place.magura-village',
@@ -145,33 +157,33 @@ export enum RoTrace {
   ScarisoaraIceCave = 'ro.place.scarisoara-ice-cave',
   BearsCave = 'ro.place.bears-cave',
   CetatilePonorului = 'ro.place.cetatile-ponorului',
-  AvramIancuMemorialHouse = 'ro.place.avram-iancu-memorial-house',
+  SalinaTurda = 'ro.place.salina-turda',
   MraconiaMonastery = 'ro.place.mraconia-monastery',
   IronGatesDam = 'ro.place.iron-gates-dam',
   TrajansBridgeRuins = 'ro.place.trajans-bridge-ruins',
   BucuraLake = 'ro.place.bucura-lake',
-  ZanoagaLake = 'ro.place.zanoaga-lake',
   PeleagaPeak = 'ro.place.peleaga-peak',
   MocanitaViseuDeSus = 'ro.place.mocanita-viseu-de-sus',
   HorsesWaterfall = 'ro.place.horses-waterfall',
   PietrosulRodnei = 'ro.place.pietrosul-rodnei',
+  BarsanaChurch = 'ro.place.barsana-wooden-church',
+  MerryCemetery = 'ro.place.merry-cemetery-sapanta',
   BicazGorges = 'ro.place.bicaz-gorges',
   RedLake = 'ro.place.red-lake',
   ToacaPeak = 'ro.place.toaca-peak',
   FoodMamaliga = 'ro.place.food-mamaliga',
   FoodSarmale = 'ro.place.food-sarmale',
-  FoodCiorba = 'ro.place.food-ciorba',
   FoodCozonac = 'ro.place.food-cozonac',
+  FoodPapanasi = 'ro.place.food-papanasi',
   FoodTuica = 'ro.place.food-tuica',
   FoodSibiuSalami = 'ro.place.food-sibiu-salami',
   FoodKurtoskalacs = 'ro.place.food-kurtoskalacs',
   FoodVarzaCluj = 'ro.place.food-varza-cluj',
   FoodPalinca = 'ro.place.food-palinca',
-  FoodPalincaBihor = 'ro.place.food-palinca-bihor',
   FoodPljeskavica = 'ro.place.food-pljeskavica',
-  FoodWalnutNoodles = 'ro.place.food-walnut-noodles',
   FoodHorinca = 'ro.place.food-horinca',
   FoodBalmos = 'ro.place.food-balmos',
+  FoodBranzaDeBurduf = 'ro.place.food-branza-de-burduf',
   FoodMici = 'ro.place.food-mici',
   FoodCiorbaBurta = 'ro.place.food-ciorba-burta',
   FoodCovrigi = 'ro.place.food-covrigi',
@@ -196,8 +208,11 @@ export enum RoPerson {
   MichaelTheBrave = 'ro.person.michael-the-brave',
   CarolI = 'ro.person.carol-i',
   MihaiEminescu = 'ro.person.mihai-eminescu',
+  QueenMarie = 'ro.person.queen-marie',
   ConstantinBrancusi = 'ro.person.constantin-brancusi',
+  GeorgeEnescu = 'ro.person.george-enescu',
   NicolaeCeausescu = 'ro.person.nicolae-ceausescu',
+  NadiaComaneci = 'ro.person.nadia-comaneci',
 }
 
 /** Landscapes with a card (Natura chapter): stored with the reader's pins, never rename them. */
@@ -218,6 +233,7 @@ export enum RoFood {
   Sarmale = 'ro.food.sarmale',
   CiorbaBors = 'ro.food.ciorba-bors',
   Cozonac = 'ro.food.cozonac',
+  Papanasi = 'ro.food.papanasi',
   Tuica = 'ro.food.tuica',
   SibiuSalami = 'ro.food.sibiu-salami',
   Kurtoskalacs = 'ro.food.kurtoskalacs',
@@ -226,6 +242,7 @@ export enum RoFood {
   BanatCuisine = 'ro.food.banat-cuisine',
   Horinca = 'ro.food.horinca',
   Balmos = 'ro.food.balmos',
+  BranzaDeBurduf = 'ro.food.branza-de-burduf',
   Mici = 'ro.food.mici',
   CiorbaBurta = 'ro.food.ciorba-de-burta',
   Covrigi = 'ro.food.covrigi',
@@ -449,15 +466,6 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'church',
     },
-    // Near Turda (Cluj county), not a city of the guide. TODO image: licensed photograph of the
-    // 1977 obelisk.
-    {
-      id: RoTrace.MichaelTheBraveObelisk,
-      region: Transylvania,
-      where: 'remote',
-      rarity: 'rare',
-      icon: 'pin',
-    },
     // TODO image: freely licensed photograph of the Dealu monastery church.
     {
       id: RoTrace.MichaelTheBraveHeadTomb,
@@ -500,15 +508,6 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'bridge',
     },
-    // TODO image: licensed photograph, including rights clearance for the 2010 sculpture.
-    {
-      id: RoTrace.CarolIEquestrianStatue,
-      region: Wallachia,
-      city: Ro.Bucharest,
-      where: 'city',
-      rarity: 'common',
-      icon: 'shield',
-    },
     // Botoșani county, not a city of the guide. TODO image: freely licensed photograph.
     {
       id: RoTrace.IpotestiMemorial,
@@ -535,6 +534,30 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'pin',
     },
+    // The 500 lei banknote: anywhere, but rarely given as change.
+    {
+      id: RoTrace.EminescuBanknote,
+      where: 'anywhere',
+      rarity: 'rare',
+      icon: 'banknote',
+    },
+    // Queen Marie (and Vlad III: the castle of the myth). Bran is about 30 km from Brașov.
+    // TODO image: freely licensed photographs for the two Queen Marie traces.
+    {
+      id: RoTrace.BranCastle,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'castle',
+    },
+    // Sinaia, Prahova valley: historically Wallachia.
+    {
+      id: RoTrace.PelisorCastle,
+      region: Wallachia,
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'castle',
+    },
     // Gorj county (Oltenia): historically Wallachia; Hobița and Târgu Jiu are not cities of the
     // guide. TODO image: freely licensed photographs for the three Brâncuși traces. Brâncuși died
     // in 1957: his works at Târgu Jiu are protected until the end of 2027, so check the rights
@@ -560,7 +583,30 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'steps',
     },
-    // TODO image: freely licensed photographs for the four Ceaușescu traces.
+    // George Enescu. TODO image: freely licensed photographs for the two Enescu places.
+    {
+      id: RoTrace.LuminisVilla,
+      region: Wallachia,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'music',
+    },
+    {
+      id: RoTrace.EnescuMuseum,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'music',
+    },
+    // The 5 lei banknote: anywhere.
+    {
+      id: RoTrace.EnescuBanknote,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'banknote',
+    },
+    // TODO image: freely licensed photographs for the three Ceaușescu traces.
     {
       id: RoTrace.PalaceOfTheParliament,
       region: Wallachia,
@@ -585,15 +631,25 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'house',
     },
+    // Nadia Comăneci. Otopeni (Ilfov), next to Bucharest airport: historically Wallachia.
+    // TODO image: licensed photograph, including rights clearance for the 2026 statue.
     {
-      id: RoTrace.CeausescuExecutionSite,
+      id: RoTrace.NadiaStatueOtopeni,
       region: Wallachia,
-      city: Ro.Targoviste,
-      where: 'city',
-      rarity: 'rare',
-      icon: 'wall',
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'trophy',
     },
-    // Append new places to preserve all existing album numbers.
+    // Onești (Bacău county), not a city of the guide. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.OnestiPathOfPerfection,
+      region: Moldavia,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'trophy',
+    },
+    // Album numbers follow this order. While the album is in design (no reader photos yet) places
+    // go where they belong; once it is published, append new places at the end instead.
     // TODO image: freely licensed exterior photograph of Stavropoleos church.
     {
       id: RoTrace.StavropoleosChurch,
@@ -611,6 +667,24 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'city',
       rarity: 'common',
       icon: 'music',
+    },
+    // TODO image: freely licensed photograph of the Village Museum.
+    {
+      id: RoTrace.VillageMuseum,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'barn',
+    },
+    // TODO image: freely licensed photograph of the Steaua stadium.
+    {
+      id: RoTrace.SteauaStadium,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      rarity: 'common',
+      icon: 'ball',
     },
     // TODO image: freely licensed photograph of brasov-council-house.
     {
@@ -630,14 +704,23 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'church',
     },
-    // TODO image: freely licensed photograph of brasov-catherine-gate.
+    // TODO image: freely licensed photograph of the letters on Tâmpa.
     {
-      id: RoTrace.BrasovCatherineGate,
+      id: RoTrace.BrasovTampaLetters,
       region: Transylvania,
       city: Ro.Brasov,
       where: 'city',
       rarity: 'common',
-      icon: 'castle',
+      icon: 'mountains',
+    },
+    // Bușteni, Prahova valley: historically Wallachia, about 40 km from Brașov.
+    // TODO image: freely licensed photograph.
+    {
+      id: RoTrace.CantacuzinoCastle,
+      region: Wallachia,
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'film',
     },
     // TODO image: freely licensed photograph of sibiu-brukenthal-palace.
     {
@@ -657,14 +740,14 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'bridge',
     },
-    // TODO image: freely licensed photograph of sibiu-evangelical-cathedral.
+    // TODO image: freely licensed photograph of the ASTRA open-air museum.
     {
-      id: RoTrace.SibiuEvangelicalCathedral,
+      id: RoTrace.AstraMuseum,
       region: Transylvania,
       city: Ro.Sibiu,
       where: 'city',
       rarity: 'common',
-      icon: 'church',
+      icon: 'barn',
     },
     // TODO image: freely licensed photograph of sighisoara-clock-tower.
     {
@@ -684,6 +767,14 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'steps',
     },
+    // Mediaș, between Sibiu and Sighișoara. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.OberthHouse,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'rocket',
+    },
     // TODO image: freely licensed photograph of cluj-union-square (the 1902 monument is out of
     // copyright).
     {
@@ -694,15 +785,6 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'church',
     },
-    // TODO image: freely licensed photograph of cluj-matthias-corvinus-house.
-    {
-      id: RoTrace.ClujMatthiasCorvinusHouse,
-      region: Transylvania,
-      city: Ro.ClujNapoca,
-      where: 'city',
-      rarity: 'common',
-      icon: 'house',
-    },
     // TODO image: freely licensed photograph of cluj-avram-iancu-square.
     {
       id: RoTrace.ClujAvramIancuSquare,
@@ -711,6 +793,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'city',
       rarity: 'common',
       icon: 'bank',
+    },
+    // Bonțida (Cluj county). TODO image: freely licensed photograph.
+    {
+      id: RoTrace.BanffyCastle,
+      region: Transylvania,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'music',
     },
     // TODO image: freely licensed photograph of the Palace of Culture.
     {
@@ -730,14 +820,14 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'church',
     },
-    // TODO image: freely licensed photograph of the Union Museum.
+    // TODO image: freely licensed photograph of the Bojdeuca.
     {
-      id: RoTrace.IasiUnionMuseum,
+      id: RoTrace.CreangaBojdeuca,
       region: Moldavia,
       city: Ro.Iasi,
       where: 'city',
       rarity: 'common',
-      icon: 'image',
+      icon: 'house',
     },
     // TODO image: freely licensed photograph of Suceava Citadel.
     {
@@ -757,14 +847,13 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'church',
     },
-    // TODO image: freely licensed photograph of the Bucovina Museum.
+    // Near Gura Humorului; also a trace of Stephen the Great. TODO image: freely licensed photograph.
     {
-      id: RoTrace.SuceavaBucovinaMuseum,
+      id: RoTrace.VoronetMonastery,
       region: Moldavia,
-      city: Ro.Suceava,
-      where: 'city',
+      where: 'nearby',
       rarity: 'common',
-      icon: 'image',
+      icon: 'paint',
     },
     // TODO image: freely licensed photographs for the three Alba Iulia traces.
     {
@@ -850,6 +939,22 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'waves',
     },
+    // Ovidiu, north of Constanța. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.HagiAcademyStadium,
+      region: Dobruja,
+      where: 'nearby',
+      rarity: 'rare',
+      icon: 'ball',
+    },
+    // On the coast, by the Bulgarian border. TODO image: freely licensed photograph.
+    {
+      id: RoTrace.VamaVeche,
+      region: Dobruja,
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'music',
+    },
     // Danube Delta (Tulcea county). TODO image: freely licensed photographs for the four traces.
     {
       id: RoTrace.SulinaOldLighthouse,
@@ -873,11 +978,11 @@ export const structure = defineGuide<Ro, RoSection>({
       icon: 'boat',
     },
     {
-      id: RoTrace.EnisalaFortress,
+      id: RoTrace.DeltaPelicans,
       region: Dobruja,
       where: 'remote',
       rarity: 'rare',
-      icon: 'castle',
+      icon: 'bird',
     },
     // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia. TODO image: freely licensed photographs for the three traces.
     {
@@ -900,6 +1005,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'remote',
       rarity: 'very-rare',
       icon: 'mountains',
+    },
+    // The road crosses the ridge: filed under Transilvania, where its best-known stretch is (the north ramp).
+    {
+      id: RoTrace.Transfagarasan,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'road',
     },
     // Piatra Craiului (Brașov county side): Zărnești and Măgura are about 30 km from Brașov. TODO image: freely licensed photographs for the four traces.
     {
@@ -930,7 +1043,7 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'flower',
     },
-    // Apuseni Mountains (Alba, Bihor, Cluj counties): the Bihor side is Crișana, which the trip filter has no entry for, so it sits with Transilvania (as Timișoara for the Banat). TODO image: freely licensed photographs for the four traces.
+    // Apuseni Mountains (Alba, Bihor, Cluj counties): the Bihor side is Crișana, which the trip filter has no entry for, so it sits with Transilvania (as Timișoara for the Banat). TODO image: freely licensed photographs for the three traces.
     {
       id: RoTrace.ScarisoaraIceCave,
       region: Transylvania,
@@ -952,12 +1065,13 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'very-rare',
       icon: 'mountains',
     },
+    // Turda, on the eastern edge of the Apuseni. TODO image: freely licensed photograph.
     {
-      id: RoTrace.AvramIancuMemorialHouse,
+      id: RoTrace.SalinaTurda,
       region: Transylvania,
-      where: 'remote',
-      rarity: 'rare',
-      icon: 'house',
+      where: 'nearby',
+      rarity: 'common',
+      icon: 'steps',
     },
     // Iron Gates (Mehedinți county): filed under Valacchia, as the Decebalus sculpture. TODO image: freely licensed photographs for the three traces.
     {
@@ -981,16 +1095,9 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'bridge',
     },
-    // Retezat (Hunedoara county). TODO image: freely licensed photographs for the three traces.
+    // Retezat (Hunedoara county). TODO image: freely licensed photographs for the two traces.
     {
       id: RoTrace.BucuraLake,
-      region: Transylvania,
-      where: 'remote',
-      rarity: 'rare',
-      icon: 'waves',
-    },
-    {
-      id: RoTrace.ZanoagaLake,
       region: Transylvania,
       where: 'remote',
       rarity: 'rare',
@@ -1024,6 +1131,22 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'remote',
       rarity: 'very-rare',
       icon: 'mountains',
+    },
+    // Iza valley and Săpânța (Maramureș), filed under Transilvania as the rest of the card.
+    // TODO image: freely licensed photographs for the two traces.
+    {
+      id: RoTrace.BarsanaChurch,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'church',
+    },
+    {
+      id: RoTrace.MerryCemetery,
+      region: Transylvania,
+      where: 'remote',
+      rarity: 'rare',
+      icon: 'paint',
     },
     // Bicaz gorges and Ceahlău (Neamț county, Moldavia; Lacu Roșu is in Harghita county, Transilvania). TODO image: freely licensed photographs for the three traces.
     {
@@ -1061,16 +1184,16 @@ export const structure = defineGuide<Ro, RoSection>({
       icon: 'pot',
     },
     {
-      id: RoTrace.FoodCiorba,
-      where: 'anywhere',
-      rarity: 'common',
-      icon: 'bowl',
-    },
-    {
       id: RoTrace.FoodCozonac,
       where: 'anywhere',
       rarity: 'common',
       icon: 'bread',
+    },
+    {
+      id: RoTrace.FoodPapanasi,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'cake',
     },
     {
       id: RoTrace.FoodTuica,
@@ -1108,25 +1231,11 @@ export const structure = defineGuide<Ro, RoSection>({
       icon: 'brandy',
     },
     {
-      id: RoTrace.FoodPalincaBihor,
-      region: Transylvania,
-      where: 'region',
-      rarity: 'rare',
-      icon: 'brandy',
-    },
-    {
       id: RoTrace.FoodPljeskavica,
       region: Transylvania,
       where: 'region',
       rarity: 'common',
       icon: 'fork',
-    },
-    {
-      id: RoTrace.FoodWalnutNoodles,
-      region: Transylvania,
-      where: 'region',
-      rarity: 'rare',
-      icon: 'bowl',
     },
     {
       id: RoTrace.FoodHorinca,
@@ -1141,6 +1250,13 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'rare',
       icon: 'pot',
+    },
+    {
+      id: RoTrace.FoodBranzaDeBurduf,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'cheese',
     },
     // Gastronomia, Valacchia. No images.
     {
@@ -1261,23 +1377,31 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'person',
       region: Wallachia,
       on: [Wallachia, Transylvania],
-      traces: [RoTrace.VladDraculHouse, RoTrace.ChindiaTower, RoTrace.PoenariCitadel],
+      traces: [
+        RoTrace.VladDraculHouse,
+        RoTrace.ChindiaTower,
+        RoTrace.PoenariCitadel,
+        RoTrace.BranCastle,
+      ],
     },
     {
       id: RoPerson.StephenTheGreat,
       kind: 'person',
       region: Moldavia,
       on: [Moldavia],
-      traces: [RoTrace.StephenTheGreatTomb, RoTrace.StephenTheGreatEquestrianStatue],
+      traces: [
+        RoTrace.StephenTheGreatTomb,
+        RoTrace.StephenTheGreatEquestrianStatue,
+        RoTrace.VoronetMonastery,
+      ],
     },
     {
       id: RoPerson.MichaelTheBrave,
       kind: 'person',
       region: Wallachia,
-      on: [Wallachia, Transylvania],
+      on: [Wallachia],
       traces: [
         RoTrace.MihaiVodaChurch,
-        RoTrace.MichaelTheBraveObelisk,
         RoTrace.MichaelTheBraveHeadTomb,
         RoTrace.MichaelTheBraveEquestrianStatue,
       ],
@@ -1287,19 +1411,26 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'person',
       region: Wallachia,
       on: [Wallachia, Dobruja],
-      traces: [
-        RoTrace.PelesCastle,
-        RoTrace.CurteaDeArgesRoyalTombs,
-        RoTrace.KingCarolIBridge,
-        RoTrace.CarolIEquestrianStatue,
-      ],
+      traces: [RoTrace.PelesCastle, RoTrace.CurteaDeArgesRoyalTombs, RoTrace.KingCarolIBridge],
     },
     {
       id: RoPerson.MihaiEminescu,
       kind: 'person',
       region: Moldavia,
       on: [Moldavia, Wallachia],
-      traces: [RoTrace.IpotestiMemorial, RoTrace.EminescusLindenTree, RoTrace.EminescusGrave],
+      traces: [
+        RoTrace.IpotestiMemorial,
+        RoTrace.EminescusLindenTree,
+        RoTrace.EminescusGrave,
+        RoTrace.EminescuBanknote,
+      ],
+    },
+    {
+      id: RoPerson.QueenMarie,
+      kind: 'person',
+      region: Wallachia,
+      on: [Wallachia, Transylvania],
+      traces: [RoTrace.BranCastle, RoTrace.PelisorCastle],
     },
     {
       id: RoPerson.ConstantinBrancusi,
@@ -1309,16 +1440,36 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [RoTrace.BrancusiHouseHobita, RoTrace.GateOfTheKiss, RoTrace.EndlessColumn],
     },
     {
+      // Born in Moldavia; his places are in Wallachia, and the 5 lei banknote is everywhere.
+      id: RoPerson.GeorgeEnescu,
+      kind: 'person',
+      region: Moldavia,
+      on: 'always',
+      traces: [
+        RoTrace.LuminisVilla,
+        RoTrace.EnescuMuseum,
+        RoTrace.EnescuBanknote,
+        RoTrace.RomanianAthenaeum,
+      ],
+    },
+    {
       id: RoPerson.NicolaeCeausescu,
       kind: 'person',
       region: Wallachia,
-      on: [Wallachia],
+      on: [Wallachia, Transylvania],
       traces: [
         RoTrace.PalaceOfTheParliament,
         RoTrace.CentralCommitteeBuilding,
         RoTrace.PrimaveriiPalace,
-        RoTrace.CeausescuExecutionSite,
+        RoTrace.Transfagarasan,
       ],
+    },
+    {
+      id: RoPerson.NadiaComaneci,
+      kind: 'person',
+      region: Moldavia,
+      on: [Moldavia, Wallachia],
+      traces: [RoTrace.NadiaStatueOtopeni, RoTrace.OnestiPathOfPerfection],
     },
     {
       id: Ro.Bucharest,
@@ -1331,6 +1482,8 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.CentralCommitteeBuilding,
         RoTrace.StavropoleosChurch,
         RoTrace.RomanianAthenaeum,
+        RoTrace.VillageMuseum,
+        RoTrace.SteauaStadium,
       ],
     },
     {
@@ -1352,7 +1505,7 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [
         RoTrace.IasiPalaceOfCulture,
         RoTrace.IasiThreeHierarchsMonastery,
-        RoTrace.IasiUnionMuseum,
+        RoTrace.CreangaBojdeuca,
       ],
     },
     {
@@ -1360,40 +1513,33 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'city',
       region: Moldavia,
       on: [Ro.Suceava],
-      traces: [
-        RoTrace.SuceavaCitadel,
-        RoTrace.SuceavaSaintJohnMonastery,
-        RoTrace.SuceavaBucovinaMuseum,
-      ],
+      traces: [RoTrace.SuceavaCitadel, RoTrace.SuceavaSaintJohnMonastery, RoTrace.VoronetMonastery],
     },
     {
       id: Ro.Brasov,
       kind: 'city',
       region: Transylvania,
       on: [Ro.Brasov],
-      traces: [RoTrace.BrasovCouncilHouse, RoTrace.BrasovBlackChurch, RoTrace.BrasovCatherineGate],
+      traces: [
+        RoTrace.BrasovCouncilHouse,
+        RoTrace.BrasovBlackChurch,
+        RoTrace.BrasovTampaLetters,
+        RoTrace.CantacuzinoCastle,
+      ],
     },
     {
       id: Ro.ClujNapoca,
       kind: 'city',
       region: Transylvania,
       on: [Ro.ClujNapoca],
-      traces: [
-        RoTrace.ClujUnionSquare,
-        RoTrace.ClujMatthiasCorvinusHouse,
-        RoTrace.ClujAvramIancuSquare,
-      ],
+      traces: [RoTrace.ClujUnionSquare, RoTrace.ClujAvramIancuSquare, RoTrace.BanffyCastle],
     },
     {
       id: Ro.Sibiu,
       kind: 'city',
       region: Transylvania,
       on: [Ro.Sibiu],
-      traces: [
-        RoTrace.SibiuBrukenthalPalace,
-        RoTrace.SibiuBridgeOfLies,
-        RoTrace.SibiuEvangelicalCathedral,
-      ],
+      traces: [RoTrace.SibiuBrukenthalPalace, RoTrace.SibiuBridgeOfLies, RoTrace.AstraMuseum],
     },
     {
       id: Ro.Sighisoara,
@@ -1404,6 +1550,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.VladDraculHouse,
         RoTrace.SighisoaraClockTower,
         RoTrace.SighisoaraCoveredStairway,
+        RoTrace.OberthHouse,
       ],
     },
     {
@@ -1427,6 +1574,8 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.ConstantaRomanMosaic,
         RoTrace.ConstantaGrandMosque,
         RoTrace.ConstantaCasino,
+        RoTrace.HagiAcademyStadium,
+        RoTrace.VamaVeche,
       ],
     },
     {
@@ -1438,7 +1587,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.SulinaOldLighthouse,
         RoTrace.LeteaForest,
         RoTrace.JurilovcaHarbour,
-        RoTrace.EnisalaFortress,
+        RoTrace.DeltaPelicans,
       ],
     },
     {
@@ -1451,6 +1600,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.VidraruDam,
         RoTrace.BaleaLake,
         RoTrace.MoldoveanuPeak,
+        RoTrace.Transfagarasan,
       ],
     },
     {
@@ -1474,7 +1624,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.ScarisoaraIceCave,
         RoTrace.BearsCave,
         RoTrace.CetatilePonorului,
-        RoTrace.AvramIancuMemorialHouse,
+        RoTrace.SalinaTurda,
       ],
     },
     {
@@ -1494,14 +1644,20 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'landscape',
       region: Transylvania,
       on: [Transylvania],
-      traces: [RoTrace.BucuraLake, RoTrace.ZanoagaLake, RoTrace.PeleagaPeak],
+      traces: [RoTrace.BucuraLake, RoTrace.PeleagaPeak],
     },
     {
       id: RoLandscape.VaserValleyRodna,
       kind: 'landscape',
       region: Transylvania,
       on: [Transylvania],
-      traces: [RoTrace.MocanitaViseuDeSus, RoTrace.HorsesWaterfall, RoTrace.PietrosulRodnei],
+      traces: [
+        RoTrace.MocanitaViseuDeSus,
+        RoTrace.HorsesWaterfall,
+        RoTrace.PietrosulRodnei,
+        RoTrace.BarsanaChurch,
+        RoTrace.MerryCemetery,
+      ],
     },
     {
       id: RoLandscape.BicazCeahlau,
@@ -1526,18 +1682,19 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.CiorbaBors,
       kind: 'food',
       on: 'always',
-      traces: [
-        RoTrace.FoodCiorba,
-        RoTrace.FoodCiorbaBurta,
-        RoTrace.FoodCiorbaRadauteana,
-        RoTrace.FoodBorsLipovenesc,
-      ],
+      traces: [RoTrace.FoodCiorbaBurta, RoTrace.FoodCiorbaRadauteana, RoTrace.FoodBorsLipovenesc],
     },
     {
       id: RoFood.Cozonac,
       kind: 'food',
       on: 'always',
       traces: [RoTrace.FoodCozonac],
+    },
+    {
+      id: RoFood.Papanasi,
+      kind: 'food',
+      on: 'always',
+      traces: [RoTrace.FoodPapanasi],
     },
     {
       id: RoFood.Tuica,
@@ -1571,14 +1728,14 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'food',
       region: Transylvania,
       on: [Transylvania],
-      traces: [RoTrace.FoodPalinca, RoTrace.FoodPalincaBihor],
+      traces: [RoTrace.FoodPalinca],
     },
     {
       id: RoFood.BanatCuisine,
       kind: 'food',
       region: Transylvania,
       on: [Transylvania],
-      traces: [RoTrace.FoodPljeskavica, RoTrace.FoodWalnutNoodles],
+      traces: [RoTrace.FoodPljeskavica],
     },
     {
       id: RoFood.Horinca,
@@ -1593,6 +1750,13 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Transylvania,
       on: [Transylvania],
       traces: [RoTrace.FoodBalmos],
+    },
+    {
+      id: RoFood.BranzaDeBurduf,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodBranzaDeBurduf],
     },
     {
       id: RoFood.Mici,
