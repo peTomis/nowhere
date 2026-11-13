@@ -1946,7 +1946,7 @@ function Body() {
               <Detail on="always">
                 Secondo la commissione internazionale presieduta da Elie Wiesel, che nel 2004 chiude
                 decenni di negazione ufficiale, sotto l’autorità romena muoiono fra 280.000 e
-                380.000 ebrei e circa 11.000 rom. Nell’autunno del 1942, quando le sorti della
+                380.000 ebrei e oltre 11.000 rom. Nell’autunno del 1942, quando le sorti della
                 guerra cambiano, Antonescu rinuncia a consegnare ai nazisti gli ebrei del Regno e
                 della Transilvania meridionale: circa metà degli ebrei di Romania sopravvive.
               </Detail>
@@ -2178,7 +2178,8 @@ function Body() {
               giorni dopo, nel gennaio 1990. Se il dicembre 1989 sia stato una rivoluzione popolare
               o anche un colpo di Stato dentro il regime è ancora discusso; nel 2019 la procura ha
               accusato Iliescu e altri dirigenti di crimini contro l’umanità per i morti dopo il 22
-              dicembre, ma il processo non è arrivato a sentenza.
+              dicembre, ma il processo non arriva mai a sentenza: Iliescu muore nell’agosto 2025, e
+              per i morti dopo il 22 dicembre nessuno è stato condannato.
             </Note>
           </Callout>
         </Part>
@@ -2207,10 +2208,10 @@ function Body() {
               period="1992 – 1994"
               title="Caritas, il gioco che moltiplicava per otto"
             >
-              In un paese impoverito dall’inflazione, un contabile di Cluj, Ioan Stoica, promette di
-              restituire otto volte la somma versata in tre mesi. Milioni di romeni vendono case e
-              animali per entrare nel gioco, uno schema piramidale che crolla nel 1994 e lascia
-              rovinate moltissime famiglie.
+              In un paese impoverito dall’inflazione, un contabile, Ioan Stoica, fonda a Brașov e
+              poi sposta a Cluj un gioco che promette di restituire otto volte la somma versata in
+              tre mesi. Milioni di romeni vi versano i risparmi, alcuni vendono la casa: uno schema
+              piramidale che crolla nel 1994 e lascia rovinate moltissime famiglie.
             </Context>
             <Event on="always" date="1996" title="La prima alternanza">
               <Detail on="always">
@@ -2355,8 +2356,9 @@ function Body() {
               </Position>
             </Positions>
             <Note on="always">
-              Le indagini sul finanziamento della campagna sono ancora in corso. Nel dicembre 2024
-              la Commissione europea ha aperto un procedimento contro TikTok per il suo ruolo nelle
+              Nel 2025 Georgescu viene rinviato a giudizio per propaganda legionaria e per azioni
+              contro l’ordine costituzionale; i processi sono in corso. Nel dicembre 2024 la
+              Commissione europea ha aperto un procedimento contro TikTok per il suo ruolo nelle
               elezioni romene.
             </Note>
           </Callout>
@@ -2591,7 +2593,7 @@ function Body() {
             Il legame più lungo della sua vita è con la poetessa{' '}
             <N href="https://it.wikipedia.org/wiki/Veronica_Micle">Veronica Micle</N>, sposata
             quando si conoscono, a Vienna nel 1872. Eminescu muore il 15 giugno 1889; lei muore meno
-            di due mesi dopo, il 3 agosto, al monastero di Văratec.
+            di due mesi dopo, ai primi di agosto, al monastero di Văratec.
           </Context>
         </Card>
         <Card
@@ -2613,9 +2615,9 @@ function Body() {
         >
           <Context on="always" kind="curiosity" period="1938 – 2015" title="Il viaggio del cuore">
             Maria chiede che il suo cuore riposi a Balcic, sul Mar Nero, nella cappella della sua
-            villa. Nel 1940 Balcic passa alla Bulgaria e il cuore viene portato a Bran; nel 1971 il
-            regime lo sposta al Museo di storia di Bucarest. Solo nel 2015 arriva al castello di
-            Pelișor, accanto a Peleș.
+            villa. Nel 1940 Balcic passa alla Bulgaria e il cuore viene portato a Bran; negli anni
+            Settanta il regime lo porta al Museo di storia di Bucarest, dove resta in deposito. Solo
+            nel 2015 arriva al castello di Pelișor, accanto a Peleș.
           </Context>
         </Card>
         <Card
@@ -2636,7 +2638,7 @@ function Body() {
           remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
         >
           <Context on="always" kind="curiosity" period="1907" title="All’ombra dei grandi alberi">
-            A Parigi lavora per poche settimane nell’atelier di{' '}
+            A Parigi lavora per un mese o due nell’atelier di{' '}
             <N href="https://it.wikipedia.org/wiki/Auguste_Rodin">Auguste Rodin</N>, il più celebre
             scultore del tempo, poi se ne va. La frase che gli si attribuisce: «All’ombra dei grandi
             alberi non cresce niente».
@@ -2831,9 +2833,10 @@ function Body() {
               «fortezza di Bucarest».
             </Context>
             <Context on="always" period="1977" title="Il terremoto">
-              La sera del 4 marzo 1977 un terremoto di magnitudo 7,4 colpisce la Romania: circa
-              1.500 morti, quasi tutti a Bucarest, dove crollano decine di palazzi del centro. Negli
-              anni Ottanta il regime userà anche i danni del sisma per giustificare le demolizioni.
+              La sera del 4 marzo 1977 un terremoto di magnitudo superiore a 7 colpisce la Romania:
+              circa 1.500 morti, quasi tutti a Bucarest, dove crollano decine di palazzi del centro.
+              Negli anni Ottanta il regime userà anche i danni del sisma per giustificare le
+              demolizioni.
             </Context>
           </Card>
         </Part>
@@ -2891,8 +2894,7 @@ function Body() {
             </Context>
             <Context on="always" kind="curiosity" period="1950 – 1960" title="Orașul Stalin">
               Per dieci anni Brașov si chiama «Città di Stalin». Sul Tâmpa, dove oggi c’è la scritta
-              BRAȘOV, gli alberi vengono tagliati in modo da comporre il nome del dittatore
-              sovietico.
+              BRAȘOV, il nome del dittatore sovietico viene tracciato con gli abeti.
             </Context>
             <Context on="always" period="1987" title="La rivolta degli operai">
               Il 15 novembre 1987 gli operai della fabbrica di camion Steagul Roșu scendono in
@@ -3014,8 +3016,9 @@ function Body() {
             remember="Timișoara è una città barocca di molte lingue e confessioni: qui, nel 1989, comincia la rivolta contro Ceaușescu."
           >
             <Context on="always" kind="curiosity" period="1884" title="Le prime luci elettriche">
-              Nel 1884 Timișoara illumina le sue strade con lampade elettriche, fra le prime città
-              in Europa a farlo. Per la città è ancora un motivo d’orgoglio.
+              Nel novembre 1884 si accendono a Timișoara 731 lampade elettriche: è la prima città
+              d’Europa a illuminare le sue strade con l’elettricità, un primato che rivendica
+              ancora.
             </Context>
             <Context on="always" period="1990" title="Il Proclama di Timișoara">
               L’11 marzo 1990 i protagonisti della rivolta pubblicano il Proclama di Timișoara. Il
@@ -3049,8 +3052,8 @@ function Body() {
           >
             <Context on="always" kind="curiosity" period="1962" title="Il serpente Glykon">
               Nel 1962, durante dei lavori vicino alla vecchia stazione, viene alla luce un deposito
-              di statue sepolte in età romana. Fra queste c’è Glykon, un serpente con la testa da
-              ariete, orecchie e capelli umani: il dio di un culto nato nel II secolo. Lo vedi al
+              di statue sepolte in età romana. Fra queste c’è Glykon, un serpente con il muso di
+              agnello, orecchie e capelli umani: il dio di un culto nato nel II secolo. Lo vedi al
               Museo di storia nazionale e archeologia, in piazza Ovidio.
             </Context>
             <Context on="always" period="1949 – 1984" title="Il canale della morte">
@@ -3313,7 +3316,8 @@ function Body() {
           <Context on="always" period="1950 – 1960" title="La diga di Bicaz">
             La diga che forma il lago di Bicaz è una delle prime grandi opere del regime comunista:
             costruita in dieci anni, anche con il lavoro di detenuti, sommerge villaggi le cui
-            famiglie vengono trasferite. È la prima grande centrale idroelettrica della Romania.
+            famiglie vengono trasferite. Alta 127 metri, diventa un simbolo dell’industrializzazione
+            socialista.
           </Context>
           <Context on="always" kind="curiosity" period="6 agosto" title="L’ombra della piramide">
             Il 6 agosto, festa della Trasfigurazione, i pellegrini salgono di notte al monastero del
@@ -3350,8 +3354,8 @@ function Body() {
               title="La mămăligă non esplode"
             >
               «Mămăliga nu explodează», la mămăligă non esplode: per decenni i romeni lo dicono di
-              sé stessi, di un popolo che sopporta senza ribellarsi. Nel dicembre 1989 i giornali
-              scrivono che, alla fine, la mămăligă è esplosa.
+              sé stessi, di un popolo che sopporta senza ribellarsi. Dopo il dicembre 1989 si dirà
+              che, alla fine, la mămăligă è esplosa.
             </Context>
           </Card>
           <Card
@@ -3373,7 +3377,7 @@ function Body() {
               period="Moldavia, Transilvania"
               title="Piccole o grandi, vite o cavolo"
             >
-              In Moldavia sono piccole, a volte quanto un dito, e spesso si chiamano găluște;
+              In Moldavia sono piccole, a volte quanto un dito, e un tempo si chiamavano găluște;
               d’estate si avvolgono volentieri nelle foglie di vite. In Transilvania sono più
               grandi, di cavolo acido, cotte a strati con carne affumicata e crauti, a volte con
               aneto o pomodoro. Ovunque, nei giorni di digiuno ortodosso, il ripieno è di riso e
@@ -3403,8 +3407,8 @@ function Body() {
               In Moldavia una zuppa acida è un borș, e quella di pollo con tagliolini fatti in casa
               è la zeamă, acidulata con il borș. In Valacchia è una ciorbă, e il gusto è quello del
               levistico. In Transilvania, per l’influenza ungherese, la zuppa si lega spesso con un
-              soffritto di farina e prende il dragoncello; la ciorbă di fagioli servita dentro una
-              pagnotta scavata è nata qui ed è ormai ovunque.
+              soffritto di farina e prende il dragoncello; è questa erba, poco usata nel resto del
+              paese, a far riconoscere una zuppa transilvana.
             </Context>
           </Card>
           <Card
