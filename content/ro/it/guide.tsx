@@ -2191,10 +2191,41 @@ function Body() {
               title="Elezioni, violenza politica e nuova costituzione"
             >
               <Detail on="always">
-                Le elezioni del 1990 confermano <N>Ion Iliescu</N> e il Fronte di salvezza
-                nazionale. La repressione delle proteste, con l’intervento dei minatori, segna la
-                transizione. La costituzione del 1991 stabilisce il quadro della repubblica
-                pluralista.
+                A marzo 1990 a <N>Târgu Mureș</N> scontri fra romeni e ungheresi fanno alcuni morti.
+                A maggio le prime elezioni libere danno a <N>Ion Iliescu</N> e al Fronte di salvezza
+                nazionale una vittoria schiacciante. In piazza dell’Università, a Bucarest, studenti
+                e oppositori chiedono da settimane che gli ex dirigenti comunisti lascino la
+                politica: Iliescu li chiama «teppisti», e a giugno migliaia di minatori arrivati
+                dalla valle del Jiu li sgomberano con la violenza. Nel 1991 i minatori tornano e
+                fanno cadere il governo. La costituzione del 1991 stabilisce il quadro della
+                repubblica pluralista.
+              </Detail>
+            </Event>
+            <Context
+              on="always"
+              kind="curiosity"
+              period="1992 – 1994"
+              title="Caritas, il gioco che moltiplicava per otto"
+            >
+              In un paese impoverito dall’inflazione, un contabile di Cluj, Ioan Stoica, promette di
+              restituire otto volte la somma versata in tre mesi. Milioni di romeni vendono case e
+              animali per entrare nel gioco, uno schema piramidale che crolla nel 1994 e lascia
+              rovinate moltissime famiglie.
+            </Context>
+            <Event on="always" date="1996" title="La prima alternanza">
+              <Detail on="always">
+                Per la prima volta dal 1989 il potere cambia mano con il voto: vince{' '}
+                <N>Emil Constantinescu</N>, candidato dell’opposizione di centrodestra, e il partito
+                della minoranza ungherese entra al governo. Seguono anni di privatizzazioni e
+                chiusure di fabbriche e miniere; nel 1999 una nuova marcia dei minatori su Bucarest
+                viene fermata dalla polizia prima di arrivare.
+              </Detail>
+            </Event>
+            <Event on="always" date="2000" title="Il ritorno di Iliescu">
+              <Detail on="always">
+                Deluso dalla crisi, il paese rielegge Iliescu. Al secondo turno contro di lui arriva
+                Corneliu Vadim Tudor, del partito nazionalista Grande Romania: molti elettori votano
+                Iliescu solo per fermare l’estrema destra.
               </Detail>
             </Event>
             <Context
@@ -2202,10 +2233,12 @@ function Body() {
               period="Dagli anni Novanta"
               title="Privatizzazioni ed emigrazione cambiano il Paese"
             >
-              La transizione all’economia di mercato chiude o ridimensiona molte industrie. Le
-              opportunità si distribuiscono in modo diseguale; l’emigrazione per lavoro trasforma
-              famiglie e paesi. I legami con l’Italia fanno parte di questa storia recente, accanto
-              agli investimenti e alla crescita dei servizi nelle città.
+              La transizione all’economia di mercato chiude o ridimensiona molte industrie, e le
+              opportunità si distribuiscono in modo diseguale. Dalla fine degli anni Novanta, e
+              ancora di più dopo il 2007, milioni di romeni partono per lavorare all’estero: fra i
+              tre e i cinque milioni vivono oggi fuori dal paese. In Italia i romeni sono la prima
+              comunità straniera, circa un milione di persone. Le rimesse costruiscono case nei
+              villaggi; molti bambini crescono con i nonni.
             </Context>
             <Event
               on="always"
@@ -2215,7 +2248,65 @@ function Body() {
               <Detail on="always">
                 Il <D>29 marzo 2004</D> la Romania aderisce alla NATO; il <D>1 gennaio 2007</D>
                 entra nell’Unione Europea. Sono due passaggi distinti: il primo riguarda l’alleanza
-                militare, il secondo istituzioni, mercato e cittadinanza europei.
+                militare, il secondo istituzioni, mercato e cittadinanza europei. Per vigilare sulla
+                giustizia e sulla corruzione, Bruxelles affianca all’adesione un meccanismo di
+                controllo che resta in vigore fino al 2023. Presidente, dal 2004 al 2014, è{' '}
+                <N>Traian Băsescu</N>, ex capitano di marina.
+              </Detail>
+            </Event>
+            <Context on="always" kind="curiosity" period="2002" title="L’arcobaleno di Bush">
+              Nel novembre 2002, il giorno dopo l’invito ufficiale a entrare nella NATO, George W.
+              Bush parla in piazza della Rivoluzione, sotto il balcone da cui Ceaușescu aveva fatto
+              il suo ultimo discorso. Mentre parla, sul cielo di Bucarest compare un arcobaleno, e
+              il presidente lo indica alla folla come un buon segno.
+            </Context>
+            <Event on="always" date="2010" title="L’austerità">
+              <Detail on="always">
+                Con la crisi finanziaria il governo, per ottenere un prestito dal Fondo monetario
+                internazionale, taglia del 25% gli stipendi pubblici e alza l’IVA dal 19 al 24%. Per
+                molte famiglie è un’altra spinta a emigrare.
+              </Detail>
+            </Event>
+            <Context on="always" period="2013 – 2019" title="La lotta alla corruzione">
+              La Direzione nazionale anticorruzione, guidata da <N>Laura Codruța Kövesi</N>, porta a
+              processo ministri, parlamentari, sindaci e un ex primo ministro: per molti romeni è la
+              prova che nessuno è più intoccabile. I critici denunciano gli accordi segreti fra
+              procure e servizi segreti. Nel 2018 il governo ottiene la rimozione di Kövesi; l’anno
+              dopo lei diventa la prima procuratrice capo europea.
+            </Context>
+            <Event on="always" date="2014" title="Il presidente della diaspora">
+              <Detail on="always">
+                Davanti ai consolati romeni di mezza Europa, anche in Italia, gli emigrati fanno ore
+                di fila per votare, e molti non ci riescono. La protesta mobilita il paese: vince a
+                sorpresa <N>Klaus Iohannis</N>, sindaco di Sibiu e membro della minoranza tedesca,
+                contro il favorito, il primo ministro Victor Ponta.
+              </Detail>
+            </Event>
+            <Event on="always" date="2015" title="L’incendio del Colectiv">
+              <Detail on="always">
+                Il <D>30 ottobre 2015</D> un incendio durante un concerto al club Colectiv di
+                Bucarest uccide 64 persone, molte delle quali muoiono nelle settimane seguenti negli
+                ospedali, per infezioni. Il locale non aveva le autorizzazioni. Decine di migliaia
+                di persone scendono in piazza con lo slogan «La corruzione uccide», e il governo si
+                dimette.
+              </Detail>
+            </Event>
+            <Event on="always" date="2017–2019" title="Le piazze delle luci">
+              <Detail on="always">
+                Nel febbraio 2017 il governo approva di notte un decreto che depenalizza alcuni
+                abusi d’ufficio. Fino a mezzo milione di persone protestano in tutto il paese: sono
+                le manifestazioni più grandi dal 1989, e in piazza della Vittoria la folla accende
+                le torce dei telefoni. Il decreto viene ritirato. Il <D>10 agosto 2018</D> una
+                protesta della diaspora a Bucarest viene dispersa con i gas lacrimogeni. Nel 2019 il
+                capo del partito di governo, Liviu Dragnea, entra in carcere per corruzione.
+              </Detail>
+            </Event>
+            <Event on="always" date="2022" title="La guerra alla frontiera">
+              <Detail on="always">
+                Con l’invasione russa dell’Ucraina la guerra arriva al confine nord e al delta del
+                Danubio. Milioni di profughi ucraini attraversano la Romania, la NATO rafforza le
+                sue truppe nel paese e il porto di <N>Costanza</N> diventa una delle vie d’uscita
+                del grano ucraino. Frammenti di droni russi cadono più volte in territorio romeno.
               </Detail>
             </Event>
             <Event
@@ -2236,14 +2327,39 @@ function Body() {
               title="Le presidenziali vengono annullate e ripetute"
             >
               <Detail on="always">
-                Il 6 dicembre 2024 la Corte costituzionale annulla il processo elettorale
-                presidenziale dopo la diffusione di documenti su irregolarità e interferenze. Nelle
-                nuove elezioni del maggio 2025 vince <N>Nicușor Dan</N>. La controversia riporta al
-                centro del dibattito la fiducia nelle istituzioni e l’influenza delle campagne
-                online.
+                Al primo turno, a novembre 2024, arriva primo <N>Călin Georgescu</N>, un candidato
+                nazionalista e filorusso quasi sconosciuto, spinto da una campagna su TikTok. I
+                servizi segreti rendono pubblici documenti su una campagna coordinata e finanziata
+                in modo irregolare, con tracce che portano alla Russia, e il <D>6 dicembre 2024</D>{' '}
+                la Corte costituzionale annulla l’intero processo elettorale: un caso senza
+                precedenti nell’Unione Europea. A Georgescu viene impedito di ricandidarsi. Alle
+                nuove elezioni, nel maggio 2025, il primo turno lo vince il nazionalista George
+                Simion; al ballottaggio vince il sindaco di Bucarest, <N>Nicușor Dan</N>, matematico
+                e indipendente.
               </Detail>
             </Event>
           </Timeline>
+
+          <Callout on="always" kind="debate" title="Annullare un’elezione: difesa o ferita?">
+            <Positions>
+              <Position on="always" title="Una democrazia che si difende">
+                Per la Corte e per i partiti europeisti il voto era stato falsato da una campagna
+                illegale e da un’interferenza straniera: lasciarlo valere avrebbe consegnato la
+                presidenza a chi aveva aggirato le regole.
+              </Position>
+              <Position on="always" title="Un precedente pericoloso">
+                Per i sostenitori di Georgescu, e per molti giuristi anche lontani da lui, le prove
+                rese pubbliche non dimostravano che il risultato fosse stato rovesciato: annullare
+                un voto già espresso rischia di dare ragione a chi dice che il sistema decide
+                comunque al posto degli elettori.
+              </Position>
+            </Positions>
+            <Note on="always">
+              Le indagini sul finanziamento della campagna sono ancora in corso. Nel dicembre 2024
+              la Commissione europea ha aperto un procedimento contro TikTok per il suo ruolo nelle
+              elezioni romene.
+            </Note>
+          </Callout>
         </Part>
 
         <Callout on="always" kind="remember">
