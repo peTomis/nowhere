@@ -10,7 +10,7 @@ import { Ro, RoLandscape, RoPerson, RoSection } from './structure'
  *
  * Built from the research notes in research/, which keep what each page was used for and what
  * is still to verify: when a note gains a page, add it here too. Not covered yet: the history
- * before 1821 and the person cards without notes (the validator lists them as warnings).
+ * before 1821.
  */
 export const sources: GuideSources = {
   [RoSection.History]: [
@@ -76,6 +76,126 @@ export const sources: GuideSources = {
       title: 'Romania’s 2025 presidential election',
       site: 'House of Commons Library',
       url: 'https://commonslibrary.parliament.uk/research-briefings/cbp-10355/',
+    },
+  ],
+  [RoPerson.Decebalus]: [
+    {
+      title: 'Decebalus',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Decebalus',
+    },
+    {
+      title: 'Cassius Dio, Roman History, Book 67',
+      site: 'LacusCurtius',
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/67*.html',
+    },
+    {
+      title: 'Cassius Dio, Roman History, Book 68',
+      site: 'LacusCurtius',
+      url: 'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Cassius_Dio/68*.html',
+    },
+    {
+      title: 'Tiberius Claudius Maximus',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Tiberius_Claudius_Maximus',
+    },
+  ],
+  [RoPerson.VladTheImpaler]: [
+    {
+      title: 'Vlad the Impaler',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Vlad_the_Impaler',
+    },
+    {
+      title: 'Order of the Dragon',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Order_of_the_Dragon',
+    },
+    {
+      title: 'Radu cel Frumos',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Radu_cel_Frumos',
+    },
+  ],
+  [RoPerson.StephenTheGreat]: [
+    {
+      title: 'Stephen the Great',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Stephen_the_Great',
+    },
+    {
+      title: 'Mari Români',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Mari_Rom%C3%A2ni',
+    },
+  ],
+  [RoPerson.MichaelTheBrave]: [
+    {
+      title: 'Michael the Brave',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Michael_the_Brave',
+    },
+  ],
+  [RoPerson.CarolI]: [
+    {
+      title: 'Carol I of Romania',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Carol_I_of_Romania',
+    },
+    {
+      title: 'Election to the Romanian throne, 1866',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Election_to_the_Romanian_throne,_1866',
+    },
+    {
+      title: 'Intrarea României în Primul Război Mondial',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Intrarea_Rom%C3%A2niei_%C3%AEn_Primul_R%C4%83zboi_Mondial',
+    },
+  ],
+  [RoPerson.ConstantinBrancusi]: [
+    {
+      title: 'Constantin Brâncuși',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Constantin_Br%C3%A2ncu%C8%99i',
+    },
+    {
+      title: 'L’Atelier Brancusi',
+      site: 'Centre Pompidou',
+      url: 'https://www.centrepompidou.fr/fr/collection/latelier-brancusi',
+    },
+    {
+      title: 'Bird in Space',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bird_in_Space',
+    },
+    {
+      title:
+        'Academia: Constantin Brâncuşi nu a avut niciodată intenţia să lase moştenirea sa artistică unui stat',
+      site: 'Agerpres',
+      url: 'https://agerpres.ro/cultura-media/2026/01/22/academia-constantin-brancusi-nu-a-avut-niciodata-intentia-sa-lase-mostenirea-sa-artistica-unui-stat---1521221',
+    },
+  ],
+  [RoPerson.NicolaeCeausescu]: [
+    {
+      title: 'Nicolae Ceaușescu',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Nicolae_Ceau%C8%99escu',
+    },
+    {
+      title: 'Decree 770',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Decree_770',
+    },
+    {
+      title: 'July Theses',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/July_Theses',
+    },
+    {
+      title: 'Romania: Human Rights (HL Deb 10 April 1989)',
+      site: 'Hansard',
+      url: 'https://api.parliament.uk/historic-hansard/lords/1989/apr/10/romania-human-rights',
     },
   ],
   [RoPerson.MihaiEminescu]: [
