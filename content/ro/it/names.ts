@@ -79,7 +79,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoTrace.SarmizegetusaRegia]: {
       name: 'Sarmizegetusa Regia',
       place: `Monti Orăștie, ${places[Ro.Transylvania]}`,
-      text: 'La capitale di Decebalo, a mille metri d’altezza tra i boschi: mura della cittadella, strada lastricata e, nella zona sacra, le basi delle colonne dei templi, il grande santuario circolare e il disco di andesite detto «Sole».',
+      text: 'La capitale di Decebalo, a oltre mille metri d’altezza tra i boschi: mura della cittadella, strada lastricata e, nella zona sacra, le basi delle colonne dei templi, il grande santuario circolare e il disco di andesite detto «Sole».',
       find: 'Grădiștea de Munte, distretto di Hunedoara. Da Orăștie si sale per Costești lungo la valle del fiume Grădiștea fino al parcheggio, poi un tratto a piedi nel bosco. Chiusa in inverno.',
     },
     [RoTrace.DecebalusRockSculpture]: {
@@ -100,7 +100,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La casa di Vlad Dracul',
       local: 'Casa Vlad Dracul',
       place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
-      text: 'Una casa della cittadella dove il padre, Vlad II Dracul, vive negli anni Trenta del Quattrocento: la tradizione vuole che Vlad III sia nato qui. Non ci sono prove, ed è oggi un ristorante, ma è il primo posto dove la sua storia si lega a un indirizzo.',
+      text: 'Una casa della cittadella dove Vlad II Dracul vive negli anni Trenta del Quattrocento: la tradizione vuole che qui sia nato suo figlio, Vlad III, il futuro Dracula. Non ci sono prove, e oggi è un ristorante, ma è il primo posto dove la storia di Vlad si lega a un indirizzo.',
       find: 'Strada Cositorarilor 5, nella cittadella, a pochi passi dalla Torre dell’Orologio.',
     },
     [RoTrace.ChindiaTower]: {
@@ -114,8 +114,8 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La cittadella di Poenari',
       local: 'Cetatea Poenari',
       place: `Valle dell’Argeș, ${places[Ro.Wallachia]}`,
-      text: 'Una fortezza più antica di lui, su uno sperone di roccia sopra la valle dell’Argeș, che Vlad III fa restaurare e rafforzare. Restano le mura e le basi delle torri, restaurate e riaperte nel 2025.',
-      find: 'Sulla Transfăgărășan (DN7C), a nord di Arefu: dal parcheggio sulla strada si sale a piedi per 1.480 gradini nel bosco.',
+      text: 'Una fortezza più antica di Vlad III, su uno sperone di roccia sopra la valle dell’Argeș, che il principe fa riparare e rafforzare. Restano le mura e le basi delle torri, restaurate e riaperte nel 2025.',
+      find: 'Sul Transfăgărășan (DN7C), a nord di Arefu: dal parcheggio sulla strada si sale a piedi per 1.480 gradini nel bosco.',
     },
     [RoTrace.StephenTheGreatTomb]: {
       name: 'La tomba di Stefano il Grande',
@@ -135,7 +135,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La chiesa che ha cambiato posto',
       local: 'Biserica Mihai Vodă',
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
-      text: 'Michele fonda qui un monastero, sulla collina sopra la Dâmbovița. Nel 1985, per far posto al nuovo centro civico del regime di Ceaușescu, il monastero viene demolito: si salvano solo la chiesa e il campanile, spostati su rotaie di quasi 300 m e abbassati di oltre 6 m. Oggi la fondazione del principe è nascosta dietro i condomini.',
+      text: 'Michele il Coraggioso fonda qui un monastero, sulla collina sopra la Dâmbovița. Nel 1985, per far posto al nuovo centro civico del regime di Ceaușescu, il monastero viene demolito: si salvano solo la chiesa e il campanile, spostati su rotaie di quasi 300 m e abbassati di oltre 6 m. Oggi la fondazione del principe è nascosta dietro i condomini.',
       find: 'Strada Sapienței 4, tra i condomini vicino alla Dâmbovița, a pochi minuti a piedi da Piața Unirii.',
     },
     [RoTrace.MichaelTheBraveHeadTomb]: {
@@ -143,7 +143,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Mănăstirea Dealu',
       place: `Vicino a ${places[Ro.Targoviste]}, ${places[Ro.Wallachia]}`,
       distance: `a circa 6 km da ${places[Ro.Targoviste]}`,
-      text: 'Dopo l’uccisione, la testa del principe arriva a uno dei suoi capitani, Radu Buzescu, che la fa seppellire in questo monastero. La lapide lo chiama principe di Valacchia, Transilvania e Moldavia: il titolo portato per pochi mesi resta inciso sulla pietra.',
+      text: 'Dopo l’uccisione di Michele il Coraggioso, nel 1601, la sua testa arriva a uno dei suoi capitani, Radu Buzescu, che la fa seppellire in questo monastero. La lapide lo chiama principe di Valacchia, Transilvania e Moldavia: il titolo portato per pochi mesi resta inciso sulla pietra.',
       find: 'Monastero di Dealu, a nord di Târgoviște, distretto di Dâmbovița. Nella chiesa, la tomba è sul lato destro del nartece.',
     },
     [RoTrace.MichaelTheBraveEquestrianStatue]: {
@@ -166,14 +166,14 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Mănăstirea Curtea de Argeș',
       place: `Curtea de Argeș, ${places[Ro.Wallachia]}`,
       text: 'Una chiesa principesca del Cinquecento che Carol fa restaurare e sceglie come sepolcreto della nuova dinastia. Qui è sepolto con la moglie, la regina Elisabetta, scrittrice con il nome di Carmen Sylva. Un re venuto da fuori si fa seppellire accanto ai principi di Valacchia.',
-      find: 'Nel complesso del monastero di Curtea de Argeș, distretto di Argeș, sulla strada per la Transfăgărășan. Le tombe sono nel pronao della chiesa.',
+      find: 'Nel complesso del monastero di Curtea de Argeș, distretto di Argeș, sulla strada per il Transfăgărășan. Le tombe sono nel pronao della chiesa.',
     },
     [RoTrace.KingCarolIBridge]: {
       name: 'Il ponte Re Carol I sul Danubio',
       local: 'Podul Anghel Saligny',
       place: `Cernavodă, ${places[Ro.Dobruja]}`,
-      text: 'Nel 1878 la Dobrogea passa alla Romania. Il ponte ferroviario dell’ingegnere Anghel Saligny, inaugurato nel 1895 con il nome del re, porta la ferrovia da Bucarest oltre il Danubio, fino al porto di Costanza. Il regime comunista gli dà il nome del suo ingegnere, quello che porta ancora oggi.',
-      find: 'A Cernavodă, distretto di Costanza. Il ponte corre accanto a quello stradale e ferroviario del 1987: lo vedi dalla riva della città.',
+      text: 'Nel 1878 la Dobrogea passa alla Romania. Il ponte ferroviario dell’ingegnere Anghel Saligny, inaugurato nel 1895 con il nome del re, porta la ferrovia da Bucarest oltre il Danubio, fino al porto di Constanța. Il regime comunista gli dà il nome di Saligny, che porta ancora oggi.',
+      find: 'A Cernavodă, distretto di Constanța. Il ponte corre accanto a quello stradale e ferroviario del 1987: lo vedi dalla riva della città.',
     },
     [RoTrace.IpotestiMemorial]: {
       name: 'Ipotești, il villaggio dell’infanzia',
@@ -233,7 +233,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La Porta del bacio e la Tavola del silenzio',
       local: 'Poarta Sărutului · Masa Tăcerii',
       place: `Târgu Jiu, ${places[Ro.Wallachia]}`,
-      text: 'La Lega nazionale delle donne del Gorj gli chiede un monumento ai caduti della difesa di Târgu Jiu nel 1916. Brâncuși non scolpisce soldati: disegna un percorso. Si parte dalla Tavola del silenzio, un tavolo di pietra con dodici sedili a clessidra, e si passa sotto la Porta del bacio, un arco di travertino.',
+      text: 'La Lega nazionale delle donne del Gorj chiede a Brâncuși un monumento ai caduti della difesa di Târgu Jiu nel 1916. Brâncuși non scolpisce soldati: disegna un percorso. Si parte dalla Tavola del silenzio, un tavolo di pietra con dodici sedili a clessidra, e si passa sotto la Porta del bacio, un arco di travertino.',
       find: 'Parco Constantin Brâncuși, nel centro di Târgu Jiu: la Tavola è verso il fiume Jiu, la Porta all’altra estremità del viale delle sedie.',
     },
     [RoTrace.EndlessColumn]: {
@@ -257,7 +257,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Il palazzo del Nababbo',
       local: 'Palatul Cantacuzino · Muzeul Național George Enescu',
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
-      text: 'Un palazzo Belle Époque costruito all’inizio del Novecento per Gheorghe Grigore Cantacuzino, uomo politico e grande proprietario detto il Nababbo; sull’ingresso, una pensilina di vetro e ferro a forma di conchiglia. Nel 1937 Enescu sposa Maruca, vedova di un figlio del principe, e i due vivono nella casa più piccola in fondo al giardino. Dal 1956 è il museo nazionale del compositore.',
+      text: 'Un palazzo Belle Époque costruito all’inizio del Novecento per Gheorghe Grigore Cantacuzino, uomo politico e grande proprietario detto il Nababbo; sull’ingresso, una pensilina di vetro e ferro a forma di conchiglia. Nel 1937 Enescu sposa Maruca, vedova di Mihail, figlio del Nababbo, e i due vivono nella casa più piccola in fondo al giardino. Dal 1956 è il museo nazionale del compositore.',
       find: 'Calea Victoriei 141, a nord di Piața Revoluției. Il palazzo e la casa del compositore, nel giardino, si visitano insieme.',
     },
     [RoTrace.EnescuBanknote]: {
@@ -363,7 +363,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Castelul Cantacuzino',
       place: `Bușteni, ${places[Ro.Wallachia]}`,
       distance: `a circa 40 km da ${places[Ro.Brasov]}`,
-      text: 'Lo stesso Nababbo del palazzo di Calea Victoriei, Gheorghe Grigore Cantacuzino, se lo fa costruire dall’architetto Grigore Cerchez in stile neoromeno; è finito nel 1911. Più di un secolo dopo diventa la Nevermore Academy della serie Wednesday (2022): gli esterni del collegio di Mercoledì Addams sono questi. Dal parco si vedono le pareti dei Bucegi.',
+      text: 'Gheorghe Grigore Cantacuzino, il Nababbo del palazzo di Calea Victoriei a Bucarest, se lo fa costruire dall’architetto Grigore Cerchez in stile neoromeno; è finito nel 1911. Più di un secolo dopo diventa la Nevermore Academy della serie Wednesday (2022): gli esterni del collegio di Mercoledì Addams sono questi. Dal parco si vedono le pareti dei Bucegi.',
       find: 'Sopra il centro di Bușteni, a pochi minuti dalla strada principale della valle della Prahova. Si visita con biglietto.',
     },
     [RoTrace.SibiuBrukenthalPalace]: {
@@ -371,7 +371,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Palatul Brukenthal',
       place: `${places[Ro.Sibiu]}, ${places[Ro.Transylvania]}`,
       text: 'Il palazzo barocco di Piața Mare è la residenza di Samuel von Brukenthal, governatore asburgico della Transilvania, che vi raccoglie quadri e libri; nel 1817 le collezioni aprono al pubblico. Il portale mostra il rango del padrone di casa. Nella pinacoteca cerca un piccolo ritratto d’uomo con un copricapo blu, attribuito a Jan van Eyck e datato intorno al 1430: un pannello di 22,5 × 16,6 cm, da guardare da vicino.',
-      find: 'Piața Mare 4–5. Dalla piazza riconosci il grande portale del palazzo; le collezioni si visitano negli spazi del museo.',
+      find: 'Piața Mare 4–5. Dalla piazza riconosci il grande portale del palazzo, oggi Museo nazionale Brukenthal.',
     },
     [RoTrace.SibiuBridgeOfLies]: {
       name: 'Il Ponte delle Bugie',
@@ -393,14 +393,14 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Turnul cu Ceas',
       place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
       text: 'La torre, alta circa 64 m, sorveglia l’ingresso della cittadella e fino al 1656 ospita il municipio. Il tetto barocco con le torrette è rifatto nel 1677, dopo il grande incendio dell’anno prima. Alza lo sguardo all’orologio: sul lato della città alta la Pace, la Giustizia e un tamburino; sul lato della città bassa una piattaforma ruota a mezzanotte e mostra una di sette figure di legno, una per ogni giorno della settimana. Dentro c’è il museo di storia.',
-      find: 'All’ingresso orientale della cittadella, fra Strada Turnului e Piața Muzeului. Osserva le facciate prima e dopo il passaggio sotto la torre.',
+      find: 'All’ingresso orientale della cittadella, fra Strada Turnului e Piața Muzeului.',
     },
     [RoTrace.SighisoaraCoveredStairway]: {
       name: 'La scala coperta degli scolari',
       local: 'Scara Școlarilor',
       place: `${places[Ro.Sighisoara]}, ${places[Ro.Transylvania]}`,
       text: 'Un tetto di legno copre la salita dalla piazza alla scuola e alla chiesa sulla collina, perché scolari e fedeli ci arrivino anche con la neve e la pioggia. È del Seicento: in origine i gradini erano 300, oggi sono 175. È un collegamento fra due parti della cittadella, non una difesa: salendo, la piazza dei mercanti lascia il posto alla scuola e alla chiesa della comunità.',
-      find: 'In fondo a Strada Școlii, dentro la cittadella. L’imbocco è riconoscibile dalla copertura di legno; la salita conduce verso la Biserica din Deal.',
+      find: 'In fondo a Strada Școlii, dentro la cittadella. L’imbocco si riconosce dal tetto di legno; in cima c’è la Biserica din Deal, la chiesa sulla collina.',
     },
     // TODO verificare: von Braun in 1930 and Prunariu in 1981 with a second source.
     [RoTrace.OberthHouse]: {
@@ -437,7 +437,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La cattedrale di San Michele',
       local: 'Catedrala Romano-Catolică Sfântul Mihail',
       place: `${places[Ro.AlbaIulia]}, ${places[Ro.Transylvania]}`,
-      text: 'La cattedrale cattolica, costruita fra il Duecento e il Cinquecento, è la chiesa dei vescovi di Transilvania al tempo del Regno d’Ungheria. Nella navata laterale sud c’è la tomba attribuita a Giovanni Hunyadi, Iancu de Hunedoara per i romeni, padre di Mattia Corvino, morto nel 1456. Le memorie ungherese e romena lo rivendicano entrambe: alle commemorazioni vi si posano corone con i colori dei due Paesi.',
+      text: 'La cattedrale cattolica, costruita fra il Duecento e il Cinquecento, è la chiesa dei vescovi di Transilvania al tempo del Regno d’Ungheria. Nella navata laterale sud c’è la tomba attribuita a Giovanni Hunyadi, Iancu de Hunedoara per i romeni, padre di Mattia Corvino, morto nel 1456. Le memorie ungherese e romena lo rivendicano entrambe: alle commemorazioni vi si posano corone con i colori dei due paesi.',
       find: 'Dentro la cittadella, accanto al palazzo vescovile. La tomba di Hunyadi è nella navata laterale sud.',
     },
     [RoTrace.AlbaIuliaUnionHall]: {
@@ -456,7 +456,7 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     // TODO verificare: what happened in 1944 (looted and burned by retreating troops?) and the visiting hours.
     [RoTrace.BanffyCastle]: {
-      name: 'Il castello di Electric Castle',
+      name: 'Il castello del festival',
       local: 'Castelul Bánffy · Bonchidai Bánffy-kastély',
       place: `Bonțida, ${places[Ro.Transylvania]}`,
       distance: `a circa 30 km da ${places[Ro.ClujNapoca]}`,
@@ -474,7 +474,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Il monastero dei Tre Gerarchi',
       local: 'Mănăstirea Sfinții Trei Ierarhi',
       place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
-      text: 'Il principe Vasile Lupu la fa costruire fra il 1637 e il 1639 come chiesa funeraria, e la ricopre fuori di pietra scolpita, un tempo dorata, con motivi geometrici e vegetali diversi su ogni lato. Nel 1641 vi arrivano da Costantinopoli le reliquie di santa Parascheva; nel 1642 il refettorio, oggi Sala gotica, ospita il sinodo che approva la Confessione ortodossa. Dentro sono sepolti Dimitrie Cantemir e Alexandru Ioan Cuza.',
+      text: 'Il principe Vasile Lupu fa costruire la chiesa fra il 1637 e il 1639 per esservi sepolto, e la ricopre fuori di pietra scolpita, un tempo dorata, con motivi geometrici e vegetali diversi su ogni lato. Nel 1641 vi arrivano da Costantinopoli le reliquie di santa Parascheva; nel 1642 il refettorio, oggi Sala gotica, ospita il sinodo che approva la Confessione ortodossa. Dentro sono sepolti Dimitrie Cantemir e Alexandru Ioan Cuza.',
       find: 'Bulevardul Ștefan cel Mare și Sfânt 28, accanto alla Cattedrale metropolitana. Il cortile è nel cuore del centro storico.',
     },
     // TODO verificare: the address.
@@ -493,7 +493,7 @@ export const names: GuideNames<Ro, RoSection> = {
       find: 'Sul pianoro a est del centro, alla fine di Strada Cetății. Il percorso attraversa il fossato e il cortile interno; il sito è all’aperto.',
     },
     [RoTrace.SuceavaSaintJohnMonastery]: {
-      name: 'Il monastero di San Giovanni Nuovo',
+      name: 'Il monastero di San Giovanni il Nuovo',
       local: 'Mănăstirea Sfântul Ioan cel Nou',
       place: `${places[Ro.Suceava]}, ${places[Ro.Moldavia]}`,
       text: 'La chiesa del monastero è costruita fra il 1514 e il 1522, sotto Bogdan III e Stefano il Giovane, e diventa il principale luogo di culto della corte di Suceava. Gli affreschi esterni sono quasi scomparsi, ma restano porzioni leggibili; dentro è venerato San Giovanni il Nuovo, le cui reliquie arrivano in Moldavia nel Quattrocento.',
@@ -563,14 +563,14 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Stadionul Central · Academia Hagi',
       place: `Ovidiu, ${places[Ro.Dobruja]}`,
       distance: `a circa 15 km da ${places[Ro.Constanta]}`,
-      text: 'Gheorghe Hagi, il «Maradona dei Carpazi», nasce nel 1965 in un villaggio del distretto di Costanza e trascina la nazionale ai quarti dei Mondiali del 1994. Nel 2009 fonda a Ovidiu un’accademia per ragazzi e una squadra, il Viitorul, che nel 2017 vince il campionato. Nel 2021 il Viitorul si fonde con il Farul, la squadra storica di Costanza, che con Hagi allenatore vince il titolo nel 2023. Il Farul gioca qui, nello stadio dell’accademia, finché quello della città è inagibile.',
-      find: 'Nella sede dell’Academia Hagi a Ovidiu, appena a nord di Costanza. Lo stadio si vede da fuori; per entrare, una partita del Farul.',
+      text: 'Gheorghe Hagi, il «Maradona dei Carpazi», nasce nel 1965 in un villaggio del distretto di Constanța e trascina la nazionale ai quarti dei Mondiali del 1994. Nel 2009 fonda a Ovidiu un’accademia per ragazzi e una squadra, il Viitorul, che nel 2017 vince il campionato. Nel 2021 il Viitorul si fonde con il Farul, la squadra storica di Constanța, che con Hagi allenatore vince il titolo nel 2023. Il Farul gioca qui, nello stadio dell’accademia, finché quello della città è inagibile.',
+      find: 'Nella sede dell’Academia Hagi a Ovidiu, appena a nord di Constanța. Lo stadio si vede da fuori; per entrare, una partita del Farul.',
     },
     [RoTrace.VamaVeche]: {
       name: 'Vama Veche',
       place: `Vama Veche, ${places[Ro.Dobruja]}`,
       distance: `a circa 55 km da ${places[Ro.Constanta]}`,
-      text: 'L’ultimo villaggio prima del confine bulgaro. Negli anni del comunismo è una zona di frontiera sorvegliata, senza i grandi alberghi del resto della costa: la scelgono professori, artisti e studenti, che piantano le tende sulla spiaggia e parlano liberamente come altrove non si poteva. Dopo il 1990 diventa la spiaggia del rock; nel 2003 il festival Stufstock nasce per difenderla dal cemento. Oggi è più commerciale, ma il mito della «Vama» resta.',
+      text: 'L’ultimo villaggio prima del confine bulgaro. Negli anni del comunismo è una zona di frontiera sorvegliata, senza i grandi alberghi del resto della costa: la scelgono professori, artisti e studenti, che piantano le tende sulla spiaggia e parlano con una libertà impossibile altrove. Dopo il 1990 diventa la spiaggia del rock; nel 2003 il festival Stufstock nasce per difenderla dal cemento. Oggi è più commerciale, ma il mito della «Vama» resta.',
       find: 'Sulla costa, a sud di Mangalia, l’ultimo paese prima della frontiera con la Bulgaria. Il cuore è la spiaggia: d’estate, la sera, si suona nei locali sulla sabbia.',
     },
     [RoTrace.SulinaOldLighthouse]: {
@@ -591,7 +591,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Il porto dei lipoveni',
       local: 'Portul Jurilovca',
       place: `Jurilovca, ${places[Ro.Dobruja]}`,
-      text: 'Jurilovca, sulla riva del lago Golovița, è fondata all’inizio dell’Ottocento da lipoveni, Vecchi credenti russi che rifiutano le riforme della Chiesa russa del Seicento e per questo sono perseguitati. Alla fine dell’Ottocento è un centro importante della pesca; alla fine del Novecento la pesca cala, perché le risorse sono state sfruttate troppo. Il porto, rifatto nel 2023, guarda le lagune di Razim e Sinoe: ancora oggi è un villaggio di pescatori.',
+      text: 'Jurilovca, sulla riva del lago Golovița, è fondata all’inizio dell’Ottocento da lipoveni, Vecchi credenti russi che rifiutano le riforme della Chiesa russa del Seicento e per questo sono perseguitati. Alla fine dell’Ottocento è un centro importante della pesca; alla fine del Novecento cala, per lo sfruttamento eccessivo. Il porto, rifatto nel 2023, guarda le lagune di Razim e Sinoe: ancora oggi è un villaggio di pescatori.',
       find: 'Jurilovca è sulla strada da Babadag verso la costa, nel sud della riserva. Il porto è sulla riva del lago Golovița; da Jurilovca partono anche i trasporti per Gura Portiței, il villaggio di vacanze fra la laguna e il mare.',
     },
     // TODO verificare: the season and the departure points of the boats.
@@ -600,7 +600,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Pelicanul comun · Pelicanul creț',
       place: `Delta del Danubio, ${places[Ro.Dobruja]}`,
       text: 'Nel delta nidifica la più grande colonia di pellicani comuni d’Europa, in zone a protezione integrale dove le barche non entrano; il pellicano riccio, più raro, nidifica in piccole colonie. Arrivano in primavera e ripartono in autunno: li vedi pescare in gruppo sui laghi e volare in lunghe file sopra i canali. Sono il simbolo della riserva.',
-      find: 'Dalle barche delle escursioni che partono da Tulcea, Crișan o Murighiol, fra aprile e settembre, meglio al mattino presto. Le colonie sono vietate: un binocolo e un barcaiolo che resta a distanza contano più di un teleobiettivo.',
+      find: 'Dalle barche delle escursioni che partono da Tulcea, Crișan o Murighiol, fra aprile e settembre, meglio al mattino presto. Alle colonie non ci si può avvicinare: un binocolo e un barcaiolo che resta a distanza contano più di un teleobiettivo.',
     },
     [RoTrace.VidraruDam]: {
       name: 'La diga di Vidraru',
@@ -613,7 +613,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Il lago di Bâlea',
       local: 'Bâlea Lac',
       place: `Monti Făgăraș, ${places[Ro.Transylvania]}`,
-      text: 'Un lago glaciale a circa 2.034 m, in un circo scavato dal ghiaccio sotto la cresta: è il più grande dei Făgăraș, profondo una dozzina di metri. Il lago e il circo sono riserva naturale. Il Transfăgărășan ci arriva dal nord con una lunga serie di tornanti e qui passa la cresta in galleria: il tunnel, lungo 884 m, sbuca sul versante della Valacchia.',
+      text: 'Un lago glaciale a 2.034 m, in un circo scavato dal ghiaccio sotto la cresta: è il più grande dei Făgăraș, profondo una dozzina di metri. Il lago e il circo sono riserva naturale. Il Transfăgărășan ci arriva dal nord con una lunga serie di tornanti e qui passa la cresta in galleria: il tunnel, lungo 884 m, sbuca sul versante della Valacchia.',
       find: 'Sul versante nord del Transfăgărășan, all’imbocco della galleria di Bâlea. La strada di solito è chiusa da fine ottobre a fine giugno, e a volte anche d’estate per neve o frane: controlla prima di partire. D’inverno si sale in funivia da Bâlea Cascadă.',
     },
     [RoTrace.MoldoveanuPeak]: {
@@ -624,10 +624,10 @@ export const names: GuideNames<Ro, RoSection> = {
       find: 'A piedi, di solito da Victoria (Brașov), per la valle della Viștea Mare: una lunga salita su sentiero segnato, spesso con un pernottamento in rifugio o in tenda. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
     [RoTrace.Transfagarasan]: {
-      name: 'La Transfăgărășan',
+      name: 'Il Transfăgărășan',
       local: 'Transfăgărășan · DN7C',
       place: `Monti Făgăraș, ${places[Ro.Transylvania]} e ${places[Ro.Wallachia]}`,
-      text: 'Sale fino a 2.042 m e passa la cresta in galleria, sotto il lago di Bâlea. Sul versante nord i tornanti si avvolgono uno sull’altro nella valle glaciale: è l’immagine che ha fatto il giro del mondo dopo che, nel 2009, la trasmissione britannica Top Gear l’ha chiamata «la strada più bella del mondo». Inaugurata il 20 settembre 1974, è completata solo qualche anno dopo.',
+      text: 'Sale fino a 2.042 m e passa la cresta in galleria, sotto il lago di Bâlea. Sul versante nord i tornanti si avvolgono uno sull’altro nella valle glaciale: è l’immagine che ha fatto il giro del mondo dopo che, nel 2009, la trasmissione britannica Top Gear l’ha chiamato «la strada più bella del mondo». Inaugurato il 20 settembre 1974, è completato solo qualche anno dopo.',
       find: 'La DN7C va da Curtea de Argeș a Cârțișoara, sulla strada fra Sibiu e Făgăraș. I tornanti più fotografati sono sul versante nord, fra Bâlea Cascadă e il lago. Di solito è aperta da fine giugno a fine ottobre.',
     },
     [RoTrace.ZarnestiGorges]: {
@@ -651,7 +651,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Măgura',
       place: `Moieciu, ${places[Ro.Transylvania]}`,
       distance: `a circa 30 km da ${places[Ro.Brasov]}`,
-      text: 'Măgura sta sulle colline del corridoio di Bran, sul fianco est della Piatra Craiului: case, fienili e prati stanno intorno ai 1.000 m. Dal villaggio la cresta calcarea si vede in tutta la sua lunghezza, e il sentiero prosegue fino al vicino villaggio di Peștera. Oggi il villaggio vive anche delle sue pensioni.',
+      text: 'Case, fienili e prati sparsi sulle colline del corridoio di Bran, intorno ai 1.000 m, sul fianco est della Piatra Craiului. Da qui la cresta calcarea si vede in tutta la sua lunghezza, e un sentiero prosegue fino al vicino villaggio di Peștera. Oggi Măgura vive anche delle sue pensioni.',
       find: 'Da Bran verso Moieciu, poi la strada asfaltata che sale a Măgura; oppure a piedi dalle gole di Zărnești. Il punto più bello è la cima della collina di Măgura, sopra il villaggio.',
     },
     [RoTrace.LaOmPeak]: {
@@ -665,7 +665,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La grotta di ghiaccio',
       local: 'Peștera Ghețarul de la Scărișoara',
       place: `Gârda de Sus, ${places[Ro.Transylvania]}`,
-      text: 'Una scala di metallo scende in un pozzo largo circa 60 m e profondo 50, fino a una sala dove l’aria fredda dell’inverno ristagna tutto l’anno. Sul fondo c’è un blocco di ghiaccio stimato in circa 75.000 m³, spesso in alcuni punti una ventina di metri. I suoi strati conservano la storia del clima: i ricercatori li studiano e misurano che negli ultimi anni il ghiaccio si scioglie più in fretta che in passato.',
+      text: 'Una scala di metallo scende in un pozzo largo circa 60 m e profondo 50, fino a una sala dove l’aria fredda dell’inverno ristagna tutto l’anno. Sul fondo c’è un blocco di ghiaccio stimato in circa 75.000 m³, spesso in alcuni punti una ventina di metri. I suoi strati conservano la storia del clima: dalle misure dei ricercatori risulta che negli ultimi anni il ghiaccio si scioglie più in fretta che in passato.',
       find: 'Sopra Gârda de Sus (Alba): una strada di montagna sale verso la grotta; c’è anche un sentiero segnato di circa 7 km da Arieșeni. Si visita la parte iniziale, con biglietto; dentro la temperatura è intorno a 0 °C. Controlla orari e stagione prima di partire.',
     },
     [RoTrace.BearsCave]: {
@@ -702,7 +702,7 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'La diga sul confine',
       local: 'Barajul Porțile de Fier I',
       place: `Gura Văii, ${places[Ro.Wallachia]}`,
-      text: 'Una diga con due centrali idroelettriche, una romena e una iugoslava, costruita insieme dai due paesi fra il 1964 e il 1972 alla fine delle gole. Il lago che forma alza il fiume di decine di metri fino a molti chilometri a monte: sotto l’acqua finiscono la vecchia Orșova, l’isola di Ada Kaleh e altri villaggi, e circa 17.000 persone devono trasferirsi. Sul coronamento passa la strada che porta in Serbia.',
+      text: 'Una diga con due centrali idroelettriche, una romena e una iugoslava, costruita insieme dai due paesi fra il 1964 e il 1972 all’uscita delle gole. Il lago che forma alza il fiume di decine di metri fino a molti chilometri a monte: sotto l’acqua finiscono la vecchia Orșova, l’isola di Ada Kaleh e altri villaggi, e circa 17.000 persone devono trasferirsi. Sul coronamento passa la strada che porta in Serbia.',
       find: 'A Gura Văii, una decina di chilometri a monte di Drobeta-Turnu Severin, sulla strada (DN6) per Orșova. Il valico di frontiera con la Serbia è sulla diga: si vede bene dalla strada e dai belvedere sopra la centrale.',
     },
     [RoTrace.TrajansBridgeRuins]: {
@@ -954,22 +954,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [Ro.Iasi]: {
       name: places[Ro.Iasi],
       local: 'Iași · Jassy',
-      traceTexts: {
-        [RoTrace.IasiPalaceOfCulture]:
-          'Il palazzo in fondo al viale sembra una fortezza medievale, ma è il simbolo della modernizzazione della città nel Novecento. Entrando nei musei, confronta la facciata neogotica con la struttura in cemento e con le fondamenta della corte più antica: Iași mette in scena il proprio passato per costruire un centro culturale contemporaneo.',
-        [RoTrace.IasiThreeHierarchsMonastery]:
-          'La pietra scolpita della facciata attira lo sguardo, ma il monastero racconta anche la posizione di Iași nella Moldavia del Seicento: corte principesca, metropolita, libri e dibattiti religiosi sono nello stesso isolato. Osserva il rapporto fra la chiesa, il viale e la cattedrale vicina.',
-      },
     },
     [Ro.Suceava]: {
       name: places[Ro.Suceava],
       local: 'Suceava · Suczawa',
-      traceTexts: {
-        [RoTrace.SuceavaCitadel]:
-          'La cittadella non è un castello isolato: è la sede da cui i principi governano e ricevono ambasciatori. Dal pianoro guarda il rapporto fra la fortezza e la città bassa; il fossato rende visibile il confine fra corte fortificata e abitato.',
-        [RoTrace.SuceavaSaintJohnMonastery]:
-          'San Giovanni Nuovo mostra il centro religioso della corte moldava. Le pitture esterne sono frammentarie, ma proprio questa stratificazione aiuta a leggere il monumento: il monastero non è una scenografia intatta, bensì un edificio ancora usato e trasformato.',
-      },
     },
     [Ro.Sibiu]: { name: places[Ro.Sibiu], local: 'Hermannstadt' },
     [Ro.Timisoara]: { name: places[Ro.Timisoara], local: 'Temesvár · Temeswar' },
@@ -977,22 +965,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [Ro.Sighisoara]: {
       name: places[Ro.Sighisoara],
       local: 'Schäßburg · Segesvár',
-      traceTexts: {
-        [RoTrace.VladDraculHouse]:
-          'Questa casa vicino alla Torre dell’Orologio è legata alla memoria di Vlad Dracul, padre di Vlad III. La nascita del figlio qui è una tradizione, non un fatto documentato. Guardala come una casa della cittadella sulla quale si è concentrato un racconto turistico: il nome di Dracula attira l’attenzione, ma intorno restano le strade e le abitazioni di una città di artigiani e mercanti.',
-      },
     },
     [Ro.Bucharest]: {
       name: places[Ro.Bucharest],
       local: 'București',
-      traceTexts: {
-        [RoTrace.MihaiVodaChurch]:
-          'Tra i condomini compare una chiesa che sembra fuori posto: lo è davvero. Il regime fa demolire il monastero e spostare su rotaie la chiesa e il campanile per liberare l’area del nuovo centro civico. Guarda il rapporto fra l’edificio basso e le facciate che lo nascondono. La città precedente non scompare soltanto: in alcuni punti sopravvive privata del paesaggio che le dava senso.',
-        [RoTrace.PalaceOfTheParliament]:
-          'La facciata chiude la prospettiva di Bulevardul Unirii. Per il centro civico voluto da Ceaușescu vengono demolite case, chiese e strade del quartiere Uranus e trasferiti gli abitanti. Osserva la scala del palazzo e dei viali rispetto alle stradine del centro storico: il progetto cambia il modo di attraversare la città. Oggi il Parlamento occupa l’edificio nato come centro del potere della dittatura.',
-        [RoTrace.CentralCommitteeBuilding]:
-          'In Piața Revoluției cerca il balcone dell’ex Comitato centrale. Da qui Ceaușescu parla alla folla nel dicembre 1989; il giorno dopo fugge dal tetto. Il palazzo, oggi sede del Ministero dell’Interno, resta al suo posto, mentre la piazza cambia nome e accoglie il Memoriale della Rinascita. Il luogo del potere diventa anche un luogo in cui ricordarne la caduta.',
-      },
     },
     [RoPerson.Decebalus]: { name: 'Decebalo', local: 'Decebal', dates: 'Re dei Daci, 87 – 106' },
     [RoPerson.VladTheImpaler]: {
@@ -1026,7 +1002,7 @@ export const names: GuideNames<Ro, RoSection> = {
       dates: 'Regina di Romania, 1914 – 1927',
       traceTexts: {
         [RoTrace.BranCastle]:
-          'Per Maria Bran non è il castello di Dracula: è una casa. La fa restaurare dall’architetto Karel Liman, ne arreda le stanze e alla sua morte la lascia alla figlia Ileana.',
+          'Per Maria, Bran non è il castello di Dracula: è una casa. La fa restaurare dall’architetto Karel Liman, ne arreda le stanze e alla sua morte la lascia alla figlia Ileana.',
       },
     },
     [RoPerson.ConstantinBrancusi]: { name: 'Constantin Brâncuși', dates: 'Scultore, 1876 – 1957' },

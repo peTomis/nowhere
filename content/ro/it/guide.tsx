@@ -206,7 +206,7 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Burebista">Burebista</N> è discusso: molti
                 studiosi indicano Argedava o Costești.{' '}
                 <N href="https://it.wikipedia.org/wiki/Sarmizegetusa_Regia">Sarmizegetusa Regia</N>,
-                fortezza a 1200 metri di altezza sui monti Orăștie, diventa il centro del regno con
+                fortezza a 1.200 m di quota sui monti Orăștie, diventa il centro del regno con
                 Decebalo. È il principale centro politico, religioso e artigianale del regno.
               </Detail>
               <Detail on="always">
@@ -1337,8 +1337,8 @@ function Body() {
               <Detail on={[Dobruja]}>
                 Una compagnia britannica apre la linea <N>Cernavodă–Constanța</N>: collega il
                 Danubio al Mar Nero per il trasporto delle merci. La regione è ancora amministrata
-                dagli ottomani. Ferrovie e porto anticipano il ruolo di collegamento commerciale che
-                conserva nella Romania di oggi.
+                dagli ottomani. È la prima via delle merci fra il Danubio e il mare: il ruolo che la
+                regione ha ancora oggi.
               </Detail>
             </Event>
             <Event on={[Wallachia, Moldavia]} date="1866" title="Carol I e la nuova costituzione">
@@ -1346,10 +1346,10 @@ function Body() {
                 Conservatori e liberali, nemici fra loro, si alleano contro Cuza: è la «coalizione
                 mostruosa». Nella notte dell’<D>11 febbraio 1866</D> un gruppo di ufficiali entra
                 nella sua camera da letto e lo costringe ad abdicare; morirà in esilio. Per evitare
-                le lotte fra famiglie di boiari si chiama un principe straniero, <N>Carol I</N>. La
+                le lotte fra famiglie di boiardi si chiama un principe straniero, <N>Carol I</N>. La
                 nuova costituzione, sul modello di quella belga, istituisce una monarchia
                 costituzionale. Il voto dipende dal censo e la cittadinanza resta preclusa ai non
-                cristiani, colpendo soprattutto gli ebrei.
+                cristiani: la norma colpisce soprattutto gli ebrei.
               </Detail>
               <Today traces={[RoTrace.PelesCastle]} />
             </Event>
@@ -1374,10 +1374,10 @@ function Body() {
                 Il <D>9 maggio 1877</D> la Romania proclama l’indipendenza e combatte contro gli
                 ottomani insieme alla Russia: l’esercito romeno, guidato da Carol, partecipa
                 all’assedio di <N>Plevna</N>, in Bulgaria, e ne esce con il prestigio della prima
-                vittoria del nuovo Stato. Il congresso di Berlino la riconosce nel 1878,
-                subordinandola anche alla rimozione delle discriminazioni religiose. La Romania
-                riceve la Dobrogea settentrionale e il delta del Danubio, ma cede alla Russia la
-                Bessarabia meridionale ricevuta nel 1856, oggi tra Moldova e Ucraina.
+                vittoria del nuovo Stato. Il congresso di Berlino la riconosce nel 1878, a
+                condizione che elimini le discriminazioni religiose. La Romania riceve la Dobrogea
+                settentrionale e il delta del Danubio, ma cede alla Russia la Bessarabia meridionale
+                ricevuta nel 1856, oggi tra Moldova e Ucraina.
               </Detail>
               <Today
                 traces={[
@@ -1485,9 +1485,10 @@ function Body() {
                 Moldova e Ucraina.
               </Detail>
               <Detail on={[Transylvania]}>
-                Il <D>1 dicembre 1918</D> l’assemblea romena di <N>Alba Iulia</N> proclama l’unione.
-                La Sala dell’Unione conserva la memoria dell’assemblea. Il trattato del Trianon del
-                1920 sancisce il passaggio della Transilvania dall’Ungheria alla Romania.
+                Il <D>1° dicembre 1918</D> l’assemblea romena di <N>Alba Iulia</N> proclama
+                l’unione. La Sala dell’Unione conserva la memoria dell’assemblea. Il trattato del
+                Trianon del 1920 sancisce il passaggio della Transilvania dall’Ungheria alla
+                Romania.
               </Detail>
               <Today
                 traces={[
@@ -1510,8 +1511,8 @@ function Body() {
               <Detail on="always">
                 La riforma agraria ridistribuisce terre ai contadini. La costituzione del 1923
                 consolida uno Stato centralizzato e proclama l’uguaglianza dei cittadini. Il
-                suffragio maschile allarga la partecipazione, ma ingerenze del governo nelle
-                elezioni e discriminazioni verso le minoranze limitano quei diritti.
+                suffragio universale maschile allarga la partecipazione, ma ingerenze del governo
+                nelle elezioni e discriminazioni verso le minoranze limitano quei diritti.
               </Detail>
             </Event>
             <Event on="always" date="1927–1930" title="Un re bambino e un re che torna">
@@ -1708,9 +1709,9 @@ function Body() {
                 Il <D>4 marzo 1977</D> un terremoto uccide circa 1.500 persone, quasi tutte a
                 Bucarest. In agosto decine di migliaia di minatori della valle del Jiu scendono in
                 sciopero e trattengono per ore un membro del governo; Ceaușescu va da loro e
-                promette, poi nei mesi seguenti i capi della protesta vengono arrestati o
-                trasferiti. Lo stesso anno lo scrittore <N>Paul Goma</N> chiede il rispetto dei
-                diritti umani ed è costretto all’esilio.
+                promette di accogliere le richieste; nei mesi seguenti, però, i capi della protesta
+                vengono arrestati o trasferiti. Lo stesso anno lo scrittore <N>Paul Goma</N> chiede
+                il rispetto dei diritti umani ed è costretto all’esilio.
               </Detail>
             </Event>
             <Event on="always" date="1981–1989" title="Il debito ripagato con la fame">
@@ -1719,8 +1720,8 @@ function Body() {
                 dollari, il prima possibile. Carne, latte e verdure partono per l’esportazione,
                 mentre in patria pane, zucchero e olio si comprano con la tessera, dopo ore di fila.
                 Le case restano fredde d’inverno, la luce si spegne per ore, la televisione
-                trasmette due ore al giorno, quasi solo sul capo. Nella primavera del 1989 il regime
-                annuncia che il debito è estinto.
+                trasmette due ore al giorno, dedicate quasi tutte al capo. Nella primavera del 1989
+                il regime annuncia che il debito è estinto.
               </Detail>
             </Event>
             <Event on="always" date="1984–1989" title="Bucarest demolita, villaggi da cancellare">
@@ -1863,7 +1864,7 @@ function Body() {
             <Context
               on="always"
               period="Dagli anni Novanta"
-              title="Privatizzazioni ed emigrazione cambiano il Paese"
+              title="Privatizzazioni ed emigrazione cambiano il paese"
             >
               La transizione all’economia di mercato chiude o ridimensiona molte industrie, e le
               opportunità si distribuiscono in modo diseguale. Dalla fine degli anni Novanta, e
@@ -1872,13 +1873,19 @@ function Body() {
               comunità straniera, circa un milione di persone. Le rimesse costruiscono case nei
               villaggi; molti bambini crescono con i nonni.
             </Context>
+            <Context on="always" kind="curiosity" period="2002" title="L’arcobaleno di Bush">
+              Nel novembre 2002, il giorno dopo l’invito ufficiale a entrare nella NATO, George W.
+              Bush parla in piazza della Rivoluzione, sotto il balcone da cui Ceaușescu aveva fatto
+              il suo ultimo discorso. Mentre parla, sul cielo di Bucarest compare un arcobaleno, e
+              il presidente lo indica alla folla come un buon segno.
+            </Context>
             <Event
               on="always"
               date="2004–2007"
               title="La Romania entra nella NATO e nell’Unione Europea"
             >
               <Detail on="always">
-                Il <D>29 marzo 2004</D> la Romania aderisce alla NATO; il <D>1 gennaio 2007</D>
+                Il <D>29 marzo 2004</D> la Romania aderisce alla NATO; il <D>1° gennaio 2007</D>
                 entra nell’Unione Europea. Sono due passaggi distinti: il primo riguarda l’alleanza
                 militare, il secondo istituzioni, mercato e cittadinanza europei. Per vigilare sulla
                 giustizia e sulla corruzione, Bruxelles affianca all’adesione un meccanismo di
@@ -1893,19 +1900,6 @@ function Body() {
               anni del decreto 770. Con Corneliu Porumboiu e Radu Jude, Orso d’oro a Berlino nel
               2021, la critica parla di nouvelle vague romena: film a basso costo, inquadrature
               lunghe, ironia sulla burocrazia e sul passato recente.
-            </Context>
-            <Context on="always" kind="curiosity" period="2017 – 2019" title="Simona Halep">
-              Nata a Costanza nel 1991, nel 2017 diventa la numero uno del tennis mondiale, vince il
-              Roland Garros nel 2018 e Wimbledon nel 2019. Una squalifica per doping, ridotta in
-              appello nel 2024, segna la fine della sua carriera: si ritira nel 2025. Prima di lei,
-              nel 1973, Ilie Năstase era stato il primo numero uno della classifica mondiale
-              maschile.
-            </Context>
-            <Context on="always" kind="curiosity" period="2002" title="L’arcobaleno di Bush">
-              Nel novembre 2002, il giorno dopo l’invito ufficiale a entrare nella NATO, George W.
-              Bush parla in piazza della Rivoluzione, sotto il balcone da cui Ceaușescu aveva fatto
-              il suo ultimo discorso. Mentre parla, sul cielo di Bucarest compare un arcobaleno, e
-              il presidente lo indica alla folla come un buon segno.
             </Context>
             <Event on="always" date="2010" title="L’austerità">
               <Detail on="always">
@@ -1931,11 +1925,10 @@ function Body() {
             </Event>
             <Event on="always" date="2015" title="L’incendio del Colectiv">
               <Detail on="always">
-                Il <D>30 ottobre 2015</D> un incendio durante un concerto al club Colectiv di
-                Bucarest uccide 64 persone, molte delle quali muoiono nelle settimane seguenti negli
-                ospedali, per infezioni. Il locale non aveva le autorizzazioni. Decine di migliaia
-                di persone scendono in piazza con lo slogan «La corruzione uccide», e il governo si
-                dimette.
+                Il <D>30 ottobre 2015</D> scoppia un incendio durante un concerto al club Colectiv
+                di Bucarest: muoiono 64 persone, molte nelle settimane seguenti, in ospedale, per
+                infezioni. Il locale non aveva le autorizzazioni. Decine di migliaia di persone
+                scendono in piazza con lo slogan «La corruzione uccide», e il governo si dimette.
               </Detail>
             </Event>
             <Event on="always" date="2017–2019" title="Le piazze delle luci">
@@ -1948,11 +1941,18 @@ function Body() {
                 capo del partito di governo, Liviu Dragnea, entra in carcere per corruzione.
               </Detail>
             </Event>
+            <Context on="always" kind="curiosity" period="2017 – 2019" title="Simona Halep">
+              Nata a Constanța nel 1991, nel 2017 diventa la numero uno del tennis mondiale, vince
+              il Roland Garros nel 2018 e Wimbledon nel 2019. Una squalifica per doping, ridotta in
+              appello nel 2024, segna la fine della sua carriera: si ritira nel 2025. Prima di lei,
+              nel 1973, Ilie Năstase era stato il primo numero uno della classifica mondiale
+              maschile.
+            </Context>
             <Event on="always" date="2022" title="La guerra alla frontiera">
               <Detail on="always">
                 Con l’invasione russa dell’Ucraina la guerra arriva al confine nord e al delta del
                 Danubio. Milioni di profughi ucraini attraversano la Romania, la NATO rafforza le
-                sue truppe nel paese e il porto di <N>Costanza</N> diventa una delle vie d’uscita
+                sue truppe nel paese e il porto di <N>Constanța</N> diventa una delle vie d’uscita
                 del grano ucraino. Frammenti di droni russi cadono più volte in territorio romeno.
               </Detail>
             </Event>
@@ -1964,7 +1964,7 @@ function Body() {
               <Detail on="always">
                 I controlli sulle persone alle frontiere aeree e marittime interne vengono eliminati
                 il <D>31 marzo 2024</D>; quelli alle frontiere terrestri interne il{' '}
-                <D>1 gennaio 2025</D>. L’ingresso in Schengen completa un percorso diverso
+                <D>1° gennaio 2025</D>. L’ingresso in Schengen completa un percorso diverso
                 dall’adesione all’UE e non comporta l’adozione dell’euro.
               </Detail>
             </Event>
@@ -2015,7 +2015,7 @@ function Body() {
             La Romania nasce dall’unione di Valacchia e Moldavia nel 1859; la Dobrogea
             settentrionale entra nel 1878 e la Transilvania nel 1918. I confini cambiano ancora
             durante la seconda guerra mondiale. Dopo la dittatura comunista e la rivoluzione del
-            1989, il Paese costruisce istituzioni democratiche ed entra nella NATO e nell’Unione
+            1989, il paese costruisce istituzioni democratiche ed entra nella NATO e nell’Unione
             Europea. Le diverse storie regionali restano leggibili nelle lingue, nei luoghi di culto
             e nei monumenti.
           </Text>
@@ -2171,7 +2171,7 @@ function Body() {
             gli ottomani comincia come debitore del sistema che combatte.
           </Context>
           <Context on="always" period="Fine Cinquecento" title="La «legge di Michele»">
-            Per tenersi i boiari, che gli forniscono soldati, Michele lega i contadini al villaggio
+            Per tenersi i boiardi, che gli forniscono soldati, Michele lega i contadini al villaggio
             in cui si trovano: non possono più andarsene. La misura, ricordata come «legătura lui
             Mihai», pesa a lungo sui contadini della Valacchia; gli storici discutono se sia stata
             una vera legge o una pratica confermata da lui. Il simbolo dell’unione è anche il
@@ -2203,7 +2203,7 @@ function Body() {
             nome di Karl Hettingen, poi sale su un battello del Danubio e sbarca a Turnu Severin.
             Arriva sul suo nuovo trono senza parlare romeno.
           </Context>
-          <Context on="always" period="1914" title="La guerra che non ottiene">
+          <Context on="always" period="1914" title="La guerra negata">
             Dal 1883 la Romania è legata in segreto alla Triplice alleanza. Nell’agosto 1914, nel
             Consiglio della Corona riunito al castello di Peleș, Carol chiede di entrare in guerra
             con Germania e Austria-Ungheria; ministri e capi dei partiti scelgono la neutralità.
@@ -2386,7 +2386,7 @@ function Body() {
 
       <Chapter
         section={RoSection.Cities}
-        lede="Le città, lette attraverso ciò che resta e ciò che cambia."
+        lede="Che cosa cercare in ogni città, e quale storia c’è dietro."
       >
         <Part section={RoSection.CitiesMoldavia}>
           <Card
@@ -2405,7 +2405,7 @@ function Body() {
                 Iași è anche la città degli scrittori.
               </>
             }
-            remember="A Iași il passato moldavo resta visibile come città di corte, centro religioso e luogo conteso della memoria."
+            remember="Iași è la capitale della Moldavia storica: la corte, i monasteri, la prima università e i suoi scrittori."
           >
             <Context on="always" period="1860" title="La prima università romena">
               Nel 1860, un anno dopo la doppia elezione, Cuza fonda a Iași la prima università
@@ -2423,22 +2423,21 @@ function Body() {
             card={Ro.Suceava}
             intro={
               <>
-                <N>Suceava</N> è la città della corte moldava prima che il centro politico si sposti
-                a Iași. La cittadella domina la valle e ricorda il potere militare dei principi; il
-                monastero di San Giovanni Nuovo conserva il centro religioso della corte. Nel
-                <D>1775</D> la Bucovina passa all’Impero asburgico: Suceava resta nella Moldavia
-                ottomana e poi nella Romania, mentre i monasteri a nord del nuovo confine seguono
-                un’altra storia. La statua di <N>Stefano il Grande</N> e la fortezza raccontano così
-                una città di frontiera, non soltanto la capitale medievale di un principe. A una
-                quarantina di chilometri cominciano i monasteri dipinti della Bucovina, come
-                Voroneț: l’altra faccia della corte, la fede messa in immagini.
+                <N>Suceava</N> è la capitale della Moldavia finché la corte non si sposta a Iași,
+                nel 1564. La cittadella sul pianoro ricorda il potere militare dei principi; il
+                monastero di San Giovanni il Nuovo è la chiesa della corte. Nel <D>1775</D> la città
+                passa con la Bucovina all’Impero asburgico e torna alla Romania solo nel <D>1918</D>
+                : per quasi un secolo e mezzo è una città austriaca di confine, dove ai romeni si
+                affiancano armeni, ebrei, tedeschi e ucraini. La statua di <N>Stefano il Grande</N>,
+                sotto la fortezza, ricorda invece la capitale medievale. A una quarantina di
+                chilometri cominciano i monasteri dipinti della Bucovina, come Voroneț.
               </>
             }
-            remember="A Suceava la corte moldava diventa una frontiera: la fortezza la difende, i monasteri dipinti della Bucovina la raccontano."
+            remember="Suceava è la prima capitale della Moldavia: la fortezza di Stefano il Grande sopra la città, i monasteri dipinti poco lontano."
           >
             <Context on="always" period="1564" title="La capitale se ne va">
               Nel 1564 il principe Alexandru Lăpușneanu sposta la capitale a Iași, e Suceava perde
-              la corte. Le cronache gli attribuiscono anche il massacro di decine di boiari;
+              la corte. Le cronache gli attribuiscono anche il massacro di decine di boiardi;
               nell’Ottocento Costache Negruzzi ne fa una novella che ogni studente romeno legge, con
               la frase del principe: «Se voi non mi volete, io vi voglio».
             </Context>
@@ -2455,15 +2454,13 @@ function Body() {
             intro={
               <>
                 <N>Bucarest</N> cresce nella pianura della <N>Dâmbovița</N>, intorno alla corte dei
-                principi e alle strade dei mercanti. Locande, botteghe e chiese formano una città di
-                quartieri, prima che i viali e i palazzi della capitale moderna le diano una nuova
-                immagine. Architetti e modelli francesi convivono con la tradizione locale: il
-                soprannome «Piccola Parigi» descrive soltanto una parte di ciò che vedi. Il regime
-                comunista aggiunge quartieri di condomini e impone al centro un progetto
-                monumentale, demolendo porzioni della città precedente. Oggi bastano pochi passi per
-                passare da una chiesa raccolta a un viale enorme. Per leggere Bucarest, guarda anche
-                gli spazi fra gli edifici: ciò che li separa, ciò che li nasconde e le prospettive
-                costruite per metterli in scena.
+                principi, di cui restano le rovine della Curtea Veche, e alle strade dei mercanti.
+                Nell’Ottocento la capitale del nuovo Stato si dà viali, palazzi e un Ateneo su
+                modelli francesi, e si guadagna il soprannome di «Piccola Parigi». Il regime
+                comunista aggiunge quartieri di condomini e rade al suolo una parte del centro per
+                la Casa del Popolo, oggi Palazzo del Parlamento; alcune chiese vengono spostate su
+                rotaie e nascoste dietro i palazzi nuovi. Oggi bastano pochi passi per passare da
+                una chiesa del Settecento, come Stavropoleos, a un viale largo come una piazza.
               </>
             }
             remember="Bucarest si capisce nei contrasti di scala: una chiesa fra i condomini racconta la città quanto un palazzo monumentale."
@@ -2499,8 +2496,8 @@ function Body() {
                 e la chiamano Alba Carolina. Nel <D>1918</D> la città diventa il luogo dell’unione
                 con la Romania, e nel <D>1922</D> vi vengono incoronati Ferdinando e Maria. Dentro
                 la stessa cinta stanno così la cattedrale cattolica medievale e la cattedrale
-                ortodossa dell’incoronazione. Per leggere la città, guarda come ogni potere ha
-                lasciato il proprio segno sulla stessa altura.
+                ortodossa dell’incoronazione: nella cittadella passi da un’epoca all’altra in pochi
+                metri.
               </>
             }
             remember="Ad Alba Iulia ogni potere ha costruito sulla stessa altura: il campo romano, la cattedrale dei vescovi, la fortezza asburgica, la sala dell’unione."
@@ -2520,15 +2517,13 @@ function Body() {
             card={Ro.Brasov}
             intro={
               <>
-                <N>Brașov</N> si raccoglie sotto il monte <N>Tâmpa</N>, dove le strade attraverso i
-                Carpazi incontrano i mercati della Transilvania. La comunità sassone costruisce il
-                nucleo fortificato; mercanti romeni, ungheresi e di altre provenienze ne
-                attraversano le piazze. Mura e porte regolano gli accessi, mentre il quartiere di{' '}
-                <N>Șchei</N>, fuori dalla cinta, conserva una forte presenza romena. Il centro che
-                percorri oggi nasce da questa vicinanza fra comunità, commerci e confini urbani. La
-                piazza del consiglio e la grande chiesa mostrano due forme di autorità; le porte
-                ricordano che abitare dentro o fuori le mura non è la stessa cosa. Per capire la
-                città, segui il passaggio dal mercato verso Șchei.
+                <N>Brașov</N> si raccoglie sotto il monte <N>Tâmpa</N>, dove le strade che
+                attraversano i Carpazi arrivano ai mercati della Transilvania. I sassoni
+                costruiscono la città murata: al centro la piazza con la Casa del Consiglio, accanto
+                la Chiesa Nera. Fuori dalle mura, a sud-ovest, il quartiere di <N>Șchei</N> è quello
+                dei romeni, con la chiesa di San Nicola e la prima scuola romena. Mura e porte
+                separano due comunità che commerciano ogni giorno fra loro: dalla piazza a Șchei
+                sono dieci minuti a piedi.
               </>
             }
             remember="Brașov vive di scambi attraverso i Carpazi: la piazza li raccoglie, le porte li controllano."
@@ -2595,18 +2590,16 @@ function Body() {
             card={Ro.Sibiu}
             intro={
               <>
-                <N>Sibiu</N> si legge su due livelli: la città alta, con le piazze e gli edifici di
-                rappresentanza, e la città bassa, raggiunta da rampe, scale e passaggi. La comunità
-                sassone ne organizza il centro intorno a commerci, istituzioni cittadine e chiesa.
-                Più tardi, il palazzo barocco di Brukenthal aggiunge il linguaggio dell’aristocrazia
-                asburgica. Le facciate continue possono far sembrare il centro uniforme, ma basta
-                voltare un angolo per cambiare quota e prospettiva.
-                <N>Piața Mare</N>, <N>Piața Mică</N> e <N>Piața Huet</N> formano spazi diversi,
-                collegati fra loro. Guarda i passaggi tanto quanto i monumenti: spiegano come una
-                città di mercanti tiene insieme vita quotidiana e rappresentazione del potere.
+                <N>Sibiu</N> è costruita su due livelli: in alto le piazze dei sassoni, in basso la
+                città dei mestieri, collegate da rampe, scale e passaggi. In alto si aprono tre
+                piazze una dopo l’altra: <N>Piața Mare</N>, con il palazzo barocco di Samuel von
+                Brukenthal, governatore asburgico; <N>Piața Mică</N>, unita alla prima da un
+                passaggio sotto la torre del Consiglio; <N>Piața Huet</N>, intorno alla chiesa
+                evangelica. Dal Ponte delle Bugie guardi la strada che scende verso la città bassa:
+                basta voltare un angolo per cambiare quota.
               </>
             }
-            remember="A Sibiu le piazze mostrano la città di rappresentanza; scale e passaggi la ricuciono alla città di ogni giorno."
+            remember="Sibiu ha due piani: le piazze dei sassoni in alto, la città dei mestieri in basso, e fra le due scale e passaggi."
           >
             <Context on="always" kind="curiosity" period="Tetti" title="Gli occhi della città">
               Sui tetti delle case si aprono piccole finestre a forma di palpebra, che arieggiano le
@@ -2624,15 +2617,14 @@ function Body() {
             card={Ro.Sighisoara}
             intro={
               <>
-                <N>Sighișoara</N> conserva una cittadella sulla collina e una città bassa ai suoi
-                piedi. Artigiani e mercanti sassoni costruiscono case, chiese e difese; le
-                corporazioni partecipano alla protezione delle mura. La collina organizza ancora la
-                visita: si entra attraverso le porte, si attraversano le piazze e si sale verso
-                scuola e chiesa. Le case colorate non sono tutte rimaste identiche dal Medioevo:
-                incendi, ricostruzioni e trasformazioni ne fanno parte. Il centro storico,
-                riconosciuto dall’UNESCO, resta anche uno spazio abitato. La fama di Vlad III è una
-                delle storie raccontate qui, ma per leggere la città serve guardare oltre quella
-                casa: al lavoro, alle difese e ai percorsi quotidiani.
+                <N>Sighișoara</N> è una cittadella sulla collina con una città bassa ai suoi piedi.
+                Artigiani e mercanti sassoni costruiscono case, chiese e mura, e ogni corporazione
+                difende la sua torre. Si entra sotto la Torre dell’Orologio, si attraversa la piazza
+                e si sale per la scala coperta fino alla scuola e alla chiesa sulla collina. Le case
+                colorate non sono tutte medievali: incendi e ricostruzioni le hanno cambiate. Il
+                centro, patrimonio UNESCO, è ancora abitato. La casa dove la tradizione fa nascere
+                Vlad III è una delle cose da vedere, non la sola: guarda anche le torri dei
+                mestieri.
               </>
             }
             remember="Sighișoara è una città costruita per abitare, lavorare e difendersi su una collina: Vlad è una storia dentro questa storia."
@@ -2712,7 +2704,7 @@ function Body() {
               Nel 1949 il regime comincia a scavare un canale fra il Danubio e il Mar Nero con il
               lavoro forzato di decine di migliaia di detenuti politici, e molti vi muoiono. I
               lavori si fermano nel 1953; ripresi negli anni Settanta, finiscono nel 1984, quando il
-              canale si apre sul mare ad Agigea, a sud di Costanza.
+              canale si apre sul mare ad Agigea, a sud di Constanța.
             </Context>
           </Card>
         </Part>
@@ -2943,7 +2935,7 @@ function Body() {
           >
             Le chiese di legno del Maramureș sono alte e strette, con campanili a punta. A
             Săpânța-Peri, vicino al Cimitero allegro, se ne costruisce una nuova, tutta in legno:
-            con i suoi 78 metri è fra le chiese di legno più alte del mondo.
+            con i suoi 78 m è fra le chiese di legno più alte del mondo.
           </Context>
         </Card>
         <Card
@@ -2968,7 +2960,7 @@ function Body() {
           <Context on="always" period="1950 – 1960" title="La diga di Bicaz">
             La diga che forma il lago di Bicaz è una delle prime grandi opere del regime comunista:
             costruita in dieci anni, anche con il lavoro di detenuti, sommerge villaggi le cui
-            famiglie vengono trasferite. Alta 127 metri, diventa un simbolo dell’industrializzazione
+            famiglie vengono trasferite. Alta 127 m, diventa un simbolo dell’industrializzazione
             socialista.
           </Context>
           <Context on="always" kind="curiosity" period="6 agosto" title="L’ombra della piramide">
