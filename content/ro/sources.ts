@@ -472,6 +472,16 @@ export const sources: GuideSources = {
       site: 'Realitatea',
       url: 'https://www.realitatea.net/stiri/politica/birou-nicolae-ceausescu-revolutie-1989-cc-pcr_5dcc925e406af85273d68d0d',
     },
+    {
+      title: 'Stavropoleos Monastery',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Stavropoleos_Monastery',
+    },
+    {
+      title: 'Romanian Athenaeum',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Romanian_Athenaeum',
+    },
   ],
   [Ro.Iasi]: [
     {
@@ -486,6 +496,21 @@ export const sources: GuideSources = {
       url: 'https://evz.ro/cand-bojdeuca-scrie-istorie-si-devine-un-loc-fundamental-pentru-literatura.html',
     },
     { title: 'Bojdeuca lui Ion Creangă', site: 'TVR Info', url: 'https://tvrinfo.ro/?p=134382' },
+    {
+      title: 'Palace of Culture (Iași)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Palace_of_Culture_(Ia%C8%99i)',
+    },
+    {
+      title: 'Mănăstirea Sfinții Trei Ierarhi din Iași',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/M%C4%83n%C4%83stirea_Sfin%C8%9Bii_Trei_Ierarhi_din_Ia%C8%99i',
+    },
+    {
+      title: 'Varlaam Moțoc',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Varlaam_Mo%C8%9Boc',
+    },
   ],
   [Ro.Suceava]: [
     {
@@ -602,6 +627,16 @@ export const sources: GuideSources = {
       title: 'Povestea Bisericii Negre – 600 de ani de existență în credință',
       site: 'Biserica Neagră',
       url: 'https://bisericaneagra.ro/en/the-history-of-the-black-church/',
+    },
+    {
+      title: 'Casa Sfatului din Brașov',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Casa_Sfatului_din_Bra%C8%99ov',
+    },
+    {
+      title: 'Biserica Neagră',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Biserica_Neagr%C4%83',
     },
   ],
   [Ro.ClujNapoca]: [
@@ -733,6 +768,21 @@ export const sources: GuideSources = {
       site: 'hermannstadt.evang.ro',
       url: 'https://hermannstadt.evang.ro/ro/',
     },
+    {
+      title: 'Bridge of Lies',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bridge_of_Lies',
+    },
+    {
+      title: 'Brukenthal National Museum',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Brukenthal_National_Museum',
+    },
+    {
+      title: 'Portrait of a Man with a Blue Chaperon',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Portrait_of_a_Man_with_a_Blue_Chaperon',
+    },
   ],
   [Ro.Sighisoara]: [
     {
@@ -774,6 +824,16 @@ export const sources: GuideSources = {
       title: 'Covered Stairway',
       site: 'Explore Sighișoara',
       url: 'https://ghid.exploresighisoara.ro/en/obiectiv/scara-acoperita',
+    },
+    {
+      title: 'Sighișoara Clock Tower',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Sighi%C8%99oara_Clock_Tower',
+    },
+    {
+      title: 'Scholars’ Stairs Sighișoara',
+      site: 'Visit Mureș',
+      url: 'https://visitmures.com/en/sighisoara/built-heritage/castles-citadels-architectural-curiosities/scholars-stairs-sighisoara',
     },
   ],
   [Ro.Timisoara]: [
