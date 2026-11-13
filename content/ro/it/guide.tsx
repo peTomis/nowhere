@@ -2741,7 +2741,18 @@ function Body() {
             </>
           }
           remember="Il delta è una terra che il Danubio costruisce ogni anno: anche le persone l’hanno scavata, arginata e poi in parte restituita all’acqua."
-        />
+        >
+          <Context on="always" curiosity period="Sulina" title="Il chilometro zero">
+            Il Danubio si misura al contrario: i chilometri si contano dalla foce, a Sulina,
+            risalendo verso la sorgente. Ogni porto del fiume, da Vienna a Belgrado, ha il suo
+            numero di distanza dal Mar Nero.
+          </Context>
+          <Context on="always" curiosity period="Dopo il 1990" title="I cavalli di Letea">
+            Con la fine delle cooperative agricole molti cavalli vengono lasciati liberi; oggi
+            alcune migliaia vivono allo stato brado intorno alla foresta di Letea. Brucano anche le
+            piante protette del bosco, e che cosa farne è ancora discusso.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.FagarasMountains}
           intro={
@@ -2760,7 +2771,18 @@ function Body() {
             </>
           }
           remember="La cresta dei Făgăraș ha diviso per secoli Transilvania e Valacchia; il Transfăgărășan la attraversa come strada militare, costruita dall’esercito in quattro anni."
-        />
+        >
+          <Context on="always" period="1948 – 1955" title="I partigiani della montagna">
+            Dopo la presa del potere comunista, un gruppo di studenti e contadini della zona si
+            rifugia nei boschi dei Făgăraș e resiste armato per anni. Quasi tutti vengono catturati
+            e fucilati; il loro capo, Ion Gavrilă Ogoranu, riesce a nascondersi fino al 1976.
+          </Context>
+          <Context on="always" curiosity period="Ogni inverno" title="L’albergo di ghiaccio">
+            Quando la strada chiude per la neve, al lago di Bâlea si arriva in funivia. Ogni
+            inverno, dal 2006, accanto al lago si costruisce un albergo con blocchi di ghiaccio
+            tagliati dal lago stesso; a primavera si scioglie.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.PiatraCraiului}
           intro={
@@ -2777,7 +2799,17 @@ function Body() {
             </>
           }
           remember="La Piatra Craiului è una sola lama di calcare: sotto, i villaggi d’alta quota e i boschi degli orsi; sopra, un fiore che non cresce altrove."
-        />
+        >
+          <Context on="always" curiosity period="Nome" title="La pietra del re">
+            Piatra Craiului vuol dire «la pietra del re»: crai è una parola antica, di origine
+            slava, per «re» o «principe». Chi fosse il re, nessuna leggenda lo dice con certezza.
+          </Context>
+          <Context on="always" period="Oggi" title="Il paese degli orsi">
+            Fuori dalla Russia, la Romania ha la più grande popolazione di orsi bruni d’Europa:
+            diverse migliaia, ma il numero esatto è discusso. Gli incontri nei villaggi e sulle
+            strade sono sempre più frequenti, e il permesso di abbatterli divide il paese.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.ApuseniMountains}
           intro={
@@ -2796,7 +2828,19 @@ function Body() {
             </>
           }
           remember="Negli Apuseni il paesaggio è sotto i piedi: grotte e ghiacci nel calcare, e sopra le case sparse dei moți, che da qui sono scesi in due rivolte."
-        />
+        >
+          <Context on="always" curiosity period="1872" title="Il flauto di Avram Iancu">
+            Dopo il 1848 il capo dei moți non accetta onori né compromessi con Vienna. Negli ultimi
+            anni vaga di villaggio in villaggio suonando il flauto da pastore, e muore nel 1872 a
+            Baia de Criș. È sepolto a Țebea, sotto una vecchia quercia.
+          </Context>
+          <Context on="always" period="2013" title="Salvate Roșia Montană">
+            Una società canadese vuole aprire a Roșia Montană una grande miniera d’oro a cielo
+            aperto, con l’uso di cianuro. Nell’autunno 2013 decine di migliaia di persone protestano
+            in tutto il paese: sono le più grandi manifestazioni dopo il 1989. Il progetto si ferma,
+            e nel 2021 le gallerie romane entrano nel patrimonio UNESCO.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.IronGates}
           intro={
@@ -2815,7 +2859,19 @@ function Body() {
             </>
           }
           remember="Alle Porte di Ferro il Danubio è sempre stato un confine: lo è per Traiano, per gli imperi, e oggi corre su un lago che ha sommerso un’isola e una città."
-        />
+        >
+          <Context on="always" curiosity period="1878" title="L’isola dimenticata">
+            Al congresso di Berlino nessuno si ricorda di Ada Kaleh: l’isola resta formalmente
+            ottomana, in mezzo a un Danubio ormai austro-ungarico e serbo. I suoi abitanti turchi
+            vivono di tabacco, rahat e commercio esente da dazi fino a quando, dopo la Prima guerra
+            mondiale, l’isola passa alla Romania.
+          </Context>
+          <Context on="always" curiosity period="1967 – 1969" title="La tavola salvata">
+            Sulla riva serba un’iscrizione scolpita nella roccia, la Tabula Traiana, ricorda la
+            strada costruita per Traiano. Quando il lago della diga sta per sommergerla, la tagliano
+            e la sollevano di oltre venti metri: dalla riva romena la vedi in barca.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.Retezat}
           intro={
@@ -2833,7 +2889,20 @@ function Body() {
             </>
           }
           remember="Il Retezat è la montagna che la Romania ha protetto per prima: circhi e laghi lasciati dai ghiacci, dove si arriva solo a piedi."
-        />
+        >
+          <Context on="always" curiosity period="1895 – 1914" title="I dinosauri nani di Hațeg">
+            Nella depressione di Hațeg il barone transilvano Franz Nopcsa studia ossa di dinosauri
+            molto più piccoli dei loro parenti. Ne deduce che vivevano su un’isola, dove le specie
+            tendono a rimpicciolirsi: un’idea accettata solo molto più tardi. Nopcsa è anche
+            esploratore dell’Albania, e nel 1913 si propone come suo re.
+          </Context>
+          <Context on="always" period="1990 – 1991" title="Le mineriade">
+            Ai piedi del Retezat c’è la valle del Jiu, la valle dei minatori. Nel giugno 1990
+            migliaia di loro arrivano in treno a Bucarest e, con la copertura del governo,
+            sgomberano con la violenza i manifestanti di piazza dell’Università. Tornano nel 1991 e
+            fanno cadere il governo.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.VaserValleyRodna}
           intro={
@@ -2851,7 +2920,25 @@ function Body() {
             </>
           }
           remember="Nel Maramureș la foresta è un lavoro prima che un paesaggio: la Mocănița nasce per portare a valle i tronchi, sotto le creste dei Rodnei."
-        />
+        >
+          <Context on="always" period="1950 – 1955" title="Il carcere di Sighet">
+            A Sighetu Marmației, capoluogo storico del Maramureș, il regime rinchiude ministri,
+            vescovi e intellettuali della Romania di prima della guerra; molti vi muoiono, fra cui
+            Iuliu Maniu. Oggi il carcere è il Memoriale delle vittime del comunismo. Nella stessa
+            città nasce nel 1928 <N href="https://it.wikipedia.org/wiki/Elie_Wiesel">Elie Wiesel</N>
+            , deportato ad Auschwitz con gli ebrei del Maramureș nel 1944.
+          </Context>
+          <Context
+            on="always"
+            curiosity
+            period="1997 – 2003"
+            title="Il campanile di legno più alto"
+          >
+            Le chiese di legno del Maramureș sono alte e strette, con campanili a punta. A
+            Săpânța-Peri, vicino al Cimitero allegro, se ne costruisce una nuova, tutta in legno:
+            con i suoi 78 metri è fra le chiese di legno più alte del mondo.
+          </Context>
+        </Card>
         <Card
           card={RoLandscape.BicazCeahlau}
           intro={
@@ -2870,7 +2957,18 @@ function Body() {
             </>
           }
           remember="Le gole di Bicaz sono una porta fra Moldavia e Transilvania; il Ceahlău è la montagna che i moldavi hanno riempito di eremiti, leggende e pellegrinaggi."
-        />
+        >
+          <Context on="always" period="1950 – 1960" title="La diga di Bicaz">
+            La diga che forma il lago di Bicaz è una delle prime grandi opere del regime comunista:
+            costruita in dieci anni, anche con il lavoro di detenuti, sommerge villaggi le cui
+            famiglie vengono trasferite. È la prima grande centrale idroelettrica della Romania.
+          </Context>
+          <Context on="always" curiosity period="6 agosto" title="L’ombra della piramide">
+            Il 6 agosto, festa della Trasfigurazione, i pellegrini salgono di notte al monastero del
+            Ceahlău. Si racconta che all’alba di quel giorno l’ombra della montagna si disegni sulle
+            nuvole e sulle valli come una piramide perfetta.
+          </Context>
+        </Card>
       </Chapter>
 
       <Chapter
