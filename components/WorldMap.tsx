@@ -469,7 +469,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
 
       {pin && (
         <div
-          className="absolute z-6 max-h-[calc(100%-24px)] w-[calc(100%-24px)] overflow-y-auto rounded-md bg-bg px-4 pt-3 pb-4 shadow-md sm:w-[280px]"
+          className="absolute z-6 max-h-[calc(100%-24px)] w-[calc(100%-24px)] overflow-y-auto rounded-md bg-bg px-4 pt-3 pb-4 shadow-md sm:w-56"
           style={pinPos}
         >
           <CountryCard

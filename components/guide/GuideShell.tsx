@@ -221,7 +221,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
         // room: its bottom line sits right under the opening and scrolls up with the page until
         // it reaches 64px from the top, where it stops; the bar then fills the space above it.
         // Until stuck it is see-through and lets clicks pass to the opening.
-        className={`sticky top-0 z-20 -mt-[64px] flex h-[64px] items-center gap-2 pr-(--edge) pl-[clamp(16px,4.5vw,64px)] min-[960px]:pr-[calc(var(--edge)+56px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
+        className={`sticky top-0 z-20 mt-[-64px] flex h-[64px] items-center gap-2 pr-(--edge) pl-[clamp(16px,4.5vw,64px)] min-[960px]:pr-[calc(var(--edge)+56px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
       >
         {/*
           The bar's controls repeat the cover and the album opening: they appear only once the bar
@@ -247,7 +247,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
             {country}
           </a>
           <ViewSwitch view={view} className="hidden min-[960px]:flex" />
-          <div className="ml-2 hidden max-w-[220px] min-w-0 flex-[1_1_auto] min-[960px]:block">
+          <div className="ml-2 hidden max-w-44 min-w-0 flex-[1_1_auto] min-[960px]:block">
             <Completion name={country} traces={traces} />
           </div>
           {/* The current section, in the text. */}
@@ -277,7 +277,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
       >
         <aside className="hidden flex-[0_0_232px] min-[960px]:block">
           {/* Trip filter and index title stay put; only the index list scrolls. */}
-          <div className="sticky top-[104px] flex max-h-[calc(100vh-144px)] flex-col gap-[50px]">
+          <div className="sticky top-[104px] flex max-h-[calc(100vh-144px)] flex-col gap-10">
             <div className="flex-none">
               <TripFilter country={country} size="sidebar" />
             </div>
@@ -387,7 +387,7 @@ function ViewSwitch({
             openView(v)
             onPick?.()
           }}
-          className={`min-h-[40px] cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
+          className={`min-h-8 cursor-pointer rounded-sm border-0 px-3 font-body text-[15px] text-text hover:text-accent-800 ${view === v ? 'bg-bg font-semibold shadow-sm' : 'bg-transparent'}`}
         >
           {t.guide.view[v]}
         </button>

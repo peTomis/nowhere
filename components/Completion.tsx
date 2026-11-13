@@ -116,7 +116,7 @@ export function Completion({ name, traces, variant = 'compact', from, className 
       <div
         role="group"
         aria-label={aria}
-        className={`flex min-h-[28px] min-w-0 items-center gap-[10px] font-body text-text ${className}`}
+        className={`flex min-h-[28px] min-w-0 items-center gap-2 font-body text-text ${className}`}
       >
         <span
           aria-hidden="true"
@@ -142,20 +142,20 @@ export function Completion({ name, traces, variant = 'compact', from, className 
       <div
         role="group"
         aria-label={aria}
-        className={`flex min-w-0 flex-col gap-2 font-body [text-wrap:pretty] text-text ${className}`}
+        className={`flex min-w-0 flex-col gap-2 font-body text-pretty text-text ${className}`}
       >
         <span className="flex items-center gap-[8px]">
           <span className="text-[28px] leading-none font-semibold tabular-nums">{pct}%</span>
           <Medal level={level} size={26} />
         </span>
         <div aria-hidden="true" className="relative">
-          <div className="relative h-[10px] overflow-hidden rounded-[5px] bg-neutral-200">
+          <div className="relative h-2 overflow-hidden rounded-[5px] bg-neutral-200">
             <div className={`${fill} rounded-[5px]`} style={{ width }} />
           </div>
           {MARKS.map((s) => (
             <span
               key={s}
-              className="absolute -inset-y-[2px] w-[2px] -translate-x-1/2 bg-bg"
+              className="absolute inset-y-[-2px] w-[2px] -translate-x-1/2 bg-bg"
               style={{ left: `${s}%` }}
             />
           ))}
@@ -183,7 +183,7 @@ export function Completion({ name, traces, variant = 'compact', from, className 
     <div
       role="group"
       aria-label={aria}
-      className={`flex min-w-0 flex-col gap-2 font-body [text-wrap:pretty] text-text ${className}`}
+      className={`flex min-w-0 flex-col gap-2 font-body text-pretty text-text ${className}`}
     >
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
         <span className="text-[11px] tracking-[.14em] text-neutral-700 uppercase">
@@ -197,13 +197,13 @@ export function Completion({ name, traces, variant = 'compact', from, className 
         </span>
       </div>
       <div aria-hidden="true" className="relative">
-        <div className="relative h-[10px] overflow-hidden rounded-[5px] bg-neutral-200">
+        <div className="relative h-2 overflow-hidden rounded-[5px] bg-neutral-200">
           <div className={`${fill} rounded-[5px]`} style={{ width }} />
         </div>
         {MARKS.map((s) => (
           <span
             key={s}
-            className="absolute -inset-y-[2px] w-[2px] -translate-x-1/2 bg-bg"
+            className="absolute inset-y-[-2px] w-[2px] -translate-x-1/2 bg-bg"
             style={{ left: `${s}%` }}
           />
         ))}

@@ -109,7 +109,7 @@ export function AccountMenu({ panel = true }: Props) {
         aria-modal="true"
         aria-labelledby={titleId}
         inert={!open}
-        className={`fixed top-0 right-0 bottom-0 z-81 flex w-[min(360px,calc(100%-48px))] flex-col overflow-y-auto bg-bg font-body [text-wrap:pretty] text-text shadow-lg transition-[translate,visibility] duration-300 ease-out motion-reduce:transition-none ${open ? 'visible translate-x-0' : 'invisible translate-x-full'}`}
+        className={`fixed top-0 right-0 bottom-0 z-81 flex w-[min(360px,calc(100%-48px))] flex-col overflow-y-auto bg-bg font-body text-pretty text-text shadow-lg transition-[translate,visibility] duration-300 ease-out motion-reduce:transition-none ${open ? 'visible translate-x-0' : 'invisible translate-x-full'}`}
       >
         <div className="flex flex-none items-center justify-between gap-2 pt-3 pr-3 pl-6">
           <h2
@@ -135,7 +135,7 @@ export function AccountMenu({ panel = true }: Props) {
               <Avatar me={me} className="size-[52px] flex-none text-[22px]" />
               <div className="flex min-w-0 flex-col">
                 <span className="text-lg leading-[1.3] font-semibold">{me.name || me.email}</span>
-                <span className="text-sm leading-[1.4] [overflow-wrap:anywhere] text-neutral-700">
+                <span className="text-sm leading-[1.4] wrap-anywhere text-neutral-700">
                   {me.email}
                 </span>
               </div>

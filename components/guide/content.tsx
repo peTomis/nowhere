@@ -90,7 +90,7 @@ function ChapterView<P extends string>({
     <Only on={on}>
       <section
         id={anchorOf(props.id)}
-        className={`flex scroll-mt-[80px] flex-col ${props.gap === 'wide' ? 'gap-[60px]' : 'gap-8'}`}
+        className={`flex scroll-mt-16 flex-col ${props.gap === 'wide' ? 'gap-12' : 'gap-8'}`}
       >
         <div className="flex flex-col gap-2">
           <div className={`${kicker} text-accent-700`}>
@@ -119,7 +119,7 @@ function PartView<P extends string>({
 }: On<P> & { id: string; kicker: string; title: string; children: ReactNode }) {
   return (
     <Only on={on}>
-      <section id={anchorOf(props.id)} className="mt-12 flex scroll-mt-[80px] flex-col gap-8">
+      <section id={anchorOf(props.id)} className="mt-12 flex scroll-mt-16 flex-col gap-8">
         <div className="flex flex-col gap-1">
           <div className={`${kicker} text-accent-700`}>{props.kicker}</div>
           <h3 className="m-0 text-[clamp(28px,5vw,36px)] leading-[1.1]">{props.title}</h3>
@@ -157,12 +157,12 @@ function TimelineView<P extends string>({
   return (
     <Only on={on}>
       {title ? (
-        <div id={id && anchorOf(id)} className="mt-4 flex scroll-mt-[80px] flex-col gap-3">
+        <div id={id && anchorOf(id)} className="mt-4 flex scroll-mt-16 flex-col gap-3">
           <h4 className="m-0 text-[clamp(21px,4vw,24px)] leading-[1.2]">{title}</h4>
           {events}
         </div>
       ) : (
-        <div id={id && anchorOf(id)} className="scroll-mt-[80px]">
+        <div id={id && anchorOf(id)} className="scroll-mt-16">
           {events}
         </div>
       )}
@@ -183,7 +183,7 @@ export function Event<P extends string>({
   return (
     <Only on={on}>
       <div className="timeline-item">
-        <div className="pt-[1px] text-right">
+        <div className="pt-px text-right">
           {props.date != null && (
             <span className="date-mark px-[3px] text-[clamp(15px,3.6vw,17px)] font-semibold">
               {props.date}
@@ -241,7 +241,7 @@ export function Detail<P extends string>({ on, children }: On<P> & { children: R
   return (
     <Only on={on}>
       <div className="grid grid-cols-[18px_minmax(0,1fr)]">
-        <span className="mt-[10px] size-[6px] rotate-45 bg-accent" aria-hidden="true" />
+        <span className="mt-2 size-[6px] rotate-45 bg-accent" aria-hidden="true" />
         <span>{children}</span>
       </div>
     </Only>
@@ -308,7 +308,7 @@ function Boxed(props: { label: string; title?: ReactNode; children: ReactNode })
       <div className="flex flex-col gap-2">
         <div className={`${label} leading-[1.2] text-accent-2-700`}>{props.label}</div>
         {props.title && (
-          <h4 className="m-0 text-[clamp(18px,3.6vw,20px)] leading-[1.25]">{props.title}</h4>
+          <h4 className="m-0 text-[clamp(18px,3.6vw,20px)] leading-tight">{props.title}</h4>
         )}
       </div>
       {props.children}
@@ -522,7 +522,7 @@ function RegionView<P extends string>({
 }) {
   return (
     <Only on={on}>
-      <div id={anchorOf(props.id)} className="flex scroll-mt-[80px] flex-col gap-6">
+      <div id={anchorOf(props.id)} className="flex scroll-mt-16 flex-col gap-6">
         <div className="flex flex-col gap-3">
           <h3 className="m-0 text-[clamp(28px,5vw,36px)] leading-[1.1]">{props.name}</h3>
           <p className="m-0 max-w-[62ch]">{props.intro}</p>
@@ -561,7 +561,7 @@ export function City<P extends string>({
           src={props.photo.src}
           caption={props.photo.caption}
           ratio="4/3"
-          className="max-w-[280px] flex-[1_1_200px]"
+          className="max-w-56 flex-[1_1_200px]"
         />
         {body}
       </div>
@@ -744,10 +744,7 @@ export function guideKit<P extends string, S extends string>(
     const prefix = props.idPrefix ?? ''
     return (
       <Only on={props.ungated ? 'always' : def.on}>
-        <article
-          id={`${prefix}${cardAnchor(def.id)}`}
-          className="flex scroll-mt-[80px] flex-col gap-8"
-        >
+        <article id={`${prefix}${cardAnchor(def.id)}`} className="flex scroll-mt-16 flex-col gap-8">
           <div className="flex flex-col gap-4">
             {props.heading !== false && (
               <header className="flex flex-col gap-1">

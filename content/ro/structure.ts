@@ -396,6 +396,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.3103, 45.6228],
       rarity: 'rare',
       icon: 'wall',
+      image: {
+        src: '/guides/romania/traces/sarmizegetusa-regia.webp',
+        credit: {
+          author: 'Cosmin Stefanescu',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Sarmisegetusa_Regia_-_Templele_patrulatere_mici_-_Zona_sacra_%E2%80%93_Gradistea_Muntelui,_Muntii_Sureanu,_Hunedoara,_Romania_19.JPG',
+        },
+      },
     },
     {
       // Mehedinți county, on the Danube west of Orșova: historically Banat, which the trip filter
@@ -406,6 +414,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.2914, 44.6406],
       rarity: 'rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/decebalus-rock-sculpture.webp',
+        credit: {
+          author: 'George Bufan',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Statuia_Chipul_lui_Decebal_-_Cazanele_Dun%C4%83rii,_Rom%C3%A2nia.jpg',
+        },
+      },
     },
     {
       id: RoTrace.TrajansColumnCopy,
@@ -415,6 +431,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0972, 44.4315],
       rarity: 'common',
       icon: 'frame',
+      image: {
+        src: '/guides/romania/traces/trajans-column-copy.webp',
+        credit: {
+          author: 'Joe Mabel',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Trajan%27s_Column_-_NMR_-_panel_111_A.jpg',
+        },
+      },
     },
     {
       id: RoTrace.VladDraculHouse,
@@ -424,6 +448,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.7927, 46.2195],
       rarity: 'common',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/vlad-dracul-house.webp',
+        credit: {
+          author: 'Cezar Suceveanu',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Casa_Vlad_Dracul_din_Sighisoara.JPG',
+        },
+      },
     },
     {
       id: RoTrace.ChindiaTower,
@@ -433,6 +465,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.4582, 44.9323],
       rarity: 'common',
       icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/chindia-tower.webp',
+        credit: {
+          author: 'CristianChirita',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:TurnulChindiei.jpg',
+        },
+      },
     },
     {
       id: RoTrace.PoenariCitadel,
@@ -441,8 +481,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.6352, 45.3539],
       rarity: 'rare',
       icon: 'steps',
+      image: {
+        src: '/guides/romania/traces/poenari-citadel.webp',
+        credit: {
+          author: 'Emmanuel BRUNNER Manu25',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:PoienariCastle1.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of Stephen the Great’s tomb at Putna.
     // Sources: putna.ro/en/the-princely-church-the-monastic-complex;
     // arhiva.basilica.ro/en/uk-ambassador-to-romania-lays-flowers-to-tomb-of-st-stephen-the-great/
     {
@@ -452,6 +499,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5965, 47.866],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/stephen-the-great-tomb.webp',
+        credit: {
+          author: 'pralea',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Mormantul_lui_Stefan_Cel_Mare_-_panoramio.jpg',
+        },
+      },
     },
     // TODO image: licensed photograph, including rights clearance for the modern sculpture.
     // Sources: visitsuceava.ro/obiectiv-turistic/statuia-ecvestra-stefan-cel-mare/;
@@ -465,7 +520,6 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'shield',
     },
-    // TODO image: freely licensed photograph of the Mihai Vodă church on Strada Sapienței.
     {
       id: RoTrace.MihaiVodaChurch,
       region: Wallachia,
@@ -474,8 +528,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0931, 44.4317],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/mihai-voda-church.webp',
+        credit: {
+          author: 'Mihai Petre',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Biserica_%22Sf._Ierarh_Nicolae%22_-_Mihai_Vod%C4%83.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Dealu monastery church.
     {
       id: RoTrace.MichaelTheBraveHeadTomb,
       region: Wallachia,
@@ -483,9 +544,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.4817, 44.9584],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/michael-the-brave-head-tomb.webp',
+        credit: {
+          author: 'Daniel Predoiu at Romanian Wikipedia',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Manastirea_Dealu.JPG',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the statue in Piața Universității (1874, out of
-    // copyright).
     {
       id: RoTrace.MichaelTheBraveEquestrianStatue,
       region: Wallachia,
@@ -494,8 +561,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.1013, 44.4349],
       rarity: 'common',
       icon: 'shield',
+      image: {
+        src: '/guides/romania/traces/michael-the-brave-equestrian-statue.webp',
+        credit: {
+          author: 'Britchi Mirela',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucuresti,_Romania._Piata_Universitatii,_STATUIA_LUI_MIHAI_VITEAZUL_pe_Cal,_intre_doua_cladiri._Iulie_2018._(B-III-m-A-20057).jpg',
+        },
+      },
     },
-    // Sinaia, Prahova valley: historically Wallachia. TODO image: freely licensed photograph.
+    // Sinaia, Prahova valley: historically Wallachia.
     {
       id: RoTrace.PelesCastle,
       region: Wallachia,
@@ -503,8 +578,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5428, 45.3597],
       rarity: 'common',
       icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/peles-castle.webp',
+        credit: {
+          author: 'Myrabella',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:01_Chateau_Peles.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the tombs in the pronaos.
     {
       id: RoTrace.CurteaDeArgesRoyalTombs,
       region: Wallachia,
@@ -512,8 +594,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.6754, 45.1569],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/curtea-de-arges-royal-tombs.webp',
+        credit: {
+          author: 'Alexandru Baboş Albabos',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Man_Curtea_de_Arges.SV.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the bridge at Cernavodă.
     {
       id: RoTrace.KingCarolIBridge,
       region: Dobruja,
@@ -521,8 +610,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.017, 44.3404],
       rarity: 'rare',
       icon: 'bridge',
+      image: {
+        src: '/guides/romania/traces/king-carol-i-bridge.webp',
+        credit: {
+          author: 'Alexandru Antoniu',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Podul_Regele_Carol_I.jpg',
+        },
+      },
     },
-    // Botoșani county, not a city of the guide. TODO image: freely licensed photograph.
+    // Botoșani county, not a city of the guide.
     {
       id: RoTrace.IpotestiMemorial,
       region: Moldavia,
@@ -530,8 +627,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.5583, 47.7664],
       rarity: 'rare',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/ipotesti-memorial.webp',
+        credit: {
+          author: 'Curcan ionel',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Casa_Memorial%C4%83_Mihai_Eminescu_din_Ipote%C8%99ti,_foto_Ionel_Curcan_(21).jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the linden tree in Copou Park.
     {
       id: RoTrace.EminescusLindenTree,
       region: Moldavia,
@@ -540,8 +644,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [27.5667, 47.1784],
       rarity: 'common',
       icon: 'pin',
+      image: {
+        src: '/guides/romania/traces/eminescus-linden-tree.webp',
+        credit: {
+          author: 'Sb2s3',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Parcul_Copou_(Bustul_%C5%9Fi_Teiul_lui_Eminescu_privite_dinspre_mozaic).jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the grave at Bellu.
     {
       id: RoTrace.EminescusGrave,
       region: Wallachia,
@@ -550,6 +661,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.1, 44.4039],
       rarity: 'common',
       icon: 'pin',
+      image: {
+        src: '/guides/romania/traces/eminescus-grave.webp',
+        credit: {
+          author: 'Britchi Mirela',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucuresti,_Romania,_Cimitirul_Bellu_Ortodox_(Mormantul_lui_mihai_Eminescu)_(detaliu).JPG',
+        },
+      },
     },
     // The 500 lei banknote: anywhere, but rarely given as change.
     {
@@ -557,9 +676,16 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'anywhere',
       rarity: 'rare',
       icon: 'banknote',
+      image: {
+        src: '/guides/romania/traces/eminescu-500-lei-banknote.webp',
+        credit: {
+          author: 'ES Vic',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:500_lei._Romania,_2005_a.jpg',
+        },
+      },
     },
     // Queen Marie (and Vlad III: the castle of the myth). Bran is about 30 km from Brașov.
-    // TODO image: freely licensed photographs for the two Queen Marie traces.
     {
       id: RoTrace.BranCastle,
       region: Transylvania,
@@ -567,6 +693,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.3671, 45.515],
       rarity: 'common',
       icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/bran-castle.webp',
+        credit: {
+          author: 'Dobre Cezar',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Castelul_Bran2.jpg',
+        },
+      },
     },
     // Sinaia, Prahova valley: historically Wallachia.
     {
@@ -576,9 +710,17 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5391, 45.3606],
       rarity: 'common',
       icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/pelisor-castle.webp',
+        credit: {
+          author: 'Cristian Bortes',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Pelisor_Castle,_Sinaia.jpg',
+        },
+      },
     },
     // Gorj county (Oltenia): historically Wallachia; Hobița and Târgu Jiu are not cities of the
-    // guide. TODO image: freely licensed photographs for the three Brâncuși traces. Brâncuși died
+    // guide. TODO image: the Gate of the Kiss and the Endless Column have none yet. Brâncuși died
     // in 1957: his works at Târgu Jiu are protected until the end of 2027, so check the rights
     // (Romania's freedom of panorama) before using a photograph.
     {
@@ -588,6 +730,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.0559, 45.0535],
       rarity: 'rare',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/brancusi-house-hobita.webp',
+        credit: {
+          author: 'Ștefan Jurcă from Munich, Germany',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Hobi%C8%9Ba_-_Casa_Memorial%C4%83_Constantin_Br%C3%A2ncu%C8%99i_(Romanian_Cottage)_(28585356640).jpg',
+        },
+      },
     },
     {
       id: RoTrace.GateOfTheKiss,
@@ -605,7 +755,7 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'steps',
     },
-    // George Enescu. TODO image: freely licensed photographs for the two Enescu places.
+    // George Enescu.
     {
       id: RoTrace.LuminisVilla,
       region: Wallachia,
@@ -613,6 +763,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5501, 45.3677],
       rarity: 'rare',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/luminis-villa.webp',
+        credit: {
+          author: 'Andrei Stroe',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:RO_PH_Sinaia_George_Enescu_memorial_house.jpg',
+        },
+      },
     },
     {
       id: RoTrace.EnescuMuseum,
@@ -622,6 +780,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0883, 44.4487],
       rarity: 'common',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/enescu-museum-cantacuzino-palace.webp',
+        credit: {
+          author: 'Neoclassicism Enthusiast',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:The_Cantacuzino_Palace_from_Bucharest_(Romania).jpg',
+        },
+      },
     },
     // The 5 lei banknote: anywhere.
     {
@@ -629,8 +795,15 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'anywhere',
       rarity: 'common',
       icon: 'banknote',
+      image: {
+        src: '/guides/romania/traces/enescu-5-lei-banknote.webp',
+        credit: {
+          author: 'ES Vic',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:5_lei._Romania,_2005_a.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photographs for the three Ceaușescu traces.
     {
       id: RoTrace.PalaceOfTheParliament,
       region: Wallachia,
@@ -639,6 +812,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0875, 44.4275],
       rarity: 'common',
       icon: 'bank',
+      image: {
+        src: '/guides/romania/traces/palace-of-the-parliament.webp',
+        credit: {
+          author: 'Diego Delso',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Avenida_de_la_Uni%C3%B3n,_Bucarest,_Ruman%C3%ADa,_2016-05-29,_DD_58.jpg',
+        },
+      },
     },
     {
       id: RoTrace.CentralCommitteeBuilding,
@@ -648,6 +829,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0965, 44.4406],
       rarity: 'common',
       icon: 'flag',
+      image: {
+        src: '/guides/romania/traces/central-committee-building.webp',
+        credit: {
+          author: 'Alexandru Panoiu from Bucharest, Romania',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Revolution_Square_(AP4K1406-1PSP)_(29213730282).jpg',
+        },
+      },
     },
     {
       id: RoTrace.PrimaveriiPalace,
@@ -657,6 +846,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0924, 44.4692],
       rarity: 'rare',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/primaverii-palace.webp',
+        credit: {
+          author: 'Idobi',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Palatul_Prim%C7%8Everii-1286-a.jpg',
+        },
+      },
     },
     // Nadia Comăneci. Otopeni (Ilfov), next to Bucharest airport: historically Wallachia.
     // TODO image: licensed photograph, including rights clearance for the 2026 statue.
@@ -669,7 +866,7 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'common',
       icon: 'trophy',
     },
-    // Onești (Bacău county), not a city of the guide. TODO image: freely licensed photograph.
+    // Onești (Bacău county), not a city of the guide.
     {
       id: RoTrace.OnestiPathOfPerfection,
       region: Moldavia,
@@ -678,10 +875,17 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.7668, 46.2541],
       rarity: 'rare',
       icon: 'trophy',
+      image: {
+        src: '/guides/romania/traces/onesti-path-of-perfection.webp',
+        credit: {
+          author: 'Oly23lid',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Sala_Polivalent%C4%83_%E2%80%9ENadia_Com%C4%83neci%E2%80%9D_One%C8%99ti.jpg',
+        },
+      },
     },
     // Album numbers follow this order. While the album is in design (no reader photos yet) places
     // go where they belong; once it is published, append new places at the end instead.
-    // TODO image: freely licensed exterior photograph of Stavropoleos church.
     {
       id: RoTrace.StavropoleosChurch,
       region: Wallachia,
@@ -690,8 +894,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0988, 44.4317],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/stavropoleos-church.webp',
+        credit: {
+          author: 'Neoclassicism Enthusiast',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:4,_Strada_Stavropoleos,_Bucharest_(Romania).jpg',
+        },
+      },
     },
-    // TODO image: freely licensed exterior photograph of the Romanian Athenaeum.
     {
       id: RoTrace.RomanianAthenaeum,
       region: Wallachia,
@@ -700,8 +911,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0973, 44.4413],
       rarity: 'common',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/romanian-athenaeum.webp',
+        credit: {
+          author: 'Diego Delso',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ateneo_Rumano,_Bucarest,_Ruman%C3%ADa,_2016-05-29,_DD_73.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Village Museum.
     {
       id: RoTrace.VillageMuseum,
       region: Wallachia,
@@ -710,8 +928,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0776, 44.4719],
       rarity: 'common',
       icon: 'barn',
+      image: {
+        src: '/guides/romania/traces/village-museum.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:(2023)_Biserica_de_lemn_din_Dragomire%C8%99ti,_Maramure%C8%99,_1722_-_img_18.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Steaua stadium.
     {
       id: RoTrace.SteauaStadium,
       region: Wallachia,
@@ -720,8 +945,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.0403, 44.4132],
       rarity: 'common',
       icon: 'ball',
+      image: {
+        src: '/guides/romania/traces/steaua-stadium.webp',
+        credit: {
+          author: 'Arne Müseler',
+          license: 'CC BY-SA 3.0 de',
+          url: 'https://commons.wikimedia.org/wiki/File:Romania_bucharest_Steaua_Stadium.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of brasov-council-house.
     {
       id: RoTrace.BrasovCouncilHouse,
       region: Transylvania,
@@ -730,8 +962,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5889, 45.6424],
       rarity: 'common',
       icon: 'clock',
+      image: {
+        src: '/guides/romania/traces/brasov-council-house.webp',
+        credit: {
+          author: 'Pudelek (Marcin Szala), edit by Lestath',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Brasov_(Kronstadt_-_Brasso)_-_city_hall_Lestat_edit.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of brasov-black-church.
     {
       id: RoTrace.BrasovBlackChurch,
       region: Transylvania,
@@ -740,8 +979,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.588, 45.641],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/brasov-black-church.webp',
+        credit: {
+          author: 'Ramona Georgescu',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Biserica_Neagr%C4%83,_vedere_din_Pia%C8%9Ba_Sfatului,_Bra%C8%99ov,_Rom%C3%A2nia.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the letters on Tâmpa.
     {
       id: RoTrace.BrasovTampaLetters,
       region: Transylvania,
@@ -750,9 +996,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5969, 45.6356],
       rarity: 'common',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/brasov-tampa-letters.webp',
+        credit: {
+          author: 'ThE cRaCkEr',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Brasov-sign_hollywood.jpg',
+        },
+      },
     },
     // Bușteni, Prahova valley: historically Wallachia, about 40 km from Brașov.
-    // TODO image: freely licensed photograph.
     {
       id: RoTrace.CantacuzinoCastle,
       region: Wallachia,
@@ -760,8 +1013,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.5428, 45.414],
       rarity: 'common',
       icon: 'film',
+      image: {
+        src: '/guides/romania/traces/cantacuzino-castle-busteni.webp',
+        credit: {
+          author: 'Costea Stefan',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Castelul_Cantacuzino_02.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of sibiu-brukenthal-palace.
     {
       id: RoTrace.SibiuBrukenthalPalace,
       region: Transylvania,
@@ -770,8 +1030,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.1505, 45.7966],
       rarity: 'common',
       icon: 'frame',
+      image: {
+        src: '/guides/romania/traces/sibiu-brukenthal-palace.webp',
+        credit: {
+          author: '7castle',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Brukenthal-sibiu.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of sibiu-bridge-of-lies.
     {
       id: RoTrace.SibiuBridgeOfLies,
       region: Transylvania,
@@ -780,8 +1047,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.1508, 45.7983],
       rarity: 'common',
       icon: 'bridge',
+      image: {
+        src: '/guides/romania/traces/sibiu-bridge-of-lies.webp',
+        credit: {
+          author: 'Andrei Stroe',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:RO_SB_Bridge_of_Lies_01.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the ASTRA open-air museum.
     {
       id: RoTrace.AstraMuseum,
       region: Transylvania,
@@ -790,8 +1064,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.112, 45.752],
       rarity: 'common',
       icon: 'barn',
+      image: {
+        src: '/guides/romania/traces/sibiu-astra-museum.webp',
+        credit: {
+          author: 'Alexandru Olanescu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:ASTRA_National_Museum_Complex_,_main_entrance_of_the_Open_air_museum,_Sibiu.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of sighisoara-clock-tower.
     {
       id: RoTrace.SighisoaraClockTower,
       region: Transylvania,
@@ -800,8 +1081,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.7933, 46.2193],
       rarity: 'common',
       icon: 'clock',
+      image: {
+        src: '/guides/romania/traces/sighisoara-clock-tower.webp',
+        credit: {
+          author: 'MariBo99',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Turnul_cu_Ceas,_Sighi%C8%99oara.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of sighisoara-covered-stairway.
     {
       id: RoTrace.SighisoaraCoveredStairway,
       region: Transylvania,
@@ -810,6 +1098,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.7915, 46.2188],
       rarity: 'common',
       icon: 'steps',
+      image: {
+        src: '/guides/romania/traces/sighisoara-covered-stairway.webp',
+        credit: {
+          author: 'Ruritanian',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Scara_scolarilor.jpg',
+        },
+      },
     },
     // Mediaș, between Sibiu and Sighișoara. TODO image: freely licensed photograph.
     {
@@ -820,8 +1116,6 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'rocket',
     },
-    // TODO image: freely licensed photograph of cluj-union-square (the 1902 monument is out of
-    // copyright).
     {
       id: RoTrace.ClujUnionSquare,
       region: Transylvania,
@@ -830,8 +1124,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.5897, 46.77],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/cluj-union-square.webp',
+        credit: {
+          author: 'Igor Sirbu',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Biserica_romano-catolica_sf._Mihai.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of cluj-avram-iancu-square.
     {
       id: RoTrace.ClujAvramIancuSquare,
       region: Transylvania,
@@ -840,8 +1141,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.5971, 46.7704],
       rarity: 'common',
       icon: 'bank',
+      image: {
+        src: '/guides/romania/traces/cluj-avram-iancu-square.webp',
+        credit: {
+          author: 'ZARAKA Z',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Opera_nationala_romana_cluj_-_teatrul_national_lucian_blaga_-_2019iunie.jpg',
+        },
+      },
     },
-    // Bonțida (Cluj county). TODO image: freely licensed photograph.
+    // Bonțida (Cluj county).
     {
       id: RoTrace.BanffyCastle,
       region: Transylvania,
@@ -849,8 +1158,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.81, 46.91],
       rarity: 'rare',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/banffy-castle-bontida.webp',
+        credit: {
+          author: 'Cristian Bortes from Cluj-Napoca, Romania',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bon%C8%9Bida_B%C3%A1nffy_Castle_11.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Palace of Culture.
     {
       id: RoTrace.IasiPalaceOfCulture,
       region: Moldavia,
@@ -859,8 +1175,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [27.587, 47.1574],
       rarity: 'common',
       icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/iasi-palace-of-culture.webp',
+        credit: {
+          author: 'PIERRE ANDRE LECLERCQ',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Pia%C8%9Ba_Palat,_Ia%C8%99i,_Roumanie.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Three Hierarchs Monastery.
     {
       id: RoTrace.IasiThreeHierarchsMonastery,
       region: Moldavia,
@@ -869,8 +1192,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [27.5847, 47.1597],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/iasi-three-hierarchs-monastery.webp',
+        credit: {
+          author: 'Loraine',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Three_Hierarchs_Iasi3.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of the Bojdeuca.
     {
       id: RoTrace.CreangaBojdeuca,
       region: Moldavia,
@@ -879,8 +1209,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [27.583, 47.175],
       rarity: 'common',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/creanga-bojdeuca.webp',
+        credit: {
+          author: 'MSClaudiu',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bojdeuca_lui_Ion_Creang%C4%83Ia%C5%9Fi.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of Suceava Citadel.
     {
       id: RoTrace.SuceavaCitadel,
       region: Moldavia,
@@ -889,8 +1226,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.2703, 47.6449],
       rarity: 'common',
       icon: 'wall',
+      image: {
+        src: '/guides/romania/traces/suceava-citadel.webp',
+        credit: {
+          author: 'Pudelek',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Suceava_fortress_(by_Pudelek).jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photograph of Saint John the New Monastery.
     {
       id: RoTrace.SuceavaSaintJohnMonastery,
       region: Moldavia,
@@ -899,8 +1243,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [26.2623, 47.6419],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/suceava-saint-john-monastery.webp',
+        credit: {
+          author: 'Cezar Suceveanu',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:M%C4%83n%C4%83stirea_Sf%C3%A2ntul_Ioan_cel_Nou1.jpg',
+        },
+      },
     },
-    // Near Gura Humorului; also a trace of Stephen the Great. TODO image: freely licensed photograph.
+    // Near Gura Humorului; also a trace of Stephen the Great.
     {
       id: RoTrace.VoronetMonastery,
       region: Moldavia,
@@ -908,8 +1260,15 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.8642, 47.517],
       rarity: 'common',
       icon: 'paint',
+      image: {
+        src: '/guides/romania/traces/voronet-monastery.webp',
+        credit: {
+          author: 'Pierre André Leclercq',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Gura_M%C4%83n%C4%83stirea_Voronet.jpg',
+        },
+      },
     },
-    // TODO image: freely licensed photographs for the three Alba Iulia traces.
     {
       id: RoTrace.AlbaIuliaCitadel,
       region: Transylvania,
@@ -918,6 +1277,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.5712, 46.0675],
       rarity: 'common',
       icon: 'wall',
+      image: {
+        src: '/guides/romania/traces/alba-iulia-citadel.webp',
+        credit: {
+          author: 'Kiki Vasilescu',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cetatea_Alba_Iulia_din_aer_toamna.jpg',
+        },
+      },
     },
     {
       id: RoTrace.AlbaIuliaStMichaelsCathedral,
@@ -927,6 +1294,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.57, 46.0676],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/alba-iulia-st-michaels-cathedral.webp',
+        credit: {
+          author: '-wuppertaler',
+          license: 'CC BY 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:ROM_Alba_Iulia,_Cetatea_Alba_Carolina,_Catedrala_Sf%C3%A2ntul_Mihail_0001.jpg',
+        },
+      },
     },
     {
       id: RoTrace.AlbaIuliaUnionHall,
@@ -936,9 +1311,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.5712, 46.0682],
       rarity: 'common',
       icon: 'flag',
+      image: {
+        src: '/guides/romania/traces/alba-iulia-union-hall.webp',
+        credit: {
+          author: 'Ciprian Lazar from Alba Iulia, Romania',
+          license: 'CC BY-SA 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Sala_Unirii,_fosta_Cazin%C4%83_Militar%C4%83,_Alba_Iulia_4.jpg',
+        },
+      },
     },
-    // Timișoara (Banat, filed under Transilvania). TODO image: freely licensed photographs for
-    // the three Timișoara traces.
+    // Timișoara (Banat, filed under Transilvania).
     {
       id: RoTrace.TimisoaraUnionSquare,
       region: Transylvania,
@@ -947,6 +1329,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [21.229, 45.758],
       rarity: 'common',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/timisoara-union-square.webp',
+        credit: {
+          author: 'Miomir Magdevski',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Trg_ujedinjenja_-_Katedrala_02.jpg',
+        },
+      },
     },
     {
       id: RoTrace.TimisoaraTokesParsonage,
@@ -956,6 +1346,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [21.2186, 45.748],
       rarity: 'rare',
       icon: 'house',
+      image: {
+        src: '/guides/romania/traces/timisoara-tokes-parsonage.webp',
+        credit: {
+          author: 'Leontin l',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Casa_parohial%C4%83_a_bisericii_reformate_20181113_120621.jpg',
+        },
+      },
     },
     {
       id: RoTrace.TimisoaraOperaBalcony,
@@ -965,8 +1363,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [21.226, 45.7543],
       rarity: 'common',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/timisoara-opera-balcony.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Opera_Na%C8%9Bional%C4%83_Rom%C3%A2n%C4%83_din_Timi%C8%99oara_(April_2023)_01.jpg',
+        },
+      },
     },
-    // Constanța. TODO image: freely licensed photographs for the four Constanța traces.
+    // Constanța.
     {
       id: RoTrace.ConstantaOvidSquare,
       region: Dobruja,
@@ -975,6 +1381,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.6585, 44.1743],
       rarity: 'common',
       icon: 'shield',
+      image: {
+        src: '/guides/romania/traces/constanta-ovid-square.webp',
+        credit: {
+          author: 'Kdanv',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Statuia_lui_Ovidiu_-_Constanta.jpg',
+        },
+      },
     },
     {
       id: RoTrace.ConstantaRomanMosaic,
@@ -984,6 +1398,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.6593, 44.1726],
       rarity: 'common',
       icon: 'mosaic',
+      image: {
+        src: '/guides/romania/traces/constanta-roman-mosaic.webp',
+        credit: {
+          author: 'CrisNYCa',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Edificiul_roman_cu_mozaic_din_Constan%C8%9Ba_4.jpg',
+        },
+      },
     },
     {
       id: RoTrace.ConstantaGrandMosque,
@@ -993,6 +1415,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.6597, 44.1733],
       rarity: 'common',
       icon: 'mosque',
+      image: {
+        src: '/guides/romania/traces/constanta-grand-mosque.webp',
+        credit: {
+          author: 'Wikimedia Commons',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Moscheea_Carol_I,_Constanta.JPG',
+        },
+      },
     },
     {
       id: RoTrace.ConstantaCasino,
@@ -1002,8 +1432,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.6635, 44.1705],
       rarity: 'common',
       icon: 'waves',
+      image: {
+        src: '/guides/romania/traces/constanta-casino.webp',
+        credit: {
+          author: 'Dennis Sylvester Hurd',
+          license: 'CC0',
+          url: 'https://commons.wikimedia.org/wiki/File:Constan%C8%9Ba_Casino_2025_(54606449888).jpg',
+        },
+      },
     },
-    // Ovidiu, north of Constanța. TODO image: freely licensed photograph.
+    // Ovidiu, north of Constanța.
     {
       id: RoTrace.HagiAcademyStadium,
       region: Dobruja,
@@ -1011,8 +1449,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.5648, 44.2358],
       rarity: 'rare',
       icon: 'ball',
+      image: {
+        src: '/guides/romania/traces/hagi-academy-stadium.webp',
+        credit: {
+          author: 'Leontin l',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ovidiu_2017_(4).jpg',
+        },
+      },
     },
-    // On the coast, by the Bulgarian border. TODO image: freely licensed photograph.
+    // On the coast, by the Bulgarian border.
     {
       id: RoTrace.VamaVeche,
       region: Dobruja,
@@ -1020,8 +1466,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.5711, 43.7522],
       rarity: 'common',
       icon: 'music',
+      image: {
+        src: '/guides/romania/traces/vama-veche.webp',
+        credit: {
+          author: 'ZARAKA Z',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Vama_veche_aerial_2021.jpg',
+        },
+      },
     },
-    // Danube Delta (Tulcea county). TODO image: freely licensed photographs for the four traces.
+    // Danube Delta (Tulcea county).
     {
       id: RoTrace.SulinaOldLighthouse,
       region: Dobruja,
@@ -1029,6 +1483,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [29.663, 45.1553],
       rarity: 'rare',
       icon: 'lighthouse',
+      image: {
+        src: '/guides/romania/traces/sulina-old-lighthouse.webp',
+        credit: {
+          author: 'Dora Domsa',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Farul_Vechi_Sulina.JPG',
+        },
+      },
     },
     {
       id: RoTrace.LeteaForest,
@@ -1037,6 +1499,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [29.524, 45.2861],
       rarity: 'very-rare',
       icon: 'tree',
+      image: {
+        src: '/guides/romania/traces/letea-forest.webp',
+        credit: {
+          author: 'Moroyanu at Romanian Wikipedia',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Letea0_cropped.jpg',
+        },
+      },
     },
     {
       id: RoTrace.JurilovcaHarbour,
@@ -1045,6 +1515,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [28.8739, 44.7583],
       rarity: 'rare',
       icon: 'boat',
+      image: {
+        src: '/guides/romania/traces/jurilovca-harbour.webp',
+        credit: {
+          author: 'adriansibiu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Romania,_Tulcea,_Jurilovca_-_Razim_(Razelm)_Lake_WMID606175.jpg',
+        },
+      },
     },
     {
       id: RoTrace.DeltaPelicans,
@@ -1054,8 +1532,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [29.5, 45.2],
       rarity: 'very-rare',
       icon: 'bird',
+      image: {
+        src: '/guides/romania/traces/delta-pelicans.webp',
+        credit: {
+          author: 'Goliath',
+          license: 'CC BY 1.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Pelicani_din_Delta_Dunarii.PNG',
+        },
+      },
     },
-    // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia. TODO image: freely licensed photographs for the three traces.
+    // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia.
     {
       id: RoTrace.VidraruDam,
       region: Wallachia,
@@ -1063,6 +1549,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.6302, 45.3666],
       rarity: 'rare',
       icon: 'wall',
+      image: {
+        src: '/guides/romania/traces/vidraru-dam.webp',
+        credit: {
+          author: 'Andrei Stroe',
+          license: 'CC BY-SA 2.5',
+          url: 'https://commons.wikimedia.org/wiki/File:Vidraru_Dam.jpg',
+        },
+      },
     },
     {
       id: RoTrace.BaleaLake,
@@ -1071,6 +1565,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.617, 45.602],
       rarity: 'rare',
       icon: 'waves',
+      image: {
+        src: '/guides/romania/traces/balea-lake.webp',
+        credit: {
+          author: '-wuppertaler',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:ROM_Cartisoara_Balea_Lac_17.jpg',
+        },
+      },
     },
     {
       id: RoTrace.MoldoveanuPeak,
@@ -1079,6 +1581,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.7362, 45.5994],
       rarity: 'very-rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/moldoveanu-peak.webp',
+        credit: {
+          author: 'MIHAIL',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Moldoveanu_Peak_(Romania).jpg',
+        },
+      },
     },
     // The road crosses the ridge: filed under Transilvania, where its best-known stretch is (the north ramp).
     {
@@ -1088,8 +1598,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.6284, 45.5903],
       rarity: 'rare',
       icon: 'road',
+      image: {
+        src: '/guides/romania/traces/transfagarasan.webp',
+        credit: {
+          author: 'Horia Varlan from Bucharest, Romania',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Road_with_hairpin_turns.jpg',
+        },
+      },
     },
-    // Piatra Craiului (Brașov county side): Zărnești and Măgura are about 30 km from Brașov. TODO image: freely licensed photographs for the four traces.
+    // Piatra Craiului (Brașov county side): Zărnești and Măgura are about 30 km from Brașov.
     {
       id: RoTrace.ZarnestiGorges,
       region: Transylvania,
@@ -1097,6 +1615,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.2678, 45.5267],
       rarity: 'common',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/zarnesti-gorges.webp',
+        credit: {
+          author: 'Petr Vodička',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Prapastiile_Zarnestilor.jpg',
+        },
+      },
     },
     {
       id: RoTrace.LibeartyBearSanctuary,
@@ -1105,6 +1631,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.3778, 45.5951],
       rarity: 'rare',
       icon: 'paw',
+      image: {
+        src: '/guides/romania/traces/libearty-bear-sanctuary.webp',
+        credit: {
+          author: 'Ehud ELIA',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Libearty_Center-11_(33294640506).jpg',
+        },
+      },
     },
     {
       id: RoTrace.MaguraVillage,
@@ -1113,6 +1647,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.2889, 45.5225],
       rarity: 'common',
       icon: 'barn',
+      image: {
+        src: '/guides/romania/traces/magura-village.webp',
+        credit: {
+          author: 'Marek Ślusarczyk (Tupungato)',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:01_Magura,_Romania_-_Piatra_Craiului_mountains.jpg',
+        },
+      },
     },
     {
       id: RoTrace.LaOmPeak,
@@ -1121,8 +1663,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.2109, 45.5266],
       rarity: 'very-rare',
       icon: 'flower',
+      image: {
+        src: '/guides/romania/traces/la-om-peak.webp',
+        credit: {
+          author: 'Xulescu g',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Piatra_Craiului_-_La_Om_1.jpg',
+        },
+      },
     },
-    // Apuseni Mountains (Alba, Bihor, Cluj counties): the Bihor side is Crișana, which the trip filter has no entry for, so it sits with Transilvania (as Timișoara for the Banat). TODO image: freely licensed photographs for the three traces.
+    // Apuseni Mountains (Alba, Bihor, Cluj counties): the Bihor side is Crișana, which the trip filter has no entry for, so it sits with Transilvania (as Timișoara for the Banat).
     {
       id: RoTrace.ScarisoaraIceCave,
       region: Transylvania,
@@ -1130,6 +1680,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.8097, 46.4897],
       rarity: 'rare',
       icon: 'snowflake',
+      image: {
+        src: '/guides/romania/traces/scarisoara-ice-cave.webp',
+        credit: {
+          author: 'Beradrian at English Wikipedia',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Pestera_Scarisoara_-_Sala_Biserica.jpg',
+        },
+      },
     },
     {
       id: RoTrace.BearsCave,
@@ -1138,6 +1696,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.5692, 46.5539],
       rarity: 'rare',
       icon: 'paw',
+      image: {
+        src: '/guides/romania/traces/bears-cave.webp',
+        credit: {
+          author: 'Zátonyi Sándor (ifj.)',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Medvebarlang20.jpg',
+        },
+      },
     },
     {
       id: RoTrace.CetatilePonorului,
@@ -1146,8 +1712,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.7017, 46.5631],
       rarity: 'very-rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/cetatile-ponorului.webp',
+        credit: {
+          author: 'Tula',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Csodav%C3%A1r_sziklakapu.jpg',
+        },
+      },
     },
-    // Turda, on the eastern edge of the Apuseni. TODO image: freely licensed photograph.
+    // Turda, on the eastern edge of the Apuseni.
     {
       id: RoTrace.SalinaTurda,
       region: Transylvania,
@@ -1155,8 +1729,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.7874, 46.5877],
       rarity: 'common',
       icon: 'steps',
+      image: {
+        src: '/guides/romania/traces/salina-turda.webp',
+        credit: {
+          author: 'Cosmin Danila',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Salina_Turda_045.jpg',
+        },
+      },
     },
-    // Iron Gates (Mehedinți county): filed under Valacchia, as the Decebalus sculpture. TODO image: freely licensed photographs for the three traces.
+    // Iron Gates (Mehedinți county): filed under Valacchia, as the Decebalus sculpture.
     {
       id: RoTrace.MraconiaMonastery,
       region: Wallachia,
@@ -1164,6 +1746,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.2937, 44.6374],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/mraconia-monastery.webp',
+        credit: {
+          author: 'Pudelek',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Mraconia_Monastery,_Romania_01.jpg',
+        },
+      },
     },
     {
       id: RoTrace.IronGatesDam,
@@ -1172,6 +1762,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.5292, 44.6708],
       rarity: 'rare',
       icon: 'lightning',
+      image: {
+        src: '/guides/romania/traces/iron-gates-dam.webp',
+        credit: {
+          author: 'CrniBombarder!!!',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:HE_%C4%90erdapI_Karata%C5%A1.jpg',
+        },
+      },
     },
     {
       id: RoTrace.TrajansBridgeRuins,
@@ -1180,8 +1778,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.667, 44.6238],
       rarity: 'rare',
       icon: 'bridge',
+      image: {
+        src: '/guides/romania/traces/trajans-bridge-ruins.webp',
+        credit: {
+          author: 'Leontin l',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Podul_lui_Traian_2021_04.jpg',
+        },
+      },
     },
-    // Retezat (Hunedoara county). TODO image: freely licensed photographs for the two traces.
+    // Retezat (Hunedoara county).
     {
       id: RoTrace.BucuraLake,
       region: Transylvania,
@@ -1189,6 +1795,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.875, 45.3583],
       rarity: 'rare',
       icon: 'waves',
+      image: {
+        src: '/guides/romania/traces/bucura-lake.webp',
+        credit: {
+          author: 'Dezidor',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Lacul_Bucura.jpg',
+        },
+      },
     },
     {
       id: RoTrace.PeleagaPeak,
@@ -1197,8 +1811,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [22.8944, 45.3661],
       rarity: 'very-rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/peleaga-peak.webp',
+        credit: {
+          author: 'Igor.skokan at English Wikipedia',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:VirfulPeleaga.JPG',
+        },
+      },
     },
-    // Vaser valley and Rodna Mountains (Maramureș county): Maramureș has no entry in the trip filter, so it sits with Transilvania. TODO image: freely licensed photographs for the three traces.
+    // Vaser valley and Rodna Mountains (Maramureș county): Maramureș has no entry in the trip filter, so it sits with Transilvania.
     {
       id: RoTrace.MocanitaViseuDeSus,
       region: Transylvania,
@@ -1206,6 +1828,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.443, 47.7147],
       rarity: 'very-rare',
       icon: 'train',
+      image: {
+        src: '/guides/romania/traces/mocanita-viseu-de-sus.webp',
+        credit: {
+          author: 'Pivari.com',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Treno,_Moc%C4%83ni%C8%9Ba,_Vi%C5%9Feu_de_Sus,_Maramure%C5%9F.jpg',
+        },
+      },
     },
     {
       id: RoTrace.HorsesWaterfall,
@@ -1214,6 +1844,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.8023, 47.5903],
       rarity: 'rare',
       icon: 'drop',
+      image: {
+        src: '/guides/romania/traces/horses-waterfall.webp',
+        credit: {
+          author: 'Code',
+          license: 'CC BY 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cascada_Cailor_20230808_ako.jpg',
+        },
+      },
     },
     {
       id: RoTrace.PietrosulRodnei,
@@ -1222,9 +1860,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.6341, 47.5969],
       rarity: 'very-rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/pietrosul-rodnei.webp',
+        credit: {
+          author: 'Martin Kozák',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Varful_Pietrosul_Rodnei.jpg',
+        },
+      },
     },
     // Iza valley and Săpânța (Maramureș), filed under Transilvania as the rest of the card.
-    // TODO image: freely licensed photographs for the two traces.
     {
       id: RoTrace.BarsanaChurch,
       region: Transylvania,
@@ -1232,6 +1877,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [24.054, 47.8205],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/barsana-wooden-church.webp',
+        credit: {
+          author: 'FoamBubbles',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Biserica_de_lemn_din_B%C3%A2rsana-_vedere_cimitir.jpg',
+        },
+      },
     },
     {
       id: RoTrace.MerryCemetery,
@@ -1240,8 +1893,16 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [23.6956, 47.9714],
       rarity: 'rare',
       icon: 'paint',
+      image: {
+        src: '/guides/romania/traces/merry-cemetery-sapanta.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cimitirul_Vesel,_S%C4%83p%C3%A2n%C8%9Ba,_Maramure%C8%99_-_(2023)_-_IMG_18.jpg',
+        },
+      },
     },
-    // Bicaz gorges and Ceahlău (Neamț county, Moldavia; Lacu Roșu is in Harghita county, Transilvania). TODO image: freely licensed photographs for the three traces.
+    // Bicaz gorges and Ceahlău (Neamț county, Moldavia; Lacu Roșu is in Harghita county, Transilvania).
     {
       id: RoTrace.BicazGorges,
       region: Moldavia,
@@ -1249,6 +1910,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.8189, 46.812],
       rarity: 'rare',
       icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/bicaz-gorges.webp',
+        credit: {
+          author: 'Laurap',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Chei_Bicaz_047.jpg',
+        },
+      },
     },
     {
       id: RoTrace.RedLake,
@@ -1257,6 +1926,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.7869, 46.7893],
       rarity: 'rare',
       icon: 'tree',
+      image: {
+        src: '/guides/romania/traces/red-lake.webp',
+        credit: {
+          author: 'Laurap',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Lacul_Rosu_092.jpg',
+        },
+      },
     },
     {
       id: RoTrace.ToacaPeak,
@@ -1265,6 +1942,14 @@ export const structure = defineGuide<Ro, RoSection>({
       at: [25.9499, 46.9775],
       rarity: 'rare',
       icon: 'church',
+      image: {
+        src: '/guides/romania/traces/toaca-peak.webp',
+        credit: {
+          author: 'Pear Blossom',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Csalh%C3%B3.jpg',
+        },
+      },
     },
     // Gastronomia, whole country: the dishes are traces anywhere (album first page). No images.
     {
@@ -1272,30 +1957,70 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'anywhere',
       rarity: 'common',
       icon: 'pot',
+      image: {
+        src: '/guides/romania/traces/food-mamaliga.webp',
+        credit: {
+          author: 'Wikimedia Commons',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Mamaliga.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodSarmale,
       where: 'anywhere',
       rarity: 'common',
       icon: 'pot',
+      image: {
+        src: '/guides/romania/traces/food-sarmale.webp',
+        credit: {
+          author: 'Nicubunu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Sarmale_with_mamalig%C4%83.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodCozonac,
       where: 'anywhere',
       rarity: 'common',
       icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-cozonac.webp',
+        credit: {
+          author: 'Vvssmmaann',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cozonac-cu-nuca-103.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodPapanasi,
       where: 'anywhere',
       rarity: 'common',
       icon: 'cake',
+      image: {
+        src: '/guides/romania/traces/food-papanasi.webp',
+        credit: {
+          author: 'Toniher',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Papana%C8%99i_Sinaia.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodTuica,
       where: 'anywhere',
       rarity: 'common',
       icon: 'brandy',
+      image: {
+        src: '/guides/romania/traces/food-tuica.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:%C8%9Auic%C4%83_on_Orthodox_Easter_from_Sighet.jpg',
+        },
+      },
     },
     // Gastronomia, Transilvania (with the Banat, Crișana and Maramureș, which the trip filter has no entry for). No images.
     {
@@ -1304,6 +2029,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'fork',
+      image: {
+        src: '/guides/romania/traces/food-sibiu-salami.webp',
+        credit: {
+          author: 'Julieta39',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Salam_de_Sibiu.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodKurtoskalacs,
@@ -1311,6 +2044,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-kurtoskalacs.webp',
+        credit: {
+          author: 'Cyril5555',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:K%C3%BCrt%C5%91skal%C3%A1cs2011.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodVarzaCluj,
@@ -1318,6 +2059,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'pot',
+      image: {
+        src: '/guides/romania/traces/food-varza-cluj.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cluj_Napoca_-_Varz%C4%83_%C3%A0_la_Cluj_(2023)_-_img_02.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodPalinca,
@@ -1325,6 +2074,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'brandy',
+      image: {
+        src: '/guides/romania/traces/food-palinca.webp',
+        credit: {
+          author: 'Guus Bosman',
+          license: 'CC BY 2.5',
+          url: 'https://commons.wikimedia.org/wiki/File:Palinka.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodPljeskavica,
@@ -1332,6 +2089,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'fork',
+      image: {
+        src: '/guides/romania/traces/food-pljeskavica.webp',
+        credit: {
+          author: 'Biso',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Pleskavitsa.JPG',
+        },
+      },
     },
     {
       id: RoTrace.FoodHorinca,
@@ -1353,6 +2118,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'cheese',
+      image: {
+        src: '/guides/romania/traces/food-branza-de-burduf.webp',
+        credit: {
+          author: 'Oliver Speks',
+          license: 'CC BY-SA 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Br%C3%A2nz%C4%83_de_burduf.jpg',
+        },
+      },
     },
     // Gastronomia, Valacchia. No images.
     {
@@ -1361,6 +2134,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'fork',
+      image: {
+        src: '/guides/romania/traces/food-mici.webp',
+        credit: {
+          author: 'Stoschmidt',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Mititei_aufm_Grill.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodCiorbaBurta,
@@ -1368,6 +2149,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'bowl',
+      image: {
+        src: '/guides/romania/traces/food-ciorba-burta.webp',
+        credit: {
+          author: 'Sacha47',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ciorba_de_burta_2.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodCovrigi,
@@ -1375,6 +2164,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-covrigi.webp',
+        credit: {
+          author: 'Nicubunu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Covrigi-brasonveni.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodMagiun,
@@ -1389,6 +2186,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'wine',
+      image: {
+        src: '/guides/romania/traces/food-dealu-mare.webp',
+        credit: {
+          author: 'Andrei Dobre',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Panorama_Tohani_(2).jpg',
+        },
+      },
     },
     // Gastronomia, Moldavia. No images.
     {
@@ -1397,6 +2202,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'pot',
+      image: {
+        src: '/guides/romania/traces/food-tochitura.webp',
+        credit: {
+          author: 'Nicubunu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Tochitura-moldoveneasca.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodPoaleInBrau,
@@ -1404,6 +2217,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'cake',
+      image: {
+        src: '/guides/romania/traces/food-poale-in-brau.webp',
+        credit: {
+          author: 'Anila58',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Placinte_%E2%80%9DPoale-n_br%C3%A2u%E2%80%9D.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodCiorbaRadauteana,
@@ -1411,6 +2232,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'bowl',
+      image: {
+        src: '/guides/romania/traces/food-ciorba-radauteana.webp',
+        credit: {
+          author: 'Romaniancook',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ciorba_radauteana.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodCotnari,
@@ -1418,6 +2247,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'wine',
+      image: {
+        src: '/guides/romania/traces/food-cotnari.webp',
+        credit: {
+          author: 'ciur nicu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cotnari_-_panoramio.jpg',
+        },
+      },
     },
     // Gastronomia, Dobrogea. No images.
     {
@@ -1433,6 +2270,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'fish',
+      image: {
+        src: '/guides/romania/traces/food-saramura.webp',
+        credit: {
+          author: 'Nicubunu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Saramura_de_chefal.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodPlacintaDobrogeana,
@@ -1440,6 +2285,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-placinta-dobrogeana.webp',
+        credit: {
+          author: 'Korinna',
+          license: 'CC0',
+          url: 'https://commons.wikimedia.org/wiki/File:Placinta_dobrogeana.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodSuberek,
@@ -1447,6 +2300,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'rare',
       icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-suberek.webp',
+        credit: {
+          author: 'Bogdan Muraru',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:%C5%9Euberek.jpg',
+        },
+      },
     },
     {
       id: RoTrace.FoodMurfatlar,
@@ -1454,6 +2315,14 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'wine',
+      image: {
+        src: '/guides/romania/traces/food-murfatlar.webp',
+        credit: {
+          author: 'Pmatlock',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Murfatlar1.jpg',
+        },
+      },
     },
   ],
   cards: [

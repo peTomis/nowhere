@@ -83,7 +83,7 @@ export function TripFilter({ country, size }: { country: string; size: 'sidebar'
               </div>
               {p.cities.length > 0 && isOpen && (
                 <div
-                  className={`flex flex-wrap ${big ? 'gap-[8px] pt-1 pb-[12px] pl-[30px]' : 'gap-[6px] pt-1 pb-[8px] pl-[28px]'} ${ron ? '' : 'opacity-45'}`}
+                  className={`flex flex-wrap ${big ? 'gap-[8px] pt-1 pb-[12px] pl-6' : 'gap-[6px] pt-1 pb-[8px] pl-[28px]'} ${ron ? '' : 'opacity-45'}`}
                   aria-label={format(t.guide.trip.citiesOf, { name: p.name })}
                 >
                   {p.cities.map((c) => (

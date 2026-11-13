@@ -31,7 +31,7 @@ export default function AccountPage({ searchParams }: PageProps<'/account'>) {
   return (
     <div className="flex min-h-svh flex-col">
       <SiteHeader />
-      <main className="flex w-full max-w-[720px] flex-1 flex-col gap-[60px] px-(--inset) pt-[clamp(56px,9vw,112px)] text-[17px] leading-[1.6] text-pretty">
+      <main className="flex w-full max-w-144 flex-1 flex-col gap-12 px-(--inset) pt-[clamp(56px,9vw,112px)] text-[17px] leading-[1.6] text-pretty">
         <div className="flex flex-col gap-2">
           <h1 className="m-0 text-[clamp(44px,9vw,72px)] leading-[.95] font-semibold tracking-[-.03em]">
             {t.account.title}
@@ -57,7 +57,7 @@ export default function AccountPage({ searchParams }: PageProps<'/account'>) {
               const content = guideContent[g.slug]
               const traces = tracesOf(content, g.name).map(({ key, points }) => ({ key, points }))
               return (
-                <div key={g.slug} className="flex max-w-[520px] flex-col gap-2">
+                <div key={g.slug} className="flex max-w-104 flex-col gap-2">
                   <Completion name={g.name} traces={traces} variant="full" />
                   <Link
                     href={`/guide/${g.slug}#album`}
@@ -71,7 +71,7 @@ export default function AccountPage({ searchParams }: PageProps<'/account'>) {
           </Section>
         )}
       </main>
-      <SiteFooter className="mt-[120px]" />
+      <SiteFooter className="mt-24" />
     </div>
   )
 }
@@ -117,7 +117,7 @@ async function Session({ searchParams }: Pick<PageProps<'/account'>, 'searchPara
               className="size-[48px] flex-none text-[21px]"
             />
             <div className="flex min-w-0 flex-[1_1_220px] flex-col">
-              <span className="text-lg font-semibold [overflow-wrap:anywhere]">{user.email}</span>
+              <span className="text-lg font-semibold wrap-anywhere">{user.email}</span>
               <span className="text-sm text-neutral-700">
                 {since
                   ? format(t.account.connectedSince, {
@@ -166,7 +166,7 @@ async function Session({ searchParams }: Pick<PageProps<'/account'>, 'searchPara
       </Section>
 
       <Section title={t.account.syncHeading}>
-        <div role="status" className="flex max-w-[56ch] items-start gap-[10px]">
+        <div role="status" className="flex max-w-[56ch] items-start gap-2">
           {user ? (
             <CheckCircleIcon
               weight="duotone"

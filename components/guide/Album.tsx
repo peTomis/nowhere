@@ -85,8 +85,8 @@ export function Album() {
   const current = open ? traces.find((tr) => tr.id === open) : undefined
 
   return (
-    <div className="mx-auto max-w-[1100px] px-[clamp(20px,5vw,48px)] pt-[clamp(48px,8vw,96px)]">
-      <div className="flex flex-col gap-[60px] font-body [text-wrap:pretty] text-text">
+    <div className="mx-auto max-w-220 px-[clamp(20px,5vw,48px)] pt-[clamp(48px,8vw,96px)]">
+      <div className="flex flex-col gap-12 font-body text-pretty text-text">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <span className="text-xs tracking-[.16em] text-accent-700 uppercase">
@@ -96,7 +96,7 @@ export function Album() {
               {t.guide.album.heading}
             </h2>
           </div>
-          <Completion name={name} traces={traces} variant="full" className="max-w-[560px]" />
+          <Completion name={name} traces={traces} variant="full" className="max-w-112" />
           {filters.length > 1 && (
             <div role="group" aria-label={t.guide.album.filter} className="flex flex-wrap gap-2">
               {filters.map((f) => {
@@ -128,7 +128,7 @@ export function Album() {
             <div className="flex flex-col gap-1">
               <h3
                 id="album-pinned"
-                className="m-0 flex items-center gap-[10px] text-[clamp(26px,5vw,34px)] leading-[1.1]"
+                className="m-0 flex items-center gap-2 text-[clamp(26px,5vw,34px)] leading-[1.1]"
               >
                 <PushPinIcon
                   weight="duotone"
@@ -240,7 +240,7 @@ function TraceBox({
       className="flex w-full cursor-pointer flex-col gap-2 border-0 bg-transparent p-0 text-left font-body text-text hover:text-accent-800"
     >
       <span
-        className={`relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${boxBorder(seen, trace.theme)}`}
+        className={`relative block aspect-4/3 w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${boxBorder(seen, trace.theme)}`}
       >
         {seen ? (
           <>
@@ -248,7 +248,7 @@ function TraceBox({
             {src && <img src={src} alt="" className="absolute inset-0 size-full object-cover" />}
             <span
               aria-hidden="true"
-              className="absolute top-[6px] left-[6px] flex items-center gap-[3px] rounded-md bg-bg py-px pr-[7px] pl-[5px] text-xs font-semibold tabular-nums shadow-sm"
+              className="absolute top-[6px] left-[6px] flex items-center gap-[3px] rounded-md bg-bg py-px pr-[7px] pl-1 text-xs font-semibold tabular-nums shadow-sm"
             >
               <CheckIcon weight="bold" size={13} className="text-accent-700" />
               {num}
@@ -266,7 +266,7 @@ function TraceBox({
               weight="duotone"
               size={32}
               aria-hidden="true"
-              className="absolute right-[12px] bottom-[10px] text-neutral-400"
+              className="absolute right-[12px] bottom-2 text-neutral-400"
             />
           </>
         )}
@@ -326,8 +326,8 @@ export function TraceDialog({
         onClick={(e) => e.stopPropagation()}
         className="flex max-h-[92%] w-full flex-col overflow-hidden rounded-t-lg bg-bg shadow-lg sm:max-h-[min(820px,100%)] sm:w-[min(720px,100%)] sm:rounded-lg"
       >
-        <div aria-hidden="true" className="flex flex-none justify-center pt-[10px] sm:hidden">
-          <span className="h-[4px] w-[40px] rounded-[2px] bg-neutral-300" />
+        <div aria-hidden="true" className="flex flex-none justify-center pt-2 sm:hidden">
+          <span className="h-[4px] w-8 rounded-[2px] bg-neutral-300" />
         </div>
         <div className="flex flex-none items-center justify-between gap-2 pt-2 pr-3 pl-4">
           <span className="text-[11px] tracking-[.14em] text-neutral-700 uppercase">

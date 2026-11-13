@@ -21,6 +21,8 @@ import {
 } from '@phosphor-icons/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState, type ReactNode } from 'react'
 import type { AlbumTrace } from '@/content/build'
 import { traceAnchor } from '@/content/anchors'
 import type { TraceTheme, TraceWhere } from '@/content/types'
@@ -28,13 +30,15 @@ import { format, locale, t } from '@/i18n'
 import { isSeen, retryPhoto, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useTrace } from './data'
 import { openPhotoPanel } from './panelStore'
+import { PhotoViewer } from './PhotoViewer'
 import { TRACE_ICONS } from './traceIcons'
 
 /*
  * A trace, port of "Traccia.dc.html": the reader's photo (or the stock image in grey, or a
  * placeholder) with the album number, where it is and how rare, the name, the reader's note, the
  * state of the photo with its actions, other cards that list it, what it is and how to find it.
- * Used in the person and city cards and in the album's open box.
+ * Used in the person and city cards and in the album's open box. The image opens the reader's
+ * photo full screen, or, without one, does what the add button does.
  */
 
 export const WHERE_ICONS: Record<TraceWhere, typeof BuildingsIcon> = {
@@ -55,7 +59,7 @@ export function RarityMarks({ points, height = 11 }: { points: number; height?: 
       {[1, 2, 3].map((i) => (
         <span
           key={i}
-          className={`w-[3px] rounded-[1px] ${i <= points ? 'bg-text' : 'bg-neutral-300'}`}
+          className={`w-[3px] rounded-sm ${i <= points ? 'bg-text' : 'bg-neutral-300'}`}
           style={{ height }}
         />
       ))}
@@ -110,6 +114,8 @@ export function Trace({
 }) {
   const trace = useTrace(id)
   const { session, entries } = useCollection()
+  const router = useRouter()
+  const [viewing, setViewing] = useState(false)
   if (!trace) return null
   const description = text ?? trace.text
   const entry = entries[trace.key]
@@ -127,6 +133,11 @@ export function Trace({
     : format(stock ? t.guide.trace.altStock : t.guide.trace.altEmpty, { num, name: trace.name })
   const rarity = t.guide.album.rarityLabel[trace.rarity]
   const edit = () => openPhotoPanel(trace.id, 'edit')
+  const signedOut = session === 'signed-out'
+  // Without a photo, a click on the image is the add button (a mouse shortcut: keyboard and
+  // screen readers have the button itself).
+  const add = () => (signedOut ? router.push('/account') : openPhotoPanel(trace.id, 'new'))
+  const box = `relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg p-0 ${boxBorder(seen, trace.theme)}`
 
   return (
     <article
@@ -135,14 +146,15 @@ export function Trace({
         num,
         name: trace.name,
       })}
-      className="flex scroll-mt-[80px] flex-col gap-4 font-body [text-wrap:pretty] text-text"
+      className="flex scroll-mt-16 flex-col gap-4 font-body text-pretty text-text"
     >
       <div className="flex flex-wrap items-start gap-x-6 gap-y-4">
         <figure className="m-0 flex min-w-0 flex-[1_1_260px] flex-col gap-2">
-          <div
-            role="img"
-            aria-label={alt}
-            className={`relative aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg ${boxBorder(seen, trace.theme)}`}
+          <PhotoBox
+            box={box}
+            alt={alt}
+            onView={seen && src ? () => setViewing(true) : undefined}
+            onAdd={seen ? undefined : add}
           >
             {seen && src ? (
               // eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview
@@ -197,7 +209,8 @@ export function Trace({
                 </span>
               </div>
             )}
-          </div>
+          </PhotoBox>
+          {viewing && src && <PhotoViewer src={src} alt={alt} onClose={() => setViewing(false)} />}
           {stock?.credit && (
             <figcaption className="m-0 text-xs leading-[1.4] text-neutral-700">
               {t.guide.trace.stock} · {stock.credit.author} ·{' '}
@@ -270,7 +283,7 @@ export function Trace({
             <TraceActions
               trace={trace}
               entry={entry}
-              signedOut={session === 'signed-out'}
+              signedOut={signedOut}
               date={date}
               onEdit={edit}
             />
@@ -283,7 +296,7 @@ export function Trace({
                 <a
                   key={c.id}
                   href={`#${traceAnchor(c.id, trace.id)}`}
-                  className="-my-[10px] py-[10px] text-accent-700 hover:text-accent-800 hover:underline"
+                  className="-my-2 py-2 text-accent-700 hover:text-accent-800 hover:underline"
                 >
                   {c.name}
                 </a>
@@ -307,10 +320,47 @@ export function Trace({
             <CompassIcon weight="duotone" size={16} aria-hidden="true" />
             {t.guide.trace.find}
           </span>
-          <span className="text-[15px] leading-[1.5] text-neutral-800">{trace.find}</span>
+          <span className="text-[15px] leading-normal text-neutral-800">{trace.find}</span>
         </div>
       </div>
     </article>
+  )
+}
+
+/** The image's box: a button to the photo full screen, a click target to add one, or a picture. */
+function PhotoBox({
+  box,
+  alt,
+  onView,
+  onAdd,
+  children,
+}: {
+  box: string
+  alt: string
+  onView?: () => void
+  onAdd?: () => void
+  children: ReactNode
+}) {
+  if (onView)
+    return (
+      <button
+        type="button"
+        aria-label={format(t.guide.trace.open, { alt })}
+        onClick={onView}
+        className={`${box} cursor-zoom-in`}
+      >
+        {children}
+      </button>
+    )
+  return (
+    <div
+      role="img"
+      aria-label={alt}
+      onClick={onAdd}
+      className={`${box} ${onAdd ? 'cursor-pointer' : ''}`}
+    >
+      {children}
+    </div>
   )
 }
 
@@ -376,7 +426,7 @@ function TraceActions({
   if (local?.state === 'offline')
     return (
       <div role="status" className="flex flex-wrap items-center gap-x-2">
-        <span className="flex items-start gap-[6px] py-[10px] text-sm leading-[1.45] text-neutral-800">
+        <span className="flex items-start gap-[6px] py-2 text-sm leading-[1.45] text-neutral-800">
           <CloudSlashIcon
             weight="duotone"
             size={20}

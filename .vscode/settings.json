@@ -110,5 +110,34 @@
   "[xml]": {
     "editor.defaultFormatter": "mikeburgh.xml-format"
   },
-  "cSpell.words": []
+  "cSpell.words": [
+    "Anche",
+    "Ancora",
+    "Contesto",
+    "Curiosità",
+    "d’argento",
+    "dati",
+    "evidenza",
+    "Fonti",
+    "Gastronomia",
+    "Guida",
+    "Lede",
+    "licence",
+    "mappa",
+    "medaglia",
+    "Natura",
+    "prefs",
+    "punti",
+    "recognises",
+    "ricordare",
+    "Scheda",
+    "Sito",
+    "topo",
+    "topojson",
+    "Traccia",
+    "trovarla",
+    "tuoi",
+    "ungated",
+    "Varianti"
+  ]
 }

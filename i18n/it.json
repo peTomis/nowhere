@@ -198,7 +198,13 @@
       "outsideTrip": "Fuori dal tuo viaggio",
       "remember": "Da ricordare",
       "today": "Oggi",
-      "and": " e "
+      "and": " e ",
+      "open": "{alt}. Apri la foto a schermo intero",
+      "viewer": {
+        "close": "Chiudi la foto",
+        "zoomIn": "Ingrandisci",
+        "zoomOut": "Riduci"
+      }
     },
     "photo": {
       "kickerEdit": "Modifica",
