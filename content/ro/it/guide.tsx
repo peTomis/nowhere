@@ -1918,7 +1918,7 @@ function Body() {
                 costituzione cambia il nome dello Stato in Repubblica socialista di Romania; il
                 partito mantiene il monopolio politico.
               </Detail>
-              <Today traces={[RoTrace.PrimaveriiPalace, RoTrace.PalaceOfTheParliament]} />
+              <Today traces={[RoTrace.PrimaveriiPalace]} />
             </Event>
             <Event on="always" date="1966" title="Il decreto 770 limita l’aborto">
               <Detail on="always">
@@ -1934,37 +1934,153 @@ function Body() {
               title="Ceaușescu condanna l’invasione della Cecoslovacchia"
             >
               <Detail on="always">
-                Il capo del partito condanna l’intervento militare guidato dall’URSS in
-                Cecoslovacchia. L’autonomia diplomatica gli procura credito in Occidente, ma non
-                abolisce la censura e la repressione interne.
+                Il <D>21 agosto 1968</D>, davanti a una folla enorme nella piazza del palazzo reale,
+                Ceaușescu condanna l’intervento militare guidato dall’URSS in Cecoslovacchia. È il
+                momento della sua massima popolarità, in patria e in Occidente: per anni i governi
+                occidentali lo trattano come il comunista che sfida Mosca. L’autonomia diplomatica
+                non abolisce però la censura e la repressione interne.
               </Detail>
             </Event>
+            <Event on="always" date="1971" title="Le Tesi di luglio chiudono l’apertura">
+              <Detail on="always">
+                Dopo un viaggio in Cina e in Corea del Nord, Ceaușescu presenta le «Tesi di luglio»:
+                la cultura torna sotto il controllo del partito, finisce la breve stagione di
+                relativa libertà degli anni Sessanta. Comincia a crescere il culto della
+                personalità.
+              </Detail>
+            </Event>
+            <Event on="always" date="1974" title="Un presidente con lo scettro">
+              <Detail on="always">
+                Ceaușescu crea per sé la carica di presidente della Repubblica e, alla cerimonia, ne
+                riceve lo scettro. Da allora il potere si concentra nella sua famiglia: la moglie{' '}
+                <N>Elena</N> diventa la seconda figura del regime, presentata come scienziata di
+                fama mondiale.
+              </Detail>
+            </Event>
+            <Context on="always" kind="curiosity" period="1974" title="Il telegramma di Dalí">
+              Salvador Dalí manda a Ceaușescu un telegramma di congratulazioni per lo scettro, così
+              esagerato da essere una presa in giro. Il quotidiano del partito, Scînteia, lo
+              pubblica in prima pagina senza accorgersene.
+            </Context>
             <Context
               on="always"
               period="Anni Settanta e Ottanta"
-              title="Fabbriche, quartieri di blocchi e razionamenti"
+              title="Fabbriche e quartieri di blocchi"
             >
-              L’industrializzazione sposta popolazione dalle campagne alle città. I quartieri di
-              condomini ridisegnano i centri urbani. Negli anni Ottanta il rimborso accelerato del
-              debito estero comporta esportazioni e tagli ai consumi: cibo, riscaldamento ed
-              elettricità vengono razionati, mentre cresce il culto del capo.
+              L’industrializzazione forzata sposta milioni di persone dalle campagne alle città.
+              Acciaierie, raffinerie e fabbriche chimiche crescono anche dove mancano materie prime
+              e mercati; intorno sorgono quartieri di condomini tutti uguali, che ridisegnano le
+              periferie e i centri urbani.
             </Context>
-            <Event on="always" date="1989" title="La rivoluzione abbatte il regime">
+            <Event on="always" date="1977" title="Il terremoto e lo sciopero dei minatori">
               <Detail on="always">
-                La protesta comincia a <N>Timișoara</N>, nel Banato, e raggiunge altre città. La
-                repressione provoca vittime; il 22 dicembre Ceaușescu fugge dalla capitale. Il 25
-                dicembre Nicolae ed Elena Ceaușescu vengono processati sommariamente e fucilati. Il
-                Fronte di salvezza nazionale assume il potere.
+                Il <D>4 marzo 1977</D> un terremoto uccide circa 1.500 persone, quasi tutte a
+                Bucarest. In agosto decine di migliaia di minatori della valle del Jiu scendono in
+                sciopero e trattengono per ore un membro del governo; Ceaușescu va da loro e
+                promette, poi nei mesi seguenti i capi della protesta vengono arrestati o
+                trasferiti. Lo stesso anno lo scrittore <N>Paul Goma</N> chiede il rispetto dei
+                diritti umani ed è costretto all’esilio.
               </Detail>
-              <Today
-                traces={[
-                  RoTrace.TimisoaraTokesParsonage,
-                  RoTrace.CentralCommitteeBuilding,
-                  RoTrace.TimisoaraOperaBalcony,
-                ]}
-              />
+            </Event>
+            <Event on="always" date="1981–1989" title="Il debito ripagato con la fame">
+              <Detail on="always">
+                Ceaușescu decide di ripagare tutto il debito estero, oltre dieci miliardi di
+                dollari, il prima possibile. Carne, latte e verdure partono per l’esportazione,
+                mentre in patria pane, zucchero e olio si comprano con la tessera, dopo ore di fila.
+                Le case restano fredde d’inverno, la luce si spegne per ore, la televisione
+                trasmette due ore al giorno, quasi solo sul capo. Nella primavera del 1989 il regime
+                annuncia che il debito è estinto.
+              </Detail>
+            </Event>
+            <Event on="always" date="1984–1989" title="Bucarest demolita, villaggi da cancellare">
+              <Detail on="always">
+                Per costruire la Casa del Popolo e il nuovo centro civico vengono rasi al suolo
+                quartieri storici di Bucarest, con chiese, monasteri e migliaia di case; alcune
+                chiese sono spostate su rotaie e nascoste dietro i condomini. Nel 1988 il regime
+                annuncia la «sistematizzazione» delle campagne: migliaia di villaggi andrebbero
+                demoliti e gli abitanti trasferiti in centri agroindustriali. Le proteste
+                all’estero, soprattutto in Ungheria, fanno conoscere il progetto, che il crollo del
+                regime ferma.
+              </Detail>
+              <Today traces={[RoTrace.PalaceOfTheParliament]} />
+            </Event>
+            <Event on="always" date="1987–1989" title="Le prime crepe">
+              <Detail on="always">
+                Il <D>15 novembre 1987</D> gli operai della fabbrica di camion Steagul Roșu di{' '}
+                <N>Brașov</N> scendono in strada contro i tagli ai salari e assaltano la sede del
+                partito; la rivolta viene repressa. A Cluj la professoressa <N>Doina Cornea</N>{' '}
+                scrive lettere aperte trasmesse da Radio Europa Libera, e finisce agli arresti
+                domiciliari. Nel marzo 1989 sei vecchi dirigenti comunisti accusano Ceaușescu in una
+                lettera pubblica, la «Lettera dei sei». Intorno, in pochi mesi, cadono i regimi di
+                Polonia, Ungheria, Germania Est, Cecoslovacchia e Bulgaria: in Romania nulla sembra
+                muoversi.
+              </Detail>
+            </Event>
+            <Event on="always" date="dicembre 1989" title="Timișoara si ribella">
+              <Detail on="always">
+                Il <D>16 dicembre</D> i fedeli del pastore ungherese <N>László Tőkés</N>, che il
+                regime vuole trasferire, si radunano davanti alla sua casa a <N>Timișoara</N>. Si
+                uniscono romeni, studenti, operai: la protesta diventa una rivolta contro il regime.
+                Il 17 l’esercito e la Securitate sparano sulla folla e uccidono decine di persone;
+                oltre quaranta corpi vengono portati di nascosto a Bucarest e cremati, per farli
+                sparire. Il 20 gli operai entrano in sciopero e la città si dichiara «libera dal
+                comunismo».
+              </Detail>
+              <Today traces={[RoTrace.TimisoaraTokesParsonage, RoTrace.TimisoaraOperaBalcony]} />
+            </Event>
+            <Event on="always" date="dicembre 1989" title="Bucarest: il comizio e la fuga">
+              <Detail on="always">
+                Il <D>21 dicembre</D> Ceaușescu convoca un grande comizio per condannare i
+                «teppisti» di Timișoara. Dalla folla partono fischi e grida, e la televisione, in
+                diretta, interrompe la trasmissione: per la prima volta il paese vede il dittatore
+                esitare. La sera i manifestanti occupano il centro, e la repressione fa decine di
+                morti. La mattina del 22 il ministro della difesa, Vasile Milea, muore, suicida
+                secondo la versione ufficiale; l’esercito passa dalla parte della folla, che invade
+                la sede del Comitato centrale. Ceaușescu ed Elena fuggono in elicottero dal tetto.
+                Poche ore dopo, alla televisione occupata, il <N>Fronte di salvezza nazionale</N>{' '}
+                guidato da <N>Ion Iliescu</N>, un ex dirigente del partito, annuncia di aver preso
+                il potere.
+              </Detail>
+              <Today traces={[RoTrace.CentralCommitteeBuilding]} />
+            </Event>
+            <Event on="always" date="dicembre 1989" title="I «terroristi» e il processo di Natale">
+              <Detail on="always">
+                I Ceaușescu vengono catturati il pomeriggio stesso vicino a <N>Târgoviște</N> e
+                chiusi in una caserma. Intanto a Bucarest e in altre città si spara per giorni: la
+                televisione parla di «terroristi» fedeli al dittatore. Dei circa 1.100 morti della
+                rivoluzione, la maggior parte cade dopo la sua fuga, e quei terroristi non verranno
+                mai identificati. Il <D>25 dicembre</D> un tribunale militare improvvisato processa
+                i coniugi in meno di un’ora, per genocidio e distruzione dell’economia; sono
+                fucilati subito dopo nel cortile della caserma. Le immagini del processo e dei corpi
+                vanno in onda in televisione.
+              </Detail>
             </Event>
           </Timeline>
+
+          <Callout on="always" kind="debate" title="Perché processarli e fucilarli in poche ore?">
+            <Positions>
+              <Position on="always" title="Per fermare la guerra civile">
+                È la versione del Fronte di salvezza nazionale: finché Ceaușescu era vivo, i suoi
+                fedeli avrebbero continuato a combattere per liberarlo. Dopo la fucilazione, e la
+                sua diffusione in televisione, gli scontri in effetti si spengono in pochi giorni.
+              </Position>
+              <Position on="always" title="Per non farlo parlare">
+                Molti storici e testimoni sottolineano che i nuovi capi venivano quasi tutti dal
+                partito e dagli apparati del regime. Un vero processo avrebbe chiarito chi aveva
+                ordinato di sparare, prima e dopo il 22 dicembre; un processo di un’ora, senza
+                difesa reale, chiudeva la questione.
+              </Position>
+            </Positions>
+            <Note on="always">
+              Le due spiegazioni non si escludono. Restano i fatti: la Romania è l’unico paese del
+              blocco sovietico dove il regime cade nel sangue e il capo viene giustiziato. Quella
+              dei Ceaușescu è l’ultima esecuzione del paese: la pena di morte viene abolita pochi
+              giorni dopo, nel gennaio 1990. Se il dicembre 1989 sia stato una rivoluzione popolare
+              o anche un colpo di Stato dentro il regime è ancora discusso; nel 2019 la procura ha
+              accusato Iliescu e altri dirigenti di crimini contro l’umanità per i morti dopo il 22
+              dicembre, ma il processo non è arrivato a sentenza.
+            </Note>
+          </Callout>
         </Part>
 
         <Part section={RoSection.DemocracyAndEurope}>
