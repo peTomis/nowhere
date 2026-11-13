@@ -38,9 +38,10 @@ whole-country Ciorbă e borș card (same trace, D6).
   3–12 km wide, between the Teleajen and the Buzău, Valea Călugărească (reds) and
   Pietroasele (whites), the PDO/DOC and Fetească neagră.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- That Topoloveni and Buzău are filed under Valacchia correctly (Argeș and Buzău
-  counties: yes on the map; Buzău is historically Wallachia).
-- The visit of Dealu Mare cellars on booking.
-- Freely licensed photographs with author and licence for the five traces.
+- Topoloveni (Argeș) and Buzău are historically Wallachia.
+- Dealu Mare: many cellars take visits on booking, some (LacertA) without
+  ([Restograf](https://restograf.ro/crame-din-romania-degustari-de-vin)): the
+  text now says "spesso su prenotazione".
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

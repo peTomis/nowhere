@@ -34,7 +34,8 @@ burtă, ciorbă rădăuțeană, borș lipovenesc; pălincă, horincă; balmoș).
   meal and the glass offered to guests. "National drink" and the production
   figures are left out.
 
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).
+
 ## Still to verify
 
 - A non-Wikipedia source for each card (cookbook or ethnographic study).
-- Freely licensed photographs with author and licence for the five traces.

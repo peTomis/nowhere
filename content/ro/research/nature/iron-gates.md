@@ -37,8 +37,11 @@ distretti" in the Piatra Craiului card: the guide calls the județe "distretti".
   for Apollodorus of Damascus, 103–105, about 1,135 m, the surviving piers at
   Drobeta-Turnu Severin and Kostol, and the museum's reconstruction.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- The road over the dam and the border crossing at Gura Văii (current status).
-- The exact place of the bridge ruins in the museum's archaeological park.
-- Freely licensed photographs with author and licence for the three traces.
+- The Porțile de Fier I road crossing at Gura Văii is open for cars
+  ([Poliția de Frontieră](https://www.politiadefrontiera.ro/en/pct-loc-495.html)).
+- The bridge's ruins are in the archaeological park around the Iron Gates
+  Region Museum, with a model of the bridge inside
+  ([Pro-Mehedinți](https://promehedinti.ro/en/podul-lui-traian/)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

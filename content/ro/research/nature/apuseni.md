@@ -43,10 +43,17 @@ Avram Iancu memorial house (Alba), the Bears' Cave and Cetățile Ponorului
   1924, the collections and the reopening in 2013; [Alba24](https://alba24.ro/testamentul-olograf-al-lui-avram-iancu-expus-in-localitatea-natala-cu-ocazia-targului-de-fete-de-pe-muntele-gaina-506497.html)
   for the fair on Mount Găina.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- Bihor peak (Curcubăta Mare) at 1,849 m with a second source.
-- The road to Scărișoara and its season; Padiș access roads and the time to the
-  Cetățile Ponorului viewpoints.
-- That the Găina fair is in July every year.
-- Freely licensed photographs with author and licence for the four traces.
+- Curcubăta Mare (Bihor peak) 1,849 m: Britannica, SummitPost.
+- Scărișoara: road DJ 750 up the Ordâncușa valley from Gârda de Sus (about
+  18 km); trail 63 from Arieșeni about 7 km, 3.5–4 h; visits mostly May to
+  September ([Alba24](https://alba24.ro/lumea-subterana-a-judetului-alba-cum-poti-ajunge-la-cele-mai-frumoase-pesteri-si-ce-te-asteapta-acolo-1072712.html),
+  [Munții Noștri](https://muntii-nostri.ro/trails/download-atlas/sat-arieseni-pestera-ghetarul-scarisoara)).
+- Cetățile Ponorului: the blue loop from Cabana Padiș is 11.2 km, about 6.5 h,
+  with four 19th-century viewpoints and cables; not recommended in winter
+  ([Munții Noștri](https://www.muntii-nostri.ro/trails/download-atlas/circuitul-cetatilor-ponorului/)).
+  The DJ 763 Padiș–Ic Ponor is closed for works until December 2026.
+- Găina fair: every year on the Sunday nearest 20 July (St Elijah)
+  ([G4Media 2026](https://www.g4media.ro/targul-de-fete-de-pe-muntele-gaina-2026-in-weekendul-18-19-iulie-program-recomandari-si-mic-ghid-pentru-participantii-la-eveniment.html)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

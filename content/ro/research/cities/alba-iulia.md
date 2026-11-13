@@ -32,8 +32,12 @@ never points to a hidden card.
 
 No opening hours, ticket prices or interior access are introduced.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- The visitor route through the citadel gates (east to west) and the cathedral's
-  position next to the bishop's palace.
-- Freely licensed photographs with author and licence for the three traces.
+- Gates east to west: Gate I on the east side towards the lower town, Gate III
+  also on the east side, Gate IV (the Bishop's Gate) on the west
+  ([Alba24](https://alba24.ro/o-parte-dintre-portile-cetatii-alba-carolina-raman-ascunse-turistilor-in-urmatoarea-perioada-ce-spun-reprezentantii-primariei-1132314.html),
+  [InfoCons, Gate IV](https://infocons.ro/?p=75426)). Gates III and IV were
+  under restoration until autumn 2026.
+- St Michael's cathedral stands next to the Roman Catholic bishop's palace.
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

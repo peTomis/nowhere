@@ -28,9 +28,16 @@ Bucura and Zănoaga lakes and the Peleaga peak.
   for about 29 m, the deepest glacial lake of Romania (Fanatik gives 26 m), at
   1,997–2,030 m by source and 6.5 ha.
 
+## Verified (2026-11-13)
+
+- Poiana Pelegii: asphalt to Gura Apelor, then about 20 km of forest road;
+  about two hours to Bucura ([Adevărul](https://adevarul.ro/blogurile-adevarul/bucuraa-te-de-retezat-cum-ajungi-in-doua-ore-la-1541355.html)).
+- Camping only in designated zones (Poiana Pelegii, Bucura, Zănoaga and
+  others): [Lonely Planet](https://www.lonelyplanet.com/romania/retezat-mountains/attractions/retezat-national-park/a/poi-sig/1289916/1326161),
+  [GO Hunedoara](https://www.gohunedoara.com/?p=20109). The text doesn't name
+  Bucura–Zănoaga; Bucura–Peleaga "un paio d'ore" fits the trail sheets.
+
 ## Still to verify
 
-- That the two-hour route starts at Poiana Pelegii, and the forest road to it.
-- The park ticket and the camping rules.
-- The marked routes Bucura–Zănoaga and Bucura–Peleaga, and their times.
-- Freely licensed photographs with author and licence for the three traces.
+- The amount of the park ticket (not found online).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

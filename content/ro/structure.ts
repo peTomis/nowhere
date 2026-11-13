@@ -318,8 +318,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.OttomanSuzeraintyDobruja,
       level: 3,
       on: [Dobruja],
-      period: { from: 1541, to: 1688 },
-      verify: 'only Contexts, no dated events: the dates come from their periods',
+      period: { from: 1593, to: 1595 },
     },
     { id: RoSection.ThreeEmpires, level: 2, on: all, period: { from: 1688, to: 1818 } },
     {

@@ -30,7 +30,8 @@ whole-country Ciorbă e borș card (same trace, D6).
   others sweet, the DOC and Cantemir praising Grasă de Cotnari. "Stephen the
   Great's vineyard" is left out: no source opened.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- That Cotnari cellars take visits on booking.
-- Freely licensed photographs with author and licence for the four traces.
+- Cotnari: three cellars (Cotnari, Axinte, Vlădoianu), a free visit with tasting
+  and packages booked online ([Revista Biz](https://www.revistabiz.ro/cotnari-lanseaza-campanie-noua/)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

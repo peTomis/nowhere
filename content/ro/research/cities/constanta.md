@@ -55,9 +55,13 @@ with `<Today>`, gated on Constanța.
 No opening hours or ticket prices are introduced: the mosaic and the casino send
 the reader to the official sites.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- A second source for the 1896 ethnic composition (Wikipedia only).
-- That the minaret is open to visitors today.
-- That the casino stands near the Genoese lighthouse on the promenade (map check).
-- Freely licensed photographs with author and licence for the four traces.
+- The text gives no figures for 1896, only the groups living in the city around
+  1900; the Jewish community (957 people, 6.5% in 1899) is confirmed by the
+  [Encyclopaedia Judaica](https://encyclopedia.com/religion/encyclopedias-almanacs-transcripts-and-maps/constanta).
+- The minaret can be climbed (about 140 steps): Lonely Planet,
+  [Euronews România](https://www.euronews.ro/articole/romania-frumoasa-din-constanta-octogon-confesional-centrul-istoric-suberek-piperc).
+- The casino (Bulevardul Regina Elisabeta 4) and the Genoese lighthouse (Strada
+  Remus Opreanu 17) are about 200 m apart on the promenade (OpenStreetMap).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

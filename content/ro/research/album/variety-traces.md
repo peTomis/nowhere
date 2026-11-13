@@ -128,10 +128,20 @@ source for the point named there.
   scoreboard, the defection of November 1989, the Enescu Festival since 1958),
   to be given two sources each.
 
+## Verified (2026-11-13)
+
+- Distances, checked against the traces' coordinates (straight line, then by
+  road): Otopeni 16 km from Bucharest, Ovidiu 9 km (about 15 by road) from
+  Constanța, Vama Veche 47 km (about 55 by road), Bușteni 26 km (about 40 by
+  road over Predeal) from Brașov, Mediaș 35 km (about 40 by road) from
+  Sighișoara, Bonțida 23 km (about 30 by road) and Turda 25 km (about 35 by
+  road) from Cluj, Voroneț 33 km (about 40 by road) from Suceava. All fine.
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).
+
 ## Still to verify
 
-- Every `TODO verificare` of the new traces in `content/ro/it/names.ts`.
-- The distances in `distance` (Otopeni, Ovidiu, Vama Veche, Bușteni, Mediaș,
-  Bonțida, Turda, Voroneț) and the addresses.
-- Freely licensed photographs with author and licence for all the new traces;
-  rights clearance for the Otopeni statue (2026).
+- The `TODO verificare` comments in `content/ro/it/names.ts` (set aside on
+  2026-11-13: not blocking).
+- Images still missing (set aside on 2026-11-13): the Suceava equestrian statue,
+  the Gate of the Kiss and the Endless Column (Brâncuși's rights run to the end
+  of 2027), the Otopeni statue of Nadia Comăneci (2026) and the Oberth house.

@@ -443,7 +443,7 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Teatrul Național · Catedrala Ortodoxă',
       place: `${places[Ro.ClujNapoca]}, ${places[Ro.Transylvania]}`,
       text: 'Ai due capi della piazza si guardano due edifici di due Stati. Il teatro, dello studio viennese Fellner & Helmer, apre nel 1906 come teatro nazionale ungherese e nel 1919 diventa teatro nazionale romeno. La cattedrale ortodossa viene costruita fra il 1923 e il 1933, quando la città fa ormai parte della Romania. Prima di loro, qui c’era un grande parco: la piazza nasce con questi edifici.',
-      find: 'Piața Avram Iancu, a est di Piața Unirii lungo Bulevardul Eroilor, a pochi minuti a piedi. Il teatro è sul lato ovest, la cattedrale su quello est.',
+      find: 'Piața Avram Iancu, a est di Piața Unirii lungo Bulevardul Eroilor, a pochi minuti a piedi. Il teatro è sul lato sud, la cattedrale su quello nord.',
     },
     // TODO verificare: what happened in 1944 (looted and burned by retreating troops?) and the visiting hours.
     [RoTrace.BanffyCastle]: {
@@ -868,7 +868,7 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoTrace.FoodDealuMare]: {
       name: 'Un vino del Dealu Mare',
       place: 'Prahova e Buzău, Valacchia',
-      find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano su prenotazione.',
+      find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano, spesso su prenotazione.',
     },
     [RoTrace.FoodTochitura]: {
       name: 'Tochitură moldovenească',

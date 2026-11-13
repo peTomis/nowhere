@@ -39,7 +39,7 @@ export const romania: GuideContent<Ro, RoSection> = {
   names,
   cover: {
     src: `${dir}/cover.jpg`,
-    alt: 'Il castello di Bran al tramonto',
+    alt: 'La chiesa fortificata di Biertan nella nebbia',
     credit: creditToVerify,
   },
   /** Country name and nowhere logo on the cover. */
@@ -47,7 +47,12 @@ export const romania: GuideContent<Ro, RoSection> = {
   emblems: [
     {
       src: `${dir}/coat-of-arms.png`,
-      credit: creditToVerify,
+      // The official arms with the crown restored in 2016, rendered from the Commons SVG.
+      credit: {
+        author: 'Wikimedia Commons',
+        license: 'Public domain',
+        url: 'https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Romania.svg',
+      },
       alt: 'Stemma della Romania',
       kind: 'coat-of-arms',
       width: 480,
@@ -55,7 +60,11 @@ export const romania: GuideContent<Ro, RoSection> = {
     },
     {
       src: `${dir}/flag.svg`,
-      credit: creditToVerify,
+      credit: {
+        author: 'AdiJapan',
+        license: 'Public domain',
+        url: 'https://commons.wikimedia.org/wiki/File:Flag_of_Romania.svg',
+      },
       alt: 'Bandiera della Romania',
       kind: 'flag',
       width: 72,
@@ -147,7 +156,11 @@ function Body() {
         <MapFigure
           on="always"
           src={`${dir}/historical-regions.webp`}
-          credit={creditToVerify}
+          credit={{
+            author: 'petomis',
+            license: 'Tutti i diritti riservati',
+            url: 'https://www.petomis.com',
+          }}
           alt="Cartina della Romania con le regioni storiche"
           ratio="666/400"
           places={[]}
@@ -1163,9 +1176,17 @@ function Body() {
               <N href="https://it.wikipedia.org/wiki/Isaccea">Isaccea</N>,{' '}
               <N href="https://it.wikipedia.org/wiki/Măcin">Măcin</N>,{' '}
               <N href="https://it.wikipedia.org/wiki/Hârșova">Hârșova</N> e{' '}
-              <N href="https://it.wikipedia.org/wiki/Babadag">Babadag</N>. Per rafforzarla
-              militarmente i sultani vi insediano tatari, con terre in cambio del servizio militare.
+              <N href="https://it.wikipedia.org/wiki/Babadag">Babadag</N>.
             </Context>
+            <Event on={[Dobruja]} date="1593–1595" title={<>Arrivano i tatari</>}>
+              <Detail on={[Dobruja]}>
+                {/* TODO verificare: second source for 1593–1595 (Wikipedia, after F. de Jong). */}
+                Per rafforzare la frontiera i sultani insediano in Dobrogea tatari{' '}
+                <N href="https://it.wikipedia.org/wiki/Nogai">nogai</N> e del{' '}
+                <N href="https://it.wikipedia.org/wiki/Budjak">Bugeac</N>, con terre in cambio del
+                servizio militare. I loro discendenti sono ancora oggi una comunità della regione.
+              </Detail>
+            </Event>
             <MocaniContext on={[Dobruja]} />
             <Context on={[Dobruja]} period="XVII–XVIII secolo" title="I lipoveni">
               Nel delta e nelle attuali province di Tulcea e Constanța si stabiliscono i{' '}
@@ -3267,11 +3288,11 @@ function Body() {
               di chilometri dentro il bosco. Per secoli il legno è la ricchezza della regione: lo
               mostrano le chiese di legno del Maramureș, patrimonio UNESCO, e a Săpânța le croci
               scolpite e dipinte del Cimitero allegro. Per portare a valle i tronchi si usa l’acqua,
-              liberata a ondate da dighe di legno lungo il fiume; dopo un’alluvione del <D>1929</D>,
-              che ne rompe una, si costruisce una ferrovia forestale, la <N>Mocănița</N>, ancora in
-              servizio. A sud, oltre la valle di Borșa, si alzano i <N>Monti Rodnei</N>, la catena
-              più alta dei Carpazi Orientali: creste di oltre 2.000 m, circhi e laghi lasciati dai
-              ghiacciai. Oggi sono un parco nazionale.
+              liberata a ondate da dighe di legno lungo il fiume; dopo le alluvioni del <D>1929</D>,
+              che le danneggiano, si costruisce una ferrovia forestale, la <N>Mocănița</N>, ancora
+              in servizio. A sud, oltre la valle di Borșa, si alzano i <N>Monti Rodnei</N>, la
+              catena più alta dei Carpazi Orientali: creste di oltre 2.000 m, circhi e laghi
+              lasciati dai ghiacciai. Oggi sono un parco nazionale.
             </>
           }
           remember="Nel Maramureș la foresta è un lavoro prima che un paesaggio: la Mocănița nasce per portare a valle i tronchi, sotto le creste dei Rodnei."

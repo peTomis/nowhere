@@ -35,11 +35,14 @@ Vlad III: the same place, with a landscape text in `traceTexts` (D6).
   depth of about 11–12 m, the largest glacial lake of the range and the Bâlea
   nature reserve.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- That Moldoveanu is in Argeș county (the trace is filed under Valacchia).
-- The usual route from Victoria by the Viștea Mare valley, and the overnight
-  stop.
-- That the southern road up to Vidraru stays open in winter, and the cable car
-  from Bâlea Cascadă to Bâlea Lac.
-- Freely licensed photographs with author and licence for the three traces.
+- Moldoveanu is in Argeș county.
+- Victoria – Viștea Mare valley (red triangle, trail 55) – Portița Viștei
+  (refuge, 2,310 m) – Viștea Mare – Moldoveanu: 8–9 h; refuges Valea Viștei
+  (1,550 m) and Portița Viștei ([SummitPost](https://www.summitpost.org/moldoveanu/150442),
+  [Munții Noștri](https://muntii-nostri.ro/trails/download-atlas/victoria-hartopu-ursilor-portita-vistei-2/)).
+- The DN7C closes only between Piscu Negru (km 104) and Bâlea Cascadă
+  (km 130.8), so Vidraru is reachable all year from the south; the Bâlea cable
+  car runs in the cold season ([Capital](https://www.capital.ro/s-a-redeschis-circulatia-pe-transfagarasan-ce-trebuie-sa-stie-soferii-care-ajung-in-zona.html)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

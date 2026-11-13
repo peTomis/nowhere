@@ -49,8 +49,11 @@ card: the same traces (D6).
   for the shepherds' dish of the stână: fresh sheep cheese boiled in sheep's
   milk or cream, thickened with cornmeal.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- A second source for horincă (Maramureș county tourism, ethnography).
-- Where tăiței cu nucă are found today outside homes.
-- Freely licensed photographs with author and licence for the nine traces.
+- Horincă: the Maramureș and Oaș name for fruit brandy, usually plum, the
+  strongest twice distilled ([eMaramureș](https://www.emaramures.ro/horinca-de-maramures-deschide-multe-usi-care-este-diferenta-dintre-palinca-tuica-si-horinca),
+  [Newsweek România](https://newsweek.ro/timp-liber/unde-s-a-inventat-palinca-cat-de-romaneasca-este-pot-ungurii-sa-o-revendice),
+  quoting Vintilă Mihăilescu).
+- Tăiței cu nucă are not in the text: nothing to check.
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

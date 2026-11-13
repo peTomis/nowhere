@@ -33,9 +33,13 @@ from Brașov) and the La Om peak (`remote`).
   100 bears from cages, circuses and private owners, guided visits only, Tuesday
   to Sunday. "Largest brown bear sanctuary in the world" is left out (B7).
 
-## Still to verify
+## Verified (2026-11-13)
 
-- The park's visitor ticket for the gorges.
-- The ridge route to La Om (Curmătura, Plaiul Foii) and its chained passages.
-- The sanctuary's exact location on the edge of Zărnești and current hours.
-- Freely licensed photographs with author and licence for the four traces.
+- Park visitor fee, from machines at the administration, Plaiul Foii and in
+  Zărnești ([Visit Zărnești](https://www.visitzarnesti.ro/en/piatra-craiului-national-park)).
+- La Om: from Plaiul Foii by "La Lanțuri" (chains, 4–5 h) or from Curmătura
+  along the red-dot ridge; closed in winter near the top
+  ([Munții Noștri](https://www.muntii-nostri.ro/trails/download-atlas/cabana-curmatura-vf-la-om-podu-dambovitei-3)).
+- Libearty: guided tours only, Tuesday to Sunday at 9:45 and 11:15, closed on
+  Mondays, tickets online ([Millions of Friends](https://www.millionsoffriends.org/en/libearty/visit-the-sanctuary)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

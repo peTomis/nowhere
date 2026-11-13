@@ -63,9 +63,14 @@ which are part of the biosphere reserve).
   and the view over lakes Razim and Babadag. The card names the debate and takes
   no side (B3).
 
-## Still to verify
+## Verified (2026-11-13)
 
-- That Enisala is run by ICEM Tulcea and the short walk from the car park.
-- Current rules for visiting Letea (fee, permit, who can guide).
-- A second source for the 1938 date of Letea that is not a copy of Wikipedia.
-- Freely licensed photographs with author and licence for the four traces.
+- Enisala is run by ICEM Tulcea ([ICEM](https://www.icemtl.ro/enisala-medieval-fortress/)),
+  but the trace was dropped from the album (see `album/excluded-traces.md`);
+  its two entries in `sources.ts` may no longer be needed.
+- Letea: access only with an ARBDD agent, a small visit fee
+  ([Economica 2019](https://www.economica.net/taxa-de-vizitare-in-padurea-letea-se-poate-plati-si-prin-sms-incepand-de-vineri_171294.html)).
+- 1938: Council of Ministers decision no. 645; protected since 1930, a reserve
+  from 1938 per the Ministry of the Environment
+  ([HG 2014](https://mmediu.ro/uploads/files/2014-04-23_HG.pdf)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

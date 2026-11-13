@@ -40,10 +40,16 @@ the chapter is shown for all four regions (`on: all`).
   for Cantemir's _Descriptio Moldaviae_: the mountain on his map, its hermits
   and the comparison with Olympus.
 
+## Verified (2026-11-13)
+
+- Cantemir's comparison with Olympus (and Pindus): quoted by
+  [Visit Neamț](https://visitneamt.com/?p=16245); no scholarly edition seen,
+  the text paraphrases it ("sarebbe famoso quanto l'Olimpo").
+- Durău to Cabana Dochia: 3–4 h by the trail under Toaca, 7.1 km
+  ([Munții Noștri](https://muntii-nostri.ro/trails/download-atlas/statiunea-durau-sub-vf-toaca-cabana-dochia)):
+  "mezza giornata" is right.
+
 ## Still to verify
 
-- Cantemir's sentence on Olympus in an edition of the _Descriptio Moldaviae_.
-- The Dochia legend (the woman turned to stone with her flock) in a folklore
-  source.
-- The time from Durău to Toaca.
-- Freely licensed photographs with author and licence for the three traces.
+- The Dochia legend in a folklore source (only tourism pages so far).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

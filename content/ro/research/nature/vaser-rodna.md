@@ -35,9 +35,17 @@ peak.
 - The wooden churches of Maramureș on the UNESCO list (1999): general
   knowledge, to be given a source.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- How the splash dams on the Vaser worked (the card says water released in
-  waves).
-- Train times and season; the route Borșa–Iezer–Pietrosul and its length.
-- Freely licensed photographs with author and licence for the three traces.
+- The Țipțeri built dams and weirs on the Vaser (the main ones at Măcârlău);
+  the 1929 floods damaged them and the state forest company then imposed a
+  forest railway, first section to Făina in 1933
+  ([eMaramureș](https://www.emaramures.ro/mocanita-trenul-amintirilor-scurta-incursiune-in-trecutul-caii-ferate-forestiere-viseu-de-sus)).
+  The text said a single dam broke: corrected to "le danneggiano". Water
+  released in waves is how such dams work, not described for the Vaser itself.
+- Mocănița: morning departures (about 9:00), back around 14:30–15:00, not
+  daily all year ([Agerpres 2026](https://agerpres.ro/social/2026/08/03/maramures-trenul-mocanita-favoritul-turistilor-care-petrec-vacanta-de-vara-in-judet--1581781)).
+- Borșa – Iezer weather station (about 2.5 h) – Pietrosul (4–4.5 h), blue
+  band, closed in winter above Iezer
+  ([Munții Noștri](https://www.muntii-nostri.ro/trails/download-atlas/borsa-varful-pietrosul-rodnei-tarnita-la-cruce)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

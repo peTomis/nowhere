@@ -41,9 +41,15 @@ Timișoara.
 
 No opening hours, ticket prices or interior access are introduced.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- The 2023 European Capital of Culture year and the German-speaking settlers
-  (second source).
-- That the parish house is the building next to the Reformed church on Piața Maria.
-- Freely licensed photographs with author and licence for the three traces.
+- 2023 European Capital of Culture, with Elefsina and Veszprém
+  ([Europa Liberă](https://romania.europalibera.org/amp/timisoara-capitala-europeana-a-culturii/32275512.html));
+  German-speaking settlers in the Banat from the early 18th century, again
+  under Maria Theresa and Joseph II
+  ([Adevărul](https://adevarul.ro/stiri-interne/societate/destinul-dramatic-al-colonistilor-svabi-din-banat-2523404.html)).
+- The parish house is in the same building as the Reformed church (1902),
+  Strada Timotei Cipariu 1 on Piața Maria
+  ([Heritage of Timișoara](https://heritageoftimisoara.ro/en/buildings/Elisabetin/address/Timotei+Cipariu/1)).
+  "Accanto alla chiesa" is close enough; "nello stesso edificio" would be exact.
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

@@ -36,7 +36,11 @@ the whole-country Ciorbă e borș card (same trace, D6).
   [Adevărul](https://adevarul.ro/stiri-locale/constanta/constantaturistii-invitati-la-degustari-de-vin-858598.html)
   for tastings.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- Tatar and Turkish places in Constanța serving șuberek today.
-- Freely licensed photographs with author and licence for the five traces.
+- No source names a place in Constanța that serves șuberek: the Turkish
+  restaurants (Konak, Bosfor Anatolya, Sofra:
+  [Zile și Nopți](https://zilesinopti.ro/2026/07/17/5-restaurante-specific-turcesc-litoral/))
+  don't list it. The trace's "Come trovarla" stays generic (Tatar and Turkish
+  places, community festivals).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).

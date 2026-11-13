@@ -37,8 +37,11 @@ states and several communities rather than repeating the country timeline.
 
 No opening hours, ticket prices or interior access are introduced.
 
-## Still to verify
+## Verified (2026-11-13)
 
-- Which side of Piața Avram Iancu each building stands on (the text says theatre
-  west, cathedral east) and the walking route along Bulevardul Eroilor.
-- Freely licensed photographs with author and licence for the three traces.
+- Piața Avram Iancu runs north–south: the cathedral is at the north end, the
+  theatre at the south end (OpenStreetMap: cathedral 46.7719 N, theatre
+  46.7701 N). The text said west/east and was corrected. The square is east of
+  Piața Unirii along Bulevardul Eroilor
+  ([Wikipedia](https://en.wikipedia.org/wiki/Avram_Iancu_Square,_Cluj-Napoca)).
+- Stock photographs: done (Wikimedia Commons, with author and licence in `structure.ts`).
