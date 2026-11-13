@@ -2061,7 +2061,23 @@ function Body() {
             </>
           }
           remember="Il re che Traiano dovette vincere due volte."
-        />
+        >
+          <Context on="always" period="106" title="Il tesoro del Sargetia">
+            Lo storico <N href="https://it.wikipedia.org/wiki/Cassio_Dione">Cassio Dione</N>{' '}
+            racconta che Decebalo fa deviare il fiume Sargetia, seppellisce nel suo letto il tesoro
+            reale e poi rimette l’acqua al suo posto; i prigionieri che hanno scavato vengono uccisi
+            perché nessuno parli. Dopo la sconfitta un suo compagno, Bicilis, rivela il nascondiglio
+            ai romani. Con il bottino della Dacia Traiano costruisce a Roma il suo Foro, con la
+            colonna che racconta la guerra.
+          </Context>
+          <Context on="always" period="Scoperta nel 1965" title="Il cavaliere che lo raggiunse">
+            Nel 1965, a Grammeni, nella Macedonia greca, viene alla luce la lapide di{' '}
+            <N>Tiberio Claudio Massimo</N>, cavaliere romano. L’iscrizione dice che fu lui a
+            catturare Decebalo e a portarne la testa a Traiano; il rilievo lo mostra al galoppo
+            verso il re caduto. È la stessa scena della colonna Traiana, raccontata dal soldato che
+            l’ha vissuta.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.VladTheImpaler}
           intro={
@@ -2082,21 +2098,61 @@ function Body() {
             </>
           }
           remember="Dracula è un nome di famiglia: il vampiro arriva quattro secoli dopo."
-        />
+        >
+          <Context on="always" period="1431" title="Il drago, non il diavolo">
+            Nel 1431 l’imperatore Sigismondo accoglie il padre nell’
+            <N href="https://it.wikipedia.org/wiki/Ordine_del_Drago">Ordine del Drago</N>, nato per
+            difendere la cristianità dagli ottomani: da qui il soprannome Dracul, «il drago». In
+            romeno la stessa parola finisce per indicare il diavolo, e il nome del figlio prende una
+            sfumatura sinistra che Stoker sfrutta quattro secoli dopo.
+          </Context>
+          <Context on="always" period="1462" title="Radu, il fratello rimasto">
+            Il fratello minore,{' '}
+            <N href="https://it.wikipedia.org/wiki/Radu_III_di_Valacchia">Radu il Bello</N>, cresce
+            alla corte ottomana e resta fedele al sultano. Nel 1462, quando Vlad fugge, è Radu che
+            Maometto II mette sul trono di Valacchia: i due ragazzi consegnati insieme come ostaggi
+            si ritrovano adulti su fronti opposti.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.StephenTheGreat}
           intro={
             <>
-              Principe della Moldavia per quasi mezzo secolo, <N>Stefano il Grande</N> è il volto
-              che ritrovi nei monumenti e nei monasteri della regione. Difende il principato con le
-              armi e sostiene la vita religiosa con fondazioni e donazioni. La sua memoria tiene
-              insieme due immagini: il sovrano che protegge il proprio Stato e il santo venerato
-              dalla Chiesa ortodossa romena. A Putna e a Suceava puoi vedere come lo stesso principe
-              venga raccontato con linguaggi diversi.
+              Principe della Moldavia dal <D>1457</D> al <D>1504</D>, <N>Stefano il Grande</N> è il
+              volto che ritrovi nei monumenti e nei monasteri della regione. Nel gennaio <D>1475</D>{' '}
+              sconfigge a <N href="https://it.wikipedia.org/wiki/Battaglia_di_Vaslui">Vaslui</N> un
+              grande esercito ottomano, e papa{' '}
+              <N href="https://it.wikipedia.org/wiki/Papa_Sisto_IV">Sisto IV</N> lo chiama «atleta
+              di Cristo». L’anno dopo, a Războieni, perde contro{' '}
+              <N href="https://it.wikipedia.org/wiki/Maometto_II">Maometto II</N>, ma le fortezze
+              moldave resistono e il sultano si ritira. Negli ultimi anni accetta di pagare tributo
+              alla Porta pur di conservare il principato. Fonda chiese e monasteri, e la sua memoria
+              tiene insieme due immagini: il sovrano che protegge il proprio Stato e il santo
+              venerato dalla Chiesa ortodossa romena. A Putna e a Suceava puoi vedere come lo stesso
+              principe venga raccontato con linguaggi diversi.
             </>
           }
           remember="Un principe di Moldavia, ricordato nelle piazze come sovrano e nelle chiese come santo."
-        />
+        >
+          <Context on="always" period="Leggenda" title="La madre alla porta di Neamț">
+            Dopo una sconfitta, forse quella di Războieni, Stefano arriva ferito alla fortezza di
+            Neamț, dove si trova sua madre. Lei non gli fa aprire: un principe torna a casa solo da
+            vincitore. La scena non ha fonti dell’epoca, ma nell’Ottocento{' '}
+            <N href="https://it.wikipedia.org/wiki/Dimitrie_Bolintineanu">Dimitrie Bolintineanu</N>{' '}
+            ne fa una poesia che i bambini romeni imparano a scuola.
+          </Context>
+          <Context on="always" period="XVI secolo" title="I monasteri dipinti vengono dopo">
+            I monasteri della Bucovina con gli affreschi sulle facciate sono spesso legati al suo
+            nome, ma le pitture esterne arrivano quasi tutte più tardi, sotto il figlio{' '}
+            <N href="https://it.wikipedia.org/wiki/Petru_Rare%C8%99">Petru Rareș</N> e i suoi
+            successori. Voroneț, per esempio, è fondato da Stefano nel 1488 e dipinto all’esterno
+            solo nel 1547.
+          </Context>
+          <Context on="always" period="2006" title="Il più grande romeno">
+            Nel 2006 la televisione pubblica romena organizza <N>Mari Români</N>, un concorso sul
+            modello della BBC per scegliere il più grande romeno di tutti i tempi. Vince Stefano.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.MichaelTheBrave}
           intro={
@@ -2112,7 +2168,21 @@ function Body() {
             </>
           }
           remember="Per pochi mesi del 1600 regna su tre principati: è l’Ottocento a farne il simbolo della loro unione."
-        />
+        >
+          <Context on="always" period="1593 – 1594" title="Il trono comprato">
+            Come molti principi del suo tempo, Michele ottiene il trono pagandolo a Costantinopoli,
+            con denaro preso in prestito da creditori levantini e ottomani. Nel novembre 1594 si
+            ribella, e i creditori riuniti a Bucarest vengono uccisi. Il principe della lotta contro
+            gli ottomani comincia come debitore del sistema che combatte.
+          </Context>
+          <Context on="always" period="Fine Cinquecento" title="La «legge di Michele»">
+            Per tenersi i boiari, che gli forniscono soldati, Michele lega i contadini al villaggio
+            in cui si trovano: non possono più andarsene. La misura, ricordata come «legătura lui
+            Mihai», pesa a lungo sui contadini della Valacchia; gli storici discutono se sia stata
+            una vera legge o una pratica confermata da lui. Il simbolo dell’unione è anche il
+            principe della servitù della gleba.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.CarolI}
           intro={
@@ -2131,7 +2201,20 @@ function Body() {
             </>
           }
           remember="Il principe tedesco con cui la Romania diventa un regno indipendente: il comunismo lo toglie dalle piazze, la Romania di oggi ce lo rimette."
-        />
+        >
+          <Context on="always" period="1866" title="In incognito sul Danubio">
+            Austria e Prussia stanno per entrare in guerra, e un principe prussiano non può
+            attraversare l’Austria apertamente. Karl viaggia in treno con un passaporto svizzero a
+            nome di Karl Hettingen, poi sale su un battello del Danubio e sbarca a Turnu Severin.
+            Arriva sul suo nuovo trono senza parlare romeno.
+          </Context>
+          <Context on="always" period="1914" title="La guerra che non ottiene">
+            Dal 1883 la Romania è legata in segreto alla Triplice alleanza. Nell’agosto 1914, nel
+            Consiglio della Corona riunito al castello di Peleș, Carol chiede di entrare in guerra
+            con Germania e Austria-Ungheria; ministri e capi dei partiti scelgono la neutralità.
+            Muore due mesi dopo. Nel 1916 la Romania entra in guerra, contro la Germania.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.MihaiEminescu}
           intro={
@@ -2148,7 +2231,22 @@ function Body() {
             </>
           }
           remember="Il poeta che i romeni studiano a scuola e ritrovano in ogni città: un simbolo nazionale, non solo un autore."
-        />
+        >
+          <Context on="always" period="1883" title="Luceafărul">
+            Nel 1883 esce anche{' '}
+            <N href="https://it.wikipedia.org/wiki/Luceaf%C4%83rul">Luceafărul</N>, il suo poema più
+            celebre. L’astro del mattino si innamora di una fanciulla e chiede di diventare mortale
+            per lei; il permesso gli è negato, e lei sceglie un paggio. L’astro torna nel suo cielo,
+            «nemuritor și rece», immortale e freddo: per molti romeni è il ritratto del poeta
+            stesso.
+          </Context>
+          <Context on="always" period="1889" title="Veronica">
+            Il legame più lungo della sua vita è con la poetessa{' '}
+            <N href="https://it.wikipedia.org/wiki/Veronica_Micle">Veronica Micle</N>, sposata
+            quando si conoscono, a Vienna nel 1872. Eminescu muore il 15 giugno 1889; lei muore meno
+            di due mesi dopo, il 3 agosto, al monastero di Văratec.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.QueenMarie}
           intro={
@@ -2182,7 +2280,20 @@ function Body() {
             </>
           }
           remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
-        />
+        >
+          <Context on="always" period="1907" title="All’ombra dei grandi alberi">
+            A Parigi lavora per poche settimane nell’atelier di{' '}
+            <N href="https://it.wikipedia.org/wiki/Auguste_Rodin">Auguste Rodin</N>, il più celebre
+            scultore del tempo, poi se ne va. La frase che gli si attribuisce: «All’ombra dei grandi
+            alberi non cresce niente».
+          </Context>
+          <Context on="always" period="1926 – 1928" title="Un uccello tassato come metallo">
+            Nel 1926 alcune sue sculture arrivano a New York per una mostra. La dogana non riconosce
+            in <N>Uccello nello spazio</N> un’opera d’arte, che entrerebbe senza dazio, e lo tassa
+            come un oggetto di metallo. Brâncuși fa causa: nel 1928 il tribunale gli dà ragione e
+            ammette che una scultura non deve imitare la natura per essere arte.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.GeorgeEnescu}
           intro={
@@ -2218,7 +2329,25 @@ function Body() {
             </>
           }
           remember="Il dittatore che rifà Bucarest a sua misura e cade in quattro giorni, nel dicembre 1989."
-        />
+        >
+          <Context on="always" period="1966" title="Il decreto 770">
+            Per far crescere la popolazione il regime vieta l’aborto e rende quasi introvabili i
+            contraccettivi. L’anno dopo le nascite quasi raddoppiano: i nati di quegli anni sono
+            ancora chiamati «decreței». Negli anni migliaia di donne muoiono per aborti clandestini,
+            e molti bambini abbandonati finiscono negli orfanotrofi che il mondo scopre nel 1990.
+          </Context>
+          <Context on="always" period="1971" title="Il viaggio in Asia">
+            Nel giugno 1971 visita la Cina e la Corea del Nord, e ne torna colpito dalle parate e
+            dal culto del capo. A luglio presenta le «Tesi di luglio»: la cultura torna sotto il
+            controllo del partito. Da qui comincia il culto della personalità degli anni Settanta e
+            Ottanta.
+          </Context>
+          <Context on="always" period="1978" title="Cavaliere della regina">
+            Nel 1978, in visita di Stato a Londra, riceve da Elisabetta II un’onorificenza
+            dell’Ordine del Bagno. Il titolo gli viene revocato il 24 dicembre 1989, il giorno prima
+            della fucilazione.
+          </Context>
+        </Card>
         <Card
           card={RoPerson.NadiaComaneci}
           intro={

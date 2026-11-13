@@ -710,9 +710,11 @@ export function guideKit<P extends string, S extends string>(
   }
 
   /**
-   * A person, city, landscape or food card ("Scheda", B9–B12): heading with the pin button, introduction, the
-   * card's traces (from structure.cards, those in the trip first) and "Da ricordare". `intro` and
-   * `remember` are one paragraph each. Its `on` comes from structure.cards, as a part's comes from
+   * A person, city, landscape or food card ("Scheda", B9–B12): heading with the pin button,
+   * introduction, the context boxes (`<Context>` as children, the timeline's boxes without the
+   * rail: curiosities and background), the card's traces (from structure.cards, those in the trip
+   * first) and "Da ricordare". `intro` and `remember` are one paragraph each. Its `on` comes from
+   * structure.cards, as a part's comes from
    * its section. A copy of it is shown in "In evidenza" when pinned (`idPrefix`, `heading` and
    * `ungated` are set by the guide for that copy, never in content).
    */
@@ -720,6 +722,7 @@ export function guideKit<P extends string, S extends string>(
     card: string
     intro: ReactNode
     remember: ReactNode
+    children?: ReactNode
     idPrefix?: string
     heading?: boolean
     ungated?: boolean
@@ -765,6 +768,9 @@ export function guideKit<P extends string, S extends string>(
             )}
             <p className="m-0 max-w-[62ch]">{props.intro}</p>
           </div>
+          {props.children && (
+            <div className="card-contexts flex flex-col gap-4">{props.children}</div>
+          )}
           <CardTraces card={def.id} prefix={prefix} />
           <div className="flex flex-col gap-2">
             <span className={`${label} text-accent-2-700`}>{t.guide.trace.remember}</span>

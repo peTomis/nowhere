@@ -254,7 +254,13 @@ function Body() {
             </>
           }
           remember="Il nome è di famiglia: la storia è un’altra."
-        />
+        >
+          {/* Context boxes in a card: curiosities and background, without the timeline rail. */}
+          <Context on="always" period="1431" title="Una curiosità sul personaggio">
+            Lo stesso riquadro dei contesti nella timeline: un aneddoto, una scoperta, un dettaglio
+            che aiuta a capire chi era.
+          </Context>
+        </Card>
       </Chapter>
 
       {/* gap="wide" spaces out the regions. */}

@@ -73,3 +73,14 @@ html {
 .timeline-context:last-child .timeline-rail::before {
   height: 26px;
 }
+
+/* The same context boxes inside a person or city card: no date column, no rail. */
+.card-contexts .timeline-item {
+  display: block;
+}
+.card-contexts .timeline-item > :not(.timeline-body) {
+  display: none;
+}
+.card-contexts .timeline-item .timeline-body {
+  padding-bottom: 0;
+}
