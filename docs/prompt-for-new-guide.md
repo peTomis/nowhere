@@ -22,8 +22,8 @@ Prima di scrivere qualsiasi contenuto, compila con l’utente questa scheda e fa
 7. **Dibattiti storiografici aperti.** Elenca le questioni contese: origini etniche, confini rivendicati, figure divisive, periodi di occupazione o di regime. Per la Romania erano la continuità daco-romana, Vlad III e il comunismo. Ognuna va trattata come dibattito, non come fatto.
 8. **Narrazioni nazionali da cui guardarsi.** Indica le letture teleologiche tipiche del Paese, per esempio "terra nazionale in attesa di ricongiungersi" o "popolo che resiste da sempre allo straniero". Vanno riconosciute nelle fonti e non riprodotte.
 9. **Fonti di riferimento.** Indica almeno due storie generali affidabili, accademiche e preferibilmente non scritte dalla storiografia nazionale di un solo Paese coinvolto. Wikipedia non conta come fonte di riferimento.
-10. **Personaggi e città con scheda dedicata.** Elenca i pochi personaggi che il viaggiatore incontrerà davvero sul posto: in statue, castelli, monasteri, piazze, banconote, feste. Non c’è un numero fisso: conta il totale delle tracce dell’album (sezione «Numero, valore e completamento»), con almeno un personaggio per regione dove possibile. Non fermarti a sovrani e capi politici: cerca anche figure della musica, dello sport, dell’arte, della scienza e del cinema, e non dimenticare le donne. Per ognuno indica le tracce visibili e il mito o dibattito da chiarire. Elenca anche le città con scheda. I criteri sono nelle sezioni B9 e B10. Nelle timeline i personaggi compariranno solo per l’evento della scheda.
-11. **Elenco dei luoghi.** Prima di scrivere le schede, compila l’elenco unico dei luoghi (le «tracce») con il loro `id`: monumenti, edifici, siti, oggetti. Copertina, bandiera e stemma (caselle 01–03) non ci vanno: sono in ogni album di serie (sezione B9). Personaggi e città li richiameranno da questo elenco, senza duplicarli. Vedi la sezione D6.
+10. **Personaggi e città con scheda dedicata.** Elenca i pochi personaggi che il viaggiatore incontrerà davvero sul posto: in statue, castelli, monasteri, piazze, banconote, feste. Non c’è un numero fisso: conta il totale delle tracce dell’album (sezione B13), con almeno un personaggio per regione dove possibile. Non fermarti a sovrani e capi politici: cerca anche figure della musica, dello sport, dell’arte, della scienza e del cinema, e non dimenticare le donne. Per ognuno indica le tracce visibili e il mito o dibattito da chiarire. Elenca anche le città con scheda. I criteri sono nelle sezioni B9 e B10. Nelle timeline i personaggi compariranno solo per l’evento della scheda.
+11. **Elenco dei luoghi.** Scegli con l’utente la fascia dell’album e il suo tetto (sezione B13). Prima di scrivere le schede, compila l’elenco unico dei luoghi (le «tracce») con il loro `id`: monumenti, edifici, siti, oggetti, piatti. L’elenco rispetta i criteri e le quote della sezione B13. Copertina, bandiera e stemma (caselle 01–03) non ci vanno: sono in ogni album di serie (sezione B9). Personaggi e città li richiameranno da questo elenco, senza duplicarli. Vedi la sezione D6.
 12. **Archiviazione delle foto del lettore.** Decidi con l’utente se le foto restano solo sul dispositivo o devono essere ritrovabili su altri dispositivi. La scelta condiziona il modello dei dati e va presa prima di scrivere il codice della collezione. Vedi la sezione D6.
 
 ---
@@ -142,7 +142,7 @@ Segna ogni traccia con uno di due tipi, così il lettore sa cosa aspettarsi:
 
 **Il modello è l’album di figurine.** Ogni Paese ha un album con un numero fisso di caselle, una per traccia. Al posto delle figurine, il lettore incolla le sue foto. L’album si progetta **completo prima della pubblicazione**, come un album stampato: tutte le caselle esistono dal primo giorno, anche vuote. Le aggiunte successive sono eccezioni (sezione «Aggiunte all’album»).
 
-- **Dimensione e varietà.** Il numero di caselle dipende dal Paese: un Paese piccolo o poco visitato ha un album più piccolo, e più facile da completare, di uno grande (la Romania ne ha 125). A parità di caselle conta la varietà: oltre a storia, città, natura e cucina, l’album copre passioni diverse (musica, cinema, sport, scienza, artigianato, feste popolari) e gesti diversi (guardare, assaggiare, ascoltare, salire, scovare un dettaglio). Le banconote in circolazione sono tracce valide «in tutto il paese». Se togli una traccia mentre l’album è in progettazione, registrala con tutti i suoi testi in `content/<cc>/research/album/excluded-traces.md`.
+- **Dimensione e varietà.** Il numero di caselle dipende dal Paese: un Paese piccolo o poco visitato ha un album più piccolo, e più facile da completare, di uno grande. Fascia, criteri e quote sono nella sezione B13. Le banconote in circolazione sono tracce valide «in tutto il paese».
 - **Le prime tre caselle sono sempre le stesse.** In ogni Paese la 01 è la **copertina** (la foto che per il lettore è quel Paese: diventa la copertina del Paese sulla mappa), la 02 la **bandiera** e la 03 lo **stemma**, viste dal vivo durante il viaggio. Le aggiunge il kit da solo, con la copertina e gli emblemi della guida come immagini di repertorio (nel capitolo sugli emblemi stemma e bandiera compaiono come tracce, con `<Emblem kind="flag" on="always" />`, al posto delle figure) e i testi uguali per tutte le guide: non vanno nell’elenco dei luoghi e non si scrivono. Valgono 1 punto ciascuna. Le tracce della guida partono dalla 04.
 - **Numero progressivo.** Ogni traccia ha un numero all’interno del Paese (04, 05, 06…, dopo le tre caselle fisse), unico e **stabile**. Nell’album iniziale i numeri seguono l’ordine delle pagine (per esempio regione per regione). Dopo la pubblicazione non si cambiano più: una traccia aggiunta prende il numero successivo all’ultimo, una traccia eliminata lascia un buco. Non si rinumera mai.
 - **Valore.** Ogni traccia vale **bronzo (1 punto)**, **argento (2 punti)** oppure **oro (3 punti)**. Il valore dipende da due criteri: **quanto è impegnativo raggiungerla** e **quanto è insolita**. Non dipende da quanto è importante: altrimenti il lettore sarebbe spinto a saltare le tracce «minori», che spesso sono proprio quelle che spiegano meglio un luogo.
@@ -229,6 +229,64 @@ Il capitolo Gastronomia è fatto di schede specialità: un piatto, un dolce, una
 4. **Da ricordare.** Una frase in chiusura.
 
 Valore: «comune» quando si trova in ogni ristorante tradizionale della regione, «rara» quando bisogna cercarla (un villaggio, una stagione, una produzione piccola).
+
+### B13. Scelta delle tracce
+
+L’album è la parte più costosa da mantenere. Ogni casella è un luogo da verificare, localizzare, illustrare con una foto di repertorio e tenere aggiornato, ed è una promessa al lettore: se la cerca, la trova. Per questo l’album deve essere **sostenibile** (ogni traccia regge da sola) ed **eterogeneo** (non dieci volte la stessa cosa). Si progetta con l’elenco dei luoghi (A11), prima di scrivere le schede.
+
+#### Quante tracce
+
+Il numero dipende da quanto Paese c’è da vedere, non dalla sua importanza storica. La fascia si sceglie nella scheda del Paese (A11) e si fa confermare dall’utente.
+
+| Fascia  | Si visita in…                     | Esempi                                  | Tracce della guida |
+| ------- | --------------------------------- | --------------------------------------- | ------------------ |
+| Micro   | un fine settimana                 | Lussemburgo, Malta, Andorra             | 20–35              |
+| Piccola | un viaggio di una settimana       | Slovenia, Belgio, Montenegro, Albania   | 40–70              |
+| Media   | due o tre viaggi                  | Romania, Portogallo, Bulgaria, Ungheria | 80–120             |
+| Grande  | molti viaggi, regione per regione | Italia, Francia, Spagna, Germania       | 150–220            |
+
+Le tracce della guida sono quelle dalla 04 in poi: copertina, bandiera e stemma non contano. Per collocare il Paese nella fascia contano le regioni del filtro, le città con scheda e la densità del patrimonio: un Paese molto visitato e denso di patrimonio sta nella metà alta della sua fascia (l’Italia verso 220), un Paese poco visitato nella metà bassa.
+
+- **Il numero è un tetto, non un obiettivo.** Un album più corto e tutto solido vale più di uno pieno di riempitivi.
+- **Una dentro, una fuori.** Raggiunto il tetto, durante la progettazione ogni traccia nuova ne fa uscire un’altra, registrata con tutti i suoi testi in `content/<cc>/research/album/excluded-traces.md`.
+- **Dopo la pubblicazione** valgono le «Aggiunte all’album» (B9). Se le aggiunte superano il 10% del tetto, si rivede la fascia con l’utente.
+
+#### Quando una traccia regge
+
+Una traccia entra solo se soddisfa **tutte** queste condizioni:
+
+1. **Si vede e si fotografa.** È un luogo, un edificio, un’opera, un oggetto, un piatto. Non un concetto, un evento o una persona: quelli stanno nel testo.
+2. **Si trova.** «Come trovarla» indica il punto preciso. Le coordinate vengono da Wikidata o OpenStreetMap (tranne per le tracce `region` e `anywhere`). Un viaggiatore qualsiasi ci arriva: se servono una guida, un permesso o una stagione, lo dice «Come trovarla».
+3. **È stabile.** È aperta e visibile da almeno un anno, o ha davanti una vita lunga. Niente installazioni temporanee, cantieri senza data, luoghi chiusi a tempo indeterminato. Un luogo appena inaugurato entra solo se è legato a una scheda e la sua posizione è certa.
+4. **Si verifica.** I suoi dati hanno due fonti (C1) e ha una foto di repertorio con licenza, oppure un `TODO immagine`. Una traccia con un `TODO verificare` sul _dove_ (non su un dettaglio del testo) non si pubblica.
+5. **Porta un’idea propria.** Dice qualcosa che nessun’altra traccia, introduzione o timeline dice già.
+6. **Vale la sosta.** Un viaggiatore che passa di lì si fermerebbe anche senza l’album. Se serve l’album per giustificarla, è un riempitivo.
+
+#### Composizione
+
+Le quote sono indicative e si controllano sull’elenco dei luoghi. Una traccia condivisa da più schede conta una volta sola, nel capitolo a cui appartiene di più.
+
+- **Capitoli.** Personaggi 20–30%, Città 25–35%, Natura 20–30%, Gastronomia 10–20%.
+- **Regioni.** Ogni regione del filtro deve avere abbastanza tracce per un viaggio fatto solo lì: almeno il 10% dell’album, o 8 tracce se l’album è più piccolo. Una regione piccola o poco visitata può stare sotto, se la scheda del Paese lo dichiara.
+- **Difficoltà.** Almeno metà delle tracce sono bronzo, raggiungibili in un viaggio normale. L’oro non supera il 10%. Le tracce che chiedono una giornata di cammino o di viaggio apposta (una cima, un’isola, un monastero isolato) non superano il 5%, e al massimo una per massiccio.
+- **Temi.** Oltre a storia, architettura e natura, l’album copre almeno cinque fra questi temi: musica, letteratura, cinema e serie, sport, scienza e tecnica, artigianato e arti popolari, feste e tradizioni, fede vissuta, il Paese di oggi (dopo il 1990 o la fine del regime). Fra i personaggi c’è almeno una donna, più d’una dalla fascia media in su.
+- **Gesti.** Almeno un quinto delle tracce chiede qualcosa di diverso dal guardare un edificio: assaggiare, ascoltare, salire, entrare in una grotta o in una miniera, scovare un dettaglio, trovare un oggetto in tasca.
+- **Doppioni.** Nessuna tipologia supera le tre tracce (o il 3% dell’album, nelle fasce grandi): statue equestri, banconote, cime, laghi glaciali, dighe, stadi, chiese fortificate, vini, acquaviti, castelli dello stesso tipo. Due tracce della stessa tipologia devono raccontare due cose diverse.
+
+#### Che cosa resta fuori
+
+- Musei generici (il museo di storia regionale) senza un oggetto preciso da cercare: se il museo vale, la traccia è l’oggetto.
+- Luoghi chiusi al pubblico, privati o visibili solo durante un evento, salvo che si vedano bene da fuori.
+- Una seconda traccia per una storia che ne ha già una: la scheda la racconta nel testo.
+- Luoghi fuori dal territorio dello Stato (A1), anche se la storia ci porta.
+- Cose che cambiano spesso: locali, negozi, ristoranti con nome, opere di street art, eventi a data variabile.
+
+#### Come si lavora
+
+1. Nella scheda del Paese si sceglie la fascia e il tetto.
+2. L’elenco dei luoghi (A11) è una tabella con, per ogni traccia: `id`, regione, capitolo e scheda, `where`, valore, tema, gesto, e la frase che dice perché regge.
+3. Prima di scrivere le schede si controllano le quote. Le tracce che non le rispettano si tolgono, partendo da quelle che reggono meno.
+4. Le tracce scartate vanno in `excluded-traces.md` con il motivo, così una revisione futura sa perché non ci sono.
 
 ---
 
@@ -399,4 +457,5 @@ Gli `href` si verificano con uno script dedicato, non a mano.
 13. Caricare la foto di un luogo lo segna come visto in tutte le schede e nella vista d’insieme. Cancellarla lo riporta a non visto. Le foto non sono nel `localStorage`.
 14. Testi delle schede senza riferimenti a punti, livelli o completamento.
 15. Le tracce soggette a cambiamenti (banconote, statue, musei) sono state verificate con una ricerca recente.
-16. Elenca i `TODO verificare` e i `TODO immagine` aperti.
+16. L’album rispetta la sezione B13: tracce entro il tetto della fascia, ognuna che soddisfa le sei condizioni, quote di capitoli, regioni, difficoltà, temi, gesti e doppioni. Elenca gli scostamenti e il motivo.
+17. Elenca i `TODO verificare` e i `TODO immagine` aperti.

@@ -146,13 +146,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Dopo l’uccisione di Michele il Coraggioso, nel 1601, la sua testa arriva a uno dei suoi capitani, Radu Buzescu, che la fa seppellire in questo monastero. La lapide lo chiama principe di Valacchia, Transilvania e Moldavia: il titolo portato per pochi mesi resta inciso sulla pietra.',
       find: 'Monastero di Dealu, a nord di Târgoviște, distretto di Dâmbovița. Nella chiesa, la tomba è sul lato destro del nartece.',
     },
-    [RoTrace.MichaelTheBraveEquestrianStatue]: {
-      name: 'Michele a cavallo davanti all’Università',
-      local: 'Statuia ecvestră a lui Mihai Viteazul',
-      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
-      text: 'Il bronzo è dello scultore francese Albert-Ernest Carrier-Belleuse, inaugurato nel 1874. Valacchia e Moldavia sono unite da quindici anni, la Transilvania fa parte del Regno d’Ungheria. Per gli storici e i politici del tempo il principe che ha regnato sui tre principati è il precursore della loro unione: la statua racconta quella lettura, non il 1600.',
-      find: 'Piața Universității, davanti al palazzo dell’Università.',
-    },
     [RoTrace.PelesCastle]: {
       name: 'Il castello di Peleș',
       local: 'Castelul Peleș',
@@ -197,13 +190,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Eminescu muore a Bucarest e due giorni dopo è sepolto qui, all’ombra di un tiglio. La tomba è un luogo di pellegrinaggio: negli anniversari della nascita e della morte si riempie di fiori e candele.',
       find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è nella parte storica del cimitero.',
     },
-    [RoTrace.EminescuBanknote]: {
-      name: 'Il 500 lei di Eminescu',
-      local: 'Bancnota de 500 lei',
-      place: 'In tutta la Romania',
-      text: 'La banconota di taglio più alto, in polimero e di colore blu. Sul fronte il ritratto di Eminescu; sul retro la Biblioteca centrale universitaria di Iași, costruita fra il 1930 e il 1934, e una pagina del Timpul, il giornale per cui scriveva.',
-      find: 'Raramente nel resto: i bancomat danno di solito tagli più piccoli. Chiedila in banca o in un ufficio di cambio.',
-    },
     // TODO verificare: the 1377 privilege and the construction dates (1377–1388) with a second source.
     [RoTrace.BranCastle]: {
       name: 'Il castello di Bran',
@@ -221,13 +207,6 @@ export const names: GuideNames<Ro, RoSection> = {
       distance: `a circa 50 km da ${places[Ro.Brasov]}`,
       text: 'Accanto a Peleș, Carol I fa costruire fra il 1899 e il 1902 una residenza più piccola per il nipote Ferdinando e per Maria. La regina ne cura gli interni, in stile Art Nouveau, e qui muore il 18 luglio 1938. Il suo cuore, che lei voleva a Balcic, sul Mar Nero, lascia la Bulgaria nel 1940 e finisce in un museo di Bucarest: dal 2015 è tornato qui, in uno scrigno d’argento.',
       find: 'Nel parco di Peleș, poche centinaia di metri più in alto del castello grande: si sale a piedi dal centro di Sinaia. Si visita con biglietto; controlla i giorni di apertura sul sito di Peleș.',
-    },
-    [RoTrace.BrancusiHouseHobita]: {
-      name: 'La casa di Hobița',
-      local: 'Casa memorială Constantin Brâncuși',
-      place: `Hobița, ${places[Ro.Wallachia]}`,
-      text: 'Il villaggio dove Brâncuși nasce e cresce. La casa-museo, aperta nel 1971, sta sul terreno della famiglia ma non è la casa natale: è una casa contadina simile, portata qui. Le travi intagliate e gli attrezzi di legno sono quelli del mondo contadino che lui conosce da bambino.',
-      find: 'Nel villaggio di Hobița, comune di Peștișani, a nord-ovest di Târgu Jiu.',
     },
     [RoTrace.GateOfTheKiss]: {
       name: 'La Porta del bacio e la Tavola del silenzio',
@@ -557,15 +536,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il progetto Art Nouveau dell’architetto Daniel Renard passa di mano più volte, a ogni cambio di amministrazione cittadina, prima di essere realizzato: il casinò viene inaugurato nel 1910. Le grandi finestre a forma di conchiglia guardano il mare: è il simbolo della città di villeggiatura che cresce insieme al porto moderno. Dopo il 1948 diventa una casa della cultura, poi un ristorante; chiuso e degradato per anni, riapre nel 2025 dopo un restauro di cinque anni.',
       find: 'Sulla passeggiata a mare della penisola, vicino al faro genovese. Si visita con biglietto: controlla orari e prenotazioni sul sito ufficiale.',
     },
-    // TODO verificare: the titles of 2017 (Viitorul) and 2023 (Farul) and the distance.
-    [RoTrace.HagiAcademyStadium]: {
-      name: 'Lo stadio di Hagi',
-      local: 'Stadionul Central · Academia Hagi',
-      place: `Ovidiu, ${places[Ro.Dobruja]}`,
-      distance: `a circa 15 km da ${places[Ro.Constanta]}`,
-      text: 'Gheorghe Hagi, il «Maradona dei Carpazi», nasce nel 1965 in un villaggio del distretto di Constanța e trascina la nazionale ai quarti dei Mondiali del 1994. Nel 2009 fonda a Ovidiu un’accademia per ragazzi e una squadra, il Viitorul, che nel 2017 vince il campionato. Nel 2021 il Viitorul si fonde con il Farul, la squadra storica di Constanța, che con Hagi allenatore vince il titolo nel 2023. Il Farul gioca qui, nello stadio dell’accademia, finché quello della città è inagibile.',
-      find: 'Nella sede dell’Academia Hagi a Ovidiu, appena a nord di Constanța. Lo stadio si vede da fuori; per entrare, una partita del Farul.',
-    },
     [RoTrace.VamaVeche]: {
       name: 'Vama Veche',
       place: `Vama Veche, ${places[Ro.Dobruja]}`,
@@ -602,26 +572,12 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Nel delta nidifica la più grande colonia di pellicani comuni d’Europa, in zone a protezione integrale dove le barche non entrano; il pellicano riccio, più raro, nidifica in piccole colonie. Arrivano in primavera e ripartono in autunno: li vedi pescare in gruppo sui laghi e volare in lunghe file sopra i canali. Sono il simbolo della riserva.',
       find: 'Dalle barche delle escursioni che partono da Tulcea, Crișan o Murighiol, fra aprile e settembre, meglio al mattino presto. Alle colonie non ci si può avvicinare: un binocolo e un barcaiolo che resta a distanza contano più di un teleobiettivo.',
     },
-    [RoTrace.VidraruDam]: {
-      name: 'La diga di Vidraru',
-      local: 'Barajul Vidraru',
-      place: `Valle dell’Argeș, ${places[Ro.Wallachia]}`,
-      text: 'Una diga ad arco alta 166 m chiude la gola dell’Argeș e forma il lago di Vidraru. È completata nel 1966, alcuni anni prima del Transfăgărășan, e la centrale idroelettrica entra in funzione nel dicembre di quell’anno. La strada che sale verso la cresta passa sopra la diga, lungo il coronamento di circa 300 m: da un lato il lago, dall’altro il salto nella gola.',
-      find: 'Sul Transfăgărășan (DN7C), poco a monte della cittadella di Poenari: la strada attraversa la diga sul coronamento, con parcheggi alle due estremità. Si raggiunge tutto l’anno dal lato di Curtea de Argeș.',
-    },
     [RoTrace.BaleaLake]: {
       name: 'Il lago di Bâlea',
       local: 'Bâlea Lac',
       place: `Monti Făgăraș, ${places[Ro.Transylvania]}`,
       text: 'Un lago glaciale a 2.034 m, in un circo scavato dal ghiaccio sotto la cresta: è il più grande dei Făgăraș, profondo una dozzina di metri. Il lago e il circo sono riserva naturale. Il Transfăgărășan ci arriva dal nord con una lunga serie di tornanti e qui passa la cresta in galleria: il tunnel, lungo 884 m, sbuca sul versante della Valacchia.',
       find: 'Sul versante nord del Transfăgărășan, all’imbocco della galleria di Bâlea. La strada di solito è chiusa da fine ottobre a fine giugno, e a volte anche d’estate per neve o frane: controlla prima di partire. D’inverno si sale in funivia da Bâlea Cascadă.',
-    },
-    [RoTrace.MoldoveanuPeak]: {
-      name: 'La cima del Moldoveanu',
-      local: 'Vârful Moldoveanu',
-      place: `Monti Făgăraș, ${places[Ro.Wallachia]}`,
-      text: 'Con i suoi 2.544 m è la cima più alta della Romania. È una delle otto vette dei Făgăraș che superano i 2.500 m. Nessuna strada ci arriva: dalla cima si vede la cresta correre da est a ovest, con la Transilvania da una parte e la Valacchia dall’altra.',
-      find: 'A piedi, di solito da Victoria (Brașov), per la valle della Viștea Mare: una lunga salita su sentiero segnato, spesso con un pernottamento in rifugio o in tenda. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
     [RoTrace.Transfagarasan]: {
       name: 'Il Transfăgărășan',
@@ -645,14 +601,6 @@ export const names: GuideNames<Ro, RoSection> = {
       distance: `a circa 30 km da ${places[Ro.Brasov]}`,
       text: 'Nel bosco sopra Zărnești, in un recinto di circa 69 ettari, vivono oltre cento orsi bruni tolti dalla cattività: piccole gabbie, circhi, proprietari privati. Il rifugio nasce nel 2005 per iniziativa di un’associazione per la protezione degli animali e apre ai visitatori nel 2008. Gli orsi, cresciuti in gabbia, non possono tornare liberi: qui vivono fra alberi e stagni.',
       find: 'Nel bosco alla periferia di Zărnești. Solo visite guidate, a orari fissi e su prenotazione, chiuso il lunedì: controlla il sito dell’associazione Millions of Friends.',
-    },
-    [RoTrace.MaguraVillage]: {
-      name: 'Il villaggio di fronte alla cresta',
-      local: 'Măgura',
-      place: `Moieciu, ${places[Ro.Transylvania]}`,
-      distance: `a circa 30 km da ${places[Ro.Brasov]}`,
-      text: 'Case, fienili e prati sparsi sulle colline del corridoio di Bran, intorno ai 1.000 m, sul fianco est della Piatra Craiului. Da qui la cresta calcarea si vede in tutta la sua lunghezza, e un sentiero prosegue fino al vicino villaggio di Peștera. Oggi Măgura vive anche delle sue pensioni.',
-      find: 'Da Bran verso Moieciu, poi la strada asfaltata che sale a Măgura; oppure a piedi dalle gole di Zărnești. Il punto più bello è la cima della collina di Măgura, sopra il villaggio.',
     },
     [RoTrace.LaOmPeak]: {
       name: 'La cima di La Om',
@@ -739,13 +687,6 @@ export const names: GuideNames<Ro, RoSection> = {
       place: 'Borșa, Maramureș',
       text: 'Sopra Borșa, a circa 1.300 m, l’acqua raccolta in un circo glaciale dei Monti Rodnei cade a gradini da una parete di calcare per circa 90 m: le misure vanno da 80 a 97 m. Il nome viene da una leggenda locale, che racconta di cavalli precipitati dalla parete.',
       find: 'Da Borșa Complex, la parte alta della località, in seggiovia e poi circa mezz’ora a piedi; senza seggiovia, circa un’ora di sentiero.',
-    },
-    [RoTrace.PietrosulRodnei]: {
-      name: 'La cima del Pietrosul',
-      local: 'Vârful Pietrosul Rodnei',
-      place: 'Monti Rodnei, Maramureș',
-      text: 'A 2.303 m è la cima più alta dei Carpazi Orientali. Sotto la vetta, in un circo glaciale, c’è il lago Iezer. Il versante intorno è protetto come riserva dal 1932, molto prima che i Rodnei diventassero parco nazionale. Vicino alla cima c’è una stazione meteorologica.',
-      find: 'Da Borșa, a piedi per sentiero segnato, passando per il lago Iezer: una lunga giornata di salita. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
     },
     // TODO verificare: the year of construction (1720; some sources say 1711).
     [RoTrace.BarsanaChurch]: {
@@ -856,11 +797,6 @@ export const names: GuideNames<Ro, RoSection> = {
       local: 'Pleșcaviță',
       place: `${places[Ro.Timisoara]}, Banato`,
       find: 'Nelle griglierie e nei fast food di Timișoara, in un panino o nel piatto con patatine.',
-    },
-    [RoTrace.FoodHorinca]: {
-      name: 'Un bicchierino di horincă',
-      place: 'Maramureș',
-      find: 'Nelle pensioni e nei ristoranti del Maramureș, spesso fatta in casa e offerta all’arrivo.',
     },
     [RoTrace.FoodBalmos]: {
       name: 'Balmoș',
@@ -1097,9 +1033,6 @@ export const names: GuideNames<Ro, RoSection> = {
     },
     [RoFood.BanatCuisine]: {
       name: 'Cucina sveva e serba del Banato',
-    },
-    [RoFood.Horinca]: {
-      name: 'Horincă',
     },
     [RoFood.Balmos]: {
       name: 'Balmoș',

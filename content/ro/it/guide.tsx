@@ -3202,17 +3202,6 @@ function Body() {
             remember="Nel Banato la tavola parla più lingue: tagliatelle sveve e griglia serba nella stessa città."
           />
           <Card
-            card={RoFood.Horinca}
-            intro={
-              <>
-                La <N>horincă</N> è il nome che nel Maramureș e nell’Oaș si dà all’acquavite di
-                prugne: la più forte è distillata due volte. Come la țuică nel resto del paese, si
-                offre all’ospite e apre il pranzo.
-              </>
-            }
-            remember="Nel Maramureș la țuică si chiama horincă, e arriva in tavola prima di tutto il resto."
-          />
-          <Card
             card={RoFood.Balmos}
             intro={
               <>

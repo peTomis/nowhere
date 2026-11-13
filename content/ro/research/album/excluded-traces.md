@@ -256,3 +256,369 @@ Album numbers are the ones before the change (01–03 are the cover, the flag an
 - text: Un piatto dolce: tagliatelle all’uovo condite con noci tritate e zucchero, dalla cucina
   sveva e ungherese del Banato.
 - find: Nei ristoranti di cucina bănățeană e nelle case; più facile da trovare a Timișoara.
+
+## Second round (2026-11-14)
+
+Nine traces taken out to bring the album within the size band of `docs/prompt-for-new-guide.md`
+§B13 (a medium country: 80–120 traces of the guide; it had 126). The album was still in design,
+so the numbers of the traces after them moved up. Their stock images were deleted from
+`public/guides/romania/traces/` (path and credit are in the structure blocks below, the files in
+git history). The card intros that mention them (Eminescu's banknote, Moldoveanu in the Făgăraș
+intro, Măgura in the Piatra Craiului intro, Hagi in the Constanța intro) are kept: they still hold
+without the trace.
+
+| Old no. | Trace                                    | Card(s)            | Why it was excluded                                                                                                  |
+| ------- | ---------------------------------------- | ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| 21      | Il 500 lei di Eminescu                   | MihaiEminescu      | Not a place; rare, ATMs rarely give it. The 5 lei of Enescu keeps the banknote type                                  |
+| 24      | La casa di Hobița                        | ConstantinBrancusi | A similar peasant house brought there, not the birth house; Târgu Jiu carries Brâncuși                               |
+| 14      | Michele a cavallo davanti all’Università | MichaelTheBrave    | Second equestrian statue of the album; Michael keeps Mihai Vodă and Dealu                                            |
+| 69      | Lo stadio di Hagi                        | Constanta          | A suburban stadium seen from outside, with an open TODO; sport keeps the Steaua, Hagi stays in the Constanța intro   |
+| 75      | La diga di Vidraru                       | FagarasMountains   | Duplicate: crossed on the Transfăgărășan trace, and the Iron Gates dam is already a dam                              |
+| 94      | La cima del Pietrosul                    | VaserValleyRodna   | Fifth summit of the album, a long day of climbing (B13: at most three of a type)                                     |
+| 81      | Il villaggio di fronte alla cresta       | PiatraCraiului     | Weakest trace of the Piatra Craiului: a panoramic village with guesthouses                                           |
+| 113     | Un bicchierino di horincă                | Tuica, Horinca     | Almost the same as pălincă (as the Bihor pălincă excluded before); its card is removed, the Țuică card names horincă |
+| 77      | La cima del Moldoveanu                   | FagarasMountains   | A summit whose only idea is being the highest; a two-day hike. The crest keeps Bâlea and the Transfăgărășan          |
+
+### 21 · Il 500 lei di Eminescu
+
+Structure:
+
+```ts
+    // The 500 lei banknote: anywhere, but rarely given as change.
+    {
+      id: RoTrace.EminescuBanknote,
+      where: 'anywhere',
+      rarity: 'rare',
+      icon: 'banknote',
+      image: {
+        src: '/guides/romania/traces/eminescu-500-lei-banknote.webp',
+        credit: {
+          author: 'ES Vic',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:500_lei._Romania,_2005_a.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.EminescuBanknote]: {
+      name: 'Il 500 lei di Eminescu',
+      local: 'Bancnota de 500 lei',
+      place: 'In tutta la Romania',
+      text: 'La banconota di taglio più alto, in polimero e di colore blu. Sul fronte il ritratto di Eminescu; sul retro la Biblioteca centrale universitaria di Iași, costruita fra il 1930 e il 1934, e una pagina del Timpul, il giornale per cui scriveva.',
+      find: 'Raramente nel resto: i bancomat danno di solito tagli più piccoli. Chiedila in banca o in un ufficio di cambio.',
+    },
+```
+
+### 24 · La casa di Hobița
+
+Structure:
+
+```ts
+    // Gorj county (Oltenia): historically Wallachia; Hobița and Târgu Jiu are not cities of the
+    // guide. TODO image: the Gate of the Kiss and the Endless Column have none yet. Brâncuși died
+    // in 1957: his works at Târgu Jiu are protected until the end of 2027, so check the rights
+    // (Romania's freedom of panorama) before using a photograph.
+    {
+      id: RoTrace.BrancusiHouseHobita,
+      region: Wallachia,
+      where: 'remote',
+      at: [23.0559, 45.0535],
+      rarity: 'rare',
+      icon: 'house',
+      image: {
+        src: '/guides/romania/traces/brancusi-house-hobita.webp',
+        credit: {
+          author: 'Ștefan Jurcă from Munich, Germany',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Hobi%C8%9Ba_-_Casa_Memorial%C4%83_Constantin_Br%C3%A2ncu%C8%99i_(Romanian_Cottage)_(28585356640).jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.BrancusiHouseHobita]: {
+      name: 'La casa di Hobița',
+      local: 'Casa memorială Constantin Brâncuși',
+      place: `Hobița, ${places[Ro.Wallachia]}`,
+      text: 'Il villaggio dove Brâncuși nasce e cresce. La casa-museo, aperta nel 1971, sta sul terreno della famiglia ma non è la casa natale: è una casa contadina simile, portata qui. Le travi intagliate e gli attrezzi di legno sono quelli del mondo contadino che lui conosce da bambino.',
+      find: 'Nel villaggio di Hobița, comune di Peștișani, a nord-ovest di Târgu Jiu.',
+    },
+```
+
+### 14 · Michele a cavallo davanti all’Università
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.MichaelTheBraveEquestrianStatue,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      at: [26.1013, 44.4349],
+      rarity: 'common',
+      icon: 'shield',
+      image: {
+        src: '/guides/romania/traces/michael-the-brave-equestrian-statue.webp',
+        credit: {
+          author: 'Britchi Mirela',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucuresti,_Romania._Piata_Universitatii,_STATUIA_LUI_MIHAI_VITEAZUL_pe_Cal,_intre_doua_cladiri._Iulie_2018._(B-III-m-A-20057).jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.MichaelTheBraveEquestrianStatue]: {
+      name: 'Michele a cavallo davanti all’Università',
+      local: 'Statuia ecvestră a lui Mihai Viteazul',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Il bronzo è dello scultore francese Albert-Ernest Carrier-Belleuse, inaugurato nel 1874. Valacchia e Moldavia sono unite da quindici anni, la Transilvania fa parte del Regno d’Ungheria. Per gli storici e i politici del tempo il principe che ha regnato sui tre principati è il precursore della loro unione: la statua racconta quella lettura, non il 1600.',
+      find: 'Piața Universității, davanti al palazzo dell’Università.',
+    },
+```
+
+### 69 · Lo stadio di Hagi
+
+Structure:
+
+```ts
+    // Ovidiu, north of Constanța.
+    {
+      id: RoTrace.HagiAcademyStadium,
+      region: Dobruja,
+      where: 'nearby',
+      at: [28.5648, 44.2358],
+      rarity: 'rare',
+      icon: 'ball',
+      image: {
+        src: '/guides/romania/traces/hagi-academy-stadium.webp',
+        credit: {
+          author: 'Leontin l',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ovidiu_2017_(4).jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    // TODO verificare: the titles of 2017 (Viitorul) and 2023 (Farul) and the distance.
+    [RoTrace.HagiAcademyStadium]: {
+      name: 'Lo stadio di Hagi',
+      local: 'Stadionul Central · Academia Hagi',
+      place: `Ovidiu, ${places[Ro.Dobruja]}`,
+      distance: `a circa 15 km da ${places[Ro.Constanta]}`,
+      text: 'Gheorghe Hagi, il «Maradona dei Carpazi», nasce nel 1965 in un villaggio del distretto di Constanța e trascina la nazionale ai quarti dei Mondiali del 1994. Nel 2009 fonda a Ovidiu un’accademia per ragazzi e una squadra, il Viitorul, che nel 2017 vince il campionato. Nel 2021 il Viitorul si fonde con il Farul, la squadra storica di Constanța, che con Hagi allenatore vince il titolo nel 2023. Il Farul gioca qui, nello stadio dell’accademia, finché quello della città è inagibile.',
+      find: 'Nella sede dell’Academia Hagi a Ovidiu, appena a nord di Constanța. Lo stadio si vede da fuori; per entrare, una partita del Farul.',
+    },
+```
+
+### 75 · La diga di Vidraru
+
+Structure:
+
+```ts
+    // Făgăraș Mountains (Sibiu, Brașov, Argeș counties): the ridge is the old border between Transylvania and Wallachia.
+    {
+      id: RoTrace.VidraruDam,
+      region: Wallachia,
+      where: 'remote',
+      at: [24.6302, 45.3666],
+      rarity: 'rare',
+      icon: 'wall',
+      image: {
+        src: '/guides/romania/traces/vidraru-dam.webp',
+        credit: {
+          author: 'Andrei Stroe',
+          license: 'CC BY-SA 2.5',
+          url: 'https://commons.wikimedia.org/wiki/File:Vidraru_Dam.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.VidraruDam]: {
+      name: 'La diga di Vidraru',
+      local: 'Barajul Vidraru',
+      place: `Valle dell’Argeș, ${places[Ro.Wallachia]}`,
+      text: 'Una diga ad arco alta 166 m chiude la gola dell’Argeș e forma il lago di Vidraru. È completata nel 1966, alcuni anni prima del Transfăgărășan, e la centrale idroelettrica entra in funzione nel dicembre di quell’anno. La strada che sale verso la cresta passa sopra la diga, lungo il coronamento di circa 300 m: da un lato il lago, dall’altro il salto nella gola.',
+      find: 'Sul Transfăgărășan (DN7C), poco a monte della cittadella di Poenari: la strada attraversa la diga sul coronamento, con parcheggi alle due estremità. Si raggiunge tutto l’anno dal lato di Curtea de Argeș.',
+    },
+```
+
+### 94 · La cima del Pietrosul
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.PietrosulRodnei,
+      region: Transylvania,
+      where: 'remote',
+      at: [24.6341, 47.5969],
+      rarity: 'very-rare',
+      icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/pietrosul-rodnei.webp',
+        credit: {
+          author: 'Martin Kozák',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Varful_Pietrosul_Rodnei.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.PietrosulRodnei]: {
+      name: 'La cima del Pietrosul',
+      local: 'Vârful Pietrosul Rodnei',
+      place: 'Monti Rodnei, Maramureș',
+      text: 'A 2.303 m è la cima più alta dei Carpazi Orientali. Sotto la vetta, in un circo glaciale, c’è il lago Iezer. Il versante intorno è protetto come riserva dal 1932, molto prima che i Rodnei diventassero parco nazionale. Vicino alla cima c’è una stazione meteorologica.',
+      find: 'Da Borșa, a piedi per sentiero segnato, passando per il lago Iezer: una lunga giornata di salita. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
+    },
+```
+
+### 81 · Il villaggio di fronte alla cresta
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.MaguraVillage,
+      region: Transylvania,
+      where: 'nearby',
+      at: [25.2889, 45.5225],
+      rarity: 'common',
+      icon: 'barn',
+      image: {
+        src: '/guides/romania/traces/magura-village.webp',
+        credit: {
+          author: 'Marek Ślusarczyk (Tupungato)',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:01_Magura,_Romania_-_Piatra_Craiului_mountains.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.MaguraVillage]: {
+      name: 'Il villaggio di fronte alla cresta',
+      local: 'Măgura',
+      place: `Moieciu, ${places[Ro.Transylvania]}`,
+      distance: `a circa 30 km da ${places[Ro.Brasov]}`,
+      text: 'Case, fienili e prati sparsi sulle colline del corridoio di Bran, intorno ai 1.000 m, sul fianco est della Piatra Craiului. Da qui la cresta calcarea si vede in tutta la sua lunghezza, e un sentiero prosegue fino al vicino villaggio di Peștera. Oggi Măgura vive anche delle sue pensioni.',
+      find: 'Da Bran verso Moieciu, poi la strada asfaltata che sale a Măgura; oppure a piedi dalle gole di Zărnești. Il punto più bello è la cima della collina di Măgura, sopra il villaggio.',
+    },
+```
+
+### 113 · Un bicchierino di horincă
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodHorinca,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'brandy',
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodHorinca]: {
+      name: 'Un bicchierino di horincă',
+      place: 'Maramureș',
+      find: 'Nelle pensioni e nei ristoranti del Maramureș, spesso fatta in casa e offerta all’arrivo.',
+    },
+```
+
+### 77 · La cima del Moldoveanu
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.MoldoveanuPeak,
+      region: Wallachia,
+      where: 'remote',
+      at: [24.7362, 45.5994],
+      rarity: 'very-rare',
+      icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/moldoveanu-peak.webp',
+        credit: {
+          author: 'MIHAIL',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Moldoveanu_Peak_(Romania).jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.MoldoveanuPeak]: {
+      name: 'La cima del Moldoveanu',
+      local: 'Vârful Moldoveanu',
+      place: `Monti Făgăraș, ${places[Ro.Wallachia]}`,
+      text: 'Con i suoi 2.544 m è la cima più alta della Romania. È una delle otto vette dei Făgăraș che superano i 2.500 m. Nessuna strada ci arriva: dalla cima si vede la cresta correre da est a ovest, con la Transilvania da una parte e la Valacchia dall’altra.',
+      find: 'A piedi, di solito da Victoria (Brașov), per la valle della Viștea Mare: una lunga salita su sentiero segnato, spesso con un pernottamento in rifugio o in tenda. Solo d’estate, con tempo stabile e attrezzatura da montagna.',
+    },
+```
+
+### The Horincă card
+
+Removed with its only trace. Structure, names and body:
+
+```ts
+    {
+      id: RoFood.Horinca,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [],
+    },
+    [RoFood.Horinca]: {
+      name: 'Horincă',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.Horinca}
+  intro={
+    <>
+      La <N>horincă</N> è il nome che nel Maramureș e nell’Oaș si dà all’acquavite di prugne: la più
+      forte è distillata due volte. Come la țuică nel resto del paese, si offre all’ospite e apre il
+      pranzo.
+    </>
+  }
+  remember="Nel Maramureș la țuică si chiama horincă, e arriva in tavola prima di tutto il resto."
+/>
+```

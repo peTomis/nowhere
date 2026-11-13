@@ -908,20 +908,9 @@ export const sources: GuideSources = {
   ],
   [Ro.Constanta]: [
     {
-      title: 'Central Stadium (Gheorghe Hagi Academy)',
-      site: 'Wikipedia',
-      url: 'https://en.wikipedia.org/wiki/Central_Stadium_(Gheorghe_Hagi_Academy)',
-    },
-    {
       title: 'FC Viitorul Constanța',
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/FC_Viitorul_Constan%C8%9Ba',
-    },
-    {
-      title:
-        'Viitorul și Farul Constanța au fuzionat! Gică Hagi va fi antrenor, iar Gică Popescu- președinte',
-      site: 'BZI',
-      url: 'https://www.bzi.ro/viitorul-si-farul-constanta-au-fuzionat-gica-hagi-va-fi-antrenor-iar-gica-popescu-presedinte-2-4213253',
     },
     {
       title: 'Vacanțele artiștilor la 2 Mai și Vama Veche',
@@ -1164,18 +1153,6 @@ export const sources: GuideSources = {
         'Cum au fost construite marile șosele din Carpați, drumurile de vis care unesc România',
       site: 'Adevărul',
       url: 'https://adevarul.ro/stil-de-viata/magazin/cum-au-fost-construite-marile-sosele-din-carpati-2396753.html',
-    },
-    { title: 'Vidraru Dam', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Vidraru_Dam' },
-    {
-      title: 'Vidraru Dam (Poenari, 1965)',
-      site: 'Structurae',
-      url: 'https://structurae.net/structures/vidraru-dam',
-    },
-    {
-      title:
-        'Argeş: A fost semnat contractul pentru retehnologizarea Hidrocentralei Vidraru, investiţie de peste 200 de milioane de euro',
-      site: 'Agerpres',
-      url: 'https://agerpres.ro/economic/2024/07/09/arges-a-fost-semnat-contractul-pentru-retehnologizarea-hidrocentralei-vidraru-investitie-de-peste-20--1324906',
     },
     {
       title: 'Căldarea glaciară Bâlea',
