@@ -389,15 +389,10 @@ function Body() {
                 Păcuiul lui Soare. Le fonti bizantine chiameranno la provincia Paristrion.
               </Detail>
               <Detail on={[Dobruja]}>
-                <D>1027–1091</D> I <N href="https://it.wikipedia.org/wiki/Peceneghi">Peceneghi</N>,
-                nomadi delle steppe, attraversano più volte il Danubio. Dal 1045 gruppi di loro
-                ottengono di stabilirsi nella regione in cambio della difesa del confine. Nel 1091
-                l’esercito bizantino li sconfigge definitivamente.
-              </Detail>
-              <Detail on={[Dobruja]}>
-                Alla fine dell’XI secolo arrivano i{' '}
-                <N href="https://it.wikipedia.org/wiki/Cumani">Cumani</N>, altri nomadi delle
-                steppe: saccheggiano la regione a più riprese, e una parte di loro vi si stabilisce.
+                Nell’XI secolo i nomadi delle steppe, prima i{' '}
+                <N href="https://it.wikipedia.org/wiki/Peceneghi">Peceneghi</N> e poi i{' '}
+                <N href="https://it.wikipedia.org/wiki/Cumani">Cumani</N>, attraversano più volte il
+                Danubio; una parte di loro si stabilisce nella regione.
               </Detail>
               <Detail on={[Dobruja]}>
                 <D>1185</D> Una rivolta contro Bisanzio fa nascere il{' '}
@@ -621,15 +616,6 @@ function Body() {
               </Detail>
               <Today traces={[RoTrace.CurteaDeArgesRoyalTombs]} />
             </Event>
-            <Event on={[Transylvania]} date="1514" title="La ribellione di György Dózsa">
-              <Detail on={[Transylvania]}>
-                I contadini, guidati da{' '}
-                <N href="https://it.wikipedia.org/wiki/György_Dózsa">György Dózsa</N>, si ribellano
-                e vengono sconfitti a{' '}
-                <N href="https://it.wikipedia.org/wiki/Timișoara">Timișoara</N>. La repressione è
-                durissima: la Dieta del 1514 vincola per sempre i contadini alla terra.
-              </Detail>
-            </Event>
             <Event on={[Wallachia, Transylvania]} date="1521" title="La lettera di Neacșu">
               <Detail on={[Wallachia, Transylvania]}>
                 Da <N href="https://it.wikipedia.org/wiki/Câmpulung">Câmpulung</N>, in Valacchia, il
@@ -646,8 +632,8 @@ function Body() {
             </Event>
             <Event on="always" date="1526–1538" title="Frattura del Regno d’Ungheria">
               <Detail on="always">
-                A Mohács, in Ungheria, gli ottomani distruggono l’esercito ungherese, provocando una
-                crisi nel regno e la contesa per il trono tra{' '}
+                A Mohács, in Ungheria, gli ottomani distruggono l’esercito ungherese. Due re si
+                contendono il trono,{' '}
                 <N href="https://it.wikipedia.org/wiki/Giovanni_I_d%27Ungheria">
                   Giovanni I d’Ungheria
                 </N>{' '}
@@ -655,15 +641,11 @@ function Body() {
                 <N href="https://it.wikipedia.org/wiki/Ferdinando_I_d%27Asburgo">
                   Ferdinando I d’Asburgo
                 </N>
-                .
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1538</D> Con il{' '}
+                , e nel 1538, con il{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Gran_Varadino">
                   trattato di Gran Varadino
-                </N>{' '}
-                i due re si dividono l’Ungheria. Giovanni, che non ha figli, promette la successione
-                agli Asburgo.
+                </N>
+                , si dividono il regno.
               </Detail>
             </Event>
             <Event on={[Moldavia]} date="1530–1537" title="Petru Rareș e le chiese dipinte">
@@ -715,41 +697,17 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                <D>1541</D> Con la caduta di <N href="https://it.wikipedia.org/wiki/Buda">Buda</N>{' '}
-                (oggi parte di Budapest), gli ottomani di{' '}
+                <D>1541</D> Gli ottomani di{' '}
                 <N href="https://it.wikipedia.org/wiki/Solimano_il_Magnifico">
                   Solimano il Magnifico
                 </N>{' '}
-                occupano la capitale del{' '}
-                <N href="https://it.wikipedia.org/wiki/Regno_d%27Ungheria">Regno d’Ungheria</N>. In
-                cambio di un tributo annuo, il sultano affida le terre a est del Tibisco alla regina
-                Isabella e a suo figlio.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                Alla <N>Dieta di Debrecen</N> (oggi in Ungheria), le regioni orientali del regno,
-                compresa la <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N>,
-                giurano fedeltà a{' '}
-                <N href="https://it.wikipedia.org/wiki/Giovanni_II_d'Ungheria">János Zsigmond</N>{' '}
-                (Giovanni II Sigismondo). Nasce un’entità politica distinta, sotto la{' '}
-                <N href="https://it.wikipedia.org/wiki/Impero_ottomano">sovranità ottomana</N>.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1570</D> Con il{' '}
-                <N href="https://it.wikipedia.org/wiki/Trattato_di_Spira">trattato di Spira</N>{' '}
-                János Zsigmond rinuncia al titolo di re d’Ungheria. Il principato è formalizzato:
-                autonomo, ma sottoposto alla sovranità ottomana.
-              </Detail>
-            </Event>
-            <Event
-              on={[Wallachia]}
-              date="1545"
-              title="Mircea Ciobanul, principe nominato dal sultano"
-            >
-              <Detail on={[Wallachia]}>
-                <N href="https://it.wikipedia.org/wiki/Mircea_V_il_Pastore">Mircea Ciobanul</N> sale
-                al trono di <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> nominato
-                dal sultano, al posto di Radu Paisie. Per ottenere la nomina paga somme alla{' '}
-                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N>.
+                prendono <N href="https://it.wikipedia.org/wiki/Buda">Buda</N> (oggi parte di
+                Budapest), capitale del{' '}
+                <N href="https://it.wikipedia.org/wiki/Regno_d%27Ungheria">Regno d’Ungheria</N>. Le
+                terre a est del Tibisco, Transilvania compresa, diventano un principato con una
+                propria Dieta, autonomo ma tributario del sultano. Il{' '}
+                <N href="https://it.wikipedia.org/wiki/Trattato_di_Spira">trattato di Spira</N> lo
+                formalizza nel 1570.
               </Detail>
             </Event>
             <Event
@@ -762,33 +720,16 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                La Dieta stabilisce che i predicatori possono annunciare il Vangelo secondo la
-                propria interpretazione. Ogni comunità può tenere il predicatore di cui accetta
-                l’insegnamento, e nessuno può essere costretto o oltraggiato per la sua religione.
-                Non è una libertà religiosa individuale in senso moderno: la delibera tutela
-                predicatori e comunità.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                Il sistema delle quattro confessioni riconosciute,{' '}
-                <N href="https://it.wikipedia.org/wiki/Chiesa_cattolica">cattolica</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Luteranesimo">luterana</N>,{' '}
+                La Dieta stabilisce che ogni comunità può tenere il predicatore di cui accetta
+                l’insegnamento, e che nessuno può essere perseguitato per la sua religione: tutela
+                le comunità, non ancora il singolo. Ne nasce il sistema delle quattro confessioni
+                riconosciute, <N href="https://it.wikipedia.org/wiki/Chiesa_cattolica">cattolica</N>
+                , <N href="https://it.wikipedia.org/wiki/Luteranesimo">luterana</N>,{' '}
                 <N href="https://it.wikipedia.org/wiki/Calvinismo">calvinista</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Unitarianesimo">unitaria</N>, si completa
-                solo negli anni Ottanta del Cinquecento. Gli{' '}
-                <N href="https://it.wikipedia.org/wiki/Chiesa_ortodossa_rumena">ortodossi</N>{' '}
-                restano tollerati, senza i privilegi delle confessioni riconosciute.
-              </Detail>
-            </Event>
-            <Event on={[Moldavia]} date="1574" title="Ioan Vodă rifiuta il tributo">
-              <Detail on={[Moldavia]}>
-                <N href="https://ro.wikipedia.org/wiki/Ioan_Vodă_cel_Cumplit">
-                  Ioan Vodă cel Cumplit
-                </N>{' '}
-                («il Terribile»), principe di{' '}
-                <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N>, si
-                rifiuta di pagare il tributo al sultano. Sconfigge un primo esercito ottomano vicino
-                a <N href="https://ro.wikipedia.org/wiki/Bătălia_de_la_Jiliște">Jiliște</N>, ma il
-                sultano ne manda un secondo: Ioan Vodă viene catturato e giustiziato.
+                <N href="https://it.wikipedia.org/wiki/Unitarianesimo">unitaria</N>. Gli{' '}
+                <N href="https://it.wikipedia.org/wiki/Chiesa_ortodossa_rumena">ortodossi</N>, cioè
+                quasi tutti i romeni, restano soltanto tollerati. Per questo nelle città della
+                Transilvania trovi chiese di confessioni diverse a pochi passi l’una dall’altra.
               </Detail>
             </Event>
             <Event
@@ -803,91 +744,33 @@ function Body() {
               }
             >
               <Detail on={[Transylvania, Wallachia, Moldavia]}>
-                <D>1594–1595</D>{' '}
-                <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Transilvania">Transilvania</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> si alleano contro
-                gli <N href="https://it.wikipedia.org/wiki/Impero_ottomano">ottomani</N>.
-                Nell’agosto 1595 Michele, principe di Valacchia, li batte a Călugăreni.
-              </Detail>
-              <Detail on={[Transylvania, Wallachia, Moldavia]}>
-                <D>1599–1600</D> Michele conquista la Transilvania nell’ottobre 1599 e la{' '}
-                <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N>{' '}
-                nella primavera del 1600. Per pochi mesi del 1600 i tre principati sono sotto un
-                unico sovrano, ma ciascuno conserva le proprie istituzioni.
-              </Detail>
-              <Detail on={[Transylvania, Wallachia, Moldavia]}>
-                Nel settembre 1600 la nobiltà transilvana, con le truppe imperiali di{' '}
-                <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N>, lo
-                sconfigge a Mirăslău. Michele perde la Transilvania.
+                <D>1595</D> Michele, principe di Valacchia, batte gli ottomani a Călugăreni.{' '}
+                <D>1599–1600</D> Conquista la Transilvania e poi la Moldavia: per pochi mesi del
+                1600 i tre principati hanno un solo sovrano, ma ciascuno conserva le proprie
+                istituzioni.
               </Detail>
               <Detail on={[Transylvania, Wallachia, Moldavia]}>
                 {/* Days omitted on purpose: sources mix Julian and Gregorian dates (murder on 9 or 19 August). */}
-                <D>1601</D> In agosto Michele vince con Basta la{' '}
+                Nel settembre 1600 la nobiltà transilvana e le truppe imperiali di{' '}
+                <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N> lo
+                sconfiggono a Mirăslău. Nell’agosto <D>1601</D>, circa due settimane dopo aver vinto
+                insieme a Basta la{' '}
                 <N href="https://it.wikipedia.org/wiki/Battaglia_di_Guruslău">
                   battaglia di Guruslău
                 </N>
-                , oggi nel distretto di Sălaj. Circa due settimane dopo i soldati di Basta lo
-                uccidono a <N href="https://it.wikipedia.org/wiki/Câmpia_Turzii">Câmpia Turzii</N>,
-                vicino a <N href="https://it.wikipedia.org/wiki/Turda">Turda</N>.
+                , i soldati dello stesso Basta lo uccidono a{' '}
+                <N href="https://it.wikipedia.org/wiki/Câmpia_Turzii">Câmpia Turzii</N>, vicino a{' '}
+                <N href="https://it.wikipedia.org/wiki/Turda">Turda</N>.
               </Detail>
               <Today traces={[RoTrace.MichaelTheBraveHeadTomb, RoTrace.MihaiVodaChurch]} />
             </Event>
-            <Event
-              on={[Transylvania]}
-              date="1604–1606"
-              title={
-                <>
-                  Rivolta di{' '}
-                  <N href="https://it.wikipedia.org/wiki/István_Bocskai">István Bocskai</N>
-                </>
-              }
-            >
-              <Detail on={[Transylvania]}>
-                <D>1604</D> Il comandante imperiale accusa di tradimento il possidente calvinista e
-                gli confisca i beni.{' '}
-                <N href="https://it.wikipedia.org/wiki/István_Bocskai">Bocskai</N> assolda gli{' '}
-                <N href="https://it.wikipedia.org/wiki/Aiduchi">aiduchi</N> e si ribella.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1605</D> Le{' '}
-                <N href="https://it.wikipedia.org/wiki/Unio_Trium_Nationum">Tre Nazioni</N> giurano
-                fedeltà a Bocskai, nominato principe dal sultano. Le sue truppe invadono Ungheria e
-                Austria, e nel 1606, con il{' '}
-                <N href="https://it.wikipedia.org/wiki/Trattato_di_Vienna_(1606)">
-                  Trattato di Vienna
-                </N>
-                , costringono gli <N href="https://it.wikipedia.org/wiki/Asburgo">Asburgo</N> alla
-                pace.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1606</D> La{' '}
-                <N href="https://it.wikipedia.org/wiki/Pace_di_Zsitvatorok">pace di Zsitvatorok</N>{' '}
-                chiude la{' '}
-                <N href="https://it.wikipedia.org/wiki/Lunga_guerra_turca">Lunga guerra</N>:{' '}
-                <N href="https://it.wikipedia.org/wiki/Rodolfo_II_d%27Asburgo">Rodolfo II</N>{' '}
-                riconosce che i principi di Transilvania sono sottoposti al sultano. Bocskai muore
-                senza figli alla fine dell’anno.
-              </Detail>
-            </Event>
-            <Context on={[Transylvania]} period="1593–1606" title="La catastrofe demografica">
-              La <N href="https://it.wikipedia.org/wiki/Lunga_guerra_turca">Lunga guerra</N> spopola
-              la Transilvania. In una lettera del 1603{' '}
-              <N href="https://it.wikipedia.org/wiki/Giorgio_Basta">Giorgio Basta</N> descrive il
-              paese come un deserto, con miniere abbandonate e senza manodopera.
-            </Context>
           </Timeline>
 
           <Timeline section={RoSection.OttomanSuzeraintyTransylvania}>
-            <Context on={[Transylvania]} period="XVII secolo" title="Freddo, peste e nuove colture">
-              Inverni lunghi, estati piovose e autunni brevi, effetto della{' '}
-              <N href="https://it.wikipedia.org/wiki/Piccola_era_glaciale">piccola era glaciale</N>,
-              spingono a trasformare i terreni d’altura in pascoli. Le epidemie di{' '}
-              <N href="https://it.wikipedia.org/wiki/Peste_bubbonica">peste</N> tornano a più
-              riprese. Il <N href="https://it.wikipedia.org/wiki/Mais">mais</N>, arrivato dalle
-              Americhe, compare nelle fonti nel 1611 e diventa un alimento popolare. Il{' '}
-              <N href="https://it.wikipedia.org/wiki/Tabacco">tabacco</N> si coltiva dalla seconda
-              metà del secolo, e già nel 1670 la Dieta regola il fumo.
+            <Context on={[Transylvania]} period="XVII secolo" title="Arriva il mais">
+              Il <N href="https://it.wikipedia.org/wiki/Mais">mais</N>, arrivato dalle Americhe,
+              compare nelle fonti transilvane nel 1611 e diventa presto il cibo dei contadini: la
+              mămăligă, che prima si preparava con il miglio, da allora si fa con la farina di mais.
             </Context>
             <Event
               on={[Transylvania]}
@@ -899,97 +782,30 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                Arriva con truppe ottomane, valacche e{' '}
-                <N href="https://it.wikipedia.org/wiki/Tatari_di_Crimea">tatare</N>, al posto di{' '}
-                <N href="https://ro.wikipedia.org/wiki/Gabriel_Báthory">Gábor Báthory</N>, che la{' '}
-                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> ha deciso di
-                deporre. {/* Day omitted on purpose: sources give 13 or 23 October 1613. */}
-                Nell’ottobre 1613 la Dieta riunita a{' '}
-                <N href="https://it.wikipedia.org/wiki/Cluj-Napoca">Cluj</N> lo elegge principe.
-                Introduce il <N href="https://it.wikipedia.org/wiki/Mercantilismo">mercantilismo</N>{' '}
-                e crea monopoli di Stato.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1618</D> La Dieta permette a minatori locali e stranieri di aprire liberamente
-                nuove miniere, esentandoli dalle tasse. Oltre a oro, argento e ferro, ad{' '}
-                <N href="https://it.wikipedia.org/wiki/Abrud">Abrud</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Zlatna">Zlatna</N> si estrae{' '}
-                <N href="https://it.wikipedia.org/wiki/Mercurio_(elemento_chimico)">mercurio</N>,
-                una fonte importante di entrate per lo Stato.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1619–1626</D> Nella{' '}
+                {/* Day omitted on purpose: sources give 13 or 23 October 1613. */}
+                Eletto principe a <N href="https://it.wikipedia.org/wiki/Cluj-Napoca">Cluj</N> nel
+                1613 con l’appoggio della{' '}
+                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N>, riempie le casse
+                con monopoli di Stato e nuove miniere, e nella{' '}
                 <N href="https://it.wikipedia.org/wiki/Guerra_dei_trent%27anni">
                   guerra dei Trent’anni
                 </N>{' '}
-                si allea con l’
-                <N href="https://it.wikipedia.org/wiki/Unione_evangelica">Unione evangelica</N> e
-                invade per tre volte l’
+                invade tre volte l’
                 <N href="https://it.wikipedia.org/wiki/Ungheria_asburgica">Ungheria asburgica</N>.
-                Nel 1620 viene eletto re d’Ungheria, ma rinuncia al titolo in cambio di sette
-                comitati.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1622</D> Fonda ad{' '}
-                <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N>, sua capitale, un
-                collegio riformato di livello superiore. L’edificio, poi trasformato in caserma,
-                sorge ancora nella cittadella.
-              </Detail>
-            </Event>
-            <Context
-              on={[Transylvania]}
-              period="1613–1648"
-              title="Ricostruzione e nuovo volto delle città"
-            >
-              Gli insediamenti distrutti dalla guerra vengono ricostruiti. Ad{' '}
-              <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N> e a{' '}
-              <N href="https://it.wikipedia.org/wiki/Gilău">Gilău</N> compaiono parchi, statue,
-              piazze ampie e fontane in stile{' '}
-              <N href="https://it.wikipedia.org/wiki/Architettura_rinascimentale">rinascimentale</N>
-              . Dal 1620 diventano rari i decreti sul ritorno dei servi fuggiaschi, segno che la
-              popolazione si sta riprendendo.
-            </Context>
-            <Event
-              on={[Transylvania]}
-              date="1653"
-              title={
-                <>
-                  <N work href="https://ro.wikipedia.org/wiki/Approbatae_Constitutiones">
-                    Approbatae
-                  </N>
-                </>
-              }
-            >
-              <Detail on={[Transylvania]}>
-                <N href="https://it.wikipedia.org/wiki/Giorgio_II_Rákóczi">György II Rákóczi</N> fa
-                pubblicare il codice delle leggi del principato. Impone il ritorno dei contadini
-                fuggiaschi nelle tenute come servi e vieta ai romeni di portare armi.
+                Ad <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N>, sua capitale,
+                fonda nel 1622 un collegio riformato di livello superiore: l’edificio, poi
+                trasformato in caserma, sorge ancora nella cittadella.
               </Detail>
             </Event>
             <Event on={[Transylvania]} date="1657–1662" title="La crisi del principato">
               <Detail on={[Transylvania]}>
-                <D>1657</D>{' '}
                 <N href="https://it.wikipedia.org/wiki/Giorgio_II_Rákóczi">György II Rákóczi</N>{' '}
                 invade la{' '}
                 <N href="https://it.wikipedia.org/wiki/Confederazione_polacco-lituana">Polonia</N>{' '}
-                al fianco della <N href="https://it.wikipedia.org/wiki/Impero_svedese">Svezia</N>,
-                viene battuto e al ritorno i{' '}
-                <N href="https://it.wikipedia.org/wiki/Tatari_di_Crimea">tatari di Crimea</N>{' '}
-                distruggono il suo esercito. Il{' '}
-                <N href="https://it.wikipedia.org/wiki/Gran_visir">gran visir</N>{' '}
-                <N href="https://it.wikipedia.org/wiki/Köprülü_Mehmed_Pascià">Köprülü Mehmed</N> lo
-                fa deporre.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1658–1662</D> Principi filo-ottomani e anti-ottomani si scontrano. Gli ottomani
-                conquistano <N href="https://it.wikipedia.org/wiki/Oradea">Oradea</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Ineu">Ineu</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Lugoj">Lugoj</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Caransebeș">Caransebeș</N> e distruggono la
-                capitale <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N>. Il
-                conflitto si chiude con la morte di{' '}
-                <N href="https://ro.wikipedia.org/wiki/Ioan_Kemény">János Kemény</N> nel gennaio
-                1662.
+                senza il consenso del sultano, viene sconfitto e deposto. Negli anni di guerra che
+                seguono gli ottomani prendono{' '}
+                <N href="https://it.wikipedia.org/wiki/Oradea">Oradea</N> e distruggono la capitale{' '}
+                <N href="https://it.wikipedia.org/wiki/Alba_Iulia">Alba Iulia</N>.
               </Detail>
             </Event>
             <Unless on={[Dobruja]}>
@@ -1006,47 +822,19 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                Il principe è scelto su richiesta degli ottomani. È il primo a invitare il vescovo
-                ortodosso alla Dieta e nel 1669 fa pubblicare le <N work>Compilatae</N>. Nel 1683 è
-                costretto a marciare con gli ottomani su{' '}
-                <N href="https://it.wikipedia.org/wiki/Battaglia_di_Vienna">Vienna</N>.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1685–1686</D> Con il trattato di{' '}
-                <N href="https://it.wikipedia.org/wiki/Cârțișoara">Cârțișoara</N> la Transilvania
-                aderisce in segreto alla{' '}
-                <N href="https://it.wikipedia.org/wiki/Lega_Santa_(1684)">Lega Santa</N>. Con quello
-                di Vienna del giugno 1686 accetta presidi imperiali a{' '}
-                <N href="https://it.wikipedia.org/wiki/Deva_(Romania)">Deva</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Cluj-Napoca">Cluj</N>.
+                Scelto su richiesta degli ottomani, è il primo principe a invitare il vescovo
+                ortodosso alla Dieta. Dopo la sconfitta ottomana a{' '}
+                <N href="https://it.wikipedia.org/wiki/Battaglia_di_Vienna">Vienna</N>, nel 1683,
+                accetta nel 1686 presidi imperiali a{' '}
+                <N href="https://it.wikipedia.org/wiki/Deva_(Romania)">Deva</N> e a{' '}
+                <N href="https://it.wikipedia.org/wiki/Cluj-Napoca">Cluj</N>: comincia il passaggio
+                agli Asburgo.
               </Detail>
             </Event>
           </Timeline>
 
           <Timeline section={RoSection.OttomanSuzeraintyWallachia}>
             <BoyarsContext on={[Wallachia]} />
-            <Event on={[Wallachia]} date="1611–1631" title="Boiardi contro mercanti greci">
-              <Detail on={[Wallachia]}>
-                <D>1611</D> La <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N>{' '}
-                insedia <N href="https://it.wikipedia.org/wiki/Radu_Mihnea">Radu Mihnea</N> al posto
-                di <N href="https://ro.wikipedia.org/wiki/Radu_Șerban">Radu Șerban</N>, salito al
-                trono con l’appoggio degli Asburgo. Comincia l’immigrazione su larga scala dei greci
-                del <N href="https://it.wikipedia.org/wiki/Fanar">Fanar</N>, a Istanbul, che
-                acquistano terre e poi il rango di{' '}
-                <N href="https://it.wikipedia.org/wiki/Boiari">boiardi</N>. Non è ancora il periodo
-                fanariota, che comincia un secolo dopo.
-              </Detail>
-              <Detail on={[Wallachia]}>
-                <D>1618</D> I boiardi guidati da <N>Lupu Mehedițeanu</N> uccidono possidenti e
-                mercanti greci, protetti dal principe{' '}
-                <N href="https://ro.wikipedia.org/wiki/Alexandru_Iliaș">Alexandru Iliaș</N>.
-              </Detail>
-              <Detail on={[Wallachia]}>
-                <D>1631</D> I boiardi ribelli costringono{' '}
-                <N href="https://ro.wikipedia.org/wiki/Leon_Tomșa">Leon Tomșa</N> a cacciare i greci
-                senza moglie locale né terre, e a esentare i boiardi dalle tasse.
-              </Detail>
-            </Event>
             <Event
               on={[Wallachia]}
               date="1632–1654"
@@ -1058,10 +846,10 @@ function Body() {
             >
               <Detail on={[Wallachia]}>
                 Per farsi confermare dalla{' '}
-                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> triplica il tributo,
-                da 45.000 a 135.000 <N href="https://it.wikipedia.org/wiki/Tallero">talleri</N>.
-                Riapre le miniere, costruisce o restaura 30 chiese e fonda una scuola superiore a{' '}
-                <N href="https://it.wikipedia.org/wiki/Târgoviște">Târgoviște</N> nel 1646.
+                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> triplica il tributo.
+                Poi riapre le miniere, costruisce o restaura una trentina di chiese e nel 1646 fonda
+                una scuola superiore a{' '}
+                <N href="https://it.wikipedia.org/wiki/Târgoviște">Târgoviște</N>, allora capitale.
               </Detail>
             </Event>
             <Event on={[Wallachia]} date="1659–1660" title="Bucarest diventa la capitale">
@@ -1075,10 +863,6 @@ function Body() {
                 Bucarest diventa la capitale. Dal 1660 è la residenza stabile dei principi. Della
                 loro corte restano le rovine della Curtea Veche, oggi museo nel centro storico.
               </Detail>
-              <Detail on={[Wallachia]}>
-                Il commercio cresce: nel 1666 i viaggiatori stranieri contano a Bucarest sette{' '}
-                <N href="https://it.wikipedia.org/wiki/Caravanserraglio">caravanserragli</N>.
-              </Detail>
             </Event>
             <Event
               on={[Wallachia]}
@@ -1091,15 +875,8 @@ function Body() {
             >
               <Detail on={[Wallachia]}>
                 Fonda una scuola superiore, costruisce strade e ponti e porta il{' '}
-                <N href="https://it.wikipedia.org/wiki/Mais">mais</N> in Valacchia. Offre a{' '}
-                <N href="https://it.wikipedia.org/wiki/Leopoldo_I_d%27Asburgo">Leopoldo I</N> la
-                sottomissione in cambio del{' '}
-                <N href="https://it.wikipedia.org/wiki/Banato">Banato</N> e del trono ereditario, ma
-                muore nell’ottobre 1688, prima che le trattative si concludano.
-              </Detail>
-              <Detail on={[Wallachia]}>
-                <D>1688</D> A <N href="https://it.wikipedia.org/wiki/Bucarest">Bucarest</N> viene
-                stampata la{' '}
+                <N href="https://it.wikipedia.org/wiki/Mais">mais</N> in Valacchia. Nel <D>1688</D>,
+                l’anno della sua morte, a Bucarest viene stampata la{' '}
                 <N href="https://ro.wikipedia.org/wiki/Biblia_de_la_București">
                   Bibbia di Bucarest
                 </N>
@@ -1128,42 +905,10 @@ function Body() {
                   chiesa dei Tre Gerarchi
                 </N>
                 , fonda un <N href="https://ro.wikipedia.org/wiki/Colegiul_Vasilian">collegio</N>{' '}
-                nel 1639 e nel 1642 porta la stampa in Moldavia. Tenta quattro volte, senza
-                successo, di rovesciare{' '}
-                <N href="https://ro.wikipedia.org/wiki/Matei_Basarab">Matei Basarab</N> in
-                Valacchia.
-              </Detail>
-              <Detail on={[Moldavia]}>
-                <D>1652–1653</D> La figlia{' '}
-                <N href="https://ro.wikipedia.org/wiki/Ruxandra_Lupu">Ruxandra</N> sposa{' '}
-                <N href="https://ro.wikipedia.org/wiki/Timuș_Hmelnițki">Tymofij</N>, figlio del capo{' '}
-                <N href="https://it.wikipedia.org/wiki/Cosacchi">cosacco</N>{' '}
-                <N href="https://it.wikipedia.org/wiki/Bohdan_Chmel%27nyc%27kyj">
-                  Bohdan Chmel’nyc’kyj
-                </N>
-                . Il <N href="https://it.wikipedia.org/wiki/Logoteta">logoteta</N>{' '}
-                <N href="https://ro.wikipedia.org/wiki/Gheorghe_Ștefan">Gheorghe Ștefan</N> lo
-                rovescia, e il tentativo di tornare al trono fallisce a{' '}
-                <N href="https://ro.wikipedia.org/wiki/Bătălia_de_la_Finta">Finta</N> nel maggio
-                1653.
+                nel 1639 e nel 1642 porta la stampa in Moldavia. Nel 1653 i boiardi lo rovesciano.
               </Detail>
               <Today traces={[RoTrace.IasiThreeHierarchsMonastery]} />
             </Event>
-            <Context
-              on={[Moldavia]}
-              period="1660–1680"
-              title="Il declino polacco e la svolta verso la Russia"
-            >
-              Dopo il <N href="https://it.wikipedia.org/wiki/Diluvio_(Polonia)">Diluvio</N>,
-              concluso nel 1660, gli attacchi di svedesi,{' '}
-              <N href="https://it.wikipedia.org/wiki/Cosacchi">cosacchi</N> e{' '}
-              <N href="https://it.wikipedia.org/wiki/Tatari_di_Crimea">tatari</N> lasciano in rovina
-              la <N href="https://it.wikipedia.org/wiki/Confederazione_polacco-lituana">Polonia</N>,
-              che perde la sua influenza su Moldavia e Valacchia. Alcuni principi e gruppi di
-              boiardi iniziano allora a cercare l’appoggio della{' '}
-              <N href="https://it.wikipedia.org/wiki/Impero_russo">Russia</N>, mentre altri restano
-              legati alla Porta o alla Polonia.
-            </Context>
           </Timeline>
 
           <Timeline section={RoSection.OttomanSuzeraintyDobruja}>
@@ -1214,20 +959,18 @@ function Body() {
                 scegliere i principi ai boiardi:{' '}
                 <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N> dal
                 1711 e <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N> dal 1716
-                vengono affidate a <N href="https://it.wikipedia.org/wiki/Ospodaro">ospodari</N>{' '}
-                nominati dal sultano, quasi sempre membri di famiglie greche del{' '}
-                <N href="https://it.wikipedia.org/wiki/Fanar">Fanar</N>. Il sistema dura fino al
-                1821.
+                vengono affidate fino al 1821 a{' '}
+                <N href="https://it.wikipedia.org/wiki/Ospodaro">ospodari</N> nominati dal sultano,
+                quasi sempre greci del <N href="https://it.wikipedia.org/wiki/Fanar">Fanar</N>.
               </Detail>
               <Detail on={[Moldavia, Wallachia]}>
-                La nomina dipende dalle somme pagate a Istanbul, e ogni nuovo principe impone nuove
-                tasse per recuperarle. La storiografia romena ha descritto a lungo questo periodo
-                come un’epoca di oppressione fiscale. Meno spesso si ricordano le scuole finanziate
-                dai principi fanarioti e le loro riforme, come quelle di{' '}
+                Ogni nomina si paga a Istanbul e si ripaga con nuove tasse, ma i principi fanarioti
+                finanziano anche scuole e riforme:{' '}
                 <N href="https://ro.wikipedia.org/wiki/Constantin_Mavrocordat">
                   Constantin Mavrocordat
                 </N>{' '}
-                in Valacchia nel 1746 e in Moldavia nel 1749.
+                libera i servi dal vincolo personale con il signore in Valacchia nel 1746 e in
+                Moldavia nel 1749. Non i rom, che restano schiavi.
               </Detail>
             </Event>
             <Event
@@ -1242,69 +985,35 @@ function Body() {
               }
             >
               <Detail on={[Moldavia, Wallachia]}>
-                La <N href="https://it.wikipedia.org/wiki/Impero_russo">Russia</N> occupa{' '}
-                <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N> e
-                Valacchia per tutta la guerra. Con la{' '}
+                La <N href="https://it.wikipedia.org/wiki/Impero_russo">Russia</N> occupa Moldavia e
+                Valacchia per tutta la guerra. La{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Küçük_Kaynarca">
                   pace di Küçük Kaynarca
                 </N>{' '}
-                del 1774 ottiene le terre tra{' '}
-                <N href="https://it.wikipedia.org/wiki/Dnepr">Dnepr</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Bug_Meridionale">Bug</N>. I principati
-                restano sotto sovranità ottomana.
-              </Detail>
-              <Detail on={[Moldavia, Wallachia]}>
-                Il trattato permette ai principi di tenere propri rappresentanti a Istanbul e al
-                ministro russo di intervenire presso la Porta a favore dei principati. Più tardi la
-                Russia di{' '}
-                <N href="https://it.wikipedia.org/wiki/Caterina_II_di_Russia">Caterina II</N> e dei
-                suoi successori lo invoca come base di un diritto più ampio di proteggere i
-                cristiani ortodossi dell’Impero ottomano. Gli storici discutono quanto il testo
-                giustifichi questa lettura.
-              </Detail>
-            </Event>
-            <Event on={[Moldavia]} date="1787–1792" title="Il Dnestr diventa confine">
-              <Detail on={[Moldavia]}>
-                <N href="https://it.wikipedia.org/wiki/Impero_russo">Russia</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Monarchia_asburgica">Austria</N> entrano in{' '}
-                <N href="https://it.wikipedia.org/wiki/Guerra_russo-turca_(1787-1792)">
-                  guerra con gli ottomani
-                </N>
-                . Il <N href="https://it.wikipedia.org/wiki/Trattato_di_Iași">trattato di Iași</N>{' '}
-                del gennaio 1792 fissa il <N href="https://it.wikipedia.org/wiki/Dnestr">Dnestr</N>{' '}
-                come confine russo-moldavo.
+                (1774) lascia i principati agli ottomani, ma permette alla Russia di intervenire in
+                loro favore presso la Porta: da qui comincia la sua influenza sui principati.
               </Detail>
             </Event>
             <Event
               on={[Moldavia, Wallachia]}
               date="1806–1812"
-              title={<>Occupazione russa e pace di Bucarest</>}
+              title={
+                <>
+                  La Russia prende la{' '}
+                  <N href="https://it.wikipedia.org/wiki/Bessarabia">Bessarabia</N>
+                </>
+              }
             >
               <Detail on={[Moldavia, Wallachia]}>
-                Nell’agosto 1806, mentre la Francia di{' '}
-                <N href="https://it.wikipedia.org/wiki/Napoleone_Bonaparte">Napoleone</N> e la
-                Russia si contendono l’influenza a Istanbul, la{' '}
-                <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> depone i principi
-                filorussi di{' '}
-                <N href="https://it.wikipedia.org/wiki/Moldavia_(regione_storica)">Moldavia</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Valacchia">Valacchia</N>. Poi li reintegra,
-                ma in novembre l’esercito di{' '}
-                <N href="https://it.wikipedia.org/wiki/Alessandro_I_di_Russia">Alessandro I</N>{' '}
-                occupa i due principati.
-              </Detail>
-              <Detail on={[Moldavia, Wallachia]}>
-                Dal marzo 1811{' '}
-                <N href="https://it.wikipedia.org/wiki/Michail_Illarionovič_Kutuzov">Kutuzov</N> è
-                comandante in capo dell’armata del Danubio e conduce le trattative. La{' '}
+                Nel 1806 l’esercito russo occupa i due principati. La{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Bucarest_(1812)">
                   pace firmata a Bucarest
                 </N>{' '}
                 nel 1812 dà alla Russia la parte della Moldavia fra{' '}
                 <N href="https://it.wikipedia.org/wiki/Prut">Prut</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Dnestr">Dnestr</N>, compreso il{' '}
-                <N href="https://it.wikipedia.org/wiki/Budžak">Budžak</N>: è la{' '}
-                <N href="https://it.wikipedia.org/wiki/Bessarabia">Bessarabia</N>. Moldavia e
-                Valacchia tornano sotto la sovranità ottomana.
+                <N href="https://it.wikipedia.org/wiki/Dnestr">Dnestr</N>: è la Bessarabia, che
+                corrisponde in gran parte all’attuale Repubblica di Moldova. Il resto della Moldavia
+                e la Valacchia tornano sotto la sovranità ottomana.
               </Detail>
             </Event>
           </Timeline>
@@ -1312,30 +1021,14 @@ function Body() {
           <Timeline section={RoSection.ThreeEmpiresTransylvania}>
             <Event on={[Transylvania]} date="1688–1699" title={<>Dagli ottomani agli Asburgo</>}>
               <Detail on={[Transylvania]}>
-                Nel febbraio 1688 il generale imperiale{' '}
-                <N href="https://it.wikipedia.org/wiki/Antonio_Carafa_(generale)">Antonio Carafa</N>{' '}
-                costringe le{' '}
-                <N href="https://it.wikipedia.org/wiki/Unio_Trium_Nationum">Tre Nazioni</N> a
-                riconoscere il dominio ereditario degli{' '}
-                <N href="https://it.wikipedia.org/wiki/Asburgo">Asburgo</N> e piega con la forza{' '}
-                <N href="https://it.wikipedia.org/wiki/Sibiu">Sibiu</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Brașov">Brașov</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Bistrița">Bistrița</N> e{' '}
-                <N href="https://it.wikipedia.org/wiki/Baia_Mare">Baia Mare</N>. Nello stesso anno
-                la Dieta rinuncia alla sovranità ottomana e accetta la protezione austriaca.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1691</D> Con il <N work>Diploma Leopoldinum</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Leopoldo_I_d%27Asburgo">Leopoldo I</N>{' '}
-                conferma le libertà delle Tre Nazioni e delle quattro confessioni riconosciute. Gli
-                ortodossi romeni restano fuori da entrambi i sistemi di privilegio. Il governo passa
-                a un governatorato con sede a Sibiu, sotto il controllo di Vienna.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                Nel 1699, con la{' '}
-                <N href="https://it.wikipedia.org/wiki/Pace_di_Carlowitz">pace di Carlowitz</N>,{' '}
-                <N href="https://it.wikipedia.org/wiki/Istanbul">Istanbul</N> riconosce il dominio{' '}
-                <N href="https://it.wikipedia.org/wiki/Asburgo">asburgico</N>.
+                Nel 1688 la Dieta rinuncia alla sovranità ottomana e accetta la protezione degli{' '}
+                <N href="https://it.wikipedia.org/wiki/Asburgo">Asburgo</N>. Con il{' '}
+                <N work>Diploma Leopoldinum</N> (1691) Vienna conferma i privilegi delle{' '}
+                <N href="https://it.wikipedia.org/wiki/Unio_Trium_Nationum">Tre Nazioni</N> e delle
+                quattro confessioni, lasciandone fuori i romeni ortodossi, e governa da Sibiu. Nel
+                1699 la{' '}
+                <N href="https://it.wikipedia.org/wiki/Pace_di_Carlowitz">pace di Carlowitz</N>{' '}
+                chiude il passaggio.
               </Detail>
               <Today traces={[RoTrace.AlbaIuliaCitadel, RoTrace.SibiuBrukenthalPalace]} />
             </Event>
@@ -1372,56 +1065,42 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                Il vescovo greco-cattolico, diventato barone e membro della Dieta, chiede parità per
-                i romeni. Sostiene che pagano più tasse e danno più soldati di ogni altra nazione. I
-                deputati lo deridono paragonando i romeni alle tarme nei vestiti. Klein ripara a
-                Roma, dove muore nel 1768.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                Nel corso del secolo i preti greco-cattolici formati a Roma e a Vienna diffondono le
-                idee occidentali e la tesi delle origini daco-romane (
-                <N href="https://ro.wikipedia.org/wiki/Școala_Ardeleană">Scuola transilvana</N>).
-                Adattano l’
-                <N href="https://it.wikipedia.org/wiki/Alfabeto_latino">alfabeto latino</N> al
-                romeno e pubblicano grammatiche e libri di preghiere. Blaj, sede della Chiesa
-                greco-cattolica, diventa il centro culturale romeno.
+                Il vescovo greco-cattolico chiede alla Dieta parità per i romeni, che pagano più
+                tasse e danno più soldati di ogni altra nazione. Viene deriso e ripara a Roma. Dopo
+                di lui i preti formati a Roma e a Vienna, la{' '}
+                <N href="https://ro.wikipedia.org/wiki/Școala_Ardeleană">Scuola transilvana</N>,
+                sostengono le origini daco-romane del popolo, adattano al romeno l’
+                <N href="https://it.wikipedia.org/wiki/Alfabeto_latino">alfabeto latino</N> e fanno
+                di Blaj, sede della Chiesa greco-cattolica, il centro della cultura romena.
               </Detail>
             </Event>
             <Event
               on={[Transylvania]}
-              date="1784–1790"
+              date="1784–1785"
               title={
                 <>
                   <N href="https://it.wikipedia.org/wiki/Rivolta_di_Horea,_Cloșca_e_Crișan">
                     Rivolta di Horea, Cloșca e Crișan
-                  </N>{' '}
-                  e riforme di Giuseppe II
+                  </N>
                 </>
               }
             >
               <Detail on={[Transylvania]}>
-                <D>1784</D> I servi, convinti di avere l’appoggio dell’imperatore, saccheggiano
-                castelli e uccidono circa 100 nobili.{' '}
+                I servi romeni, convinti di avere l’appoggio dell’imperatore, saccheggiano castelli
+                e uccidono circa cento nobili. Horea e Cloșca vengono suppliziati sulla ruota ad
+                Alba Iulia nel febbraio 1785; Crișan si toglie la vita in carcere. Subito dopo{' '}
                 <N href="https://it.wikipedia.org/wiki/Giuseppe_II_d%27Asburgo-Lorena">
                   Giuseppe II
                 </N>{' '}
-                amnistia i partecipanti, ma non i capi. Horea e Cloșca vengono suppliziati sulla
-                ruota ad Alba Iulia nel febbraio 1785; Crișan si toglie la vita in carcere.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                <D>1785–1790</D> L’imperatore abolisce la{' '}
-                <N href="https://it.wikipedia.org/wiki/Servitù_della_gleba">servitù della gleba</N>,
-                annulla la costituzione transilvana, scioglie l’
-                <N href="https://it.wikipedia.org/wiki/Unio_Trium_Nationum">
-                  Unione delle Tre Nazioni
-                </N>{' '}
-                e impone il tedesco come lingua ufficiale. Davanti al malcontento diffuso, poco
-                prima di morire revoca molte riforme.
+                abolisce la{' '}
+                <N href="https://it.wikipedia.org/wiki/Servitù_della_gleba">servitù personale</N>.
+                Nella cittadella di Alba Iulia, davanti alla terza porta, un obelisco ricorda i tre
+                capi.
               </Detail>
             </Event>
             <Event
               on={[Transylvania]}
-              date="1791–1792"
+              date="1791"
               title={
                 <>
                   Il{' '}
@@ -1432,20 +1111,13 @@ function Body() {
               }
             >
               <Detail on={[Transylvania]}>
-                Nel 1791 gli intellettuali romeni legati alla Scuola transilvana preparano una
-                petizione collettiva per{' '}
+                Gli intellettuali della Scuola transilvana chiedono a{' '}
                 <N href="https://it.wikipedia.org/wiki/Leopoldo_II_d%27Asburgo-Lorena">
                   Leopoldo II
-                </N>
-                , che il vescovo greco-cattolico di Oradea, Ignatie Darabant, invia a Vienna.
-                Invocando la discendenza dai coloni romani, chiedono che i romeni siano riconosciuti
-                come quarta nazione, con diritti politici e una rappresentanza proporzionale.
-              </Detail>
-              <Detail on={[Transylvania]}>
-                Nell’agosto 1791 la Dieta concede la libertà di culto agli ortodossi, ma respinge la
-                parità politica. Nel 1792 i vescovi Ioan Bob, greco-cattolico, e Gherasim Adamovici,
-                ortodosso, presentano a Vienna un secondo memoriale, più organico. Anche questo
-                resta senza esito.
+                </N>{' '}
+                che i romeni, discendenti dei coloni romani, siano riconosciuti come quarta nazione,
+                con diritti politici. La Dieta concede la libertà di culto agli ortodossi, ma
+                respinge la parità.
               </Detail>
             </Event>
           </Timeline>
@@ -1463,45 +1135,17 @@ function Body() {
               }
             >
               <Detail on={[Wallachia]}>
-                Con i <N href="https://ro.wikipedia.org/wiki/Familia_Cantemir">Cantemir</N> in
-                Moldavia, il principe spera nell’aiuto russo per liberarsi degli ottomani, ma non si
-                arriva a un’intesa stabile.
+                Per ventisei anni tiene la Valacchia in equilibrio fra ottomani, Asburgo e Russia.
+                Il suo nome resta legato allo stile brâncovenesc, che unisce la tradizione bizantina
+                e il barocco occidentale: logge su colonne di pietra scolpita, ornamenti vegetali,
+                portici dipinti. Lo vedi al monastero di Horezu, patrimonio UNESCO, al palazzo di
+                Mogoșoaia vicino a Bucarest e in molte chiese della capitale.
               </Detail>
               <Detail on={[Wallachia]}>
-                Nel 1714 viene deposto e decapitato a Istanbul insieme ai quattro figli. Il suo nome
-                resta legato allo stile brâncovenesc, che vedi al monastero di Horezu e al palazzo
-                di Mogoșoaia, vicino a Bucarest.
+                Nel 1714 viene deposto e decapitato a Istanbul insieme ai quattro figli. La Chiesa
+                ortodossa romena lo venera come santo martire.
               </Detail>
               <Today traces={[RoTrace.StavropoleosChurch]} />
-            </Event>
-            <Event
-              on={[Wallachia]}
-              date="1718–1739"
-              title={
-                <>
-                  <N href="https://ro.wikipedia.org/wiki/Banatul_Craiovei">Il Banato di Craiova</N>
-                </>
-              }
-            >
-              <Detail on={[Wallachia]}>
-                L’<N href="https://it.wikipedia.org/wiki/Oltenia">Oltenia</N>, la parte occidentale
-                della Valacchia, passa all’
-                <N href="https://it.wikipedia.org/wiki/Monarchia_asburgica">Austria</N> con il nome
-                di Banato di Craiova. Con la pace di Belgrado del 1739 l’Oltenia viene reintegrata
-                nella Valacchia, principato tributario della Porta.
-              </Detail>
-            </Event>
-            <Event on={[Wallachia]} date="1746" title="Mavrocordat abolisce la servitù personale">
-              <Detail on={[Wallachia]}>
-                Il principe fanariota{' '}
-                <N href="https://ro.wikipedia.org/wiki/Constantin_Mavrocordat">
-                  Constantin Mavrocordat
-                </N>{' '}
-                abolisce la <i>rumânie</i>, il vincolo che lega il contadino al signore: pagando un
-                riscatto, i servi diventano liberi di spostarsi da una tenuta all’altra. Restano
-                però soggetti a decine di tasse e prestazioni. La riforma non riguarda i rom, che
-                restano schiavi.
-              </Detail>
             </Event>
           </Timeline>
 
@@ -1517,46 +1161,13 @@ function Body() {
               }
             >
               <Detail on={[Moldavia]}>
-                Dopo la sconfitta di{' '}
-                <N href="https://it.wikipedia.org/wiki/Battaglia_di_Poltava">Poltava</N>, il re di
-                Svezia <N href="https://it.wikipedia.org/wiki/Carlo_XII_di_Svezia">Carlo XII</N> si
-                rifugia nella fortezza ottomana di Tighina (oggi in Moldova). Nel novembre 1710 il
-                sultano dichiara guerra alla Russia di{' '}
-                <N href="https://it.wikipedia.org/wiki/Pietro_I_di_Russia">Pietro il Grande</N>.
-              </Detail>
-              <Detail on={[Moldavia]}>
-                Nell’aprile 1711, con l’accordo di{' '}
-                <N href="https://ro.wikipedia.org/wiki/Tratatul_de_la_Luțk">Luc’k</N> (oggi in
-                Ucraina), il principe di Moldavia passa dalla parte dello zar. In caso di vittoria i
-                Cantemir avrebbero avuto un trono ereditario, la Moldavia il{' '}
-                <N href="https://it.wikipedia.org/wiki/Dnestr">Dnestr</N> come confine, compreso il{' '}
-                <N href="https://it.wikipedia.org/wiki/Budžak">Budžak</N> controllato da ottomani e
-                tatari, e la fine del tributo.
-              </Detail>
-              <Detail on={[Moldavia]}>
-                A fine giugno lo zar arriva a <N href="https://it.wikipedia.org/wiki/Iași">Iași</N>.
-                In luglio l’esercito russo-moldavo è{' '}
-                <N href="https://it.wikipedia.org/wiki/Battaglia_del_Prut">sconfitto sul Prut</N>,
-                presso Stănilești, e la{' '}
-                <N href="https://it.wikipedia.org/wiki/Pace_del_Prut">pace del Prut</N> obbliga i
-                russi a lasciare la Moldavia. Cantemir e molti boiardi fuggono in Russia.
-              </Detail>
-            </Event>
-            <Event on={[Moldavia]} date="1749" title="Mavrocordat abolisce la servitù personale">
-              <Detail on={[Moldavia]}>
-                Il principe fanariota{' '}
-                <N href="https://ro.wikipedia.org/wiki/Constantin_Mavrocordat">
-                  Constantin Mavrocordat
-                </N>{' '}
-                riunisce i boiardi nella{' '}
-                <N href="https://ro.wikipedia.org/wiki/Mănăstirea_Sfinții_Trei_Ierarhi_din_Iași">
-                  chiesa dei Tre Gerarchi
-                </N>{' '}
-                a <N href="https://it.wikipedia.org/wiki/Iași">Iași</N> e abolisce la <i>vecinie</i>
-                , il vincolo che lega il contadino al signore: pagando un riscatto, i servi
-                diventano liberi di spostarsi da una tenuta all’altra. Restano però soggetti a tasse
-                e prestazioni. Tre anni prima Mavrocordat aveva fatto lo stesso in Valacchia. La
-                riforma non riguarda i rom, che restano schiavi.
+                Il principe di Moldavia passa dalla parte di{' '}
+                <N href="https://it.wikipedia.org/wiki/Pietro_I_di_Russia">Pietro il Grande</N>{' '}
+                contro gli ottomani, in cambio di un trono ereditario per la sua famiglia. In luglio
+                l’esercito russo-moldavo è{' '}
+                <N href="https://it.wikipedia.org/wiki/Battaglia_del_Prut">sconfitto sul Prut</N>, e
+                Cantemir fugge in Russia con molti boiardi. In esilio scrive in latino la{' '}
+                <N work>Descriptio Moldaviae</N>, una descrizione del suo paese.
               </Detail>
             </Event>
             <Event
@@ -1574,19 +1185,13 @@ function Body() {
                 occupa il nord della Moldavia, con l’antica capitale{' '}
                 <N href="https://it.wikipedia.org/wiki/Suceava">Suceava</N> e il monastero di Putna,
                 dove è sepolto{' '}
-                <N href="https://it.wikipedia.org/wiki/Stefano_III_il_Grande">Stefano il Grande</N>,
-                e la <N href="https://it.wikipedia.org/wiki/Sublime_Porta">Porta</N> lo accetta.
+                <N href="https://it.wikipedia.org/wiki/Stefano_III_il_Grande">Stefano il Grande</N>.
                 L’ospodaro{' '}
                 <N href="https://ro.wikipedia.org/wiki/Grigore_al_III-lea_Ghica">
                   Grigore III Ghica
                 </N>{' '}
-                protesta e nel 1777 viene ucciso a Iași.
-              </Detail>
-              <Detail on={[Moldavia]}>
-                In seguito unita alla{' '}
-                <N href="https://it.wikipedia.org/wiki/Regno_di_Galizia_e_Lodomiria">Galizia</N>, la
-                regione attira coloni ucraini, tedeschi, ungheresi, ebrei e armeni con terre
-                gratuite ed esenzioni fiscali.
+                protesta e nel 1777 viene ucciso a Iași. Con il nome di Bucovina la regione resta
+                austriaca fino al 1918 e attira coloni ucraini, tedeschi, ebrei e armeni.
               </Detail>
               <Today traces={[RoTrace.StephenTheGreatTomb]} />
             </Event>
@@ -1600,20 +1205,12 @@ function Body() {
               }
             >
               <Detail on={[Moldavia]}>
-                Lo statuto di colonizzazione del 26 giugno 1812 porta bulgari,{' '}
-                <N href="https://it.wikipedia.org/wiki/Gagauzi">gagauzi</N>, tedeschi, ebrei,
-                svizzeri e francesi. Lo Statuto concesso da{' '}
-                <N href="https://it.wikipedia.org/wiki/Alessandro_I_di_Russia">Alessandro I</N> nel
-                1818 a <N href="https://it.wikipedia.org/wiki/Chișinău">Chișinău</N> (oggi capitale
-                della Moldova) dà alla provincia una certa autonomia, con il romeno accanto al russo
-                nell’amministrazione. Migliaia di famiglie fuggono oltre il{' '}
-                <N href="https://it.wikipedia.org/wiki/Prut">Prut</N> temendo la servitù, che alla
-                fine non viene introdotta.
-              </Detail>
-              <Detail on={[Moldavia]}>
-                <D>1817</D> Le autorità russe compilano una catagrafia, un registro fiscale che
-                conta le famiglie, non le persone. Da questi dati lo storico Ion Nistor ricava circa
-                l’86% di moldoveni.
+                Nella nuova provincia russa arrivano coloni bulgari,{' '}
+                <N href="https://it.wikipedia.org/wiki/Gagauzi">gagauzi</N>, tedeschi ed ebrei. Lo
+                Statuto del 1818 le dà una certa autonomia, con il romeno accanto al russo
+                nell’amministrazione di{' '}
+                <N href="https://it.wikipedia.org/wiki/Chișinău">Chișinău</N>, oggi capitale della
+                Moldova.
               </Detail>
             </Event>
           </Timeline>
@@ -1631,31 +1228,19 @@ function Body() {
               <Detail on={[Dobruja]}>
                 Dopo la distruzione della{' '}
                 <N href="https://it.wikipedia.org/wiki/Sič_di_Zaporižžja">Sič di Zaporož’e</N>,
-                cosacchi zaporoghi si rifugiano nel delta, sotto la protezione del sultano.
-                Sconfiggono i cosacchi nekrasoviani, anch’essi rifugiati in Dobrogea, e ne prendono
-                il centro, Dunavățu de Sus. La loro ultima Sič, a Dunavăț, dura dal 1814 al 1828. I
-                loro discendenti vivono ancora nel delta.
+                cosacchi zaporoghi si rifugiano nel delta, sotto la protezione del sultano. La loro
+                ultima Sič, a Dunavăț, dura dal 1814 al 1828. I loro discendenti vivono ancora nel
+                delta.
               </Detail>
             </Event>
             <Event on={[Dobruja]} date="1791–1812" title="Guerre russo-ottomane in Dobrogea">
               <Detail on={[Dobruja]}>
-                <D>1791</D> A <N href="https://en.wikipedia.org/wiki/Battle_of_M%C4%83cin">Măcin</N>{' '}
-                i circa 30.000 russi di{' '}
-                <N href="https://it.wikipedia.org/wiki/Nikolaj_Vasil%27evič_Repnin">Repnin</N>
-                battono un esercito ottomano molto più numeroso. La sconfitta porta alla{' '}
-                <N href="https://it.wikipedia.org/wiki/Trattato_di_Iași">pace di Iași</N>.
-              </Detail>
-              <Detail on={[Dobruja]}>
-                <D>1809–1810</D> I russi passano il Danubio e prendono Isaccea e Tulcea senza
-                combattere, poi Măcin e Hârșova. Silistra (oggi in Bulgaria) si arrende nel maggio
-                1810.
-              </Detail>
-              <Detail on={[Dobruja]}>
-                <D>1812</D> Con la{' '}
+                Gli eserciti russi passano più volte il Danubio e prendono le fortezze della
+                Dobrogea: Măcin, Isaccea, Tulcea, Hârșova. Con la{' '}
                 <N href="https://it.wikipedia.org/wiki/Trattato_di_Bucarest_(1812)">
                   pace di Bucarest
                 </N>{' '}
-                la Dobrogea resta ottomana, ma sull’altra riva del Danubio ora c’è la{' '}
+                del 1812 la regione resta ottomana, ma sull’altra riva del Danubio ora c’è la{' '}
                 <N href="https://it.wikipedia.org/wiki/Bessarabia">Bessarabia</N> russa.
               </Detail>
             </Event>

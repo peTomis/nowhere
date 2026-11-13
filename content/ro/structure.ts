@@ -305,14 +305,13 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.OttomanSuzeraintyWallachia,
       level: 3,
       on: [Wallachia],
-      period: { from: 1611, to: 1688 },
+      period: { from: 1632, to: 1688 },
     },
     {
       id: RoSection.OttomanSuzeraintyMoldavia,
       level: 3,
       on: [Moldavia],
-      period: { from: 1634, to: 1680 },
-      verify: 'its last event is 1653; 1680 comes from the Context 1660–1680',
+      period: { from: 1634, to: 1653 },
     },
     {
       id: RoSection.OttomanSuzeraintyDobruja,
@@ -325,13 +324,13 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoSection.ThreeEmpiresTransylvania,
       level: 3,
       on: [Transylvania],
-      period: { from: 1688, to: 1792 },
+      period: { from: 1688, to: 1791 },
     },
     {
       id: RoSection.ThreeEmpiresWallachia,
       level: 3,
       on: [Wallachia],
-      period: { from: 1688, to: 1746 },
+      period: { from: 1688, to: 1714 },
     },
     {
       id: RoSection.ThreeEmpiresMoldavia,
