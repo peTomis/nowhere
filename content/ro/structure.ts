@@ -347,7 +347,7 @@ export const structure = defineGuide<Ro, RoSection>({
       period: { from: 1775, to: 1812 },
     },
 
-    { id: RoSection.NationalState, level: 2, on: 'always', period: { from: 1821, to: 1881 } },
+    { id: RoSection.NationalState, level: 2, on: 'always', period: { from: 1821, to: 1906 } },
     { id: RoSection.WorldWars, level: 2, on: 'always', period: { from: 1907, to: 1947 } },
     { id: RoSection.Communism, level: 2, on: 'always', period: { from: 1948, to: 1989 } },
     { id: RoSection.DemocracyAndEurope, level: 2, on: 'always', period: { from: 1990, to: 2025 } },

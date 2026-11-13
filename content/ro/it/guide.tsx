@@ -1703,10 +1703,20 @@ function Body() {
               title="Cuza unisce Valacchia e Moldavia"
             >
               <Detail on={[Wallachia, Moldavia]}>
-                Le due assemblee eleggono lo stesso principe, <N>Alexandru Ioan Cuza</N>. Nel 1862
-                governo e Parlamento vengono unificati: <N>Bucarest</N> diventa la capitale comune.
-                La sovranità ottomana continua. Nel 1864 Cuza vara una riforma agraria e rende
-                obbligatoria e gratuita l’istruzione primaria.
+                Le grandi potenze, dopo la guerra di Crimea, permettono ai due principati di darsi
+                istituzioni simili ma non di unirsi. I patrioti aggirano il divieto: il{' '}
+                <D>5 gennaio 1859</D> l’assemblea di Iași elegge <N>Alexandru Ioan Cuza</N>, il{' '}
+                <D>24 gennaio</D> quella di Bucarest elegge lo stesso uomo. Le potenze accettano il
+                fatto compiuto, e il 24 gennaio è ancora festa nazionale. Nel 1862 governo e
+                Parlamento vengono unificati: <N>Bucarest</N> diventa la capitale comune. La
+                sovranità ottomana continua.
+              </Detail>
+              <Detail on={[Wallachia, Moldavia]}>
+                Nel 1863 Cuza confisca le immense proprietà dei monasteri, circa un quarto delle
+                terre del paese, in gran parte dipendenti da monasteri greci. Nel 1864 vara una
+                riforma agraria che dà terra ai contadini e rende obbligatoria e gratuita
+                l’istruzione primaria. Per farlo scioglie il Parlamento dei grandi proprietari e
+                governa per decreto.
               </Detail>
             </Event>
             {/* TODO verificare: second independent source for the railway opening; MWNF checked. */}
@@ -1720,10 +1730,13 @@ function Body() {
             </Event>
             <Event on={[Wallachia, Moldavia]} date="1866" title="Carol I e la nuova costituzione">
               <Detail on={[Wallachia, Moldavia]}>
-                Una coalizione di oppositori costringe Cuza ad abdicare. Arriva il principe
-                <N> Carol I</N>; la nuova costituzione istituisce una monarchia costituzionale. Il
-                voto dipende dal censo e la cittadinanza resta preclusa ai non cristiani, colpendo
-                soprattutto gli ebrei.
+                Conservatori e liberali, nemici fra loro, si alleano contro Cuza: è la «coalizione
+                mostruosa». Nella notte dell’<D>11 febbraio 1866</D> un gruppo di ufficiali entra
+                nella sua camera da letto e lo costringe ad abdicare; morirà in esilio. Per evitare
+                le lotte fra famiglie di boiari si chiama un principe straniero, <N>Carol I</N>. La
+                nuova costituzione, sul modello di quella belga, istituisce una monarchia
+                costituzionale. Il voto dipende dal censo e la cittadinanza resta preclusa ai non
+                cristiani, colpendo soprattutto gli ebrei.
               </Detail>
               <Today traces={[RoTrace.PelesCastle]} />
             </Event>
@@ -1745,11 +1758,13 @@ function Body() {
               title="L’indipendenza e la Dobrogea settentrionale"
             >
               <Detail on={[Wallachia, Moldavia, Dobruja]}>
-                La Romania proclama l’indipendenza e combatte contro gli ottomani insieme alla
-                Russia. Il congresso di Berlino la riconosce nel 1878, subordinandola anche alla
-                rimozione delle discriminazioni religiose. La Romania riceve la Dobrogea
-                settentrionale e il delta del Danubio, ma cede alla Russia la Bessarabia meridionale
-                ricevuta nel 1856, oggi tra Moldova e Ucraina.
+                Il <D>9 maggio 1877</D> la Romania proclama l’indipendenza e combatte contro gli
+                ottomani insieme alla Russia: l’esercito romeno, guidato da Carol, partecipa
+                all’assedio di <N>Plevna</N>, in Bulgaria, e ne esce con il prestigio della prima
+                vittoria del nuovo Stato. Il congresso di Berlino la riconosce nel 1878,
+                subordinandola anche alla rimozione delle discriminazioni religiose. La Romania
+                riceve la Dobrogea settentrionale e il delta del Danubio, ma cede alla Russia la
+                Bessarabia meridionale ricevuta nel 1856, oggi tra Moldova e Ucraina.
               </Detail>
               <Today
                 traces={[
@@ -1770,6 +1785,23 @@ function Body() {
                 «Moldavia» indica una regione storica più vasta del territorio governato da
                 Bucarest.
               </Detail>
+            </Event>
+            <Context on="always" kind="curiosity" period="1857" title="La città a petrolio">
+              Nel 1857 la Romania è il primo paese a registrare nelle statistiche ufficiali una
+              produzione di petrolio, e Bucarest si vanta di essere la prima città al mondo con
+              l’illuminazione pubblica a lampade di petrolio. Intorno a <N>Ploiești</N> nasce una
+              delle prime industrie petrolifere d’Europa.
+            </Context>
+            <Event on="always" date="1906" title="L’esposizione del giubileo">
+              <Detail on="always">
+                Per i quarant’anni di regno di Carol I, Bucarest apre nel nuovo parco Carol una
+                grande esposizione nazionale: è la vetrina di un paese che in una generazione si è
+                dato ferrovie, porti, un esercito, un’università, il ponte sul Danubio di Cernavodă
+                e i palazzi della «Piccola Parigi». Il petrolio di Ploiești è fra le prime industrie
+                d’Europa. Fuori dalle città, però, la maggior parte dei romeni sono contadini senza
+                terra propria, che lavorano le grandi proprietà in affitto.
+              </Detail>
+              <Today traces={[RoTrace.RomanianAthenaeum]} />
             </Event>
           </Timeline>
         </Part>
@@ -1795,16 +1827,35 @@ function Body() {
                 resta romeno fino al 1940: non coincide con la Dobrogea romena che si visita oggi.
               </Detail>
             </Event>
-            <Event on="always" date="1916–1917" title="La Romania entra nella Grande guerra">
+            <Event on="always" date="1916–1918" title="La Romania entra nella Grande guerra">
               <Detail on="always">
-                Dopo due anni di neutralità, la Romania si schiera con l’Intesa e attacca
-                l’Austria-Ungheria. La controffensiva porta all’occupazione di gran parte del regno;
-                il governo si rifugia in Moldavia.
+                Dopo due anni di neutralità, nell’agosto 1916 la Romania si schiera con l’Intesa,
+                che le promette la Transilvania, e attacca l’Austria-Ungheria. La controffensiva
+                tedesca, austriaca e bulgara è rapida: a dicembre cade <N>Bucarest</N>, e due terzi
+                del paese sono occupati. Governo, corte, esercito e centinaia di migliaia di
+                profughi si stringono in Moldavia, dove nell’inverno il tifo uccide più delle
+                battaglie.
+              </Detail>
+              <Detail on="always">
+                Nell’estate del 1917, riorganizzato con l’aiuto di una missione francese, l’esercito
+                ferma l’offensiva tedesca a <N>Mărășești</N>: «Di qui non si passa». Ma con la
+                rivoluzione russa l’alleato a est scompare, e nel maggio 1918 la Romania firma una
+                pace separata; rientra in guerra il giorno prima dell’armistizio, a novembre.
               </Detail>
               <Detail on={[Moldavia]}>
-                <N>Iași</N> ospita governo e corte. Nel 1917 il fronte resiste in Moldavia.
+                <N>Iași</N> ospita governo e corte; la regina Maria lavora negli ospedali.
               </Detail>
             </Event>
+            <Context
+              on="always"
+              kind="curiosity"
+              period="1916"
+              title="Un Hohenzollern contro la Germania"
+            >
+              Re Ferdinando, nipote di Carol I, è un principe tedesco della stessa famiglia del
+              Kaiser. Quando la Romania dichiara guerra alla Germania, Guglielmo II lo fa cancellare
+              dal registro della casa Hohenzollern.
+            </Context>
             <Event on="always" date="1918–1920" title="Le unioni del 1918 e i nuovi confini">
               <Detail on="always">
                 Alla fine della guerra assemblee in Bessarabia, Bucovina e Transilvania votano
@@ -1843,20 +1894,45 @@ function Body() {
                 elezioni e discriminazioni verso le minoranze limitano quei diritti.
               </Detail>
             </Event>
+            <Event on="always" date="1927–1930" title="Un re bambino e un re che torna">
+              <Detail on="always">
+                Il principe ereditario Carol rinuncia al trono per vivere con l’amante,{' '}
+                <N>Elena Lupescu</N>. Quando Ferdinando muore, nel 1927, re diventa il figlio di
+                Carol, <N>Mihai</N>, che ha cinque anni, sotto una reggenza. Nel 1930 Carol torna in
+                aereo dall’esilio, si fa proclamare re al posto del figlio e comincia a svuotare i
+                partiti. Mihai sarà così re due volte.
+              </Detail>
+            </Event>
             <Event on="always" date="1938" title="Carol II impone la dittatura reale">
               <Detail on="always">
                 Il re sospende il sistema parlamentare e scioglie i partiti. La violenza politica e
                 l’antisemitismo segnano il decennio; la <N>Guardia di Ferro</N>, movimento fascista,
-                mescola nazionalismo, religione e omicidi politici. La persecuzione degli ebrei
-                precede l’alleanza con la Germania nazista.
+                mescola nazionalismo, religione e omicidi politici: nel 1933 i suoi uomini uccidono
+                il primo ministro Ion Gheorghe Duca. Nel novembre 1938 il re fa uccidere il capo
+                della Guardia, <N>Corneliu Zelea Codreanu</N>, «durante un tentativo di fuga»;
+                l’anno dopo i legionari assassinano il primo ministro Armand Călinescu. La
+                persecuzione degli ebrei precede l’alleanza con la Germania nazista.
               </Detail>
             </Event>
             <Event on="always" date="1940" title="La Romania perde territori e si allea con l’Asse">
               <Detail on="always">
                 L’URSS occupa Bessarabia e Bucovina settentrionale, oggi tra Moldova e Ucraina.
                 L’arbitrato imposto da Germania e Italia assegna la Transilvania settentrionale
-                all’Ungheria; la Dobrogea meridionale torna alla Bulgaria. Carol II abdica e
-                <N> Ion Antonescu</N> prende il potere. La Romania aderisce all’Asse.
+                all’Ungheria; la Dobrogea meridionale torna alla Bulgaria. In tre mesi la Grande
+                Romania perde un terzo del territorio. Carol II abdica in favore di Mihai e fugge;
+                il generale <N>Ion Antonescu</N> prende il potere insieme alla Guardia di Ferro,
+                nello «Stato nazionale legionario». La Romania aderisce all’Asse. A novembre i
+                legionari massacrano nel carcere di Jilava oltre sessanta detenuti politici del
+                vecchio regime.
+              </Detail>
+            </Event>
+            <Event on="always" date="1941" title="La ribellione legionaria e il pogrom di Bucarest">
+              <Detail on="always">
+                Nel gennaio 1941 la Guardia di Ferro si ribella ad Antonescu. Per tre giorni i
+                legionari assaltano le istituzioni e devastano i quartieri ebraici di Bucarest:
+                circa centoventi ebrei vengono uccisi, alcuni nel mattatoio della città. Con il
+                consenso di Hitler, l’esercito schiaccia la rivolta, e Antonescu resta solo al
+                potere, con il titolo di Conducător.
               </Detail>
             </Event>
             <Event on="always" date="1941–1944" title="La guerra contro l’URSS e la Shoah">
@@ -1864,7 +1940,21 @@ function Body() {
                 Antonescu partecipa all’invasione dell’URSS. Autorità e reparti romeni organizzano
                 massacri e deportazioni di ebrei; nel 1942 deportano anche rom in Transnistria, il
                 territorio allora occupato tra Dnestr e Bug, oggi tra Moldova e Ucraina. Fame,
-                malattie e uccisioni provocano morti di massa.
+                malattie e uccisioni provocano morti di massa. A <N>Odessa</N>, nell’ottobre 1941,
+                le truppe romene uccidono decine di migliaia di ebrei per rappresaglia.
+              </Detail>
+              <Detail on="always">
+                Secondo la commissione internazionale presieduta da Elie Wiesel, che nel 2004 chiude
+                decenni di negazione ufficiale, sotto l’autorità romena muoiono fra 280.000 e
+                380.000 ebrei e circa 11.000 rom. Nell’autunno del 1942, quando le sorti della
+                guerra cambiano, Antonescu rinuncia a consegnare ai nazisti gli ebrei del Regno e
+                della Transilvania meridionale: circa metà degli ebrei di Romania sopravvive.
+              </Detail>
+              <Detail on="always">
+                Al fronte la Romania manda più soldati di ogni altro alleato della Germania: a{' '}
+                <N>Stalingrado</N>, nel novembre 1942, due armate romene vengono distrutte. Il
+                petrolio di Ploiești alimenta la macchina da guerra tedesca, e nel 1943 e nel 1944
+                gli Alleati lo bombardano.
               </Detail>
               <Detail on={[Moldavia]}>
                 Nel giugno 1941 a <N>Iași</N> militari, poliziotti e civili partecipano al pogrom;
@@ -1883,13 +1973,23 @@ function Body() {
               title="Dal cambio di fronte alla fine della monarchia"
             >
               <Detail on="always">
-                Il <D>23 agosto 1944</D> re <N>Mihai I</N> fa arrestare Antonescu. La Romania cambia
-                schieramento, ma resta sotto occupazione sovietica. Il trattato di pace del 1947
-                restituisce la Transilvania settentrionale e conferma le altre perdite territoriali
-                del 1940. I comunisti eliminano le opposizioni e costringono il re ad abdicare il 30
-                dicembre: viene proclamata la repubblica popolare.
+                Il <D>23 agosto 1944</D> re <N>Mihai I</N>, ventiduenne, convoca Antonescu a palazzo
+                e lo fa arrestare. La Romania cambia schieramento e combatte contro la Germania fino
+                alla fine della guerra, ma l’Armata Rossa entra nel paese e vi resta. Nel marzo 1945
+                Mosca impone un governo guidato da <N>Petru Groza</N>; le elezioni del 1946 sono
+                truccate a favore dei comunisti, e lo stesso anno Antonescu viene processato e
+                fucilato. Il trattato di pace del 1947 restituisce la Transilvania settentrionale e
+                conferma le altre perdite territoriali del 1940. I comunisti eliminano le
+                opposizioni e il <D>30 dicembre 1947</D> costringono il re ad abdicare, con la
+                minaccia di spargimenti di sangue: viene proclamata la repubblica popolare.
               </Detail>
             </Event>
+            <Context on="always" kind="curiosity" period="1945" title="La medaglia di Stalin">
+              Per il 23 agosto Stalin conferisce a Mihai l’Ordine della Vittoria, la massima
+              onorificenza militare sovietica: è uno dei pochissimi stranieri a riceverlo. Due anni
+              dopo lo stesso regime lo manda in esilio. Mihai torna in Romania solo dopo il 1989, e
+              muore nel 2017.
+            </Context>
           </Timeline>
         </Part>
 
