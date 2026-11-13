@@ -78,6 +78,31 @@ export const boxBorder = (seen: boolean, theme: TraceTheme | null) =>
         ? 'border-dashed border-album-food'
         : 'border-dashed border-neutral-500'
 
+/**
+ * Author and licence of a trace's stock image. Shown in the photo panel, not under the box: the
+ * image is only a grey placeholder until the reader's photo replaces it.
+ */
+export function StockCredit({ credit }: { credit: NonNullable<AlbumTrace['image']>['credit'] }) {
+  if (!credit) return null
+  return (
+    <p className="m-0 text-xs leading-[1.4] text-neutral-700">
+      {t.guide.trace.stock} · {credit.author} ·{' '}
+      {credit.url ? (
+        <a
+          href={credit.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-800 underline decoration-neutral-400 underline-offset-2"
+        >
+          {credit.license}
+        </a>
+      ) : (
+        credit.license
+      )}
+    </p>
+  )
+}
+
 export const photoSrc = (e: Entry | undefined, size: 'full' | 'thumb') =>
   e?.local?.preview ?? e?.photo?.[size]
 
@@ -211,23 +236,6 @@ export function Trace({
             )}
           </PhotoBox>
           {viewing && src && <PhotoViewer src={src} alt={alt} onClose={() => setViewing(false)} />}
-          {stock?.credit && (
-            <figcaption className="m-0 text-xs leading-[1.4] text-neutral-700">
-              {t.guide.trace.stock} · {stock.credit.author} ·{' '}
-              {stock.credit.url ? (
-                <a
-                  href={stock.credit.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-neutral-800 underline decoration-neutral-400 underline-offset-2"
-                >
-                  {stock.credit.license}
-                </a>
-              ) : (
-                stock.credit.license
-              )}
-            </figcaption>
-          )}
         </figure>
 
         <div className="flex min-w-0 flex-[999_1_280px] flex-col gap-2">

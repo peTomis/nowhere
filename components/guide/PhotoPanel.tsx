@@ -20,7 +20,7 @@ import { PhotoError, processPhoto, type ProcessedPhoto } from '@/lib/reader/phot
 import { NOTE_UI_MAX } from '@/lib/reader/schema'
 import { pad, useGuideData } from './data'
 import { closePhotoPanel, usePhotoPanel } from './panelStore'
-import { photoSrc, RarityMarks } from './Trace'
+import { photoSrc, RarityMarks, StockCredit } from './Trace'
 
 /*
  * The photo panel, port of "PannelloFoto.dc.html": take or pick a photo for a trace, add a note,
@@ -398,6 +398,8 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
                   {t.guide.photo.privateText}
                 </span>
               </div>
+
+              <StockCredit credit={trace.image?.credit} />
 
               {isSeen(entry) && (
                 <button
