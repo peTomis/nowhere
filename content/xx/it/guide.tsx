@@ -256,12 +256,21 @@ function Body() {
           remember="Il nome è di famiglia: la storia è un’altra."
         >
           {/* Context boxes in a card: curiosities and background, without the timeline rail. */}
-          <Context on="always" curiosity period="1431" title="Una curiosità sul personaggio">
-            Con curiosity il riquadro dice «Curiosità» invece di «Contesto»: un aneddoto, una
+          <Context on="always" kind="curiosity" period="1431" title="Una curiosità sul personaggio">
+            Con kind="curiosity" il riquadro dice «Curiosità» invece di «Contesto»: un aneddoto, una
             scoperta, un dettaglio che aiuta a capire chi era.
           </Context>
           <Context on="always" period="1450 – 1500" title="Il contesto del personaggio">
-            Senza curiosity resta un contesto: lo sfondo che spiega le sue scelte.
+            Senza kind resta un contesto: lo sfondo che spiega le sue scelte.
+          </Context>
+          <Context
+            on="always"
+            kind="variants"
+            period="Nord, Sud"
+            title="Come cambia da una regione all’altra"
+          >
+            Con kind="variants" il riquadro dice «Varianti», e al posto del periodo ci sono le
+            regioni: per un piatto o un’usanza che cambia davvero da un luogo all’altro.
           </Context>
         </Card>
       </Chapter>

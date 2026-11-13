@@ -203,13 +203,20 @@ export function Event<P extends string>({
 /**
  * A context card in a timeline, between the events: the background of a period (society, climate,
  * economy). Boxed like the glossary, labelled "Contesto · period" in place of a date, with a
- * hollow dot on the rail so it reads apart from the events. With `curiosity` it is labelled
- * "Curiosità · period": an anecdote rather than background. Also goes inside a `Card`.
+ * hollow dot on the rail so it reads apart from the events. `kind` changes the label:
+ * "curiosity" ("Curiosità · period") for an anecdote rather than background, "variants"
+ * ("Varianti · regions", the regions in place of the period) for how a dish or a custom changes
+ * from region to region. Also goes inside a `Card`.
  */
 export function Context<P extends string>({
   on,
   ...props
-}: On<P> & { period: ReactNode; title: ReactNode; curiosity?: boolean; children: ReactNode }) {
+}: On<P> & {
+  kind?: 'curiosity' | 'variants'
+  period: ReactNode
+  title: ReactNode
+  children: ReactNode
+}) {
   return (
     <Only on={on}>
       <div className="timeline-item timeline-context">
@@ -218,8 +225,7 @@ export function Context<P extends string>({
         <div className="timeline-body">
           <div className="flex max-w-[52ch] flex-col gap-2 rounded-md bg-surface p-4">
             <div className={`${label} text-accent-700`}>
-              {props.curiosity ? t.guide.content.curiosity : t.guide.content.context} ·{' '}
-              {props.period}
+              {t.guide.content[props.kind ?? 'context']} ·{props.period}
             </div>
             <h4 className="m-0 text-[17px] leading-[1.3] font-semibold">{props.title}</h4>
             <div className="text-[15px] leading-normal">{props.children}</div>

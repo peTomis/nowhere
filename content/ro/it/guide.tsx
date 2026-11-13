@@ -2062,7 +2062,7 @@ function Body() {
           }
           remember="Il re che Traiano dovette vincere due volte."
         >
-          <Context on="always" curiosity period="106" title="Il tesoro del Sargetia">
+          <Context on="always" kind="curiosity" period="106" title="Il tesoro del Sargetia">
             Lo storico <N href="https://it.wikipedia.org/wiki/Cassio_Dione">Cassio Dione</N>{' '}
             racconta che Decebalo fa deviare il fiume Sargetia, seppellisce nel suo letto il tesoro
             reale e poi rimette l’acqua al suo posto; i prigionieri che hanno scavato vengono uccisi
@@ -2072,7 +2072,7 @@ function Body() {
           </Context>
           <Context
             on="always"
-            curiosity
+            kind="curiosity"
             period="Scoperta nel 1965"
             title="Il cavaliere che lo raggiunse"
           >
@@ -2104,7 +2104,7 @@ function Body() {
           }
           remember="Dracula è un nome di famiglia: il vampiro arriva quattro secoli dopo."
         >
-          <Context on="always" curiosity period="1431" title="Il drago, non il diavolo">
+          <Context on="always" kind="curiosity" period="1431" title="Il drago, non il diavolo">
             Nel 1431 l’imperatore Sigismondo accoglie il padre nell’
             <N href="https://it.wikipedia.org/wiki/Ordine_del_Drago">Ordine del Drago</N>, nato per
             difendere la cristianità dagli ottomani: da qui il soprannome Dracul, «il drago». In
@@ -2139,7 +2139,12 @@ function Body() {
           }
           remember="Un principe di Moldavia, ricordato nelle piazze come sovrano e nelle chiese come santo."
         >
-          <Context on="always" curiosity period="Leggenda" title="La madre alla porta di Neamț">
+          <Context
+            on="always"
+            kind="curiosity"
+            period="Leggenda"
+            title="La madre alla porta di Neamț"
+          >
             Dopo una sconfitta, forse quella di Războieni, Stefano arriva ferito alla fortezza di
             Neamț, dove si trova sua madre. Lei non gli fa aprire: un principe torna a casa solo da
             vincitore. La scena non ha fonti dell’epoca, ma nell’Ottocento{' '}
@@ -2148,7 +2153,7 @@ function Body() {
           </Context>
           <Context
             on="always"
-            curiosity
+            kind="curiosity"
             period="XVI secolo"
             title="I monasteri dipinti vengono dopo"
           >
@@ -2158,7 +2163,7 @@ function Body() {
             successori. Voroneț, per esempio, è fondato da Stefano nel 1488 e dipinto all’esterno
             solo nel 1547.
           </Context>
-          <Context on="always" curiosity period="2006" title="Il più grande romeno">
+          <Context on="always" kind="curiosity" period="2006" title="Il più grande romeno">
             Nel 2006 la televisione pubblica romena organizza <N>Mari Români</N>, un concorso sul
             modello della BBC per scegliere il più grande romeno di tutti i tempi. Vince Stefano.
           </Context>
@@ -2212,7 +2217,7 @@ function Body() {
           }
           remember="Il principe tedesco con cui la Romania diventa un regno indipendente: il comunismo lo toglie dalle piazze, la Romania di oggi ce lo rimette."
         >
-          <Context on="always" curiosity period="1866" title="In incognito sul Danubio">
+          <Context on="always" kind="curiosity" period="1866" title="In incognito sul Danubio">
             Austria e Prussia stanno per entrare in guerra, e un principe prussiano non può
             attraversare l’Austria apertamente. Karl viaggia in treno con un passaporto svizzero a
             nome di Karl Hettingen, poi sale su un battello del Danubio e sbarca a Turnu Severin.
@@ -2250,7 +2255,7 @@ function Body() {
             «nemuritor și rece», immortale e freddo: per molti romeni è il ritratto del poeta
             stesso.
           </Context>
-          <Context on="always" curiosity period="1889" title="Veronica">
+          <Context on="always" kind="curiosity" period="1889" title="Veronica">
             Il legame più lungo della sua vita è con la poetessa{' '}
             <N href="https://it.wikipedia.org/wiki/Veronica_Micle">Veronica Micle</N>, sposata
             quando si conoscono, a Vienna nel 1872. Eminescu muore il 15 giugno 1889; lei muore meno
@@ -2274,7 +2279,7 @@ function Body() {
           }
           remember="La principessa inglese diventata la regina più amata dai romeni: Bran la rende famosa, Pelișor custodisce il suo cuore."
         >
-          <Context on="always" curiosity period="1938 – 2015" title="Il viaggio del cuore">
+          <Context on="always" kind="curiosity" period="1938 – 2015" title="Il viaggio del cuore">
             Maria chiede che il suo cuore riposi a Balcic, sul Mar Nero, nella cappella della sua
             villa. Nel 1940 Balcic passa alla Bulgaria e il cuore viene portato a Bran; nel 1971 il
             regime lo sposta al Museo di storia di Bucarest. Solo nel 2015 arriva al castello di
@@ -2298,7 +2303,7 @@ function Body() {
           }
           remember="Figlio di contadini del Gorj, diventato scultore a Parigi: in Romania lo trovi in un parco di Târgu Jiu, non in un museo."
         >
-          <Context on="always" curiosity period="1907" title="All’ombra dei grandi alberi">
+          <Context on="always" kind="curiosity" period="1907" title="All’ombra dei grandi alberi">
             A Parigi lavora per poche settimane nell’atelier di{' '}
             <N href="https://it.wikipedia.org/wiki/Auguste_Rodin">Auguste Rodin</N>, il più celebre
             scultore del tempo, poi se ne va. La frase che gli si attribuisce: «All’ombra dei grandi
@@ -2306,7 +2311,7 @@ function Body() {
           </Context>
           <Context
             on="always"
-            curiosity
+            kind="curiosity"
             period="1926 – 1928"
             title="Un uccello tassato come metallo"
           >
@@ -2334,7 +2339,7 @@ function Body() {
           }
           remember="Il violinista moldavo diventato europeo: in Romania lo incontri in una villa di montagna, in un palazzo di Calea Victoriei e nel portafoglio."
         >
-          <Context on="always" curiosity period="1910 – 1936" title="Vent’anni per Edipo">
+          <Context on="always" kind="curiosity" period="1910 – 1936" title="Vent’anni per Edipo">
             Enescu lavora a <N work>Œdipe</N> per più di vent’anni, fra un concerto e l’altro: lo
             comincia intorno al 1910 e lo finisce solo nel 1931. È la sua unica opera lirica, e la
             considera il lavoro della sua vita.
@@ -2370,7 +2375,7 @@ function Body() {
             controllo del partito. Da qui comincia il culto della personalità degli anni Settanta e
             Ottanta.
           </Context>
-          <Context on="always" curiosity period="1978" title="Cavaliere della regina">
+          <Context on="always" kind="curiosity" period="1978" title="Cavaliere della regina">
             Nel 1978, in visita di Stato a Londra, riceve da Elisabetta II un’onorificenza
             dell’Ordine del Bagno. Il titolo gli viene revocato il 24 dicembre 1989, il giorno prima
             della fucilazione.
@@ -2391,7 +2396,7 @@ function Body() {
           }
           remember="La bambina di Onești che a Montréal prende il primo 10: il tabellone non era pronto, i romeni non l’hanno più dimenticata."
         >
-          <Context on="always" curiosity period="1976" title="Una canzone per Nadia">
+          <Context on="always" kind="curiosity" period="1976" title="Una canzone per Nadia">
             Per accompagnare le immagini dei suoi esercizi, una televisione americana usa un brano
             già scritto per una soap opera. Ribattezzato «Nadia’s Theme», diventa un successo nelle
             classifiche statunitensi.
@@ -2483,7 +2488,12 @@ function Body() {
             }
             remember="Bucarest si capisce nei contrasti di scala: una chiesa fra i condomini racconta la città quanto un palazzo monumentale."
           >
-            <Context on="always" curiosity period="1459" title="Il primo documento è di Dracula">
+            <Context
+              on="always"
+              kind="curiosity"
+              period="1459"
+              title="Il primo documento è di Dracula"
+            >
               La leggenda attribuisce la fondazione a un pastore di nome Bucur. La prima menzione
               scritta della città è invece un atto del 20 settembre 1459, firmato da Vlad III nella
               «fortezza di Bucarest».
@@ -2547,7 +2557,7 @@ function Body() {
               lingua romena, testi religiosi in alfabeto cirillico. Accanto alla chiesa di San
               Nicola, a Șchei, la scuola romena e la sua tipografia sono oggi un museo.
             </Context>
-            <Context on="always" curiosity period="1950 – 1960" title="Orașul Stalin">
+            <Context on="always" kind="curiosity" period="1950 – 1960" title="Orașul Stalin">
               Per dieci anni Brașov si chiama «Città di Stalin». Sul Tâmpa, dove oggi c’è la scritta
               BRAȘOV, gli alberi vengono tagliati in modo da comporre il nome del dittatore
               sovietico.
@@ -2583,7 +2593,12 @@ function Body() {
               condannati al carcere; il processo diventa un caso europeo e l’anno dopo sono
               graziati.
             </Context>
-            <Context on="always" curiosity period="1992 – 2004" title="Le panchine tricolori">
+            <Context
+              on="always"
+              kind="curiosity"
+              period="1992 – 2004"
+              title="Le panchine tricolori"
+            >
               Il sindaco nazionalista Gheorghe Funar fa dipingere panchine, lampioni e bidoni nei
               colori della bandiera romena, e apre uno scavo archeologico proprio davanti alla
               statua di Mattia Corvino. Per molti abitanti ungheresi è una provocazione; oggi i
@@ -2607,7 +2622,7 @@ function Body() {
             }
             remember="A Sibiu le piazze mostrano la città di rappresentanza; scale e passaggi la ricuciono alla città di ogni giorno."
           >
-            <Context on="always" curiosity period="Tetti" title="Gli occhi della città">
+            <Context on="always" kind="curiosity" period="Tetti" title="Gli occhi della città">
               Sui tetti delle case si aprono piccole finestre a forma di palpebra, che arieggiano le
               soffitte dove si conservavano le provviste. Gli abitanti le chiamano «gli occhi della
               città»: sembra che la città ti guardi.
@@ -2636,7 +2651,7 @@ function Body() {
             }
             remember="Sighișoara è una città costruita per abitare, lavorare e difendersi su una collina: Vlad è una storia dentro questa storia."
           >
-            <Context on="always" curiosity period="Mura" title="Una torre per ogni mestiere">
+            <Context on="always" kind="curiosity" period="Mura" title="Una torre per ogni mestiere">
               Ogni torre delle mura è affidata a una corporazione, che la costruisce, la mantiene e
               la difende: sarti, calzolai, fabbri, macellai, conciatori. Delle quattordici torri
               originarie ne restano nove, e portano ancora il nome del loro mestiere.
@@ -2666,7 +2681,7 @@ function Body() {
             }
             remember="Timișoara è una città barocca di molte lingue e confessioni: qui, nel 1989, comincia la rivolta contro Ceaușescu."
           >
-            <Context on="always" curiosity period="1884" title="Le prime luci elettriche">
+            <Context on="always" kind="curiosity" period="1884" title="Le prime luci elettriche">
               Nel 1884 Timișoara illumina le sue strade con lampade elettriche, fra le prime città
               in Europa a farlo. Per la città è ancora un motivo d’orgoglio.
             </Context>
@@ -2700,7 +2715,7 @@ function Body() {
             }
             remember="A Constanța la Romania arriva al mare: sotto la città di Carol I restano la Tomis greca e romana e la Köstence ottomana."
           >
-            <Context on="always" curiosity period="1962" title="Il serpente Glykon">
+            <Context on="always" kind="curiosity" period="1962" title="Il serpente Glykon">
               Nel 1962, durante dei lavori vicino alla vecchia stazione, viene alla luce un deposito
               di statue sepolte in età romana. Fra queste c’è Glykon, un serpente con la testa da
               ariete, orecchie e capelli umani: il dio di un culto nato nel II secolo. Lo vedi al
@@ -2742,12 +2757,12 @@ function Body() {
           }
           remember="Il delta è una terra che il Danubio costruisce ogni anno: anche le persone l’hanno scavata, arginata e poi in parte restituita all’acqua."
         >
-          <Context on="always" curiosity period="Sulina" title="Il chilometro zero">
+          <Context on="always" kind="curiosity" period="Sulina" title="Il chilometro zero">
             Il Danubio si misura al contrario: i chilometri si contano dalla foce, a Sulina,
             risalendo verso la sorgente. Ogni porto del fiume, da Vienna a Belgrado, ha il suo
             numero di distanza dal Mar Nero.
           </Context>
-          <Context on="always" curiosity period="Dopo il 1990" title="I cavalli di Letea">
+          <Context on="always" kind="curiosity" period="Dopo il 1990" title="I cavalli di Letea">
             Con la fine delle cooperative agricole molti cavalli vengono lasciati liberi; oggi
             alcune migliaia vivono allo stato brado intorno alla foresta di Letea. Brucano anche le
             piante protette del bosco, e che cosa farne è ancora discusso.
@@ -2777,7 +2792,7 @@ function Body() {
             rifugia nei boschi dei Făgăraș e resiste armato per anni. Quasi tutti vengono catturati
             e fucilati; il loro capo, Ion Gavrilă Ogoranu, riesce a nascondersi fino al 1976.
           </Context>
-          <Context on="always" curiosity period="Ogni inverno" title="L’albergo di ghiaccio">
+          <Context on="always" kind="curiosity" period="Ogni inverno" title="L’albergo di ghiaccio">
             Quando la strada chiude per la neve, al lago di Bâlea si arriva in funivia. Ogni
             inverno, dal 2006, accanto al lago si costruisce un albergo con blocchi di ghiaccio
             tagliati dal lago stesso; a primavera si scioglie.
@@ -2800,7 +2815,7 @@ function Body() {
           }
           remember="La Piatra Craiului è una sola lama di calcare: sotto, i villaggi d’alta quota e i boschi degli orsi; sopra, un fiore che non cresce altrove."
         >
-          <Context on="always" curiosity period="Nome" title="La pietra del re">
+          <Context on="always" kind="curiosity" period="Nome" title="La pietra del re">
             Piatra Craiului vuol dire «la pietra del re»: crai è una parola antica, di origine
             slava, per «re» o «principe». Chi fosse il re, nessuna leggenda lo dice con certezza.
           </Context>
@@ -2829,7 +2844,7 @@ function Body() {
           }
           remember="Negli Apuseni il paesaggio è sotto i piedi: grotte e ghiacci nel calcare, e sopra le case sparse dei moți, che da qui sono scesi in due rivolte."
         >
-          <Context on="always" curiosity period="1872" title="Il flauto di Avram Iancu">
+          <Context on="always" kind="curiosity" period="1872" title="Il flauto di Avram Iancu">
             Dopo il 1848 il capo dei moți non accetta onori né compromessi con Vienna. Negli ultimi
             anni vaga di villaggio in villaggio suonando il flauto da pastore, e muore nel 1872 a
             Baia de Criș. È sepolto a Țebea, sotto una vecchia quercia.
@@ -2860,13 +2875,13 @@ function Body() {
           }
           remember="Alle Porte di Ferro il Danubio è sempre stato un confine: lo è per Traiano, per gli imperi, e oggi corre su un lago che ha sommerso un’isola e una città."
         >
-          <Context on="always" curiosity period="1878" title="L’isola dimenticata">
+          <Context on="always" kind="curiosity" period="1878" title="L’isola dimenticata">
             Al congresso di Berlino nessuno si ricorda di Ada Kaleh: l’isola resta formalmente
             ottomana, in mezzo a un Danubio ormai austro-ungarico e serbo. I suoi abitanti turchi
             vivono di tabacco, rahat e commercio esente da dazi fino a quando, dopo la Prima guerra
             mondiale, l’isola passa alla Romania.
           </Context>
-          <Context on="always" curiosity period="1967 – 1969" title="La tavola salvata">
+          <Context on="always" kind="curiosity" period="1967 – 1969" title="La tavola salvata">
             Sulla riva serba un’iscrizione scolpita nella roccia, la Tabula Traiana, ricorda la
             strada costruita per Traiano. Quando il lago della diga sta per sommergerla, la tagliano
             e la sollevano di oltre venti metri: dalla riva romena la vedi in barca.
@@ -2890,7 +2905,12 @@ function Body() {
           }
           remember="Il Retezat è la montagna che la Romania ha protetto per prima: circhi e laghi lasciati dai ghiacci, dove si arriva solo a piedi."
         >
-          <Context on="always" curiosity period="1895 – 1914" title="I dinosauri nani di Hațeg">
+          <Context
+            on="always"
+            kind="curiosity"
+            period="1895 – 1914"
+            title="I dinosauri nani di Hațeg"
+          >
             Nella depressione di Hațeg il barone transilvano Franz Nopcsa studia ossa di dinosauri
             molto più piccoli dei loro parenti. Ne deduce che vivevano su un’isola, dove le specie
             tendono a rimpicciolirsi: un’idea accettata solo molto più tardi. Nopcsa è anche
@@ -2930,7 +2950,7 @@ function Body() {
           </Context>
           <Context
             on="always"
-            curiosity
+            kind="curiosity"
             period="1997 – 2003"
             title="Il campanile di legno più alto"
           >
@@ -2963,7 +2983,7 @@ function Body() {
             costruita in dieci anni, anche con il lavoro di detenuti, sommerge villaggi le cui
             famiglie vengono trasferite. È la prima grande centrale idroelettrica della Romania.
           </Context>
-          <Context on="always" curiosity period="6 agosto" title="L’ombra della piramide">
+          <Context on="always" kind="curiosity" period="6 agosto" title="L’ombra della piramide">
             Il 6 agosto, festa della Trasfigurazione, i pellegrini salgono di notte al monastero del
             Ceahlău. Si racconta che all’alba di quel giorno l’ombra della montagna si disegni sulle
             nuvole e sulle valli come una piramide perfetta.
@@ -2990,7 +3010,18 @@ function Body() {
               </>
             }
             remember="La mămăligă sta accanto a quasi tutto: da tre secoli è il pane delle campagne romene."
-          />
+          >
+            <Context
+              on="always"
+              kind="curiosity"
+              period="Modo di dire"
+              title="La mămăligă non esplode"
+            >
+              «Mămăliga nu explodează», la mămăligă non esplode: per decenni i romeni lo dicono di
+              sé stessi, di un popolo che sopporta senza ribellarsi. Nel dicembre 1989 i giornali
+              scrivono che, alla fine, la mămăligă è esplosa.
+            </Context>
+          </Card>
           <Card
             card={RoFood.Sarmale}
             intro={
@@ -3003,7 +3034,20 @@ function Body() {
               </>
             }
             remember="Le sarmale sono il piatto delle feste: un involtino di origine ottomana diventato la cucina di casa."
-          />
+          >
+            <Context
+              on="always"
+              kind="variants"
+              period="Moldavia, Transilvania"
+              title="Piccole o grandi, vite o cavolo"
+            >
+              In Moldavia sono piccole, a volte quanto un dito, e spesso si chiamano găluște;
+              d’estate si avvolgono volentieri nelle foglie di vite. In Transilvania sono più
+              grandi, di cavolo acido, cotte a strati con carne affumicata e crauti, a volte con
+              aneto o pomodoro. Ovunque, nei giorni di digiuno ortodosso, il ripieno è di riso e
+              funghi, senza carne.
+            </Context>
+          </Card>
           <Card
             card={RoFood.CiorbaBors}
             intro={
@@ -3017,7 +3061,20 @@ function Body() {
               </>
             }
             remember="La ciorbă è la zuppa acidula che apre il pranzo: chiedi con che cosa è acidulata, e ogni regione risponde a modo suo."
-          />
+          >
+            <Context
+              on="always"
+              kind="variants"
+              period="Moldavia, Valacchia, Transilvania"
+              title="Borș, zeamă o ciorbă"
+            >
+              In Moldavia una zuppa acida è un borș, e quella di pollo con tagliolini fatti in casa
+              è la zeamă, acidulata con il borș. In Valacchia è una ciorbă, e il gusto è quello del
+              levistico. In Transilvania, per l’influenza ungherese, la zuppa si lega spesso con un
+              soffritto di farina e prende il dragoncello; la ciorbă di fagioli servita dentro una
+              pagnotta scavata è nata qui ed è ormai ovunque.
+            </Context>
+          </Card>
           <Card
             card={RoFood.Cozonac}
             intro={
@@ -3054,7 +3111,18 @@ function Body() {
               </>
             }
             remember="La țuică è il benvenuto: un bicchierino di prugne prima di mangiare, offerto a chi arriva."
-          />
+          >
+            <Context
+              on="always"
+              kind="curiosity"
+              period="Ogni autunno"
+              title="Le prugne vanno nel bicchiere"
+            >
+              La Romania è fra i maggiori produttori di prugne d’Europa, e gran parte del raccolto
+              non si mangia: finisce in botte e poi nell’alambicco. In autunno, nei villaggi, le
+              famiglie distillano per sé con l’alambicco di casa o con quello del vicino.
+            </Context>
+          </Card>
         </Part>
         <Part section={RoSection.FoodTransylvania}>
           <Card
@@ -3191,7 +3259,18 @@ function Body() {
               </>
             }
             remember="La ciorbă de burtă è la zuppa di trippa ottomana con panna e uova: ognuno la corregge a tavola con aglio e aceto."
-          />
+          >
+            <Context
+              on="always"
+              kind="curiosity"
+              period="Il giorno dopo"
+              title="La zuppa del mattino dopo"
+            >
+              Come la sua cugina turca, la ciorbă de burtă ha fama di rimedio per i postumi di una
+              sbornia: dopo una notte di nozze o di festa, la si cerca la mattina in un locale
+              aperto presto.
+            </Context>
+          </Card>
           <Card
             card={RoFood.Covrigi}
             intro={
