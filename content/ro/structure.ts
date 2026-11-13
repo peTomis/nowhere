@@ -121,6 +121,7 @@ export enum RoTrace {
   SighisoaraClockTower = 'ro.place.sighisoara-clock-tower',
   SighisoaraCoveredStairway = 'ro.place.sighisoara-covered-stairway',
   OberthHouse = 'ro.place.hermann-oberth-house',
+  BiertanFortifiedChurch = 'ro.place.biertan-fortified-church',
   ClujUnionSquare = 'ro.place.cluj-union-square',
   ClujAvramIancuSquare = 'ro.place.cluj-avram-iancu-square',
   BanffyCastle = 'ro.place.banffy-castle-bontida',
@@ -171,6 +172,9 @@ export enum RoTrace {
   BicazGorges = 'ro.place.bicaz-gorges',
   RedLake = 'ro.place.red-lake',
   ToacaPeak = 'ro.place.toaca-peak',
+  BucegiSphinx = 'ro.place.bucegi-babele-sphinx',
+  CaraimanCross = 'ro.place.caraiman-cross',
+  HorezuMonastery = 'ro.place.horezu-monastery',
   FoodMamaliga = 'ro.place.food-mamaliga',
   FoodSarmale = 'ro.place.food-sarmale',
   FoodCozonac = 'ro.place.food-cozonac',
@@ -225,6 +229,7 @@ export enum RoLandscape {
   Retezat = 'ro.landscape.retezat',
   VaserValleyRodna = 'ro.landscape.vaser-valley-rodna',
   BicazCeahlau = 'ro.landscape.bicaz-gorges-ceahlau',
+  Bucegi = 'ro.landscape.bucegi',
 }
 
 /** Dishes and drinks with a card (Gastronomia chapter): stored with the reader's pins. */
@@ -1114,6 +1119,23 @@ export const structure = defineGuide<Ro, RoSection>({
       rarity: 'rare',
       icon: 'rocket',
     },
+    // Biertan (Sibiu county), between Sibiu and Sighișoara. Coordinates: Wikidata Q16743875.
+    {
+      id: RoTrace.BiertanFortifiedChurch,
+      region: Transylvania,
+      where: 'nearby',
+      at: [24.5213, 46.1352],
+      rarity: 'rare',
+      icon: 'church',
+      image: {
+        src: '/guides/romania/traces/biertan-fortified-church.webp',
+        credit: {
+          author: 'Florio1974',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Biertan_fortified_Church.jpg',
+        },
+      },
+    },
     {
       id: RoTrace.ClujUnionSquare,
       region: Transylvania,
@@ -1949,6 +1971,59 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
+    // Bucegi plateau, Dâmbovița/Prahova: historically Wallachia. Coordinates: Wikidata Q3623938
+    // (the Sphinx), a few hundred metres from Babele.
+    {
+      id: RoTrace.BucegiSphinx,
+      region: Wallachia,
+      where: 'remote',
+      at: [25.4698, 45.4083],
+      rarity: 'common',
+      icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/bucegi-sphinx.webp',
+        credit: {
+          author: 'Stefan Jurca',
+          license: 'CC BY-SA 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucegi_-_Sphinx_%289372151324%29.jpg',
+        },
+      },
+    },
+    // Caraiman peak above Bușteni (Prahova). Coordinates: OpenStreetMap.
+    {
+      id: RoTrace.CaraimanCross,
+      region: Wallachia,
+      where: 'remote',
+      at: [25.4975, 45.416],
+      rarity: 'rare',
+      icon: 'mountains',
+      image: {
+        src: '/guides/romania/traces/caraiman-cross.webp',
+        credit: {
+          author: 'Dragoș Asaftei',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Crucea_Caraiman_-_Crucea_comemorativ%C4%83_a_eroilor_rom%C3%A2ni_din_Primul_R%C4%83zboi_Mondial.jpg',
+        },
+      },
+    },
+    // Horezu (Vâlcea county, Oltenia): historically Wallachia. In no card: shown under the
+    // Brâncoveanu event. Coordinates: Wikidata Q733069.
+    {
+      id: RoTrace.HorezuMonastery,
+      region: Wallachia,
+      where: 'remote',
+      at: [24.0069, 45.1686],
+      rarity: 'rare',
+      icon: 'church',
+      image: {
+        src: '/guides/romania/traces/horezu-monastery.webp',
+        credit: {
+          author: 'Cristian Bortes',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Horezu_Monastery_2.jpg',
+        },
+      },
+    },
     // Gastronomia, whole country: the dishes are traces anywhere (album first page). No images.
     {
       id: RoTrace.FoodMamaliga,
@@ -2514,6 +2589,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.SighisoaraClockTower,
         RoTrace.SighisoaraCoveredStairway,
         RoTrace.OberthHouse,
+        RoTrace.BiertanFortifiedChurch,
       ],
     },
     {
@@ -2628,6 +2704,18 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Moldavia, Transylvania],
       traces: [RoTrace.BicazGorges, RoTrace.RedLake, RoTrace.ToacaPeak],
+    },
+    {
+      id: RoLandscape.Bucegi,
+      kind: 'landscape',
+      region: Wallachia,
+      on: [Wallachia, Transylvania],
+      traces: [
+        RoTrace.PelesCastle,
+        RoTrace.CantacuzinoCastle,
+        RoTrace.BucegiSphinx,
+        RoTrace.CaraimanCross,
+      ],
     },
     {
       id: RoFood.Mamaliga,

@@ -31,6 +31,7 @@ const landscapes: Record<RoLandscape, string> = {
   [RoLandscape.Retezat]: 'Retezat',
   [RoLandscape.VaserValleyRodna]: 'Maramureș: valle del Vaser e Monti Rodnei',
   [RoLandscape.BicazCeahlau]: 'Gole di Bicaz e Ceahlău',
+  [RoLandscape.Bucegi]: 'Monti Bucegi',
 }
 
 export const names: GuideNames<Ro, RoSection> = {
@@ -410,6 +411,14 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Hermann Oberth, sassone nato a Sibiu nel 1894, insegna fisica a Mediaș. Nel 1923 pubblica «Il razzo negli spazi interplanetari», uno dei libri da cui nasce l’astronautica; a Berlino, nel 1930, fra i suoi aiutanti c’è un giovane Wernher von Braun. Nella sua villa, museo dal 1994, la storia comincia con Conrad Haas, che a Sibiu nel Cinquecento descrive razzi a più stadi, e arriva a Dumitru Prunariu, primo romeno nello spazio nel 1981. Davanti, un razzo di bronzo.',
       find: 'Strada Hermann Oberth 23, a Mediaș, sulla strada fra Sibiu e Sighișoara. Orari ridotti, soprattutto d’inverno: controlla prima di andare.',
     },
+    [RoTrace.BiertanFortifiedChurch]: {
+      name: 'La chiesa fortificata di Biertan',
+      local: 'Biserica fortificată din Biertan',
+      place: `Biertan, ${places[Ro.Transylvania]}`,
+      distance: `a circa 35 km da ${places[Ro.Sighisoara]}`,
+      text: 'I sassoni del villaggio la costruiscono fra il 1486 e il 1524, in stile tardogotico, e la chiudono in tre cerchi di mura con torri: quando arrivano ottomani o tatari, tutto il villaggio si rifugia dentro. Dal 1572 al 1867 è la sede del vescovo luterano della Transilvania. La porta della sacrestia ha una serratura che chiude in tredici punti, esposta a Parigi nel 1889; fra le mura c’è la «prigione del matrimonio», dove le coppie che volevano divorziare restavano chiuse due settimane con un letto, un piatto e un cucchiaio. È patrimonio UNESCO dal 1993.',
+      find: 'Sulla collina al centro del villaggio di Biertan, una decina di chilometri a sud della strada fra Mediaș e Sighișoara. Si visita con biglietto: controlla gli orari prima di andare.',
+    },
     [RoTrace.ClujUnionSquare]: {
       name: 'Piața Unirii: la chiesa e il re',
       local: 'Biserica Sfântul Mihail · Statuia lui Matia Corvin',
@@ -774,6 +783,27 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'A 1.904 m è una delle due cime principali del Ceahlău, appena più bassa dell’Ocolașul Mare (1.907 m). Sul pianoro sotto la vetta, accanto al rifugio Dochia e alla stazione meteorologica, sorge la chiesa del monastero del Ceahlău, costruita nel 1992–1993 e dedicata alla Trasfigurazione. Per la festa, il 6 agosto, migliaia di pellegrini salgono a piedi. All’alba, con il cielo sereno, l’ombra della cima si proietta sulle valli come una piramide: i giornali la chiamano «piramide olografica».',
       find: 'Da Durău, a nord, per sentiero segnato fino al rifugio Dochia e poi alla cima: mezza giornata di salita. Il parco nazionale chiede un biglietto d’ingresso; campeggio solo nelle aree segnate.',
     },
+    [RoTrace.BucegiSphinx]: {
+      name: 'La Sfinge e le Babele',
+      local: 'Sfinxul · Babele',
+      place: `Monti Bucegi, ${places[Ro.Wallachia]}`,
+      text: 'Sull’altopiano dei Bucegi, a circa 2.200 m, il vento e la pioggia hanno scolpito blocchi di roccia in forme strane: le Babele, «le vecchiette», sembrano grandi funghi di pietra, e poco lontano un masso visto da un certo punto ha il profilo di un volto umano, la Sfinge. La spiegazione è geologica, ma intorno alle rocce sono nate molte leggende, dai daci alle energie misteriose.',
+      find: 'Da Bușteni, in funivia fino alla stazione di Babele: le rocce sono a poche centinaia di metri, la Sfinge a circa mezzo chilometro. La funivia si ferma con il maltempo: controlla prima di salire.',
+    },
+    [RoTrace.CaraimanCross]: {
+      name: 'La croce del Caraiman',
+      local: 'Crucea Eroilor de pe Caraiman',
+      place: `Bușteni, ${places[Ro.Wallachia]}`,
+      text: 'Una croce di metallo alta 28 metri, su un piedistallo che porta il monumento a 39, a 2.291 m sulla cima del Caraiman. La vogliono la regina Maria e il re Ferdinando, e viene costruita fra il 1926 e il 1928 in memoria dei ferrovieri caduti nella Prima guerra mondiale. Di notte è illuminata: dalla valle della Prahova la vedi sospesa sopra Bușteni. Nel 2014 il Guinness l’ha riconosciuta come la croce di vetta più alta del mondo a quella quota.',
+      find: 'Dalla stazione superiore della funivia di Bușteni, a Babele, circa un’ora a piedi sull’altopiano. Da Bușteni si sale anche a piedi per la valle dei Jepi: tre o quattro ore di salita ripida, solo nella bella stagione.',
+    },
+    [RoTrace.HorezuMonastery]: {
+      name: 'Il monastero di Horezu',
+      local: 'Mănăstirea Hurezi',
+      place: `Horezu, ${places[Ro.Wallachia]}`,
+      text: 'Constantin Brâncoveanu lo fonda nel 1690. La chiesa, il chiostro con le logge su colonne di pietra scolpita e gli affreschi ne fanno il modello più completo dello stile brâncovenesc; dal 1993 è patrimonio UNESCO, e oggi ci vive una comunità di monache. Nella cittadina di Horezu i vasai fanno ancora le ceramiche dipinte con il gallo e le spirali: la loro arte è patrimonio immateriale UNESCO dal 2012.',
+      find: 'Poco fuori dalla cittadina di Horezu (Vâlcea), ai piedi dei monti, a circa 45 km da Râmnicu Vâlcea. È un monastero attivo: abbigliamento rispettoso.',
+    },
     [RoTrace.FoodMamaliga]: {
       name: 'Mămăligă',
       place: 'In tutta la Romania',
@@ -1052,6 +1082,10 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoLandscape.BicazCeahlau]: {
       name: landscapes[RoLandscape.BicazCeahlau],
       local: 'Cheile Bicazului · Masivul Ceahlău',
+    },
+    [RoLandscape.Bucegi]: {
+      name: landscapes[RoLandscape.Bucegi],
+      local: 'Munții Bucegi · Valea Prahovei',
     },
     [RoFood.Mamaliga]: {
       name: 'Mămăligă',

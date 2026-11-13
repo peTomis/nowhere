@@ -251,6 +251,13 @@ function Body() {
               </Detail>
               <Today traces={[RoTrace.ConstantaRomanMosaic]} />
             </Event>
+            <Context on="always" period="Oggi" title="Una lingua neolatina">
+              Il romeno è una lingua romanza, come l’italiano: <i>apă</i> è acqua, <i>pâine</i>{' '}
+              pane, <i>frate</i> fratello, <i>a cânta</i> cantare. Nei secoli prende molte parole
+              dallo slavo, dal greco, dal turco, dall’ungherese e poi dal francese. Fino
+              all’Ottocento si scrive con l’alfabeto cirillico: l’alfabeto latino diventa ufficiale
+              nei principati negli anni Sessanta dell’Ottocento.
+            </Context>
           </Timeline>
 
           <Callout
@@ -1145,7 +1152,7 @@ function Body() {
                 Nel 1714 viene deposto e decapitato a Istanbul insieme ai quattro figli. La Chiesa
                 ortodossa romena lo venera come santo martire.
               </Detail>
-              <Today traces={[RoTrace.StavropoleosChurch]} />
+              <Today traces={[RoTrace.HorezuMonastery, RoTrace.StavropoleosChurch]} />
             </Event>
           </Timeline>
 
@@ -1462,6 +1469,13 @@ function Body() {
               Kaiser. Quando la Romania dichiara guerra alla Germania, Guglielmo II lo fa cancellare
               dal registro della casa Hohenzollern.
             </Context>
+            <Context on="always" kind="curiosity" period="1916" title="Il dadaismo è anche romeno">
+              Nel febbraio 1916, al Cabaret Voltaire di Zurigo, nasce il dadaismo. Fra i fondatori
+              ci sono due giovani romeni: il poeta{' '}
+              <N href="https://it.wikipedia.org/wiki/Tristan_Tzara">Tristan Tzara</N>, nato a
+              Moinești come Samuel Rosenstock, e il pittore e architetto{' '}
+              <N href="https://it.wikipedia.org/wiki/Marcel_Janco">Marcel Janco</N>, di Bucarest.
+            </Context>
             <Event on="always" date="1918–1920" title="Le unioni del 1918 e i nuovi confini">
               <Detail on="always">
                 Alla fine della guerra assemblee in Bessarabia, Bucovina e Transilvania votano
@@ -1520,6 +1534,17 @@ function Body() {
                 persecuzione degli ebrei precede l’alleanza con la Germania nazista.
               </Detail>
             </Event>
+            <Context on="always" period="1930 – 1990" title="Tre romeni a Parigi">
+              Negli anni Trenta a Bucarest si fa notare una generazione di giovani intellettuali:{' '}
+              <N href="https://it.wikipedia.org/wiki/Mircea_Eliade">Mircea Eliade</N>,{' '}
+              <N href="https://it.wikipedia.org/wiki/Emil_Cioran">Emil Cioran</N>,{' '}
+              <N href="https://it.wikipedia.org/wiki/Eugène_Ionesco">Eugène Ionesco</N>. Eliade e
+              Cioran simpatizzano per la Guardia di Ferro; Ionesco vede gli amici convertirsi e ne
+              farà una commedia, <N work>Il rinoceronte</N> (1959). Dopo la guerra restano tutti in
+              Occidente: Ionesco diventa uno dei padri del teatro dell’assurdo, Cioran scrive in
+              francese i suoi aforismi, Eliade insegna storia delle religioni a Chicago. Il regime
+              comunista li pubblica poco o nulla: in Romania tornano davvero dopo il 1989.
+            </Context>
             <Event on="always" date="1940" title="La Romania perde territori e si allea con l’Asse">
               <Detail on="always">
                 L’URSS occupa Bessarabia e Bucovina settentrionale, oggi tra Moldova e Ucraina.
@@ -1861,6 +1886,21 @@ function Body() {
                 <N>Traian Băsescu</N>, ex capitano di marina.
               </Detail>
             </Event>
+            <Context on="always" period="Dal 2005" title="La nouvelle vague del cinema romeno">
+              Nel 2005 <N work>La morte del signor Lăzărescu</N> di Cristi Puiu vince a Cannes nella
+              sezione Un Certain Regard; nel 2007 Cristian Mungiu vince la Palma d’oro con{' '}
+              <N work>4 mesi, 3 settimane, 2 giorni</N>, la storia di un aborto clandestino negli
+              anni del decreto 770. Con Corneliu Porumboiu e Radu Jude, Orso d’oro a Berlino nel
+              2021, la critica parla di nouvelle vague romena: film a basso costo, inquadrature
+              lunghe, ironia sulla burocrazia e sul passato recente.
+            </Context>
+            <Context on="always" kind="curiosity" period="2017 – 2019" title="Simona Halep">
+              Nata a Costanza nel 1991, nel 2017 diventa la numero uno del tennis mondiale, vince il
+              Roland Garros nel 2018 e Wimbledon nel 2019. Una squalifica per doping, ridotta in
+              appello nel 2024, segna la fine della sua carriera: si ritira nel 2025. Prima di lei,
+              nel 1973, Ilie Năstase era stato il primo numero uno della classifica mondiale
+              maschile.
+            </Context>
             <Context on="always" kind="curiosity" period="2002" title="L’arcobaleno di Bush">
               Nel novembre 2002, il giorno dopo l’invito ufficiale a entrare nella NATO, George W.
               Bush parla in piazza della Rivoluzione, sotto il balcone da cui Ceaușescu aveva fatto
@@ -2544,6 +2584,12 @@ function Body() {
               statua di Mattia Corvino. Per molti abitanti ungheresi è una provocazione; oggi i
               colori sono spariti.
             </Context>
+            <Context on="always" kind="curiosity" period="Dal 2002" title="La città dei festival">
+              Dal 2002 Cluj ospita il TIFF, il primo festival internazionale di cinema della
+              Romania, e dal 2015 l’UNTOLD, uno dei più grandi festival di musica elettronica
+              d’Europa, alla Cluj Arena. A Bonțida, poco lontano, il castello Bánffy fa da scenario
+              a un altro festival musicale, l’Electric Castle.
+            </Context>
           </Card>
           <Card
             card={Ro.Sibiu}
@@ -2929,6 +2975,34 @@ function Body() {
             Il 6 agosto, festa della Trasfigurazione, i pellegrini salgono di notte al monastero del
             Ceahlău. Si racconta che all’alba di quel giorno l’ombra della montagna si disegni sulle
             nuvole e sulle valli come una piramide perfetta.
+          </Context>
+        </Card>
+        <Card
+          card={RoLandscape.Bucegi}
+          intro={
+            <>
+              Sopra la valle della <N>Prahova</N>, dove passano la strada e la ferrovia fra Bucarest
+              e Brașov, i <N>Bucegi</N> alzano pareti di calcare e conglomerato alte più di mille
+              metri. In fondovalle ci sono le località di villeggiatura nate con la ferrovia e con
+              la corte: Sinaia, dove Carol I costruisce il castello di Peleș, e Bușteni. In alto si
+              stende un altopiano ondulato, con le rocce delle Babele e della Sfinge e la cima più
+              alta, l’<N>Omu</N>, a 2.505 m. È la montagna più vicina a Bucarest e la più
+              frequentata: d’estate si sale in funivia, d’inverno si scia. Dal 1990 è un parco
+              naturale.
+            </>
+          }
+          remember="I Bucegi sono la montagna della Prahova: castelli reali in basso, rocce scolpite dal vento e una croce illuminata in alto."
+        >
+          <Context
+            on="always"
+            kind="curiosity"
+            period="Leggenda"
+            title="La montagna sacra dei daci?"
+          >
+            Lo storico greco <N href="https://it.wikipedia.org/wiki/Strabone">Strabone</N> parla del
+            Kogaionon, la montagna sacra dove viveva Zalmoxis, il dio dei geti. Una tradizione lo
+            identifica con i Bucegi: nessuna prova lo conferma, ma l’idea alimenta ancora le
+            leggende sulla Sfinge.
           </Context>
         </Card>
       </Chapter>

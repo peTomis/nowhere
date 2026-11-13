@@ -39,6 +39,21 @@ export const sources: GuideSources = {
   ],
   [RoSection.WorldWars]: [
     {
+      title: 'Tristan Tzara',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Tristan_Tzara',
+    },
+    {
+      title: 'Marcel Janco',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Marcel_Janco',
+    },
+    {
+      title: 'Rhinoceros (play)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Rhinoceros_(play)',
+    },
+    {
       title: 'Romania',
       site: 'USHMM',
       url: 'https://encyclopedia.ushmm.org/content/en/article/romania',
@@ -58,6 +73,16 @@ export const sources: GuideSources = {
   ],
   [RoSection.DemocracyAndEurope]: [
     {
+      title: 'Romanian New Wave',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Romanian_New_Wave',
+    },
+    {
+      title: 'Simona Halep',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Simona_Halep',
+    },
+    {
       title: 'Seven new members join NATO',
       site: 'NATO',
       url: 'https://www.nato.int/en/news-and-events/articles/news/2004/03/29/seven-new-members-join-nato',
@@ -76,6 +101,62 @@ export const sources: GuideSources = {
       title: 'Romania’s 2025 presidential election',
       site: 'House of Commons Library',
       url: 'https://commonslibrary.parliament.uk/research-briefings/cbp-10355/',
+    },
+  ],
+  [RoSection.DaciaToHungarians]: [
+    {
+      title: 'Romanian alphabet',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Romanian_alphabet',
+    },
+  ],
+  [RoSection.ThreeEmpires]: [
+    {
+      title: 'Horezu Monastery',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Horezu_Monastery',
+    },
+    {
+      title: 'Craftsmanship of Horezu ceramics',
+      site: 'UNESCO',
+      url: 'https://ich.unesco.org/en/RL/craftsmanship-of-horezu-ceramics-00610',
+    },
+  ],
+  [RoLandscape.Bucegi]: [
+    {
+      title: 'Bucegi Mountains',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bucegi_Mountains',
+    },
+    {
+      title: "Heroes' Cross on Caraiman Peak",
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Heroes%27_Cross_on_Caraiman_Peak',
+    },
+    {
+      title: 'Sfinxul din Bucegi',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Sfinxul_din_Bucegi',
+    },
+    {
+      title: 'Babele',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Babele',
+    },
+    {
+      title: 'Kogaionon',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Kogaionon',
+    },
+    {
+      title: 'Tarife telecabina Bușteni, călătorie Babele 2024',
+      site: 'Antena 3',
+      url: 'https://www.antena3.ro/actualitate/tarife-telecabina-busteni-calatorie-babele-2024-698038.html',
+    },
+    {
+      title: 'Bușteni – Cabana Padina – Pietroșița',
+      site: 'Munții Noștri',
+      url: 'https://www.muntii-nostri.ro/trails/download-atlas/busteni-cabana-padina-pietrosita',
     },
   ],
   [RoPerson.Decebalus]: [
@@ -525,6 +606,21 @@ export const sources: GuideSources = {
   ],
   [Ro.ClujNapoca]: [
     {
+      title: 'Transilvania International Film Festival',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Transilvania_International_Film_Festival',
+    },
+    {
+      title: 'Untold Festival',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Untold_Festival',
+    },
+    {
+      title: 'Electric Castle',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Electric_Castle',
+    },
+    {
       title: 'Electric Castle (EC)',
       site: 'Interreg Europe',
       url: 'https://interregeurope.eu/good-practices/electric-castle-ec',
@@ -639,6 +735,11 @@ export const sources: GuideSources = {
     },
   ],
   [Ro.Sighisoara]: [
+    {
+      title: 'Biertan fortified church',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Biertan_fortified_church',
+    },
     {
       title: 'Casa memorială Hermann Oberth, Mediaș',
       site: 'cIMeC, Ghidul muzeelor',
