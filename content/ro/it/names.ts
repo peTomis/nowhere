@@ -197,6 +197,13 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Eminescu muore a Bucarest e due giorni dopo è sepolto qui, all’ombra di un tiglio. La tomba è un luogo di pellegrinaggio: negli anniversari della nascita e della morte si riempie di fiori e candele.',
       find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è sul viale degli scrittori (Aleea Scriitorilor), a pochi passi dall’ingresso principale, fra quelle di Caragiale e di Coșbuc.',
     },
+    [RoTrace.EminescuPoems]: {
+      name: 'Un libro di Eminescu',
+      local: 'Mihai Eminescu, Poezii',
+      place: 'In tutta la Romania',
+      text: 'Il solo libro di poesie uscito mentre era vivo, «Poesii», lo cura Titu Maiorescu e lo stampa la libreria Socec di Bucarest: esce nel dicembre 1883, con la data del 1884, e viene ristampato molte volte. Oggi ogni libreria romena ha il suo scaffale di Eminescu: edizioni scolastiche, tascabili, illustrate, e «Luceafărul» tradotto in molte lingue. È il libro che i romeni hanno in casa.',
+      find: 'In ogni libreria, fra i classici o su uno scaffale tutto per lui: cerca «Mihai Eminescu – Poezii». Lo trovi anche nelle librerie di stazioni e aeroporti.',
+    },
     [RoTrace.BranCastle]: {
       name: 'Il castello di Bran',
       local: 'Castelul Bran · Törzburg',
@@ -243,6 +250,14 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
       text: 'Un palazzo Belle Époque costruito all’inizio del Novecento per Gheorghe Grigore Cantacuzino, uomo politico e grande proprietario detto il Nababbo; sull’ingresso, una pensilina di vetro e ferro a forma di conchiglia. Nel 1937 Enescu sposa Maruca, vedova di Mihail, figlio del Nababbo, e dopo la guerra i due vivono per un periodo nella casa più piccola in fondo al giardino. Dal 1956 è il museo nazionale del compositore.',
       find: 'Calea Victoriei 141, a nord di Piața Revoluției. Il palazzo e la casa del compositore sono chiusi per un restauro cominciato nel 2021: la facciata con la pensilina a conchiglia si vede dalla strada.',
+    },
+    [RoTrace.EnescuRhapsodies]: {
+      name: 'Le Rapsodie romene',
+      local: 'Rapsodiile române, op. 11',
+      place: 'In tutta la Romania',
+      text: 'Enescu le scrive nel 1901, a vent’anni. La prima comincia con una canzone da osteria, «Am un leu și vreau să-l beau», «ho un leu e voglio berlo», e cresce fino a una danza vorticosa sulla melodia dell’«Allodola», «Ciocârlia», dei violinisti rom. È il suo pezzo più suonato dalle orchestre di tutto il mondo: per molti l’unica cosa di Enescu che conoscono.',
+      find: 'Nei negozi di dischi e nei reparti musica delle librerie, in CD o in vinile; vale anche il programma di un concerto che la esegue. Al Festival Enescu, a settembre degli anni dispari, a Bucarest, la si ascolta quasi sempre.',
+      invite: 'Dove l’hai ascoltata?',
     },
     [RoTrace.EnescuBanknote]: {
       name: 'Il 5 lei di Enescu',

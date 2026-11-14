@@ -188,6 +188,7 @@ export type TraceIcon =
   | 'barn'
   | 'bird'
   | 'boat'
+  | 'book'
   | 'bowl'
   | 'brandy'
   | 'bread'

@@ -302,6 +302,16 @@ export const sources: GuideSources = {
   ],
   [RoPerson.MihaiEminescu]: [
     {
+      title: 'Mihai Eminescu – Poesii (1884)',
+      site: 'Wikimedia Commons',
+      url: 'https://commons.wikimedia.org/wiki/File:Mihai_Eminescu_-_Poesii.jpg',
+    },
+    {
+      title: 'Odiseea editării poeziilor lui Mihai Eminescu în prima sută de ani (1884–1984)',
+      site: 'Pericle Martinescu, Ziua de Constanța',
+      url: 'https://www.ziuaconstanta.ro/images/stories/2019/12/ZIUA/carti-online/docs/9-odiseea-editarii-poeziilor-lui-mihai-eminescu-in-prima-suta-de-ani-1884-1984-pericle-martinescu-wmk-ocr.pdf',
+    },
+    {
       title: 'Bancnota de 500 lei',
       site: 'Banca Națională a României',
       url: 'https://bnro.ro/apage.aspx?pid=8866',
@@ -363,6 +373,16 @@ export const sources: GuideSources = {
     },
   ],
   [RoPerson.GeorgeEnescu]: [
+    {
+      title: 'Romanian Rhapsodies (Enescu)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Romanian_Rhapsodies_(Enescu)',
+    },
+    {
+      title: 'Enescu’s First Rhapsody',
+      site: 'Interlude',
+      url: 'https://interlude.hk/george-enescu-first-rhapsody/',
+    },
     { title: 'Luminiș', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Lumini%C8%99' },
     {
       title: 'Vila Luminiș de la Sinaia. Locul de liniște și creație al lui George Enescu',

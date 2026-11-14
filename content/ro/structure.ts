@@ -92,6 +92,7 @@ export enum RoTrace {
   IpotestiMemorial = 'ro.place.ipotesti-memorial',
   EminescusLindenTree = 'ro.place.eminescus-linden-tree',
   EminescusGrave = 'ro.place.eminescus-grave',
+  EminescuPoems = 'ro.place.eminescu-poems',
   BranCastle = 'ro.place.bran-castle',
   PelisorCastle = 'ro.place.pelisor-castle',
   GateOfTheKiss = 'ro.place.gate-of-the-kiss',
@@ -99,6 +100,7 @@ export enum RoTrace {
   LuminisVilla = 'ro.place.luminis-villa',
   EnescuMuseum = 'ro.place.enescu-museum-cantacuzino-palace',
   EnescuBanknote = 'ro.place.enescu-5-lei-banknote',
+  EnescuRhapsodies = 'ro.place.enescu-romanian-rhapsodies',
   PalaceOfTheParliament = 'ro.place.palace-of-the-parliament',
   CentralCommitteeBuilding = 'ro.place.central-committee-building',
   PrimaveriiPalace = 'ro.place.primaverii-palace',
@@ -646,6 +648,21 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
+    // A volume of his poems: in every bookshop. Stock image: the first edition (1884).
+    {
+      id: RoTrace.EminescuPoems,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'book',
+      image: {
+        src: '/guides/romania/traces/eminescu-poems.webp',
+        credit: {
+          author: 'Editura Librăriei Socec (1884)',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Mihai_Eminescu_-_Poesii.jpg',
+        },
+      },
+    },
     // Queen Marie (and Vlad III: the castle of the myth). Bran is about 30 km from Brașov.
     {
       id: RoTrace.BranCastle,
@@ -729,6 +746,14 @@ export const structure = defineGuide<Ro, RoSection>({
           url: 'https://commons.wikimedia.org/wiki/File:The_Cantacuzino_Palace_from_Bucharest_(Romania).jpg',
         },
       },
+    },
+    // A recording of the Romanian Rhapsodies: anywhere (a record shop, a concert programme).
+    // TODO image: freely licensed photograph (no modern record sleeve).
+    {
+      id: RoTrace.EnescuRhapsodies,
+      where: 'anywhere',
+      rarity: 'rare',
+      icon: 'music',
     },
     // The 5 lei banknote: anywhere.
     {
@@ -2301,7 +2326,12 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'person',
       region: Moldavia,
       on: [Moldavia, Wallachia],
-      traces: [RoTrace.IpotestiMemorial, RoTrace.EminescusLindenTree, RoTrace.EminescusGrave],
+      traces: [
+        RoTrace.IpotestiMemorial,
+        RoTrace.EminescusLindenTree,
+        RoTrace.EminescusGrave,
+        RoTrace.EminescuPoems,
+      ],
     },
     {
       id: RoPerson.QueenMarie,
@@ -2326,6 +2356,7 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [
         RoTrace.LuminisVilla,
         RoTrace.EnescuMuseum,
+        RoTrace.EnescuRhapsodies,
         RoTrace.EnescuBanknote,
         RoTrace.RomanianAthenaeum,
       ],
