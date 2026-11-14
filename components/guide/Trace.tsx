@@ -3,7 +3,6 @@
 import {
   ArrowsClockwiseIcon,
   BuildingsIcon,
-  CameraIcon,
   CheckCircleIcon,
   CheckIcon,
   CircleNotchIcon,
@@ -20,7 +19,6 @@ import {
   WarningCircleIcon,
 } from '@phosphor-icons/react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState, type ReactNode } from 'react'
 import type { AlbumTrace } from '@/content/build'
@@ -159,8 +157,7 @@ export function Trace({
   const rarity = t.guide.album.rarityLabel[trace.rarity]
   const edit = () => openPhotoPanel(trace.id, 'edit')
   const signedOut = session === 'signed-out'
-  // Without a photo, a click on the image is the add button (a mouse shortcut: keyboard and
-  // screen readers have the button itself).
+  // Without a photo, the image is the add button (there is no separate one).
   const add = () => (signedOut ? router.push('/account') : openPhotoPanel(trace.id, 'new'))
   const box = `relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg p-0 ${boxBorder(seen, trace.theme)}`
 
@@ -180,6 +177,7 @@ export function Trace({
             alt={alt}
             onView={seen && src ? () => setViewing(true) : undefined}
             onAdd={seen ? undefined : add}
+            addLabel={signedOut ? t.guide.trace.signIn : t.guide.trace.add}
           >
             {seen && src ? (
               // eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview
@@ -288,13 +286,7 @@ export function Trace({
           )}
 
           <div className="mt-1 flex flex-col gap-2">
-            <TraceActions
-              trace={trace}
-              entry={entry}
-              signedOut={signedOut}
-              date={date}
-              onEdit={edit}
-            />
+            <TraceActions trace={trace} entry={entry} date={date} onEdit={edit} />
           </div>
 
           {others.length > 0 && (
@@ -341,12 +333,15 @@ function PhotoBox({
   alt,
   onView,
   onAdd,
+  addLabel,
   children,
 }: {
   box: string
   alt: string
   onView?: () => void
+  /** For a trace still to find: the box opens the photo panel (or sign-in). */
   onAdd?: () => void
+  addLabel?: string
   children: ReactNode
 }) {
   if (onView)
@@ -360,13 +355,19 @@ function PhotoBox({
         {children}
       </button>
     )
+  if (onAdd)
+    return (
+      <button
+        type="button"
+        aria-label={`${addLabel} · ${alt}`}
+        onClick={onAdd}
+        className={`${box} cursor-pointer`}
+      >
+        {children}
+      </button>
+    )
   return (
-    <div
-      role="img"
-      aria-label={alt}
-      onClick={onAdd}
-      className={`${box} ${onAdd ? 'cursor-pointer' : ''}`}
-    >
+    <div role="img" aria-label={alt} className={box}>
       {children}
     </div>
   )
@@ -378,13 +379,11 @@ const ghost =
 function TraceActions({
   trace,
   entry,
-  signedOut,
   date,
   onEdit,
 }: {
   trace: AlbumTrace
   entry: Entry | undefined
-  signedOut: boolean
   date: string
   onEdit: () => void
 }) {
@@ -395,32 +394,8 @@ function TraceActions({
       {t.guide.trace.edit}
     </button>
   )
-  if (!isSeen(entry)) {
-    if (signedOut)
-      return (
-        <div>
-          <Link
-            href="/account"
-            className="btn btn-secondary inline-flex min-h-[44px] items-center gap-[8px] bg-bg text-left text-[15px] whitespace-normal no-underline"
-          >
-            <CameraIcon weight="duotone" size={20} aria-hidden="true" className="text-accent-700" />
-            {t.guide.trace.signIn}
-          </Link>
-        </div>
-      )
-    return (
-      <div>
-        <button
-          type="button"
-          className="btn btn-secondary inline-flex min-h-[44px] items-center gap-[8px] bg-bg text-left text-[15px] whitespace-normal"
-          onClick={() => openPhotoPanel(trace.id, 'new')}
-        >
-          <CameraIcon weight="duotone" size={20} aria-hidden="true" className="text-accent-700" />
-          {t.guide.trace.add}
-        </button>
-      </div>
-    )
-  }
+  // A trace still to find has no action here: its photo box is the add button.
+  if (!isSeen(entry)) return null
   if (local?.state === 'pending')
     return (
       <span
