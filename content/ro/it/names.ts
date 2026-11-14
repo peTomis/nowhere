@@ -289,10 +289,10 @@ export const names: GuideNames<Ro, RoSection> = {
       find: 'Bulevardul Primăverii 50, vicino alla metro Aviatorilor. Solo con visita guidata, da prenotare.',
     },
     [RoTrace.DaciaCar]: {
-      name: 'Una Dacia, meglio se una 1300',
+      name: 'La Dacia su quattro ruote',
       local: 'Dacia 1300',
       place: 'In tutta la Romania',
-      text: 'La Dacia 1300 è la Renault 12 costruita su licenza a Mioveni, allora Colibași, nel distretto di Argeș: la prima esce dalla catena di montaggio il 23 agosto 1969, festa nazionale del regime. Berlina, familiare e pick-up, aggiornata di continuo, resta in produzione fino al 21 luglio 2004, quando esce l’ultima berlina. Nel 1999 Renault compra Dacia, e la Logan costruita nella stessa fabbrica fa del marchio del regime un successo in tutta Europa.',
+      text: 'Il nome è quello del regno di Decebalo e della provincia di Traiano, l’auto è la Renault 12: la Dacia 1300 è costruita su licenza a Mioveni, allora Colibași, nel distretto di Argeș: la prima esce dalla catena di montaggio il 23 agosto 1969, festa nazionale del regime. Berlina, familiare e pick-up, aggiornata di continuo, resta in produzione fino al 21 luglio 2004, quando esce l’ultima berlina. Nel 1999 Renault compra Dacia, e la Logan costruita nella stessa fabbrica fa del marchio del regime un successo in tutta Europa.',
       find: 'Ogni Dacia vale: Logan, Sandero e Duster sono ovunque. Ma la casella chiede la 1300, la berlina squadrata con la calandra cromata: cercala parcheggiata nei villaggi e nei cortili, ai raduni di auto d’epoca, o tenuta come un cimelio da chi l’ha restaurata.',
       invite: 'Era una 1300?',
     },
