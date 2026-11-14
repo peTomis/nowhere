@@ -104,6 +104,7 @@ export enum RoTrace {
   PalaceOfTheParliament = 'ro.place.palace-of-the-parliament',
   CentralCommitteeBuilding = 'ro.place.central-committee-building',
   PrimaveriiPalace = 'ro.place.primaverii-palace',
+  DaciaCar = 'ro.place.dacia-car',
   NadiaStatueOtopeni = 'ro.place.nadia-comaneci-statue-otopeni',
   OnestiPathOfPerfection = 'ro.place.onesti-path-of-perfection',
   StavropoleosChurch = 'ro.place.stavropoleos-church',
@@ -818,6 +819,21 @@ export const structure = defineGuide<Ro, RoSection>({
           author: 'Idobi',
           license: 'CC BY-SA 4.0',
           url: 'https://commons.wikimedia.org/wiki/File:Palatul_Prim%C7%8Everii-1286-a.jpg',
+        },
+      },
+    },
+    // Any Dacia counts; the box asks for a 1300 (stock image: a 1300 parked in Buzău).
+    {
+      id: RoTrace.DaciaCar,
+      where: 'anywhere',
+      rarity: 'common',
+      icon: 'car',
+      image: {
+        src: '/guides/romania/traces/dacia-1300.webp',
+        credit: {
+          author: 'Andrzej Otrębski',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Buzau_Dacia_1300_1.jpg',
         },
       },
     },
@@ -2370,6 +2386,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.PalaceOfTheParliament,
         RoTrace.CentralCommitteeBuilding,
         RoTrace.PrimaveriiPalace,
+        RoTrace.DaciaCar,
         RoTrace.Transfagarasan,
       ],
     },

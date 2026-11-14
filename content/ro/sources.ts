@@ -279,6 +279,12 @@ export const sources: GuideSources = {
     },
   ],
   [RoPerson.NicolaeCeausescu]: [
+    { title: 'Dacia 1300', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Dacia_1300' },
+    {
+      title: 'Automobile Dacia',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Automobile_Dacia',
+    },
     {
       title: 'Nicolae Ceaușescu',
       site: 'Wikipedia',

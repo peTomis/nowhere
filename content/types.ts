@@ -194,6 +194,7 @@ export type TraceIcon =
   | 'bread'
   | 'bridge'
   | 'cake'
+  | 'car'
   | 'castle'
   | 'cheese'
   | 'church'
