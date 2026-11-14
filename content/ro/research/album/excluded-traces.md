@@ -622,3 +622,698 @@ Removed with its only trace. Structure, names and body:
   remember="Nel Maramureș la țuică si chiama horincă, e arriva in tavola prima di tutto il resto."
 />
 ```
+
+## Third round (2026-11-14)
+
+Eight dishes and drinks taken out because food photos were 21.7% of the album, over the cap of
+15% that `docs/prompt-for-new-guide.md` §B13 now sets on the subject of the photos (26 of 120
+traces). Each region keeps at least three dishes besides the five of the whole country. The
+album was still in design: the numbers after them moved. Their food cards are removed with them
+(the Mămăligă and Ciorbă e borș cards only lose the trace), and so are their stock images and the
+pages of `content/ro/sources.ts` used only for them; the research notes in `research/food/` keep
+what each page was used for. The places freed went to "pop" traces (a historic beer hall, a
+bookshop, a narrow street, a taverna, crafts, a beach) and to Corvin Castle: see `pop-traces.md`.
+
+| Old no. | Trace                  | Card(s)                      | Why it was excluded                                                           |
+| ------- | ---------------------- | ---------------------------- | ----------------------------------------------------------------------------- |
+| 105     | Varză à la Cluj        | VarzaCluj                    | Close to sarmale (cabbage and minced meat); the least recognisable in a photo |
+| 107     | Pljeskavica            | BanatCuisine                 | A Serbian grill dish; the Banat is marginal in the album and keeps Timișoara  |
+| 108     | Balmoș                 | Mamaliga, Balmos             | A richer mămăligă; the Mămăligă card keeps the cornmeal                       |
+| 113     | Magiun di Topoloveni   | Magiun                       | The photo is a jar                                                            |
+| 114     | Un vino del Dealu Mare | DealuMare                    | Third wine: Cotnari and Murfatlar keep the type                               |
+| 117     | Ciorbă rădăuțeană      | CiorbaBors, CiorbaRadauteana | Third ciorbă: ciorbă de burtă and borș lipovenesc keep the type               |
+| 120     | Saramură di pesce      | Saramura                     | Second fish dish of Dobrogea after the borș lipovenesc                        |
+| 121     | Plăcintă dobrogeană    | PlacintaDobrogeana           | Second pastry of Dobrogea after the șuberek                                   |
+
+### 105 · Varză à la Cluj
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodVarzaCluj,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'pot',
+      image: {
+        src: '/guides/romania/traces/food-varza-cluj.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Cluj_Napoca_-_Varz%C4%83_%C3%A0_la_Cluj_(2023)_-_img_02.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodVarzaCluj]: {
+      name: 'Varză à la Cluj',
+      local: 'Kolozsvári rakott káposzta',
+      place: `In tutta la ${places[Ro.Transylvania]}`,
+      find: 'Nei ristoranti di cucina tradizionale della Transilvania, soprattutto a Cluj; nel menù anche «varză a la Cluj».',
+    },
+```
+
+### 107 · Pljeskavica
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodPljeskavica,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'common',
+      icon: 'fork',
+      image: {
+        src: '/guides/romania/traces/food-pljeskavica.webp',
+        credit: {
+          author: 'Biso',
+          license: 'CC BY 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Pleskavitsa.JPG',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodPljeskavica]: {
+      name: 'Pljeskavica',
+      local: 'Pleșcaviță',
+      place: `${places[Ro.Timisoara]}, Banato`,
+      find: 'Nelle griglierie e nei fast food di Timișoara, in un panino o nel piatto con patatine.',
+    },
+```
+
+### 108 · Balmoș
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodBalmos,
+      region: Transylvania,
+      where: 'region',
+      rarity: 'rare',
+      icon: 'pot',
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodBalmos]: {
+      name: 'Balmoș',
+      place: 'Maramureș',
+      find: 'Nei ristoranti tradizionali e nelle pensioni del Maramureș; d’estate alle stâne, gli ovili di montagna, dove i pastori vendono i loro formaggi.',
+    },
+```
+
+### 113 · Magiun di Topoloveni
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodMagiun,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'jar',
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodMagiun]: {
+      name: 'Magiun di Topoloveni',
+      local: 'Magiun de prune Topoloveni',
+      place: `Topoloveni, ${places[Ro.Wallachia]}`,
+      find: 'Nei supermercati e nei negozi di prodotti tradizionali, in vasetti: sull’etichetta «Magiun de prune Topoloveni» con il marchio europeo IGP.',
+    },
+```
+
+### 114 · Un vino del Dealu Mare
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodDealuMare,
+      region: Wallachia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'wine',
+      image: {
+        src: '/guides/romania/traces/food-dealu-mare.webp',
+        credit: {
+          author: 'Andrei Dobre',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Panorama_Tohani_(2).jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodDealuMare]: {
+      name: 'Un vino del Dealu Mare',
+      place: `Prahova e Buzău, ${places[Ro.Wallachia]}`,
+      find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano, spesso su prenotazione.',
+    },
+```
+
+### 117 · Ciorbă rădăuțeană
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodCiorbaRadauteana,
+      region: Moldavia,
+      where: 'region',
+      rarity: 'common',
+      icon: 'bowl',
+      image: {
+        src: '/guides/romania/traces/food-ciorba-radauteana.webp',
+        credit: {
+          author: 'Romaniancook',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Ciorba_radauteana.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodCiorbaRadauteana]: {
+      name: 'Ciorbă rădăuțeană',
+      place: `Rădăuți, ${places[Ro.Moldavia]}`,
+      find: 'Nei ristoranti di tutto il paese, fra le zuppe; in Bucovina, a Rădăuți e Suceava, nei locali di cucina tradizionale.',
+    },
+```
+
+### 120 · Saramură di pesce
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodSaramura,
+      region: Dobruja,
+      where: 'region',
+      rarity: 'common',
+      icon: 'fish',
+      image: {
+        src: '/guides/romania/traces/food-saramura.webp',
+        credit: {
+          author: 'Nicubunu',
+          license: 'CC BY-SA 3.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Saramura_de_chefal.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodSaramura]: {
+      name: 'Saramură di pesce',
+      local: 'Saramură de pește',
+      place: `In tutta la ${places[Ro.Dobruja]}`,
+      find: 'Nelle pensioni del delta e nei ristoranti di pesce di Tulcea e della costa: chiedi quale pesce è del giorno.',
+    },
+```
+
+### 121 · Plăcintă dobrogeană
+
+Structure:
+
+```ts
+    {
+      id: RoTrace.FoodPlacintaDobrogeana,
+      region: Dobruja,
+      where: 'region',
+      rarity: 'common',
+      icon: 'bread',
+      image: {
+        src: '/guides/romania/traces/food-placinta-dobrogeana.webp',
+        credit: {
+          author: 'Korinna',
+          license: 'CC0',
+          url: 'https://commons.wikimedia.org/wiki/File:Placinta_dobrogeana.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.FoodPlacintaDobrogeana]: {
+      name: 'Plăcintă dobrogeană',
+      place: `In tutta la ${places[Ro.Dobruja]}`,
+      find: 'Nei forni e nelle pasticcerie della Dobrogea, a fette, e nei ristoranti tradizionali di Constanța e Tulcea.',
+    },
+```
+
+### The removed food cards
+
+Structure, names and body of the eight cards, as they were.
+
+#### VarzaCluj
+
+```ts
+    {
+      id: RoFood.VarzaCluj,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodVarzaCluj],
+    },
+    [RoFood.VarzaCluj]: {
+      name: 'Varză à la Cluj',
+      local: 'Kolozsvári rakott káposzta',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.VarzaCluj}
+  intro={
+    <>
+      La <N>varză à la Cluj</N> è uno sformato al forno a strati di crauti, carne di maiale tritata,
+      riso e smântână. Un ricettario ungherese del 1695 parla già di un «cavolo di Kolozsvár», ma
+      era cavolo cotto con oca o pollo; la versione a strati è più recente, e su chi l’abbia
+      inventata circolano solo aneddoti. Si mangia in tutta la Transilvania e in Ungheria.
+    </>
+  }
+  remember="La varză à la Cluj porta il nome della città nelle due lingue: è il piatto di crauti della Transilvania ungherese e romena."
+/>
+```
+
+#### BanatCuisine
+
+```ts
+    {
+      id: RoFood.BanatCuisine,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodPljeskavica],
+    },
+    [RoFood.BanatCuisine]: {
+      name: 'Cucina sveva e serba del Banato',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.BanatCuisine}
+  intro={
+    <>
+      Il <N>Banato</N> mette insieme le cucine di chi vi abita da tre secoli: romeni, svevi,
+      ungheresi e serbi. Dagli svevi e dagli ungheresi vengono tagliatelle, zuppe di patate, piatti
+      di prosciutto poco speziati e il papricaș di pollo; dai serbi la pljeskavica, una grande
+      polpetta di carne tritata alla griglia, che dopo il 1989 si diffonde in tutta Timișoara. Per
+      il 2028 il Banato è stato nominato Regione gastronomica europea.
+    </>
+  }
+  remember="Nel Banato la tavola parla più lingue: tagliatelle sveve e griglia serba nella stessa città."
+/>
+```
+
+#### Balmos
+
+```ts
+    {
+      id: RoFood.Balmos,
+      kind: 'food',
+      region: Transylvania,
+      on: [Transylvania],
+      traces: [RoTrace.FoodBalmos],
+    },
+    [RoFood.Balmos]: {
+      name: 'Balmoș',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.Balmos}
+  intro={
+    <>
+      Il <N>balmoș</N> è il piatto dei pastori: alla stână, l’ovile di montagna, il formaggio fresco
+      di pecora bolle nel latte di pecora o nella panna e si addensa con un po’ di farina di mais. È
+      un parente ricco della mămăligă, che invece si cuoce in acqua.
+    </>
+  }
+  remember="Il balmoș è la mămăligă dei pastori: farina di mais cotta nel latte e nel formaggio di pecora."
+/>
+```
+
+#### Magiun
+
+```ts
+    {
+      id: RoFood.Magiun,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodMagiun],
+    },
+    [RoFood.Magiun]: {
+      name: 'Magiun di Topoloveni',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.Magiun}
+  intro={
+    <>
+      Il <N>magiun</N> è una crema densa di prugne cotte a lungo a fuoco basso, senza zucchero
+      aggiunto. Quello di <N>Topoloveni</N>, nel distretto di Argeș, segue una ricetta del 1914 e
+      nel 2011 è il primo prodotto alimentare romeno a ottenere un’indicazione geografica protetta
+      dell’Unione europea. Si spalma sul pane o farcisce i dolci.
+    </>
+  }
+  remember="Il magiun è solo prugne e tempo: quello di Topoloveni è il primo cibo romeno protetto dall’Unione europea."
+/>
+```
+
+#### DealuMare
+
+```ts
+    {
+      id: RoFood.DealuMare,
+      kind: 'food',
+      region: Wallachia,
+      on: [Wallachia],
+      traces: [RoTrace.FoodDealuMare],
+    },
+    [RoFood.DealuMare]: {
+      name: 'Dealu Mare',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.DealuMare}
+  intro={
+    <>
+      Il <N>Dealu Mare</N>, «la grande collina», è una striscia di colline lunga circa 65 km e larga
+      da 3 a 12, ai piedi dei Carpazi fra i fiumi Teleajen e Buzău, nei distretti di Prahova e
+      Buzău. È una denominazione di origine protetta: rossi soprattutto intorno a Valea
+      Călugărească, bianchi intorno a Pietroasele. Il vitigno simbolo è la <N>fetească neagră</N>,
+      un rosso autoctono.
+    </>
+  }
+  remember="Il Dealu Mare è la collina del vino a un’ora da Bucarest: chiedi una fetească neagră."
+/>
+```
+
+#### CiorbaRadauteana
+
+```ts
+    {
+      id: RoFood.CiorbaRadauteana,
+      kind: 'food',
+      region: Moldavia,
+      on: [Moldavia],
+      traces: [RoTrace.FoodCiorbaRadauteana],
+    },
+    [RoFood.CiorbaRadauteana]: {
+      name: 'Ciorbă rădăuțeană',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.CiorbaRadauteana}
+  intro={
+    <>
+      La <N>ciorbă rădăuțeană</N> è una ciorbă di pollo legata con tuorli e smântână, acidulata con
+      aceto o limone e profumata di aglio: una versione più leggera della zuppa di trippa. Viene da{' '}
+      <N>Rădăuți</N>, in Bucovina, dove la crea una cuoca, Cornelia Dumitrescu, fra la fine degli
+      anni Settanta e l’inizio degli Ottanta: le date variano da una fonte all’altra. Da allora è
+      nei menù di tutto il paese.
+    </>
+  }
+  remember="La ciorbă rădăuțeană è una ricetta recente con un’autrice: in pochi decenni è diventata una zuppa di tutta la Romania."
+/>
+```
+
+#### Saramura
+
+```ts
+    {
+      id: RoFood.Saramura,
+      kind: 'food',
+      region: Dobruja,
+      on: [Dobruja],
+      traces: [RoTrace.FoodSaramura],
+    },
+    [RoFood.Saramura]: {
+      name: 'Saramură di pesce',
+      local: 'Saramură de pește',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.Saramura}
+  intro={
+    <>
+      La <N>saramură</N> è pesce cotto sulla brace viva e poi bagnato in una salamoia di acqua, sale
+      grosso e molto peperoncino. È il modo in cui i pescatori del delta cuociono il pesce appena
+      preso, e si mangia spesso con la mămăligă.
+    </>
+  }
+  remember="La saramură è il pesce dei pescatori: brace, sale e peperoncino, niente altro."
+/>
+```
+
+#### PlacintaDobrogeana
+
+```ts
+    {
+      id: RoFood.PlacintaDobrogeana,
+      kind: 'food',
+      region: Dobruja,
+      on: [Dobruja],
+      traces: [RoTrace.FoodPlacintaDobrogeana],
+    },
+    [RoFood.PlacintaDobrogeana]: {
+      name: 'Plăcintă dobrogeană',
+    },
+```
+
+```tsx
+<Card
+  card={RoFood.PlacintaDobrogeana}
+  intro={
+    <>
+      La <N>plăcintă dobrogeană</N> è una torta di sfoglie sottili tirate a mano, farcite di
+      formaggio salato, di solito telemea, e uova, e cotta al forno in teglia; esistono anche
+      versioni con carne o dolci. La ricetta passa di generazione in generazione, e la Bulgaria ha
+      contestato la sua registrazione come specialità romena: torte di sfoglia simili si fanno su
+      entrambe le rive del Danubio.
+    </>
+  }
+  remember="La plăcintă dobrogeană è sfoglia tirata a mano e formaggio salato: una torta che due paesi rivendicano."
+/>
+```
+
+### Sources removed
+
+```ts
+    {
+      title:
+        'Kolozsvár híres káposztái: Mámi töltött káposztájától egészen a Káposztás vendéglő rakott fogásáig',
+      site: 'Telex',
+      url: 'https://telex.hu/transtelex/2025/11/09/kolozsvari-kaposzta-gasztronomia-tortenelem',
+    },
+    {
+      title: 'Hányféle töltött káposzta létezik a világon, és kié az igazi?',
+      site: 'Telex',
+      url: 'https://telex.hu/gasztro/2021/12/22/hanyfele-toltott-kaposzta-letezik-a-vilagon-es-kie-az-igazi',
+    },
+    {
+      title: 'Kolozsvári layered sauerkraut',
+      site: 'Zserbo',
+      url: 'https://zserbo.com/meat-dishes/kolozsvari-layered-sauerkraut/',
+    },
+    {
+      title:
+        'Titlul de Regiune Gastronomică Europeană 2028 pune Banatul pe hartă, dar adevărata miză este ce facem noi, aici, acasă, cu el.',
+      site: 'Zile și Nopți',
+      url: 'https://zilesinopti.ro/2026/04/17/regiune-gastronomica-europeana-banat/',
+    },
+    {
+      title: 'Gusturile României, între tradiție și influențe europene',
+      site: 'Știrile ProTV',
+      url: 'https://stirileprotv.ro/divers/gusturile-romaniei-intre-traditie-si-influente-europene.html',
+    },
+    {
+      title:
+        'Secretele pleşcaviţei, deliciosul „hamburger“ sârbesc care i-a cucerit pe bănăţeni după Revoluţie',
+      site: 'Adevărul',
+      url: 'https://adevarul.ro/stiri-locale/timisoara/secretele-plescavitei-deliciosul-hamburger-1730008.html',
+    },
+    {
+      title: 'Cheesy Must-Eats in Romania’s Carpathian Mountains',
+      site: 'Culture',
+      url: 'https://culturecheesemag.com/travel/cheesy-must-eats-in-romanias-carpathian-mountains/',
+    },
+    {
+      title: 'Cea mai bună mâncare din bucătăria tradiţională maramureşeană',
+      site: 'Adevărul',
+      url: 'https://adevarul.ro/stiri-locale/baia-mare/cea-mai-buna-mancare-din-bucataria-1762384.html',
+    },
+    {
+      title: 'Magiunul de prune Topoloveni, primul produs romanesc in topul calitatii europene',
+      site: 'Avocatnet',
+      url: 'https://www.avocatnet.ro/articol_24013/Magiunul-de-prune-Topoloveni-primul-produs-romanesc-in-topul-calitatii-europene.html',
+    },
+    {
+      title: 'Sonimpex Topoloveni devine marcă înregistrată la OSIM',
+      site: 'Bursa',
+      url: 'https://www.bursa.ro/sonimpex-topoloveni-devine-marca-inregistrata-la-osim-60314738',
+    },
+    {
+      title:
+        'Magiunul de prune Topoloveni, produs românesc fără zahăr adăugat, recunoscut drept cel mai bun produs din fructe din lume',
+      site: 'BZI',
+      url: 'https://www.bzi.ro/magiunul-de-prune-topoloveni-produs-romanesc-fara-zahar-adaugat-recunoscut-drept-cel-mai-bun-produs-din-fructe-din-lume-5461162',
+    },
+    {
+      title: 'Dealu Mare wine region',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Dealu_Mare_wine_region',
+    },
+    {
+      title: 'Discover the Best Romania Wine Regions for Your Next Tasting Adventure',
+      site: 'Regent Holidays',
+      url: 'https://www.regent-holidays.co.uk/blog/romania-wine-regions-a-journey-through-dobrogea-dealu-mare-dragasani/',
+    },
+    {
+      title: 'A Journey Through Dealu Mare DOC',
+      site: 'The Quirky Cork',
+      url: 'https://thequirkycork.com/?p=20131',
+    },
+    {
+      title:
+        'Ciorba rădăuțeană împlinește 40 de ani de când a intrat în meniurile restaurantelor / A fost inventată de o bucătăreasă din Bucovina',
+      site: 'G4Media',
+      url: 'https://www.g4media.ro/ciorba-radauteana-implineste-40-de-ani-de-cand-a-intrat-in-meniurile-restaurantelor-a-fost-inventata-de-o-bucatareasa-din-bucovina.html',
+    },
+    {
+      title:
+        'Ciorba rădăuțeană, în topul celor mai bune supe din lume. A fost inventată la insistențele unui soț • Newsweek România',
+      site: 'Newsweek România',
+      url: 'https://newsweek.ro/timp-liber/ciorba-radauteana-in-topul-celor-mai-bune-supe-din-lume-a-fost-inventata-la-insistentele-unui-sot',
+    },
+    {
+      title: 'Inventatoarea ciorbei rădăuțene a ajuns pe Netflix',
+      site: 'Puterea',
+      url: 'https://www.puterea.ro/?p=278970',
+    },
+    {
+      title: 'Rețeta saramurii lipovenești care a intrat în gura întregii lumi',
+      site: 'Evenimentul Zilei',
+      url: 'https://evz.ro/reteta-saramurii-lipovenesti-care-a-intrat-in-gura-intregii-lumi.html',
+    },
+    {
+      title:
+        'Plăcinta dobrogeană. Rețeta păstrată și neschimbată de generații întregi. Care e povestea ei',
+      site: 'Romania TV',
+      url: 'https://www.romaniatv.net/placinta-dobrogeana-reteta-pastrata-si-neschimbata-de-generatii-intregi-care-e-povestea-ei_8505343.html',
+    },
+    {
+      title: 'Placinta Dobrogeana (Romanian Savory Cheese Pie)',
+      site: 'Chef’s Pencil',
+      url: 'https://www.chefspencil.com/romanian-traditional-pie-placinta-dobrogeana/',
+    },
+    {
+      title:
+        'Plăcinta Dobrogeană, rețetă cu tradiție. De ce a contestat Bulgaria autenticitatea produsului românesc',
+      site: 'Euronews România',
+      url: 'https://www.euronews.ro/articole/placinta-dobrogreana-reteta-cu-traditie-de-ce-au-contestat-bulgarii-dreptul-roman',
+    },
+```
+
+### Added and taken out the same day: Il castello di Dracula al passo Borgo
+
+One of the eight "pop" traces, on the Vlad III card after Bran. Taken out because it may be closed
+(see `pop-traces.md`); Corvin Castle took its place. Its stock image was deleted.
+
+Structure:
+
+```ts
+    // Piatra Fântânele, Bistrița-Năsăud county, at the Tihuța (Borgo) pass: Transylvania, not a
+    // city of the guide. Coordinates: OpenStreetMap node 323134978.
+    {
+      id: RoTrace.CastelDraculaHotel,
+      region: Transylvania,
+      where: 'remote',
+      at: [25.0035, 47.2354],
+      rarity: 'rare',
+      icon: 'ghost',
+      image: {
+        src: '/guides/romania/traces/castel-dracula-hotel.webp',
+        credit: {
+          author: 'RomânescEsteLatin',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Hotel_Castel_Dracula.jpg',
+        },
+      },
+    },
+```
+
+Italian texts:
+
+```ts
+    [RoTrace.CastelDraculaHotel]: {
+      name: 'Il castello di Dracula al passo Borgo',
+      local: 'Hotel Castel Dracula · Pasul Tihuța',
+      place: `Passo Tihuța, ${places[Ro.Transylvania]}`,
+      text: 'Nel romanzo di Bram Stoker la carrozza del conte aspetta Jonathan Harker al «Borgo Pass»: è il passo Tihuța, sulla strada fra Bistrița e la Bucovina. Stoker non c’è mai stato, e il castello del romanzo non esiste. Il distretto ne costruisce uno: un albergo a forma di castello, con torre e cortile interno, iniziato nel 1976 e aperto nel 1983. Dopo il 1989 prende il nome di Castel Dracula.',
+      // TODO verificare: the hotel was put up for sale in 2018 and a Komoot page calls it empty,
+      // while booking sites still list it: check whether it is open. The building is seen from the
+      // road either way, so the trace holds.
+      find: 'A Piatra Fântânele, sulla strada DN17 fra Bistrița e Vatra Dornei, a 1.116 m. Il castello si vede dalla strada; se vuoi entrare, controlla prima che l’albergo sia aperto.',
+    },
+```
+
+Sources removed (Vlad III):
+
+```ts
+    {
+      title: 'Tihuța Pass',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Tihu%C8%9Ba_Pass',
+    },
+    {
+      title: 'Hotel Castel Dracula',
+      site: 'Zile și Nopți',
+      url: 'https://zilesinopti.ro/?p=43427',
+    },
+    {
+      title: 'Dracula, by Bram Stoker',
+      site: 'Project Gutenberg',
+      url: 'https://www.gutenberg.org/files/345/345-h/345-h.htm',
+    },
+```

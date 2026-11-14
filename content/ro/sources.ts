@@ -126,6 +126,34 @@ export const sources: GuideSources = {
       url: 'https://en.wikipedia.org/wiki/Romanian_alphabet',
     },
   ],
+  [RoSection.LateMiddleAges]: [
+    {
+      title: 'John Hunyadi',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/John_Hunyadi',
+    },
+    {
+      title: 'János Hunyady',
+      site: 'Catholic Encyclopedia (New Advent)',
+      url: 'https://www.newadvent.org/cathen/07564b.htm',
+    },
+    {
+      title: 'Corvin Castle',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Corvin_Castle',
+    },
+    {
+      title: 'Castelul Corvinilor',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Castelul_Corvinilor',
+    },
+    {
+      title:
+        'Hunedoara: restaurarea integrală a Castelului Corvinilor va fi gata până la sfârșitul lunii august',
+      site: 'Agerpres',
+      url: 'https://agerpres.ro/cultura-media/2026/08/03/hunedoara-restaurarea-integrala-a-castelului-corvinilor-va-fi-gata-pana-la-sfarsitul-lunii-august--1581825',
+    },
+  ],
   [RoSection.ThreeEmpires]: [
     {
       title: 'Horezu Monastery',
@@ -576,6 +604,26 @@ export const sources: GuideSources = {
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Steaua_Stadium_(2021)',
     },
+    {
+      title: 'Caru’ cu Bere',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Caru%27_cu_Bere',
+    },
+    {
+      title: 'History',
+      site: 'Caru’ cu Bere',
+      url: 'https://www.carucubere.ro/en/history/',
+    },
+    {
+      title: 'Cărturești Carusel',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/C%C4%83rture%C8%99ti_Carusel',
+    },
+    {
+      title: 'Cărturești Carusel: the jewel inside the Chrissoveloni Palace',
+      site: 'Bucharest.ro',
+      url: 'https://www.bucharest.ro/articles/carturesti-carusel-the-jewel-inside-the-chrissoveloni-palace-the-history-of-the-most-beautiful-bookstore-in-romania-751',
+    },
   ],
   [Ro.Iasi]: [
     {
@@ -605,6 +653,16 @@ export const sources: GuideSources = {
       site: 'Wikipedia',
       url: 'https://ro.wikipedia.org/wiki/Varlaam_Mo%C8%9Boc',
     },
+    {
+      title: 'Bolta Rece: Un simbol al Iașiului cu o istorie de peste 228 de ani',
+      site: 'Financiarul',
+      url: 'https://financiarul.ro/actualitate/bolta-rece-de-peste-228-de-ani-academia-ieseana-de-umor-si-inteligenta/',
+    },
+    {
+      title: '5 restaurante care au făcut istorie',
+      site: 'Zile și Nopți',
+      url: 'https://zilesinopti.ro/2020/10/15/5-restaurante-care-au-facut-istorie/',
+    },
   ],
   [Ro.Suceava]: [
     {
@@ -617,6 +675,31 @@ export const sources: GuideSources = {
       title: 'C. I. Ciobanu, Profețiile de la Voroneț',
       site: 'Studii și Cercetări de Istoria Artei',
       url: 'https://www.medieval.istoria-artei.ro/resources/Voronrt.SCIA.AP2011-02-C.%20Ciobanu-Profetiile.pdf',
+    },
+    {
+      title: 'Ceramica neagră de Marginea',
+      site: 'Financiarul',
+      url: 'https://financiarul.ro/actualitate/ceramica-neagra-de-marginea-suceava-cunoscuta-in-lume-pentru-tehnica-preistorica-de-ardere-inabusita/',
+    },
+    {
+      title: 'Corneliu Magopăț, Ceramics Marginea',
+      site: 'Homo Faber',
+      url: 'https://www.homofaber.com/en/artisans/corneliu_magop%C4%83%C8%9B-ceramics-marginea',
+    },
+    {
+      title: 'Egg Museum Vama-Bukovina',
+      site: 'Muzeul Oului',
+      url: 'https://www.muzeuloului-vama.com/',
+    },
+    {
+      title: '18 mii de ouă, o singură pasiune: Muzeul Oului Vama-Bucovina',
+      site: 'Euronews România',
+      url: 'https://www.euronews.ro/articole/18-mii-de-oua-o-singura-pasiune-muzeul-oului-vama-bucovina-detine-o-colectie-de-o',
+    },
+    {
+      title: 'Egg Museum',
+      site: 'Ghidul muzeelor (cIMeC)',
+      url: 'https://ghidulmuzeelor.cimec.ro/idEN.asp?k=2015',
     },
   ],
   [Ro.AlbaIulia]: [
@@ -731,6 +814,16 @@ export const sources: GuideSources = {
       title: 'Biserica Neagră',
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Biserica_Neagr%C4%83',
+    },
+    {
+      title: 'Strada Sforii',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Strada_Sforii',
+    },
+    {
+      title: 'Rope Street',
+      site: 'Explore Carpathia',
+      url: 'https://explorecarpathia.eu/en/romania/brasso-brasov/rope-street',
     },
   ],
   [Ro.ClujNapoca]: [
@@ -1102,6 +1195,16 @@ export const sources: GuideSources = {
         'Cazinoul Constanța, clădirea simbol a litoralului românesc, redeschisă după 5 ani de lucrări. Când poate fi vizitat monumentul',
       site: 'Gândul',
       url: 'https://www.gandul.ro/actualitate/cazinoul-constanta-cladirea-simbol-a-litoralului-romanesc-redeschisa-dupa-5-ani-de-lucrari-cand-poate-fi-vizitat-monumentul-20524365',
+    },
+    {
+      title: 'Mamaia',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Mamaia',
+    },
+    {
+      title: 'Start of the summer season in Mamaia resort',
+      site: 'Radio Romania International',
+      url: 'https://www.rri.ro/en/features-and-reports/travellers-guide/start-of-the-summer-season-in-mamaia-resort-id149319.html',
     },
   ],
   [RoLandscape.DanubeDelta]: [
@@ -1762,22 +1865,6 @@ export const sources: GuideSources = {
       url: 'https://reference-global.com/article/10.2478/ausp-2018-0028',
     },
     {
-      title:
-        'Kolozsvár híres káposztái: Mámi töltött káposztájától egészen a Káposztás vendéglő rakott fogásáig',
-      site: 'Telex',
-      url: 'https://telex.hu/transtelex/2025/11/09/kolozsvari-kaposzta-gasztronomia-tortenelem',
-    },
-    {
-      title: 'Hányféle töltött káposzta létezik a világon, és kié az igazi?',
-      site: 'Telex',
-      url: 'https://telex.hu/gasztro/2021/12/22/hanyfele-toltott-kaposzta-letezik-a-vilagon-es-kie-az-igazi',
-    },
-    {
-      title: 'Kolozsvári layered sauerkraut',
-      site: 'Zserbo',
-      url: 'https://zserbo.com/meat-dishes/kolozsvari-layered-sauerkraut/',
-    },
-    {
       title: 'Pălincă: scheda tecnica dell’indicazione geografica',
       site: 'DFAT',
       url: 'https://www.dfat.gov.au/sites/default/files/200s.docx',
@@ -1804,39 +1891,7 @@ export const sources: GuideSources = {
       site: 'Wine Wit and Wisdom',
       url: 'https://winewitandwisdomswe.com/?p=21354',
     },
-    {
-      title:
-        'Titlul de Regiune Gastronomică Europeană 2028 pune Banatul pe hartă, dar adevărata miză este ce facem noi, aici, acasă, cu el.',
-      site: 'Zile și Nopți',
-      url: 'https://zilesinopti.ro/2026/04/17/regiune-gastronomica-europeana-banat/',
-    },
-    {
-      title: 'Gusturile României, între tradiție și influențe europene',
-      site: 'Știrile ProTV',
-      url: 'https://stirileprotv.ro/divers/gusturile-romaniei-intre-traditie-si-influente-europene.html',
-    },
-    {
-      title:
-        'Secretele pleşcaviţei, deliciosul „hamburger“ sârbesc care i-a cucerit pe bănăţeni după Revoluţie',
-      site: 'Adevărul',
-      url: 'https://adevarul.ro/stiri-locale/timisoara/secretele-plescavitei-deliciosul-hamburger-1730008.html',
-    },
     { title: 'Țuică', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/%C8%9Auic%C4%83' },
-    {
-      title: 'Mămăligă',
-      site: 'Wikipedia',
-      url: 'https://en.wikipedia.org/wiki/M%C4%83m%C4%83lig%C4%83',
-    },
-    {
-      title: 'Cheesy Must-Eats in Romania’s Carpathian Mountains',
-      site: 'Culture',
-      url: 'https://culturecheesemag.com/travel/cheesy-must-eats-in-romanias-carpathian-mountains/',
-    },
-    {
-      title: 'Cea mai bună mâncare din bucătăria tradiţională maramureşeană',
-      site: 'Adevărul',
-      url: 'https://adevarul.ro/stiri-locale/baia-mare/cea-mai-buna-mancare-din-bucataria-1762384.html',
-    },
   ],
   [RoSection.FoodWallachia]: [
     {
@@ -1900,37 +1955,6 @@ export const sources: GuideSources = {
       site: 'Puterea',
       url: 'https://www.puterea.ro/?p=257022',
     },
-    {
-      title: 'Magiunul de prune Topoloveni, primul produs romanesc in topul calitatii europene',
-      site: 'Avocatnet',
-      url: 'https://www.avocatnet.ro/articol_24013/Magiunul-de-prune-Topoloveni-primul-produs-romanesc-in-topul-calitatii-europene.html',
-    },
-    {
-      title: 'Sonimpex Topoloveni devine marcă înregistrată la OSIM',
-      site: 'Bursa',
-      url: 'https://www.bursa.ro/sonimpex-topoloveni-devine-marca-inregistrata-la-osim-60314738',
-    },
-    {
-      title:
-        'Magiunul de prune Topoloveni, produs românesc fără zahăr adăugat, recunoscut drept cel mai bun produs din fructe din lume',
-      site: 'BZI',
-      url: 'https://www.bzi.ro/magiunul-de-prune-topoloveni-produs-romanesc-fara-zahar-adaugat-recunoscut-drept-cel-mai-bun-produs-din-fructe-din-lume-5461162',
-    },
-    {
-      title: 'Dealu Mare wine region',
-      site: 'Wikipedia',
-      url: 'https://en.wikipedia.org/wiki/Dealu_Mare_wine_region',
-    },
-    {
-      title: 'Discover the Best Romania Wine Regions for Your Next Tasting Adventure',
-      site: 'Regent Holidays',
-      url: 'https://www.regent-holidays.co.uk/blog/romania-wine-regions-a-journey-through-dobrogea-dealu-mare-dragasani/',
-    },
-    {
-      title: 'A Journey Through Dealu Mare DOC',
-      site: 'The Quirky Cork',
-      url: 'https://thequirkycork.com/?p=20131',
-    },
   ],
   [RoSection.FoodMoldavia]: [
     { title: 'Tochitură', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Tochitur%C4%83' },
@@ -1961,23 +1985,6 @@ export const sources: GuideSources = {
       title: 'Brânzoaice cu brânză dulce: Poale-n brâu ca la bunica acasă',
       site: 'BZI',
       url: 'https://www.bzi.ro/branzoaice-cu-branza-dulce-poale-n-brau-ca-la-bunica-acasa-4312964',
-    },
-    {
-      title:
-        'Ciorba rădăuțeană împlinește 40 de ani de când a intrat în meniurile restaurantelor / A fost inventată de o bucătăreasă din Bucovina',
-      site: 'G4Media',
-      url: 'https://www.g4media.ro/ciorba-radauteana-implineste-40-de-ani-de-cand-a-intrat-in-meniurile-restaurantelor-a-fost-inventata-de-o-bucatareasa-din-bucovina.html',
-    },
-    {
-      title:
-        'Ciorba rădăuțeană, în topul celor mai bune supe din lume. A fost inventată la insistențele unui soț • Newsweek România',
-      site: 'Newsweek România',
-      url: 'https://newsweek.ro/timp-liber/ciorba-radauteana-in-topul-celor-mai-bune-supe-din-lume-a-fost-inventata-la-insistentele-unui-sot',
-    },
-    {
-      title: 'Inventatoarea ciorbei rădăuțene a ajuns pe Netflix',
-      site: 'Puterea',
-      url: 'https://www.puterea.ro/?p=278970',
     },
     {
       title: 'Cotnari – Campionul Vinurilor Româneşti',
@@ -2018,28 +2025,6 @@ export const sources: GuideSources = {
         'Secretul ciorbei de pește, aflat de la un pescar din Delta Dunării. Reportaj la Sulina',
       site: 'Spotmedia',
       url: 'https://spotmedia.ro/stiri/timp-liber/secretul-ciorbei-de-peste-aflat-de-la-un-pescar-din-delta-dunarii-reportaj-la-sulina',
-    },
-    {
-      title: 'Rețeta saramurii lipovenești care a intrat în gura întregii lumi',
-      site: 'Evenimentul Zilei',
-      url: 'https://evz.ro/reteta-saramurii-lipovenesti-care-a-intrat-in-gura-intregii-lumi.html',
-    },
-    {
-      title:
-        'Plăcinta dobrogeană. Rețeta păstrată și neschimbată de generații întregi. Care e povestea ei',
-      site: 'Romania TV',
-      url: 'https://www.romaniatv.net/placinta-dobrogeana-reteta-pastrata-si-neschimbata-de-generatii-intregi-care-e-povestea-ei_8505343.html',
-    },
-    {
-      title: 'Placinta Dobrogeana (Romanian Savory Cheese Pie)',
-      site: 'Chef’s Pencil',
-      url: 'https://www.chefspencil.com/romanian-traditional-pie-placinta-dobrogeana/',
-    },
-    {
-      title:
-        'Plăcinta Dobrogeană, rețetă cu tradiție. De ce a contestat Bulgaria autenticitatea produsului românesc',
-      site: 'Euronews România',
-      url: 'https://www.euronews.ro/articole/placinta-dobrogreana-reteta-cu-traditie-de-ce-au-contestat-bulgarii-dreptul-roman',
     },
     {
       title:

@@ -18,6 +18,19 @@ traveller sees and hears beyond politics.
   nunnery, UNESCO 1993), [UNESCO ICH](https://ich.unesco.org/en/RL/craftsmanship-of-horezu-ceramics-00610)
   (ceramics, 2012). Coordinates: Wikidata Q733069. Photo: Cristian Bortes
   (CC BY 2.0).
+- Iancu de Hunedoara (event 1441–1456, Transilvania) and Corvin Castle (trace under it, in no
+  card; added on 2026-11-14 in place of the Hotel Castel Dracula, see
+  `../album/pop-traces.md`): [Wikipedia](https://en.wikipedia.org/wiki/John_Hunyadi) and
+  [New Advent](https://www.newadvent.org/cathen/07564b.htm) for the voivodeship (1441:
+  Wikipedia), the regency from 1446 for Ladislaus V, Belgrade in July 1456, death of plague on
+  11 August 1456, burial at Alba Iulia, Romanian origin of the family, Matthias king in 1458.
+  Castle: [Wikipedia](https://en.wikipedia.org/wiki/Corvin_Castle) and
+  [Wikipedia RO](https://ro.wikipedia.org/wiki/Castelul_Corvinilor) for the 1409 grant to Voicu,
+  Iancu's works in the 1440s on the rock over the Zlaști, Matthias's wing, Gabriel Bethlen's
+  palace, the 1854 fire; [Agerpres](https://agerpres.ro/cultura-media/2026/08/03/hunedoara-restaurarea-integrala-a-castelului-corvinilor-va-fi-gata-pana-la-sfarsitul-lunii-august--1581825)
+  for the restoration of 1868–1914 and the one due to end in August 2026. Left out, one source
+  each: chapel 1442, Knights' Hall 1452, museum since 1974, the films shot there. Coordinates:
+  Wikidata Q126576. Photo: Carcea Daniel (CC BY-SA 3.0 ro).
 - Dada (curiosity, 1916): [Tristan Tzara](https://en.wikipedia.org/wiki/Tristan_Tzara),
   [Marcel Janco](https://en.wikipedia.org/wiki/Marcel_Janco).
 - "Tre romeni a Parigi": Eliade and Cioran's Iron Guard sympathies, Ionesco's

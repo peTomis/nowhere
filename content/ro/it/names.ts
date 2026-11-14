@@ -341,6 +341,20 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il 7 maggio 1986, a Siviglia, la Steaua batte il Barcellona ai rigori e vince la Coppa dei Campioni: il portiere Helmuth Duckadam para quattro rigori di fila. È la prima squadra dell’Europa dell’Est a vincerla. La squadra di calcio si separa dall’esercito nel 1998 e passa poi a un proprietario privato; dopo una causa sul marchio, dal 2017 si chiama FCSB. I tribunali hanno assegnato i trofei dal 1947 al 1998, Coppa compresa, alla CSA Steaua, il club dell’esercito, che gioca qui. Chi sia la «vera» Steaua divide ancora i tifosi.',
       find: 'Bulevardul Ghencea, nel sud-ovest di Bucarest. Lo stadio, rifatto nel 2021, si vede da fuori; per entrare, una partita della CSA Steaua.',
     },
+    [RoTrace.CaruCuBere]: {
+      name: 'La birreria Caru’ cu Bere',
+      local: 'Caru’ cu Bere',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Nel 1879 Ioan Căbășan, arrivato a Bucarest da un villaggio della Transilvania, apre una birreria sulla Calea Victoriei con i nipoti Mircea. Nicolae Mircea compra il terreno di Strada Stavropoleos nel 1897 e nel 1899 vi apre il locale nuovo, su progetto dell’architetto Siegfried Kofczinski: fuori neogotico, dentro legno scolpito, pareti dipinte e vetrate. Nazionalizzato nel 1949, torna agli eredi Mircea nel 1999. È ancora una birreria.',
+      find: 'Strada Stavropoleos 5, nel centro storico, a pochi passi dalla chiesa di Stavropoleos. La facciata si vede dalla strada; per la sala, siediti per una birra.',
+    },
+    [RoTrace.CarturestiCarusel]: {
+      name: 'La libreria Carusel',
+      local: 'Cărturești Carusel',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'All’inizio del Novecento il palazzo di Strada Lipscani 55 è la sede della banca dei Chrissoveloni, una famiglia di banchieri di origine greca. Il regime comunista lo confisca e ne fa un grande magazzino; negli anni Novanta torna a un erede della famiglia, ma l’edificio va in rovina. Dopo cinque anni di restauro, nel 2015 vi apre una libreria della catena Cărturești: piani di balconate bianche e curve intorno a un atrio illuminato dall’alto.',
+      find: 'Strada Lipscani 55, nel centro storico. Entra e sali ai piani alti: la foto è l’atrio visto dalle balconate.',
+    },
     [RoTrace.BrasovCouncilHouse]: {
       name: 'La Casa del Consiglio',
       local: 'Casa Sfatului',
@@ -363,6 +377,13 @@ export const names: GuideNames<Ro, RoSection> = {
       within: 'Monte Tâmpa',
       text: 'In cima al monte che chiude la città a est, grandi lettere bianche formano la parola BRAȘOV, come la scritta di Hollywood; di sera le illuminano i fari. Dal belvedere accanto vedi tutto il centro sassone, la Chiesa Nera, la piazza e le montagne intorno.',
       find: 'Si sale in funivia (Telecabina Tâmpa), dalla stazione sotto le mura a sud-est del centro, o a piedi per sentieri nel bosco, in circa un’ora. La funivia chiude a volte per lavori: controlla che sia aperta. Le lettere si vedono anche dal centro.',
+    },
+    [RoTrace.BrasovStradaSforii]: {
+      name: 'La Strada della Corda',
+      local: 'Strada Sforii',
+      place: `${places[Ro.Brasov]}, ${places[Ro.Transylvania]}`,
+      text: 'Un vicolo lungo circa 80 metri e largo fra 1,11 e 1,35 metri, fra le case del centro e le mura verso la porta Schei. Un documento del 1674 lo nomina già, in tedesco. La tradizione dice che servisse ai pompieri per passare in fretta da una via all’altra; oggi lo percorrono i turisti, uno alla volta.',
+      find: 'Nel centro storico, perpendicolare a Strada Cerbului, vicino alla porta Schei. Allarga le braccia: tocchi i due muri.',
     },
     [RoTrace.CantacuzinoCastle]: {
       name: 'Il castello di Nevermore',
@@ -491,6 +512,13 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Una casetta di legno e argilla sulla collina di Țicău. Qui Ion Creangă, ex diacono e maestro di scuola, vive dal 1872 alla morte, nel 1889, e scrive le fiabe e i «Ricordi d’infanzia» che ogni scolaro romeno legge; nel 1876 vi abita per un periodo anche l’amico Eminescu. Il 15 aprile 1918 diventa il primo museo memoriale della Romania.',
       find: 'Strada Simion Bărnuțiu 4, nel quartiere Țicău, a est del centro: si sale a piedi per stradine in pendenza.',
     },
+    [RoTrace.BoltaRece]: {
+      name: 'La Bolta Rece',
+      local: 'Bolta Rece',
+      place: `${places[Ro.Iasi]}, ${places[Ro.Moldavia]}`,
+      text: 'La prima notizia dell’edificio è del 17 gennaio 1786. Nell’Ottocento è il locale dei Junimea, il circolo letterario di Iași, che lo chiamano «l’università dei vini»; la tradizione vuole che qui si incontrassero spesso Eminescu e Creangă. Il nome vuol dire «la volta fredda». È ancora un ristorante di cucina moldava, con il vino delle vigne della regione nelle cantine.',
+      find: 'Strada Rece 10, a nord del centro. La foto è la sala o l’ingresso: entra per un bicchiere di vino.',
+    },
     [RoTrace.SuceavaCitadel]: {
       name: 'La cittadella di Suceava',
       local: 'Cetatea de Scaun a Sucevei',
@@ -512,6 +540,22 @@ export const names: GuideNames<Ro, RoSection> = {
       distance: `a circa 40 km da ${places[Ro.Suceava]}`,
       text: 'Stefano il Grande fa costruire la chiesa nel 1488, in meno di quattro mesi. Nel 1547 il metropolita Grigore Roșca la fa dipingere anche fuori: santi, profeti, sapienti dell’antichità e, su tutta la parete ovest, il Giudizio universale. Il fondo è il «blu di Voroneț», il colore che ha reso famosa la chiesa. Con le altre chiese dipinte della Moldavia è patrimonio UNESCO dal 1993.',
       find: 'Nel villaggio di Voroneț, pochi chilometri a sud di Gura Humorului. Il Giudizio è sulla facciata ovest. Abbigliamento rispettoso; si entra con un piccolo biglietto.',
+    },
+    [RoTrace.MargineaBlackPottery]: {
+      name: 'La ceramica nera di Marginea',
+      local: 'Ceramica neagră de Marginea',
+      place: 'Marginea, Bucovina',
+      distance: `a circa 45 km da ${places[Ro.Suceava]}`,
+      text: 'A Marginea si fanno vasi da circa tre secoli. Il nero non è uno smalto: i pezzi, lucidati a mano con una pietra di fiume, cuociono in un forno chiuso a legna, dove manca l’ossigeno, e il fumo li annerisce. Delle molte famiglie di vasai di una volta ne restano poche, che lavorano nello stesso laboratorio: quello dei Magopăț.',
+      find: 'Calea Bucovinei 192, sulla strada fra Rădăuți e il monastero di Sucevița. Il laboratorio ha una bottega: cerca un vaso o una brocca nera.',
+    },
+    [RoTrace.VamaEggMuseum]: {
+      name: 'Le uova dipinte di Vama',
+      local: 'Muzeul Oului',
+      place: 'Vama, Bucovina',
+      distance: `a circa 55 km da ${places[Ro.Suceava]}`,
+      text: 'A Pasqua, in Bucovina, le uova si decorano con la cera: si disegna con la cera calda, si tinge, si copre ancora e si ritinge, fino a sei volte; poi si scioglie la cera e appare il disegno. Il museo di Vama nasce dalle uova di famiglia di Letiția Orșivschi, insegnante d’arte, e mette accanto le uova della Bucovina a quelle di decine di paesi del mondo. In una sala si impara a decorarne uno.',
+      find: 'Strada Gării 20, a Vama, sulla strada fra Gura Humorului e Câmpulung Moldovenesc. Fotografa un uovo della Bucovina, o il tuo.',
     },
     [RoTrace.TimisoaraUnionSquare]: {
       name: 'Piața Unirii: due cattedrali e una colonna',
@@ -563,6 +607,14 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `${places[Ro.Constanta]}, ${places[Ro.Dobruja]}`,
       text: 'Il progetto Art Nouveau dell’architetto Daniel Renard passa di mano più volte, a ogni cambio di amministrazione cittadina, prima di essere realizzato: il casinò viene inaugurato nel 1910. Le grandi finestre a forma di conchiglia guardano il mare: è il simbolo della città di villeggiatura che cresce insieme al porto moderno. Dopo il 1948 diventa una casa della cultura, poi un ristorante; chiuso e degradato per anni, riapre nel 2025 dopo un restauro di cinque anni.',
       find: 'Sulla passeggiata a mare della penisola, vicino al faro genovese. Si visita con biglietto: controlla orari e prenotazioni sul sito ufficiale.',
+    },
+    [RoTrace.MamaiaBeach]: {
+      name: 'La spiaggia di Mamaia',
+      local: 'Mamaia',
+      place: `Mamaia, ${places[Ro.Dobruja]}`,
+      distance: `a circa 10 km dal centro di ${places[Ro.Constanta]}`,
+      text: 'Una lingua di sabbia lunga circa 8 km e larga poche centinaia di metri, fra il mar Nero e il lago Siutghiol. La stazione balneare apre nel 1906, collegata a Costanța da una ferrovia; negli anni Sessanta vi si costruiscono i grandi alberghi per attirare i turisti stranieri. Dal 2004 una telecabina la percorre dall’alto per 2 km.',
+      find: 'A nord di Costanța, in autobus o in taxi dal centro. La foto è la spiaggia, con il mare e la fila degli alberghi.',
     },
     [RoTrace.VamaVeche]: {
       name: 'Vama Veche',
@@ -771,6 +823,13 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Constantin Brâncoveanu lo fonda nel 1690. La chiesa, il chiostro con le logge su colonne di pietra scolpita e gli affreschi ne fanno il modello più completo dello stile brâncovenesc; dal 1993 è patrimonio UNESCO, e oggi ci vive una comunità di monache. Nella cittadina di Horezu i vasai fanno ancora le ceramiche dipinte con il gallo e le spirali: la loro arte è patrimonio immateriale UNESCO dal 2012.',
       find: 'Poco fuori dalla cittadina di Horezu (Vâlcea), ai piedi dei monti, a circa 45 km da Râmnicu Vâlcea. È un monastero attivo: abbigliamento rispettoso.',
     },
+    [RoTrace.CorvinCastle]: {
+      name: 'Il castello dei Corvino',
+      local: 'Castelul Corvinilor · Vajdahunyad',
+      place: `Hunedoara, ${places[Ro.Transylvania]}`,
+      text: 'Nel 1409 il re Sigismondo dona il feudo di Hunedoara, con la sua fortezza, a Voicu, il padre di Iancu de Hunedoara. Negli anni Quaranta del Quattrocento Iancu la trasforma nel castello di famiglia, su una rupe sopra il torrente Zlaști; il figlio Mattia Corvino aggiunge un’ala, e nel Seicento Gabriel Bethlen un nuovo palazzo. Dopo un grande incendio, nel 1854, il castello è restaurato fra il 1868 e il 1914: l’aspetto di oggi viene in gran parte da quel restauro.',
+      find: 'Nella città di Hunedoara, in Strada Curtea Corvineștilor. Fotografalo dal ponte su piloni che porta all’ingresso; dentro si visita con biglietto.',
+    },
     [RoTrace.FoodMamaliga]: {
       name: 'Mămăligă',
       place: 'In tutta la Romania',
@@ -807,27 +866,10 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `In tutta la ${places[Ro.Transylvania]}`,
       find: 'Alle bancarelle delle fiere, dei mercatini e dei centri storici, cotto al momento sulla brace; soprattutto nella Terra dei Siculi (Harghita e Covasna).',
     },
-    [RoTrace.FoodVarzaCluj]: {
-      name: 'Varză à la Cluj',
-      local: 'Kolozsvári rakott káposzta',
-      place: `In tutta la ${places[Ro.Transylvania]}`,
-      find: 'Nei ristoranti di cucina tradizionale della Transilvania, soprattutto a Cluj; nel menù anche «varză a la Cluj».',
-    },
     [RoTrace.FoodPalinca]: {
       name: 'Un bicchierino di pălincă',
       place: `In tutta la ${places[Ro.Transylvania]}`,
       find: 'Nei ristoranti della Transilvania fra le acquaviti, di prugne («de prune») o di altri frutti; nei mercati e dai produttori, in bottiglia.',
-    },
-    [RoTrace.FoodPljeskavica]: {
-      name: 'Pljeskavica',
-      local: 'Pleșcaviță',
-      place: `${places[Ro.Timisoara]}, Banato`,
-      find: 'Nelle griglierie e nei fast food di Timișoara, in un panino o nel piatto con patatine.',
-    },
-    [RoTrace.FoodBalmos]: {
-      name: 'Balmoș',
-      place: 'Maramureș',
-      find: 'Nei ristoranti tradizionali e nelle pensioni del Maramureș; d’estate alle stâne, gli ovili di montagna, dove i pastori vendono i loro formaggi.',
     },
     [RoTrace.FoodBranzaDeBurduf]: {
       name: 'Brânză de burduf',
@@ -851,17 +893,6 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `Buzău, ${places[Ro.Wallachia]}`,
       find: 'Nelle simigerii, i piccoli forni di strada, caldi e a pezzo: in ogni città, ma il nome da cercare è «covrigi de Buzău».',
     },
-    [RoTrace.FoodMagiun]: {
-      name: 'Magiun di Topoloveni',
-      local: 'Magiun de prune Topoloveni',
-      place: `Topoloveni, ${places[Ro.Wallachia]}`,
-      find: 'Nei supermercati e nei negozi di prodotti tradizionali, in vasetti: sull’etichetta «Magiun de prune Topoloveni» con il marchio europeo IGP.',
-    },
-    [RoTrace.FoodDealuMare]: {
-      name: 'Un vino del Dealu Mare',
-      place: `Prahova e Buzău, ${places[Ro.Wallachia]}`,
-      find: 'Nelle enoteche e nei ristoranti, con la scritta «Dealu Mare» in etichetta. Le cantine della zona, a circa un’ora d’auto da Bucarest, si visitano, spesso su prenotazione.',
-    },
     [RoTrace.FoodTochitura]: {
       name: 'Tochitură moldovenească',
       place: `In tutta la ${places[Ro.Moldavia]}`,
@@ -872,11 +903,6 @@ export const names: GuideNames<Ro, RoSection> = {
       place: `In tutta la ${places[Ro.Moldavia]}`,
       find: 'Nelle pasticcerie e nei forni della Moldavia, fra le plăcinte; nei ristoranti tradizionali come dolce.',
     },
-    [RoTrace.FoodCiorbaRadauteana]: {
-      name: 'Ciorbă rădăuțeană',
-      place: `Rădăuți, ${places[Ro.Moldavia]}`,
-      find: 'Nei ristoranti di tutto il paese, fra le zuppe; in Bucovina, a Rădăuți e Suceava, nei locali di cucina tradizionale.',
-    },
     [RoTrace.FoodCotnari]: {
       name: 'Un vino di Cotnari',
       place: `Cotnari, ${places[Ro.Moldavia]}`,
@@ -886,17 +912,6 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Borș lipovenesc',
       place: `Delta del Danubio, ${places[Ro.Dobruja]}`,
       find: 'Nelle pensioni e nei ristoranti del delta, a Tulcea, Sulina e Jurilovca; nel menù anche «borș de pește» o «ciorbă de pește».',
-    },
-    [RoTrace.FoodSaramura]: {
-      name: 'Saramură di pesce',
-      local: 'Saramură de pește',
-      place: `In tutta la ${places[Ro.Dobruja]}`,
-      find: 'Nelle pensioni del delta e nei ristoranti di pesce di Tulcea e della costa: chiedi quale pesce è del giorno.',
-    },
-    [RoTrace.FoodPlacintaDobrogeana]: {
-      name: 'Plăcintă dobrogeană',
-      place: `In tutta la ${places[Ro.Dobruja]}`,
-      find: 'Nei forni e nelle pasticcerie della Dobrogea, a fette, e nei ristoranti tradizionali di Constanța e Tulcea.',
     },
     [RoTrace.FoodSuberek]: {
       name: 'Șuberek',
@@ -1050,18 +1065,8 @@ export const names: GuideNames<Ro, RoSection> = {
       name: 'Kürtőskalács',
       local: 'Colac secuiesc',
     },
-    [RoFood.VarzaCluj]: {
-      name: 'Varză à la Cluj',
-      local: 'Kolozsvári rakott káposzta',
-    },
     [RoFood.Palinca]: {
       name: 'Pălincă',
-    },
-    [RoFood.BanatCuisine]: {
-      name: 'Cucina sveva e serba del Banato',
-    },
-    [RoFood.Balmos]: {
-      name: 'Balmoș',
     },
     [RoFood.BranzaDeBurduf]: {
       name: 'Brânză de burduf',
@@ -1077,33 +1082,17 @@ export const names: GuideNames<Ro, RoSection> = {
     [RoFood.Covrigi]: {
       name: 'Covrigi',
     },
-    [RoFood.Magiun]: {
-      name: 'Magiun di Topoloveni',
-    },
-    [RoFood.DealuMare]: {
-      name: 'Dealu Mare',
-    },
     [RoFood.Tochitura]: {
       name: 'Tochitură',
     },
     [RoFood.PoaleInBrau]: {
       name: 'Poale-n brâu',
     },
-    [RoFood.CiorbaRadauteana]: {
-      name: 'Ciorbă rădăuțeană',
-    },
     [RoFood.Cotnari]: {
       name: 'Cotnari',
     },
     [RoFood.BorsLipovenesc]: {
       name: 'Borș lipovenesc',
-    },
-    [RoFood.Saramura]: {
-      name: 'Saramură di pesce',
-      local: 'Saramură de pește',
-    },
-    [RoFood.PlacintaDobrogeana]: {
-      name: 'Plăcintă dobrogeană',
     },
     [RoFood.Suberek]: {
       name: 'Șuberek',

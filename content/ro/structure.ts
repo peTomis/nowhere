@@ -111,9 +111,12 @@ export enum RoTrace {
   RomanianAthenaeum = 'ro.place.romanian-athenaeum',
   VillageMuseum = 'ro.place.village-museum',
   SteauaStadium = 'ro.place.steaua-stadium',
+  CaruCuBere = 'ro.place.caru-cu-bere',
+  CarturestiCarusel = 'ro.place.carturesti-carusel',
   BrasovCouncilHouse = 'ro.place.brasov-council-house',
   BrasovBlackChurch = 'ro.place.brasov-black-church',
   BrasovTampaLetters = 'ro.place.brasov-tampa-letters',
+  BrasovStradaSforii = 'ro.place.brasov-strada-sforii',
   CantacuzinoCastle = 'ro.place.cantacuzino-castle-busteni',
   SibiuBrukenthalPalace = 'ro.place.sibiu-brukenthal-palace',
   SibiuBridgeOfLies = 'ro.place.sibiu-bridge-of-lies',
@@ -131,9 +134,12 @@ export enum RoTrace {
   IasiPalaceOfCulture = 'ro.place.iasi-palace-of-culture',
   IasiThreeHierarchsMonastery = 'ro.place.iasi-three-hierarchs-monastery',
   CreangaBojdeuca = 'ro.place.creanga-bojdeuca',
+  BoltaRece = 'ro.place.bolta-rece',
   SuceavaCitadel = 'ro.place.suceava-citadel',
   SuceavaSaintJohnMonastery = 'ro.place.suceava-saint-john-monastery',
   VoronetMonastery = 'ro.place.voronet-monastery',
+  MargineaBlackPottery = 'ro.place.marginea-black-pottery',
+  VamaEggMuseum = 'ro.place.vama-egg-museum',
   TimisoaraUnionSquare = 'ro.place.timisoara-union-square',
   TimisoaraTokesParsonage = 'ro.place.timisoara-tokes-parsonage',
   TimisoaraOperaBalcony = 'ro.place.timisoara-opera-balcony',
@@ -141,6 +147,7 @@ export enum RoTrace {
   ConstantaRomanMosaic = 'ro.place.constanta-roman-mosaic',
   ConstantaGrandMosque = 'ro.place.constanta-grand-mosque',
   ConstantaCasino = 'ro.place.constanta-casino',
+  MamaiaBeach = 'ro.place.mamaia-beach',
   VamaVeche = 'ro.place.vama-veche',
   SulinaOldLighthouse = 'ro.place.sulina-old-lighthouse',
   LeteaForest = 'ro.place.letea-forest',
@@ -170,6 +177,7 @@ export enum RoTrace {
   BucegiSphinx = 'ro.place.bucegi-babele-sphinx',
   CaraimanCross = 'ro.place.caraiman-cross',
   HorezuMonastery = 'ro.place.horezu-monastery',
+  CorvinCastle = 'ro.place.corvin-castle',
   FoodMamaliga = 'ro.place.food-mamaliga',
   FoodSarmale = 'ro.place.food-sarmale',
   FoodCozonac = 'ro.place.food-cozonac',
@@ -177,23 +185,15 @@ export enum RoTrace {
   FoodTuica = 'ro.place.food-tuica',
   FoodSibiuSalami = 'ro.place.food-sibiu-salami',
   FoodKurtoskalacs = 'ro.place.food-kurtoskalacs',
-  FoodVarzaCluj = 'ro.place.food-varza-cluj',
   FoodPalinca = 'ro.place.food-palinca',
-  FoodPljeskavica = 'ro.place.food-pljeskavica',
-  FoodBalmos = 'ro.place.food-balmos',
   FoodBranzaDeBurduf = 'ro.place.food-branza-de-burduf',
   FoodMici = 'ro.place.food-mici',
   FoodCiorbaBurta = 'ro.place.food-ciorba-burta',
   FoodCovrigi = 'ro.place.food-covrigi',
-  FoodMagiun = 'ro.place.food-magiun-topoloveni',
-  FoodDealuMare = 'ro.place.food-dealu-mare',
   FoodTochitura = 'ro.place.food-tochitura',
   FoodPoaleInBrau = 'ro.place.food-poale-in-brau',
-  FoodCiorbaRadauteana = 'ro.place.food-ciorba-radauteana',
   FoodCotnari = 'ro.place.food-cotnari',
   FoodBorsLipovenesc = 'ro.place.food-bors-lipovenesc',
-  FoodSaramura = 'ro.place.food-saramura',
-  FoodPlacintaDobrogeana = 'ro.place.food-placinta-dobrogeana',
   FoodSuberek = 'ro.place.food-suberek',
   FoodMurfatlar = 'ro.place.food-murfatlar',
 }
@@ -236,23 +236,15 @@ export enum RoFood {
   Tuica = 'ro.food.tuica',
   SibiuSalami = 'ro.food.sibiu-salami',
   Kurtoskalacs = 'ro.food.kurtoskalacs',
-  VarzaCluj = 'ro.food.varza-a-la-cluj',
   Palinca = 'ro.food.palinca',
-  BanatCuisine = 'ro.food.banat-cuisine',
-  Balmos = 'ro.food.balmos',
   BranzaDeBurduf = 'ro.food.branza-de-burduf',
   Mici = 'ro.food.mici',
   CiorbaBurta = 'ro.food.ciorba-de-burta',
   Covrigi = 'ro.food.covrigi',
-  Magiun = 'ro.food.magiun-topoloveni',
-  DealuMare = 'ro.food.dealu-mare',
   Tochitura = 'ro.food.tochitura',
   PoaleInBrau = 'ro.food.poale-in-brau',
-  CiorbaRadauteana = 'ro.food.ciorba-radauteana',
   Cotnari = 'ro.food.cotnari',
   BorsLipovenesc = 'ro.food.bors-lipovenesc',
-  Saramura = 'ro.food.saramura',
-  PlacintaDobrogeana = 'ro.food.placinta-dobrogeana',
   Suberek = 'ro.food.suberek',
   Murfatlar = 'ro.food.murfatlar',
 }
@@ -936,6 +928,42 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
+    // Coordinates: Wikidata Q17169956.
+    {
+      id: RoTrace.CaruCuBere,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      at: [26.0981, 44.4321],
+      rarity: 'common',
+      icon: 'beer',
+      image: {
+        src: '/guides/romania/traces/caru-cu-bere.webp',
+        credit: {
+          author: 'Chainwit.',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucharest_-_Caru_cu_Bere_-_interior_(MAR_2023)_-_img_03.jpg',
+        },
+      },
+    },
+    // Coordinates: Wikidata Q28224665.
+    {
+      id: RoTrace.CarturestiCarusel,
+      region: Wallachia,
+      city: Ro.Bucharest,
+      where: 'city',
+      at: [26.1016, 44.4319],
+      rarity: 'common',
+      icon: 'books',
+      image: {
+        src: '/guides/romania/traces/carturesti-carusel.webp',
+        credit: {
+          author: 'Mihai Petre',
+          license: 'CC BY-SA 4.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Libraria_Carturesti_Carusel_-_Interior_ziua.jpg',
+        },
+      },
+    },
     {
       id: RoTrace.BrasovCouncilHouse,
       region: Transylvania,
@@ -984,6 +1012,24 @@ export const structure = defineGuide<Ro, RoSection>({
           author: 'ThE cRaCkEr',
           license: 'CC BY 3.0',
           url: 'https://commons.wikimedia.org/wiki/File:Brasov-sign_hollywood.jpg',
+        },
+      },
+    },
+    // Coordinates: Wikidata Q2076719.
+    {
+      id: RoTrace.BrasovStradaSforii,
+      region: Transylvania,
+      city: Ro.Brasov,
+      where: 'city',
+      at: [25.5885, 45.6396],
+      rarity: 'common',
+      icon: 'narrow',
+      image: {
+        src: '/guides/romania/traces/brasov-strada-sforii.webp',
+        credit: {
+          author: 'Whitepixels',
+          license: 'CC0',
+          url: 'https://commons.wikimedia.org/wiki/File:RO_BV_Strada_Sforii_2018.jpg',
         },
       },
     },
@@ -1217,6 +1263,17 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
+    // Coordinates: OpenStreetMap way 204002463. TODO immagine: no licensed photograph of the
+    // restaurant on Wikimedia Commons yet.
+    {
+      id: RoTrace.BoltaRece,
+      region: Moldavia,
+      city: Ro.Iasi,
+      where: 'city',
+      at: [27.5868, 47.1675],
+      rarity: 'common',
+      icon: 'wine',
+    },
     {
       id: RoTrace.SuceavaCitadel,
       region: Moldavia,
@@ -1265,6 +1322,42 @@ export const structure = defineGuide<Ro, RoSection>({
           author: 'Pierre André Leclercq',
           license: 'CC BY-SA 4.0',
           url: 'https://commons.wikimedia.org/wiki/File:Gura_M%C4%83n%C4%83stirea_Voronet.jpg',
+        },
+      },
+    },
+    // Marginea, Suceava county (Bucovina): Moldavia. Coordinates: OpenStreetMap node 2562026285
+    // (the Magopăț workshop, Calea Bucovinei 192).
+    {
+      id: RoTrace.MargineaBlackPottery,
+      region: Moldavia,
+      where: 'nearby',
+      at: [25.7944, 47.801],
+      rarity: 'rare',
+      icon: 'jar',
+      image: {
+        src: '/guides/romania/traces/marginea-black-pottery.webp',
+        credit: {
+          author: 'Bogdan29roman',
+          license: 'Public domain',
+          url: 'https://commons.wikimedia.org/wiki/File:Ceramica_Marginea.jpg',
+        },
+      },
+    },
+    // Vama, Suceava county (Bucovina): Moldavia. Coordinates: OpenStreetMap node 6551718803. The
+    // stock image shows Bucovina eggs, not the museum.
+    {
+      id: RoTrace.VamaEggMuseum,
+      region: Moldavia,
+      where: 'nearby',
+      at: [25.6955, 47.5666],
+      rarity: 'rare',
+      icon: 'egg',
+      image: {
+        src: '/guides/romania/traces/vama-egg-museum.webp',
+        credit: {
+          author: 'jackmac34 (Pixabay)',
+          license: 'CC0',
+          url: 'https://commons.wikimedia.org/wiki/File:Painted_Romanian_Easter_Eggs.jpg',
         },
       },
     },
@@ -1437,6 +1530,24 @@ export const structure = defineGuide<Ro, RoSection>({
           author: 'Dennis Sylvester Hurd',
           license: 'CC0',
           url: 'https://commons.wikimedia.org/wiki/File:Constan%C8%9Ba_Casino_2025_(54606449888).jpg',
+        },
+      },
+    },
+    // Mamaia, north of Constanța's centre. Coordinates: Wikidata Q25461006 (Mamaia casino, on the
+    // beach).
+    {
+      id: RoTrace.MamaiaBeach,
+      region: Dobruja,
+      where: 'nearby',
+      at: [28.6258, 44.2355],
+      rarity: 'common',
+      icon: 'beach',
+      image: {
+        src: '/guides/romania/traces/mamaia-beach.webp',
+        credit: {
+          author: 'Alexandru Panoiu',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Beach_in_Mamaia_(cropped).jpg',
         },
       },
     },
@@ -1921,6 +2032,24 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
+    // Hunedoara is not a city of the guide. No card: the trace is under the 1441–1456 event of
+    // the timeline (Iancu de Hunedoara). Coordinates: Wikidata Q126576.
+    {
+      id: RoTrace.CorvinCastle,
+      region: Transylvania,
+      where: 'remote',
+      at: [22.8883, 45.7491],
+      rarity: 'rare',
+      icon: 'castle',
+      image: {
+        src: '/guides/romania/traces/corvin-castle.webp',
+        credit: {
+          author: 'Carcea Daniel',
+          license: 'CC BY-SA 3.0 ro',
+          url: 'https://commons.wikimedia.org/wiki/File:Castelul_Corvinilor_HD.jpg',
+        },
+      },
+    },
     // Gastronomia, whole country: the dishes are traces anywhere (album first page). No images.
     {
       id: RoTrace.FoodMamaliga,
@@ -2024,21 +2153,6 @@ export const structure = defineGuide<Ro, RoSection>({
       },
     },
     {
-      id: RoTrace.FoodVarzaCluj,
-      region: Transylvania,
-      where: 'region',
-      rarity: 'common',
-      icon: 'pot',
-      image: {
-        src: '/guides/romania/traces/food-varza-cluj.webp',
-        credit: {
-          author: 'Chainwit.',
-          license: 'CC BY 4.0',
-          url: 'https://commons.wikimedia.org/wiki/File:Cluj_Napoca_-_Varz%C4%83_%C3%A0_la_Cluj_(2023)_-_img_02.jpg',
-        },
-      },
-    },
-    {
       id: RoTrace.FoodPalinca,
       region: Transylvania,
       where: 'region',
@@ -2052,28 +2166,6 @@ export const structure = defineGuide<Ro, RoSection>({
           url: 'https://commons.wikimedia.org/wiki/File:Palinka.jpg',
         },
       },
-    },
-    {
-      id: RoTrace.FoodPljeskavica,
-      region: Transylvania,
-      where: 'region',
-      rarity: 'common',
-      icon: 'fork',
-      image: {
-        src: '/guides/romania/traces/food-pljeskavica.webp',
-        credit: {
-          author: 'Biso',
-          license: 'CC BY 3.0',
-          url: 'https://commons.wikimedia.org/wiki/File:Pleskavitsa.JPG',
-        },
-      },
-    },
-    {
-      id: RoTrace.FoodBalmos,
-      region: Transylvania,
-      where: 'region',
-      rarity: 'rare',
-      icon: 'pot',
     },
     {
       id: RoTrace.FoodBranzaDeBurduf,
@@ -2136,28 +2228,6 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
-    {
-      id: RoTrace.FoodMagiun,
-      region: Wallachia,
-      where: 'region',
-      rarity: 'common',
-      icon: 'jar',
-    },
-    {
-      id: RoTrace.FoodDealuMare,
-      region: Wallachia,
-      where: 'region',
-      rarity: 'common',
-      icon: 'wine',
-      image: {
-        src: '/guides/romania/traces/food-dealu-mare.webp',
-        credit: {
-          author: 'Andrei Dobre',
-          license: 'CC BY-SA 4.0',
-          url: 'https://commons.wikimedia.org/wiki/File:Panorama_Tohani_(2).jpg',
-        },
-      },
-    },
     // Gastronomia, Moldavia. No images.
     {
       id: RoTrace.FoodTochitura,
@@ -2190,21 +2260,6 @@ export const structure = defineGuide<Ro, RoSection>({
       },
     },
     {
-      id: RoTrace.FoodCiorbaRadauteana,
-      region: Moldavia,
-      where: 'region',
-      rarity: 'common',
-      icon: 'bowl',
-      image: {
-        src: '/guides/romania/traces/food-ciorba-radauteana.webp',
-        credit: {
-          author: 'Romaniancook',
-          license: 'CC BY-SA 4.0',
-          url: 'https://commons.wikimedia.org/wiki/File:Ciorba_radauteana.jpg',
-        },
-      },
-    },
-    {
       id: RoTrace.FoodCotnari,
       region: Moldavia,
       where: 'region',
@@ -2226,36 +2281,6 @@ export const structure = defineGuide<Ro, RoSection>({
       where: 'region',
       rarity: 'common',
       icon: 'fish',
-    },
-    {
-      id: RoTrace.FoodSaramura,
-      region: Dobruja,
-      where: 'region',
-      rarity: 'common',
-      icon: 'fish',
-      image: {
-        src: '/guides/romania/traces/food-saramura.webp',
-        credit: {
-          author: 'Nicubunu',
-          license: 'CC BY-SA 3.0',
-          url: 'https://commons.wikimedia.org/wiki/File:Saramura_de_chefal.jpg',
-        },
-      },
-    },
-    {
-      id: RoTrace.FoodPlacintaDobrogeana,
-      region: Dobruja,
-      where: 'region',
-      rarity: 'common',
-      icon: 'bread',
-      image: {
-        src: '/guides/romania/traces/food-placinta-dobrogeana.webp',
-        credit: {
-          author: 'Korinna',
-          license: 'CC0',
-          url: 'https://commons.wikimedia.org/wiki/File:Placinta_dobrogeana.jpg',
-        },
-      },
     },
     {
       id: RoTrace.FoodSuberek,
@@ -2410,6 +2435,8 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.RomanianAthenaeum,
         RoTrace.VillageMuseum,
         RoTrace.SteauaStadium,
+        RoTrace.CaruCuBere,
+        RoTrace.CarturestiCarusel,
       ],
     },
     {
@@ -2432,6 +2459,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.IasiPalaceOfCulture,
         RoTrace.IasiThreeHierarchsMonastery,
         RoTrace.CreangaBojdeuca,
+        RoTrace.BoltaRece,
       ],
     },
     {
@@ -2439,7 +2467,13 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'city',
       region: Moldavia,
       on: [Ro.Suceava],
-      traces: [RoTrace.SuceavaCitadel, RoTrace.SuceavaSaintJohnMonastery, RoTrace.VoronetMonastery],
+      traces: [
+        RoTrace.SuceavaCitadel,
+        RoTrace.SuceavaSaintJohnMonastery,
+        RoTrace.VoronetMonastery,
+        RoTrace.MargineaBlackPottery,
+        RoTrace.VamaEggMuseum,
+      ],
     },
     {
       id: Ro.Brasov,
@@ -2450,6 +2484,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.BrasovCouncilHouse,
         RoTrace.BrasovBlackChurch,
         RoTrace.BrasovTampaLetters,
+        RoTrace.BrasovStradaSforii,
         RoTrace.CantacuzinoCastle,
       ],
     },
@@ -2501,6 +2536,7 @@ export const structure = defineGuide<Ro, RoSection>({
         RoTrace.ConstantaRomanMosaic,
         RoTrace.ConstantaGrandMosque,
         RoTrace.ConstantaCasino,
+        RoTrace.MamaiaBeach,
         RoTrace.VamaVeche,
       ],
     },
@@ -2596,7 +2632,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.Mamaliga,
       kind: 'food',
       on: 'always',
-      traces: [RoTrace.FoodMamaliga, RoTrace.FoodBalmos],
+      traces: [RoTrace.FoodMamaliga],
     },
     {
       id: RoFood.Sarmale,
@@ -2608,7 +2644,7 @@ export const structure = defineGuide<Ro, RoSection>({
       id: RoFood.CiorbaBors,
       kind: 'food',
       on: 'always',
-      traces: [RoTrace.FoodCiorbaBurta, RoTrace.FoodCiorbaRadauteana, RoTrace.FoodBorsLipovenesc],
+      traces: [RoTrace.FoodCiorbaBurta, RoTrace.FoodBorsLipovenesc],
     },
     {
       id: RoFood.Cozonac,
@@ -2643,32 +2679,11 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [RoTrace.FoodKurtoskalacs],
     },
     {
-      id: RoFood.VarzaCluj,
-      kind: 'food',
-      region: Transylvania,
-      on: [Transylvania],
-      traces: [RoTrace.FoodVarzaCluj],
-    },
-    {
       id: RoFood.Palinca,
       kind: 'food',
       region: Transylvania,
       on: [Transylvania],
       traces: [RoTrace.FoodPalinca],
-    },
-    {
-      id: RoFood.BanatCuisine,
-      kind: 'food',
-      region: Transylvania,
-      on: [Transylvania],
-      traces: [RoTrace.FoodPljeskavica],
-    },
-    {
-      id: RoFood.Balmos,
-      kind: 'food',
-      region: Transylvania,
-      on: [Transylvania],
-      traces: [RoTrace.FoodBalmos],
     },
     {
       id: RoFood.BranzaDeBurduf,
@@ -2699,20 +2714,6 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [RoTrace.FoodCovrigi],
     },
     {
-      id: RoFood.Magiun,
-      kind: 'food',
-      region: Wallachia,
-      on: [Wallachia],
-      traces: [RoTrace.FoodMagiun],
-    },
-    {
-      id: RoFood.DealuMare,
-      kind: 'food',
-      region: Wallachia,
-      on: [Wallachia],
-      traces: [RoTrace.FoodDealuMare],
-    },
-    {
       id: RoFood.Tochitura,
       kind: 'food',
       region: Moldavia,
@@ -2727,13 +2728,6 @@ export const structure = defineGuide<Ro, RoSection>({
       traces: [RoTrace.FoodPoaleInBrau],
     },
     {
-      id: RoFood.CiorbaRadauteana,
-      kind: 'food',
-      region: Moldavia,
-      on: [Moldavia],
-      traces: [RoTrace.FoodCiorbaRadauteana],
-    },
-    {
       id: RoFood.Cotnari,
       kind: 'food',
       region: Moldavia,
@@ -2746,20 +2740,6 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Dobruja,
       on: [Dobruja],
       traces: [RoTrace.FoodBorsLipovenesc],
-    },
-    {
-      id: RoFood.Saramura,
-      kind: 'food',
-      region: Dobruja,
-      on: [Dobruja],
-      traces: [RoTrace.FoodSaramura],
-    },
-    {
-      id: RoFood.PlacintaDobrogeana,
-      kind: 'food',
-      region: Dobruja,
-      on: [Dobruja],
-      traces: [RoTrace.FoodPlacintaDobrogeana],
     },
     {
       id: RoFood.Suberek,

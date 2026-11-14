@@ -596,6 +596,22 @@ function Body() {
                 Settecento.
               </Detail>
             </Event>
+            <Event on={[Transylvania]} date="1441–1456" title="Iancu de Hunedoara">
+              <Detail on={[Transylvania]}>
+                Nel 1441 il re Vladislao nomina voivoda di Transilvania{' '}
+                <N href="https://it.wikipedia.org/wiki/Giovanni_Hunyadi">Iancu de Hunedoara</N>{' '}
+                (Hunyadi János in ungherese), di una famiglia di piccola nobiltà di origine romena.
+                Dal 1446 governa il Regno d’Ungheria in nome del re bambino Ladislao V.
+              </Detail>
+              <Detail on={[Transylvania]}>
+                Nel luglio 1456 difende Belgrado (oggi in Serbia) dall’assedio di Maometto II. Muore
+                di peste nell’accampamento l’11 agosto ed è sepolto nella cattedrale di Alba Iulia.
+                Nel 1458 il figlio{' '}
+                <N href="https://it.wikipedia.org/wiki/Mattia_Corvino">Mattia Corvino</N> diventa re
+                d’Ungheria.
+              </Detail>
+              <Today traces={[RoTrace.CorvinCastle]} />
+            </Event>
             <Event
               on={[Moldavia]}
               date="1456"
@@ -3176,19 +3192,6 @@ function Body() {
             remember="Il kürtőskalács si mangia caldo, appena tolto dal suo cilindro: è il dolce della Transilvania ungherese."
           />
           <Card
-            card={RoFood.VarzaCluj}
-            intro={
-              <>
-                La <N>varză à la Cluj</N> è uno sformato al forno a strati di crauti, carne di
-                maiale tritata, riso e smântână. Un ricettario ungherese del 1695 parla già di un
-                «cavolo di Kolozsvár», ma era cavolo cotto con oca o pollo; la versione a strati è
-                più recente, e su chi l’abbia inventata circolano solo aneddoti. Si mangia in tutta
-                la Transilvania e in Ungheria.
-              </>
-            }
-            remember="La varză à la Cluj porta il nome della città nelle due lingue: è il piatto di crauti della Transilvania ungherese e romena."
-          />
-          <Card
             card={RoFood.Palinca}
             intro={
               <>
@@ -3200,32 +3203,6 @@ function Body() {
               </>
             }
             remember="La pălincă è la țuică della Transilvania, distillata due volte: più forte, e di molti frutti."
-          />
-          <Card
-            card={RoFood.BanatCuisine}
-            intro={
-              <>
-                Il <N>Banato</N> mette insieme le cucine di chi vi abita da tre secoli: romeni,
-                svevi, ungheresi e serbi. Dagli svevi e dagli ungheresi vengono tagliatelle, zuppe
-                di patate, piatti di prosciutto poco speziati e il papricaș di pollo; dai serbi la
-                pljeskavica, una grande polpetta di carne tritata alla griglia, che dopo il 1989 si
-                diffonde in tutta Timișoara. Per il 2028 il Banato è stato nominato Regione
-                gastronomica europea.
-              </>
-            }
-            remember="Nel Banato la tavola parla più lingue: tagliatelle sveve e griglia serba nella stessa città."
-          />
-          <Card
-            card={RoFood.Balmos}
-            intro={
-              <>
-                Il <N>balmoș</N> è il piatto dei pastori: alla stână, l’ovile di montagna, il
-                formaggio fresco di pecora bolle nel latte di pecora o nella panna e si addensa con
-                un po’ di farina di mais. È un parente ricco della mămăligă, che invece si cuoce in
-                acqua.
-              </>
-            }
-            remember="Il balmoș è la mămăligă dei pastori: farina di mais cotta nel latte e nel formaggio di pecora."
           />
           <Card
             card={RoFood.BranzaDeBurduf}
@@ -3296,32 +3273,6 @@ function Body() {
             }
             remember="I covrigi sono il pane da passeggio: caldi, salati, comprati al forno sotto casa."
           />
-          <Card
-            card={RoFood.Magiun}
-            intro={
-              <>
-                Il <N>magiun</N> è una crema densa di prugne cotte a lungo a fuoco basso, senza
-                zucchero aggiunto. Quello di <N>Topoloveni</N>, nel distretto di Argeș, segue una
-                ricetta del 1914 e nel 2011 è il primo prodotto alimentare romeno a ottenere
-                un’indicazione geografica protetta dell’Unione europea. Si spalma sul pane o
-                farcisce i dolci.
-              </>
-            }
-            remember="Il magiun è solo prugne e tempo: quello di Topoloveni è il primo cibo romeno protetto dall’Unione europea."
-          />
-          <Card
-            card={RoFood.DealuMare}
-            intro={
-              <>
-                Il <N>Dealu Mare</N>, «la grande collina», è una striscia di colline lunga circa 65
-                km e larga da 3 a 12, ai piedi dei Carpazi fra i fiumi Teleajen e Buzău, nei
-                distretti di Prahova e Buzău. È una denominazione di origine protetta: rossi
-                soprattutto intorno a Valea Călugărească, bianchi intorno a Pietroasele. Il vitigno
-                simbolo è la <N>fetească neagră</N>, un rosso autoctono.
-              </>
-            }
-            remember="Il Dealu Mare è la collina del vino a un’ora da Bucarest: chiedi una fetească neagră."
-          />
         </Part>
         <Part section={RoSection.FoodMoldavia}>
           <Card
@@ -3351,19 +3302,6 @@ function Body() {
             remember="Le poale-n brâu sono il dolce moldavo di formaggio: lo riconosci dai lembi ripiegati verso il centro."
           />
           <Card
-            card={RoFood.CiorbaRadauteana}
-            intro={
-              <>
-                La <N>ciorbă rădăuțeană</N> è una ciorbă di pollo legata con tuorli e smântână,
-                acidulata con aceto o limone e profumata di aglio: una versione più leggera della
-                zuppa di trippa. Viene da <N>Rădăuți</N>, in Bucovina, dove la crea una cuoca,
-                Cornelia Dumitrescu, fra la fine degli anni Settanta e l’inizio degli Ottanta: le
-                date variano da una fonte all’altra. Da allora è nei menù di tutto il paese.
-              </>
-            }
-            remember="La ciorbă rădăuțeană è una ricetta recente con un’autrice: in pochi decenni è diventata una zuppa di tutta la Romania."
-          />
-          <Card
             card={RoFood.Cotnari}
             intro={
               <>
@@ -3391,30 +3329,6 @@ function Body() {
               </>
             }
             remember="Il borș dei lipoveni si fa con il pesce del giorno, e più pesci ci sono, meglio è."
-          />
-          <Card
-            card={RoFood.Saramura}
-            intro={
-              <>
-                La <N>saramură</N> è pesce cotto sulla brace viva e poi bagnato in una salamoia di
-                acqua, sale grosso e molto peperoncino. È il modo in cui i pescatori del delta
-                cuociono il pesce appena preso, e si mangia spesso con la mămăligă.
-              </>
-            }
-            remember="La saramură è il pesce dei pescatori: brace, sale e peperoncino, niente altro."
-          />
-          <Card
-            card={RoFood.PlacintaDobrogeana}
-            intro={
-              <>
-                La <N>plăcintă dobrogeană</N> è una torta di sfoglie sottili tirate a mano, farcite
-                di formaggio salato, di solito telemea, e uova, e cotta al forno in teglia; esistono
-                anche versioni con carne o dolci. La ricetta passa di generazione in generazione, e
-                la Bulgaria ha contestato la sua registrazione come specialità romena: torte di
-                sfoglia simili si fanno su entrambe le rive del Danubio.
-              </>
-            }
-            remember="La plăcintă dobrogeană è sfoglia tirata a mano e formaggio salato: una torta che due paesi rivendicano."
           />
           <Card
             card={RoFood.Suberek}
