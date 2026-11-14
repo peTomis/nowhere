@@ -117,6 +117,7 @@ Un personaggio importante ma senza tracce visibili resta nella timeline. Un pers
    - è **leggibile da sola**, perché il lettore potrebbe visitarne soltanto una;
    - non ripete ciò che dicono le altre tracce o l’introduzione;
    - ha un’indicazione **«Come trovarla»**: dove si trova esattamente (nome del museo, sala, lato della piazza, orari o accesso se rilevanti). È **obbligatoria per le tracce insolite**, che altrimenti sarebbero introvabili, e consigliata per tutte. Le informazioni pratiche che cambiano nel tempo (orari, biglietti) vanno verificate prima della pubblicazione o omesse.
+   - se sta dentro un museo, una chiesa, un parco o una piazza più conosciuti di lei (la copia della Colonna Traiana nel Museo nazionale di storia), lo dice già la riga del luogo, sotto il nome: il campo `within` («Museo nazionale di storia della Romania, Bucarest, Valacchia»). Nelle schede città, dove la città non si ripete, resta solo `within`. Se il nome del sito contiene già la località (il monastero di Putna), `place` tiene solo la regione;
 3. **Da ricordare.** Una sola frase in chiusura: l’idea che il lettore deve portarsi a casa. Se non riesci a scriverla, la scheda non ha ancora un fuoco.
 
 #### Come distribuire il contenuto tra le tracce

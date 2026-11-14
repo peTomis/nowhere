@@ -10,6 +10,9 @@ album.
 - `text`: 2–4 sentences, present tense, plain voice; lead with what makes the place matter, end
   with what to look at. Abstract closing lines ("racconta…", "non una testimonianza di
   isolamento") replaced by one concrete detail.
+- `within` (added later): the museum, church, park or square a trace is in, when it is better
+  known than the trace ("Museo nazionale di storia della Romania"); shown before `place`. When
+  the site's name already contains the town (Putna, Curtea de Argeș), `place` keeps the region only.
 - `place`: always "Town, Region" (or "Area, Region"); "distretto di …" dropped from `place`
   (the county stays in "Come trovarla"), Bucovina used as region for Putna and Voroneț, the
   Mehedinți traces under Valacchia as in `structure.ts`. Template literals (`places[…]`) wherever

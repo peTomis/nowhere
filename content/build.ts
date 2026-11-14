@@ -128,6 +128,8 @@ export type AlbumTrace = {
   local?: string
   /** Where it is, under the name. */
   place: string
+  /** The better-known site it is in (TraceText.within). */
+  within?: string
   /** Region id; null for the three traces of the whole country. */
   region: string | null
   /** City name when the trace is in a city. */
@@ -279,6 +281,7 @@ export function tracesOf<P extends string, S extends string>(
       name: text.name,
       local: text.local,
       place: text.place,
+      within: text.within,
       region: tr.region ?? null,
       city: tr.city && names.places[tr.city],
       where: tr.where,

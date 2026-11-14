@@ -101,6 +101,10 @@ export function StockCredit({ credit }: { credit: NonNullable<AlbumTrace['image'
   )
 }
 
+/** "Museo nazionale di storia della Romania, Bucarest, Valacchia": the site, then the place. */
+export const placeLine = (trace: Pick<AlbumTrace, 'within' | 'place'>) =>
+  [trace.within, trace.place].filter(Boolean).join(', ')
+
 export const photoSrc = (e: Entry | undefined, size: 'full' | 'thumb') =>
   e?.local?.preview ?? e?.photo?.[size]
 
@@ -141,6 +145,8 @@ export function Trace({
   const [viewing, setViewing] = useState(false)
   if (!trace) return null
   const description = text ?? trace.text
+  // City cards leave the place out (it is the card's city), but keep the site it is in.
+  const pinLine = showPlace ? placeLine(trace) : trace.within
   const entry = entries[trace.key]
   const seen = isSeen(entry)
   const num = pad(trace.num)
@@ -268,10 +274,10 @@ export function Trace({
               <span className="ml-[.3em] font-normal text-neutral-700 italic">{trace.local}</span>
             )}
           </Heading>
-          {showPlace && trace.place && (
+          {pinLine && (
             <span className="flex items-center gap-[6px] text-sm leading-[1.4] text-neutral-700">
               <MapPinIcon weight="duotone" size={16} aria-hidden="true" />
-              {trace.place}
+              {pinLine}
             </span>
           )}
 

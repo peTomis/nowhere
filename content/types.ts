@@ -333,6 +333,13 @@ export type TraceText = {
   /** Where it is, under the name: "Sighișoara, Transilvania". */
   place: string
   /**
+   * The museum, church, park or square the trace is in or part of, when it is better known than
+   * the trace itself: "Museo nazionale di storia della Romania". Shown before `place` on the pin
+   * line ("Museo nazionale di storia della Romania, Bucarest, Valacchia"), and alone in city
+   * cards, which leave the place out.
+   */
+  within?: string
+  /**
    * What it is: two or three sentences. Optional: leave it out when the text around the trace
    * already says it (the trace then shows only "Come trovarla").
    */

@@ -20,7 +20,7 @@ import { PhotoError, processPhoto, type ProcessedPhoto } from '@/lib/reader/phot
 import { NOTE_UI_MAX } from '@/lib/reader/schema'
 import { pad, useGuideData } from './data'
 import { closePhotoPanel, usePhotoPanel } from './panelStore'
-import { photoSrc, RarityMarks, StockCredit } from './Trace'
+import { photoSrc, placeLine, RarityMarks, StockCredit } from './Trace'
 
 /*
  * The photo panel, port of "PannelloFoto.dc.html": take or pick a photo for a trace, add a note,
@@ -187,7 +187,7 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
             <h2 id={`${ids}-t`} className="m-0 text-[21px] leading-[1.25]">
               {trace.name}
             </h2>
-            <span className="text-sm text-neutral-700 italic">{trace.place}</span>
+            <span className="text-sm text-neutral-700 italic">{placeLine(trace)}</span>
           </div>
           <button
             ref={closeRef}
