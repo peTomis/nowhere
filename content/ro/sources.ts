@@ -197,6 +197,11 @@ export const sources: GuideSources = {
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Radu_cel_Frumos',
     },
+    {
+      title: 'Cronologia istorică',
+      site: 'Castelul Bran',
+      url: 'https://www.bran-castle.com/en/cronologia-istorica/',
+    },
   ],
   [RoPerson.StephenTheGreat]: [
     {
@@ -290,6 +295,16 @@ export const sources: GuideSources = {
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Five_hundred_lei',
     },
+    {
+      title: 'Cimitirul Bellu București: Personalități și Legende',
+      site: 'Umblu teleleu',
+      url: 'https://umblu-teleleu.ro/cimitirul-bellu/',
+    },
+    {
+      title: 'Aleea scriitorilor și monumentele de la Bellu',
+      site: 'DC News',
+      url: 'https://www.dcnews.ro/aleea-scriitorilor-si-monumentele-de-la-bellu_716277.html',
+    },
   ],
   [RoPerson.QueenMarie]: [
     {
@@ -324,6 +339,12 @@ export const sources: GuideSources = {
       site: 'Mediafax',
       url: 'https://mediafax.ro/english/romanian-bran-castle-officially-becomes-private-property-4405441',
     },
+    {
+      title:
+        'Caseta în care se află inima Reginei Maria, transferată la Palatul Pelișor, pe 3 noiembrie',
+      site: 'Wall-Street.ro',
+      url: 'https://www.wall-street.ro/articol/Lifestyle/189143/caseta-in-care-se-afla-inima-reginei-maria-transferata-la-palatul-pelisor-pe-3-noiembrie.html',
+    },
   ],
   [RoPerson.GeorgeEnescu]: [
     { title: 'Luminiș', site: 'Wikipedia', url: 'https://en.wikipedia.org/wiki/Lumini%C8%99' },
@@ -342,6 +363,22 @@ export const sources: GuideSources = {
       title: 'Romania 5 Lei 2018',
       site: 'banknotes.com',
       url: 'https://www.banknotes.com/ro118.htm',
+    },
+    {
+      title: 'Casa Memorială „George Enescu” din Sinaia',
+      site: 'Wikipedia (ro)',
+      url: 'https://ro.wikipedia.org/wiki/Casa_Memorial%C4%83_%E2%80%9EGeorge_Enescu%E2%80%9D_din_Sinaia',
+    },
+    {
+      title: 'The Cantacuzino Palace – George Enescu House',
+      site: 'Case de muzicieni',
+      url: 'https://www.casedemuzicieni.ro/?p=3486',
+    },
+    {
+      title:
+        'Ministerul Culturii: obiectele de patrimoniu de la Muzeul Național „George Enescu” sunt în siguranță',
+      site: 'Agerpres',
+      url: 'https://agerpres.ro/cultura-media/2026/03/07/ministerul-culturii-obiectele-de-patrimoniu-de-la-muzeul-national-george-enescu-sunt-in-siguranta--1535056',
     },
   ],
   [RoPerson.NadiaComaneci]: [
@@ -385,6 +422,11 @@ export const sources: GuideSources = {
         'România nu-și permite să construiască un muzeu Nadia Comăneci și să renoveze sala de gimnastică care poartă numele zeiței de la Montreal',
       site: 'Europa Liberă România',
       url: 'https://romania.europalibera.org/a/romania-nu-si-permite-sa-refaca-sala-de-gimnastica-nadia-comaneci-din-onesti-si-nici-sa-construiasca-un-muzeu-dedicat-legendei/33021971.html',
+    },
+    {
+      title: 'Nadia Comăneci: 18 iulie va fi întotdeauna cea mai emoţionantă zi din viaţa mea',
+      site: 'Digi24',
+      url: 'https://www.digi24.ro/stiri/actualitate/nadia-comaneci-18-iulie-va-fi-intotdeauna-cea-mai-emotionanta-zi-din-viata-mea-3867969',
     },
   ],
   [Ro.Bucharest]: [
@@ -481,6 +523,16 @@ export const sources: GuideSources = {
       title: 'Romanian Athenaeum',
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Romanian_Athenaeum',
+    },
+    {
+      title: '„Dimitrie Gusti” National Village Museum',
+      site: 'Ghidul muzeelor (CIMEC)',
+      url: 'https://ghidulmuzeelor.cimec.ro/idEN.asp?k=48',
+    },
+    {
+      title: 'Steaua Stadium (2021)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Steaua_Stadium_(2021)',
     },
   ],
   [Ro.Iasi]: [
@@ -724,6 +776,11 @@ export const sources: GuideSources = {
       site: 'Actual de Cluj',
       url: 'https://actualdecluj.ro/?p=46959',
     },
+    {
+      title: 'Bánffy Castle',
+      site: 'World Monuments Fund',
+      url: 'https://wmf.org/node/14174',
+    },
   ],
   [Ro.Sibiu]: [
     { title: 'About Us', site: 'The ASTRA Museum', url: 'https://muzeulastra.ro/en/despre/' },
@@ -783,6 +840,11 @@ export const sources: GuideSources = {
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Portrait_of_a_Man_with_a_Blue_Chaperon',
     },
+    {
+      title: 'Muzeul în aer liber',
+      site: 'Muzeul ASTRA',
+      url: 'https://muzeulastra.ro/en/colectii/muzeul-in-aer-liber/',
+    },
   ],
   [Ro.Sighisoara]: [
     {
@@ -834,6 +896,11 @@ export const sources: GuideSources = {
       title: 'Scholars’ Stairs Sighișoara',
       site: 'Visit Mureș',
       url: 'https://visitmures.com/en/sighisoara/built-heritage/castles-citadels-architectural-curiosities/scholars-stairs-sighisoara',
+    },
+    {
+      title: 'Hermann Oberth',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Hermann_Oberth',
     },
   ],
   [Ro.Timisoara]: [
@@ -1309,6 +1376,11 @@ export const sources: GuideSources = {
         'Testamentul olograf al lui Avram Iancu, expus în localitatea natală cu ocazia Târgului de Fete de pe Muntele Găina',
       site: 'Alba24',
       url: 'https://alba24.ro/testamentul-olograf-al-lui-avram-iancu-expus-in-localitatea-natala-cu-ocazia-targului-de-fete-de-pe-muntele-gaina-506497.html',
+    },
+    {
+      title: 'Regulament de vizitare și acces în Salina Turda',
+      site: 'Salina Turda',
+      url: 'https://www.salinaturda.eu/wp-content/uploads/2022/11/Regulament-Salina-Turda-actualizat-10.11.2022.pdf',
     },
   ],
   [RoLandscape.IronGates]: [

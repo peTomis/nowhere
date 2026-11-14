@@ -182,15 +182,13 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Negli anni di Iași Eminescu è bibliotecario e ispettore scolastico e frequenta il circolo letterario Junimea. La tradizione vuole che scrivesse all’ombra di questo tiglio, vecchio di alcuni secoli: l’età esatta è discussa. È protetto come monumento naturale; davanti c’è un busto in bronzo del poeta.',
       find: 'Parco Copou, nel piazzale centrale, vicino all’obelisco con i leoni.',
     },
-    // TODO verificare: where the grave is inside the cemetery, for "Come trovarla".
     [RoTrace.EminescusGrave]: {
       name: 'La tomba al Bellu',
       local: 'Mormântul lui Eminescu',
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
       text: 'Eminescu muore a Bucarest e due giorni dopo è sepolto qui, all’ombra di un tiglio. La tomba è un luogo di pellegrinaggio: negli anniversari della nascita e della morte si riempie di fiori e candele.',
-      find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è nella parte storica del cimitero.',
+      find: 'Cimitero Bellu, Calea Șerban Vodă, nel sud di Bucarest. La tomba è sul viale degli scrittori (Aleea Scriitorilor), a pochi passi dall’ingresso principale, fra quelle di Caragiale e di Coșbuc.',
     },
-    // TODO verificare: the 1377 privilege and the construction dates (1377–1388) with a second source.
     [RoTrace.BranCastle]: {
       name: 'Il castello di Bran',
       local: 'Castelul Bran · Törzburg',
@@ -199,13 +197,12 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Nel 1377 il re d’Ungheria permette ai sassoni di Brașov di costruire una fortezza sulla strada del passo fra Transilvania e Valacchia: il castello sorveglia il confine e la dogana. Nel 1920 la città lo dona alla regina Maria, che ne fa la sua residenza preferita. Dopo il 1948 lo Stato lo confisca; nel 2006 lo restituisce agli eredi della regina. Oggi tutti lo chiamano «castello di Dracula».',
       find: 'Nel villaggio di Bran, sulla strada da Brașov verso Câmpulung. Si visita con biglietto; d’estate le code sono lunghe: arriva all’apertura.',
     },
-    // TODO verificare: the room where the heart is kept (Salonul de Aur or Camera de Aur: sources differ).
     [RoTrace.PelisorCastle]: {
       name: 'Il castello Pelișor',
       local: 'Castelul Pelișor',
       place: `Sinaia, ${places[Ro.Wallachia]}`,
       distance: `a circa 50 km da ${places[Ro.Brasov]}`,
-      text: 'Accanto a Peleș, Carol I fa costruire fra il 1899 e il 1902 una residenza più piccola per il nipote Ferdinando e per Maria. La regina ne cura gli interni, in stile Art Nouveau, e qui muore il 18 luglio 1938. Il suo cuore, che lei voleva a Balcic, sul Mar Nero, lascia la Bulgaria nel 1940 e finisce in un museo di Bucarest: dal 2015 è tornato qui, in uno scrigno d’argento.',
+      text: 'Accanto a Peleș, Carol I fa costruire fra il 1899 e il 1902 una residenza più piccola per il nipote Ferdinando e per Maria. La regina ne cura gli interni, in stile Art Nouveau, e qui muore il 18 luglio 1938. Il suo cuore, che lei voleva a Balcic, sul Mar Nero, lascia la Bulgaria nel 1940 e finisce in un museo di Bucarest: dal 2015 è qui, in uno scrigno d’argento, nel Salone d’oro dove la regina è morta.',
       find: 'Nel parco di Peleș, poche centinaia di metri più in alto del castello grande: si sale a piedi dal centro di Sinaia. Si visita con biglietto; controlla i giorni di apertura sul sito di Peleș.',
     },
     [RoTrace.GateOfTheKiss]: {
@@ -222,22 +219,20 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'L’ultima tappa del percorso: sedici moduli romboidali, compresi i mezzi moduli alle estremità, per più di 29 m. Il complesso viene inaugurato nel 1938; nel 2024 entra nel patrimonio mondiale dell’UNESCO. Una forma astratta ripetuta all’infinito al posto della statua di un eroe.',
       find: 'Parco della Colonna, in fondo a Calea Eroilor, oltre la chiesa dei Santi Pietro e Paolo: dalla Porta del bacio è circa un chilometro e mezzo a piedi.',
     },
-    // TODO verificare: the years of construction (1923–1926 or 1921–1922) and the address.
     [RoTrace.LuminisVilla]: {
       name: 'Villa Luminiș',
       local: 'Vila Luminiș · Casa memorială George Enescu',
       place: `Sinaia, ${places[Ro.Wallachia]}`,
       distance: `a circa 50 km da ${places[Ro.Brasov]}`,
       text: 'Enescu se la fa costruire negli anni Venti, su suoi disegni, nel quartiere Cumpătu di Sinaia: una villa in stile neoromeno nel bosco sopra la valle della Prahova. Ci passa le estati e ci lavora, lontano dai concerti di Parigi. Dal 1995 è casa memoriale, oggi sezione del Museo nazionale George Enescu.',
-      find: 'Nel quartiere Cumpătu, a nord del centro di Sinaia. Controlla giorni e orari sul sito del Museo nazionale George Enescu.',
+      find: 'Strada Yehudi Menuhin 2, nel quartiere Cumpătu, a nord del centro di Sinaia. Controlla giorni e orari sul sito del Museo nazionale George Enescu.',
     },
-    // TODO verificare: that the couple lived in the house in the garden, and the museum date (1956).
     [RoTrace.EnescuMuseum]: {
       name: 'Il palazzo del Nababbo',
       local: 'Palatul Cantacuzino · Muzeul Național George Enescu',
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
-      text: 'Un palazzo Belle Époque costruito all’inizio del Novecento per Gheorghe Grigore Cantacuzino, uomo politico e grande proprietario detto il Nababbo; sull’ingresso, una pensilina di vetro e ferro a forma di conchiglia. Nel 1937 Enescu sposa Maruca, vedova di Mihail, figlio del Nababbo, e i due vivono nella casa più piccola in fondo al giardino. Dal 1956 è il museo nazionale del compositore.',
-      find: 'Calea Victoriei 141, a nord di Piața Revoluției. Il palazzo e la casa del compositore, nel giardino, si visitano insieme.',
+      text: 'Un palazzo Belle Époque costruito all’inizio del Novecento per Gheorghe Grigore Cantacuzino, uomo politico e grande proprietario detto il Nababbo; sull’ingresso, una pensilina di vetro e ferro a forma di conchiglia. Nel 1937 Enescu sposa Maruca, vedova di Mihail, figlio del Nababbo, e dopo la guerra i due vivono per un periodo nella casa più piccola in fondo al giardino. Dal 1956 è il museo nazionale del compositore.',
+      find: 'Calea Victoriei 141, a nord di Piața Revoluției. Il palazzo e la casa del compositore sono chiusi per un restauro cominciato nel 2021: la facciata con la pensilina a conchiglia si vede dalla strada.',
     },
     [RoTrace.EnescuBanknote]: {
       name: 'Il 5 lei di Enescu',
@@ -246,13 +241,12 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Una banconota in polimero, viola. Sul fronte il ritratto di Enescu; sul retro l’Ateneo Romeno, un pianoforte e una riga del suo Œdipe.',
       find: 'Nel resto di quasi ogni acquisto: è uno dei tagli più usati.',
     },
-    // TODO verificare: the visitors' entrance on Strada Izvor and the booking rules.
     [RoTrace.PalaceOfTheParliament]: {
       name: 'Il Palazzo del Parlamento',
       local: 'Palatul Parlamentului · Casa Poporului',
       place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
       text: 'Ceaușescu lo chiama Casa del Popolo e ne avvia la costruzione nel 1984, al centro di un nuovo centro civico. Per fargli posto vengono spianati la collina e il quartiere di Uranus, con case, chiese e monasteri, e decine di migliaia di abitanti sono trasferiti. Alla sua morte non è finito; oggi ospita le due Camere del Parlamento.',
-      find: 'In fondo a Bulevardul Unirii. Si visita solo con visita guidata, da prenotare; l’ingresso dei visitatori è su Strada Izvor.',
+      find: 'In fondo a Bulevardul Unirii. Si visita solo con visita guidata, da prenotare, con passaporto o carta d’identità; l’ingresso dei visitatori è su Strada Izvor.',
     },
     [RoTrace.CentralCommitteeBuilding]: {
       name: 'Il balcone del Comitato centrale',
@@ -268,22 +262,21 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'La residenza privata della famiglia Ceaușescu, nel quartiere dei dirigenti del partito. Aperta al pubblico nel 2016, mostra sale di rappresentanza, appartamenti privati e una piscina coperta: il tenore di vita della famiglia negli anni in cui il paese vive di razionamenti di cibo, luce e riscaldamento.',
       find: 'Bulevardul Primăverii 50, vicino alla metro Aviatorilor. Solo con visita guidata, da prenotare.',
     },
-    // TODO verificare: whether the statue can be seen from outside the complex, and which apparatus it shows.
+    // TODO verificare: whether the statue in front of the hall can be seen from the street, outside the complex.
     [RoTrace.NadiaStatueOtopeni]: {
       name: 'Nadia davanti alla palestra',
       local: 'Statuia Nadiei Comăneci',
       place: `Otopeni, ${places[Ro.Wallachia]}`,
       distance: `a circa 15 km da ${places[Ro.Bucharest]}`,
-      text: 'Il 18 luglio 2026, cinquant’anni dopo il primo 10 della storia olimpica, la Fondazione Țiriac inaugura a Otopeni una palestra di ginnastica che porta il nome di Nadia, con corsi gratuiti per i bambini. Davanti all’ingresso, una statua la ritrae nel gesto finale di un esercizio.',
-      find: 'Nel complesso sportivo della Fondazione Țiriac a Otopeni, vicino all’aeroporto Henri Coandă. La palestra non è un museo: la statua è davanti all’ingresso.',
+      text: 'Il 18 luglio 2026, cinquant’anni dopo il primo 10 della storia olimpica, la Fondazione Țiriac inaugura a Otopeni una palestra di ginnastica che porta il nome di Nadia, con corsi gratuiti per i bambini. Davanti alla palestra, una statua la ritrae alla fine di un esercizio alla trave.',
+      find: 'Nel complesso sportivo della Fondazione Țiriac a Otopeni, vicino all’aeroporto Henri Coandă. La palestra non è un museo: la statua è davanti alla palestra.',
     },
-    // TODO verificare: the route and its panels with an official source (city hall or CSM Onești).
     [RoTrace.OnestiPathOfPerfection]: {
       name: 'La strada della perfezione',
       local: 'Drumul Perfecțiunii',
       place: `Onești, ${places[Ro.Moldavia]}`,
       text: 'A Onești Nadia cresce e si allena fino al 1977, nella scuola di Béla e Márta Károlyi. Dal 31 maggio 2026 un percorso in città segue il tragitto che faceva ogni giorno: dal condominio di Strada Tineretului dove abitava, oltre l’ex cinema Capitol, fino alla palestra che oggi porta il suo nome. Pannelli e contenuti digitali raccontano le tappe.',
-      find: 'Il percorso parte davanti al condominio di Strada Tineretului, a Onești (distretto di Bacău), sulla strada fra Bacău e il passo di Oituz.',
+      find: 'Il percorso parte davanti al condominio di Strada Tineretului dove Nadia è cresciuta, a Onești (distretto di Bacău), sulla strada fra Bacău e il passo di Oituz.',
     },
     [RoTrace.StavropoleosChurch]: {
       name: 'La chiesa di Stavropoleos',
@@ -299,7 +292,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Inaugurato nel 1888 su progetto del francese Albert Galleron, l’Ateneo è pagato in parte da una colletta pubblica durata decenni, con lo slogan «Dați un leu pentru Ateneu», «date un leu per l’Ateneo». Colonne classiche e una grande cupola: la capitale si presenta attraverso la cultura. Nella sala da concerto, sotto la cupola, un affresco di Costin Petrescu lungo 75 m racconta la storia romena dalla conquista di Traiano alla Grande Romania del 1918. È ancora la sede della Filarmonica George Enescu.',
       find: 'Strada Benjamin Franklin 1–3, sul giardino di Piața George Enescu, vicino a Calea Victoriei. La facciata principale si guarda dal giardino; per gli interni verifica le modalità di visita della Filarmonica.',
     },
-    // TODO verificare: the address.
     [RoTrace.VillageMuseum]: {
       name: 'Il Museo del Villaggio',
       local: 'Muzeul Național al Satului «Dimitrie Gusti»',
@@ -307,7 +299,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il 10 maggio 1936 il sociologo Dimitrie Gusti inaugura, con il re Carol II, un museo all’aperto di una trentina di case e fattorie, smontate nei villaggi studiati da lui e dai suoi studenti e rimontate in un parco della capitale. Oggi sono molte di più: case di legno del Maramureș, case seminterrate dell’Oltenia, mulini e chiese, lungo i viali sulla riva del lago Herăstrău.',
       find: 'Șoseaua Pavel D. Kiseleff 28–30, nel parco Regele Mihai I (l’ex parco Herăstrău), vicino all’Arco di Trionfo. Serve almeno un’ora e mezza.',
     },
-    // TODO verificare: the year of the new stadium (2021) and the street number.
     [RoTrace.SteauaStadium]: {
       name: 'Lo stadio della Steaua',
       local: 'Stadionul Steaua · Ghencea',
@@ -329,7 +320,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'La chiesa gotica dei sassoni di Brașov, luterana dalla Riforma. Il nome «Chiesa Nera» compare solo alla fine dell’Ottocento: la tradizione lo lega all’incendio del 1689, studi recenti al fumo della città industriale. Dentro sono esposti i tappeti anatolici donati dai mercanti sassoni fra Quattrocento e Seicento, la più grande collezione di «tappeti transilvani»: raccontano i commerci con il mondo ottomano. Cerca anche il grande organo di Carl August Buchholz, del 1839, con 4.000 canne.',
       find: 'Curtea Johannes Honterus, accanto a Piața Sfatului. Il portale e la mole della chiesa si vedono dal cortile; i tappeti sono all’interno.',
     },
-    // TODO verificare: the street of the cable car station and when the letters were put up.
     [RoTrace.BrasovTampaLetters]: {
       name: 'La scritta sul Tâmpa',
       local: 'Literele BRAȘOV',
@@ -359,7 +349,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Del 1859–1860, è il primo ponte in ghisa costruito in quella che oggi è la Romania. Scavalca Strada Ocnei, che scende verso la città bassa, e tiene unite le piazze alte: fermati sopra e guarda le ringhiere traforate e il dislivello. Il nome nasce forse da un equivoco: in tedesco era la Liegebrücke, il ponte «sdraiato», che suona come Lügenbrücke, il ponte «delle bugie». Da qui la leggenda locale che crolli sotto chi mente.',
       find: 'All’estremità di Piața Mică, sopra Strada Ocnei, vicino a Piața Huet. Guarda anche il ponte dal passaggio sottostante.',
     },
-    // TODO verificare: the area (96 or 132 ha by source: left out) and the number of buildings.
     [RoTrace.AstraMuseum]: {
       name: 'I villaggi nel bosco',
       local: 'Muzeul ASTRA · Muzeul în aer liber din Dumbrava Sibiului',
@@ -381,7 +370,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Un tetto di legno copre la salita dalla piazza alla scuola e alla chiesa sulla collina, perché scolari e fedeli ci arrivino anche con la neve e la pioggia. È del Seicento: in origine i gradini erano 300, oggi sono 175. È un collegamento fra due parti della cittadella, non una difesa: salendo, la piazza dei mercanti lascia il posto alla scuola e alla chiesa della comunità.',
       find: 'In fondo a Strada Școlii, dentro la cittadella. L’imbocco si riconosce dal tetto di legno; in cima c’è la Biserica din Deal, la chiesa sulla collina.',
     },
-    // TODO verificare: von Braun in 1930 and Prunariu in 1981 with a second source.
     [RoTrace.OberthHouse]: {
       name: 'La casa del padre dei razzi',
       local: 'Casa memorială Hermann Oberth',
@@ -433,13 +421,12 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Ai due capi della piazza si guardano due edifici di due Stati. Il teatro, dello studio viennese Fellner & Helmer, apre nel 1906 come teatro nazionale ungherese e nel 1919 diventa teatro nazionale romeno. La cattedrale ortodossa viene costruita fra il 1923 e il 1933, quando la città fa ormai parte della Romania. Prima di loro, qui c’era un grande parco: la piazza nasce con questi edifici.',
       find: 'Piața Avram Iancu, a est di Piața Unirii lungo Bulevardul Eroilor, a pochi minuti a piedi. Il teatro è sul lato sud, la cattedrale su quello nord.',
     },
-    // TODO verificare: what happened in 1944 (looted and burned by retreating troops?) and the visiting hours.
     [RoTrace.BanffyCastle]: {
       name: 'Il castello del festival',
       local: 'Castelul Bánffy · Bonchidai Bánffy-kastély',
       place: `Bonțida, ${places[Ro.Transylvania]}`,
       distance: `a circa 30 km da ${places[Ro.ClujNapoca]}`,
-      text: 'Dal Trecento è la tenuta della famiglia Bánffy, nobili ungheresi; nel Settecento il castello diventa una residenza barocca con un grande parco, e lo chiamano la «Versailles della Transilvania». Devastato alla fine della Seconda guerra mondiale e nazionalizzato nel 1948, cade in rovina; restituito alla famiglia nel 2007, una fondazione lo restaura con cantieri scuola. Dal 2013, ogni luglio, il parco ospita Electric Castle, uno dei grandi festival musicali della Romania.',
+      text: 'Dal Trecento è la tenuta della famiglia Bánffy, nobili ungheresi; nel Settecento il castello diventa una residenza barocca con un grande parco, e lo chiamano la «Versailles della Transilvania». Nell’ottobre 1944 le truppe tedesche in ritirata lo saccheggiano e lo incendiano; nazionalizzato nel 1948, cade in rovina; restituito alla famiglia nel 2007, una fondazione lo restaura con cantieri scuola. Dal 2013, ogni luglio, il parco ospita Electric Castle, uno dei grandi festival musicali della Romania.',
       find: 'Nel villaggio di Bonțida, a nord-est di Cluj verso Dej. Il castello si visita con biglietto; durante il festival si entra solo con il biglietto del festival.',
     },
     [RoTrace.IasiPalaceOfCulture]: {
@@ -456,7 +443,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Il principe Vasile Lupu fa costruire la chiesa fra il 1637 e il 1639 per esservi sepolto, e la ricopre fuori di pietra scolpita, un tempo dorata, con motivi geometrici e vegetali diversi su ogni lato. Nel 1641 vi arrivano da Costantinopoli le reliquie di santa Parascheva; nel 1642 il refettorio, oggi Sala gotica, ospita il sinodo che approva la Confessione ortodossa. Dentro sono sepolti Dimitrie Cantemir e Alexandru Ioan Cuza.',
       find: 'Bulevardul Ștefan cel Mare și Sfânt 28, accanto alla Cattedrale metropolitana. Il cortile è nel cuore del centro storico.',
     },
-    // TODO verificare: the address.
     [RoTrace.CreangaBojdeuca]: {
       name: 'La Bojdeuca di Creangă',
       local: 'Bojdeuca lui Ion Creangă',
@@ -478,7 +464,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'La chiesa del monastero è costruita fra il 1514 e il 1522, sotto Bogdan III e Stefano il Giovane, e diventa il principale luogo di culto della corte di Suceava. Gli affreschi esterni sono quasi scomparsi, ma restano porzioni leggibili; dentro è venerato San Giovanni il Nuovo, le cui reliquie arrivano in Moldavia nel Quattrocento.',
       find: 'Strada Ioan Vodă Viteazul 2, nel centro storico. La chiesa è ancora in uso: entra con abbigliamento rispettoso e verifica gli orari delle funzioni.',
     },
-    // TODO verificare: who paid for the 1547 paintings (Grigore Roșca or Petru Rareș: sources differ).
     [RoTrace.VoronetMonastery]: {
       name: 'Il blu di Voroneț',
       local: 'Mănăstirea Voroneț',
@@ -564,7 +549,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Jurilovca, sulla riva del lago Golovița, è fondata all’inizio dell’Ottocento da lipoveni, Vecchi credenti russi che rifiutano le riforme della Chiesa russa del Seicento e per questo sono perseguitati. Alla fine dell’Ottocento è un centro importante della pesca; alla fine del Novecento cala, per lo sfruttamento eccessivo. Il porto, rifatto nel 2023, guarda le lagune di Razim e Sinoe: ancora oggi è un villaggio di pescatori.',
       find: 'Jurilovca è sulla strada da Babadag verso la costa, nel sud della riserva. Il porto è sulla riva del lago Golovița; da Jurilovca partono anche i trasporti per Gura Portiței, il villaggio di vacanze fra la laguna e il mare.',
     },
-    // TODO verificare: the season and the departure points of the boats.
     [RoTrace.DeltaPelicans]: {
       name: 'I pellicani del delta',
       local: 'Pelicanul comun · Pelicanul creț',
@@ -630,14 +614,13 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Sull’altopiano carsico di Padiș i torrenti spariscono sotto terra. Qui uno di loro scende in una depressione nel bosco profonda circa 300 m e larga oltre un chilometro, attraversa tre grandi voragini con pareti di roccia, le «cittadelle», e si infila nella montagna da un portale di pietra. È un’area protetta del Parco naturale Apuseni.',
       find: 'Dall’altopiano di Padiș, a piedi per sentiero segnato fino ai belvedere sopra le voragini; scale e passerelle scendono verso il portale. Mezza giornata di cammino. Le strade sterrate per Padiș sono praticabili solo nella bella stagione.',
     },
-    // TODO verificare: the names of the two entrances and the temperature inside.
     [RoTrace.SalinaTurda]: {
       name: 'La salina di Turda',
       local: 'Salina Turda',
       place: `Turda, ${places[Ro.Transylvania]}`,
       distance: `a circa 35 km da ${places[Ro.ClujNapoca]}`,
       text: 'Il sale si scava qui dal Medioevo fino al 1932; poi la miniera chiude, e nella Seconda guerra mondiale serve da rifugio antiaereo. Riaperta nel 1992 per i visitatori e per chi cura malattie respiratorie, dopo i lavori del 2008–2010 è un parco sotterraneo: nella miniera Rudolf una ruota panoramica, un anfiteatro e campi da gioco; nella miniera Terezia, sul fondo, un lago dove si va in barca.',
-      find: 'Alla periferia di Turda, con due ingressi: quello storico verso il centro e quello nuovo dalla valle Durgău. Dentro ci sono circa 12 °C: porta una giacca anche d’estate.',
+      find: 'Alla periferia di Turda, con due ingressi: quello storico in Strada Salinelor e quello nuovo in Aleea Durgăului. Dentro ci sono fra 10 e 12 °C: porta una giacca anche d’estate.',
     },
     [RoTrace.MraconiaMonastery]: {
       name: 'Il monastero sopra il lago',
@@ -688,7 +671,6 @@ export const names: GuideNames<Ro, RoSection> = {
       text: 'Sopra Borșa, a circa 1.300 m, l’acqua raccolta in un circo glaciale dei Monti Rodnei cade a gradini da una parete di calcare per circa 90 m: le misure vanno da 80 a 97 m. Il nome viene da una leggenda locale, che racconta di cavalli precipitati dalla parete.',
       find: 'Da Borșa Complex, la parte alta della località, in seggiovia e poi circa mezz’ora a piedi; senza seggiovia, circa un’ora di sentiero.',
     },
-    // TODO verificare: the year of construction (1720; some sources say 1711).
     [RoTrace.BarsanaChurch]: {
       name: 'La chiesa di legno di Bârsana',
       local: 'Biserica de lemn «Intrarea în Biserică a Maicii Domnului»',
