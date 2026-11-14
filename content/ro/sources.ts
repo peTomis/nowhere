@@ -73,6 +73,22 @@ export const sources: GuideSources = {
   ],
   [RoSection.DemocracyAndEurope]: [
     {
+      title:
+        'Istoria Campionatului Mondial - 1994. Vara în care naționala i-a făcut pe români să simtă fotbalul și să uite de criză',
+      site: 'Evenimentul Zilei',
+      url: 'https://evz.ro/istoria-campionatului-mondial-1994-vara-in-care-nationala-i-a-facut-pe-romani-sa-simta-fotbalul-si-sa-uite-de-criza.html',
+    },
+    {
+      title: 'When Dumitrescu downed Argentina',
+      site: 'FIFA',
+      url: 'https://www.fifa.com/news/when-dumitrescu-downed-argentina',
+    },
+    {
+      title: '“I wanted to win the World Cup”: Gheorghe Hagi on Romania’s incredible run at USA 94',
+      site: 'FourFourTwo',
+      url: 'https://www.fourfourtwo.com/news/i-wanted-to-win-the-world-cup-gheorghe-hagi-on-romanias-incredible-run-at-usa-94-including-that-touchline-goal-vs-colombia',
+    },
+    {
       title: 'Romanian New Wave',
       site: 'Wikipedia',
       url: 'https://en.wikipedia.org/wiki/Romanian_New_Wave',

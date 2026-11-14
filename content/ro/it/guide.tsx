@@ -1845,6 +1845,20 @@ function Body() {
               tre mesi. Milioni di romeni vi versano i risparmi, alcuni vendono la casa: uno schema
               piramidale che crolla nel 1994 e lascia rovinate moltissime famiglie.
             </Context>
+            <Context
+              on="always"
+              kind="curiosity"
+              period="1994"
+              title="L’estate della generazione d’oro"
+            >
+              Ai Mondiali degli Stati Uniti la nazionale di <N>Gheorghe Hagi</N>, il «Maradona dei
+              Carpazi», batte la Colombia, con un pallonetto di Hagi da vicino alla linea laterale,
+              e i padroni di casa. Il <D>3 luglio</D>, al Rose Bowl di Pasadena, elimina l’Argentina
+              3-2, con due gol di Ilie Dumitrescu e uno di Hagi; esce ai quarti, ai rigori, contro
+              la Svezia. In un paese impoverito dalla transizione, quella notte Piața Universității
+              si riempie come nel dicembre 1989. Per i romeni quella squadra è ancora la «Generația
+              de aur», la generazione d’oro.
+            </Context>
             <Event on="always" date="1996" title="La prima alternanza">
               <Detail on="always">
                 Per la prima volta dal 1989 il potere cambia mano con il voto: vince{' '}
