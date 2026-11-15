@@ -40,7 +40,7 @@ There is no test suite yet.
   `next typegen`).
 - Server Components by default. Add `'use client'` only where browser APIs or state are needed
   (today: `components/PrintPlates.tsx`, `components/WorldMap.tsx`, `components/AccountMenu.tsx`,
-  `components/Completion.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `TraceMap`, `SourcesToggle`, `Trace`,
+  `components/Completion.tsx`, `components/OfflineGuides.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `TraceMap`, `SourcesToggle`, `Trace`,
   `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `OpenAlbumButton`, the filter
   and index, `trip.tsx`, `data.tsx`).
   Keep client components at the leaves; pages stay server-side and pass plain data down.
@@ -123,7 +123,8 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Routes: `/` home (full-screen map + footer), `/guide/[slug]` guide, `/template` (every element
   of the guide kit with placeholder text, `noindex`, not on the map), `/account` "I tuoi dati" (port
   of `Nowhere - I tuoi dati.dc.html`: account, sync status, completion per guide linking to
-  `/guide/<slug>#album`; export, import and storage used not ported yet), `not-found.tsx` 404.
+  `/guide/<slug>#album`, and "Guide offline", not in the design; export, import and storage used
+  not ported yet), `not-found.tsx` 404.
   Account and 404 use `SiteHeader` (logo badge at `--edge`, "Torna alla mappa") and start their
   text at `--inset`, under the logo glyph. There is deliberately no `/guide` index page: the map is
   the index.
@@ -238,6 +239,13 @@ panel={false}`: not clickable, no panel, hidden below 960px; sign-in and sign-ou
   light-blue background is not ported (sea and background are `bg`, as the guides and the status
   bar); the logo is unframed and in Quadricromia; phones keep the taller projection instead of the
   design's zoom on Romania.
+- Offline guides (adapted from collection-manager's offline mode; README "Offline guides"): the
+  download in "I tuoi dati" (`components/OfflineGuides.tsx`, `lib/offline.ts`) saves what
+  `/api/offline` lists (`lib/server/offline.ts`: home, ready guides, map, icons,
+  `public/guides/<slug>/`) plus the build files they name, into Cache Storage; the worker
+  `public/offline-sw.js` is network-first with a 4 s fallback to the snapshot. A new page or a
+  public file outside those folders that a guide needs offline must be added to the manifest.
+  Never cache `/api/` (personal data); a network failure is not a signed-out reader.
 - `public/data/world-50m.json` is world-atlas `countries-50m` minus Antarctica, with Italian names
   in `properties.n` — identical to the design's `assets/mondo-50m.json`. Don't run prettier on it
   (`.prettierignore`).

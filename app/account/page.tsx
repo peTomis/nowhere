@@ -7,12 +7,14 @@ import { auth, signIn, signOut } from '@/auth'
 import { Avatar } from '@/components/AccountMenu'
 import { Completion } from '@/components/Completion'
 import { GoogleSignInButton } from '@/components/GoogleSignInButton'
+import { OfflineGuides } from '@/components/OfflineGuides'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { tracesOf } from '@/content/build'
 import { guides } from '@/content/countries'
 import { guideContent } from '@/content/guides'
 import { format, locale, t } from '@/i18n'
+import { offlineManifest } from '@/lib/server/offline'
 import { userSince } from '@/lib/server/users'
 
 export const metadata: Metadata = {
@@ -23,11 +25,12 @@ export const metadata: Metadata = {
 /**
  * "I tuoi dati", port of "Nowhere - I tuoi dati.dc.html": the account (Google sign-in for the
  * allowlisted reader, docs/data-model.md §9.2), the sync status and the album completion of each
- * guide. Not ported yet: export, import and storage used (phase 8 of the data model). The session
+ * guide, and the offline guides (not in the design). Not ported yet: export, import and storage used (phase 8 of the data model). The session
  * is read at request time, behind <Suspense>, so the rest of the page stays in the static shell.
  */
-export default function AccountPage({ searchParams }: PageProps<'/account'>) {
+export default async function AccountPage({ searchParams }: PageProps<'/account'>) {
   const ready = guides.filter((g) => g.status === 'ready' && guideContent[g.slug])
+  const { bytes } = await offlineManifest()
   return (
     <div className="flex min-h-svh flex-col">
       <SiteHeader />
@@ -68,6 +71,12 @@ export default function AccountPage({ searchParams }: PageProps<'/account'>) {
                 </div>
               )
             })}
+          </Section>
+        )}
+
+        {ready.length > 0 && (
+          <Section title={t.offline.heading}>
+            <OfflineGuides bytes={bytes} />
           </Section>
         )}
       </main>

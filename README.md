@@ -25,11 +25,11 @@ app/
   page.tsx             home: full-screen world map + footer
   guide/[slug]/page.tsx  a guide: cover, album opening, text or album, footer (prerendered)
   template/page.tsx    /template: every guide element with placeholder text (not indexed)
-  account/page.tsx     "I tuoi dati": account, sync, completion per guide
-  api/                 me, auth, photos (+ [id], [id]/commit), notes
+  account/page.tsx     "I tuoi dati": account, sync, completion per guide, offline guides
+  api/                 me, auth, photos (+ [id], [id]/commit), notes, offline (manifest)
 components/
   Logo.tsx, PlateText.tsx, PrintPlates.tsx, SiteHeader.tsx, SiteFooter.tsx
-  WorldMap.tsx, CountryCard.tsx, AccountMenu.tsx, Completion.tsx
+  WorldMap.tsx, CountryCard.tsx, AccountMenu.tsx, Completion.tsx, OfflineGuides.tsx
   guide/               Guide (the whole page), GuideCover, GuideAlbumIntro, GuideShell (sticky bar,
                        sidebar, index menu), content.tsx (the kit: Chapter, Part, Timeline, Event,
                        Region, City, Card, Today, Figure…), Album, Trace, CardTraces, PhotoPanel,
@@ -43,12 +43,14 @@ content/
   <cc>/it/             names.ts (short texts) and guide.tsx (the body)
   xx/                  the template guide (/template)
 lib/
+  offline.ts           offline guides: download into Cache Storage, remove
   content/             validate.ts (content checks), cards.ts (pinned copies)
   reader/              prefs.ts (trip filter, pins), collection.ts, photos.ts, schema.ts
-  server/              mongodb, http (requireUser, route), bucket (S3/R2), collection
+  server/              mongodb, http (requireUser, route), bucket (S3/R2), collection, offline
 i18n/                  UI strings: it.json + index.ts (t, format, locale)
 styles/                theme.css (tokens), broadsheet.css (components), guide.css
 public/guides/<slug>/  guide images (cover, coat of arms, flag, maps, photos)
+public/offline-sw.js   service worker of the offline guides
 ```
 
 Components are Server Components by default; client components are listed in `AGENTS.md`.
@@ -61,6 +63,25 @@ in a private S3-compatible bucket, see `docs/data-model.md`). **The first three 
 country are always the cover (01), the flag (02) and the coat of arms (03)**: the kit adds them,
 with the guide's cover and emblems as stock images. A guide's own traces start at 04. Each trace
 is worth 1–3 points; the completion bar and the levels (25, 50, 80%) come from them.
+
+## Offline guides
+
+For an emergency without network: "I tuoi dati" → **Guide offline** → "Scarica le guide" saves
+the home, the world map and every ready guide (pages, scripts, fonts and images) on the device.
+No account is needed and nothing personal is saved: photos and notes stay online.
+
+- `/api/offline` (prerendered, `lib/server/offline.ts`) lists the pages and the public files; the
+  browser (`lib/offline.ts`) also saves the build files the pages, styles and scripts name. Each
+  download goes into its own Cache Storage cache and replaces the previous one only once complete.
+- `public/offline-sw.js`, registered only after a download, serves pages and files from the
+  network while it answers within 4 seconds, else from the snapshot (hashed build files straight
+  from the snapshot). Optimized images (`/_next/image`) fall back to the saved original. `/api/`
+  is never cached. The snapshot is never refreshed by browsing: after a deploy, download again.
+- Offline, the reader's session is "unknown" rather than signed out, and is read again when the
+  connection comes back.
+- Needs HTTPS (or localhost) and a production build: test with `yarn build && yarn start`, then
+  DevTools → Network → Offline. On iPhone, add the site to the home screen: Safari evicts the
+  storage of sites not opened for a few days.
 
 ## Design system
 

@@ -310,5 +310,24 @@
     "denied": "Questo account Google non è abilitato. Per ora l’accesso è solo su invito.",
     "error": "Accesso non riuscito. Riprova tra poco.",
     "loading": "Controllo l’accesso…"
+  },
+  "offline": {
+    "heading": "Guide offline",
+    "description": "Salva la mappa e tutte le guide su questo dispositivo, con le immagini (circa {size} MB), per leggerle anche senza connessione. Le tue foto e le note restano online.",
+    "none": "Le guide non sono salvate su questo dispositivo.",
+    "saved": "Guide salvate il {date}: senza connessione si aprono da qui.",
+    "missing": "Il browser ha cancellato le guide salvate: scaricale di nuovo.",
+    "download": "Scarica le guide",
+    "update": "Aggiorna",
+    "remove": "Rimuovi",
+    "cancel": "Annulla",
+    "preparing": "Preparazione del download…",
+    "progress": "Download in corso: {done} di {total} file. Tieni aperta la pagina.",
+    "failed": "Download non riuscito. Controlla la connessione e riprova.",
+    "removeFailed": "Non è stato possibile rimuovere le guide salvate. Riprova.",
+    "quota": "Non c’è abbastanza spazio su questo dispositivo. Libera spazio e riprova.",
+    "unsupported": "Questo browser non può salvare le guide offline.",
+    "devMode": "Le guide offline richiedono una build di produzione (yarn build && yarn start).",
+    "homeScreenHint": "Su iPhone aggiungi Nowhere alla schermata Home: Safari cancella i dati dei siti che non apri da qualche giorno. Dopo un aggiornamento del sito, scarica di nuovo le guide."
   }
 }

@@ -83,8 +83,11 @@ export function loadCollection() {
   loading ??= (async () => {
     try {
       await api('/api/me')
-    } catch {
-      set({ session: 'signed-out' })
+    } catch (e) {
+      if (e instanceof RequestError) set({ session: 'signed-out' })
+      // No network (an offline guide): the session is unknown, not signed out; read it again
+      // once the connection is back.
+      else loading = undefined
       return
     }
     try {
@@ -179,6 +182,7 @@ async function upload(key: string) {
 
 if (typeof window !== 'undefined')
   window.addEventListener('online', () => {
+    if (state.session === 'unknown') void loadCollection()
     for (const [k, e] of Object.entries(state.entries)) if (e.local?.state === 'offline') upload(k)
   })
 
