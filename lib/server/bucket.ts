@@ -10,8 +10,9 @@ import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 /*
  * The private bucket (docs/data-model.md §6.3): any S3-compatible store, Cloudflare R2
- * proposed. Readers' photos under `u/`, the guide images under `assets/` (lib/assets.ts). The browser never gets a key: only presigned URLs, PUT for 10 minutes, GET for at
- * least an hour. Created on first use, so `yarn build` works without the S3_* variables.
+ * proposed. Readers' photos under `u/`, the guide images under `assets/` (lib/assets.ts). The
+ * browser never gets a key: only presigned URLs, PUT for 10 minutes, GET for the day (signGet).
+ * Created on first use, so `yarn build` works without the S3_* variables.
  */
 
 let client: S3Client | undefined
@@ -61,16 +62,24 @@ export function signPut(key: string, type: string, length: number) {
 }
 
 /**
- * A URL to read the object. Signed as of the start of the hour and valid for two: within an hour
- * the same photo gets the same URL, so the browser can cache the image.
+ * A URL to read the object. Signed as of the start of the UTC day and valid for 36 hours: all day
+ * the same photo gets the same URL, and the answer carries a cache header (`response-cache-control`,
+ * so photos already in the bucket get it too), so the browser downloads each photo once a day
+ * instead of at every page. A photo never changes under its id (a new one gets a new id), hence
+ * `immutable`; `private`: never kept by a shared cache.
  */
 export function signGet(key: string) {
-  const hour = new Date()
-  hour.setUTCMinutes(0, 0, 0)
-  return getSignedUrl(s3(), new GetObjectCommand({ Bucket: bucket(), Key: key }), {
-    signingDate: hour,
-    expiresIn: 2 * 60 * 60,
-  })
+  const day = new Date()
+  day.setUTCHours(0, 0, 0, 0)
+  return getSignedUrl(
+    s3(),
+    new GetObjectCommand({
+      Bucket: bucket(),
+      Key: key,
+      ResponseCacheControl: 'private, max-age=86400, immutable',
+    }),
+    { signingDate: day, expiresIn: 36 * 60 * 60 },
+  )
 }
 
 /**

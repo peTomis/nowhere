@@ -87,6 +87,14 @@ type VisitView = { placeId: string; seenAt: string }
 /** Reads the session and the collection, once per page. */
 export function loadCollection() {
   loading ??= (async () => {
+    // The session and the collection in parallel: one round trip instead of two. Signed out,
+    // the collection requests fail too (401) and are ignored.
+    const data = Promise.all([
+      api<VisitView[]>('/api/visits'),
+      api<PhotoView[]>('/api/photos'),
+      api<NoteView[]>('/api/notes'),
+    ])
+    data.catch(() => {})
     try {
       await api('/api/me')
     } catch (e) {
@@ -97,11 +105,7 @@ export function loadCollection() {
       return
     }
     try {
-      const [visits, photos, notes] = await Promise.all([
-        api<VisitView[]>('/api/visits'),
-        api<PhotoView[]>('/api/photos'),
-        api<NoteView[]>('/api/notes'),
-      ])
+      const [visits, photos, notes] = await data
       const entries: Record<string, Entry> = {}
       for (const v of visits) {
         const key = subjectKey({ kind: 'place', id: v.placeId })

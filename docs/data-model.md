@@ -677,8 +677,11 @@ every write; a body or a query string never names an owner.
 4. `POST /api/photos/[id]/commit`: the server HEADs both objects, checks type and size, sets
    `status: 'ready'`, upserts the visit (a photo marks the place seen). Only now does the UI
    show the photo as saved.
-5. Reading: `GET /api/photos` returns **presigned GET URLs** (1 hour; the expiry is rounded to
-   the hour so the same URL repeats within the hour and the browser can cache the image).
+5. Reading: `GET /api/photos` returns **presigned GET URLs**, signed as of the start of the UTC
+   day and valid 36 hours, so the same URL repeats all day; they ask R2 for
+   `Cache-Control: private, max-age=86400, immutable` (`response-cache-control`, so older objects
+   get it too) and the browser downloads each photo once a day. (First version: hourly URLs with
+   no cache header, so photos came from the network at every page.)
 6. Cleanup: `pending` records older than 24 hours, and their objects if any, are removed by
    `scripts/cleanup.mjs` (by hand, or a scheduled job later), and lazily on each upload start.
 
