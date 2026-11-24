@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Guide } from '@/components/guide/Guide'
 import { templateContent } from '@/content/guides'
+import { DEFAULT_LOCALE } from '@/i18n'
 import { requireLang } from '@/i18n/server'
 
 export const metadata: Metadata = {
@@ -16,5 +17,5 @@ export const metadata: Metadata = {
 export default async function TemplatePage() {
   const content = templateContent[await requireLang()]
   if (!content) notFound()
-  return <Guide slug="template" content={content} />
+  return <Guide slug="template" content={content} base={templateContent[DEFAULT_LOCALE]} />
 }

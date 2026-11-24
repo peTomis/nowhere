@@ -2,6 +2,7 @@ import { isValidElement, type ReactNode } from 'react'
 import { kitKindOf, kitNameOf } from '@/components/guide/content'
 import type { Locale } from '@/i18n/config'
 import { asset } from '@/lib/assets'
+import { compareSkeletons } from './parity'
 import { BUILT_IN_TRACES } from '@/content/subjects'
 import {
   CARD_CHAPTER,
@@ -512,16 +513,17 @@ export function formatIssues(issues: Issue[]): string {
     .join('\n')
 }
 
-/** Throws on errors (failing the build or showing the dev overlay); logs warnings once. */
 /**
  * Throws on errors (failing the build or showing the dev overlay); logs warnings once. The result
  * is cached per content object, and errors are thrown on every call: Next may render a page more
- * than once, and every render must fail.
+ * than once, and every render must fail. `base`: the guide in the default language, which a
+ * translation's skeleton must match (lib/content/parity.ts).
  */
-export function assertValidGuide(slug: string, content: GuideContent) {
+export function assertValidGuide(slug: string, content: GuideContent, base?: GuideContent) {
   let issues = results.get(content)
   if (!issues) {
     issues = validateGuide(slug, content)
+    if (base && base !== content) issues.push(...compareSkeletons(slug, base, content))
     results.set(content, issues)
     const warnings = issues.filter((i) => i.level === 'warning')
     if (warnings.length)

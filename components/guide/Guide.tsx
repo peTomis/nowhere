@@ -25,6 +25,8 @@ type GuideProps = {
   slug: string
   /** The guide in the page's language. */
   content: GuideContent
+  /** The guide in the default language: a translation's skeleton must match it. */
+  base?: GuideContent
 }
 
 /**
@@ -32,9 +34,9 @@ type GuideProps = {
  * with the sources, or the album (with its map), closing section, footer. Every text comes from
  * `content` (its `lang`) and the UI dictionary of the same language.
  */
-export function Guide({ slug, content }: GuideProps) {
+export function Guide({ slug, content, base }: GuideProps) {
   // Content errors fail the build (every guide is prerendered) and show in the dev overlay.
-  assertValidGuide(slug, content)
+  assertValidGuide(slug, content, base)
   const { lang, structure, names } = content
   const t = messages(lang)
   const name = names.country

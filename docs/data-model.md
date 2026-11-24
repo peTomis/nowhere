@@ -584,6 +584,12 @@ The `/api` routes (§6) stay outside the `[lang]` segment: they never carry a lo
   and summary into `names` (`country`, `summary`, `alt`). `content/guides.ts` maps
   `slug → { it, en? }`.
 - The validator reads event dates per language (`parseItalianDate`, `parseEnglishDate`).
+- Each language writes its whole body, so the skeleton (blocks, `on`, cards, `Today`, images)
+  is repeated per language. `lib/content/parity.ts` compares a translation with the default
+  language per section and card: landmarks in order and the set of `on` lists are errors, the
+  number of events a warning (a translation may merge two). It runs in the build
+  (`assertValidGuide(slug, content, base)`) and in `yarn validate`. Moving the skeleton into
+  structure (§2.5) stays out of scope.
 - Guide images left the repository: a **public** bucket behind a CDN (`ASSETS_URL`), separate
   from the private photo bucket (§6.3), with `content/assets.json` (path → hash, size) as the
   committed manifest and `yarn assets push | pull | manifest`. URLs carry the hash (`?v=`) so

@@ -5,7 +5,7 @@ import { Suspense } from 'react'
 import { Guide } from '@/components/guide/Guide'
 import { guideContent } from '@/content/guides'
 import { getGuide, guides } from '@/content/countries'
-import { isLocale } from '@/i18n'
+import { DEFAULT_LOCALE, isLocale } from '@/i18n'
 
 /**
  * Every guide in every language it is written in. Cache Components needs at least one param per
@@ -49,5 +49,5 @@ async function GuideFromParams({ params }: Pick<PageProps<'/[lang]/guide/[slug]'
   const content = await contentOf(params)
   if (!content) notFound()
 
-  return <Guide slug={slug} content={content} />
+  return <Guide slug={slug} content={content} base={guideContent[slug]?.[DEFAULT_LOCALE]} />
 }

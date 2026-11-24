@@ -17,12 +17,17 @@ const jiti = createJiti(import.meta.url, {
 })
 
 const { validateGuide, formatIssues } = await jiti.import('@/lib/content/validate.ts')
+const { compareSkeletons } = await jiti.import('@/lib/content/parity.ts')
+const { DEFAULT_LOCALE } = await jiti.import('@/i18n/config.ts')
 const { guideContent, templateContent } = await jiti.import('@/content/guides.ts')
 
 let errors = 0
 for (const [slug, byLang] of Object.entries({ ...guideContent, template: templateContent })) {
   for (const [lang, content] of Object.entries(byLang)) {
     const issues = validateGuide(slug, content)
+    // A translation keeps the default language's skeleton (lib/content/parity.ts).
+    const base = byLang[DEFAULT_LOCALE]
+    if (base && lang !== DEFAULT_LOCALE) issues.push(...compareSkeletons(slug, base, content))
     const e = issues.filter((i) => i.level === 'error').length
     errors += e
     console.log(

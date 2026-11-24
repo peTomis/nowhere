@@ -84,6 +84,9 @@ Every page is under its language: `/it`, `/it/guide/romania`, `/en/…`. The old
   translate names and body (a translation may restructure its prose; it cannot add places, ids or
   images), register it in `content/guides.ts` (`romania: { it: romania, en: romaniaEn }`), run
   `yarn validate` (event dates are read per language: "c. 1310", "14th c.", "1st c. BC").
+  The text is free, the skeleton is not: `lib/content/parity.ts` checks that every section and
+  card keeps the Italian landmarks (sections, cards, `Today`, emblems, images) in the same order
+  and the same `on` lists, so no place loses text in one language.
 - **Adding a language**: `i18n/config.ts`, `i18n/<lang>.json`, a formatter in `i18n/dates.ts`,
   a date parser in `lib/content/validate.ts`, the language in `scripts/country-names.mjs` and
   `yarn country-names`.

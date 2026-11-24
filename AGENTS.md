@@ -140,7 +140,11 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   be complete; a translation is `content/<cc>/en/` with the same two files, registered in
   `content/guides.ts` (`slug → { it, en }`). A guide is listed, prerendered and offered offline
   only in the languages it has content in; `/en/guide/<slug>` is a 404 until then. `countries.ts`
-  holds nothing per language (no names).
+  holds nothing per language (no names). A translation rewrites the text freely but keeps the
+  Italian skeleton: per section and card the same landmarks in order (sections, cards, `Today`,
+  `Emblem`, images, `Unless`) and the same set of `on` lists (`lib/content/parity.ts`, run by the
+  build and `yarn validate`: errors; a different number of events is only a warning). When you
+  change the skeleton in Italian, change every translation with it.
 - Routes (all under `/<lang>`, e.g. `/it`): `/<lang>` home (full-screen map + footer),
   `/<lang>/guide/[slug]` guide, `/<lang>/template` (every element of the guide kit with
   placeholder text, `noindex`, not on the map), `/<lang>/account` "I tuoi dati" (port of
