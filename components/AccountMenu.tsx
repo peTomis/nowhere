@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { useEffect, useId, useRef, useState } from 'react'
 import { format, paths } from '@/i18n'
 import { useLang, useT } from '@/i18n/client'
+import { forgetCollection } from '@/lib/reader/collection'
 
 /**
  * Account button and side panel, port of "Account.dc.html". The button shows the reader's initial
@@ -187,7 +188,10 @@ export function AccountMenu() {
             <button
               type="button"
               className="btn btn-ghost mt-auto -mr-2 inline-flex min-h-[44px] gap-[6px] self-end px-2 text-[15px] text-accent-700"
-              onClick={() => signOut({ redirectTo: window.location.pathname })}
+              onClick={() => {
+                forgetCollection()
+                signOut({ redirectTo: window.location.pathname })
+              }}
             >
               <SignOutIcon weight="duotone" size={18} aria-hidden="true" />
               {t.accountMenu.signOut}

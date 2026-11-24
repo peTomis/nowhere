@@ -966,7 +966,11 @@ What the code does, where it differs from the sections above (follows the v4 des
 - **Browser:** `lib/reader/photos.ts` (§6.4), `lib/reader/collection.ts` (one in-memory store per
   page instead of the `ReaderStore` interface; photos being uploaded are kept with a local
   preview, and those interrupted by the network restart when it comes back while the page is
-  open). The UI caps notes at 300 characters (the server at 2000).
+  open). The UI caps notes at 300 characters (the server at 2000). A copy of what the album needs
+  to draw itself (seen traces and photo URLs, never notes) is kept in localStorage
+  (`nowhere.collection`: owner, 12 hours at most, deleted at sign-out), so a page shows the album
+  at once and the server's answer replaces it; before it, every page waited for `/api/me` and the
+  collection with the traces drawn as still to find.
 - **Pins** ("In evidenza") are a device preference in `nowhere.prefs` (`pins`, added within
   schema 1), for person and city cards only: pinning sections is not ported.
 - **Not ported:** the "Per chi mi segue" note visibility, export/import (phase 8), the lit map

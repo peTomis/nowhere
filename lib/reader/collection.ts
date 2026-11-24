@@ -13,6 +13,13 @@ import type { ProcessedPhoto } from './photos'
  * a local preview) until the server confirms it; it is lost if the page is left before that:
  * there is no offline queue (§6.5), but an upload interrupted by the network restarts when the
  * connection comes back.
+ *
+ * A copy of what the album needs to draw itself (which traces are seen, their photos' URLs: not
+ * the notes, which are private text) is kept in localStorage, so a page shows the reader's album
+ * at once instead of waiting for the server; the server's answer then replaces it. The copy names
+ * its owner (dropped if another account answers), lasts 12 hours (the photo URLs, signed for the
+ * day, last at least that long: lib/server/bucket.ts signGet), and is deleted when the reader is
+ * signed out.
  */
 
 export type Session = 'unknown' | 'signed-out' | 'signed-in'
@@ -38,12 +45,57 @@ export type Entry = { seenAt?: string; photo?: SavedPhoto; local?: LocalPhoto; n
 
 type State = { session: Session; entries: Record<string, Entry> }
 
-let state: State = { session: 'unknown', entries: {} }
+// --- the local copy -------------------------------------------------------------------------------
+
+const CACHE = 'nowhere.collection'
+const CACHE_MAX_AGE = 12 * 60 * 60 * 1000
+
+type Cached = { v: 1; owner: string; savedAt: number; entries: Record<string, Entry> }
+
+/** What the copy keeps of an entry: seen and photo, never the note or an upload in progress. */
+function cacheable(entries: Record<string, Entry>): Record<string, Entry> {
+  const out: Record<string, Entry> = {}
+  for (const [key, { seenAt, photo }] of Object.entries(entries))
+    if (seenAt || photo) out[key] = { seenAt, photo }
+  return out
+}
+
+function readCache(): Cached | undefined {
+  try {
+    const c = JSON.parse(localStorage.getItem(CACHE) ?? 'null') as Cached | null
+    if (c?.v === 1 && typeof c.owner === 'string' && Date.now() - c.savedAt < CACHE_MAX_AGE)
+      return c
+  } catch {}
+  forgetCollection()
+  return undefined
+}
+
+function writeCache(owner: string, entries: Record<string, Entry>) {
+  try {
+    const c: Cached = { v: 1, owner, savedAt: Date.now(), entries: cacheable(entries) }
+    localStorage.setItem(CACHE, JSON.stringify(c))
+  } catch {}
+}
+
+/** Deletes the local copy: at sign-out, before the session ends. */
+export function forgetCollection() {
+  try {
+    localStorage.removeItem(CACHE)
+  } catch {}
+}
+
+const cached = typeof window === 'undefined' ? undefined : readCache()
+/** The account the collection in memory belongs to, once known (the copy's until /api/me). */
+let owner: string | undefined = cached?.owner
+
+let state: State = { session: 'unknown', entries: cached?.entries ?? {} }
 const listeners = new Set<() => void>()
 let loading: Promise<void> | undefined
 
 function set(next: Partial<State>) {
   state = { ...state, ...next }
+  if (state.session === 'signed-in' && owner) writeCache(owner, state.entries)
+  else if (state.session === 'signed-out') forgetCollection()
   listeners.forEach((l) => l())
 }
 
@@ -96,9 +148,12 @@ export function loadCollection() {
     ])
     data.catch(() => {})
     try {
-      await api('/api/me')
+      const me = await api<{ id: string }>('/api/me')
+      // A copy of another account's album: not this reader's.
+      if (owner && owner !== me.id) set({ entries: {} })
+      owner = me.id
     } catch (e) {
-      if (e instanceof RequestError) set({ session: 'signed-out' })
+      if (e instanceof RequestError) set({ session: 'signed-out', entries: {} })
       // No network (an offline guide): the session is unknown, not signed out; read it again
       // once the connection is back.
       else loading = undefined
