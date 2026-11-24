@@ -1317,3 +1317,61 @@ Sources removed (Vlad III):
       url: 'https://www.gutenberg.org/files/345/345-h/345-h.htm',
     },
 ```
+
+### Replaced on 2026-11-24: 33 · Nadia davanti alla palestra (Otopeni)
+
+Too far from Bucharest (about 15 km, by the airport) to be worth a trip of its own, for a statue
+in front of a gym. Replaced in the same box (still 33) by the Cercul Militar in central Bucharest,
+where Nadia's civil wedding took place on 26 April 1996 (`ro.place.military-circle`). Other
+candidates in Bucharest considered and set aside: the 2026 gala in the Sala Unirii of the Palace of
+the Parliament (a second trace in the same building), the "Vitrina Campionilor" of the National
+History Museum (a single source, no room given) and the Cașin monastery (the church wedding, single
+source). The trace had no stock image.
+
+- id `ro.place.nadia-comaneci-statue-otopeni` · Valacchia · `nearby` · common · icon `trophy` ·
+  at `[26.0651, 44.5661]` (approximate: the Țiriac Foundation sports complex)
+- Card: Nadia Comăneci.
+- Comment in the structure: Otopeni (Ilfov), next to Bucharest airport: historically Wallachia.
+  TODO image: licensed photograph, including rights clearance for the 2026 statue.
+- Comment in the names: TODO verificare: whether the statue in front of the hall can be seen from
+  the street, outside the complex.
+- name: Nadia davanti alla palestra
+- local: Statuia Nadiei Comăneci
+- place: Otopeni, Valacchia
+- within: Palestra «Nadia Comăneci»
+- distance: a circa 15 km da Bucarest
+- text: Il 18 luglio 2026, cinquant’anni dopo il primo 10 della storia olimpica, la Fondazione
+  Țiriac inaugura a Otopeni una palestra di ginnastica che porta il nome di Nadia, con corsi
+  gratuiti per i bambini. Davanti alla palestra, una statua la ritrae alla fine di un esercizio
+  alla trave.
+- find: Nel complesso sportivo della Fondazione Țiriac a Otopeni, vicino all’aeroporto Henri Coandă.
+  La palestra non è un museo: la statua è davanti alla palestra.
+
+Sources removed (Nadia Comăneci):
+
+```ts
+    {
+      title:
+        'Statuia Nadiei Comăneci, adusă de Ion Țiriac din China, a fost dezvelită în fața sălii de la Otopeni. Cum arată',
+      site: 'Antena Sport',
+      url: 'https://as.ro/extra/statuia-nadiei-comaneci-adusa-de-ion-tiriac-din-china-a-fost-dezvelita-in-fata-salii-de-la-otopeni-cum-arata-668712.html',
+    },
+    {
+      title:
+        'Sala de gimnastică „Nadia Comăneci” a fost inaugurată la Otopeni: O investiție pentru tineretul de astăzi',
+      site: 'Basilica.ro',
+      url: 'https://basilica.ro/sala-gimnastica-nadia-comaneci-inaugurata-otopeni/',
+    },
+    {
+      title:
+        'Reportaj. Sala „Nadia Comăneci” de la Otopeni: gimnastică gratuită pentru copii. Sala a fost construită în 9 luni pentru a fi gata la momentul aniversar.',
+      site: 'Urban',
+      url: 'https://www.urban.ro/reportaj-sala-nadia-comaneci/',
+    },
+    {
+      title:
+        'Nadia Comăneci a inaugurat sala de gimnastică din Otopeni, la 50 de ani de la primul „10” olimpic',
+      site: 'Radio România Actualități',
+      url: 'https://www.romania-actualitati.ro/stiri/sport/nadia-comaneci-a-inaugurat-sala-de-gimnastica-din-otopeni-la-50-de-ani-de-la-primul-10-olimpic-id231623.html',
+    },
+```

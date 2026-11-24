@@ -36,12 +36,17 @@ source for the point named there.
   [Five hundred lei](https://en.wikipedia.org/wiki/Five_hundred_lei) for
   Eminescu, the Iași Central University Library (1930–1934) and the page of
   Timpul.
-- Nadia Comăneci at Otopeni: [Antena Sport](https://as.ro/extra/statuia-nadiei-comaneci-adusa-de-ion-tiriac-din-china-a-fost-dezvelita-in-fata-salii-de-la-otopeni-cum-arata-668712.html),
-  [Basilica.ro](https://basilica.ro/sala-gimnastica-nadia-comaneci-inaugurata-otopeni/),
-  [Urban.ro](https://www.urban.ro/reportaj-sala-nadia-comaneci/) and
-  [Radio România Actualități](https://www.romania-actualitati.ro/stiri/sport/nadia-comaneci-a-inaugurat-sala-de-gimnastica-din-otopeni-la-50-de-ani-de-la-primul-10-olimpic-id231623.html)
-  for the hall opened on 18 July 2026, free courses, and the statue in front of
-  it. No source says whether the statue can be seen without entering.
+- Nadia Comăneci at the Cercul Militar (replaced the Otopeni statue on 2026-11-24, see
+  `excluded-traces.md`): [UPI](https://www.upi.com/Archives/1996/04/19/Comaneci-prepares-for-Bucharest-wedding/9359809804286)
+  (announced civil wedding at the "Bucharest Military Center" on 26 April 1996, church the next
+  day, exclusive live TV rights) and [The Spokesman-Review](https://www.spokesman.com/stories/1996/apr/27/former-olympic-gold-medalists-wed/)
+  (wire report after the fact: civil ceremony on Friday at the "Army Club", 200 guests inside,
+  about 2,000 fans outside before a giant screen); [Adevărul](https://adevarul.ro/sport/foto-22-de-ani-de-la-o-nunta-celebra-in-bucuresti-1860389.html)
+  for the church wedding at the Cașin monastery on 27 April; [Bart Conner](https://en.wikipedia.org/wiki/Bart_Conner)
+  for his two golds of 1984 and the live broadcast; [Cercul Militar Național](https://ro.wikipedia.org/wiki/Cercul_Militar_Na%C8%9Bional)
+  for 1911–1923, Dimitrie Maimarolu, the Sărindar monastery and the address. The reception is left
+  out of the text: Adevărul puts it at the Snagov palace, Wikipedia at "the former presidential
+  palace", the Deseret News (before the wedding) at a palace built by Ceaușescu.
 - Onești: [EVZ](https://evz.ro/onesti-a-inaugurat-drumul-perfectiunii-traseul-dedicat-povestii-nadiei-comaneci.html)
   and [Capital](https://www.capital.ro/onesti-drumul-perfectiunii-un-traseu-urban-care-transforma-copilaria-nadiei-in-patrimoniu-turistic.html)
   for the "Drumul Perfecțiunii" opened on 31 May 2026, from the block in Strada
@@ -144,4 +149,4 @@ source for the point named there.
   2026-11-13: not blocking).
 - Images still missing (set aside on 2026-11-13): the Suceava equestrian statue,
   the Gate of the Kiss and the Endless Column (Brâncuși's rights run to the end
-  of 2027), the Otopeni statue of Nadia Comăneci (2026) and the Oberth house.
+  of 2027) and the Oberth house.

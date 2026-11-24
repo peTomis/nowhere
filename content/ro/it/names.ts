@@ -296,15 +296,12 @@ export const names: GuideNames<Ro, RoSection> = {
       find: 'Ogni Dacia vale: Logan, Sandero e Duster sono ovunque. Ma la casella chiede la 1300, la berlina squadrata con la calandra cromata: cercala parcheggiata nei villaggi e nei cortili, ai raduni di auto d’epoca, o tenuta come un cimelio da chi l’ha restaurata.',
       invite: 'Era una 1300?',
     },
-    // TODO verificare: whether the statue in front of the hall can be seen from the street, outside the complex.
-    [RoTrace.NadiaStatueOtopeni]: {
-      name: 'Nadia davanti alla palestra',
-      local: 'Statuia Nadiei Comăneci',
-      place: `Otopeni, ${places[Ro.Wallachia]}`,
-      within: 'Palestra «Nadia Comăneci»',
-      distance: `a circa 15 km da ${places[Ro.Bucharest]}`,
-      text: 'Il 18 luglio 2026, cinquant’anni dopo il primo 10 della storia olimpica, la Fondazione Țiriac inaugura a Otopeni una palestra di ginnastica che porta il nome di Nadia, con corsi gratuiti per i bambini. Davanti alla palestra, una statua la ritrae alla fine di un esercizio alla trave.',
-      find: 'Nel complesso sportivo della Fondazione Țiriac a Otopeni, vicino all’aeroporto Henri Coandă. La palestra non è un museo: la statua è davanti alla palestra.',
+    [RoTrace.MilitaryCircle]: {
+      name: 'Le nozze di Nadia',
+      local: 'Cercul Militar Național',
+      place: `${places[Ro.Bucharest]}, ${places[Ro.Wallachia]}`,
+      text: 'Nel 1996, sei anni dopo la fuga attraverso il confine ungherese, Nadia torna a Bucarest per sposare Bart Conner, ginnasta americano, due ori alle Olimpiadi di Los Angeles del 1984. Il 26 aprile il rito civile si celebra al Circolo militare nazionale: dentro duecento invitati, fuori circa duemila persone lo seguono su un maxischermo; il giorno dopo le nozze in chiesa, al monastero Cașin, vanno in diretta sulla televisione nazionale. Il palazzo, finito nel 1923 su progetto di Dimitrie Maimarolu, sorge dove c’era il monastero di Sărindar.',
+      find: 'Al numero 20 di Bulevardul Regina Elisabeta, all’angolo con la Calea Victoriei: la facciata con le colonne e la scritta «Cercul Militar Național» si vede dalla piazza davanti.',
     },
     [RoTrace.OnestiPathOfPerfection]: {
       name: 'La strada della perfezione',

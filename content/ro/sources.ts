@@ -453,28 +453,30 @@ export const sources: GuideSources = {
   ],
   [RoPerson.NadiaComaneci]: [
     {
-      title:
-        'Statuia Nadiei Comăneci, adusă de Ion Țiriac din China, a fost dezvelită în fața sălii de la Otopeni. Cum arată',
-      site: 'Antena Sport',
-      url: 'https://as.ro/extra/statuia-nadiei-comaneci-adusa-de-ion-tiriac-din-china-a-fost-dezvelita-in-fata-salii-de-la-otopeni-cum-arata-668712.html',
+      title: 'Comaneci prepares for Bucharest wedding',
+      site: 'UPI',
+      url: 'https://www.upi.com/Archives/1996/04/19/Comaneci-prepares-for-Bucharest-wedding/9359809804286',
+    },
+    {
+      title: 'Former Olympic gold medalists wed',
+      site: 'The Spokesman-Review',
+      url: 'https://www.spokesman.com/stories/1996/apr/27/former-olympic-gold-medalists-wed/',
     },
     {
       title:
-        'Sala de gimnastică „Nadia Comăneci” a fost inaugurată la Otopeni: O investiție pentru tineretul de astăzi',
-      site: 'Basilica.ro',
-      url: 'https://basilica.ro/sala-gimnastica-nadia-comaneci-inaugurata-otopeni/',
+        '22 de ani de la o nuntă celebră în Bucureşti. Mesajul Nadiei Comăneci pentru soţul ei',
+      site: 'Adevărul',
+      url: 'https://adevarul.ro/sport/foto-22-de-ani-de-la-o-nunta-celebra-in-bucuresti-1860389.html',
     },
     {
-      title:
-        'Reportaj. Sala „Nadia Comăneci” de la Otopeni: gimnastică gratuită pentru copii. Sala a fost construită în 9 luni pentru a fi gata la momentul aniversar.',
-      site: 'Urban',
-      url: 'https://www.urban.ro/reportaj-sala-nadia-comaneci/',
+      title: 'Bart Conner',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bart_Conner',
     },
     {
-      title:
-        'Nadia Comăneci a inaugurat sala de gimnastică din Otopeni, la 50 de ani de la primul „10” olimpic',
-      site: 'Radio România Actualități',
-      url: 'https://www.romania-actualitati.ro/stiri/sport/nadia-comaneci-a-inaugurat-sala-de-gimnastica-din-otopeni-la-50-de-ani-de-la-primul-10-olimpic-id231623.html',
+      title: 'Cercul Militar Național',
+      site: 'Wikipedia',
+      url: 'https://ro.wikipedia.org/wiki/Cercul_Militar_Na%C8%9Bional',
     },
     {
       title: 'Onești a inaugurat „Drumul Perfecțiunii”',

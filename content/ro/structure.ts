@@ -105,7 +105,7 @@ export enum RoTrace {
   CentralCommitteeBuilding = 'ro.place.central-committee-building',
   PrimaveriiPalace = 'ro.place.primaverii-palace',
   DaciaCar = 'ro.place.dacia-car',
-  NadiaStatueOtopeni = 'ro.place.nadia-comaneci-statue-otopeni',
+  MilitaryCircle = 'ro.place.military-circle',
   OnestiPathOfPerfection = 'ro.place.onesti-path-of-perfection',
   StavropoleosChurch = 'ro.place.stavropoleos-church',
   RomanianAthenaeum = 'ro.place.romanian-athenaeum',
@@ -829,16 +829,24 @@ export const structure = defineGuide<Ro, RoSection>({
         },
       },
     },
-    // Nadia Comăneci. Otopeni (Ilfov), next to Bucharest airport: historically Wallachia.
-    // TODO image: licensed photograph, including rights clearance for the 2026 statue.
+    // Nadia Comăneci: the civil wedding of 1996.
     {
-      id: RoTrace.NadiaStatueOtopeni,
+      id: RoTrace.MilitaryCircle,
       region: Wallachia,
-      where: 'nearby',
-      // Approximate: the Țiriac Foundation sports complex (OpenStreetMap has no node for the hall yet).
-      at: [26.0651, 44.5661],
+      city: Ro.Bucharest,
+      where: 'city',
+      // Wikidata Q1670223.
+      at: [26.0969, 44.4351],
       rarity: 'common',
       icon: 'trophy',
+      image: {
+        src: '/guides/romania/traces/military-circle.webp',
+        credit: {
+          author: 'Ștefan Jurcă',
+          license: 'CC BY 2.0',
+          url: 'https://commons.wikimedia.org/wiki/File:Bucharest_-_National_Military_Circle_(Offizierskasino)_(28863445916).jpg',
+        },
+      },
     },
     // Onești (Bacău county), not a city of the guide.
     {
@@ -2420,7 +2428,7 @@ export const structure = defineGuide<Ro, RoSection>({
       kind: 'person',
       region: Moldavia,
       on: [Moldavia, Wallachia],
-      traces: [RoTrace.NadiaStatueOtopeni, RoTrace.OnestiPathOfPerfection],
+      traces: [RoTrace.MilitaryCircle, RoTrace.OnestiPathOfPerfection],
     },
     {
       id: Ro.Bucharest,
