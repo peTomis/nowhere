@@ -4,11 +4,19 @@ import { ArrowLeftIcon, ListIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { AccountMenu } from '@/components/AccountMenu'
+import { InlineScript } from '@/components/InlineScript'
 import { Logo } from '@/components/Logo'
 import { Completion } from '@/components/Completion'
 import type { AlbumTrace, GuideCard } from '@/content/build'
 import { anchorOf, type Place, type TocEntry } from '@/content/types'
 import { Album } from './Album'
+import {
+  BAR_CONTROL,
+  GUIDE_ACCOUNT_ID,
+  GUIDE_BAR_SENTINEL_ID,
+  guideBarScript,
+  useGuideBar,
+} from './bar'
 import { GuideDataProvider } from './data'
 import { PhotoPanel } from './PhotoPanel'
 import { Pinned } from './Pins'
@@ -35,7 +43,8 @@ import { useLang, useT } from '@/i18n/client'
  * 960px the index button, whose menu starts with them. Under it, the text (sticky sidebar with
  * the trip filter and the index on wide screens, full-screen index menu below 960px), ending with
  * the sources, or the album (with the map of the traces). The bar keeps its right end free for
- * the account button (see useBarPush).
+ * the account button. Whether the bar is stuck and where the button is are set in the DOM, also
+ * before hydration (bar.ts).
  */
 export function GuideShell(props: ShellProps & { cards: GuideCard[] }) {
   const { countryId, numeric, country, places, traces, cards } = props
@@ -98,59 +107,9 @@ function useActiveSection(ids: string[], recheck: unknown) {
   return active
 }
 
-/**
- * Whether the bar is stuck. The sentinel sits where the bar's bottom edge is in the flow (the bar
- * is pulled up by its height), so the bar sticks when the sentinel passes BAR px from the top.
- */
-function useStuck() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [stuck, setStuck] = useState(false)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([e]) => setStuck(!e.isIntersecting && e.boundingClientRect.top < BAR),
-      { rootMargin: `-${BAR}px 0px 0px 0px` },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-  return [ref, stuck] as const
-}
-
 /** Bar height and account button size: the button settles centered in the stuck bar. */
 const BAR = GUIDE_BAR_HEIGHT
 const BUTTON = 48
-
-/**
- * Publishes the bar's top edge (viewport px) as --bar-y on the account button's wrapper. Its `top`
- * is min(var(--edge), max(8px, bar top + 8px)): fixed where the home has it until the bar comes
- * up to it, then pushed up with the bar, and sticky once centered in the stuck bar.
- */
-function useBarPush() {
-  const bar = useRef<HTMLDivElement>(null)
-  const button = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const frame = { id: 0 }
-    const update = () => {
-      frame.id = 0
-      if (bar.current && button.current)
-        button.current.style.setProperty('--bar-y', `${bar.current.getBoundingClientRect().top}px`)
-    }
-    const schedule = () => {
-      if (!frame.id) frame.id = requestAnimationFrame(update)
-    }
-    update()
-    window.addEventListener('scroll', schedule, { passive: true })
-    window.addEventListener('resize', schedule)
-    return () => {
-      cancelAnimationFrame(frame.id)
-      window.removeEventListener('scroll', schedule)
-      window.removeEventListener('resize', schedule)
-    }
-  }, [])
-  return [bar, button] as const
-}
 
 function Shell({ country, toc, traces, copies, summary, sources, children }: ShellProps) {
   const t = useT()
@@ -174,8 +133,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
   const ids = useMemo(() => toc.map((e) => e.id), [toc])
   const active = useActiveSection(ids, trip)
   const current = (toc.find((e) => e.id === active) ?? toc[0])?.label
-  const [sentinel, stuck] = useStuck()
-  const [barRef, buttonRef] = useBarPush()
+  useGuideBar()
   const inset = (BAR - BUTTON) / 2
 
   // The index menu covers the page, which is locked under it. It opens at its top and, when it
@@ -207,9 +165,11 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
 
   return (
     <div className="relative">
-      <div ref={sentinel} aria-hidden />
+      <div id={GUIDE_BAR_SENTINEL_ID} aria-hidden />
       <div
-        ref={buttonRef}
+        id={GUIDE_ACCOUNT_ID}
+        // --bar-y is set by the bar's script (bar.ts), not by React.
+        suppressHydrationWarning
         // Desktop only: on phones the guide has no account avatar (the account is on the home).
         className="fixed right-(--edge) z-30 hidden min-[960px]:block"
         // Before hydration --bar-y is unset: the fallback keeps the button at var(--edge).
@@ -218,13 +178,14 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
         <AccountMenu />
       </div>
       <div
-        ref={barRef}
         id={GUIDE_BAR_ID}
+        // data-stuck is set by the bar's script (bar.ts), not by React.
+        suppressHydrationWarning
         // Pulled up by its own height (-mt), over the bottom margin of the opening, so it takes no
         // room: its bottom line sits right under the opening and scrolls up with the page until
         // it reaches 64px from the top, where it stops; the bar then fills the space above it.
         // Until stuck it is see-through and lets clicks pass to the opening.
-        className={`sticky top-0 z-20 mt-[-64px] flex h-[64px] items-center gap-2 pr-(--edge) pl-[clamp(16px,4.5vw,64px)] min-[960px]:pr-[calc(var(--edge)+56px)] ${stuck ? 'bg-bg shadow-sm' : 'pointer-events-none bg-transparent shadow-[inset_0_-1px_0_var(--color-divider)]'}`}
+        className="group/bar pointer-events-none sticky top-0 z-20 mt-[-64px] flex h-[64px] items-center gap-2 bg-transparent pr-(--edge) pl-[clamp(16px,4.5vw,64px)] shadow-[inset_0_-1px_0_var(--color-divider)] data-stuck:pointer-events-auto data-stuck:bg-bg data-stuck:shadow-sm min-[960px]:pr-[calc(var(--edge)+56px)]"
       >
         {/*
           The bar's controls repeat the cover and the album opening: they appear only once the bar
@@ -233,8 +194,9 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
           at the top of the index menu.
         */}
         <div
-          inert={!stuck}
-          className={`flex min-w-0 flex-1 items-center gap-2 motion-safe:transition-opacity motion-safe:duration-200 ${stuck ? 'opacity-100' : 'opacity-0'}`}
+          {...{ [BAR_CONTROL]: '' }}
+          suppressHydrationWarning
+          className="flex min-w-0 flex-1 items-center gap-2 opacity-0 group-data-stuck/bar:opacity-100 motion-safe:transition-opacity motion-safe:duration-200"
         >
           <Link
             href={home}
@@ -262,8 +224,9 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
         </div>
         <button
           type="button"
-          inert={!stuck}
-          className={`grid size-[44px] flex-none cursor-pointer place-items-center border-0 bg-transparent p-0 text-text hover:text-accent-700 min-[960px]:hidden ${stuck ? '' : 'invisible'}`}
+          {...{ [BAR_CONTROL]: '' }}
+          suppressHydrationWarning
+          className="invisible grid size-[44px] flex-none cursor-pointer place-items-center border-0 bg-transparent p-0 text-text group-data-stuck/bar:visible hover:text-accent-700 min-[960px]:hidden"
           aria-label={t.guide.shell.index}
           aria-haspopup="dialog"
           onClick={() => setMenu(true)}
@@ -271,6 +234,8 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
           <ListIcon size={22} aria-hidden="true" />
         </button>
       </div>
+      {/* Sets the bar and the button before hydration (bar.ts). */}
+      <InlineScript html={guideBarScript()} />
 
       {view === 'album' && <Album />}
       {/* The text stays mounted (and server-rendered) while another view is shown. */}
