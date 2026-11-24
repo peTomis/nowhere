@@ -49,6 +49,7 @@ export function Guide({ slug, name, content }: GuideProps) {
   return (
     <>
       <GuideCover
+        country={content.structure.country}
         name={name}
         cover={content.cover}
         emblems={content.emblems}

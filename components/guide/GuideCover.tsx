@@ -3,18 +3,23 @@ import { Completion, type Scored } from '@/components/Completion'
 import { LogoBadge } from '@/components/LogoBadge'
 import { publicAsset } from '@/lib/assets'
 import type { GuideContent } from '@/content/types'
+import { CoverPhoto } from './CoverPhoto'
 
 /**
- * Full-height cover, from "Guida Romania - Sito v4": photo fading into the paper, logo, and at the
- * bottom the country name over a row with the emblems and the album completion.
+ * Full-height cover, from "Guida Romania - Sito v4": photo (the reader's own cover photo, if any,
+ * else the guide's) fading into the paper, logo, and at the bottom the country name over a row with
+ * the emblems and the album completion.
  */
 export function GuideCover({
+  country,
   name,
   cover,
   emblems = [],
   ink = 'var(--color-text)',
   traces,
 }: {
+  /** ISO code: the key of the reader's cover photo. */
+  country: string
   name: string
   ink?: string
   traces: Scored[]
@@ -36,6 +41,7 @@ export function GuideCover({
           className="object-cover"
         />
       )}
+      <CoverPhoto country={country} name={name} />
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,var(--color-bg)_0%,color-mix(in_srgb,var(--color-bg)_70%,transparent)_14%,transparent_38%)]"
         aria-hidden="true"

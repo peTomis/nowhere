@@ -215,6 +215,7 @@
       "gallery": "Dalla galleria",
       "cameraAgain": "Scatta di nuovo",
       "preview": "Anteprima della tua foto",
+      "coverAlt": "La tua foto di copertina di {name}",
       "unreadableTitle": "Questa foto non si può aprire",
       "unreadable": "«{file}» è in un formato che il browser non legge. Scegline un’altra, oppure salvala come JPEG e riprova.",
       "tooLarge": "«{file}» è troppo grande anche dopo averla ridotta. Scegline un’altra.",
