@@ -1,7 +1,7 @@
 import { ArrowRightIcon, XIcon } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { Completion, type Scored } from './Completion'
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /**
  * The card of a country picked on the home map, port of "SchedaPaese.dc.html": name, close
@@ -21,6 +21,7 @@ type Props = {
 }
 
 export function CountryCard({ name, href, traces, onClose, onOpen }: Props) {
+  const t = useT()
   return (
     <div
       role="group"

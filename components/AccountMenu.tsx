@@ -12,7 +12,8 @@ import {
 import { signIn, signOut } from 'next-auth/react'
 import Link from 'next/link'
 import { useEffect, useId, useRef, useState } from 'react'
-import { format, t } from '@/i18n'
+import { format, paths } from '@/i18n'
+import { useLang, useT } from '@/i18n/client'
 
 /**
  * Account button and side panel, port of "Account.dc.html". The button shows the reader's initial
@@ -26,6 +27,8 @@ import { format, t } from '@/i18n'
 export type Me = { email: string; name?: string; image?: string }
 
 export function AccountMenu() {
+  const t = useT()
+  const lang = useLang()
   const [me, setMe] = useState<Me | null>(null)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -158,7 +161,7 @@ export function AccountMenu() {
 
           <nav aria-label={t.accountMenu.title} className="flex flex-col">
             <Link
-              href="/account"
+              href={paths.account(lang)}
               onClick={() => setOpen(false)}
               className="flex min-h-[56px] items-center gap-3 text-text no-underline hover:text-accent-700"
             >

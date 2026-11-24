@@ -1,9 +1,10 @@
 import { ArrowUpIcon, GlobeHemisphereEastIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import Link from 'next/link'
-import { publicAsset } from '@/lib/assets'
-import type { GuideContent } from '@/content/types'
-import { format, t } from '@/i18n'
+import { asset } from '@/lib/assets'
+import type { ShownEmblem } from '@/content/types'
+import { format, paths } from '@/i18n'
+import { getLang, getT } from '@/i18n/server'
 
 const heading = 'mb-1 text-[11px] tracking-[.16em] text-neutral-700 uppercase'
 const link =
@@ -13,11 +14,18 @@ const link =
  * Closing section of a guide (the upper part of the design's guide footer): recap with emblems
  * and name, then "Tutte le guide" (the map) and "Torna su". The site footer follows it.
  */
-export function GuideOutro({
+export async function GuideOutro({
   name,
   emblems = [],
-}: { name: string } & Pick<GuideContent, 'emblems'>) {
-  const shown = emblems.filter((e) => publicAsset(e.src))
+}: {
+  name: string
+  emblems?: ShownEmblem[]
+}) {
+  const t = await getT()
+  const shown = emblems.flatMap((e) => {
+    const src = asset(e.src)
+    return src ? [{ ...e, src }] : []
+  })
   return (
     <section
       aria-label={format(t.guide.outro.label, { name })}
@@ -48,7 +56,7 @@ export function GuideOutro({
         </div>
         <nav aria-label={t.guide.outro.more} className="flex flex-col">
           <span className={heading}>{t.guide.outro.more}</span>
-          <Link href="/" className={link}>
+          <Link href={paths.home(await getLang())} className={link}>
             <GlobeHemisphereEastIcon weight="duotone" size={18} className="text-accent-700" />
             {t.guide.outro.allGuides}
           </Link>

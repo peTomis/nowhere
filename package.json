@@ -13,7 +13,9 @@
     "format:check": "prettier --check .",
     "icons": "node scripts/app-icons.mjs",
     "validate": "node scripts/validate.mjs",
-    "db:setup": "node --env-file=.env scripts/db-setup.mjs"
+    "db:setup": "node --env-file=.env scripts/db-setup.mjs",
+    "assets": "node --env-file-if-exists=.env scripts/assets.mjs",
+    "country-names": "node scripts/country-names.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1165.0",

@@ -14,7 +14,8 @@ import { useEffect, useId, useRef, useState, type ReactNode } from 'react'
 import { Completion, completionOf, THRESHOLDS } from '@/components/Completion'
 import { Medal, medalOf } from '@/components/Medal'
 import type { AlbumTrace } from '@/content/build'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { addPhoto, isSeen, removeFromAlbum, saveNote, useCollection } from '@/lib/reader/collection'
 import { PhotoError, processPhoto, type ProcessedPhoto } from '@/lib/reader/photos'
 import { NOTE_UI_MAX } from '@/lib/reader/schema'
@@ -42,6 +43,7 @@ export function PhotoPanel() {
 type Done = { from: number; level: number | null }
 
 function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
+  const t = useT()
   const { entries } = useCollection()
   const { traces, name } = useGuideData()
   const entry = entries[trace.key]

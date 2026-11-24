@@ -1,6 +1,7 @@
 import { Completion, type Scored } from '@/components/Completion'
 import type { AlbumTrace } from '@/content/build'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { getT } from '@/i18n/server'
 import { OpenAlbumButton } from './OpenAlbumButton'
 
 /**
@@ -15,7 +16,8 @@ type Props = {
   scored: Scored[]
 }
 
-export function GuideAlbumIntro({ name, traces, scored }: Props) {
+export async function GuideAlbumIntro({ name, traces, scored }: Props) {
+  const t = await getT()
   const regions = new Set(traces.flatMap((tr) => (tr.region ? [tr.region] : []))).size
   const summary =
     traces.length === 0

@@ -10,7 +10,8 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { feature } from 'topojson-client'
 import type { GeometryCollection, Topology } from 'topojson-specification'
 import type { AlbumTrace } from '@/content/build'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { isSeen, type Entry } from '@/lib/reader/collection'
 import { pad, useGuideData } from './data'
 import { boxBorder, photoSrc } from './Trace'
@@ -65,6 +66,7 @@ export function TraceMap({
   entries: Record<string, Entry>
   onOpen: (id: string) => void
 }) {
+  const t = useT()
   const { numeric, name } = useGuideData()
   const traces = useMemo(() => all.filter((tr) => tr.at), [all])
   const ref = useRef<HTMLDivElement>(null)
@@ -349,6 +351,7 @@ function Pin({
   entry: Entry | undefined
   onOpen: (id: string) => void
 }) {
+  const t = useT()
   const { trace } = point
   const num = pad(trace.num)
   const seen = isSeen(entry)

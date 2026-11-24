@@ -12,6 +12,14 @@ const places: Record<Template, string> = {
 }
 
 export const names: GuideNames<Template, Section> = {
+  /** The country name on the cover, in the title and in the album. */
+  country: 'Paese',
+  summary: 'Ogni elemento del kit delle guide, con testo segnaposto.',
+  alt: {
+    cover: 'Foto di copertina',
+    'coat-of-arms': 'Stemma del paese',
+    flag: 'Bandiera del paese',
+  },
   places,
   /**
    * Section titles. A chapter's title is the same in every guide: its entry here is its line

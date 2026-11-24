@@ -255,6 +255,37 @@ const bc1 = { century: -1 }
 
 export const structure = defineGuide<Ro, RoSection>({
   country: 'ro',
+  cover: {
+    src: '/guides/romania/cover.jpg',
+    credit: { unverified: 'author and licence to record' },
+  },
+  /** Country name and nowhere logo on the cover. */
+  coverInk: 'var(--color-text)',
+  emblems: [
+    {
+      kind: 'coat-of-arms',
+      src: '/guides/romania/coat-of-arms.png',
+      // The official arms with the crown restored in 2016, rendered from the Commons SVG.
+      credit: {
+        author: 'Wikimedia Commons',
+        license: 'Public domain',
+        url: 'https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Romania.svg',
+      },
+      width: 480,
+      height: 695,
+    },
+    {
+      kind: 'flag',
+      src: '/guides/romania/flag.svg',
+      credit: {
+        author: 'AdiJapan',
+        license: 'Public domain',
+        url: 'https://commons.wikimedia.org/wiki/File:Flag_of_Romania.svg',
+      },
+      width: 72,
+      height: 48,
+    },
+  ],
   regions: [
     { id: Dobruja, cities: [Ro.Constanta] },
     { id: Moldavia, cities: [Ro.Iasi, Ro.Suceava] },

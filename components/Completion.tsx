@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { isSeen, useCollection } from '@/lib/reader/collection'
 import { Medal, medalOf } from './Medal'
 
@@ -78,6 +79,7 @@ type Props = {
 }
 
 export function Completion({ name, traces, variant = 'compact', from, className = '' }: Props) {
+  const t = useT()
   const { pct, points, total, level, seen, count } = useCompletion(traces)
   // Starts at `from`, then grows to the real value on the next frame (the bar's transition).
   const [grown, setGrown] = useState(from === undefined)

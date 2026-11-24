@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from 'react'
 import type { OfflineManifest } from '@/lib/server/offline'
-import { t } from '@/i18n'
+import type { Locale } from '@/i18n'
 
 /*
  * Offline guides, adapted from collection-manager's offline mode: one download saves the home,
@@ -10,8 +10,19 @@ import { t } from '@/i18n'
  * (public/offline-sw.js) serves them when the network doesn't answer. Guides are public, so no
  * account is needed and nothing personal is saved: photos and notes stay online. A download goes
  * to its own cache and replaces the previous one only once complete; the active one is named in
- * the `META` cache (read by the worker) and in localStorage (read by the page).
+ * the `META` cache (read by the worker) and in localStorage (read by the page). A download saves
+ * the pages of one language (the reader's) and the images, which every language shares; when the
+ * images come from the asset CDN, the worker is told its origin so it serves them offline too.
  */
+
+/** Why a download failed; OfflineGuides shows the matching `offline.*` text. */
+export type OfflineErrorCode = 'devMode' | 'unsupported' | 'failed' | 'quota'
+
+export class OfflineError extends Error {
+  constructor(readonly code: OfflineErrorCode) {
+    super(code)
+  }
+}
 
 const PREFIX = 'nowhere-offline-'
 const META = 'nowhere-offline-meta'
@@ -66,12 +77,16 @@ export async function snapshotAvailable(id: string) {
   return 'caches' in window && (await caches.has(PREFIX + id))
 }
 
-async function prepareWorker() {
+function checkSupport() {
   // next dev rebuilds its chunks on every edit: a saved page would point at missing scripts.
-  if (process.env.NODE_ENV === 'development') throw new Error(t.offline.devMode)
+  if (process.env.NODE_ENV === 'development') throw new OfflineError('devMode')
   if (!('serviceWorker' in navigator) || !('caches' in window) || !window.isSecureContext)
-    throw new Error(t.offline.unsupported)
-  await navigator.serviceWorker.register(SW, { scope: '/' })
+    throw new OfflineError('unsupported')
+}
+
+async function prepareWorker(assetsOrigin: string | undefined) {
+  const url = assetsOrigin ? `${SW}?assets=${encodeURIComponent(assetsOrigin)}` : SW
+  await navigator.serviceWorker.register(url, { scope: '/' })
   await navigator.serviceWorker.ready
 }
 
@@ -80,10 +95,10 @@ async function checkedFetch(url: string, signal: AbortSignal) {
   const controller = new AbortController()
   const abort = () => controller.abort(signal.reason)
   signal.addEventListener('abort', abort, { once: true })
-  const timer = setTimeout(() => controller.abort(new Error(t.offline.failed)), 30000)
+  const timer = setTimeout(() => controller.abort(new OfflineError('failed')), 30000)
   try {
     const response = await fetch(url, { signal: controller.signal, cache: 'no-store' })
-    if (!response.ok) throw new Error(t.offline.failed)
+    if (!response.ok) throw new OfflineError('failed')
     // Read the whole body before the timeout is cleared, also on a slow connection.
     return new Response(await response.arrayBuffer(), {
       status: response.status,
@@ -91,9 +106,7 @@ async function checkedFetch(url: string, signal: AbortSignal) {
     })
   } catch (error) {
     if (signal.aborted) throw signal.reason
-    throw error instanceof Error && error.message === t.offline.failed
-      ? error
-      : new Error(t.offline.failed)
+    throw error instanceof OfflineError ? error : new OfflineError('failed')
   } finally {
     clearTimeout(timer)
     signal.removeEventListener('abort', abort)
@@ -107,27 +120,33 @@ function staticRefs(text: string) {
   return [...text.matchAll(STATIC)].map(([m]) => (m.startsWith('/_next/') ? m : `/_next/${m}`))
 }
 
-/** Downloads the snapshot; `progress` gets the files saved and the total so far. */
+/**
+ * Downloads the snapshot of one language; `progress` gets the files saved and the total so far.
+ * Fails with an OfflineError (or the signal's reason when aborted).
+ */
 export async function downloadOffline(
+  lang: Locale,
   progress: (done: number, total: number) => void,
   signal: AbortSignal,
 ) {
   const id = crypto.randomUUID()
   const previous = read()
   try {
-    await prepareWorker()
+    checkSupport()
+    const manifest = (await (await checkedFetch('/api/offline', signal)).json()) as OfflineManifest
+    const routes = manifest.routes[lang]
+    await prepareWorker(manifest.assetsOrigin)
     await navigator.storage?.persist?.()
     const cache = await caches.open(PREFIX + id)
-    const manifest = (await (await checkedFetch('/api/offline', signal)).json()) as OfflineManifest
 
     // Pages and public files must all be there; build files found by scanning are best-effort
     // (a match in a script may not be a real file), as long as the pages' own ones are saved.
-    const required = new Set<string>([...manifest.routes, ...manifest.files])
+    const required = new Set<string>([...routes, ...manifest.files])
     const found = new Set<string>()
     let done = 0
     const total = () => required.size + found.size
 
-    for (const route of manifest.routes) {
+    for (const route of routes) {
       const response = await checkedFetch(route, signal)
       const html = await response.clone().text()
       const doc = new DOMParser().parseFromString(html, 'text/html')
@@ -169,9 +188,7 @@ export async function downloadOffline(
     }
 
     const queue: [string, boolean][] = [
-      ...[...required]
-        .filter((p) => !manifest.routes.includes(p))
-        .map((p): [string, boolean] => [p, true]),
+      ...[...required].filter((p) => !routes.includes(p)).map((p): [string, boolean] => [p, true]),
       ...[...found].map((p): [string, boolean] => [p, false]),
     ]
     while (queue.length) {
@@ -182,14 +199,15 @@ export async function downloadOffline(
 
     signal.throwIfAborted()
     const snapshot: OfflineSnapshot = { id, savedAt: Date.now() }
-    await (await caches.open(META)).put('/__offline', Response.json({ id }))
+    // `home`: where the worker sends `/` offline (online, the server redirects it).
+    await (await caches.open(META)).put('/__offline', Response.json({ id, home: routes[0] }))
     write(snapshot)
     if (previous) await caches.delete(PREFIX + previous.id)
     return snapshot
   } catch (error) {
     await caches.delete(PREFIX + id).catch(() => {})
     if (error instanceof DOMException && error.name === 'QuotaExceededError')
-      throw new Error(t.offline.quota)
+      throw new OfflineError('quota')
     throw error
   }
 }

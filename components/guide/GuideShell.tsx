@@ -25,7 +25,8 @@ import {
   useGuideView,
   type GuideView,
 } from './view'
-import { t } from '@/i18n'
+import { paths } from '@/i18n'
+import { useLang, useT } from '@/i18n/client'
 
 /**
  * Reading layout of a guide, from "Guida Romania - Sito v4.dc.html". A sticky top bar, whose
@@ -152,6 +153,8 @@ function useBarPush() {
 }
 
 function Shell({ country, toc, traces, copies, summary, sources, children }: ShellProps) {
+  const t = useT()
+  const home = paths.home(useLang())
   const view = useGuideView()
   // /guide/<slug>#album (e.g. from "I tuoi dati") opens on the album, on arrival or when the
   // address changes to it (the section anchors leave the view alone).
@@ -234,7 +237,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
           className={`flex min-w-0 flex-1 items-center gap-2 motion-safe:transition-opacity motion-safe:duration-200 ${stuck ? 'opacity-100' : 'opacity-0'}`}
         >
           <Link
-            href="/"
+            href={home}
             aria-label={t.common.homeLabel}
             className="grid size-[44px] flex-none place-items-center no-underline"
           >
@@ -350,7 +353,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
             />
           </nav>
           <Link
-            href="/"
+            href={home}
             className="mt-8 flex min-h-[44px] items-center gap-[8px] text-[17px] text-accent-700 no-underline"
           >
             <ArrowLeftIcon weight="duotone" size={18} />
@@ -372,6 +375,7 @@ function ViewSwitch({
   className: string
   onPick?: () => void
 }) {
+  const t = useT()
   return (
     <div
       role="group"

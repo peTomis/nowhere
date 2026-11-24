@@ -43,3 +43,6 @@ next-env.d.ts
 
 # editor
 .idea
+
+# guide images: in the public asset bucket (yarn assets pull / push, lib/assets.ts)
+/public/guides/

@@ -1,7 +1,7 @@
 'use client'
 
 import { BookOpenTextIcon, SquaresFourIcon } from '@phosphor-icons/react'
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { openView, useGuideView } from './view'
 
 /**
@@ -9,6 +9,7 @@ import { openView, useGuideView } from './view'
  * While the album is shown it becomes "Apri la guida" and switches back.
  */
 export function OpenAlbumButton() {
+  const t = useT()
   const album = useGuideView() === 'album'
   const Icon = album ? BookOpenTextIcon : SquaresFourIcon
   return (

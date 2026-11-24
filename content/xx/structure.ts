@@ -67,6 +67,14 @@ const { North, South, CityOne, CityTwo, CityThree } = Template
 
 export const structure = defineGuide<Template, Section>({
   country: 'xx',
+  /** Images: paths in the asset store, the same in every language (alt texts in names). */
+  cover: { src: '/guides/template/cover.jpg' },
+  /** Country name and nowhere logo on the cover: always one color. */
+  coverInk: 'var(--color-text)',
+  emblems: [
+    { kind: 'coat-of-arms', src: '/guides/template/coat-of-arms.png', width: 480, height: 695 },
+    { kind: 'flag', src: '/guides/template/flag.svg', width: 72, height: 48 },
+  ],
   /** Trip filter: regions, each with its cities (a region may have none). */
   regions: [
     { id: North, cities: [CityOne, CityTwo] },

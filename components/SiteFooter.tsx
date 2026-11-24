@@ -1,11 +1,12 @@
 import { Logo } from './Logo'
-import { t } from '@/i18n'
+import { getT } from '@/i18n/server'
 
 /**
  * Site footer, from "Nowhere - Home v2.dc.html": wordmark + tagline (from 640px), credit on the
  * right. The same footer closes every page.
  */
-export function SiteFooter({ className = '' }: { className?: string }) {
+export async function SiteFooter({ className = '' }: { className?: string }) {
+  const t = await getT()
   return (
     <footer
       className={`flex flex-none flex-wrap items-center justify-between gap-x-6 bg-bg px-(--edge) py-1 text-sm text-neutral-800 ${className}`}

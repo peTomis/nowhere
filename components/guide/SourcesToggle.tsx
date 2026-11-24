@@ -2,7 +2,7 @@
 
 import { BooksIcon } from '@phosphor-icons/react'
 import { useId, useState, type ReactNode } from 'react'
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /**
  * "Mostra le fonti": the list of sources stays closed under its heading, so the page ends sooner.
@@ -10,6 +10,7 @@ import { t } from '@/i18n'
  * rendered on the server in any case (hidden, not left out).
  */
 export function SourcesToggle({ children }: { children: ReactNode }) {
+  const t = useT()
   const [open, setOpen] = useState(false)
   const id = useId()
   return (

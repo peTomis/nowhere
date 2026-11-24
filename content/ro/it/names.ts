@@ -35,6 +35,13 @@ const landscapes: Record<RoLandscape, string> = {
 }
 
 export const names: GuideNames<Ro, RoSection> = {
+  country: 'Romania',
+  summary: 'Transilvania, Bucarest e i Carpazi.',
+  alt: {
+    cover: 'La chiesa fortificata di Biertan nella nebbia',
+    'coat-of-arms': 'Stemma della Romania',
+    flag: 'Bandiera della Romania',
+  },
   places,
   sections: {
     // Chapters: their line in the summary (the titles are the same in every guide).

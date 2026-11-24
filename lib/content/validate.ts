@@ -1,7 +1,7 @@
-import { existsSync } from 'node:fs'
-import { join } from 'node:path'
 import { isValidElement, type ReactNode } from 'react'
 import { kitKindOf, kitNameOf } from '@/components/guide/content'
+import type { Locale } from '@/i18n/config'
+import { asset } from '@/lib/assets'
 import { BUILT_IN_TRACES } from '@/content/subjects'
 import {
   CARD_CHAPTER,
@@ -71,6 +71,31 @@ export function parseItalianDate(s: string): EventYears | undefined {
   return years.length ? { from: Math.min(...years), to: Math.max(...years), fuzzy } : undefined
 }
 
+/**
+ * Years covered by an English event date ("1608–1613", "c. 1003", "14th c.", "1st century BC",
+ * "1711 and 1716", "After 1711"). Undefined when nothing can be read.
+ */
+export function parseEnglishDate(s: string): EventYears | undefined {
+  const years: number[] = []
+  let fuzzy = false
+  const centuries = /\b(\d{1,2})(?:st|nd|rd|th)\s+c(?:\.|entury)(\s+BC)?/g
+  for (const m of s.matchAll(centuries)) {
+    fuzzy = true
+    years.push(...rangeOfYear({ century: Number(m[1]) * (m[2] ? -1 : 1) }))
+  }
+  const rest = s.replace(centuries, ' ')
+  for (const m of rest.matchAll(/\b(\d{1,4})(\s+BC)?/g)) {
+    years.push(Number(m[1]) * (m[2] ? -1 : 1))
+  }
+  return years.length ? { from: Math.min(...years), to: Math.max(...years), fuzzy } : undefined
+}
+
+/** Event dates are prose: each language writes (and is read) its own way. */
+const parseDate: Record<Locale, (s: string) => EventYears | undefined> = {
+  it: parseItalianDate,
+  en: parseEnglishDate,
+}
+
 const fmt = (on: Visibility) => (on === 'always' ? "'always'" : `[${on.join(', ')}]`)
 
 export function validateGuide(slug: string, content: GuideContent): Issue[] {
@@ -97,6 +122,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
       regionOf.set(c, r.id)
     }
   }
+  if (!names.country.trim()) error('names', 'no country name')
   for (const id of placeIds)
     if (!names.places[id as keyof typeof names.places]?.trim())
       error('names', `no name for place ${id}`)
@@ -205,9 +231,9 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     for (const p of on) if (!placeIds.has(p)) error(where, `unknown place ${String(p)}`)
     return on as string[]
   }
-  const publicFile = (src: string) => existsSync(join(process.cwd(), 'public', src))
   const checkImage = (src: unknown, credit: Credit | undefined, where: string) => {
-    if (typeof src !== 'string' || !publicFile(src)) return
+    // Only images that exist (lib/assets.ts): a missing one is a placeholder, not an error.
+    if (typeof src !== 'string' || !asset(src)) return
     if (!credit) error(where, `image ${src} has no credit (author and licence)`)
     else if ('unverified' in credit)
       warn(where, `image ${src}: credit to verify (${credit.unverified})`)
@@ -360,7 +386,7 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
     if (k === 'event' && props.date != null) {
       if (typeof props.date !== 'string') warn(here, 'date is not plain text: not checked')
       else {
-        const r = parseItalianDate(props.date)
+        const r = parseDate[content.lang](props.date)
         if (!r) error(here, `date "${props.date}" cannot be read`)
         else for (const s of ctx.sections) eventYears.set(s, [...(eventYears.get(s) ?? []), r])
       }
@@ -467,8 +493,11 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   }
 
   // --- images outside the body ----------------------------------------------------------------
-  if (content.cover) checkImage(content.cover.src, content.cover.credit, 'cover')
-  for (const e of content.emblems ?? []) checkImage(e.src, e.credit, `emblems › ${e.kind}`)
+  if (structure.cover) checkImage(structure.cover.src, structure.cover.credit, 'cover')
+  for (const e of structure.emblems ?? []) checkImage(e.src, e.credit, `emblems › ${e.kind}`)
+  if (structure.cover && !names.alt?.cover?.trim()) warn('names', 'no alt text for the cover')
+  for (const e of structure.emblems ?? [])
+    if (!names.alt?.[e.kind]?.trim()) warn('names', `no alt text for the ${e.kind}`)
 
   return issues
 }

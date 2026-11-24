@@ -6,9 +6,6 @@ import { names } from './names'
 
 const dir = '/guides/romania'
 
-/** Images whose author and licence are not recorded yet: the validator lists them as warnings. */
-const creditToVerify = { unverified: 'author and licence to record' }
-
 const {
   Callout,
   Card,
@@ -35,42 +32,9 @@ const {
 const { Dobruja, Moldavia, Transylvania, Wallachia } = Ro
 
 export const romania: GuideContent<Ro, RoSection> = {
+  lang: 'it',
   structure,
   names,
-  cover: {
-    src: `${dir}/cover.jpg`,
-    alt: 'La chiesa fortificata di Biertan nella nebbia',
-    credit: creditToVerify,
-  },
-  /** Country name and nowhere logo on the cover. */
-  coverInk: 'var(--color-text)',
-  emblems: [
-    {
-      src: `${dir}/coat-of-arms.png`,
-      // The official arms with the crown restored in 2016, rendered from the Commons SVG.
-      credit: {
-        author: 'Wikimedia Commons',
-        license: 'Public domain',
-        url: 'https://commons.wikimedia.org/wiki/File:Coat_of_arms_of_Romania.svg',
-      },
-      alt: 'Stemma della Romania',
-      kind: 'coat-of-arms',
-      width: 480,
-      height: 695,
-    },
-    {
-      src: `${dir}/flag.svg`,
-      credit: {
-        author: 'AdiJapan',
-        license: 'Public domain',
-        url: 'https://commons.wikimedia.org/wiki/File:Flag_of_Romania.svg',
-      },
-      alt: 'Bandiera della Romania',
-      kind: 'flag',
-      width: 72,
-      height: 48,
-    },
-  ],
   sources,
   body: <Body />,
 }

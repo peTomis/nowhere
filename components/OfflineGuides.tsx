@@ -2,8 +2,10 @@
 
 import { CloudArrowDownIcon, CheckCircleIcon, TrashIcon } from '@phosphor-icons/react'
 import { useEffect, useRef, useState } from 'react'
-import { format, locale, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useLang, useT } from '@/i18n/client'
 import {
+  OfflineError,
   downloadOffline,
   removeOffline,
   snapshotAvailable,
@@ -17,6 +19,8 @@ type Props = {
 
 /** "Guide offline" in "I tuoi dati": saves the guides on this device for reading without network. */
 export function OfflineGuides({ bytes }: Props) {
+  const lang = useLang()
+  const t = useT()
   const snapshot = useOfflineSnapshot()
   // The id of a snapshot the browser has evicted.
   const [evicted, setEvicted] = useState<string | null>(null)
@@ -41,12 +45,13 @@ export function OfflineGuides({ bytes }: Props) {
     setProgress({ done: 0, total: 0 })
     try {
       await downloadOffline(
+        lang,
         (done, total) => setProgress({ done, total }),
         controller.current.signal,
       )
     } catch (e) {
       if (!controller.current?.signal.aborted)
-        setError(e instanceof Error ? e.message : t.offline.failed)
+        setError(t.offline[e instanceof OfflineError ? e.code : 'failed'])
     } finally {
       controller.current = null
       setProgress(null)
@@ -81,7 +86,7 @@ export function OfflineGuides({ bytes }: Props) {
               : t.offline.preparing
             : saved
               ? format(t.offline.saved, {
-                  date: new Date(snapshot.savedAt).toLocaleDateString(locale, {
+                  date: new Date(snapshot.savedAt).toLocaleDateString(lang, {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',

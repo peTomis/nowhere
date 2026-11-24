@@ -1,8 +1,10 @@
 import Image from 'next/image'
 import { Completion, type Scored } from '@/components/Completion'
 import { LogoBadge } from '@/components/LogoBadge'
-import { publicAsset } from '@/lib/assets'
-import type { GuideContent } from '@/content/types'
+import { paths } from '@/i18n'
+import { getLang } from '@/i18n/server'
+import { asset } from '@/lib/assets'
+import type { ShownEmblem, ShownImage } from '@/content/types'
 import { CoverPhoto } from './CoverPhoto'
 
 /**
@@ -10,7 +12,7 @@ import { CoverPhoto } from './CoverPhoto'
  * else the guide's) fading into the paper, logo, and at the bottom the country name over a row with
  * the emblems and the album completion.
  */
-export function GuideCover({
+export async function GuideCover({
   country,
   name,
   cover,
@@ -23,9 +25,14 @@ export function GuideCover({
   name: string
   ink?: string
   traces: Scored[]
-} & Pick<GuideContent, 'cover' | 'emblems'>) {
-  const src = publicAsset(cover?.src)
-  const shown = emblems.filter((e) => publicAsset(e.src))
+  cover?: ShownImage
+  emblems?: ShownEmblem[]
+}) {
+  const src = asset(cover?.src)
+  const shown = emblems.flatMap((e) => {
+    const url = asset(e.src)
+    return url ? [{ ...e, src: url }] : []
+  })
   return (
     <div
       id="top"
@@ -47,7 +54,7 @@ export function GuideCover({
         aria-hidden="true"
       />
       <div className="absolute top-(--edge) left-(--edge) z-2">
-        <LogoBadge href="/" framed={false} ink={ink} />
+        <LogoBadge href={paths.home(await getLang())} framed={false} ink={ink} />
       </div>
       <div className="absolute bottom-[clamp(20px,4vw,48px)] left-[clamp(16px,4.5vw,64px)] z-2 flex flex-col gap-[clamp(12px,2vw,20px)]">
         <h1

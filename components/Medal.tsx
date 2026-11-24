@@ -1,4 +1,4 @@
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /**
  * The medals of the album completion, by level (0: none yet, 1–4 at THRESHOLDS): a dashed shield,
@@ -38,6 +38,7 @@ const ROSETTE = Array.from({ length: 24 }, (_, i) => {
  */
 export function Medal({ level, size = 28, className = '' }: Props) {
   const kind = medalOf(level)
+  const t = useT()
   const label = t.completion.medalLabel[kind]
   return (
     <span title={label} className={`inline-flex flex-none ${className}`}>

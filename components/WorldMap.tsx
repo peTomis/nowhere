@@ -20,7 +20,8 @@ import { AccountMenu } from './AccountMenu'
 import { Completion, completionOf, type Scored } from './Completion'
 import { CountryCard } from './CountryCard'
 import { LogoBadge } from './LogoBadge'
-import { locale, t } from '@/i18n'
+import { paths, type Locale } from '@/i18n'
+import { useLang, useT } from '@/i18n/client'
 import { isSeen, useCollection } from '@/lib/reader/collection'
 
 /**
@@ -64,6 +65,8 @@ type Engine = {
 }
 
 const TOPOLOGY_URL = '/data/world-50m.json'
+/** Country names in languages other than Italian (the topology's own), by numeric id. */
+const namesUrl = (lang: Locale) => `/data/country-names/${lang}.json`
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 
 /** How a country is drawn: lit by the reader's photos, or not. */
@@ -86,6 +89,8 @@ type Props = {
 }
 
 export function WorldMap({ guides, lit = NONE_LIT }: Props) {
+  const lang = useLang()
+  const t = useT()
   const router = useRouter()
   // The reader's collection, loaded up front: it lights the guide countries and is ready for the
   // first hover.
@@ -171,7 +176,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
     const open = (g: MapGuide) => {
       cancelAnimationFrame(hoverRaf.current)
       clearSelection()
-      router.push(`/guide/${g.slug}`)
+      router.push(paths.guide(lang, g.slug))
     }
     // Touch has no hover: a tap on a guide country opens the country card (a bottom sheet on
     // phones) with the hover's content and the button to the guide.
@@ -318,16 +323,27 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       setStatus('ready')
     }
 
-    fetch(TOPOLOGY_URL, { signal: abort.signal })
-      .then((r) => {
+    const names: Promise<Record<string, string>> =
+      lang === 'it'
+        ? Promise.resolve({})
+        : fetch(namesUrl(lang), { signal: abort.signal })
+            .then((r) => (r.ok ? r.json() : {}))
+            .catch(() => ({}))
+    Promise.all([
+      fetch(TOPOLOGY_URL, { signal: abort.signal }).then((r) => {
         if (!r.ok) throw new Error(`${r.status}`)
         return r.json() as Promise<WorldTopology>
-      })
-      .then((topo) => {
+      }),
+      names,
+    ])
+      .then(([topo, localNames]) => {
         if (abort.signal.aborted) return
         const feats = feature(topo, topo.objects.countries).features as Country[]
         feats.forEach((f, i) => {
           f.properties.k = i
+          // A guide's own name wins, then the language's name, then the topology's Italian one.
+          const own = guideOf(f.id)?.name ?? (f.id !== undefined ? localNames[f.id] : undefined)
+          if (own) f.properties.n = own
         })
         m.feats = feats
         setList(
@@ -338,7 +354,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
               key: norm(f.properties.n),
               guide: guideOf(f.id),
             }))
-            .sort((a, b) => a.name.localeCompare(b.name, locale)),
+            .sort((a, b) => a.name.localeCompare(b.name, lang)),
         )
         ro = new ResizeObserver(draw)
         ro.observe(el)
@@ -355,7 +371,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
       select(el).selectAll('svg').remove()
       Object.assign(m, { w: 0, h: 0, svg: undefined, zoom: undefined, paths: undefined })
     }
-  }, [guides, guideOf, clearSelection, router])
+  }, [guides, guideOf, clearSelection, router, lang, t])
 
   useEffect(() => () => clearTimeout(blurTimer.current), [])
 
@@ -474,7 +490,7 @@ export function WorldMap({ guides, lit = NONE_LIT }: Props) {
         >
           <CountryCard
             name={pin.name}
-            href={pin.guide && `/guide/${pin.guide.slug}`}
+            href={pin.guide && paths.guide(lang, pin.guide.slug)}
             traces={pin.guide?.traces}
             onClose={() => {
               setPin(null)

@@ -1,8 +1,12 @@
 import type { MetadataRoute } from 'next'
-import { t } from '@/i18n'
+import { DEFAULT_LOCALE, messages } from '@/i18n'
 
-/** Web manifest: name and icons used when the site is added to a phone's home screen. */
+/**
+ * Web manifest: name and icons used when the site is added to a phone's home screen. One for the
+ * whole site, so in the default language; `/` redirects to the reader's language.
+ */
 export default function manifest(): MetadataRoute.Manifest {
+  const t = messages(DEFAULT_LOCALE)
   return {
     name: 'Nowhere',
     short_name: 'Nowhere',

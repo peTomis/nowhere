@@ -1,7 +1,7 @@
 import { ImageIcon } from '@phosphor-icons/react/ssr'
 import Image from 'next/image'
 import type { CSSProperties, ReactNode } from 'react'
-import { publicAsset } from '@/lib/assets'
+import { asset } from '@/lib/assets'
 import {
   anchorOf,
   chapterNumber,
@@ -12,7 +12,8 @@ import {
   type Visibility,
 } from '@/content/types'
 import { formatPeriod, roman } from '@/i18n/dates'
-import { format, t } from '@/i18n'
+import { format, messages, type Locale } from '@/i18n'
+import { getLang, getT } from '@/i18n/server'
 import { cardAnchor } from '@/content/anchors'
 import { builtInTrace } from '@/content/subjects'
 import { CardTraces } from './CardTraces'
@@ -74,7 +75,7 @@ export function A({ href, children }: { href: string; children: ReactNode }) {
   )
 }
 
-function ChapterView<P extends string>({
+async function ChapterView<P extends string>({
   on,
   ...props
 }: On<P> & {
@@ -86,6 +87,7 @@ function ChapterView<P extends string>({
   children: ReactNode
   gap?: 'normal' | 'wide'
 }) {
+  const t = await getT()
   return (
     <Only on={on}>
       <section
@@ -208,7 +210,7 @@ export function Event<P extends string>({
  * ("Varianti · regions", the regions in place of the period) for how a dish or a custom changes
  * from region to region. Also goes inside a `Card`.
  */
-export function Context<P extends string>({
+export async function Context<P extends string>({
   on,
   ...props
 }: On<P> & {
@@ -217,6 +219,7 @@ export function Context<P extends string>({
   title: ReactNode
   children: ReactNode
 }) {
+  const t = await getT()
   return (
     <Only on={on}>
       <div className="timeline-item timeline-context">
@@ -256,7 +259,8 @@ export function Aside({ children, italic }: { children: ReactNode; italic?: bool
 }
 
 /** A source line in an event, in place of a detail: aligned with the details, no diamond. */
-export function Source<P extends string>({ on, children }: On<P> & { children: ReactNode }) {
+export async function Source<P extends string>({ on, children }: On<P> & { children: ReactNode }) {
+  const t = await getT()
   return (
     <Only on={on}>
       <div className="grid grid-cols-[18px_minmax(0,1fr)]">
@@ -274,7 +278,7 @@ export function Source<P extends string>({ on, children }: On<P> & { children: R
  * Boxed aside. "onsite" = to look into on the spot; "debate" = a disputed point (positions and a
  * note inside); "remember" = the takeaway of a chapter or part.
  */
-export function Callout<P extends string>({
+export async function Callout<P extends string>({
   on,
   ...props
 }: On<P> & {
@@ -282,6 +286,7 @@ export function Callout<P extends string>({
   title?: ReactNode
   children: ReactNode
 }) {
+  const t = await getT()
   return (
     <Only on={on}>
       {props.kind === 'onsite' ? (
@@ -293,7 +298,8 @@ export function Callout<P extends string>({
   )
 }
 
-function Onsite(props: { children: ReactNode }) {
+async function Onsite(props: { children: ReactNode }) {
+  const t = await getT()
   return (
     <div className="mt-2 flex max-w-[46ch] flex-col gap-2 rounded-md bg-surface p-4">
       <div className={`${label} text-accent-2-700`}>{t.guide.content.onsite}</div>
@@ -348,7 +354,7 @@ export function Note<P extends string>({ on, children }: On<P> & { children: Rea
   )
 }
 
-export function Glossary<P extends string>({
+export async function Glossary<P extends string>({
   on,
   term,
   origin,
@@ -358,6 +364,7 @@ export function Glossary<P extends string>({
   origin?: string
   children: ReactNode
 }) {
+  const t = await getT()
   return (
     <Only on={on}>
       <div className="mt-1 flex max-w-[46ch] flex-col gap-2 rounded-md bg-surface p-4">
@@ -371,7 +378,7 @@ export function Glossary<P extends string>({
   )
 }
 
-/** An image, or a quiet placeholder while the file is not in `public/` yet. */
+/** An image, or a quiet placeholder while the file is not in the asset store yet. */
 function Picture(props: {
   src?: string
   alt: string
@@ -381,7 +388,7 @@ function Picture(props: {
   /** Transparent image (an emblem): no backdrop, shown whole instead of cropped. */
   cutout?: boolean
 }) {
-  const src = publicAsset(props.src)
+  const src = asset(props.src)
   return (
     <div
       className={`relative overflow-hidden rounded-md ${src && props.cutout ? '' : 'bg-neutral-200'} ${props.className ?? ''}`}
@@ -632,18 +639,21 @@ export function guideKit<P extends string, S extends string>(
     for (let j = i; j >= 0 && sections[j].level >= level; j--) if (sections[j].level === level) n++
     return n
   }
-  const dates = (d: SectionDef<S, P>) => (d.period ? formatPeriod(d.period) : undefined)
+  const dates = (d: SectionDef<S, P>, lang: Locale) =>
+    d.period ? formatPeriod(d.period, lang) : undefined
 
   /**
    * One of the six chapters (`chapter` in structure.ts): its number and title are fixed, the lede
    * is the guide's.
    */
-  function Chapter(props: {
+  async function Chapter(props: {
     section: S
     lede: string
     children: ReactNode
     gap?: 'normal' | 'wide'
   }) {
+    const lang = await getLang()
+    const t = messages(lang)
     const d = def(props.section)
     if (!d.chapter) throw new Error(`Section ${d.id} is not a chapter`)
     return (
@@ -653,7 +663,7 @@ export function guideKit<P extends string, S extends string>(
         number={chapterNumber(d.chapter)}
         title={t.guide.chapters[d.chapter]}
         lede={props.lede}
-        period={dates(d)}
+        period={dates(d, lang)}
         gap={props.gap}
       >
         {props.children}
@@ -661,9 +671,11 @@ export function guideKit<P extends string, S extends string>(
     )
   }
 
-  function Part(props: { section: S; children: ReactNode }) {
+  async function Part(props: { section: S; children: ReactNode }) {
+    const lang = await getLang()
+    const t = messages(lang)
     const d = def(props.section)
-    const when = dates(d)
+    const when = dates(d, lang)
     const kicker = format(t.guide.content.part, { number: roman(number(d.id)) })
     return (
       <PartView
@@ -678,10 +690,11 @@ export function guideKit<P extends string, S extends string>(
   }
 
   /** With `section`: a titled timeline in the index. Without: a plain list of events. */
-  function Timeline(props: ({ section: S } | On<P>) & { children: ReactNode }) {
+  async function Timeline(props: ({ section: S } | On<P>) & { children: ReactNode }) {
+    const lang = await getLang()
     if (!('section' in props)) return <TimelineView on={props.on}>{props.children}</TimelineView>
     const d = def(props.section)
-    const when = dates(d)
+    const when = dates(d, lang)
     return (
       <TimelineView
         on={d.on}
@@ -726,7 +739,7 @@ export function guideKit<P extends string, S extends string>(
    * its section. A copy of it is shown in "In evidenza" when pinned (`idPrefix`, `heading` and
    * `ungated` are set by the guide for that copy, never in content).
    */
-  function Card(props: {
+  async function Card(props: {
     card: string
     intro: ReactNode
     remember: ReactNode
@@ -735,6 +748,7 @@ export function guideKit<P extends string, S extends string>(
     heading?: boolean
     ungated?: boolean
   }) {
+    const t = await getT()
     const def = structure.cards?.find((c) => c.id === props.card)
     if (!def) throw new Error(`Unknown card ${props.card}`)
     const text = names.cards?.[def.id]

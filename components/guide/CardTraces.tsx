@@ -1,6 +1,7 @@
 'use client'
 
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { useGuideData } from './data'
 import { Trace } from './Trace'
 import { useTrip } from './trip'
@@ -17,6 +18,7 @@ export function CardTraces({
   /** Id prefix of a pinned copy. */
   prefix?: string
 }) {
+  const t = useT()
   const { cards, traces, regions } = useGuideData()
   const trip = useTrip()
   const def = cards.find((c) => c.id === card)

@@ -2,10 +2,11 @@
 
 import { CircleNotchIcon, GoogleLogoIcon } from '@phosphor-icons/react'
 import { useFormStatus } from 'react-dom'
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /** "Accedi con Google" submit button of a sign-in form, busy while the form is pending. */
 export function GoogleSignInButton() {
+  const t = useT()
   const { pending } = useFormStatus()
   return (
     <button

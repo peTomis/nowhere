@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "description": "Nowhere — my travel guides."
+  },
+  "common": {
+    "homeLabel": "Nowhere, back to the map",
+    "backToMap": "Back to the map",
+    "tagline": "My travel guides",
+    "madeBy": "Made by"
+  },
+  "map": {
+    "ariaLabel": "World map: the countries of your photos are filled in blue",
+    "loading": "Loading the map…",
+    "unavailable": "Map unavailable.",
+    "searchPlaceholder": "Search for a country",
+    "guideCountries": "Countries with a guide",
+    "noResults": "No country found",
+    "guideTag": "Guide",
+    "openGuide": "Open the guide",
+    "noGuide": "Guide not written yet",
+    "yourPhotos": "Your photos",
+    "close": "Close",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "zoomWorld": "Show the whole world"
+  },
+  "notFound": {
+    "message": "This place really is nowhere."
+  },
+  "guide": {
+    "tagline": "My travel guide",
+    "album": {
+      "title": "Your album",
+      "traces": "{n} traces in {regions} regions",
+      "tracesOne": "1 trace in {regions} regions",
+      "noTraces": "No traces yet",
+      "open": "Open the album",
+      "openGuide": "Open the guide",
+      "kicker": "{name} · {n} traces",
+      "heading": "Album",
+      "all": "All",
+      "filter": "Filter the album",
+      "regionLine": "{seen} of {n} · {points} points of {total}",
+      "empty": "This guide has no traces yet.",
+      "isNew": "New",
+      "traceAria": "Trace {num}, {name}, rarity {rarity}, {where}, {state}",
+      "rarity": {
+        "common": "common",
+        "rare": "rare",
+        "very-rare": "very rare"
+      },
+      "where": {
+        "city": "In town",
+        "nearby": "Nearby",
+        "remote": "Off the beaten track",
+        "region": "Anywhere in the region",
+        "anywhere": "Anywhere in the country"
+      },
+      "rarityLabel": {
+        "common": "Common",
+        "rare": "Rare",
+        "very-rare": "Very rare"
+      },
+      "seen": "seen",
+      "toFind": "to find",
+      "isNewAria": ", new",
+      "pinnedTitle": "Pinned",
+      "pinnedLede": "The cities and people you pinned. The same boxes also stay on their region's page.",
+      "dialogKicker": "Album · {region}",
+      "close": "Close",
+      "kind": {
+        "person": "Person",
+        "city": "City",
+        "landscape": "Landscape",
+        "food": "Speciality"
+      },
+      "tracesOnly": "{n} traces",
+      "tracesOneRegion": "{n} traces in one region"
+    },
+    "view": {
+      "label": "View",
+      "guide": "Guide",
+      "album": "Album"
+    },
+    "map": {
+      "ariaLabel": "Map of the traces of {name}",
+      "loading": "Loading the map…",
+      "unavailable": "Map unavailable.",
+      "group": "{n} traces here: zoom in",
+      "here": "{n} traces here",
+      "zoomIn": "Zoom in",
+      "zoomOut": "Zoom out",
+      "zoomAll": "Show the whole country"
+    },
+    "sources": {
+      "kicker": "{name} · {n} sources",
+      "heading": "Sources",
+      "lede": "The pages read to write the guide, chapter by chapter and card by card.",
+      "chapterSources": "General works",
+      "show": "Show the sources",
+      "hide": "Hide the sources"
+    },
+    "shell": {
+      "index": "Contents",
+      "close": "Close"
+    },
+    "trip": {
+      "title": "Filter by region",
+      "showAll": "Show everything",
+      "fullText": "All regions",
+      "recap": "{regions} regions · {cities} cities",
+      "citiesOf": "Cities of {name}"
+    },
+    "outro": {
+      "label": "{name}, recap",
+      "more": "More",
+      "backToTop": "Back to top",
+      "allGuides": "All guides"
+    },
+    "chapters": {
+      "identity": "Identity",
+      "history": "Historical timeline",
+      "people": "People",
+      "cities": "Cities",
+      "nature": "Nature",
+      "food": "Food and drink"
+    },
+    "summary": {
+      "label": "Summary",
+      "title": "The guide in {count}",
+      "count": [
+        "one chapter",
+        "two chapters",
+        "three chapters",
+        "four chapters",
+        "five chapters",
+        "six chapters"
+      ]
+    },
+    "content": {
+      "chapter": "Chapter {number}",
+      "part": "Part {number}",
+      "onsite": "To explore on site",
+      "debate": "Open question",
+      "remember": "To remember",
+      "glossary": "Glossary",
+      "context": "Context",
+      "curiosity": "Did you know",
+      "variants": "Variants",
+      "source": "Source"
+    },
+    "builtIn": {
+      "cover": {
+        "name": "Cover",
+        "place": "The photo that opens your album of {name}",
+        "find": "Wherever you like, whenever you see it: there is no right place.",
+        "invite": "Why this one?"
+      },
+      "coat-of-arms": {
+        "name": "Coat of arms",
+        "place": "The coat of arms of {name}",
+        "find": "On the fronts of public buildings, town halls and courthouses, on coins and stamps.",
+        "invite": "Where did you find it?"
+      },
+      "flag": {
+        "name": "Flag",
+        "place": "The flag of {name}",
+        "find": "On public buildings and in the main square of every town.",
+        "invite": "Where was it flying?"
+      }
+    },
+    "trace": {
+      "aria": "Trace {num}, {name}",
+      "ariaSeen": "Trace {num}, {name}, seen",
+      "altSeen": "Your photo: {name}, {date}",
+      "altStock": "Trace {num} to see: {name}, stock image in grey",
+      "altEmpty": "Trace {num} to see: {name}",
+      "stock": "Stock",
+      "rarityAria": "Rarity: {rarity}, {points}",
+      "pointOne": "1 point",
+      "points": "{n} points",
+      "add": "Add your photo",
+      "signIn": "Sign in to add your photo",
+      "seenOn": "Seen on {date}",
+      "edit": "Edit",
+      "saving": "Seen on {date} · saving the photo…",
+      "loadingPhoto": "Loading the photo…",
+      "offline": "Seen on {date}. You are offline: the photo stays on this page and is uploaded when the connection is back.",
+      "errorTitle": "The photo was not saved",
+      "errorText": "The upload failed. The photo is still on this page: don't close it.",
+      "errorSession": "Your session has expired. Sign in again, then retry.",
+      "retry": "Retry",
+      "alsoIn": "Also in",
+      "find": "How to find it",
+      "private": "Only for me",
+      "traces": "Traces",
+      "tripFirst": "First those in {regions}, the part of your trip.",
+      "outsideTrip": "Outside your trip",
+      "remember": "To remember",
+      "today": "Today",
+      "and": " and ",
+      "open": "{alt}. Open the photo full screen",
+      "viewer": {
+        "close": "Close the photo",
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out"
+      }
+    },
+    "photo": {
+      "kickerEdit": "Edit",
+      "kickerNew": "Your photo",
+      "close": "Close",
+      "prompt": "A photo of yours puts the trace in the album.",
+      "camera": "Take a photo",
+      "gallery": "From the gallery",
+      "cameraAgain": "Take another",
+      "preview": "Preview of your photo",
+      "coverAlt": "Your cover photo of {name}",
+      "unreadableTitle": "This photo can't be opened",
+      "unreadable": "“{file}” is in a format the browser can't read. Pick another one, or save it as JPEG and try again.",
+      "tooLarge": "“{file}” is too large even after shrinking it. Pick another one.",
+      "offline": "You are offline. The photo stays on this page and is uploaded when the connection is back.",
+      "noteLabel": "A note, if you like",
+      "invite": "What struck you?",
+      "noteHint": "A caption for yourself, up to 300 characters.",
+      "noteLeftOne": "1 character left.",
+      "noteLeft": "{n} characters left.",
+      "privateTitle": "Only for me.",
+      "privateText": "Only you can see the note.",
+      "remove": "Remove from the album",
+      "confirmTitle": "Remove the trace from the album?",
+      "confirmText": "The photo and the note will be deleted from your account and the trace leaves the completion ({points} less). They can't be recovered.",
+      "confirmDelete": "Delete photo and note",
+      "cancel": "Cancel",
+      "save": "Put in the album",
+      "saveEdit": "Save changes",
+      "inAlbum": "In the album",
+      "plusOne": "+1 point",
+      "plus": "+{n} points",
+      "levelTitle": "{medal} in {name}",
+      "levelLine": "You passed {pct}% of the guide's points.",
+      "levelLineAll": "Every trace of the guide is in the album.",
+      "done": "Done",
+      "noteError": "The note was not saved. Try again.",
+      "deleteError": "The trace could not be removed. Try again."
+    },
+    "pins": {
+      "title": "Pinned",
+      "empty": "Tap {icon} next to a city or a person: you'll find it here, in full, for the whole trip.",
+      "iconLabel": "the Pin icon",
+      "button": "Pinned: {name}",
+      "pin": "Pin",
+      "unpin": "Unpin",
+      "seenCount": "{seen} of {n} seen",
+      "outside": "Outside the trip",
+      "outsideText": "{name} is not in the trip you chose. It's here because you pinned it.",
+      "outsideLandscapeText": "This landscape is not in the trip you chose. It's here because you pinned its card.",
+      "outsideFoodText": "This speciality comes from a region that is not in the trip you chose. It's here because you pinned its card.",
+      "pinned": "{name} is pinned, at the top of the guide.",
+      "see": "See",
+      "unpinned": "Unpinned: {name}.",
+      "undo": "Undo"
+    }
+  },
+  "completion": {
+    "title": "Completion · {name}",
+    "aria": "Completion of {name}: {pct} per cent, {level}.",
+    "medalLabel": {
+      "none": "No medal",
+      "bronze": "Bronze medal",
+      "silver": "Silver medal",
+      "gold": "Gold medal",
+      "platinum": "Platinum crest"
+    },
+    "medalGoal": {
+      "none": "",
+      "bronze": "the bronze medal",
+      "silver": "the silver medal",
+      "gold": "the gold medal",
+      "platinum": "the platinum crest"
+    },
+    "points": "{points} points of {total}.",
+    "toNext": "{n} more points for {medal}.",
+    "toNextOne": "1 more point for {medal}.",
+    "all": "Every trace is in the album."
+  },
+  "accountMenu": {
+    "title": "Account",
+    "signIn": "Sign in",
+    "buttonSignedIn": "Account, {email}",
+    "close": "Close",
+    "signInPrompt": "Sign in to find your photos, notes and covers on every device.",
+    "signInGoogle": "Sign in with Google",
+    "signingIn": "Signing in…",
+    "yourData": "Your data",
+    "signOut": "Sign out"
+  },
+  "account": {
+    "title": "Your data",
+    "subtitle": "Your photos, notes and covers: where they are and how to take them with you.",
+    "accountHeading": "Account",
+    "signInPrompt": "Sign in to find your photos, notes and covers on every device.",
+    "connected": "Connected with Google",
+    "connectedSince": "Connected with Google since {date}",
+    "signOut": "Sign out",
+    "syncHeading": "Sync",
+    "syncOk": "Everything is saved in your account.",
+    "syncLocal": "No sync: the data is only on this device.",
+    "completionHeading": "Completion",
+    "openAlbum": "Open the album · {name}",
+    "denied": "This Google account is not enabled. For now access is by invitation only.",
+    "error": "Sign-in failed. Try again shortly.",
+    "loading": "Checking access…"
+  },
+  "offline": {
+    "heading": "Offline guides",
+    "description": "Save the map and every guide on this device, with the images (about {size} MB), to read them without a connection too. Your photos and notes stay online.",
+    "none": "The guides are not saved on this device.",
+    "saved": "Guides saved on {date}: without a connection they open from here.",
+    "missing": "The browser deleted the saved guides: download them again.",
+    "download": "Download the guides",
+    "update": "Update",
+    "remove": "Remove",
+    "cancel": "Cancel",
+    "preparing": "Preparing the download…",
+    "progress": "Downloading: {done} of {total} files. Keep the page open.",
+    "failed": "Download failed. Check the connection and try again.",
+    "removeFailed": "The saved guides could not be removed. Try again.",
+    "quota": "There is not enough space on this device. Free some space and try again.",
+    "unsupported": "This browser can't save the guides offline.",
+    "devMode": "Offline guides need a production build (yarn build && yarn start).",
+    "homeScreenHint": "On iPhone, add Nowhere to the Home Screen: Safari deletes the data of sites you don't open for a few days. After a site update, download the guides again."
+  }
+}

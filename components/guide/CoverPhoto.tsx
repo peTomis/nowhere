@@ -1,6 +1,7 @@
 'use client'
 
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { builtInTrace, subjectKey } from '@/content/subjects'
 import { useEntry } from '@/lib/reader/collection'
 import { photoSrc } from './Trace'
@@ -10,6 +11,7 @@ import { photoSrc } from './Trace'
  * read. The server renders nothing here, so the static page keeps the stock cover.
  */
 export function CoverPhoto({ country, name }: { country: string; name: string }) {
+  const t = useT()
   const src = photoSrc(useEntry(subjectKey(builtInTrace(country, 'cover').subject)), 'full')
   if (!src) return null
   return (

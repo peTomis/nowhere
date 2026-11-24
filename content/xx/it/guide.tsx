@@ -7,16 +7,14 @@ import { names } from './names'
 /*
  * Template guide, shown at /template: every element of the guide kit with placeholder text that
  * says what the element is for. A guide is a folder content/<cc>/ (cc = ISO 3166-1 alpha-2):
- * structure.ts (ids, regions, sections: the same in every language), it/names.ts (place and
- * section names), it/guide.tsx (this file: cover, emblems and the body). To start a new guide,
- * copy content/xx/, register it in content/countries.ts, content/guides.ts and
- * content/structures.ts, and put the images
- * in public/guides/<slug>/. Guide texts (titles, place names, alt texts) live in the guide, not in
- * i18n. The image paths below point to files that don't exist, so the page shows the placeholders.
+ * structure.ts (ids, regions, sections, cover and emblems: the same in every language),
+ * <lang>/names.ts (country, place and section names, alt texts), <lang>/guide.tsx (this file: the
+ * body). To start a new guide, copy content/xx/, register it in content/countries.ts,
+ * content/guides.ts and content/structures.ts, put the images in public/guides/<slug>/ and push
+ * them to the asset bucket (`yarn assets push`). Guide texts (titles, place names, alt texts)
+ * live in the guide, not in i18n. The image paths point to files that don't exist, so the page
+ * shows the placeholders. A translation is a sibling folder (content/xx/en/) with the same files.
  */
-
-/** The country name on the cover (a real guide takes it from content/countries.ts). */
-export const name = 'Paese'
 
 const dir = '/guides/template'
 
@@ -53,21 +51,9 @@ const {
 const { North, South, CityOne, CityTwo, CityThree } = Template
 
 export const template: GuideContent<Template, Section> = {
+  lang: 'it',
   structure,
   names,
-  cover: { src: `${dir}/cover.jpg`, alt: 'Foto di copertina' },
-  /** Country name and nowhere logo on the cover: always one color. */
-  coverInk: 'var(--color-text)',
-  emblems: [
-    {
-      src: `${dir}/coat-of-arms.png`,
-      alt: 'Stemma del paese',
-      kind: 'coat-of-arms',
-      width: 480,
-      height: 695,
-    },
-    { src: `${dir}/flag.svg`, alt: 'Bandiera del paese', kind: 'flag', width: 72, height: 48 },
-  ],
   sources,
   body: <Body />,
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { useGuideData } from './data'
 import { Trace } from './Trace'
 import { useShown } from './trip'
@@ -14,6 +14,7 @@ import { useShown } from './trip'
  * still shown are displayed. Anchor: `trace-today-<slug>` (one event per trace, validated).
  */
 export function Today({ traces: ids }: { traces: string[] }) {
+  const t = useT()
   const { traces, cards } = useGuideData()
   const shown = useShown()
   const cardShown = (id: string) => {

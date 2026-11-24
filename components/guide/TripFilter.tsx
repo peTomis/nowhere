@@ -3,10 +3,12 @@
 import { CaretDownIcon, CaretUpIcon, CheckSquareIcon, SquareIcon } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { useTrip } from './trip'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /** Trip filter (shown as "Filtra per regione"): regions as checkboxes and read-only cities. */
 export function TripFilter({ country, size }: { country: string; size: 'sidebar' | 'menu' }) {
+  const t = useT()
   const trip = useTrip()
   const [open, setOpen] = useState<string[]>([])
   const big = size === 'menu'

@@ -1,4 +1,5 @@
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { getT } from '@/i18n/server'
 import type { ChapterEntry } from '@/content/build'
 import { anchorOf } from '@/content/types'
 
@@ -8,7 +9,8 @@ type ChapterSummaryProps = { chapters: ChapterEntry[] }
  * "La guida in sei capitoli", at the top of the text (Sito v5): the guide's chapters with their
  * number, fixed title and the guide's line under it.
  */
-export function ChapterSummary({ chapters }: ChapterSummaryProps) {
+export async function ChapterSummary({ chapters }: ChapterSummaryProps) {
+  const t = await getT()
   if (chapters.length === 0) return null
   return (
     <nav aria-label={t.guide.summary.label} className="flex flex-col gap-4">

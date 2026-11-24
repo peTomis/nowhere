@@ -2,7 +2,8 @@
 
 import { CaretDownIcon, CaretRightIcon, MapTrifoldIcon, PushPinIcon } from '@phosphor-icons/react'
 import { useId, useSyncExternalStore, type ReactNode } from 'react'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { isSeen, useCollection } from '@/lib/reader/collection'
 import { pinsOf, pinsUsed, setPins, subscribePrefs, type Pin } from '@/lib/reader/prefs'
 import { useGuideData } from './data'
@@ -47,6 +48,7 @@ function scrollToPinned() {
 
 /** The round pin button next to a card's title. */
 export function PinButton({ card, name }: { card: string; name: string }) {
+  const t = useT()
   const { country } = useGuideData()
   const pins = usePins(country)
   const on = pins.some((p) => p.card === card)
@@ -103,6 +105,7 @@ export function PinButton({ card, name }: { card: string; name: string }) {
  * can be folded. Before the first pin, a short explanation. Not shown in guides without cards.
  */
 export function Pinned({ copies }: { copies: Record<string, ReactNode> }) {
+  const t = useT()
   const { country, cards, regions, traces } = useGuideData()
   const pins = usePins(country)
   const used = usePinsUsed(country)

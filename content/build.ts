@@ -1,7 +1,7 @@
 import 'server-only'
-import { format, t } from '@/i18n'
+import { format, messages, type Locale } from '@/i18n'
 import { formatPeriod } from '@/i18n/dates'
-import { publicAsset } from '@/lib/assets'
+import { asset } from '@/lib/assets'
 import { cardAnchor } from './anchors'
 import { BUILT_IN_TRACES, builtInTrace, subjectKey, type Subject } from './subjects'
 import {
@@ -16,6 +16,8 @@ import {
   type GuideStructure,
   type Place,
   type Rarity,
+  type ShownEmblem,
+  type ShownImage,
   type SourceRef,
   type TocEntry,
   type TraceIcon,
@@ -24,6 +26,16 @@ import {
   type TraceWhere,
   type Visibility,
 } from './types'
+
+/** The cover and the emblems with their alt texts in the content's language. */
+export function imagesOf(content: GuideContent): { cover?: ShownImage; emblems: ShownEmblem[] } {
+  const { structure, names } = content
+  const { cover, emblems = [] } = structure
+  return {
+    cover: cover && { ...cover, alt: names.alt?.cover ?? '' },
+    emblems: emblems.map((e) => ({ ...e, alt: names.alt?.[e.kind] ?? '' })),
+  }
+}
 
 /** Trip filter entries (regions with their city cards) from the structure and a locale's names. */
 export function placesOf<P extends string, S extends string>(
@@ -50,7 +62,9 @@ export function placesOf<P extends string, S extends string>(
 export function tocOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
+  lang: Locale,
 ): TocEntry<P>[] {
+  const t = messages(lang)
   const cardsOf = (kind: CardKind) =>
     (structure.cards ?? [])
       .filter((c) => c.kind === kind)
@@ -76,7 +90,7 @@ export function tocOf<P extends string, S extends string>(
       label: s.chapter ? t.guide.chapters[s.chapter] : names.sections[s.id],
       level: s.level,
       number: s.chapter && chapterNumber(s.chapter),
-      dates: s.level > 1 && s.period ? formatPeriod(s.period) : undefined,
+      dates: s.level > 1 && s.period ? formatPeriod(s.period, lang) : undefined,
       on: s.on,
     }
     if (s.chapter === 'people') return [entry, ...cardsOf('person')]
@@ -92,7 +106,9 @@ export type ChapterEntry = { id: string; number: number; title: string; line: st
 export function chaptersOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
+  lang: Locale,
 ): ChapterEntry[] {
+  const t = messages(lang)
   return structure.sections.flatMap((s) =>
     s.chapter
       ? [
@@ -183,10 +199,11 @@ export function sourcesOf<P extends string, S extends string>(
   structure: GuideStructure<P, S>,
   names: GuideNames<P, S>,
   sources: GuideSources | undefined,
+  lang: Locale,
 ): SourceChapter[] {
   if (!sources) return []
   const chapters: SourceChapter[] = []
-  for (const e of tocOf(structure, names)) {
+  for (const e of tocOf(structure, names, lang)) {
     const refs = sources[e.id] ?? []
     if (e.level === 1) {
       chapters.push({ id: e.id, number: e.number, title: e.label, on: e.on, refs, groups: [] })
@@ -224,10 +241,10 @@ const credit = (c: Credit | undefined) => (c && 'author' in c ? c : undefined)
  */
 export function tracesOf<P extends string, S extends string>(
   content: GuideContent<P, S>,
-  /** Country name, in the built-in traces' texts. */
-  country: string,
 ): AlbumTrace[] {
   const { structure, names } = content
+  const t = messages(content.lang)
+  const country = names.country
   const cc = structure.country
   const cardsOf = (id: string) =>
     (structure.cards ?? [])
@@ -242,14 +259,14 @@ export function tracesOf<P extends string, S extends string>(
     c: Credit | undefined,
     fit: TraceImage['fit'] = 'cover',
   ): TraceImage | undefined => {
-    const file = publicAsset(src)
+    const file = asset(src)
     return file ? { src: file, credit: credit(c), fit } : undefined
   }
   const builtIn = BUILT_IN_TRACES.map((kind): AlbumTrace => {
     const { id, subject } = builtInTrace(cc, kind)
     const text = t.guide.builtIn[kind]
-    const emblem = content.emblems?.find((e) => e.kind === kind)
-    const image = kind === 'cover' ? content.cover : emblem
+    const emblem = structure.emblems?.find((e) => e.kind === kind)
+    const image = kind === 'cover' ? structure.cover : emblem
     return {
       id,
       subject,

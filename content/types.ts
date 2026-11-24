@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import type { Locale } from '@/i18n/config'
 
 /*
  * Content ids are language-independent English slugs prefixed by the country's ISO 3166-1 alpha-2
@@ -89,26 +90,34 @@ export type TocEntry<P extends string = string> = {
  */
 export type Credit = { author: string; license: string; url?: string } | { unverified: string }
 
-/** An image of the guide, under `public/`. `credit` is required once the file exists. */
-export type GuideImage = { src: string; alt: string; credit?: Credit }
+/**
+ * An image of the guide: a path in the asset store (`/guides/<slug>/…`, lib/assets.ts), the same in
+ * every language. `credit` is required once the file exists.
+ */
+export type GuideImage = { src: string; credit?: Credit }
 
-/** A whole guide in one locale: its structure, that locale's names, and the page content. */
+/** The flag or the coat of arms, at their natural size. */
+export type EmblemImage = GuideImage & {
+  kind: 'coat-of-arms' | 'flag'
+  width: number
+  height: number
+}
+
+/** An image with its alt text in the page's language, as components render it. */
+export type ShownImage = GuideImage & { alt: string }
+
+/** An emblem with its alt text in the page's language. */
+export type ShownEmblem = EmblemImage & { alt: string }
+
+/**
+ * A whole guide in one language: its structure (shared by every language), that language's names,
+ * and the page content.
+ */
 export type GuideContent<P extends string = string, S extends string = string> = {
+  /** The language of `names` and `body`: the guide is listed in it (content/guides.ts). */
+  lang: Locale
   structure: GuideStructure<P, S>
   names: GuideNames<P, S>
-  /** Image under `public/`; the cover falls back to a plain ground until it exists. */
-  cover?: GuideImage
-  /**
-   * Color of the country name and of the nowhere logo on the cover — always the same, so they
-   * read as one print color over the photo. Any CSS color; prefer a token, e.g.
-   * 'var(--color-bg)'. Defaults to the text color.
-   */
-  coverInk?: string
-  emblems?: (GuideImage & {
-    kind: 'coat-of-arms' | 'flag'
-    width: number
-    height: number
-  })[]
   /** The guide's bibliography, shown in its "Fonti" view (content/<cc>/sources.ts). */
   sources?: GuideSources
   body: ReactNode
@@ -325,6 +334,16 @@ export type CardDef<P extends string = string> = {
 export type GuideStructure<P extends string = string, S extends string = string> = {
   /** ISO 3166-1 alpha-2, the prefix of every id of the guide. */
   country: string
+  /** The cover photo; the cover falls back to a plain ground until it exists. Alt in names. */
+  cover?: GuideImage
+  /**
+   * Color of the country name and of the nowhere logo on the cover — always the same, so they
+   * read as one print color over the photo. Any CSS color; prefer a token, e.g.
+   * 'var(--color-bg)'. Defaults to the text color.
+   */
+  coverInk?: string
+  /** The coat of arms and the flag (traces 03 and 02 of the album). Alt texts in names. */
+  emblems?: EmblemImage[]
   regions: RegionDef<P>[]
   sections: SectionDef<S, P>[]
   /** The guide's own traces, in album order (after the cover, the flag and the coat of arms). */
@@ -373,6 +392,12 @@ export type CardText = {
 
 /** A locale's short texts for a guide's structure. The default locale must name every id. */
 export type GuideNames<P extends string = string, S extends string = string> = {
+  /** The country's name in this language: cover, title, album, map. */
+  country: string
+  /** One line about the guide: the page description. */
+  summary?: string
+  /** Alt texts of the structure's images. */
+  alt?: { cover?: string; 'coat-of-arms'?: string; flag?: string }
   places: Record<P, string>
   /**
    * Section titles. A chapter's title is fixed (i18n `guide.chapters`): its entry here is instead

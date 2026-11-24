@@ -5,7 +5,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Completion } from '@/components/Completion'
 import type { AlbumTrace } from '@/content/build'
 import { TRACE_THEMES, type TraceTheme } from '@/content/types'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { useT } from '@/i18n/client'
 import { isSeen, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useGuideData } from './data'
 import { usePins } from './Pins'
@@ -26,6 +27,7 @@ type Filter = null | { kind: 'region'; id: string } | { kind: 'theme'; id: Trace
  * window from 640px.
  */
 export function Album() {
+  const t = useT()
   const { traces, cards, name, country, regions } = useGuideData()
   const { entries } = useCollection()
   const pins = usePins(country)
@@ -176,6 +178,7 @@ export function Page({
   onOpen: (id: string) => void
   level?: 3 | 4
 }) {
+  const t = useT()
   const seenList = page.traces.filter((tr) => isSeen(entries[tr.key]))
   const points = seenList.reduce((s, tr) => s + tr.points, 0)
   const total = page.traces.reduce((s, tr) => s + tr.points, 0)
@@ -219,6 +222,7 @@ function TraceBox({
   entry: Entry | undefined
   onOpen: () => void
 }) {
+  const t = useT()
   const num = pad(trace.num)
   const where = t.guide.album.where[trace.where]
   const seen = isSeen(entry)
@@ -297,6 +301,7 @@ export function TraceDialog({
   region: string
   onClose: () => void
 }) {
+  const t = useT()
   const close = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     const opener = document.activeElement as HTMLElement | null

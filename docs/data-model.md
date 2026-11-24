@@ -1,7 +1,9 @@
 # Data model: guide content and reader data
 
 Status: **approved with changes (revision 2); phases 1–6 implemented** (phase 6 with the
-deviations in [§11.1](#111-phase-6-as-implemented)), phases 7–8 not yet.
+deviations in [§11.1](#111-phase-6-as-implemented)), phases 7–8 not yet. Languages (§5) and
+the guide images in a public bucket ([§5.5](#55-as-implemented-languages-and-guide-images))
+are implemented as described there.
 
 This document designs the data structure behind the guides and the reader's collection. It must
 work today (Italian only, one allowed account) and accept followers and more languages later
@@ -551,7 +553,7 @@ export const fallbacks: Record<Locale, Locale[]> = {
 
 ### 5.3 URLs
 
-Today: `/guide/romania`. Later: `/it/guide/romania`, `/en/guide/romania`, via an `app/[lang]/`
+Implemented: `/it/guide/romania`, `/en/guide/romania`, via an `app/[lang]/`
 segment (Next 16 i18n guide: `node_modules/next/dist/docs/01-app/02-guides/internationalization.md`).
 
 - The slug is English and **the same in every locale** (no `/fr/guide/roumanie`): one canonical
@@ -561,7 +563,8 @@ segment (Next 16 i18n guide: `node_modules/next/dist/docs/01-app/02-guides/inter
   `Accept-Language`, because a shared link was written in Italian. The fragment survives the
   redirect, so `#…` anchors still work. The `proxy` may later redirect only the bare `/` by
   browser language.
-- Nothing changes in the URLs during this work.
+- `lang` is the root param of `app/[lang]/layout.tsx`, read anywhere on the server with
+  `next/root-params` (`getLang()`, `getT()` in `i18n/server.ts`).
 
 ### 5.4 Reader notes
 
@@ -569,6 +572,22 @@ A note stores `lang` (defaults to the UI locale at writing time; the reader can 
 Notes are never translated; the `lang` attribute is set when rendering them.
 
 The `/api` routes (§6) stay outside the `[lang]` segment: they never carry a locale.
+
+### 5.5 As implemented: languages and guide images
+
+- `content/locales.ts` became `i18n/config.ts` (`LOCALES = ['it', 'en']`, `DEFAULT_LOCALE`).
+  The UI is translated (`i18n/en.json`); no guide has English content yet, so `/en` lists no
+  guide. Fallback chains (§5.2) are not implemented: a guide without content in a language is
+  not listed there and its URL is a 404.
+- `GuideContent` is one language (`lang`, `names`, `body`); `structure.cover`, `coverInk` and
+  `emblems` moved from the content into the structure, their alt texts and the country's name
+  and summary into `names` (`country`, `summary`, `alt`). `content/guides.ts` maps
+  `slug → { it, en? }`.
+- The validator reads event dates per language (`parseItalianDate`, `parseEnglishDate`).
+- Guide images left the repository: a **public** bucket behind a CDN (`ASSETS_URL`), separate
+  from the private photo bucket (§6.3), with `content/assets.json` (path → hash, size) as the
+  committed manifest and `yarn assets push | pull | manifest`. URLs carry the hash (`?v=`) so
+  the CDN caches them as immutable. Without `ASSETS_URL` the local `public/guides/` is used.
 
 ---
 

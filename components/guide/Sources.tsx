@@ -1,6 +1,7 @@
 import type { SourceChapter } from '@/content/build'
 import type { SourceRef } from '@/content/types'
-import { format, t } from '@/i18n'
+import { format } from '@/i18n'
+import { getT } from '@/i18n/server'
 import { SourcesToggle } from './SourcesToggle'
 import { Only } from './trip'
 
@@ -19,7 +20,8 @@ type SourcesProps = {
  * its general works, then its parts and cards with sources. Gated by the trip filter, as the rest
  * of the text. Nothing without sources.
  */
-export function Sources({ name, chapters }: SourcesProps) {
+export async function Sources({ name, chapters }: SourcesProps) {
+  const t = await getT()
   const n = chapters.reduce(
     (sum, c) => sum + c.refs.length + c.groups.reduce((s, g) => s + g.refs.length, 0),
     0,

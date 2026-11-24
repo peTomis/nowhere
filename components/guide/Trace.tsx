@@ -24,7 +24,8 @@ import { useState, type ReactNode } from 'react'
 import type { AlbumTrace } from '@/content/build'
 import { traceAnchor } from '@/content/anchors'
 import type { TraceTheme, TraceWhere } from '@/content/types'
-import { format, locale, t } from '@/i18n'
+import { format, paths, type Locale } from '@/i18n'
+import { useLang, useT } from '@/i18n/client'
 import { isSeen, retryPhoto, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useTrace } from './data'
 import { openPhotoPanel } from './panelStore'
@@ -47,8 +48,8 @@ export const WHERE_ICONS: Record<TraceWhere, typeof BuildingsIcon> = {
   anywhere: GlobeHemisphereEastIcon,
 }
 
-export const formatDay = (iso: string) =>
-  new Date(iso).toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
+export const formatDay = (iso: string, lang: Locale) =>
+  new Date(iso).toLocaleDateString(lang, { day: 'numeric', month: 'long', year: 'numeric' })
 
 /** The three rarity marks: filled up to the trace's points. */
 export function RarityMarks({ points, height = 11 }: { points: number; height?: number }) {
@@ -81,6 +82,7 @@ export const boxBorder = (seen: boolean, theme: TraceTheme | null) =>
  * image is only a grey placeholder until the reader's photo replaces it.
  */
 export function StockCredit({ credit }: { credit: NonNullable<AlbumTrace['image']>['credit'] }) {
+  const t = useT()
   if (!credit) return null
   return (
     <p className="m-0 text-xs leading-[1.4] text-neutral-700">
@@ -139,6 +141,8 @@ export function Trace({
   /** The name's heading: h5 under a timeline event, whose title is an h4. */
   heading?: 'h4' | 'h5'
 }) {
+  const lang = useLang()
+  const t = useT()
   const trace = useTrace(id)
   const { session, entries } = useCollection()
   const router = useRouter()
@@ -151,7 +155,7 @@ export function Trace({
   const seen = isSeen(entry)
   const num = pad(trace.num)
   const local = entry?.local
-  const date = seen ? formatDay(local?.createdAt ?? entry!.photo!.createdAt) : ''
+  const date = seen ? formatDay(local?.createdAt ?? entry!.photo!.createdAt, lang) : ''
   const src = photoSrc(entry, 'full')
   const stock = !seen ? trace.image : undefined
   const Where = WHERE_ICONS[trace.where]
@@ -164,7 +168,7 @@ export function Trace({
   const edit = () => openPhotoPanel(trace.id, 'edit')
   const signedOut = session === 'signed-out'
   // Without a photo, the image is the add button (there is no separate one).
-  const add = () => (signedOut ? router.push('/account') : openPhotoPanel(trace.id, 'new'))
+  const add = () => (signedOut ? router.push(paths.account(lang)) : openPhotoPanel(trace.id, 'new'))
   const box = `relative block aspect-[4/3] w-full overflow-hidden rounded-md border-[1.5px] bg-bg p-0 ${boxBorder(seen, trace.theme)}`
 
   return (
@@ -350,6 +354,7 @@ function PhotoBox({
   addLabel?: string
   children: ReactNode
 }) {
+  const t = useT()
   if (onView)
     return (
       <button
@@ -393,6 +398,7 @@ function TraceActions({
   date: string
   onEdit: () => void
 }) {
+  const t = useT()
   const local = entry?.local
   const editButton = (
     <button type="button" className={ghost} onClick={onEdit}>

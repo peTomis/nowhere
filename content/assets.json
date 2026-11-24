@@ -1,0 +1,474 @@
+{
+  "/guides/romania/coat-of-arms.png": {
+    "bytes": 149546,
+    "hash": "bdfa4de3d4a1"
+  },
+  "/guides/romania/cover.jpg": {
+    "bytes": 227478,
+    "hash": "25540717e126"
+  },
+  "/guides/romania/flag.svg": {
+    "bytes": 180,
+    "hash": "0ecd7eb63655"
+  },
+  "/guides/romania/historical-regions.webp": {
+    "bytes": 65202,
+    "hash": "1ba78626b670"
+  },
+  "/guides/romania/moldavia-historical-flag.png": {
+    "bytes": 54947,
+    "hash": "84e762ad1c2f"
+  },
+  "/guides/romania/traces/alba-iulia-citadel.webp": {
+    "bytes": 129268,
+    "hash": "1f1898f5a931"
+  },
+  "/guides/romania/traces/alba-iulia-st-michaels-cathedral.webp": {
+    "bytes": 72078,
+    "hash": "3d0e814ee02a"
+  },
+  "/guides/romania/traces/alba-iulia-union-hall.webp": {
+    "bytes": 21952,
+    "hash": "2b63414ca469"
+  },
+  "/guides/romania/traces/balea-lake.webp": {
+    "bytes": 109920,
+    "hash": "e96a1516e924"
+  },
+  "/guides/romania/traces/banffy-castle-bontida.webp": {
+    "bytes": 37384,
+    "hash": "a8476db0cde9"
+  },
+  "/guides/romania/traces/barsana-wooden-church.webp": {
+    "bytes": 154428,
+    "hash": "9e3900c49539"
+  },
+  "/guides/romania/traces/bears-cave.webp": {
+    "bytes": 97584,
+    "hash": "68c44a37f2ab"
+  },
+  "/guides/romania/traces/bicaz-gorges.webp": {
+    "bytes": 124024,
+    "hash": "9eaa7f26f607"
+  },
+  "/guides/romania/traces/biertan-fortified-church.webp": {
+    "bytes": 109756,
+    "hash": "a04fa0dd7c1a"
+  },
+  "/guides/romania/traces/bran-castle.webp": {
+    "bytes": 62784,
+    "hash": "d67c57e6a1e8"
+  },
+  "/guides/romania/traces/brasov-black-church.webp": {
+    "bytes": 50520,
+    "hash": "afd30305a2ca"
+  },
+  "/guides/romania/traces/brasov-council-house.webp": {
+    "bytes": 47476,
+    "hash": "825666423dd6"
+  },
+  "/guides/romania/traces/brasov-strada-sforii.webp": {
+    "bytes": 43542,
+    "hash": "de3f753f9bbe"
+  },
+  "/guides/romania/traces/brasov-tampa-letters.webp": {
+    "bytes": 67526,
+    "hash": "5996a771f9b7"
+  },
+  "/guides/romania/traces/bucegi-sphinx.webp": {
+    "bytes": 110390,
+    "hash": "44456e0d0350"
+  },
+  "/guides/romania/traces/bucura-lake.webp": {
+    "bytes": 158590,
+    "hash": "1f0cb58d9ace"
+  },
+  "/guides/romania/traces/cantacuzino-castle-busteni.webp": {
+    "bytes": 89218,
+    "hash": "5ad6f837f009"
+  },
+  "/guides/romania/traces/caraiman-cross.webp": {
+    "bytes": 123748,
+    "hash": "706f7ac8da88"
+  },
+  "/guides/romania/traces/carturesti-carusel.webp": {
+    "bytes": 165172,
+    "hash": "f3a756cb150c"
+  },
+  "/guides/romania/traces/caru-cu-bere.webp": {
+    "bytes": 148508,
+    "hash": "dfdf67dbdec7"
+  },
+  "/guides/romania/traces/central-committee-building.webp": {
+    "bytes": 64492,
+    "hash": "b83ece5ef928"
+  },
+  "/guides/romania/traces/cetatile-ponorului.webp": {
+    "bytes": 198744,
+    "hash": "3d3d474961fa"
+  },
+  "/guides/romania/traces/chindia-tower.webp": {
+    "bytes": 35830,
+    "hash": "a1fadf90a757"
+  },
+  "/guides/romania/traces/cluj-avram-iancu-square.webp": {
+    "bytes": 68712,
+    "hash": "265b870fda80"
+  },
+  "/guides/romania/traces/cluj-union-square.webp": {
+    "bytes": 67020,
+    "hash": "e0fb2b30d7d4"
+  },
+  "/guides/romania/traces/constanta-casino.webp": {
+    "bytes": 76626,
+    "hash": "5b8e5f24335b"
+  },
+  "/guides/romania/traces/constanta-grand-mosque.webp": {
+    "bytes": 90704,
+    "hash": "3cbe44afc6e3"
+  },
+  "/guides/romania/traces/constanta-ovid-square.webp": {
+    "bytes": 20204,
+    "hash": "2f28d84dbbb8"
+  },
+  "/guides/romania/traces/constanta-roman-mosaic.webp": {
+    "bytes": 50134,
+    "hash": "ce75ab6faace"
+  },
+  "/guides/romania/traces/corvin-castle.webp": {
+    "bytes": 170634,
+    "hash": "5519e045bfc3"
+  },
+  "/guides/romania/traces/creanga-bojdeuca.webp": {
+    "bytes": 93428,
+    "hash": "a78a44426173"
+  },
+  "/guides/romania/traces/curtea-de-arges-royal-tombs.webp": {
+    "bytes": 70230,
+    "hash": "58356df6acf4"
+  },
+  "/guides/romania/traces/dacia-1300.webp": {
+    "bytes": 70326,
+    "hash": "a441cd01aab3"
+  },
+  "/guides/romania/traces/decebalus-rock-sculpture.webp": {
+    "bytes": 111618,
+    "hash": "1fe1e4d722cc"
+  },
+  "/guides/romania/traces/delta-pelicans.webp": {
+    "bytes": 95524,
+    "hash": "26c6998f7271"
+  },
+  "/guides/romania/traces/eminescu-poems.webp": {
+    "bytes": 45928,
+    "hash": "2873542d31ad"
+  },
+  "/guides/romania/traces/eminescus-grave.webp": {
+    "bytes": 144822,
+    "hash": "9b9b2a50fe8b"
+  },
+  "/guides/romania/traces/eminescus-linden-tree.webp": {
+    "bytes": 154694,
+    "hash": "c1a49c3021c8"
+  },
+  "/guides/romania/traces/enescu-5-lei-banknote.webp": {
+    "bytes": 87618,
+    "hash": "e3361a7328f7"
+  },
+  "/guides/romania/traces/enescu-museum-cantacuzino-palace.webp": {
+    "bytes": 133700,
+    "hash": "bbf9b8676d1b"
+  },
+  "/guides/romania/traces/food-branza-de-burduf.webp": {
+    "bytes": 74704,
+    "hash": "88b7f0d9e930"
+  },
+  "/guides/romania/traces/food-ciorba-burta.webp": {
+    "bytes": 111118,
+    "hash": "7d1e564ca5df"
+  },
+  "/guides/romania/traces/food-cotnari.webp": {
+    "bytes": 202386,
+    "hash": "0087863bc287"
+  },
+  "/guides/romania/traces/food-covrigi.webp": {
+    "bytes": 40932,
+    "hash": "71fa46155f0a"
+  },
+  "/guides/romania/traces/food-cozonac.webp": {
+    "bytes": 130938,
+    "hash": "38968099c014"
+  },
+  "/guides/romania/traces/food-kurtoskalacs.webp": {
+    "bytes": 86140,
+    "hash": "c8e680927711"
+  },
+  "/guides/romania/traces/food-mamaliga.webp": {
+    "bytes": 41590,
+    "hash": "76e4cd66cf7e"
+  },
+  "/guides/romania/traces/food-mici.webp": {
+    "bytes": 98272,
+    "hash": "297fee7040d6"
+  },
+  "/guides/romania/traces/food-murfatlar.webp": {
+    "bytes": 32066,
+    "hash": "4d7405d7a966"
+  },
+  "/guides/romania/traces/food-palinca.webp": {
+    "bytes": 63642,
+    "hash": "fb58a0db5363"
+  },
+  "/guides/romania/traces/food-papanasi.webp": {
+    "bytes": 36014,
+    "hash": "eb8d57750376"
+  },
+  "/guides/romania/traces/food-poale-in-brau.webp": {
+    "bytes": 128410,
+    "hash": "432c8bff14b7"
+  },
+  "/guides/romania/traces/food-sarmale.webp": {
+    "bytes": 36506,
+    "hash": "d91faf811877"
+  },
+  "/guides/romania/traces/food-sibiu-salami.webp": {
+    "bytes": 102820,
+    "hash": "9dd7985a04f2"
+  },
+  "/guides/romania/traces/food-suberek.webp": {
+    "bytes": 34738,
+    "hash": "425d6858b5d1"
+  },
+  "/guides/romania/traces/food-tochitura.webp": {
+    "bytes": 48612,
+    "hash": "6ba337626d44"
+  },
+  "/guides/romania/traces/food-tuica.webp": {
+    "bytes": 26398,
+    "hash": "3742f4cc775d"
+  },
+  "/guides/romania/traces/horezu-monastery.webp": {
+    "bytes": 129742,
+    "hash": "6965094aed34"
+  },
+  "/guides/romania/traces/horses-waterfall.webp": {
+    "bytes": 298888,
+    "hash": "81a7612d146c"
+  },
+  "/guides/romania/traces/iasi-palace-of-culture.webp": {
+    "bytes": 88238,
+    "hash": "7b971592b3f9"
+  },
+  "/guides/romania/traces/iasi-three-hierarchs-monastery.webp": {
+    "bytes": 27328,
+    "hash": "26467899367e"
+  },
+  "/guides/romania/traces/ipotesti-memorial.webp": {
+    "bytes": 174184,
+    "hash": "ffbae4fa49d8"
+  },
+  "/guides/romania/traces/iron-gates-dam.webp": {
+    "bytes": 58196,
+    "hash": "084beee6b69c"
+  },
+  "/guides/romania/traces/jurilovca-harbour.webp": {
+    "bytes": 32040,
+    "hash": "be38f4188ed0"
+  },
+  "/guides/romania/traces/king-carol-i-bridge.webp": {
+    "bytes": 105512,
+    "hash": "5f5a19518f8d"
+  },
+  "/guides/romania/traces/la-om-peak.webp": {
+    "bytes": 125412,
+    "hash": "0ea4ed1ae69c"
+  },
+  "/guides/romania/traces/letea-forest.webp": {
+    "bytes": 110306,
+    "hash": "2f9a41f3ad83"
+  },
+  "/guides/romania/traces/libearty-bear-sanctuary.webp": {
+    "bytes": 155408,
+    "hash": "ff1431728eb2"
+  },
+  "/guides/romania/traces/luminis-villa.webp": {
+    "bytes": 166508,
+    "hash": "f28d91908ae0"
+  },
+  "/guides/romania/traces/mamaia-beach.webp": {
+    "bytes": 81492,
+    "hash": "b391ce276a80"
+  },
+  "/guides/romania/traces/marginea-black-pottery.webp": {
+    "bytes": 18652,
+    "hash": "1e40ff57ab06"
+  },
+  "/guides/romania/traces/merry-cemetery-sapanta.webp": {
+    "bytes": 121946,
+    "hash": "8939af5e8d8b"
+  },
+  "/guides/romania/traces/michael-the-brave-head-tomb.webp": {
+    "bytes": 38248,
+    "hash": "64e8ad2fdd59"
+  },
+  "/guides/romania/traces/mihai-voda-church.webp": {
+    "bytes": 111714,
+    "hash": "ad66bad85802"
+  },
+  "/guides/romania/traces/military-circle.webp": {
+    "bytes": 146942,
+    "hash": "8053ec9fb598"
+  },
+  "/guides/romania/traces/mocanita-viseu-de-sus.webp": {
+    "bytes": 77490,
+    "hash": "01fac113af75"
+  },
+  "/guides/romania/traces/mraconia-monastery.webp": {
+    "bytes": 203682,
+    "hash": "6b44004ffb0b"
+  },
+  "/guides/romania/traces/onesti-path-of-perfection.webp": {
+    "bytes": 26742,
+    "hash": "d2a960b9b3b8"
+  },
+  "/guides/romania/traces/palace-of-the-parliament.webp": {
+    "bytes": 97954,
+    "hash": "e93f16571433"
+  },
+  "/guides/romania/traces/peleaga-peak.webp": {
+    "bytes": 71648,
+    "hash": "4eed53b7f252"
+  },
+  "/guides/romania/traces/peles-castle.webp": {
+    "bytes": 79554,
+    "hash": "0d81769e87fa"
+  },
+  "/guides/romania/traces/pelisor-castle.webp": {
+    "bytes": 112752,
+    "hash": "9845f06733f1"
+  },
+  "/guides/romania/traces/poenari-citadel.webp": {
+    "bytes": 109134,
+    "hash": "3a5307e5b120"
+  },
+  "/guides/romania/traces/primaverii-palace.webp": {
+    "bytes": 103776,
+    "hash": "71f9fbb13683"
+  },
+  "/guides/romania/traces/red-lake.webp": {
+    "bytes": 171582,
+    "hash": "da6322dd80b2"
+  },
+  "/guides/romania/traces/romanian-athenaeum.webp": {
+    "bytes": 106458,
+    "hash": "bf645e4d8700"
+  },
+  "/guides/romania/traces/salina-turda.webp": {
+    "bytes": 79714,
+    "hash": "5bde48a20ec9"
+  },
+  "/guides/romania/traces/sarmizegetusa-regia.webp": {
+    "bytes": 134886,
+    "hash": "6ced4e992f00"
+  },
+  "/guides/romania/traces/scarisoara-ice-cave.webp": {
+    "bytes": 64708,
+    "hash": "a4b980d82a0d"
+  },
+  "/guides/romania/traces/sibiu-astra-museum.webp": {
+    "bytes": 125904,
+    "hash": "c1e8d9370a0b"
+  },
+  "/guides/romania/traces/sibiu-bridge-of-lies.webp": {
+    "bytes": 133348,
+    "hash": "b7f65a1b54c4"
+  },
+  "/guides/romania/traces/sibiu-brukenthal-palace.webp": {
+    "bytes": 66798,
+    "hash": "32d054570520"
+  },
+  "/guides/romania/traces/sighisoara-clock-tower.webp": {
+    "bytes": 57284,
+    "hash": "fbad879c99b6"
+  },
+  "/guides/romania/traces/sighisoara-covered-stairway.webp": {
+    "bytes": 31288,
+    "hash": "c9862b126483"
+  },
+  "/guides/romania/traces/stavropoleos-church.webp": {
+    "bytes": 161666,
+    "hash": "76d5d7e52ae4"
+  },
+  "/guides/romania/traces/steaua-stadium.webp": {
+    "bytes": 121486,
+    "hash": "0bc809ee3e97"
+  },
+  "/guides/romania/traces/stephen-the-great-tomb.webp": {
+    "bytes": 90082,
+    "hash": "056b833096ef"
+  },
+  "/guides/romania/traces/suceava-citadel.webp": {
+    "bytes": 74410,
+    "hash": "193567afde2e"
+  },
+  "/guides/romania/traces/suceava-saint-john-monastery.webp": {
+    "bytes": 82322,
+    "hash": "9a5e8e170d83"
+  },
+  "/guides/romania/traces/sulina-old-lighthouse.webp": {
+    "bytes": 32590,
+    "hash": "6fc29938c3a7"
+  },
+  "/guides/romania/traces/timisoara-opera-balcony.webp": {
+    "bytes": 68812,
+    "hash": "f7f184a3a16e"
+  },
+  "/guides/romania/traces/timisoara-tokes-parsonage.webp": {
+    "bytes": 141188,
+    "hash": "f13d1d167500"
+  },
+  "/guides/romania/traces/timisoara-union-square.webp": {
+    "bytes": 72068,
+    "hash": "1a39f0eb1a99"
+  },
+  "/guides/romania/traces/toaca-peak.webp": {
+    "bytes": 56810,
+    "hash": "ebad190efc35"
+  },
+  "/guides/romania/traces/trajans-bridge-ruins.webp": {
+    "bytes": 205890,
+    "hash": "0567142d2571"
+  },
+  "/guides/romania/traces/trajans-column-copy.webp": {
+    "bytes": 52154,
+    "hash": "d5ce075e0ee2"
+  },
+  "/guides/romania/traces/transfagarasan.webp": {
+    "bytes": 216010,
+    "hash": "37892b697d0b"
+  },
+  "/guides/romania/traces/vama-egg-museum.webp": {
+    "bytes": 142244,
+    "hash": "bd2265f72d20"
+  },
+  "/guides/romania/traces/vama-veche.webp": {
+    "bytes": 95920,
+    "hash": "41659e19b9e4"
+  },
+  "/guides/romania/traces/village-museum.webp": {
+    "bytes": 135898,
+    "hash": "67b2d323acf1"
+  },
+  "/guides/romania/traces/vlad-dracul-house.webp": {
+    "bytes": 84918,
+    "hash": "323dbd0cc290"
+  },
+  "/guides/romania/traces/voronet-monastery.webp": {
+    "bytes": 114062,
+    "hash": "6135c274ec72"
+  },
+  "/guides/romania/traces/zarnesti-gorges.webp": {
+    "bytes": 56336,
+    "hash": "bb0ff9407e4d"
+  }
+}

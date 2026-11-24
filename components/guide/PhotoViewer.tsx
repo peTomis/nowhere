@@ -6,7 +6,7 @@ import 'd3-transition'
 import { zoom as d3Zoom, zoomIdentity, type ZoomBehavior, type ZoomTransform } from 'd3-zoom'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { t } from '@/i18n'
+import { useT } from '@/i18n/client'
 
 /** Highest zoom of a photo. */
 const MAX_K = 6
@@ -24,6 +24,7 @@ export function PhotoViewer({
   alt: string
   onClose: () => void
 }) {
+  const t = useT()
   const stage = useRef<HTMLDivElement>(null)
   const close = useRef<HTMLButtonElement>(null)
   const zoomRef = useRef<ZoomBehavior<HTMLDivElement, unknown>>(null)
