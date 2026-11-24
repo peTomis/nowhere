@@ -590,10 +590,13 @@ The `/api` routes (§6) stay outside the `[lang]` segment: they never carry a lo
   number of events a warning (a translation may merge two). It runs in the build
   (`assertValidGuide(slug, content, base)`) and in `yarn validate`. Moving the skeleton into
   structure (§2.5) stays out of scope.
-- Guide images left the repository: a **public** bucket behind a CDN (`ASSETS_URL`), separate
-  from the private photo bucket (§6.3), with `content/assets.json` (path → hash, size) as the
-  committed manifest and `yarn assets push | pull | manifest`. URLs carry the hash (`?v=`) so
-  the CDN caches them as immutable. Without `ASSETS_URL` the local `public/guides/` is used.
+- Guide images left the repository: they are in the private bucket (§6.3) under `assets/`, and
+  the bucket stays private: `app/assets/[...path]/route.ts` serves them with the server's key,
+  only the files listed in `content/assets.json` (path → hash, size; `yarn assets push | pull |
+manifest`) at their current hash. URLs carry the hash in the path (`/assets/<hash>/guides/…`),
+  so the CDN caches them as immutable. A local copy in `public/guides/` is used when present. (A
+  separate public bucket behind a CDN was the first version; dropped to keep one private bucket.)
+- `Credit` gained `{ own: true }`: the site author's own photo, nothing to credit.
 
 ---
 

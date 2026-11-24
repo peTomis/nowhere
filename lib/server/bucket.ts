@@ -9,8 +9,8 @@ import {
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 /*
- * The private photo bucket (docs/data-model.md §6.3): any S3-compatible store, Cloudflare R2
- * proposed. The browser never gets a key: only presigned URLs, PUT for 10 minutes, GET for at
+ * The private bucket (docs/data-model.md §6.3): any S3-compatible store, Cloudflare R2
+ * proposed. Readers' photos under `u/`, the guide images under `assets/` (lib/assets.ts). The browser never gets a key: only presigned URLs, PUT for 10 minutes, GET for at
  * least an hour. Created on first use, so `yarn build` works without the S3_* variables.
  */
 
@@ -71,6 +71,22 @@ export function signGet(key: string) {
     signingDate: hour,
     expiresIn: 2 * 60 * 60,
   })
+}
+
+/**
+ * An object's body as a web stream, with its type and length, or undefined if it isn't there.
+ * Server side only: the guide images (app/assets/) are read this way, never through a public URL.
+ */
+export async function read(key: string) {
+  try {
+    const r = await s3().send(new GetObjectCommand({ Bucket: bucket(), Key: key }))
+    if (!r.Body) return undefined
+    return { body: r.Body.transformToWebStream(), type: r.ContentType, length: r.ContentLength }
+  } catch (e) {
+    const status = (e as { $metadata?: { httpStatusCode?: number } }).$metadata?.httpStatusCode
+    if (status === 404 || status === 403) return undefined
+    throw e
+  }
 }
 
 /** Type and length of an object, or undefined if it isn't there. */

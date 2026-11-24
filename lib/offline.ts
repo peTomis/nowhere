@@ -11,8 +11,7 @@ import type { Locale } from '@/i18n'
  * account is needed and nothing personal is saved: photos and notes stay online. A download goes
  * to its own cache and replaces the previous one only once complete; the active one is named in
  * the `META` cache (read by the worker) and in localStorage (read by the page). A download saves
- * the pages of one language (the reader's) and the images, which every language shares; when the
- * images come from the asset CDN, the worker is told its origin so it serves them offline too.
+ * the pages of one language (the reader's) and the images, which every language shares.
  */
 
 /** Why a download failed; OfflineGuides shows the matching `offline.*` text. */
@@ -84,9 +83,8 @@ function checkSupport() {
     throw new OfflineError('unsupported')
 }
 
-async function prepareWorker(assetsOrigin: string | undefined) {
-  const url = assetsOrigin ? `${SW}?assets=${encodeURIComponent(assetsOrigin)}` : SW
-  await navigator.serviceWorker.register(url, { scope: '/' })
+async function prepareWorker() {
+  await navigator.serviceWorker.register(SW, { scope: '/' })
   await navigator.serviceWorker.ready
 }
 
@@ -135,7 +133,7 @@ export async function downloadOffline(
     checkSupport()
     const manifest = (await (await checkedFetch('/api/offline', signal)).json()) as OfflineManifest
     const routes = manifest.routes[lang]
-    await prepareWorker(manifest.assetsOrigin)
+    await prepareWorker()
     await navigator.storage?.persist?.()
     const cache = await caches.open(PREFIX + id)
 

@@ -84,11 +84,13 @@ export type TocEntry<P extends string = string> = {
 }
 
 /**
- * Author and licence of an image that is not the author's own work (B9). `unverified` keeps the
- * build green while the source is being checked: the validator lists it as a warning, the way
+ * Author and licence of an image that is not the author's own work (B9). `own`: a photo by the
+ * site's author, nothing to credit (no credit line is shown). `unverified` keeps the build green
+ * while the source is being checked: the validator lists it as a warning, the way
  * `TODO verificare` comments mark unverified facts.
  */
-export type Credit = { author: string; license: string; url?: string } | { unverified: string }
+export type Credit =
+  { author: string; license: string; url?: string } | { own: true } | { unverified: string }
 
 /**
  * An image of the guide: a path in the asset store (`/guides/<slug>/…`, lib/assets.ts), the same in

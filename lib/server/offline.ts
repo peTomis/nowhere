@@ -4,18 +4,16 @@ import { join } from 'node:path'
 import { guides } from '@/content/countries'
 import { readyGuides } from '@/content/guides'
 import { LOCALES, paths, type Locale } from '@/i18n'
-import { assetsOrigin, assetsUnder } from '@/lib/assets'
+import { assetsUnder } from '@/lib/assets'
 
 /** What an offline download saves (lib/offline.ts): the pages, then the files they use. */
 export type OfflineManifest = {
   /** Pages by language: a download saves those of the reader's language only. */
   routes: Record<Locale, string[]>
-  /** Same-origin paths or asset CDN URLs: the same images serve every language. */
+  /** Paths on this site: the same images serve every language. */
   files: string[]
   /** Size of `files` in bytes (the pages and their scripts come on top). */
   bytes: number
-  /** Origin of the asset CDN, if images come from one: the worker serves it offline too. */
-  assetsOrigin?: string
 }
 
 const PUBLIC = join(process.cwd(), 'public')
@@ -55,6 +53,5 @@ export async function offlineManifest(): Promise<OfflineManifest> {
     routes,
     files: [...local, ...names, ...images.map((i) => i.url)],
     bytes: [...localSizes, ...images.map((i) => i.bytes)].reduce((a, b) => a + b, 0),
-    assetsOrigin,
   }
 }

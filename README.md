@@ -16,11 +16,12 @@ yarn lint              # oxlint
 yarn format            # prettier (with Tailwind class sorting)
 yarn format:check
 yarn validate          # content checks, every guide in every language
-yarn assets pull       # guide images from the asset bucket into public/guides/
+yarn assets pull       # guide images from the bucket into public/guides/
 ```
 
-`yarn dev` without `ASSETS_URL` reads the guide images from `public/guides/` (not in git): run
-`yarn assets pull` once (it needs `ASSETS_URL`) or the pages show placeholders.
+The guide images are not in git: `yarn assets pull` (with the `S3_*` variables in `.env`) puts
+them in `public/guides/`, which `yarn dev` uses as is; without it they come from the bucket through
+the site, like in production.
 
 ## Structure
 
@@ -45,14 +46,14 @@ components/
 content/
   countries.ts         guide registry (one entry per country, nothing per language)
   guides.ts            guide content by slug and language
-  assets.json          the guide images in the asset bucket, with hash and size (generated)
+  assets.json          the guide images in the bucket, with hash and size (generated)
   types.ts, build.ts   content types; places, index, traces and cards for the page
   subjects.ts          what a reader's photo is about; the three built-in traces
   <cc>/structure.ts    ids, regions, sections, traces, cards, cover and emblems (no text)
   <cc>/it/             names.ts (short texts) and guide.tsx (the body); en/ once translated
   xx/                  the template guide (/template)
 lib/
-  assets.ts            asset(): URL of a guide image (asset CDN or public/), or none
+  assets.ts            asset(): URL of a guide image (/assets/<hash>/… or public/), or none
   offline.ts           offline guides: download into Cache Storage, remove
   content/             validate.ts (content checks), cards.ts (pinned copies)
   reader/              prefs.ts (trip filter, pins), collection.ts, photos.ts, schema.ts
@@ -93,21 +94,21 @@ Every page is under its language: `/it`, `/it/guide/romania`, `/en/…`. The old
 
 ## Guide images
 
-Covers, emblems, stock images of the traces and figures are content: they live in a **public
-asset bucket** behind a CDN (an R2 bucket with a custom domain), separate from the private bucket
-of the readers' photos, and not in git. Content names them by path (`/guides/romania/cover.jpg`).
+Covers, emblems, stock images of the traces and figures are content: they are not in git but
+in the same **private** bucket as the readers' photos, under `assets/` (photos are under `u/`).
+The bucket stays private: the site serves the images itself (`app/assets/[...path]/route.ts`).
+Content names them by path (`/guides/romania/cover.jpg`).
 
 - `content/assets.json` (committed) lists what the bucket holds, with each file's hash and size:
-  builds need no network, an image exists when it is listed, and its URL carries the hash
-  (`https://assets…/guides/romania/cover.jpg?v=25540717e126`), so the CDN caches it forever
-  (`Cache-Control: immutable`) and a replaced file gets a new URL.
-- Adding or replacing an image: put it in `public/guides/<slug>/`, check it with `yarn dev`
-  (without `ASSETS_URL` the local files are used), then `yarn assets push` (uploads new and
-  changed files, rewrites the manifest) and commit `content/assets.json`. Files are never deleted
-  from the bucket by the script: it lists the ones no longer used.
-- Configuration (`.env.template`): `ASSETS_URL` is the only variable Vercel needs; `ASSETS_BUCKET`
-  and a token with write access are for `yarn assets push` on your machine. The bucket needs CORS
-  `GET` from the site's origins (the offline download fetches the images).
+  builds need no network, an image exists when it is listed, and its URL carries the hash in the
+  path (`/assets/25540717e126/guides/romania/cover.jpg`), so the CDN and the browser keep it for a
+  year and a replaced file gets a new URL. The route serves only listed files at their current
+  hash: nothing else in the bucket can be reached through it.
+- Adding or replacing an image: put it in `public/guides/<slug>/`, check it with `yarn dev` (a
+  local copy is used as is), then `yarn assets push` (uploads new and changed files, rewrites the
+  manifest) and commit `content/assets.json`. Files are never deleted from the bucket by the
+  script: it lists the ones no longer used.
+- No extra configuration: the same `S3_*` variables as the photos, on Vercel and in `.env`.
 
 ## The album
 
@@ -124,15 +125,14 @@ the home, the world map and every ready guide (pages, scripts, fonts and images)
 No account is needed and nothing personal is saved: photos and notes stay online.
 
 - `/api/offline` (prerendered, `lib/server/offline.ts`) lists the pages per language and the
-  files (map, icons, the guides' images, on the asset CDN when configured); the browser
+  files (map, icons, the guides' images); the browser
   (`lib/offline.ts`) saves the pages of its language and also the build files the pages, styles
   and scripts name. Each
   download goes into its own Cache Storage cache and replaces the previous one only once complete.
 - `public/offline-sw.js`, registered only after a download, serves pages and files from the
   network while it answers within 4 seconds, else from the snapshot (hashed build files straight
-  from the snapshot). Optimized images (`/_next/image`) fall back to the saved original; images
-  from the asset CDN are served too (its origin is passed to the worker). `/`, offline, goes to the
-  saved language. `/api/`
+  from the snapshot). Optimized images (`/_next/image`) fall back to the saved original. `/`,
+  offline, goes to the saved language. `/api/`
   is never cached. The snapshot is never refreshed by browsing: after a deploy, download again.
 - Offline, the reader's session is "unknown" rather than signed out, and is read again when the
   connection comes back.

@@ -2,14 +2,12 @@
  * Offline guides (lib/offline.ts). Registered only after a download. Pages and files come from the
  * network while it answers, and from the saved snapshot when it doesn't: the snapshot is never
  * refreshed from here, so its pages always find the scripts they were saved with. Personal data
- * (/api/) is never cached. Guide images may come from the asset CDN (lib/assets.ts): its origin
- * is passed as `?assets=` when the worker is registered, and it is served the same way.
+ * (/api/) is never cached.
  */
 const PREFIX = 'nowhere-offline-'
 const META = 'nowhere-offline-meta'
 // How long a page or a file may take before the saved copy is shown instead.
 const TIMEOUT = 4000
-const ASSETS = new URL(self.location.href).searchParams.get('assets')
 
 self.addEventListener('install', () => self.skipWaiting())
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()))
@@ -41,17 +39,7 @@ async function networkFirst(request, saved) {
 self.addEventListener('fetch', (event) => {
   const request = event.request
   const url = new URL(request.url)
-  if (request.method !== 'GET') return
-  if (url.origin !== self.location.origin) {
-    // Guide images from the asset CDN, saved under their full URL (with `?v=`).
-    if (ASSETS && url.origin === ASSETS)
-      event.respondWith(
-        snapshot().then((s) =>
-          s ? networkFirst(request, s.cache.match(request.url)) : fetch(request),
-        ),
-      )
-    return
-  }
+  if (request.method !== 'GET' || url.origin !== self.location.origin) return
   if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/_next/webpack-hmr')) return
   // Router data (RSC): when it fails, Next.js loads the page instead, which is served below.
   if (request.headers.get('rsc') || url.searchParams.has('_rsc')) return

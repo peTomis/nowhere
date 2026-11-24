@@ -1,9 +1,6 @@
 import type { NextConfig } from 'next'
 import { DEFAULT_LOCALE, LOCALES } from './i18n/config'
 
-// Guide images come from the asset CDN when it is configured (lib/assets.ts).
-const assets = process.env.ASSETS_URL ? new URL(process.env.ASSETS_URL) : undefined
-
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
@@ -12,9 +9,12 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   images: {
-    remotePatterns: assets
-      ? [{ protocol: assets.protocol.replace(':', '') as 'https', hostname: assets.hostname }]
-      : [],
+    // Only the guide images may be optimized: from the bucket (app/assets/, the hash is in the
+    // path) or the local copy (public/guides/). No query strings.
+    localPatterns: [
+      { pathname: '/assets/**', search: '' },
+      { pathname: '/guides/**', search: '' },
+    ],
   },
   // URLs from before the language prefix (docs/data-model.md §5.3). The bare `/` is temporary,
   // so it can later follow the browser's language; old links were written in Italian.
@@ -28,13 +28,14 @@ const nextConfig: NextConfig = {
   },
   // A first segment that is no language (`/xx`, `/xx/account`) would reach app/[lang]/ with an
   // unknown root param, which renders without HTML: sent instead to a path that matches nothing,
-  // so it gets the 404 page. After files (public/, /_next) and before dynamic routes.
+  // so it gets the 404 page. After files (public/, /_next) and before dynamic routes, which is why
+  // the other dynamic routes outside app/[lang]/ (api, assets) are left out.
   async rewrites() {
     return {
       beforeFiles: [],
       afterFiles: [
         {
-          source: `/:first((?!(?:${LOCALES.join('|')}|api)(?:/|$))[^/.]+)/:rest*`,
+          source: `/:first((?!(?:${LOCALES.join('|')}|api|assets)(?:/|$))[^/.]+)/:rest*`,
           destination: `/${DEFAULT_LOCALE}/404`,
         },
       ],

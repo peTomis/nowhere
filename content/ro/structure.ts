@@ -257,7 +257,7 @@ export const structure = defineGuide<Ro, RoSection>({
   country: 'ro',
   cover: {
     src: '/guides/romania/cover.jpg',
-    credit: { unverified: 'author and licence to record' },
+    credit: { own: true },
   },
   /** Country name and nowhere logo on the cover. */
   coverInk: 'var(--color-text)',

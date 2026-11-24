@@ -235,7 +235,8 @@ export function validateGuide(slug: string, content: GuideContent): Issue[] {
   const checkImage = (src: unknown, credit: Credit | undefined, where: string) => {
     // Only images that exist (lib/assets.ts): a missing one is a placeholder, not an error.
     if (typeof src !== 'string' || !asset(src)) return
-    if (!credit) error(where, `image ${src} has no credit (author and licence)`)
+    if (!credit) error(where, `image ${src} has no credit (author and licence, or own: true)`)
+    else if ('own' in credit) return
     else if ('unverified' in credit)
       warn(where, `image ${src}: credit to verify (${credit.unverified})`)
     else if (!credit.author.trim() || !credit.license.trim())

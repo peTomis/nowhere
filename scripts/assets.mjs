@@ -1,15 +1,15 @@
-// Guide images ↔ the public asset bucket (lib/assets.ts). The local copy is public/guides/
-// (gitignored); content/assets.json (committed) lists what the bucket holds, with each file's hash
-// and size, so builds never need the network.
+// Guide images ↔ the private bucket, under assets/ (lib/assets.ts, served by app/assets/). The
+// local copy is public/guides/ (gitignored); content/assets.json (committed) lists what the bucket
+// holds, with each file's hash and size, so builds never need the network.
 //
 //   yarn assets manifest   hash public/guides/ into content/assets.json (no network)
 //   yarn assets push       upload new and changed files, then write the manifest
 //   yarn assets pull       download what the manifest lists and is missing or different locally
 //
-// push needs ASSETS_BUCKET and S3 credentials with write access to it (ASSETS_ACCESS_KEY_ID /
-// ASSETS_SECRET_ACCESS_KEY, else the S3_* ones) and S3_ENDPOINT. pull needs ASSETS_URL only.
+// Both use the S3_* variables of .env (the same bucket and token as the readers' photos).
 // Files are never deleted from the bucket: removed ones are listed, delete them by hand.
 import {
+  GetObjectCommand,
   HeadObjectCommand,
   ListObjectsV2Command,
   PutObjectCommand,
@@ -24,6 +24,8 @@ import { fileURLToPath } from 'node:url'
 const root = fileURLToPath(new URL('..', import.meta.url))
 const PUBLIC = join(root, 'public')
 const DIR = 'guides'
+// Key of a file in the bucket: assets/guides/romania/cover.jpg. Readers' photos are under u/.
+const PREFIX = 'assets'
 const MANIFEST = join(root, 'content/assets.json')
 
 const TYPES = {
@@ -35,13 +37,12 @@ const TYPES = {
   '.svg': 'image/svg+xml',
   '.webp': 'image/webp',
 }
-// URLs carry the hash (`?v=`): a changed file gets a new URL, so every copy may be kept forever.
-const CACHE = 'public, max-age=31536000, immutable'
 
 const hashOf = (buf) => createHash('sha256').update(buf).digest('hex').slice(0, 12)
+const keyOf = (src) => `${PREFIX}${src}`
 
-function env(name, fallback) {
-  const v = process.env[name] || (fallback && process.env[fallback])
+function env(name) {
+  const v = process.env[name]
   if (!v) throw new Error(`Missing environment variable ${name} (see .env.template)`)
   return v
 }
@@ -82,8 +83,8 @@ function client() {
     endpoint: env('S3_ENDPOINT'),
     region: process.env.S3_REGION || 'auto',
     credentials: {
-      accessKeyId: env('ASSETS_ACCESS_KEY_ID', 'S3_ACCESS_KEY_ID'),
-      secretAccessKey: env('ASSETS_SECRET_ACCESS_KEY', 'S3_SECRET_ACCESS_KEY'),
+      accessKeyId: env('S3_ACCESS_KEY_ID'),
+      secretAccessKey: env('S3_SECRET_ACCESS_KEY'),
     },
   })
 }
@@ -92,10 +93,10 @@ async function push() {
   const files = await local()
   if (Object.keys(files).length === 0) throw new Error(`No files under public/${DIR}/`)
   const s3 = client()
-  const Bucket = env('ASSETS_BUCKET')
+  const Bucket = env('S3_BUCKET')
   let uploaded = 0
   for (const [src, { hash }] of Object.entries(files)) {
-    const Key = src.slice(1)
+    const Key = keyOf(src)
     const head = await s3.send(new HeadObjectCommand({ Bucket, Key })).catch((e) => {
       if (e.$metadata?.httpStatusCode === 404) return undefined
       throw e
@@ -107,7 +108,6 @@ async function push() {
         Key,
         Body: await readFile(join(PUBLIC, src)),
         ContentType: TYPES[extname(src).toLowerCase()],
-        CacheControl: CACHE,
         Metadata: { sha256: hash },
       }),
     )
@@ -121,9 +121,12 @@ async function push() {
   const stale = []
   do {
     const page = await s3.send(
-      new ListObjectsV2Command({ Bucket, Prefix: `${DIR}/`, ContinuationToken }),
+      new ListObjectsV2Command({ Bucket, Prefix: `${PREFIX}/${DIR}/`, ContinuationToken }),
     )
-    for (const o of page.Contents ?? []) if (!files[`/${o.Key}`]) stale.push(o.Key)
+    for (const o of page.Contents ?? []) {
+      const src = o.Key.slice(PREFIX.length)
+      if (!files[src]) stale.push(o.Key)
+    }
     ContinuationToken = page.IsTruncated ? page.NextContinuationToken : undefined
   } while (ContinuationToken)
   if (stale.length)
@@ -135,17 +138,17 @@ async function push() {
 }
 
 async function pull() {
-  const base = env('ASSETS_URL').replace(/\/+$/, '')
   const files = await readManifest()
   const mine = await local()
+  const s3 = client()
+  const Bucket = env('S3_BUCKET')
   let fetched = 0
   for (const [src, { hash }] of Object.entries(files)) {
     if (mine[src]?.hash === hash) continue
-    const res = await fetch(`${base}${src}?v=${hash}`)
-    if (!res.ok) throw new Error(`${src}: HTTP ${res.status}`)
-    const buf = Buffer.from(await res.arrayBuffer())
+    const res = await s3.send(new GetObjectCommand({ Bucket, Key: keyOf(src) }))
+    const buf = Buffer.from(await res.Body.transformToByteArray())
     if (hashOf(buf) !== hash)
-      throw new Error(`${src}: hash mismatch (the bucket is ahead of the manifest?)`)
+      throw new Error(`${src}: hash mismatch (the bucket and the manifest differ: push again)`)
     await mkdir(dirname(join(PUBLIC, src)), { recursive: true })
     await writeFile(join(PUBLIC, src), buf)
     fetched++

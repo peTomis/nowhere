@@ -24,7 +24,7 @@ yarn format:check      # prettier
 yarn build             # next build
 yarn icons             # re-render home-screen icons from app/icon.svg
 yarn validate          # content checks of every guide in every language
-yarn assets pull       # guide images: bucket -> public/guides/ (also: push, manifest)
+yarn assets pull       # guide images: bucket assets/ -> public/guides/ (also: push, manifest)
 yarn country-names     # home map country names for languages other than Italian
 ```
 
@@ -176,16 +176,22 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   `guida-<slug>-off` read via `useSyncExternalStore` (server snapshot = everything on), so SSR
   always renders the full text. The kit's primitives read the page's language themselves
   (`getT()`), so content files never pass it.
-- Guide images (covers, emblems, stock images of traces, figures) are content, not code: they live
-  in a public asset bucket behind a CDN, separate from the private bucket of readers' photos, and
-  are not in git. Content names them by path (`/guides/<slug>/…`, English kebab-case file names),
-  the same in every language; their credit is in the structure (or next to the `Figure`), their alt
-  text per language. Always resolve them with `asset()` (`lib/assets.ts`): with `ASSETS_URL` set,
-  an image exists when `content/assets.json` (committed, written by `yarn assets push`) lists it
-  and its URL carries the file's hash (`?v=`); without it, files are read from `public/guides/`
-  (gitignored: `yarn assets pull`). A missing image renders a placeholder, never a broken image.
-  A new or changed image: put it in `public/guides/<slug>/`, check it locally, `yarn assets push`,
-  commit `content/assets.json`. Never commit image files under `public/guides/`.
+- Guide images (covers, emblems, stock images of traces, figures) are content, not code, and not
+  in git: they live in the private bucket under `assets/` (readers' photos are under `u/` and stay
+  private; the bucket is never made public) and the site serves them itself through
+  `app/assets/[...path]/route.ts`. Content names them by path (`/guides/<slug>/…`, English
+  kebab-case file names), the same in every language; their credit is in the structure (or next to
+  the `Figure`), their alt text per language. Always resolve them with `asset()` (`lib/assets.ts`):
+  a local copy in `public/guides/` (gitignored, `yarn assets pull`) is used as is; otherwise an
+  image exists when `content/assets.json` (committed, written by `yarn assets push`) lists it, and
+  its URL carries the file's hash in the path (`/assets/<hash>/guides/…`), immutable for the CDN.
+  The route serves only manifest files at their current hash, so it can never reach `u/`. Never put
+  a query string on an image URL: `images.localPatterns` allows `/assets/**` and `/guides/**`
+  without one. A missing image renders a placeholder, never a broken image. A new or changed
+  image: put it in `public/guides/<slug>/`, check it locally, `yarn assets push`, commit
+  `content/assets.json`. Never commit image files under `public/guides/`. Credits: author and
+  licence, `{ own: true }` for the site author's own photos (no credit line), or
+  `{ unverified }` while checking (a validator warning).
 - Six chapters (`Guida Romania - Sito v5.dc.html`): every guide is made of the same six chapters,
   in this order: Identità (flag and coat of arms), Timeline storica, Personaggi, Città, Natura,
   Gastronomia (`CHAPTERS` in `content/types.ts`). A level-1 section declares which one it is with
@@ -284,11 +290,9 @@ local ports and change them surgically; do not paste the design runtime (`suppor
 - Offline guides (adapted from collection-manager's offline mode; README "Offline guides"): the
   download in "I tuoi dati" (`components/OfflineGuides.tsx`, `lib/offline.ts`) saves what
   `/api/offline` lists (`lib/server/offline.ts`: the home and ready guides of the reader's
-  language, map, country names, icons, the guides' images from `assetsUnder()`, on the asset CDN
-  when it is configured) plus the build files they name, into Cache Storage; the worker
-  `public/offline-sw.js` is network-first with a 4 s fallback to the snapshot, serves the asset
-  CDN's origin too (passed as `?assets=` when it is registered; the bucket needs CORS `GET` from
-  the site) and sends `/` to the saved language. A new page or a public file outside those
+  language, map, country names, icons, the guides' images from `assetsUnder()`) plus the build
+  files they name, into Cache Storage; the worker `public/offline-sw.js` is network-first with a
+  4 s fallback to the snapshot and sends `/` to the saved language. Everything is same-origin. A new page or a public file outside those
   folders that a guide needs offline must be added to the manifest.
   Never cache `/api/` (personal data); a network failure is not a signed-out reader.
 - `public/data/world-50m.json` is world-atlas `countries-50m` minus Antarctica, with Italian names
