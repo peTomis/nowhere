@@ -147,15 +147,15 @@ The design comes from claude.ai/design — project **Nowhere**, design system **
 Light paper ground, Source Serif 4 everywhere, cyan (`accent`) and magenta (`accent-2`) as spot
 colors, process yellow reserved for print treatments only.
 
-| Design source                              | Local port                                          |
-| ------------------------------------------ | --------------------------------------------------- |
-| `_ds/broadsheet-…/styles.css` (tokens)     | `styles/theme.css`                                  |
-| `_ds/broadsheet-…/styles.css` (components) | `styles/broadsheet.css`                             |
-| `print-plates.js` (inside `_ds_bundle.js`) | `lib/printPlates.ts`                                |
-| `NowhereLogo.dc.html`                      | `components/Logo.tsx` (Italian variant names → EN)  |
-| `Nowhere - Home.dc.html`                   | `app/[lang]/page.tsx` + `components/WorldMap.tsx`   |
-| `assets/mondo-50m.json`                    | `public/data/world-50m.json`                        |
-| `Guida Romania - Sito.dc.html`             | `components/guide/*` + `content/ro/`                |
+| Design source                              | Local port                                         |
+| ------------------------------------------ | -------------------------------------------------- |
+| `_ds/broadsheet-…/styles.css` (tokens)     | `styles/theme.css`                                 |
+| `_ds/broadsheet-…/styles.css` (components) | `styles/broadsheet.css`                            |
+| `print-plates.js` (inside `_ds_bundle.js`) | `lib/printPlates.ts`                               |
+| `NowhereLogo.dc.html`                      | `components/Logo.tsx` (Italian variant names → EN) |
+| `Nowhere - Home.dc.html`                   | `app/[lang]/page.tsx` + `components/WorldMap.tsx`  |
+| `assets/mondo-50m.json`                    | `public/data/world-50m.json`                       |
+| `Guida Romania - Sito.dc.html`             | `components/guide/*` + `content/ro/`               |
 
 Rules of thumb:
 
