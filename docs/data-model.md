@@ -945,8 +945,13 @@ What the code does, where it differs from the sections above (follows the v4 des
   local, place line, optional text, "Come trovarla", note invite, distance) and `names.cards`. The card's
   prose is the kit's `<Card card on intro remember>`; `<Today traces>` is the "Oggi:" line under
   an event. `TraceKind` (on-route/detour) became `where` + rarity, as in the design.
-- **Seen = has a photo.** The design asks for a photo to put a trace in the album, so there are
-  no visits: `/api/visits` is not implemented and the `visits` collection stays unused.
+- **Seen = a visit or a photo.** First shipped as "seen = has a photo"; visits came after, as
+  §3.1 designed them: `/api/visits` (GET, PUT `{ placeId }`, DELETE `{ placeId }`), one live
+  visit per (owner, place) with a `country` field for `?country=`, and committing a photo of a
+  place upserts its visit (the first date is kept). The photo panel saves a place without a photo
+  ("Segna come vista"); the trace then shows "Vista il … · senza foto" and "Aggiungi la foto".
+  The cover (a country subject) stays a photo. Removing a trace from the album tombstones its
+  visit, photo and note.
 - **One photo per subject.** Committing a photo tombstones the subject's previous one and deletes
   its objects (`lib/server/collection.ts`).
 - **Routes:** `/api/photos` (GET, POST), `/api/photos/[id]/commit`, `/api/photos/[id]`

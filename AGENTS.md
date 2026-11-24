@@ -251,7 +251,10 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   box, one event per trace. After "Tutte" and the regions, the album's filter ends with the themes Natura and
   Gastronomia (`TRACE_THEMES` in `content/types.ts`: traces of landscape and food cards); their
   boxes still to find are dashed in `album-nature` (green) and `album-food` (yellow), not grey. Never add placeholder traces. How many traces an album has and which ones (size band by country, the six tests a trace must pass, quotas per subject of the photo, region, difficulty, variety and type; variety includes "pop" traces such as a historic café or a famous shop, when they are institutions) is set in `docs/prompt-for-new-guide.md` §B13: check a new or changed trace against it. A trace is in the album when the signed-in reader has
-  a photo of it (`/api/photos`, R2 via presigned URLs, `lib/reader/collection.ts`); notes go to
+  seen it: a visit (`/api/visits`, "Segna come vista" in the photo panel, the photo to add later
+  with "Aggiungi la foto") or a photo (`/api/photos`, R2 via presigned URLs, which records the
+  visit too); `isSeen()` in `lib/reader/collection.ts` is the one test, used by the album, the
+  completion and the map. The cover trace is a photo, never a visit. Notes go to
   `/api/notes`. Pins ("In evidenza") are a device preference (`lib/reader/prefs.ts`), for cards
   only. Not ported: pinning sections, the "Per chi mi segue" visibility, cover photos from the
   map's country card.

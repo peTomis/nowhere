@@ -5,8 +5,9 @@ import { subjectKey, type Subject } from '@/content/subjects'
 import type { ProcessedPhoto } from './photos'
 
 /*
- * The reader's collection in the browser (docs/data-model.md §6.1): photos and notes of the
- * signed-in reader, read once per page from /api/photos and /api/notes and kept in memory, so the
+ * The reader's collection in the browser (docs/data-model.md §6.1): visits, photos and notes of
+ * the signed-in reader, read once per page from /api/visits, /api/photos and /api/notes and kept
+ * in memory, so the
  * same trace shows the same state in every card, in the album and in the completion. Signed out,
  * it stays empty and the controls invite to sign in. A photo being uploaded lives here too (with
  * a local preview) until the server confirms it; it is lost if the page is left before that:
@@ -29,7 +30,11 @@ export type LocalPhoto = {
   photo: ProcessedPhoto
 }
 
-export type Entry = { photo?: SavedPhoto; local?: LocalPhoto; note?: string }
+/**
+ * A subject's state. `seenAt`: the place was marked seen (ISO), with or without a photo; the
+ * photo can come later.
+ */
+export type Entry = { seenAt?: string; photo?: SavedPhoto; local?: LocalPhoto; note?: string }
 
 type State = { session: Session; entries: Record<string, Entry> }
 
@@ -45,7 +50,7 @@ function set(next: Partial<State>) {
 function patch(key: string, change: (e: Entry) => Entry | undefined) {
   const entries = { ...state.entries }
   const next = change(entries[key] ?? {})
-  if (next && (next.photo || next.local || next.note)) entries[key] = next
+  if (next && (next.seenAt || next.photo || next.local || next.note)) entries[key] = next
   else delete entries[key]
   set({ entries })
 }
@@ -77,6 +82,7 @@ async function api<T>(path: string, init?: RequestInit & { json?: unknown }): Pr
 
 type PhotoView = SavedPhoto & { subject: Subject }
 type NoteView = { subject: Subject; text: string }
+type VisitView = { placeId: string; seenAt: string }
 
 /** Reads the session and the collection, once per page. */
 export function loadCollection() {
@@ -91,11 +97,16 @@ export function loadCollection() {
       return
     }
     try {
-      const [photos, notes] = await Promise.all([
+      const [visits, photos, notes] = await Promise.all([
+        api<VisitView[]>('/api/visits'),
         api<PhotoView[]>('/api/photos'),
         api<NoteView[]>('/api/notes'),
       ])
       const entries: Record<string, Entry> = {}
+      for (const v of visits) {
+        const key = subjectKey({ kind: 'place', id: v.placeId })
+        entries[key] = { ...entries[key], seenAt: v.seenAt }
+      }
       for (const p of photos) {
         const { subject, ...photo } = p
         entries[subjectKey(subject)] = { ...entries[subjectKey(subject)], photo }
@@ -130,8 +141,38 @@ export function useEntry(key: string): Entry | undefined {
   return useCollection().entries[key]
 }
 
-/** A trace is in the album when it has a photo, saved or on its way. */
-export const isSeen = (e: Entry | undefined) => !!(e?.photo || e?.local)
+/** A trace is in the album when it is marked seen or has a photo, saved or on its way. */
+export const isSeen = (e: Entry | undefined) => !!(e?.seenAt || e?.photo || e?.local)
+
+/** Whether the trace is seen but still waits for its photo. */
+export const needsPhoto = (e: Entry | undefined) => isSeen(e) && !e?.photo && !e?.local
+
+/** When the trace was seen (ISO): the visit, else the photo. */
+export const seenDate = (e: Entry | undefined) =>
+  e?.seenAt ?? e?.local?.createdAt ?? e?.photo?.createdAt
+
+// --- visits ------------------------------------------------------------------------------------
+
+/**
+ * Puts a place in the album without a photo (it can be added later). Optimistic: the trace shows
+ * as seen at once and goes back if the server refuses. Country subjects (the cover) are photos.
+ */
+export async function markSeen(subject: Subject) {
+  if (subject.kind !== 'place') throw new Error('Only places can be seen without a photo')
+  const key = subjectKey(subject)
+  if (isSeen(state.entries[key])) return
+  patch(key, (e) => ({ ...e, seenAt: new Date().toISOString() }))
+  try {
+    const visit = await api<VisitView>('/api/visits', {
+      method: 'PUT',
+      json: { placeId: subject.id },
+    })
+    patch(key, (e) => ({ ...e, seenAt: visit.seenAt }))
+  } catch (e) {
+    patch(key, (en) => ({ ...en, seenAt: undefined }))
+    throw e
+  }
+}
 
 // --- photos ------------------------------------------------------------------------------------
 
@@ -170,7 +211,13 @@ async function upload(key: string) {
     if (state.entries[key]?.local?.id !== id) return // replaced or removed meanwhile
     URL.revokeObjectURL(local.preview)
     const { subject: _, ...rest } = saved
-    patch(key, (e) => ({ ...e, photo: rest, local: undefined }))
+    // The server records the visit with the photo: keep an earlier date if there was one.
+    patch(key, (e) => ({
+      ...e,
+      seenAt: e.seenAt ?? (subject.kind === 'place' ? rest.createdAt : undefined),
+      photo: rest,
+      local: undefined,
+    }))
   } catch (e) {
     if (state.entries[key]?.local?.id !== id) return
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false
@@ -207,25 +254,30 @@ export function retryPhoto(key: string) {
   void upload(key)
 }
 
-/** Removes the photo and the note of a subject: the trace leaves the album. */
+/** Removes the visit, the photo and the note of a subject: the trace leaves the album. */
 export async function removeFromAlbum(subject: Subject) {
   const key = subjectKey(subject)
   const entry = state.entries[key]
   if (entry?.photo) await api(`/api/photos/${entry.photo.id}`, { method: 'DELETE' })
+  if (subject.kind === 'place' && (entry?.seenAt || entry?.photo))
+    await api('/api/visits', { method: 'DELETE', json: { placeId: subject.id } })
   if (entry?.note) await api('/api/notes', { method: 'PUT', json: { subject, text: '' } })
   if (entry?.local) URL.revokeObjectURL(entry.local.preview)
   patch(key, () => undefined)
 }
 
-/** Saves the note of a subject (empty: deleted). Optimistic; restored if the server refuses. */
-export async function saveNote(subject: Subject, text: string) {
+/**
+ * Saves the note of a subject (empty: deleted), written in `lang` (the page's language).
+ * Optimistic; restored if the server refuses.
+ */
+export async function saveNote(subject: Subject, text: string, lang: string) {
   const key = subjectKey(subject)
   const before = state.entries[key]?.note
   const next = text.trim()
   if ((before ?? '') === next) return
   patch(key, (e) => ({ ...e, note: next || undefined }))
   try {
-    await api('/api/notes', { method: 'PUT', json: { subject, text: next, lang: 'it' } })
+    await api('/api/notes', { method: 'PUT', json: { subject, text: next, lang } })
   } catch (e) {
     patch(key, (en) => ({ ...en, note: before }))
     throw e

@@ -3,6 +3,7 @@
 import {
   ArrowsClockwiseIcon,
   BuildingsIcon,
+  CameraIcon,
   CheckCircleIcon,
   CheckIcon,
   CircleNotchIcon,
@@ -26,7 +27,14 @@ import { traceAnchor } from '@/content/anchors'
 import type { TraceTheme, TraceWhere } from '@/content/types'
 import { format, paths, type Locale } from '@/i18n'
 import { useLang, useT } from '@/i18n/client'
-import { isSeen, retryPhoto, useCollection, type Entry } from '@/lib/reader/collection'
+import {
+  isSeen,
+  needsPhoto,
+  retryPhoto,
+  seenDate,
+  useCollection,
+  type Entry,
+} from '@/lib/reader/collection'
 import { pad, useTrace } from './data'
 import { openPhotoPanel } from './panelStore'
 import { PhotoViewer } from './PhotoViewer'
@@ -155,15 +163,20 @@ export function Trace({
   const seen = isSeen(entry)
   const num = pad(trace.num)
   const local = entry?.local
-  const date = seen ? formatDay(local?.createdAt ?? entry!.photo!.createdAt, lang) : ''
+  const seenOn = seenDate(entry)
+  const date = seen && seenOn ? formatDay(seenOn, lang) : ''
   const src = photoSrc(entry, 'full')
-  const stock = !seen ? trace.image : undefined
+  // Seen without a photo yet: the stock image stays, under the check.
+  const stock = !src ? trace.image : undefined
   const Where = WHERE_ICONS[trace.where]
   const Glyph = TRACE_ICONS[trace.icon]
   const others = trace.cards.filter((c) => c.id !== card)
-  const alt = seen
-    ? format(t.guide.trace.altSeen, { name: trace.name, date })
-    : format(stock ? t.guide.trace.altStock : t.guide.trace.altEmpty, { num, name: trace.name })
+  const alt =
+    seen && src
+      ? format(t.guide.trace.altSeen, { name: trace.name, date })
+      : seen
+        ? format(t.guide.trace.altSeenNoPhoto, { num, name: trace.name, date })
+        : format(stock ? t.guide.trace.altStock : t.guide.trace.altEmpty, { num, name: trace.name })
   const rarity = t.guide.album.rarityLabel[trace.rarity]
   const edit = () => openPhotoPanel(trace.id, 'edit')
   const signedOut = session === 'signed-out'
@@ -186,8 +199,10 @@ export function Trace({
             box={box}
             alt={alt}
             onView={seen && src ? () => setViewing(true) : undefined}
-            onAdd={seen ? undefined : add}
-            addLabel={signedOut ? t.guide.trace.signIn : t.guide.trace.add}
+            onAdd={seen ? (src ? undefined : edit) : add}
+            addLabel={
+              seen ? t.guide.trace.addPhoto : signedOut ? t.guide.trace.signIn : t.guide.trace.add
+            }
           >
             {seen && src ? (
               // eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview
@@ -207,7 +222,7 @@ export function Trace({
                 />
               </div>
             ) : (
-              !seen && (
+              !src && (
                 <div className="absolute inset-0 grid place-items-center bg-neutral-200">
                   <ImageIcon
                     weight="duotone"
@@ -463,6 +478,7 @@ function TraceActions({
         </div>
       </div>
     )
+  const missing = needsPhoto(entry)
   return (
     <div className="flex flex-wrap items-center gap-x-2">
       <span className="mr-1 flex min-h-[44px] items-center gap-[6px] text-sm text-neutral-800">
@@ -472,9 +488,17 @@ function TraceActions({
           aria-hidden="true"
           className="text-accent-700"
         />
-        {format(t.guide.trace.seenOn, { date })}
+        {format(missing ? t.guide.trace.seenNoPhoto : t.guide.trace.seenOn, { date })}
       </span>
-      {editButton}
+      {missing ? (
+        // The same panel as "Modifica": the photo, the note, or out of the album.
+        <button type="button" className={ghost} onClick={onEdit}>
+          <CameraIcon weight="duotone" size={18} aria-hidden="true" />
+          {t.guide.trace.addPhoto}
+        </button>
+      ) : (
+        editButton
+      )}
     </div>
   )
 }

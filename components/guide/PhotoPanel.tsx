@@ -15,8 +15,15 @@ import { Completion, completionOf, THRESHOLDS } from '@/components/Completion'
 import { Medal, medalOf } from '@/components/Medal'
 import type { AlbumTrace } from '@/content/build'
 import { format } from '@/i18n'
-import { useT } from '@/i18n/client'
-import { addPhoto, isSeen, removeFromAlbum, saveNote, useCollection } from '@/lib/reader/collection'
+import { useLang, useT } from '@/i18n/client'
+import {
+  addPhoto,
+  isSeen,
+  markSeen,
+  removeFromAlbum,
+  saveNote,
+  useCollection,
+} from '@/lib/reader/collection'
 import { PhotoError, processPhoto, type ProcessedPhoto } from '@/lib/reader/photos'
 import { NOTE_UI_MAX } from '@/lib/reader/schema'
 import { pad, useGuideData } from './data'
@@ -26,7 +33,9 @@ import { photoSrc, placeLine, RarityMarks, StockCredit } from './Trace'
 /*
  * The photo panel, port of "PannelloFoto.dc.html": take or pick a photo for a trace, add a note,
  * put it in the album; then the points it brings and the completion growing (and the level, when
- * one is reached). Also edits a trace's photo and note, or removes it from the album. A bottom
+ * one is reached). A place can also go in the album without a photo ("Segna come vista"), which
+ * is added later by editing it; the cover can't (it is a photo). Also edits a trace's photo and
+ * note, or removes it from the album. A bottom
  * sheet on phones, a window from 640px. Mounted once per guide; traces open it through
  * openPhotoPanel(). The "Per chi mi segue" visibility is not ported: notes are private.
  */
@@ -42,15 +51,19 @@ export function PhotoPanel() {
 
 type Done = { from: number; level: number | null }
 
+/** What went wrong, shown above the form: a photo that can't be used, or a failed save. */
+type Problem = { title: string; text: string }
+
 function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
   const t = useT()
+  const lang = useLang()
   const { entries } = useCollection()
   const { traces, name } = useGuideData()
   const entry = entries[trace.key]
   const editing = mode === 'edit' && isSeen(entry)
   const [picked, setPicked] = useState<{ photo: ProcessedPhoto; preview: string } | null>(null)
   const [note, setNote] = useState(entry?.note ?? '')
-  const [problem, setProblem] = useState<string | null>(null)
+  const [problem, setProblem] = useState<Problem | null>(null)
   const [confirm, setConfirm] = useState(false)
   const [done, setDone] = useState<Done | null>(null)
   const [busy, setBusy] = useState(false)
@@ -61,6 +74,9 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
   const doneRef = useRef<HTMLButtonElement>(null)
   const ids = useId()
   const preview = picked?.preview ?? photoSrc(entry, 'full')
+  // A place may go in the album now and get its photo later; the cover is a photo.
+  const photoOptional = trace.subject.kind === 'place'
+  const failed = (text: string) => setProblem({ title: t.guide.photo.errorTitle, text })
 
   // Focus, Escape, scroll lock; focus goes back to the opener on close.
   useEffect(() => {
@@ -104,11 +120,12 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
       setProblem(null)
     } catch (err) {
       const reason = err instanceof PhotoError ? err.reason : 'unreadable'
-      setProblem(
-        format(reason === 'too-large' ? t.guide.photo.tooLarge : t.guide.photo.unreadable, {
+      setProblem({
+        title: t.guide.photo.unreadableTitle,
+        text: format(reason === 'too-large' ? t.guide.photo.tooLarge : t.guide.photo.unreadable, {
           file: file.name,
         }),
-      )
+      })
       setPicked(null)
     } finally {
       setBusy(false)
@@ -116,13 +133,24 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
   }
 
   const save = async () => {
-    if (!preview) return
+    if (!preview && !photoOptional) return
     const before = completionOf(traces, (k) => isSeen(entries[k]))
     if (picked) {
       handed.current = true
       addPhoto(trace.subject, picked.photo)
+    } else if (!isSeen(entry)) {
+      // Seen without a photo: wait for the server, so a refusal is shown here.
+      setBusy(true)
+      try {
+        await markSeen(trace.subject)
+      } catch {
+        failed(t.guide.photo.seenError)
+        return
+      } finally {
+        setBusy(false)
+      }
     }
-    saveNote(trace.subject, note).catch(() => setProblem(t.guide.photo.noteError))
+    saveNote(trace.subject, note, lang).catch(() => failed(t.guide.photo.noteError))
     if (editing) return closePhotoPanel()
     const after = completionOf(traces, (k) => k === trace.key || isSeen(entries[k]))
     setDone({ from: before.pct, level: after.level > before.level ? after.level : null })
@@ -135,7 +163,7 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
       closePhotoPanel()
     } catch {
       setConfirm(false)
-      setProblem(t.guide.photo.deleteError)
+      failed(t.guide.photo.deleteError)
     } finally {
       setBusy(false)
     }
@@ -206,7 +234,12 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
           <div className="flex flex-col gap-3 px-4 pt-3 pb-4">
             <h3 className="m-0 text-[19px] leading-[1.3]">{t.guide.photo.confirmTitle}</h3>
             <p className="m-0 text-base leading-[1.5] text-neutral-800">
-              {format(t.guide.photo.confirmText, { points })}
+              {format(
+                entry?.photo || entry?.local
+                  ? t.guide.photo.confirmText
+                  : t.guide.photo.confirmTextNoPhoto,
+                { points },
+              )}
             </p>
             <div className="mt-2 flex flex-col gap-2">
               <button
@@ -233,7 +266,7 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
               className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-4 pt-2 pb-4"
             >
               <div className="flex items-center gap-4">
-                <Thumb src={preview}>
+                <Thumb src={preview ?? trace.image?.src}>
                   <span className="absolute top-[6px] left-[6px] flex items-center gap-[3px] rounded-md bg-bg py-px pr-[6px] pl-1 text-xs font-semibold tabular-nums">
                     <CheckIcon weight="bold" size={12} className="text-accent-700" />
                     {pad(trace.num)}
@@ -304,9 +337,9 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
                 <div role="alert" className="flex flex-col gap-[6px]">
                   <span className="flex items-center gap-[8px] text-base font-semibold">
                     <ImageBrokenIcon weight="duotone" size={22} aria-hidden="true" />
-                    {t.guide.photo.unreadableTitle}
+                    {problem.title}
                   </span>
-                  <span className="text-[15px] leading-[1.5] text-neutral-800">{problem}</span>
+                  <span className="text-[15px] leading-[1.5] text-neutral-800">{problem.text}</span>
                 </div>
               )}
               {preview ? (
@@ -425,10 +458,14 @@ function Panel({ trace, mode }: { trace: AlbumTrace; mode: 'new' | 'edit' }) {
               <button
                 type="button"
                 className="btn btn-primary min-h-[48px] flex-[2_1_160px] text-base"
-                disabled={!preview || busy}
+                disabled={(!preview && !photoOptional) || busy}
                 onClick={save}
               >
-                {editing ? t.guide.photo.saveEdit : t.guide.photo.save}
+                {editing
+                  ? t.guide.photo.saveEdit
+                  : preview
+                    ? t.guide.photo.save
+                    : t.guide.photo.saveWithoutPhoto}
               </button>
             </Footer>
           </>

@@ -204,13 +204,16 @@
         "close": "Chiudi la foto",
         "zoomIn": "Ingrandisci",
         "zoomOut": "Riduci"
-      }
+      },
+      "seenNoPhoto": "Vista il {date} · senza foto",
+      "addPhoto": "Aggiungi la foto",
+      "altSeenNoPhoto": "Traccia {num} vista il {date}: {name}, ancora senza foto"
     },
     "photo": {
       "kickerEdit": "Modifica",
       "kickerNew": "La tua foto",
       "close": "Chiudi",
-      "prompt": "Una tua foto mette la traccia nell’album.",
+      "prompt": "Aggiungi una tua foto adesso, oppure segna la traccia come vista e aggiungi la foto più tardi.",
       "camera": "Scatta una foto",
       "gallery": "Dalla galleria",
       "cameraAgain": "Scatta di nuovo",
@@ -242,7 +245,11 @@
       "levelLineAll": "Tutte le tracce della guida sono nell’album.",
       "done": "Fatto",
       "noteError": "La nota non è stata salvata. Riprova.",
-      "deleteError": "Non sono riuscito a togliere la traccia. Riprova."
+      "deleteError": "Non sono riuscito a togliere la traccia. Riprova.",
+      "saveWithoutPhoto": "Segna come vista",
+      "seenError": "Non sono riuscito a segnare la traccia come vista. Riprova.",
+      "errorTitle": "Qualcosa non è andato",
+      "confirmTextNoPhoto": "La traccia esce dall’album e dal completamento ({points} in meno), con la sua nota. Non si può recuperare."
     },
     "pins": {
       "title": "In evidenza",

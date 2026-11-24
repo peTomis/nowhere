@@ -248,8 +248,18 @@ function TraceBox({
       >
         {seen ? (
           <>
-            {/* eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview */}
-            {src && <img src={src} alt="" className="absolute inset-0 size-full object-cover" />}
+            {src ? (
+              // eslint-disable-next-line @next/next/no-img-element -- signed URL or local preview
+              <img src={src} alt="" className="absolute inset-0 size-full object-cover" />
+            ) : (
+              // Seen, the photo still to add: its icon, in the accent.
+              <Glyph
+                weight="duotone"
+                size={32}
+                aria-hidden="true"
+                className="absolute right-[12px] bottom-2 text-accent-700"
+              />
+            )}
             <span
               aria-hidden="true"
               className="absolute top-[6px] left-[6px] flex items-center gap-[3px] rounded-md bg-bg py-px pr-[7px] pl-1 text-xs font-semibold tabular-nums shadow-sm"

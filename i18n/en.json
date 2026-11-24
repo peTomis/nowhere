@@ -204,13 +204,16 @@
         "close": "Close the photo",
         "zoomIn": "Zoom in",
         "zoomOut": "Zoom out"
-      }
+      },
+      "seenNoPhoto": "Seen on {date} · no photo yet",
+      "addPhoto": "Add the photo",
+      "altSeenNoPhoto": "Trace {num} seen on {date}: {name}, no photo yet"
     },
     "photo": {
       "kickerEdit": "Edit",
       "kickerNew": "Your photo",
       "close": "Close",
-      "prompt": "A photo of yours puts the trace in the album.",
+      "prompt": "Add a photo of yours now, or mark the trace as seen and add the photo later.",
       "camera": "Take a photo",
       "gallery": "From the gallery",
       "cameraAgain": "Take another",
@@ -242,7 +245,11 @@
       "levelLineAll": "Every trace of the guide is in the album.",
       "done": "Done",
       "noteError": "The note was not saved. Try again.",
-      "deleteError": "The trace could not be removed. Try again."
+      "deleteError": "The trace could not be removed. Try again.",
+      "saveWithoutPhoto": "Mark as seen",
+      "seenError": "The trace could not be marked as seen. Try again.",
+      "errorTitle": "Something went wrong",
+      "confirmTextNoPhoto": "The trace leaves the album and the completion ({points} less), with its note. It can’t be recovered."
     },
     "pins": {
       "title": "Pinned",

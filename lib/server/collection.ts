@@ -7,10 +7,12 @@ import { HttpError } from './http'
 import { getDb } from './mongodb'
 
 /*
- * The reader's collection on the server (docs/data-model.md §3.1, §6): photos (records here,
- * objects in the bucket) and notes. Every function takes the owner from the session (requireUser)
- * and adds it to every query. A trace is in the album when it has a ready photo: there is no
- * separate "seen" record yet (the design asks for a photo to mark a trace).
+ * The reader's collection on the server (docs/data-model.md §3.1, §6): visits, photos (records
+ * here, objects in the bucket) and notes. Every function takes the owner from the session
+ * (requireUser) and adds it to every query. A trace is in the album when it is seen: a visit, or
+ * a ready photo (committing one also records the visit). Seen and photo are independent, so a
+ * trace can be marked seen now and get its photo later; the cover (a country subject) has no
+ * visits: it is a photo.
  */
 
 type Base = {
@@ -31,6 +33,13 @@ type PhotoDoc = Base & {
   width: number
   height: number
   bytes: { full: number; thumb: number }
+}
+
+type VisitDoc = Base & {
+  placeId: string
+  /** Denormalized from the place id, for `?country=`. */
+  country: string
+  seenAt: Date
 }
 
 type NoteDoc = Base & {
@@ -55,8 +64,12 @@ export type PhotoView = {
 
 export type NoteView = { id: string; subject: Subject; text: string; updatedAt: string }
 
+/** A seen place as the browser gets it. */
+export type VisitView = { placeId: string; seenAt: string }
+
 const photos = async () => (await getDb()).collection<PhotoDoc>('photos')
 const notes = async () => (await getDb()).collection<NoteDoc>('notes')
+const visits = async () => (await getDb()).collection<VisitDoc>('visits')
 
 // --- input guards ------------------------------------------------------------------------------
 
@@ -182,6 +195,8 @@ export async function commitUpload(ownerId: string, id: string): Promise<PhotoVi
     p.updatedAt = new Date()
     await col.updateOne({ _id: id, ownerId }, { $set: { status: 'ready', updatedAt: p.updatedAt } })
   }
+  // A photo of a place marks it seen (§3.1), keeping the first date if it was seen already.
+  if (p.subject.kind === 'place') await upsertVisit(ownerId, p.subject.id, p.createdAt)
   const older = await col
     .find({
       ownerId,
@@ -223,6 +238,70 @@ async function cleanup(ownerId: string) {
     .limit(20)
     .toArray()
   for (const p of old) await retire(p)
+}
+
+// --- visits ------------------------------------------------------------------------------------
+
+const visitView = (v: VisitDoc): VisitView => ({
+  placeId: v.placeId,
+  seenAt: v.seenAt.toISOString(),
+})
+
+/** Places parse like a place subject: a trace of a guide. */
+const parsePlace = (v: unknown) => parseSubject({ kind: 'place', id: v }).id
+
+export async function listVisits(ownerId: string, country?: string): Promise<VisitView[]> {
+  const docs = await (
+    await visits()
+  )
+    .find({ ownerId, deletedAt: { $exists: false }, ...(country ? { country } : {}) })
+    .toArray()
+  return docs.map(visitView)
+}
+
+/**
+ * Marks a place seen: one live visit per (owner, place). A live one keeps its date; a removed one
+ * (tombstone) comes back with the new date.
+ */
+async function upsertVisit(ownerId: string, placeId: string, seenAt: Date): Promise<VisitView> {
+  const col = await visits()
+  const now = new Date()
+  const live = await col.findOne({ ownerId, placeId, deletedAt: { $exists: false } })
+  if (live) return visitView(live)
+  const doc = await col.findOneAndUpdate(
+    { ownerId, placeId },
+    {
+      $set: { seenAt, updatedAt: now, schema: READER_SCHEMA },
+      $unset: { deletedAt: '' },
+      $setOnInsert: {
+        _id: crypto.randomUUID(),
+        ownerId,
+        placeId,
+        country: placeId.split('.')[0],
+        createdAt: now,
+      },
+    },
+    { upsert: true, returnDocument: 'after' },
+  )
+  if (!doc) throw new Error('Visit upsert returned nothing')
+  return visitView(doc)
+}
+
+/** `{ placeId }`: the place is seen from now (or since its first visit). */
+export async function markSeen(ownerId: string, body: unknown): Promise<VisitView> {
+  const b = (body ?? {}) as Record<string, unknown>
+  return upsertVisit(ownerId, parsePlace(b.placeId), new Date())
+}
+
+/** Tombstones the visit of a place, if any (its photo and note are removed on their own). */
+export async function unmarkSeen(ownerId: string, placeId: unknown) {
+  const now = new Date()
+  await (
+    await visits()
+  ).updateOne(
+    { ownerId, placeId: parsePlace(placeId), deletedAt: { $exists: false } },
+    { $set: { deletedAt: now, updatedAt: now } },
+  )
 }
 
 // --- notes -------------------------------------------------------------------------------------
