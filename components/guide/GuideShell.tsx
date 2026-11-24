@@ -212,7 +212,7 @@ function Shell({ country, toc, traces, copies, summary, sources, children }: She
         // Before hydration --bar-y is unset: the fallback keeps the button at var(--edge).
         style={{ top: `min(var(--edge), max(${inset}px, calc(var(--bar-y, 100vh) + ${inset}px)))` }}
       >
-        <AccountMenu panel={false} />
+        <AccountMenu />
       </div>
       <div
         ref={barRef}

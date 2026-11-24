@@ -21,19 +21,11 @@ import { format, t } from '@/i18n'
  * to upload until the collection exists, docs/data-model.md §6).
  *
  * The session is read from /api/me after hydration, so the pages that host it stay static.
- *
- * `panel={false}` (guide pages): only the avatar, not clickable and without the panel, so signing
- * in and out happen from the home only.
  */
 
 export type Me = { email: string; name?: string; image?: string }
 
-type Props = {
-  /** Whether the button opens the account panel. */
-  panel?: boolean
-}
-
-export function AccountMenu({ panel = true }: Props) {
+export function AccountMenu() {
   const [me, setMe] = useState<Me | null>(null)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -72,17 +64,6 @@ export function AccountMenu({ panel = true }: Props) {
   const label = me
     ? format(t.accountMenu.buttonSignedIn, { email: me.email })
     : t.accountMenu.signIn
-
-  if (!panel)
-    return (
-      <span
-        role="img"
-        aria-label={me ? label : t.accountMenu.title}
-        className="relative grid size-[48px] flex-none place-items-center overflow-hidden rounded-full bg-bg font-body text-text shadow-sm"
-      >
-        {face}
-      </span>
-    )
 
   return (
     <>
