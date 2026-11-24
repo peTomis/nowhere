@@ -2436,9 +2436,14 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Wallachia,
       on: [Ro.Bucharest],
       traces: [
+        RoTrace.TrajansColumnCopy,
         RoTrace.MihaiVodaChurch,
+        RoTrace.EminescusGrave,
+        RoTrace.EnescuMuseum,
         RoTrace.PalaceOfTheParliament,
         RoTrace.CentralCommitteeBuilding,
+        RoTrace.PrimaveriiPalace,
+        RoTrace.MilitaryCircle,
         RoTrace.StavropoleosChurch,
         RoTrace.RomanianAthenaeum,
         RoTrace.VillageMuseum,
@@ -2464,6 +2469,7 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Ro.Iasi],
       traces: [
+        RoTrace.EminescusLindenTree,
         RoTrace.IasiPalaceOfCulture,
         RoTrace.IasiThreeHierarchsMonastery,
         RoTrace.CreangaBojdeuca,
@@ -2476,6 +2482,7 @@ export const structure = defineGuide<Ro, RoSection>({
       region: Moldavia,
       on: [Ro.Suceava],
       traces: [
+        RoTrace.StephenTheGreatEquestrianStatue,
         RoTrace.SuceavaCitadel,
         RoTrace.SuceavaSaintJohnMonastery,
         RoTrace.VoronetMonastery,
