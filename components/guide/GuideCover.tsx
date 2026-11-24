@@ -5,6 +5,9 @@ import { paths } from '@/i18n'
 import { getLang } from '@/i18n/server'
 import { asset } from '@/lib/assets'
 import type { ShownEmblem, ShownImage } from '@/content/types'
+import { InlineScript } from '@/components/InlineScript'
+import { builtInTrace, subjectKey } from '@/content/subjects'
+import { PREPAINT, prepaintCover } from '@/lib/reader/cache'
 import { CoverPhoto } from './CoverPhoto'
 
 /**
@@ -79,9 +82,22 @@ export async function GuideCover({
               }
             />
           ))}
-          <Completion name={name} traces={traces} className="w-[clamp(120px,18vw,180px)]" />
+          <Completion
+            name={name}
+            traces={traces}
+            id={PREPAINT.completion}
+            className="w-[clamp(120px,18vw,180px)]"
+          />
         </div>
       </div>
+      {/* After the photo and the bar: sets them from the reader's local copy before the first
+          paint, so the stock cover and 0% never flash (lib/reader/cache.ts). */}
+      <InlineScript
+        html={prepaintCover(
+          subjectKey(builtInTrace(country, 'cover').subject),
+          traces.map((tr) => [tr.key, tr.points]),
+        )}
+      />
     </div>
   )
 }

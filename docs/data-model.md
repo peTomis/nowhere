@@ -970,7 +970,9 @@ What the code does, where it differs from the sections above (follows the v4 des
   to draw itself (seen traces and photo URLs, never notes) is kept in localStorage
   (`nowhere.collection`: owner, 12 hours at most, deleted at sign-out), so a page shows the album
   at once and the server's answer replaces it; before it, every page waited for `/api/me` and the
-  collection with the traces drawn as still to find.
+  collection with the traces drawn as still to find. The guide's cover also reads the copy in an inline
+  script before the first paint (`lib/reader/cache.ts` `prepaintCover`: the reader's cover photo,
+  the completion bar and percentage), so the stock cover never flashes before hydration.
 - **Pins** ("In evidenza") are a device preference in `nowhere.prefs` (`pins`, added within
   schema 1), for person and city cards only: pinning sections is not ported.
 - **Not ported:** the "Per chi mi segue" note visibility, export/import (phase 8), the lit map

@@ -75,10 +75,15 @@ type Props = {
   variant?: 'compact' | 'full' | 'card'
   /** Percentage the bar starts from, to show it growing (after a photo is added). */
   from?: number
+  /**
+   * Compact only: ids `<id>-fill` and `<id>-pct` on the bar and the percentage, for an inline
+   * script that sets them before hydration (lib/reader/cache.ts prepaintCover).
+   */
+  id?: string
   className?: string
 }
 
-export function Completion({ name, traces, variant = 'compact', from, className = '' }: Props) {
+export function Completion({ name, traces, variant = 'compact', from, id, className = '' }: Props) {
   const t = useT()
   const { pct, points, total, level, seen, count } = useCompletion(traces)
   // Starts at `from`, then grows to the real value on the next frame (the bar's transition).
@@ -124,7 +129,12 @@ export function Completion({ name, traces, variant = 'compact', from, className 
           aria-hidden="true"
           className="relative h-[6px] min-w-[48px] flex-1 rounded-[3px] bg-neutral-200"
         >
-          <span className={`${fill} rounded-[3px]`} style={{ width }} />
+          <span
+            id={id && `${id}-fill`}
+            className={`${fill} rounded-[3px]`}
+            style={{ width }}
+            suppressHydrationWarning
+          />
           {MARKS.map((s) => (
             <span
               key={s}
@@ -133,7 +143,12 @@ export function Completion({ name, traces, variant = 'compact', from, className 
             />
           ))}
         </span>
-        <span aria-hidden="true" className="flex-none text-sm font-semibold tabular-nums">
+        <span
+          id={id && `${id}-pct`}
+          aria-hidden="true"
+          className="flex-none text-sm font-semibold tabular-nums"
+          suppressHydrationWarning
+        >
           {pct}%
         </span>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useSyncExternalStore } from 'react'
 import { subjectKey, type Subject } from '@/content/subjects'
+import { COLLECTION_CACHE as CACHE, COLLECTION_CACHE_MAX_AGE as CACHE_MAX_AGE } from './cache'
 import type { ProcessedPhoto } from './photos'
 
 /*
@@ -19,7 +20,7 @@ import type { ProcessedPhoto } from './photos'
  * at once instead of waiting for the server; the server's answer then replaces it. The copy names
  * its owner (dropped if another account answers), lasts 12 hours (the photo URLs, signed for the
  * day, last at least that long: lib/server/bucket.ts signGet), and is deleted when the reader is
- * signed out.
+ * signed out. The guide's cover also reads it before the first paint (lib/reader/cache.ts).
  */
 
 export type Session = 'unknown' | 'signed-out' | 'signed-in'
@@ -46,9 +47,6 @@ export type Entry = { seenAt?: string; photo?: SavedPhoto; local?: LocalPhoto; n
 type State = { session: Session; entries: Record<string, Entry> }
 
 // --- the local copy -------------------------------------------------------------------------------
-
-const CACHE = 'nowhere.collection'
-const CACHE_MAX_AGE = 12 * 60 * 60 * 1000
 
 type Cached = { v: 1; owner: string; savedAt: number; entries: Record<string, Entry> }
 
