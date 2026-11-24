@@ -6,9 +6,9 @@ import { COLLECTION_CACHE as CACHE, COLLECTION_CACHE_MAX_AGE as CACHE_MAX_AGE } 
 import type { ProcessedPhoto } from './photos'
 
 /*
- * The reader's collection in the browser (docs/data-model.md §6.1): visits, photos and notes of
- * the signed-in reader, read once per page from /api/visits, /api/photos and /api/notes and kept
- * in memory, so the
+ * The reader's collection in the browser (docs/data-model.md §6.1): visits, photos, notes and
+ * personal traces of the signed-in reader, read once per page from /api/visits, /api/photos,
+ * /api/notes and /api/personal and kept in memory, so the
  * same trace shows the same state in every card, in the album and in the completion. Signed out,
  * it stays empty and the controls invite to sign in. A photo being uploaded lives here too (with
  * a local preview) until the server confirms it; it is lost if the page is left before that:
@@ -16,7 +16,7 @@ import type { ProcessedPhoto } from './photos'
  * connection comes back.
  *
  * A copy of what the album needs to draw itself (which traces are seen, their photos' URLs: not
- * the notes, which are private text) is kept in localStorage, so a page shows the reader's album
+ * the notes nor the personal traces, which are private text) is kept in localStorage, so a page shows the reader's album
  * at once instead of waiting for the server; the server's answer then replaces it. The copy names
  * its owner (dropped if another account answers), lasts 12 hours (the photo URLs, signed for the
  * day, last at least that long: lib/server/bucket.ts signGet), and is deleted when the reader is
@@ -38,11 +38,20 @@ export type LocalPhoto = {
   photo: ProcessedPhoto
 }
 
+/** What the reader wrote in a personal trace. */
+export type Personal = { title: string; place: string; text: string; createdAt: string }
+
 /**
  * A subject's state. `seenAt`: the place was marked seen (ISO), with or without a photo; the
- * photo can come later.
+ * photo can come later. `personal`: a personal trace's texts (its photo is `photo`).
  */
-export type Entry = { seenAt?: string; photo?: SavedPhoto; local?: LocalPhoto; note?: string }
+export type Entry = {
+  seenAt?: string
+  photo?: SavedPhoto
+  local?: LocalPhoto
+  note?: string
+  personal?: Personal
+}
 
 type State = { session: Session; entries: Record<string, Entry> }
 
@@ -50,11 +59,14 @@ type State = { session: Session; entries: Record<string, Entry> }
 
 type Cached = { v: 1; owner: string; savedAt: number; entries: Record<string, Entry> }
 
-/** What the copy keeps of an entry: seen and photo, never the note or an upload in progress. */
+/**
+ * What the copy keeps of an entry: seen and photo, never the note or an upload in progress; and
+ * nothing of a personal trace, whose photo means nothing without its texts.
+ */
 function cacheable(entries: Record<string, Entry>): Record<string, Entry> {
   const out: Record<string, Entry> = {}
   for (const [key, { seenAt, photo }] of Object.entries(entries))
-    if (seenAt || photo) out[key] = { seenAt, photo }
+    if ((seenAt || photo) && !key.startsWith('personal:')) out[key] = { seenAt, photo }
   return out
 }
 
@@ -100,7 +112,8 @@ function set(next: Partial<State>) {
 function patch(key: string, change: (e: Entry) => Entry | undefined) {
   const entries = { ...state.entries }
   const next = change(entries[key] ?? {})
-  if (next && (next.seenAt || next.photo || next.local || next.note)) entries[key] = next
+  if (next && (next.seenAt || next.photo || next.local || next.note || next.personal))
+    entries[key] = next
   else delete entries[key]
   set({ entries })
 }
@@ -133,6 +146,7 @@ async function api<T>(path: string, init?: RequestInit & { json?: unknown }): Pr
 type PhotoView = SavedPhoto & { subject: Subject }
 type NoteView = { subject: Subject; text: string }
 type VisitView = { placeId: string; seenAt: string }
+type PersonalView = Personal & { subject: Subject }
 
 /** Reads the session and the collection, once per page. */
 export function loadCollection() {
@@ -143,6 +157,7 @@ export function loadCollection() {
       api<VisitView[]>('/api/visits'),
       api<PhotoView[]>('/api/photos'),
       api<NoteView[]>('/api/notes'),
+      api<PersonalView[]>('/api/personal'),
     ])
     data.catch(() => {})
     try {
@@ -158,7 +173,7 @@ export function loadCollection() {
       return
     }
     try {
-      const [visits, photos, notes] = await data
+      const [visits, photos, notes, personal] = await data
       const entries: Record<string, Entry> = {}
       for (const v of visits) {
         const key = subjectKey({ kind: 'place', id: v.placeId })
@@ -170,6 +185,8 @@ export function loadCollection() {
       }
       for (const n of notes)
         entries[subjectKey(n.subject)] = { ...entries[subjectKey(n.subject)], note: n.text }
+      for (const { subject, ...p } of personal)
+        entries[subjectKey(subject)] = { ...entries[subjectKey(subject)], personal: p }
       // Keep uploads started while the list was loading.
       for (const [k, e] of Object.entries(state.entries))
         if (e.local) entries[k] = { ...entries[k], local: e.local }
@@ -311,7 +328,10 @@ export function retryPhoto(key: string) {
   void upload(key)
 }
 
-/** Removes the visit, the photo and the note of a subject: the trace leaves the album. */
+/**
+ * Removes the visit, the photo and the note of a subject: the trace leaves the album. A personal
+ * trace loses its texts and photo: the slot is empty again.
+ */
 export async function removeFromAlbum(subject: Subject) {
   const key = subjectKey(subject)
   const entry = state.entries[key]
@@ -319,6 +339,8 @@ export async function removeFromAlbum(subject: Subject) {
   if (subject.kind === 'place' && (entry?.seenAt || entry?.photo))
     await api('/api/visits', { method: 'DELETE', json: { placeId: subject.id } })
   if (entry?.note) await api('/api/notes', { method: 'PUT', json: { subject, text: '' } })
+  if (subject.kind === 'personal' && entry?.personal)
+    await api('/api/personal', { method: 'DELETE', json: { subject } })
   if (entry?.local) URL.revokeObjectURL(entry.local.preview)
   patch(key, () => undefined)
 }
@@ -339,4 +361,23 @@ export async function saveNote(subject: Subject, text: string, lang: string) {
     patch(key, (en) => ({ ...en, note: before }))
     throw e
   }
+}
+
+// --- personal traces ---------------------------------------------------------------------------
+
+/**
+ * Writes a personal trace's texts, in `lang` (the page's language). Waits for the server, so a
+ * refusal can be shown in the form; the photo is added separately with addPhoto.
+ */
+export async function savePersonal(
+  subject: Subject,
+  texts: { title: string; place: string; text: string },
+  lang: string,
+) {
+  if (subject.kind !== 'personal') throw new Error('Not a personal trace')
+  const { subject: _, ...saved } = await api<PersonalView>('/api/personal', {
+    method: 'PUT',
+    json: { subject, ...texts, lang },
+  })
+  patch(subjectKey(subject), (e) => ({ ...e, personal: saved }))
 }

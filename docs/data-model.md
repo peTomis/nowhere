@@ -302,10 +302,11 @@ type Base = {
   deletedAt?: Date // tombstone: kept so exports and a future sync carry deletions
 }
 
-/** What a photo or a note is about. Country cover or a place (trace). */
+/** What a photo or a note is about. Country cover, a place (trace), or a personal trace. */
 type Subject =
   | { kind: 'country'; id: CountryId } // 'ro', or any country, with or without a guide
   | { kind: 'place'; id: string } // 'ro.place.biertan-fortified-church'
+  | { kind: 'personal'; id: string } // 'eg.personal.1': slots 1–3 of a guide's country
 
 type Visit = Base & {
   placeId: string // one live visit per (ownerId, placeId)
@@ -331,6 +332,16 @@ type Note = Base & {
   visibility: 'private' | 'followers' // the type has both; the API accepts only 'private' today
 }
 
+/** A personal trace: written by the reader; its photo is a Photo with the same subject. */
+type Personal = Base & {
+  subject: Subject // kind 'personal'
+  country: CountryId
+  title: string // required, max 80
+  place: string // free text, max 120
+  text: string // max 2000
+  lang: string
+}
+
 type User = {
   _id: ObjectId
   provider: 'google'
@@ -351,6 +362,7 @@ validator requiring `ownerId` on every reader document):
 | `visits`   | unique `{ ownerId, placeId }`                                                                        |
 | `photos`   | `{ ownerId, 'subject.kind', 'subject.id' }`, `{ ownerId, country, status }`, `{ status, createdAt }` |
 | `notes`    | unique `{ ownerId, 'subject.kind', 'subject.id' }`                                                   |
+| `personal` | unique `{ ownerId, 'subject.kind', 'subject.id' }`                                                   |
 
 Today the UI shows **one photo and one note per subject** (the latest ready one). The model allows
 several photos, so more photos later is a UI change, not a migration.
@@ -973,6 +985,13 @@ What the code does, where it differs from the sections above (follows the v4 des
   collection with the traces drawn as still to find. The guide's cover also reads the copy in an inline
   script before the first paint (`lib/reader/cache.ts` `prepaintCover`: the reader's cover photo,
   the completion bar and percentage), so the stock cover never flashes before hydration.
+- **Personal traces** (not in the design): three slots per guide country (`PERSONAL_SLOTS`,
+  subjects `<cc>.personal.1–3` in `content/subjects.ts`), the last section of the album under
+  "Tutte" (`components/guide/PersonalTraces.tsx`): the reader writes a title (required), a place
+  line and a story (`/api/personal`: GET, PUT, DELETE `{ subject }`; collection `personal`) and
+  may add a photo (`/api/photos`, same subject, no visit). Private like the notes, kept out of the
+  local copy, **not scored**: the completion counts only the guide's traces. Not on the album's
+  map. Deleting one tombstones its texts and its photo; the slot is empty again.
 - **Pins** ("In evidenza") are a device preference in `nowhere.prefs` (`pins`, added within
   schema 1), for person and city cards only: pinning sections is not ported.
 - **Not ported:** the "Per chi mi segue" note visibility, export/import (phase 8), the lit map

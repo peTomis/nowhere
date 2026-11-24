@@ -48,7 +48,7 @@ There is no test suite yet.
   (today: `i18n/client.tsx`, `components/LogoBadge.tsx`, `components/PrintPlates.tsx`,
   `components/WorldMap.tsx`, `components/AccountMenu.tsx`,
   `components/Completion.tsx`, `components/OfflineGuides.tsx`, and in `components/guide/`: `GuideShell`, `Album`, `TraceMap`, `SourcesToggle`, `Trace`,
-  `CardTraces`, `PhotoPanel`, `Pins`, `Toast`, `Today`, `OpenAlbumButton`, the filter
+  `CardTraces`, `PhotoPanel`, `PersonalTraces`, `Pins`, `Toast`, `Today`, `OpenAlbumButton`, the filter
   and index, `trip.tsx`, `data.tsx`).
   Keep client components at the leaves; pages stay server-side and pass plain data down.
 - Phosphor icons in Server Components: `import { XIcon } from '@phosphor-icons/react/ssr'`
@@ -256,7 +256,12 @@ local ports and change them surgically; do not paste the design runtime (`suppor
   filter shows, a third listed as fallback; never wrap it in `Only`, never put it in a `Context`
   box, one event per trace. After "Tutte" and the regions, the album's filter ends with the themes Natura and
   Gastronomia (`TRACE_THEMES` in `content/types.ts`: traces of landscape and food cards); their
-  boxes still to find are dashed in `album-nature` (green) and `album-food` (yellow), not grey. Never add placeholder traces. How many traces an album has and which ones (size band by country, the six tests a trace must pass, quotas per subject of the photo, region, difficulty, variety and type; variety includes "pop" traces such as a historic café or a famous shop, when they are institutions) is set in `docs/prompt-for-new-guide.md` §B13: check a new or changed trace against it. A trace is in the album when the signed-in reader has
+  boxes still to find are dashed in `album-nature` (green) and `album-food` (yellow), not grey. The
+  album ends (under "Tutte") with **three personal traces** per country
+  (`components/guide/PersonalTraces.tsx`, not in the design; subjects `<cc>.personal.1–3`,
+  `/api/personal`): the reader writes title, place and story and adds a photo; private, not
+  scored, not on the map. Completion medals: bronze 15%, silver 40%, gold 70%, platinum shield
+  100% (`THRESHOLDS` in `components/Completion.tsx`). Never add placeholder traces. How many traces an album has and which ones (size band by country, the six tests a trace must pass, quotas per subject of the photo, region, difficulty, variety and type; variety includes "pop" traces such as a historic café or a famous shop, when they are institutions) is set in `docs/prompt-for-new-guide.md` §B13: check a new or changed trace against it. A trace is in the album when the signed-in reader has
   seen it: a visit (`/api/visits`, "Segna come vista" in the photo panel, the photo to add later
   with "Aggiungi la foto") or a photo (`/api/photos`, R2 via presigned URLs, which records the
   visit too); `isSeen()` in `lib/reader/collection.ts` is the one test, used by the album, the

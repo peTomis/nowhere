@@ -116,7 +116,10 @@ Every guide has an album: one box per trace, filled by the reader's own photos (
 in a private S3-compatible bucket, see `docs/data-model.md`). **The first three boxes of every
 country are always the cover (01), the flag (02) and the coat of arms (03)**: the kit adds them,
 with the guide's cover and emblems as stock images. A guide's own traces start at 04. Each trace
-is worth 1–3 points; the completion bar and the levels (25, 50, 80%) come from them.
+is worth 1–3 points; the completion bar and the levels (bronze 15%, silver 40%, gold 70%,
+platinum shield 100%) come from them. The album ends with **three personal traces** per country,
+empty boxes the reader fills with a title, a place, a story and a photo: private, and outside the
+score.
 
 ## Offline guides
 

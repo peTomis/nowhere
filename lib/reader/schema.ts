@@ -16,3 +16,6 @@ export type PhotoMime = (typeof PHOTO.mimes)[number]
 /** Longest note the server accepts; the photo panel stops at NOTE_UI_MAX. */
 export const NOTE_MAX = 2000
 export const NOTE_UI_MAX = 300
+
+/** Longest fields of a personal trace (content/subjects.ts PERSONAL_SLOTS), browser and server. */
+export const PERSONAL = { title: 80, place: 120, text: 2000 }

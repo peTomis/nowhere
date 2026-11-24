@@ -19,7 +19,7 @@ const str = { bsonType: 'string' }
 const subject = {
   bsonType: 'object',
   required: ['kind', 'id'],
-  properties: { kind: { enum: ['country', 'place'] }, id: str },
+  properties: { kind: { enum: ['country', 'place', 'personal'] }, id: str },
 }
 /** Fields of every reader record (Base in docs/data-model.md §3.1). */
 const base = {
@@ -73,6 +73,19 @@ const RULES = {
       lang: str,
       // 'followers' exists in the model; the API accepts only 'private' for now.
       visibility: { enum: ['private', 'followers'] },
+    }),
+    indexes: [[{ ownerId: 1, 'subject.kind': 1, 'subject.id': 1 }, { unique: true }]],
+  },
+  // The reader's own traces, three per country (content/subjects.ts PERSONAL_SLOTS); their photo
+  // is in `photos`, with the same subject.
+  personal: {
+    schema: reader(['subject', 'country', 'title', 'place', 'text', 'lang'], {
+      subject,
+      country: str,
+      title: { bsonType: 'string', maxLength: 80 },
+      place: { bsonType: 'string', maxLength: 120 },
+      text: { bsonType: 'string', maxLength: 2000 },
+      lang: str,
     }),
     indexes: [[{ ownerId: 1, 'subject.kind': 1, 'subject.id': 1 }, { unique: true }]],
   },

@@ -1,14 +1,14 @@
 import 'server-only'
 import { isKnownSubject } from '@/content/structures'
 import { countryOf, type Subject } from '@/content/subjects'
-import { NOTE_MAX, PHOTO, READER_SCHEMA, type PhotoMime } from '@/lib/reader/schema'
+import { NOTE_MAX, PERSONAL, PHOTO, READER_SCHEMA, type PhotoMime } from '@/lib/reader/schema'
 import { head, photoKey, remove, signGet, signPut, type Size } from './bucket'
 import { HttpError } from './http'
 import { getDb } from './mongodb'
 
 /*
  * The reader's collection on the server (docs/data-model.md §3.1, §6): visits, photos (records
- * here, objects in the bucket) and notes. Every function takes the owner from the session
+ * here, objects in the bucket), notes and personal traces. Every function takes the owner from the session
  * (requireUser) and adds it to every query. A trace is in the album when it is seen: a visit, or
  * a ready photo (committing one also records the visit). Seen and photo are independent, so a
  * trace can be marked seen now and get its photo later; the cover (a country subject) has no
@@ -50,6 +50,16 @@ type NoteDoc = Base & {
   visibility: 'private' | 'followers'
 }
 
+/** A personal trace: written by the reader, its photo (if any) is a photo with the same subject. */
+type PersonalDoc = Base & {
+  subject: Subject
+  country: string
+  title: string
+  place: string
+  text: string
+  lang: string
+}
+
 /** A ready photo as the browser gets it. */
 export type PhotoView = {
   id: string
@@ -67,9 +77,18 @@ export type NoteView = { id: string; subject: Subject; text: string; updatedAt: 
 /** A seen place as the browser gets it. */
 export type VisitView = { placeId: string; seenAt: string }
 
+export type PersonalView = {
+  subject: Subject
+  title: string
+  place: string
+  text: string
+  createdAt: string
+}
+
 const photos = async () => (await getDb()).collection<PhotoDoc>('photos')
 const notes = async () => (await getDb()).collection<NoteDoc>('notes')
 const visits = async () => (await getDb()).collection<VisitDoc>('visits')
+const personal = async () => (await getDb()).collection<PersonalDoc>('personal')
 
 // --- input guards ------------------------------------------------------------------------------
 
@@ -84,7 +103,7 @@ export function parseSubject(v: unknown): Subject {
   const s = v as Partial<Subject> | null
   if (
     !s ||
-    (s.kind !== 'country' && s.kind !== 'place') ||
+    (s.kind !== 'country' && s.kind !== 'place' && s.kind !== 'personal') ||
     typeof s.id !== 'string' ||
     !isKnownSubject({ kind: s.kind, id: s.id })
   )
@@ -360,4 +379,94 @@ export async function setNote(ownerId: string, body: unknown): Promise<NoteView 
   )
   if (!doc) throw new Error('Note upsert returned nothing')
   return noteView(doc)
+}
+
+// --- personal traces ---------------------------------------------------------------------------
+
+const personalView = (p: PersonalDoc): PersonalView => ({
+  subject: p.subject,
+  title: p.title,
+  place: p.place,
+  text: p.text,
+  createdAt: p.createdAt.toISOString(),
+})
+
+/** A personal slot of a guide: `{ kind: 'personal', id: 'eg.personal.1' }`. */
+function parsePersonal(v: unknown): Subject {
+  const subject = parseSubject(v)
+  if (subject.kind !== 'personal') throw new HttpError(400, 'Not a personal trace')
+  return subject
+}
+
+const field = (v: unknown, max: number, name: string) => {
+  if (v === undefined) return ''
+  if (typeof v !== 'string') throw new HttpError(400, `Invalid ${name}`)
+  const s = v.trim()
+  if (s.length > max) throw new HttpError(413, `${name} too long`)
+  return s
+}
+
+export async function listPersonal(ownerId: string, country?: string): Promise<PersonalView[]> {
+  const docs = await (
+    await personal()
+  )
+    .find({ ownerId, deletedAt: { $exists: false }, ...(country ? { country } : {}) })
+    .toArray()
+  return docs.map(personalView)
+}
+
+/**
+ * Writes a personal trace: `{ subject, title, place?, text?, lang? }`. The title is required; a
+ * removed trace (tombstone) comes back as new.
+ */
+export async function setPersonal(ownerId: string, body: unknown): Promise<PersonalView> {
+  const b = (body ?? {}) as Record<string, unknown>
+  const subject = parsePersonal(b.subject)
+  const title = field(b.title, PERSONAL.title, 'title')
+  if (!title) throw new HttpError(400, 'A title is required')
+  const place = field(b.place, PERSONAL.place, 'place')
+  const text = field(b.text, PERSONAL.text, 'text')
+  const lang =
+    typeof b.lang === 'string' && /^[a-z]{2,3}(-[A-Za-z0-9]+)*$/.test(b.lang) ? b.lang : 'it'
+  const col = await personal()
+  const filter = { ownerId, 'subject.kind': subject.kind, 'subject.id': subject.id }
+  const now = new Date()
+  const live = await col.findOne({ ...filter, deletedAt: { $exists: false } })
+  const doc = await col.findOneAndUpdate(
+    filter,
+    {
+      $set: {
+        title,
+        place,
+        text,
+        lang,
+        updatedAt: now,
+        schema: READER_SCHEMA,
+        // A trace written again after its removal starts a new date.
+        ...(live ? {} : { createdAt: now }),
+      },
+      $unset: { deletedAt: '' },
+      $setOnInsert: { _id: crypto.randomUUID(), ownerId, subject, country: countryOf(subject) },
+    },
+    { upsert: true, returnDocument: 'after' },
+  )
+  if (!doc) throw new Error('Personal trace upsert returned nothing')
+  return personalView(doc)
+}
+
+/** Tombstones a personal trace (its photo is removed on its own, like a trace's). */
+export async function deletePersonal(ownerId: string, body: unknown) {
+  const subject = parsePersonal((body as { subject?: unknown } | null)?.subject)
+  const now = new Date()
+  await (
+    await personal()
+  ).updateOne(
+    {
+      ownerId,
+      'subject.kind': subject.kind,
+      'subject.id': subject.id,
+      deletedAt: { $exists: false },
+    },
+    { $set: { deletedAt: now, updatedAt: now } },
+  )
 }

@@ -21,7 +21,7 @@ import { Medal, medalOf } from './Medal'
  * Percentages at which the reader reaches level 1–4: the bronze, silver and gold medal, and at
  * 100% the platinum shield. The bar marks only the first three (100% is its end).
  */
-export const THRESHOLDS = [25, 50, 80, 100]
+export const THRESHOLDS = [15, 40, 70, 100]
 
 /** The thresholds marked on the bar. */
 const MARKS = THRESHOLDS.filter((s) => s < 100)

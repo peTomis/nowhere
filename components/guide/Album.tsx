@@ -9,6 +9,7 @@ import { format } from '@/i18n'
 import { useT } from '@/i18n/client'
 import { isSeen, useCollection, type Entry } from '@/lib/reader/collection'
 import { pad, useGuideData } from './data'
+import { PersonalTraces } from './PersonalTraces'
 import { usePins } from './Pins'
 import { boxBorder, photoSrc, RarityMarks, Trace } from './Trace'
 import { TRACE_ICONS } from './traceIcons'
@@ -24,7 +25,7 @@ type Filter = null | { kind: 'region'; id: string } | { kind: 'theme'; id: Trace
  * arms and the flag. Besides the regions, the filter has the themes Natura and Gastronomia
  * (TRACE_THEMES): the region pages with only that theme's traces, whose boxes are dashed green and
  * yellow. A box or a pin of the map opens the trace ("Traccia") in a bottom sheet on phones, a
- * window from 640px.
+ * window from 640px. Last, under "Tutte", the reader's own traces (PersonalTraces, not scored).
  */
 export function Album() {
   const t = useT()
@@ -155,6 +156,9 @@ export function Album() {
         ) : (
           pages.map((p) => <Page key={p.id} page={p} entries={entries} onOpen={setOpen} />)
         )}
+
+        {/* The reader's own traces: under "Tutte" only, they have no region nor theme. */}
+        {filter === null && traces.length > 0 && <PersonalTraces />}
       </div>
       {current && (
         <TraceDialog
