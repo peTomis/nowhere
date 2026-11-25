@@ -1,12 +1,12 @@
 import type { GuideSources } from '@/content/types'
-import { EgLandscape, EgSection } from './structure'
+import { Eg, EgLandscape, EgSection } from './structure'
 
 /*
  * The Egypt guide's bibliography, shown in its "Fonti" view: the pages read while writing the
  * guide, grouped by entry of the index. `title` and `site` as the page gives them. Built from the
  * research notes in research/, which keep what each page was used for and what is still to
- * verify: when a note gains a page, add it here too. Covered so far: the Identità, Natura and
- * Gastronomia chapters.
+ * verify: when a note gains a page, add it here too. Covered so far: the Identità, Città, Natura
+ * and Gastronomia chapters.
  */
 export const sources: GuideSources = {
   [EgSection.Flag]: [
@@ -56,6 +56,345 @@ export const sources: GuideSources = {
       title: 'Fortress of the Mountain',
       site: 'Saudi Aramco World',
       url: 'https://archive.aramcoworld.com/issue/199302/fortress.of.the.mountain.htm',
+    },
+  ],
+  [Eg.Cairo]: [
+    {
+      title: 'Cairo, Egypt',
+      site: 'Rough Guides',
+      url: 'https://www.roughguides.com/egypt/cairo/',
+    },
+    {
+      title: 'Bab Zuwayla',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/monuments/bab-zuwayla/',
+    },
+    {
+      title: 'Baron Empain Palace',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/monuments/baron-empain-palace/',
+    },
+    {
+      title: 'Historical Cairo',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/collections/historical-cairo/',
+    },
+    {
+      title: 'Masjid al-Sultan al-Ashraf Qaytbay',
+      site: 'Archnet',
+      url: 'https://archnet.org/sites/2234',
+    },
+    {
+      title: 'Qasaba Radwan Bey',
+      site: 'Archnet',
+      url: 'https://archnet.org/sites/2385',
+    },
+    {
+      title: 'Street of the Tentmakers, Cairo (Egypt)',
+      site: 'Textile Research Centre, Leiden',
+      url: 'https://trc-leiden.nl/trc-needles/regional-traditions/middle-east-and-north-africa/pre-modern-middle-east-and-north-africa/street-of-the-tentmakers-cairo-egypt',
+    },
+    {
+      title: 'St. Simon’s Monastery, the Coptic Zabbaleen cave church in Cairo',
+      site: 'Slate (Atlas Obscura)',
+      url: 'https://www.slate.com/blogs/atlas_obscura/2015/02/10/st_simon_s_monastery_the_cave_church_in_cairo.html',
+    },
+    {
+      title: 'Tanoura Show at Wekalet El Ghouri: Tickets, Schedule & Tips',
+      site: 'Pure Nile Tours',
+      url: 'https://pureniletours.com/tanoura-show-at-wekalet-el-ghouri-cairo-guide/',
+    },
+    {
+      title: 'Cairo',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Cairo',
+    },
+    {
+      title: 'Mosque of Ibn Tulun',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Mosque_of_Ibn_Tulun',
+    },
+    {
+      title: 'Bab Zuwayla',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bab_Zuwayla',
+    },
+    {
+      title: 'Funerary complex of Sultan Qaytbay',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Funerary_complex_of_Sultan_Qaytbay',
+    },
+    {
+      title: 'Baron Empain Palace',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Baron_Empain_Palace',
+    },
+    {
+      title: 'Wikala of al-Ghuri',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Wikala_of_al-Ghuri',
+    },
+    {
+      title: 'Qasaba of Radwan Bey',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Qasaba_of_Radwan_Bey',
+    },
+    {
+      title: 'Zabbaleen',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Zabbaleen',
+    },
+  ],
+  [Eg.Alexandria]: [
+    {
+      title: 'Places to see',
+      site: 'Bibliotheca Alexandrina',
+      url: 'https://www.bibalex.org/ESOLEC2020/Home/StaticPage.aspx?page=110',
+    },
+    {
+      title: 'Alexandria’s Cavafy Museum Opens to the Public After Two-Year Closure',
+      site: 'Scene Now',
+      url: 'https://scenenow.com/Buzz/Alexandria-s-Cavafy-Museum-Opens-to-the-Public-After-Two-Year-Closure',
+    },
+    {
+      title: 'Missing Nostalgia in Alexandria',
+      site: 'Stanford Humanities Center, Arcade',
+      url: 'https://shc.stanford.edu/arcade/interventions/missing-nostalgia-alexandria',
+    },
+    {
+      title: 'The great wine-press of love grows stale',
+      site: 'The Irish Times',
+      url: 'https://www.irishtimes.com/news/the-great-wine-press-of-love-grows-stale-1.144326',
+    },
+    {
+      title: 'Alexandria',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Alexandria',
+    },
+    {
+      title: 'Catacombs of Kom El Shoqafa',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Catacombs_of_Kom_El_Shoqafa',
+    },
+    {
+      title: 'Pompey’s Pillar',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Pompey%27s_Pillar_(column)',
+    },
+    {
+      title: 'Citadel of Qaitbay',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Citadel_of_Qaitbay',
+    },
+    {
+      title: 'Qaitbay Fort',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/monuments/qaitbay-fort/',
+    },
+    {
+      title: 'Abu al-Abbas al-Mursi Mosque',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Abu_al-Abbas_al-Mursi_Mosque',
+    },
+    {
+      title: 'Mario Rossi (architect)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Mario_Rossi_(architect)',
+    },
+    {
+      title: 'Bibliotheca Alexandrina',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Bibliotheca_Alexandrina',
+    },
+    {
+      title: 'Cavafy Museum',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Cavafy_Museum',
+    },
+  ],
+  [Eg.Rosetta]: [
+    {
+      title: 'Rosetta (Rashid)',
+      site: 'Rough Guides',
+      url: 'https://roughguides.com/destinations/africa/egypt/alexandria-mediterranean-coast-delta/delta/rosetta-rashid',
+    },
+    {
+      title: 'Outstanding Islamic And Ottoman Places In Rosetta',
+      site: 'Travel2Egypt',
+      url: 'https://travel2egypt.org/outstanding-islamic-and-ottoman-places-in-rosetta/',
+    },
+    {
+      title: 'Rosetta',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Rosetta',
+    },
+    {
+      title: 'Fort Julien',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Fort_Julien',
+    },
+  ],
+  [Eg.Luxor]: [
+    {
+      title: 'Luxor, Egypt',
+      site: 'Rough Guides',
+      url: 'https://roughguides.com/egypt/nile-valley/upper-egypt/luxor',
+    },
+    {
+      title: 'Luxor Temple',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/monuments/luxor-temple/',
+    },
+    {
+      title: 'Highlights: Turin Strike Papyrus',
+      site: 'Museo Egizio, Torino',
+      url: 'https://collezionepapiri.museoegizio.it/en-GB/section/Papyrus-Collection/History-and-content/Highlights-Turin-Strike-Papyrus/',
+    },
+    {
+      title: 'New Gourna Village',
+      site: 'World Monuments Fund',
+      url: 'https://wmf.org/projects/new-gourna-village',
+    },
+    {
+      title: 'Searching for Tutankhamun: Howard Carter’s Hotel',
+      site: 'Elizabeth Hawksley',
+      url: 'https://elizabethhawksley.com/searching-for-tutankhamun-howard-carters-hotel/',
+    },
+    {
+      title: 'Luxor',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Luxor',
+    },
+    {
+      title: 'Great Hypostyle Hall',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Great_Hypostyle_Hall',
+    },
+    {
+      title: 'Abu Haggag Mosque',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Abu_Haggag_Mosque',
+    },
+    {
+      title: 'Colossi of Memnon',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Colossi_of_Memnon',
+    },
+    {
+      title: 'Deir el-Medina',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Deir_el-Medina',
+    },
+    {
+      title: 'Hassan Fathy',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Hassan_Fathy',
+    },
+    {
+      title: 'Winter Palace Hotel',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Winter_Palace_Hotel',
+    },
+  ],
+  [Eg.Aswan]: [
+    {
+      title: 'Agatha Christie Suite',
+      site: 'Old Cataract, Aswan (Mandarin Oriental)',
+      url: 'https://www.mandarinoriental.com/en/aswan/old-cataract/stay/agatha-christie-suite-nile-view',
+    },
+    {
+      title: 'Aswan, Egypt',
+      site: 'Rough Guides',
+      url: 'https://roughguides.com/egypt/nile-valley/upper-egypt/aswan',
+    },
+    {
+      title: 'Gateway on the Nile',
+      site: 'Saudi Aramco World',
+      url: 'https://archive.aramcoworld.com/issue/198505/gateway.on.the.nile.htm',
+    },
+    {
+      title: 'The Unfinished Obelisk',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/monuments/the-unfinished-obelisk/',
+    },
+    {
+      title: 'Daraw Camel Market – Different, Unique and Fascinating',
+      site: 'Egypt Tours Plus',
+      url: 'https://www.egypttoursplus.com/daraw-camel-market/',
+    },
+    {
+      title: 'Gharb Suhayl, Egypt',
+      site: 'UN Tourism, Best Tourism Villages',
+      url: 'https://tourism-villages.unwto.org/en/villages/gharb-suhayl-egypt/',
+    },
+    {
+      title: 'Aswan',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Aswan',
+    },
+    {
+      title: 'Qubbet el-Hawa',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Qubbet_el-Hawa',
+    },
+    {
+      title: 'Old Cataract Hotel',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Old_Cataract_Hotel',
+    },
+    {
+      title: 'Philae temple complex',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Philae',
+    },
+    {
+      title: 'Graffito of Esmet-Akhom',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Graffito_of_Esmet-Akhom',
+    },
+  ],
+  [Eg.Siwa]: [
+    {
+      title: 'Gebel al Mawta Siwa – Mountain of Dead Tombs',
+      site: 'Memphis Tours',
+      url: 'https://www.memphistours.com/Egypt/WikiTravel/the-western-desert-and-oases/wiki/Mountain-of-the-Dead',
+    },
+    {
+      title: 'Siwa Oasis',
+      site: 'Rough Guides',
+      url: 'https://www.roughguides.com/egypt/siwa-oasis/',
+    },
+    {
+      title: 'A Salty Desert Retreat',
+      site: 'NASA Earth Observatory',
+      url: 'https://earthobservatory.nasa.gov/images/151238/a-salty-desert-retreat',
+    },
+    {
+      title: 'Siwa Oasis',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Siwa_Oasis',
+    },
+  ],
+  [Eg.SharmElSheikh]: [
+    {
+      title: 'Sharm El Sheikh’s ‘Al Sahaba Mosque’ Blends Spirituality and Tourism',
+      site: 'Egyptian Streets',
+      url: 'https://egyptianstreets.com/2022/05/14/sharm-el-sheikhs-al-sahaba-mosque-blends-spirituality-and-tourism/',
+    },
+    {
+      title: 'Can new mosque boost tourism in Egypt resort town?',
+      site: 'Al-Monitor',
+      url: 'https://www.al-monitor.com/originals/2017/04/egypt-sharm-sheikh-mosque-tourism-economy-sinai.html',
+    },
+    {
+      title: 'Sharm El Sheikh, Egypt',
+      site: 'Rough Guides',
+      url: 'https://www.roughguides.com/egypt/sharm-el-sheikh/',
+    },
+    {
+      title: 'Sharm El Sheikh',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Sharm_El_Sheikh',
     },
   ],
   [EgLandscape.WadiAlHitan]: [

@@ -48,3 +48,20 @@ The Sand Sea stays as a line of the Siwa landscape card, now «Le acque di Siwa�
 Draft texts: name «Le dune del Grande Mare di Sabbia»; place «Siwa, Deserto occidentale»; find
 «In fuoristrada da Siwa, con un operatore autorizzato e il permesso del ministero dell’Interno».
 No stock image was chosen.
+
+## Città (2026-11-25)
+
+Taken out while writing the Città chapter (`../cities/`):
+
+- **Il tram di Alessandria** (was 56, Alessandria): the Raml line, the historic one, stopped on
+  1 April 2026 for a conversion to light rail planned to last into 2027 (B13 test 3, stable). It can
+  come back once the new line runs, if it keeps a reason to be photographed. Draft: name «Il tram
+  di Alessandria»; find «Alla stazione di Raml, davanti al porto orientale».
+- **Il Nilo a Rosetta** (was 61, Rosetta): access to the Abu Mandour hill and to the mouth of the
+  Rosetta branch is confirmed by no page (B13 test 2). Draft: name «Il Nilo a Rosetta».
+- **La casa tradizionale di Siwa** (was 106, Siwa): only Lonely Planet, which refuses automated
+  reads, describes the museum; its opening is not confirmed (test 4). Draft: name «La casa
+  tradizionale di Siwa»; at OpenStreetMap node 5340679527.
+- **La cattedrale copta di Sharm** (was 126, Sharm el-Sheikh): only booking sites describe it,
+  without a date (test 4). The idea (who lives in Sharm: workers from the Nile valley) has no
+  source either.

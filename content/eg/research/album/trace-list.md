@@ -207,6 +207,17 @@ and sources in `../food/`. Fesikh (64) is out: `excluded-traces.md`. Renamed: 94
 138 `jabana`. After the source check (`../food/`): 94 eish shamsi is rare, 102 karkadè moved
 from Nubia to Alto Egitto (Nubia now has 7 traces). 128 Bedouin tea is out as a duplicate of the shai (2026-11-25, `excluded-traces.md`). The counts below predate this: food is now 14 traces, not 16, and the total 131.
 
+## Città written (2026-11-25)
+
+The seven city cards and their traces are in `structure.ts`, texts and sources in `../cities/`.
+Removed (`excluded-traces.md`): 56 the Alexandria tram (closed since April 2026), 61 the Nile at
+Rosetta, 106 the Siwa house museum, 126 the Coptic cathedral of Sharm. 57 is the Trianon; 58 is the
+Amasyali house; 92 and 93 stay in the First Cataract landscape card; 97 Philae and 100 Gharb Soheil
+are Nubian traces in the Aswan card. Four traces have a `TODO image` for copyright (Egypt has no
+freedom of panorama) and one (the Trianon) for lack of a usable photo.
+
+City traces: 34. The total is now 126.
+
 ## Natura written (2026-11-25)
 
 The 18 nature traces of the seven landscape cards are in `structure.ts` (ids `eg.place.<slug>`),

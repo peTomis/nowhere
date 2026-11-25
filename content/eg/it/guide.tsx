@@ -67,6 +67,133 @@ function Body() {
       </Chapter>
 
       <Chapter
+        section={EgSection.Cities}
+        lede="Che cosa cercare in ogni città, e quale storia c’è dietro."
+      >
+        <Part section={EgSection.CitiesLowerEgypt}>
+          <Card
+            card={Eg.Cairo}
+            intro={
+              <>
+                Il <N>Cairo</N> è fatto di più città, nate una accanto all’altra sulla riva
+                orientale del Nilo, poco a sud di dove il fiume si apre nel Delta. Dopo la conquista
+                araba, nel <D>641</D>, i nuovi governanti fondano <N>Fustat</N> accanto a una
+                fortezza romana; più a nord sorgono le capitali degli Abbasidi e di Ibn Tulun, e nel{' '}
+                <D>969</D> i Fatimidi fondano la loro, al-Qahira, da cui viene il nome della città.
+                Mamelucchi e ottomani la riempiono di moschee, scuole, mausolei e mercati: è il
+                Cairo storico, patrimonio dell’umanità UNESCO. Nell’Ottocento il chedivè{' '}
+                <N>Ismail</N> costruisce a ovest un centro di viali e palazzi all’europea, e
+                all’inizio del Novecento nel deserto nasce <N>Eliopoli</N>. Oggi l’area
+                metropolitana ha più di venti milioni di abitanti.
+              </>
+            }
+            remember="Il Cairo è una città fatta di città: ogni capitale, dalla moschea di Ibn Tulun a Eliopoli, ha lasciato il suo quartiere."
+          />
+          <Card
+            card={Eg.Alexandria}
+            intro={
+              <>
+                <N>Alessandria</N> fu fondata da Alessandro Magno nel <D>331 a.C.</D> sulla costa
+                del Mediterraneo. Capitale dei Tolomei, con il Faro e la Biblioteca era una delle
+                grandi città del mondo antico. Dopo la conquista araba, nel 641, la capitale passa
+                al Cairo e la città decade; rinasce nell’Ottocento, quando Muhammad Ali la collega
+                al Nilo con il canale Mahmudiyya (<D>1820</D>). Comunità greche, italiane, ebraiche
+                e di molti altri paesi ne fanno una città cosmopolita, di caffè e di poeti; dopo la
+                crisi di Suez del <D>1956</D> e le nazionalizzazioni quasi tutti gli europei se ne
+                vanno. Oggi è la seconda città d’Egitto. Dell’Alessandria antica restano soprattutto
+                le tombe sotto terra e qualche monumento isolato, fra palazzi moderni.
+              </>
+            }
+            remember="Alessandria è costruita sopra se stessa: dell’antica restano frammenti, della cosmopolita i caffè e la casa di un poeta."
+          />
+          <Card
+            card={Eg.Rosetta}
+            intro={
+              <>
+                <N>Rosetta</N>, in arabo Rashid, è un porto sul ramo occidentale del Nilo, a pochi
+                chilometri dal mare e a 65 km da Alessandria. Le sue fortune vanno al contrario di
+                quelle di Alessandria: dopo la conquista ottomana del <D>1517</D>, mentre
+                Alessandria decadeva, Rosetta diventò il grande porto del Delta, e i suoi mercanti
+                si costruirono case di mattoni a vista, con travi di legno e finestre a grata.
+                Quando nell’Ottocento il canale Mahmudiyya fa rinascere Alessandria, Rosetta torna
+                una cittadina, e le case restano. Il suo nome è noto in tutto il mondo per la stele
+                trovata qui dai soldati francesi nel <D>1799</D>, che oggi è al British Museum di
+                Londra (Regno Unito).
+              </>
+            }
+            remember="Rosetta è la città delle case dei mercanti ottomani: il porto che visse quando Alessandria dormiva."
+          />
+        </Part>
+        <Part section={EgSection.CitiesUpperEgypt}>
+          <Card
+            card={Eg.Luxor}
+            intro={
+              <>
+                <N>Luxor</N> è l’antica <N>Tebe</N>, la capitale dei faraoni del Nuovo Regno. La
+                città dei vivi stava sulla riva orientale del Nilo, dove sorge il sole, con i grandi
+                templi di Karnak e di Luxor dedicati ad Amon; sulla riva occidentale, dove il sole
+                tramonta, c’era la città dei morti: le tombe dei re nella Valle dei Re, i templi
+                funerari, il villaggio di chi scavava le tombe. Finita Tebe, nei templi e intorno
+                nascono villaggi, chiese e moschee. Nell’Ottocento arrivano gli archeologi e i
+                viaggiatori, poi i battelli e gli alberghi di Thomas Cook, e Luxor diventa la tappa
+                di ogni viaggio in Egitto.
+              </>
+            }
+            remember="A Luxor il Nilo divide i vivi dai morti: i templi sulla riva dell’alba, le tombe su quella del tramonto."
+          />
+          <Card
+            card={Eg.Aswan}
+            intro={
+              <>
+                <N>Assuan</N> sta dove il Nilo esce dalle rocce della prima cateratta ed entra nella
+                valle coltivata. Per gran parte della storia fu l’ultima città dell’Egitto verso
+                sud: sull’isola di <N>Elefantina</N>, davanti alla città, c’erano la guarnigione e i
+                governatori della frontiera, e da qui partivano le spedizioni verso la Nubia. Dalle
+                sue cave usciva il granito per obelischi e statue. Nel Novecento le due dighe hanno
+                cambiato tutto: il lago Nasser ha sommerso la Nubia egiziana, i suoi villaggi e i
+                suoi templi, alcuni dei quali sono stati spostati più in alto. Oggi Assuan è una
+                città egiziana e nubiana insieme, il punto di partenza delle crociere sul Nilo.
+              </>
+            }
+            remember="Assuan è la porta dell’Egitto verso sud: granito, frontiera e Nubia."
+          />
+        </Part>
+        <Part section={EgSection.CitiesWesternDesert}>
+          <Card
+            card={Eg.Siwa}
+            intro={
+              <>
+                <N>Siwa</N> è l’oasi più isolata d’Egitto: fino agli anni Ottanta, quando fu
+                costruita la strada asfaltata per Marsa Matruh, ci si arrivava solo con le carovane.
+                I suoi abitanti sono berberi (amazigh) e parlano una lingua loro, il siwi.
+                Nell’antichità l’oasi era famosa per l’oracolo di Amon. Fu annessa all’Egitto solo
+                nel <D>1820</D>, da Muhammad Ali. Per secoli la gente viveva dentro Shali, un
+                villaggio fortificato di fango e sale costruito su una rocca; dopo le grandi piogge
+                del <D>1926</D> lo lasciarono per le case nuove ai suoi piedi.
+              </>
+            }
+            remember="Siwa è un’oasi berbera al margine dell’Egitto: la rocca di fango di Shali, l’oracolo di Alessandro e le tombe di chi viveva fra due mondi."
+          />
+        </Part>
+        <Part section={EgSection.CitiesSinai}>
+          <Card
+            card={Eg.SharmElSheikh}
+            intro={
+              <>
+                <N>Sharm el-Sheikh</N> era un villaggio di pescatori e una base militare sulla punta
+                del Sinai. Durante l’occupazione israeliana, fra il <D>1967</D> e il <D>1982</D>, vi
+                nascono un aeroporto, una cittadina e i primi alberghi; tornata all’Egitto, la costa
+                si riempie di villaggi turistici per decine di chilometri. È una città nuova, che
+                vive di turismo e di grandi conferenze internazionali: per i tanti incontri di pace
+                che vi si sono tenuti, è chiamata «la città della pace».
+              </>
+            }
+            remember="Sharm el-Sheikh è una città nata in mezzo secolo per il mare: i suoi monumenti hanno pochi anni."
+          />
+        </Part>
+      </Chapter>
+
+      <Chapter
         section={EgSection.Nature}
         lede="Fuori dalla valle del Nilo: come si sono formati i paesaggi, e che cosa ne hanno fatto le persone."
       >

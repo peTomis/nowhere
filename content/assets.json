@@ -11,9 +11,25 @@
     "bytes": 18439,
     "hash": "031b7bebb493"
   },
+  "/guides/egypt/traces/abu-al-abbas-mosque.webp": {
+    "bytes": 62772,
+    "hash": "5f5e12d84812"
+  },
   "/guides/egypt/traces/abu-dabbab.webp": {
     "bytes": 81466,
     "hash": "c72c612bbec2"
+  },
+  "/guides/egypt/traces/abu-shahin-mill.webp": {
+    "bytes": 160938,
+    "hash": "0d8649b5279c"
+  },
+  "/guides/egypt/traces/bab-zuwayla.webp": {
+    "bytes": 78540,
+    "hash": "ddddc262277f"
+  },
+  "/guides/egypt/traces/baron-empain-palace.webp": {
+    "bytes": 94854,
+    "hash": "4ec286446024"
   },
   "/guides/egypt/traces/black-desert.webp": {
     "bytes": 183662,
@@ -27,13 +43,29 @@
     "bytes": 192324,
     "hash": "3c13ab3171c9"
   },
+  "/guides/egypt/traces/cavafy-museum.webp": {
+    "bytes": 81354,
+    "hash": "aafde929a34a"
+  },
   "/guides/egypt/traces/cleopatras-spring.webp": {
     "bytes": 275276,
     "hash": "7f03cd7d3846"
   },
+  "/guides/egypt/traces/colossi-of-memnon.webp": {
+    "bytes": 109002,
+    "hash": "cd83fbe0aeb2"
+  },
   "/guides/egypt/traces/crystal-mountain.webp": {
     "bytes": 173354,
     "hash": "e686c906cb22"
+  },
+  "/guides/egypt/traces/daraw-camel-market.webp": {
+    "bytes": 111662,
+    "hash": "babeebbfbae0"
+  },
+  "/guides/egypt/traces/deir-el-medina.webp": {
+    "bytes": 178016,
+    "hash": "c740c82b0fcf"
   },
   "/guides/egypt/traces/felucca-cataract.webp": {
     "bytes": 183376,
@@ -91,21 +123,89 @@
     "bytes": 86150,
     "hash": "f473aa084bc2"
   },
+  "/guides/egypt/traces/fort-qaitbay-rashid.webp": {
+    "bytes": 131878,
+    "hash": "978df16d6332"
+  },
+  "/guides/egypt/traces/gebel-al-mawta.webp": {
+    "bytes": 83442,
+    "hash": "03abc515d683"
+  },
+  "/guides/egypt/traces/gharb-soheil.webp": {
+    "bytes": 66146,
+    "hash": "7f19af8beb94"
+  },
   "/guides/egypt/traces/giftun.webp": {
     "bytes": 105272,
     "hash": "64813d153bbe"
+  },
+  "/guides/egypt/traces/ibn-tulun-mosque.webp": {
+    "bytes": 39902,
+    "hash": "0ef9731bbac9"
+  },
+  "/guides/egypt/traces/karnak-hypostyle.webp": {
+    "bytes": 90344,
+    "hash": "6c4a768a508a"
+  },
+  "/guides/egypt/traces/khayamiya.webp": {
+    "bytes": 105028,
+    "hash": "31a886acfc09"
+  },
+  "/guides/egypt/traces/kom-el-shoqafa.webp": {
+    "bytes": 73702,
+    "hash": "ef3031ba921c"
+  },
+  "/guides/egypt/traces/luxor-temple.webp": {
+    "bytes": 101868,
+    "hash": "ef5d175d2015"
   },
   "/guides/egypt/traces/mount-sinai.webp": {
     "bytes": 13332,
     "hash": "4a4ba6532beb"
   },
+  "/guides/egypt/traces/naama-bay.webp": {
+    "bytes": 180028,
+    "hash": "d0a484d9b315"
+  },
   "/guides/egypt/traces/nabq-mangroves.webp": {
     "bytes": 215926,
     "hash": "8468e49c46bc"
   },
+  "/guides/egypt/traces/old-cataract.webp": {
+    "bytes": 138058,
+    "hash": "747f563f08b5"
+  },
+  "/guides/egypt/traces/oracle-temple.webp": {
+    "bytes": 119834,
+    "hash": "d6f1f3dbe56e"
+  },
+  "/guides/egypt/traces/philae.webp": {
+    "bytes": 98098,
+    "hash": "662490a0602b"
+  },
+  "/guides/egypt/traces/pompeys-pillar.webp": {
+    "bytes": 168616,
+    "hash": "324eee197c97"
+  },
+  "/guides/egypt/traces/qaitbay-citadel.webp": {
+    "bytes": 63058,
+    "hash": "a129738cf885"
+  },
+  "/guides/egypt/traces/qaitbay-complex.webp": {
+    "bytes": 178224,
+    "hash": "5b137ce411ea"
+  },
+  "/guides/egypt/traces/qubbet-el-hawa.webp": {
+    "bytes": 84266,
+    "hash": "d4783ff699f8"
+  },
   "/guides/egypt/traces/ras-mohammed.webp": {
     "bytes": 145488,
     "hash": "3979b2d0ff22"
+  },
+  "/guides/egypt/traces/rosetta-houses.webp": {
+    "bytes": 140312,
+    "hash": "36800af06847"
   },
   "/guides/egypt/traces/salt-lakes.webp": {
     "bytes": 157394,
@@ -115,9 +215,21 @@
     "bytes": 31970,
     "hash": "0ac07bc56338"
   },
+  "/guides/egypt/traces/shali.webp": {
+    "bytes": 143144,
+    "hash": "f23f4d44a910"
+  },
   "/guides/egypt/traces/st-catherines-monastery.webp": {
     "bytes": 228436,
     "hash": "84dc14b64985"
+  },
+  "/guides/egypt/traces/tanoura.webp": {
+    "bytes": 169032,
+    "hash": "d84f2ccbb6ab"
+  },
+  "/guides/egypt/traces/unfinished-obelisk.webp": {
+    "bytes": 203506,
+    "hash": "2a440a44b168"
   },
   "/guides/egypt/traces/wadi-al-hitan.webp": {
     "bytes": 107294,
@@ -134,6 +246,10 @@
   "/guides/egypt/traces/white-desert.webp": {
     "bytes": 106598,
     "hash": "567b12d6c6e2"
+  },
+  "/guides/egypt/traces/winter-palace.webp": {
+    "bytes": 142392,
+    "hash": "9b0795b4a5ba"
   },
   "/guides/romania/coat-of-arms.png": {
     "bytes": 149546,
