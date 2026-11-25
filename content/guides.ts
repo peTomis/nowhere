@@ -1,5 +1,6 @@
 import type { Locale } from '@/i18n/config'
 import { guides, type Guide } from './countries'
+import { egypt } from './eg/it/guide'
 import { romania } from './ro/it/guide'
 import type { GuideContent } from './types'
 import { template as templateIt } from './xx/it/guide'
@@ -11,6 +12,7 @@ import { template as templateIt } from './xx/it/guide'
  */
 export const guideContent: Record<string, Partial<Record<Locale, GuideContent>>> = {
   romania: { it: romania },
+  egypt: { it: egypt },
 }
 
 /** The template guide (/template), in each language it is written in. */

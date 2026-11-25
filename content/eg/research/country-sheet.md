@@ -429,4 +429,4 @@ travels in Egypt.** It applies to every trace, gesture and sentence:
    diacritics, `al-` for persons and `el-` for places (confirmed 2026-11-24).
 4. ~~Persons and cities~~: 13 persons and 7 cities of §10 (confirmed 2026-11-24).
 5. ~~After 2013~~: to today, facts only, debate Callout, apolitical traces (confirmed 2026-11-24).
-6. Cover ink and cover photo (later, with the structure).
+6. ~~Cover ink and cover photo~~: the pyramids of Giza, text-coloured ink (2026-11-25, `food/images.md`).

@@ -101,7 +101,6 @@ besides looking. **Card**: person, city, landscape (`L:`), food (`F:`) or the ti
 | 61  | `rosetta-nile`        | Il Nilo a Rosetta                 | Rosetta          | city   | C   | N   | —       | the last kilometres of the Rosetta branch, from the Abu Mandour hill: _verify access; the mouth itself may be restricted_ |
 | 62  | `wadi-al-hitan`       | Wadi al-Hitan                     | L: Wadi al-Hitan | remote | R   | N   | —       | whales with legs in the desert (UNESCO)                                                                                   |
 | 63  | `wadi-el-rayan`       | Le cascate di Wadi el-Rayan       | L: Wadi al-Hitan | remote | R   | N   | —       | an artificial lake fed by drainage water: a desert landscape made by people                                               |
-| 64  | `fiseekh`             | Il fesikh                         | F: Fesikh        | region | R   | F   | taste   | fermented mullet of Sham el-Nessim: seasonal, and a health warning (fact)                                                 |
 | 65  | `sayadeya`            | La sayadeya                       | F: Sayadeya      | region | C   | F   | taste   | Alexandria's fish and rice                                                                                                |
 
 ## Alto Egitto (29)
@@ -136,7 +135,7 @@ besides looking. **Card**: person, city, landscape (`L:`), food (`F:`) or the ti
 | 91  | `old-cataract`       | L’Old Cataract                                   | Assuan                  | city   | C   | C   | —       | Agatha Christie's terrace; _verify access for non-guests_                                     |
 | 92  | `felucca-cataract`   | In feluca tra le isole della cateratta           | L: La prima cateratta   | city   | C   | N   | sail    | granite islands in the river: the natural frontier                                            |
 | 93  | `botanical-island`   | L’isola delle piante                             | L: La prima cateratta   | city   | C   | N   | —       | Kitchener's island garden                                                                     |
-| 94  | `aish-shamsi`        | L’aish shamsi                                    | F: Aish shamsi          | region | C   | F   | taste   | the bread that rises in the sun                                                               |
+| 94  | `eish-shamsi`        | L’eish shamsi                                    | F: Aish shamsi          | region | C   | F   | taste   | the bread that rises in the sun                                                               |
 
 ## Nubia (8 — small region)
 
@@ -170,7 +169,7 @@ besides looking. **Card**: person, city, landscape (`L:`), food (`F:`) or the ti
 | 115 | `bagawat`             | La necropoli di Bagawat            | Today: Christian Egypt      | remote | VR  | H   | —       | early Christian chapels with Exodus paintings                                                                                                                                         |
 | 116 | `el-alamein-memorial` | Il Sacrario italiano di El Alamein | Today: 1942                 | remote | R   | H   | —       | the Italian dead of the desert war                                                                                                                                                    |
 
-## Sinai (10 — small region)
+## Sinai (9 — small region)
 
 | #   | id                        | Traccia                                   | Card                     | Where  | Val | Th  | Gesture | Why it holds / notes                                                   |
 | --- | ------------------------- | ----------------------------------------- | ------------------------ | ------ | --- | --- | ------- | ---------------------------------------------------------------------- |
@@ -183,7 +182,6 @@ besides looking. **Card**: person, city, landscape (`L:`), food (`F:`) or the ti
 | 125 | `sharm-old-market`        | Il mercato vecchio e la moschea al-Sahaba | Sharm el-Sheikh          | city   | C   | C   | —       | the town that was there before the resorts, and the new mosque         |
 | 126 | `heavenly-cathedral`      | La cattedrale copta di Sharm              | Sharm el-Sheikh          | city   | C   | C   | —       | who lives in Sharm: workers from the Nile valley                       |
 | 127 | `naama-bay`               | Naama Bay                                 | Sharm el-Sheikh          | city   | C   | C   | —       | where the resort city began                                            |
-| 128 | `bedouin-tea`             | Il tè dei beduini                         | F: Tè beduino            | region | C   | F   | taste   | sage and herbs from the mountains                                      |
 
 ## Mar Rosso (10 — small region)
 
@@ -198,9 +196,16 @@ besides looking. **Card**: person, city, landscape (`L:`), food (`F:`) or the ti
 | 135 | `abu-dabbab`           | Le tartarughe di Abu Dabbab    | L: La costa del Mar Rosso | nearby | C   | N   | snorkel | seagrass, turtles, sometimes a dugong                                                                                  |
 | 136 | `samadai`              | La casa dei delfini            | L: La costa del Mar Rosso | nearby | R   | N   | snorkel | spinner dolphins and a zoned reef; _verify rules_                                                                      |
 | 137 | `wadi-el-gemal`        | Wadi el-Gemal                  | L: La costa del Mar Rosso | remote | R   | N   | —       | acacias, gazelles, the Ababda                                                                                          |
-| 138 | `ababda-coffee`        | Il caffè degli ababda          | F: Jebena                 | region | R   | F   | taste   | ginger coffee from a clay pot; _verify where to find it_                                                               |
+| 138 | `jabana`               | La jabana degli ababda         | F: Jabana                 | region | R   | F   | taste   | ginger coffee from a clay pot; _verify where to find it_                                                               |
 
 ---
+
+## Gastronomia written (2026-11-24)
+
+The 15 food traces are in `structure.ts` (ids `eg.place.food-<slug>`) with their cards; texts
+and sources in `../food/`. Fesikh (64) is out: `excluded-traces.md`. Renamed: 94 `eish-shamsi`,
+138 `jabana`. After the source check (`../food/`): 94 eish shamsi is rare, 102 karkadè moved
+from Nubia to Alto Egitto (Nubia now has 7 traces). 128 Bedouin tea is out as a duplicate of the shai (2026-11-25, `excluded-traces.md`). The counts below predate this: food is now 14 traces, not 16, and the total 131.
 
 ## Counts against the targets
 
@@ -232,7 +237,7 @@ below.
 | Basso Egitto        | 51    | 38%   | ✓                |
 | Alto Egitto         | 29    | 21%   | ✓                |
 | Deserto occidentale | 14    | 10%   | ✓                |
-| Sinai               | 10    | 8%    | small (declared) |
+| Sinai               | 9     | 7%    | small (declared) |
 | Mar Rosso           | 10    | 7%    | small (declared) |
 | Nubia               | 8     | 6%    | small (declared) |
 

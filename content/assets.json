@@ -1,4 +1,68 @@
 {
+  "/guides/egypt/coat-of-arms.png": {
+    "bytes": 79046,
+    "hash": "8397510f4e78"
+  },
+  "/guides/egypt/cover.jpg": {
+    "bytes": 740023,
+    "hash": "d022d2921e3d"
+  },
+  "/guides/egypt/flag.svg": {
+    "bytes": 18439,
+    "hash": "031b7bebb493"
+  },
+  "/guides/egypt/traces/food-ahwa-tea.webp": {
+    "bytes": 151128,
+    "hash": "3f4023bb4676"
+  },
+  "/guides/egypt/traces/food-feteer.webp": {
+    "bytes": 67168,
+    "hash": "4be83763bf4e"
+  },
+  "/guides/egypt/traces/food-ful-medames.webp": {
+    "bytes": 79806,
+    "hash": "c9456eab8847"
+  },
+  "/guides/egypt/traces/food-jabana.webp": {
+    "bytes": 51712,
+    "hash": "e78c09117d75"
+  },
+  "/guides/egypt/traces/food-karkade.webp": {
+    "bytes": 236040,
+    "hash": "3bc8fbcaf271"
+  },
+  "/guides/egypt/traces/food-koshari.webp": {
+    "bytes": 125226,
+    "hash": "496d42d31a3d"
+  },
+  "/guides/egypt/traces/food-molokhia.webp": {
+    "bytes": 139932,
+    "hash": "304340cbe05c"
+  },
+  "/guides/egypt/traces/food-om-ali.webp": {
+    "bytes": 84736,
+    "hash": "9b67961c0a52"
+  },
+  "/guides/egypt/traces/food-sayadeya.webp": {
+    "bytes": 93146,
+    "hash": "a61e0c2ef454"
+  },
+  "/guides/egypt/traces/food-siwa-dates.webp": {
+    "bytes": 109646,
+    "hash": "03d81ffcd30b"
+  },
+  "/guides/egypt/traces/food-stella.webp": {
+    "bytes": 42208,
+    "hash": "bc702297260e"
+  },
+  "/guides/egypt/traces/food-sugarcane-juice.webp": {
+    "bytes": 42064,
+    "hash": "1b0d9d332f5e"
+  },
+  "/guides/egypt/traces/food-taameya.webp": {
+    "bytes": 86150,
+    "hash": "f473aa084bc2"
+  },
   "/guides/romania/coat-of-arms.png": {
     "bytes": 149546,
     "hash": "bdfa4de3d4a1"

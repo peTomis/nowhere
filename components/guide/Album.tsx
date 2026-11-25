@@ -363,7 +363,7 @@ export function TraceDialog({
           </button>
         </div>
         <div className="min-h-0 flex-1 overflow-y-auto px-4 pt-2 pb-[calc(20px+env(safe-area-inset-bottom,0px))]">
-          <Trace id={trace.id} />
+          <Trace id={trace.id} inAlbum />
         </div>
       </div>
     </div>

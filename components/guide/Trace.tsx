@@ -134,6 +134,7 @@ export function Trace({
   showPlace = true,
   text,
   heading: Heading = 'h4',
+  inAlbum = false,
 }: {
   id: string
   /** HTML id when the trace is not in a card (the coat of arms and the flag in the text). */
@@ -148,6 +149,8 @@ export function Trace({
   text?: string
   /** The name's heading: h5 under a timeline event, whose title is an h4. */
   heading?: 'h4' | 'h5'
+  /** In the album's open box: no "Anche in", whose links go to cards of the text. */
+  inAlbum?: boolean
 }) {
   const lang = useLang()
   const t = useT()
@@ -170,7 +173,7 @@ export function Trace({
   const stock = !src ? trace.image : undefined
   const Where = WHERE_ICONS[trace.where]
   const Glyph = TRACE_ICONS[trace.icon]
-  const others = trace.cards.filter((c) => c.id !== card)
+  const others = inAlbum ? [] : trace.cards.filter((c) => c.id !== card)
   const alt =
     seen && src
       ? format(t.guide.trace.altSeen, { name: trace.name, date })

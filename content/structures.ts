@@ -1,3 +1,4 @@
+import { structure as eg } from './eg/structure'
 import { structure as ro } from './ro/structure'
 import {
   BUILT_IN_TRACES,
@@ -15,7 +16,7 @@ import { structure as xx } from './xx/structure'
  * server needs to check a reader's subject. "xx" is the template guide (/template), so its
  * traces can be tried out too.
  */
-export const structures: Record<string, GuideStructure> = { ro, xx }
+export const structures: Record<string, GuideStructure> = { eg, ro, xx }
 
 const known = new Set<string>()
 for (const [cc, s] of Object.entries(structures)) {

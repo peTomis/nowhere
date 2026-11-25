@@ -30,6 +30,13 @@ export const guides: Guide[] = [
     status: 'ready',
     at: [24.9, 45.9],
   },
+  {
+    id: 'eg',
+    numeric: '818',
+    slug: 'egypt',
+    status: 'ready',
+    at: [30.8, 26.8],
+  },
 ]
 
 export const getGuide = (slug: string) => guides.find((g) => g.slug === slug)
