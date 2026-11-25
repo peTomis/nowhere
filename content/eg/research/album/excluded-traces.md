@@ -34,3 +34,17 @@ gone with it; Sinai has 9 traces (a small region, declared).
 Draft texts: name «Il tè dei beduini»; place «Sinai meridionale, Sinai»; find «Offerto nei campi
 beduini e lungo i sentieri intorno a Santa Caterina, fatto bollire sul fuoco.» Stock image: Hesham
 Farouk Ragab, _شاي بدوي.jpg_, CC0 (St Catherine, 2022); still in the bucket, out of the manifest.
+
+## Le dune del Grande Mare di Sabbia (was 109, Deserto occidentale, nature)
+
+Taken out on 2026-11-25, while writing the Natura chapter, for the country sheet's safety rule
+(§13). The UK FCDO advice (read 2026-11-25) excepts from its warning on the Western Desert only
+"the oasis town of Siwa" and the Marsa Matruh–Siwa road, and advises against the Bahariya–Siwa
+road; the dunes of the Great Sand Sea are reached by 4x4 trips out of the oasis (Bir Wahed and
+beyond), outside the exception. A trace would send the reader where the advice says not to go.
+The Sand Sea stays as a line of the Siwa landscape card, now «Le acque di Siwa»
+(`../nature/siwa-waters.md`), whose second trace is Cleopatra's spring.
+
+Draft texts: name «Le dune del Grande Mare di Sabbia»; place «Siwa, Deserto occidentale»; find
+«In fuoristrada da Siwa, con un operatore autorizzato e il permesso del ministero dell’Interno».
+No stock image was chosen.

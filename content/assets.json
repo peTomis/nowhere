@@ -11,6 +11,34 @@
     "bytes": 18439,
     "hash": "031b7bebb493"
   },
+  "/guides/egypt/traces/abu-dabbab.webp": {
+    "bytes": 81466,
+    "hash": "c72c612bbec2"
+  },
+  "/guides/egypt/traces/black-desert.webp": {
+    "bytes": 183662,
+    "hash": "75004562ce3e"
+  },
+  "/guides/egypt/traces/blue-hole.webp": {
+    "bytes": 121906,
+    "hash": "ecab3eafd659"
+  },
+  "/guides/egypt/traces/botanical-island.webp": {
+    "bytes": 192324,
+    "hash": "3c13ab3171c9"
+  },
+  "/guides/egypt/traces/cleopatras-spring.webp": {
+    "bytes": 275276,
+    "hash": "7f03cd7d3846"
+  },
+  "/guides/egypt/traces/crystal-mountain.webp": {
+    "bytes": 173354,
+    "hash": "e686c906cb22"
+  },
+  "/guides/egypt/traces/felucca-cataract.webp": {
+    "bytes": 183376,
+    "hash": "b2213fd1350d"
+  },
   "/guides/egypt/traces/food-ahwa-tea.webp": {
     "bytes": 151128,
     "hash": "3f4023bb4676"
@@ -62,6 +90,50 @@
   "/guides/egypt/traces/food-taameya.webp": {
     "bytes": 86150,
     "hash": "f473aa084bc2"
+  },
+  "/guides/egypt/traces/giftun.webp": {
+    "bytes": 105272,
+    "hash": "64813d153bbe"
+  },
+  "/guides/egypt/traces/mount-sinai.webp": {
+    "bytes": 13332,
+    "hash": "4a4ba6532beb"
+  },
+  "/guides/egypt/traces/nabq-mangroves.webp": {
+    "bytes": 215926,
+    "hash": "8468e49c46bc"
+  },
+  "/guides/egypt/traces/ras-mohammed.webp": {
+    "bytes": 145488,
+    "hash": "3979b2d0ff22"
+  },
+  "/guides/egypt/traces/salt-lakes.webp": {
+    "bytes": 157394,
+    "hash": "e933f546f21a"
+  },
+  "/guides/egypt/traces/samadai.webp": {
+    "bytes": 31970,
+    "hash": "0ac07bc56338"
+  },
+  "/guides/egypt/traces/st-catherines-monastery.webp": {
+    "bytes": 228436,
+    "hash": "84dc14b64985"
+  },
+  "/guides/egypt/traces/wadi-al-hitan.webp": {
+    "bytes": 107294,
+    "hash": "26fb913baf0e"
+  },
+  "/guides/egypt/traces/wadi-el-gemal.webp": {
+    "bytes": 147816,
+    "hash": "308ed16ee1b4"
+  },
+  "/guides/egypt/traces/wadi-el-rayan.webp": {
+    "bytes": 240500,
+    "hash": "6941a69e29f1"
+  },
+  "/guides/egypt/traces/white-desert.webp": {
+    "bytes": 106598,
+    "hash": "567b12d6c6e2"
   },
   "/guides/romania/coat-of-arms.png": {
     "bytes": 149546,

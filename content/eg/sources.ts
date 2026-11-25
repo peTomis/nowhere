@@ -1,12 +1,12 @@
 import type { GuideSources } from '@/content/types'
-import { EgSection } from './structure'
+import { EgLandscape, EgSection } from './structure'
 
 /*
  * The Egypt guide's bibliography, shown in its "Fonti" view: the pages read while writing the
  * guide, grouped by entry of the index. `title` and `site` as the page gives them. Built from the
  * research notes in research/, which keep what each page was used for and what is still to
- * verify: when a note gains a page, add it here too. Covered so far: the Identità and Gastronomia
- * chapters.
+ * verify: when a note gains a page, add it here too. Covered so far: the Identità, Natura and
+ * Gastronomia chapters.
  */
 export const sources: GuideSources = {
   [EgSection.Flag]: [
@@ -56,6 +56,232 @@ export const sources: GuideSources = {
       title: 'Fortress of the Mountain',
       site: 'Saudi Aramco World',
       url: 'https://archive.aramcoworld.com/issue/199302/fortress.of.the.mountain.htm',
+    },
+  ],
+  [EgLandscape.WadiAlHitan]: [
+    {
+      title: 'Tour Egypt’s Valley of the Whales for a window onto the history of evolution',
+      site: 'National Geographic',
+      url: 'https://www.nationalgeographic.com/travel/article/tour-egypt-valley-of-the-whales-wadi-al-hitan',
+    },
+    {
+      title: 'Whale Valley, Cetacea and Sirenia Eocene fossils of Wadi Al-Hitan',
+      site: 'IUGS Geoheritage',
+      url: 'https://iugs-geoheritage.org/?p=10712',
+    },
+    {
+      title:
+        'Hydrogeochemical evolution of inland lakes’ water: A study of major element geochemistry in the Wadi El Raiyan depression, Egypt',
+      site: 'PubMed Central',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4642196/',
+    },
+    {
+      title: 'Wadi El Rayan Falls',
+      site: 'Wondermondo',
+      url: 'https://www.wondermondo.com/wadi-el-rayan-falls/',
+    },
+    {
+      title: 'Wadi al Hitan',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Wadi_Al-Hitan',
+    },
+    {
+      title: 'Wadi El Rayan',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Wadi_El_Rayan',
+    },
+    {
+      title: 'Lake El Rayan',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Lake_El_Rayan',
+    },
+  ],
+  [EgLandscape.FirstCataract]: [
+    {
+      title: 'Gateway on the Nile',
+      site: 'Saudi Aramco World',
+      url: 'https://archive.aramcoworld.com/issue/198505/gateway.on.the.nile.htm',
+    },
+    {
+      title: 'Kitchener Island',
+      site: 'Frommer’s',
+      url: 'https://www.frommers.com/destinations/aswan/attractions/kitchener-island',
+    },
+    {
+      title: 'Cataracts of the Nile',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Cataracts_of_the_Nile',
+    },
+    {
+      title: 'El Nabatat Island',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/El_Nabatat_Island',
+    },
+  ],
+  [EgLandscape.SiwaWaters]: [
+    {
+      title: 'A Salty Desert Retreat',
+      site: 'NASA Earth Observatory',
+      url: 'https://earthobservatory.nasa.gov/images/151238/a-salty-desert-retreat',
+    },
+    {
+      title: 'Egypt’s Siwa Salt Lakes: why you float instead of sinking',
+      site: 'The Business Standard',
+      url: 'https://www.tbsnews.net/explainer/egypts-siwa-salt-lakes-why-you-float-instead-sinking-1340691',
+    },
+    {
+      title: 'Siwa Oasis',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Siwa_Oasis',
+    },
+    {
+      title: 'Great Sand Sea',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Great_Sand_Sea',
+    },
+  ],
+  [EgLandscape.WhiteDesert]: [
+    {
+      title: 'White rocks an eerie sight',
+      site: 'Deseret News (Associated Press)',
+      url: 'https://www.deseret.com/2003/9/14/19783295/white-rocks-an-eerie-sight/',
+    },
+    {
+      title: 'The Black Desert: A Volcanic Wonder of the Bahariya Oasis',
+      site: 'Egypt Fun Tours',
+      url: 'https://egyptfuntours.com/?p=70398',
+    },
+    {
+      title: 'The Black Desert',
+      site: 'Flying Carpet Tours',
+      url: 'https://www.flyingcarpettours.com/Attractions/Egypt-Attractions/Bahariya-Oasis/The-Black-Desert',
+    },
+    {
+      title: 'White Desert National Park',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/White_Desert_National_Park',
+    },
+    {
+      title: 'Black Desert (Egypt)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Black_Desert_(Egypt)',
+    },
+    {
+      title: 'Crystal Mountain (Egypt)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Crystal_Mountain_(Egypt)',
+    },
+  ],
+  [EgLandscape.SinaiMountains]: [
+    {
+      title: 'Saint Catherine’s Monastery and its surrounding area',
+      site: 'Egypt’s Monuments (Ministry of Tourism and Antiquities)',
+      url: 'https://egymonuments.gov.eg/en/world-heritage/saint-catherine-s-monastery-and-its-surrounding-area/',
+    },
+    {
+      title: 'Mount Sinai',
+      site: 'Sacred Land Film Project',
+      url: 'https://sacredland.org/?p=900',
+    },
+    {
+      title: 'Mount Sinai',
+      site: 'Sacred Destinations',
+      url: 'https://www.sacred-destinations.com/egypt/mount-sinai',
+    },
+    {
+      title: 'Mount Sinai, Egypt',
+      site: 'Rough Guides',
+      url: 'https://www.roughguides.com/egypt/mount-sinai/',
+    },
+    {
+      title: 'Mount Sinai',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Mount_Sinai',
+    },
+    {
+      title: 'Saint Catherine’s Monastery',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Saint_Catherine%27s_Monastery',
+    },
+  ],
+  [EgLandscape.GulfOfAqaba]: [
+    {
+      title: 'Ras Mohammed National Park',
+      site: 'Key Biodiversity Areas',
+      url: 'https://www.keybiodiversityareas.org/site/factsheet/6219',
+    },
+    {
+      title: 'Nabq Protected Area',
+      site: 'Key Biodiversity Areas',
+      url: 'https://www.keybiodiversityareas.org/site/factsheet/6208',
+    },
+    {
+      title: 'Ecology of Avicennia marina mangals along Gulf of Aqaba, South Sinai, Red Sea',
+      site: 'Egyptian Journal of Aquatic Biology and Fisheries',
+      url: 'https://ejabf.journals.ekb.eg/article_2063.html',
+    },
+    {
+      title: 'Ras Muhammad National Park',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Ras_Muhammad_National_Park',
+    },
+    {
+      title: 'Blue Hole (Red Sea)',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Blue_Hole_(Red_Sea)',
+    },
+    {
+      title: 'Nabq Protected Area',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Nabq_Protected_Area',
+    },
+    {
+      title: 'Dead Sea Transform',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Dead_Sea_Transform',
+    },
+  ],
+  [EgLandscape.RedSeaCoast]: [
+    {
+      title: 'Hurghada Archipelago',
+      site: 'Key Biodiversity Areas',
+      url: 'https://www.keybiodiversityareas.org/site/factsheet/6201',
+    },
+    {
+      title: 'Samadai project',
+      site: 'HEPCA',
+      url: 'https://www.hepca.org/projects/conservation/samadai-project',
+    },
+    {
+      title:
+        'Spinner dolphin (Stenella longirostris) resting habitat in Samadai Reef (Egypt, Red Sea) protected through tourism management',
+      site: 'Journal of the Marine Biological Association of the United Kingdom',
+      url: 'https://www.cambridge.org/core/journals/journal-of-the-marine-biological-association-of-the-united-kingdom/article/spinner-dolphin-stenella-longirostris-resting-habitat-in-samadai-reef-egypt-red-sea-protected-through-tourism-management/D1DF942800427CA5DD5AE41B9BFD5A9D',
+    },
+    {
+      title: 'Abu Dabab Conservation Initiative',
+      site: 'HEPCA',
+      url: 'https://hepca.org/news/abu-dabab-conservation-initiative',
+    },
+    {
+      title: '‘A very successful story’: An Egypt tribe welcomes tourists & protects its coast',
+      site: 'Mongabay',
+      url: 'https://news.mongabay.com/2025/10/a-very-successful-story-an-egypt-tribe-welcomes-tourists-protects-its-coast/',
+    },
+    {
+      title: 'Giftun Islands',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Giftun_Islands',
+    },
+    {
+      title: 'Marsa Alam',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Marsa_Alam',
+    },
+    {
+      title: 'Wadi El Gemal National Park',
+      site: 'Wikipedia',
+      url: 'https://en.wikipedia.org/wiki/Wadi_El_Gemal_National_Park',
     },
   ],
   [EgSection.FoodCommon]: [

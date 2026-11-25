@@ -1,10 +1,10 @@
 import { guideKit } from '@/components/guide/content'
 import type { GuideContent } from '@/content/types'
-import { Eg, EgFood, EgSection, structure } from '../structure'
+import { Eg, EgFood, EgLandscape, EgSection, structure } from '../structure'
 import { sources } from '../sources'
 import { names } from './names'
 
-const { Card, Chapter, Context, Emblem, N, Part, Text } = guideKit(structure, names)
+const { Card, Chapter, Context, D, Emblem, N, Part, Text } = guideKit(structure, names)
 
 export const egypt: GuideContent<Eg, EgSection> = {
   lang: 'it',
@@ -64,6 +64,136 @@ function Body() {
             e dal 1984 è di nuovo lo stemma dell’Egitto.
           </Text>
         </Part>
+      </Chapter>
+
+      <Chapter
+        section={EgSection.Nature}
+        lede="Fuori dalla valle del Nilo: come si sono formati i paesaggi, e che cosa ne hanno fatto le persone."
+      >
+        <Card
+          card={EgLandscape.WadiAlHitan}
+          intro={
+            <>
+              A sud-ovest del <N>Fayyum</N>, oltre gli ultimi campi, comincia il Deserto
+              occidentale. Circa quaranta milioni di anni fa qui c’era un mare caldo e poco
+              profondo, la <N>Tetide</N>; le sabbie e i fanghi del suo fondo sono le rocce chiare
+              della valle, piene di conchiglie e di denti di squalo, che il vento scolpisce in torri
+              e funghi. Nella <N>Wadi al-Hitan</N>, la «valle delle balene», l’erosione scopre gli
+              scheletri delle balene che nuotavano in quel mare: i primi furono trovati all’inizio
+              del Novecento, e nel <D>2005</D> la valle è diventata patrimonio dell’umanità UNESCO.
+              Accanto, nella depressione di <N>Wadi el-Rayan</N>, il paesaggio è recente: dagli anni
+              Settanta un canale vi porta l’acqua di scolo dei campi del Fayyum, che ha riempito due
+              laghi sotto il livello del mare, collegati da una cascata. Le due valli sono nella
+              stessa area protetta.
+            </>
+          }
+          remember="Nella stessa area protetta il deserto mostra due tempi: il mare di quaranta milioni di anni fa, con le sue balene, e i laghi nati negli anni Settanta dall’acqua dei campi."
+        />
+        <Card
+          card={EgLandscape.FirstCataract}
+          intro={
+            <>
+              Ad <N>Assuan</N> il Nilo attraversa una barriera di granito. A sud della città il
+              fiume scorreva fra scogli e isolotti, in un tratto di rapide basse: la prima
+              cateratta. Per gran parte della storia egizia qui passava il confine meridionale del
+              paese, e oltre cominciava la Nubia. Dallo stesso granito, rosa, rosso e grigio,
+              uscivano obelischi, statue e sarcofagi, che le piene portavano a valle fino a Tebe e a
+              Menfi. Nel <D>1902</D> gli inglesi costruirono a monte la prima diga di Assuan, e le
+              rapide finirono sotto l’acqua del bacino; dopo venne la Diga Alta. Davanti alla città
+              restano le isole, <N>Elefantina</N> e l’isola delle piante, e intorno decine di massi
+              levigati dalle piene, fra cui passano le feluche.
+            </>
+          }
+          remember="Le rocce della prima cateratta erano il confine dell’Egitto e la sua cava di granito: sommerse le rapide, oggi ci si naviga in feluca."
+        />
+        <Card
+          card={EgLandscape.SiwaWaters}
+          intro={
+            <>
+              <N>Siwa</N> è una conca nel Deserto occidentale, a circa 50 km dal confine con la
+              Libia, che scende fino a una ventina di metri sotto il livello del mare. Non piove
+              quasi mai: l’acqua sale dal sottosuolo, da centinaia di sorgenti alimentate da una
+              falda profonda, che si estende sotto il deserto. Con quest’acqua da secoli si
+              coltivano palme da dattero e olivi. L’acqua che avanza dai campi, però, non ha dove
+              andare: ristagna nei laghi salati che circondano l’oasi, e il sale si accumula anche
+              nei campi, dove i raccolti calano. Il sale è a sua volta una risorsa: si estrae nelle
+              vasche d’evaporazione intorno ai laghi. A sud dell’oasi comincia il{' '}
+              <N>Grande Mare di Sabbia</N>, un oceano di dune che continua fino in Libia.
+            </>
+          }
+          remember="A Siwa l’acqua viene da sotto: fa crescere palme e olivi, e dove si ferma lascia il sale."
+        />
+        <Card
+          card={EgLandscape.WhiteDesert}
+          intro={
+            <>
+              Fra le oasi di <N>Bahariya</N> e di <N>Farafra</N>, la strada attraversa uno dei
+              paesaggi più strani del Sahara. Il fondo del deserto è di gesso bianco, un calcare
+              tenero formato sul fondo di un mare antico, di cui conserva minuscole conchiglie. Il
+              vento carico di sabbia lo consuma da millenni, e lascia in piedi torri, funghi e
+              figure isolate, alcune alte come una casa di due piani. Più a nord, verso Bahariya, il
+              deserto diventa nero: le colline sono coperte da pietre di roccia vulcanica scura e
+              dura, che le ha protette dall’erosione. Il Deserto Bianco è area protetta dal{' '}
+              <D>2002</D>. Non ci sono strade nel deserto, solo piste: chi viene fin qui di solito
+              ci passa la notte, in tenda fra le rocce.
+            </>
+          }
+          remember="Nel Deserto Bianco il vento scolpisce il gesso di un mare scomparso; poco più a nord, la roccia vulcanica tinge di nero le colline."
+        />
+        <Card
+          card={EgLandscape.SinaiMountains}
+          intro={
+            <>
+              Nel sud del Sinai si alza un massiccio di montagne aspre e scure, tagliate da valli
+              strette: qui c’è la cima più alta dell’Egitto, il <N>Gebel Katherina</N>. Fin dai
+              primi secoli cristiani eremiti e pellegrini hanno riconosciuto nel <N>Gebel Musa</N>,
+              il «monte di Mosè», il Sinai della Bibbia, dove Mosè ricevette le tavole della Legge;
+              ai suoi piedi l’imperatore <N>Giustiniano</N> fece costruire, nel VI secolo, un
+              monastero fortificato. Le valli sono la terra dei beduini <N>Jabaliya</N>, che vi
+              coltivano orti e oggi accompagnano i visitatori sui sentieri. Per secoli ci si
+              arrivava solo a dorso di cammello; le strade e un aeroporto vengono con l’occupazione
+              israeliana, fra il <D>1967</D> e il <D>1982</D>, e con loro il turismo. Dal{' '}
+              <D>2002</D> l’area di Santa Caterina è patrimonio dell’umanità UNESCO.
+            </>
+          }
+          remember="Il Gebel Musa è il Sinai della tradizione: lo si sale di notte, per vedere l’alba sopra le montagne più alte dell’Egitto."
+        />
+        <Card
+          card={EgLandscape.GulfOfAqaba}
+          intro={
+            <>
+              Il Sinai finisce a sud con la punta di <N>Ras Mohammed</N>, dove il Mar Rosso si
+              divide in due bracci: a ovest il golfo di <N>Suez</N>, a est il golfo di <N>Aqaba</N>.
+              Il golfo di Aqaba segue la grande faglia che separa la placca africana da quella
+              araba, ed è stretto e profondo: le montagne scendono quasi a picco sul mare, e lungo
+              la riva crescono barriere coralline che si raggiungono a nuoto dalla spiaggia. Durante
+              l’occupazione israeliana i fondali di Sharm el-Sheikh e di <N>Dahab</N> diventano noti
+              ai sub di tutto il mondo. Tornato il Sinai all’Egitto, nel <D>1983</D> Ras Mohammed
+              diventa la prima area protetta del paese; seguono Nabq e altri tratti di costa, mentre
+              intorno crescono gli alberghi. I beduini della costa vivevano di pesca; oggi molti
+              lavorano con il turismo.
+            </>
+          }
+          remember="Sulla punta del Sinai le montagne del deserto scendono nel mare dei coralli: qui l’Egitto ha protetto per la prima volta un pezzo della sua natura."
+        />
+        <Card
+          card={EgLandscape.RedSeaCoast}
+          intro={
+            <>
+              Da <N>Hurghada</N> verso sud, la costa del Mar Rosso corre per centinaia di chilometri
+              fra il mare e le montagne del Deserto orientale. Il mare è caldo e limpido, con
+              barriere coralline lungo quasi tutta la riva e isole basse al largo, di corallo
+              fossile sollevato. Nelle baie riparate crescono praterie di erba marina, dove
+              pascolano tartarughe e dugonghi; nelle lagune dei reef i delfini passano il giorno a
+              riposare. A terra, per secoli, ci sono stati solo porti, cave e miniere, e i pastori
+              ababda. Negli anni Novanta Hurghada passa da cittadina con un paio di alberghi a una
+              città di villaggi turistici; poi tocca a Marsa Alam, con il suo aeroporto. Le isole,
+              alcune baie e la valle di <N>Wadi el-Gemal</N> sono state protette, e in alcuni posti
+              le regole sulle barche e sui visitatori hanno salvato gli animali.
+            </>
+          }
+          remember="Sulla costa del Mar Rosso il deserto finisce dove comincia la barriera: tartarughe, delfini e coralli sono a pochi metri dalla riva, e dagli alberghi."
+        />
       </Chapter>
 
       <Chapter

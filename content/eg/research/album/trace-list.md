@@ -207,6 +207,20 @@ and sources in `../food/`. Fesikh (64) is out: `excluded-traces.md`. Renamed: 94
 138 `jabana`. After the source check (`../food/`): 94 eish shamsi is rare, 102 karkadè moved
 from Nubia to Alto Egitto (Nubia now has 7 traces). 128 Bedouin tea is out as a duplicate of the shai (2026-11-25, `excluded-traces.md`). The counts below predate this: food is now 14 traces, not 16, and the total 131.
 
+## Natura written (2026-11-25)
+
+The 18 nature traces of the seven landscape cards are in `structure.ts` (ids `eg.place.<slug>`),
+texts and sources in `../nature/`. Changes from the table above:
+
+- 109 Great Sand Sea is out for safety (`excluded-traces.md`); the Siwa card is now «Le acque di
+  Siwa» and lists 107 Cleopatra's spring, which the Cleopatra card will list too.
+- 136 Samadai keeps the title «La casa dei delfini»; 123 Blue Hole is «Il Blue Hole» (the gesture is
+  snorkelling along the rim, never the Arch).
+- Still open: St Catherine's visiting rules after the October 2026 court ruling
+  (`../nature/sinai-mountains.md`); a precise point for the Nabq mangroves.
+
+Nature is now 18 traces (17 own, Cleopatra's spring shared) and the total 130.
+
 ## Counts against the targets
 
 **Total: 133 own traces** (cap 140–145). Porto Said is replaced by Rosetta (user, 2026-11-24:

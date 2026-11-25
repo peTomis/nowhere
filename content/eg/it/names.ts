@@ -1,5 +1,5 @@
 import type { GuideNames } from '@/content/types'
-import { Eg, EgFood, EgSection, EgTrace } from '../structure'
+import { Eg, EgFood, EgLandscape, EgSection, EgTrace } from '../structure'
 
 /** Italian names of the Egypt guide's places and sections (index, titles, trip filter). */
 
@@ -21,6 +21,17 @@ const places: Record<Eg, string> = {
 
 const everywhere = 'In tutto l’Egitto'
 
+/** Landscape cards: the card's title and its entry in the index. */
+const landscapes: Record<EgLandscape, string> = {
+  [EgLandscape.WadiAlHitan]: 'Wadi al-Hitan e Wadi el-Rayan',
+  [EgLandscape.FirstCataract]: 'La prima cateratta',
+  [EgLandscape.SiwaWaters]: 'Le acque di Siwa',
+  [EgLandscape.WhiteDesert]: 'Il Deserto Bianco',
+  [EgLandscape.SinaiMountains]: 'Le montagne del Sinai',
+  [EgLandscape.GulfOfAqaba]: 'Il golfo di Aqaba',
+  [EgLandscape.RedSeaCoast]: 'La costa del Mar Rosso',
+}
+
 export const names: GuideNames<Eg, EgSection> = {
   country: 'Egitto',
   summary: 'Il Nilo, il deserto e il Mar Rosso.',
@@ -35,6 +46,7 @@ export const names: GuideNames<Eg, EgSection> = {
     [EgSection.Flag]: 'Bandiera',
     [EgSection.CoatOfArms]: 'Stemma',
     // Chapters: their line in the summary (the titles are the same in every guide).
+    [EgSection.Nature]: 'Dalla valle delle balene ai coralli del Mar Rosso',
     [EgSection.Food]: 'Dal koshari al karkadè: che cosa ordinare',
     [EgSection.FoodCommon]: 'In tutto il paese',
     [EgSection.FoodLowerEgypt]: places[Eg.LowerEgypt],
@@ -89,6 +101,132 @@ export const names: GuideNames<Eg, EgSection> = {
       place: everywhere,
       find: 'Nei ristoranti, bar e hotel con licenza per gli alcolici e nei negozi di alcolici: non si vende né si beve altrove.',
     },
+    [EgTrace.WadiAlHitan]: {
+      name: 'Le balene con le zampe',
+      local: 'Wadi al-Hitan',
+      place: `Fayyum, ${places[Eg.LowerEgypt]}`,
+      text: 'Lungo un sentiero segnato, una decina di scheletri fossili affiorano dalla roccia dove sono stati trovati. Sono soprattutto di Basilosaurus, il più grande (lo scheletro più lungo misura 21 m), e del più piccolo Dorudon. Erano già animali del mare aperto, ma conservavano due piccole zampe posteriori, con piedi e dita: una tappa del passaggio delle balene dalla terra al mare.',
+      find: 'Si arriva in fuoristrada da Fayyum, in circa un’ora e mezza, o dal Cairo in giornata: l’ultimo tratto è una pista nel deserto. La visita è guidata e segue il sentiero fra gli scheletri, che non si toccano. Meglio d’inverno: d’estate fa molto caldo e non c’è ombra.',
+    },
+    [EgTrace.WadiElRayan]: {
+      name: 'Le cascate nel deserto',
+      local: 'Wadi el-Rayan',
+      place: `Fayyum, ${places[Eg.LowerEgypt]}`,
+      text: 'I due laghi di Wadi el-Rayan sono a quote diverse, entrambi sotto il livello del mare. Quando l’acqua di scolo ha riempito il lago superiore, ha cominciato a scorrere verso quello inferiore: il torrente ha scavato il suo letto e scoperto gli scalini di roccia su cui oggi cade in cascate di pochi metri. Sono un paesaggio fatto dalle persone, e una gita amata dalle famiglie del Fayyum e del Cairo.',
+      find: 'Nell’area protetta di Wadi el-Rayan, a sud-ovest della città di Fayyum: le cascate sono fra i due laghi, dove si ferma chi arriva in auto o con un’escursione. Si combina con Wadi al-Hitan, che è nella stessa area.',
+    },
+    [EgTrace.FeluccaCataract]: {
+      name: 'In feluca fra le isole',
+      local: 'Feluca',
+      place: `Assuan, ${places[Eg.UpperEgypt]}`,
+      text: 'La feluca è la barca a vela del Nilo, con una sola grande vela bianca. Ad Assuan gira intorno all’isola di Elefantina e passa fra i massi di granito della cateratta, scuri e levigati dalle piene di millenni: è il modo per vedere da vicino le rocce che un tempo fermavano il fiume, e sulla riva occidentale le tombe dei governatori scavate nella collina.',
+      find: 'Le feluche partono dai moli lungo la Corniche, il lungofiume di Assuan. Prezzo e durata (un’ora, o il giro delle isole) si concordano col barcaiolo prima di salire.',
+    },
+    [EgTrace.BotanicalIsland]: {
+      name: 'L’isola delle piante',
+      local: 'Geziret el-Nabatat',
+      place: `Assuan, ${places[Eg.UpperEgypt]}`,
+      text: 'Un’isola lunga meno di un chilometro, a ovest di Elefantina, che appartenne al generale britannico lord Kitchener. Kitchener ne fece un giardino di alberi e piante esotiche. Passata allo Stato egiziano, l’isola è diventata un orto botanico e una stazione di ricerca: oggi è un giardino pubblico di palme e viali all’ombra.',
+      find: 'Si arriva solo in barca, in feluca o con le barche a motore della Corniche, che attraccano sul lato sud-orientale dell’isola.',
+    },
+    [EgTrace.SaltLakes]: {
+      name: 'Le vasche di sale',
+      place: `Siwa, ${places[Eg.WesternDesert]}`,
+      text: 'Intorno ai laghi salati a est della città, l’acqua è raccolta in vasche dove evapora e lascia il sale, che Siwa estrae e vende. Alcune vasche sono piene di un’acqua turchese così salata che si galleggia senza sforzo, e sono diventate il bagno dell’oasi. Le croste bianche sui bordi sono sale.',
+      find: 'Una decina di chilometri a est del centro di Siwa, in auto, in bicicletta o con un’escursione: le vasche dove ci si bagna sono quelle dove portano le escursioni. Il sale brucia occhi e ferite: non immergere la testa, e porta acqua dolce per sciacquarti.',
+    },
+    [EgTrace.CleopatrasSpring]: {
+      name: 'La fonte di Cleopatra',
+      local: 'Ain Cleopatra',
+      place: `Siwa, ${places[Eg.WesternDesert]}`,
+      text: 'Una vasca rotonda di pietra raccoglie una sorgente che sale dal fondo, in mezzo ai palmeti: è una delle centinaia di sorgenti dell’oasi. Il nome viene da una tradizione popolare, secondo cui Cleopatra vi avrebbe fatto il bagno; nell’oasi la chiamano anche fonte del Sole. Intorno alla vasca ci sono caffè e botteghe.',
+      find: 'A circa 3 km dal centro di Siwa, nei palmeti verso il tempio dell’oracolo: in bicicletta, in auto o con i carretti. Ci si può bagnare, vestiti: Siwa è una comunità tradizionale.',
+    },
+    [EgTrace.WhiteDesert]: {
+      name: 'I funghi di gesso',
+      local: 'Sahara el-Beida',
+      place: `Farafra, ${places[Eg.WesternDesert]}`,
+      text: 'Nella parte più visitata del Deserto Bianco, i blocchi di gesso hanno forme di funghi, di animali e di persone. Il vento carico di sabbia consuma più in fretta la parte bassa, dove la sabbia è più fitta, e lascia la cima più larga: così nascono i «funghi». Al tramonto e con la luna il bianco prende i colori del cielo.',
+      find: 'Circa 45 km a nord di Farafra, lungo la strada per Bahariya; le formazioni più note, come il «fungo», sono su piste di sabbia vicino alla strada. Solo in fuoristrada, con un operatore autorizzato, che procura il permesso; si dorme in tenda. Meglio da ottobre ad aprile: d’estate il caldo è estremo, d’inverno di notte si arriva a zero gradi.',
+    },
+    [EgTrace.BlackDesert]: {
+      name: 'Le colline nere',
+      local: 'Sahara el-Sawda',
+      place: `Bahariya, ${places[Eg.WesternDesert]}`,
+      text: 'Coni e colline color ocra, coperti da pietre nere: sono i resti di una roccia vulcanica scura e dura, che copriva la pianura come un tetto. Dove si è rotta, il tempo ha portato via la roccia tenera sotto; dove ha tenuto, sono rimaste le colline. Molti salgono su una di quelle vicine alla strada, per vedere la pianura punteggiata di coni.',
+      find: 'Lungo la strada fra Bahariya e il Deserto Bianco, a sud di Bahariya: le colline si vedono dalla strada, e le escursioni si fermano qui. Le pendici sono di pietre e sabbia che scivolano: scarpe chiuse.',
+    },
+    [EgTrace.CrystalMountain]: {
+      name: 'La Montagna di Cristallo',
+      local: 'Gebel el-Kristal',
+      place: `Fra Bahariya e Farafra, ${places[Eg.WesternDesert]}`,
+      text: 'Una piccola cresta accanto alla strada è fatta quasi tutta di cristalli lattiginosi, cresciuti dentro il calcare, con un piccolo arco di roccia. Le guide li chiamano quarzo; i geologi che li hanno analizzati li descrivono come calcite e barite, minerali più teneri.',
+      find: 'Sulla strada fra Bahariya e Farafra, a nord del Deserto Bianco: è una sosta delle escursioni. Non staccare cristalli: la cresta è piccola e si consuma.',
+    },
+    // TODO verificare: the Court of Cassation's ruling on the monastery's lands (due 24 October 2026,
+    // research/nature/sinai-mountains.md) and whether visiting hours changed after it.
+    [EgTrace.StCatherinesMonastery]: {
+      name: 'Il monastero di Santa Caterina',
+      local: 'Deir Sant Katarin',
+      place: `Santa Caterina, ${places[Eg.Sinai]}`,
+      text: 'Le mura del VI secolo chiudono chiese, le celle dei monaci, una biblioteca famosa per i suoi manoscritti e, dal tempo dei Fatimidi, una piccola moschea. Dentro si mostra il roveto ardente, il cespuglio da cui, secondo la tradizione, Dio parlò a Mosè. È uno dei monasteri cristiani abitati senza interruzione più antichi del mondo; i monaci sono greco-ortodossi.',
+      find: 'Ai piedi del Gebel Musa, vicino al paese di Santa Caterina, in auto o con un’escursione da Sharm el-Sheikh o da Dahab. Aperto la mattina; chiuso il venerdì, la domenica e nelle feste ortodosse: controlla l’orario prima di partire. Spalle e gambe coperte.',
+    },
+    [EgTrace.MountSinai]: {
+      name: 'L’alba sul Gebel Musa',
+      local: 'Gebel Musa',
+      place: `Santa Caterina, ${places[Eg.Sinai]}`,
+      text: 'Il Gebel Musa, il «monte di Mosè», è alto 2.285 m. Si sale di notte per arrivare in cima prima dell’alba, quando il sole sorge dietro le creste del massiccio. In vetta una piccola cappella ortodossa del 1934 e una moschea stanno una accanto all’altra. Due strade: il sentiero dei cammelli, più lungo e meno ripido, e i 3.750 «gradini del pentimento», che scendono dritti sul monastero.',
+      find: 'Si parte di notte dal monastero, con una guida beduina, obbligatoria, che si trova all’inizio dei sentieri: circa due ore e mezza di salita, gli ultimi gradini a piedi. In cima fa freddo in ogni stagione: lungo il sentiero si affittano coperte e si vende tè.',
+    },
+    [EgTrace.RasMohammed]: {
+      name: 'La punta del Sinai',
+      local: 'Ras Mohammed',
+      place: `Ras Mohammed, ${places[Eg.Sinai]}`,
+      text: 'Il parco protegge l’estremità della penisola, dove il golfo di Suez e quello di Aqaba si incontrano: scogliere di corallo fossile sollevato, baie di sabbia e, a pochi metri dalla riva, la barriera viva. A terra ci sono un piccolo bosco di mangrovie e crepacci aperti dai terremoti, pieni d’acqua. Il nome, «capo di Mohammed», verrebbe dal profilo della scogliera, che ricorderebbe un volto con la barba.',
+      find: 'A sud di Sharm el-Sheikh, in auto o con un’escursione di un giorno, anche in barca. Il bagno e lo snorkeling si fanno dalle spiagge e dai punti segnalati.',
+    },
+    [EgTrace.BlueHole]: {
+      name: 'Il Blue Hole',
+      place: `Dahab, ${places[Eg.Sinai]}`,
+      text: 'A pochi chilometri a nord di Dahab, la barriera che corre lungo la riva si apre in un pozzo blu scuro, profondo più di cento metri. A 55 m di profondità un tunnel, l’Arco, lo collega al mare aperto: chi tenta di attraversarlo senza l’attrezzatura dei sub tecnici rischia la vita, ed è il motivo per cui il Blue Hole ha fama di essere il luogo d’immersione con più morti al mondo. Sulle rocce vicino alla riva, delle lapidi ricordano i sub che non sono tornati.',
+      find: 'Da Dahab in taxi o con un’escursione, fino ai caffè sulla riva. Per lo snorkeling si resta lungo il bordo del pozzo, con una guida o un compagno: l’acqua è calma, ma ci sono stati incidenti anche fra chi nuotava in superficie. L’Arco è solo per sub tecnici.',
+    },
+    [EgTrace.NabqMangroves]: {
+      name: 'Le mangrovie di Nabq',
+      local: 'Shorat el-Manqata',
+      place: `Nabq, ${places[Eg.Sinai]}`,
+      text: 'Dove la valle di Wadi Kid arriva al mare, per circa 7 km di costa crescono boschi di mangrovie: alberi che vivono con i piedi nell’acqua salata e respirano con centinaia di radici sottili che spuntano dal fango. Sono di una sola specie, l’Avicennia marina, e fra le mangrovie più settentrionali del mondo. Sono un luogo di nidificazione per gli uccelli d’acqua del golfo.',
+      find: 'Nell’area protetta di Nabq, a nord di Sharm el-Sheikh: in fuoristrada o con un’escursione. Agli uccelli che nidificano non ci si avvicina.',
+    },
+    [EgTrace.Giftun]: {
+      name: 'La barriera di Giftun',
+      local: 'Giftun',
+      place: `Hurghada, ${places[Eg.RedSea]}`,
+      text: 'Le due isole di Giftun, davanti a Hurghada, sono disabitate, con spiagge bianche e acqua bassa e chiara. Intorno, la barriera corallina è la meta delle gite in barca da Hurghada. Fanno parte di un’area protetta: ci si viene di giorno.',
+      find: 'In barca da Hurghada, con un’escursione di una giornata, che si ferma su due o tre punti di snorkeling e su una spiaggia dell’isola grande (Mahmya o Orange Bay). Non si pernotta sulle isole.',
+    },
+    [EgTrace.AbuDabbab]: {
+      name: 'Le tartarughe di Abu Dabbab',
+      local: 'Marsa Abu Dabbab',
+      place: `Marsa Alam, ${places[Eg.RedSea]}`,
+      text: 'Una baia sabbiosa e riparata, con una delle più grandi praterie di erba marina della regione: ci pascolano le tartarughe verdi, che si vedono a pochi metri dalla riva, e a volte un dugongo, il mammifero marino che bruca l’erba sul fondo. Sulla spiaggia le tartarughe vengono anche a deporre le uova.',
+      find: 'Una trentina di chilometri a nord di Marsa Alam, sulla strada costiera. Si entra in acqua solo dalla spiaggia: le barche non possono entrare nella baia. Non toccare né inseguire gli animali, e resta fuori dalle zone segnate dalle boe.',
+    },
+    [EgTrace.Samadai]: {
+      name: 'La casa dei delfini',
+      local: 'Shaab Samadai',
+      place: `Marsa Alam, ${places[Eg.RedSea]}`,
+      text: 'Samadai è un reef al largo che forma una laguna bassa, riparata dal vento: un branco di stenelle, i delfini che saltano ruotando su se stessi, ci entra la mattina per riposare dopo la caccia notturna, e ne esce nel pomeriggio. All’inizio degli anni Duemila arrivavano ogni giorno fino a 30 barche e centinaia di nuotatori. Dal 2004 il reef è diviso in zone e la laguna dei delfini è chiusa alle persone: i delfini sono rimasti.',
+      find: 'In barca da Marsa Alam, con le escursioni autorizzate: il numero di visitatori al giorno è limitato e si paga un biglietto. Si nuota solo nella zona aperta, con una guida. I delfini non si toccano e non si inseguono, e non è detto che ci siano.',
+    },
+    [EgTrace.WadiElGemal]: {
+      name: 'La valle dei cammelli',
+      local: 'Wadi el-Gemal',
+      place: `Marsa Alam, ${places[Eg.RedSea]}`,
+      text: 'Wadi el-Gemal è una delle grandi valli del Deserto orientale: scende dalle montagne al mare fra rocce scure e ghiaia, a sud di Marsa Alam. Dal 2003 è il cuore di un parco nazionale che protegge anche la costa, le isole e le mangrovie. Ci vivono gazzelle e stambecchi, e lo abitano gli ababda, pastori e pescatori, che oggi accolgono i visitatori.',
+      find: 'A sud di Marsa Alam, lungo la strada costiera. Nella valle si entra solo in fuoristrada e con una guida; sulla costa, il villaggio ababda di al-Qula’an, con le sue mangrovie, si raggiunge dalla strada.',
+    },
     [EgTrace.FoodSayadeya]: {
       name: 'Sayadeya',
       place: `Alessandria, ${places[Eg.LowerEgypt]}`,
@@ -117,6 +255,16 @@ export const names: GuideNames<Eg, EgSection> = {
     },
   },
   cards: {
+    [EgLandscape.WadiAlHitan]: { name: landscapes[EgLandscape.WadiAlHitan] },
+    [EgLandscape.FirstCataract]: { name: landscapes[EgLandscape.FirstCataract] },
+    [EgLandscape.SiwaWaters]: { name: landscapes[EgLandscape.SiwaWaters] },
+    [EgLandscape.WhiteDesert]: {
+      name: landscapes[EgLandscape.WhiteDesert],
+      local: 'Sahara el-Beida',
+    },
+    [EgLandscape.SinaiMountains]: { name: landscapes[EgLandscape.SinaiMountains] },
+    [EgLandscape.GulfOfAqaba]: { name: landscapes[EgLandscape.GulfOfAqaba] },
+    [EgLandscape.RedSeaCoast]: { name: landscapes[EgLandscape.RedSeaCoast] },
     [EgFood.Koshari]: { name: 'Koshari' },
     [EgFood.FulMedames]: { name: 'Ful medames' },
     [EgFood.Taameya]: { name: 'Ta’ameya' },
